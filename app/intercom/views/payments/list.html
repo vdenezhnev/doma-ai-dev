@@ -1,0 +1,98 @@
+
+<h1 class="page-title uppercase" translate>html.menu.payments</h1>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="mh-400 table-scrollable">
+            <table class="table table-hover table-bordered table-tr-hover">
+                <thead>
+                    <tr>
+                        <th translate>html.payments.abonent</th>
+                        <th width="150px" translate>html.account.phone_display</th>
+                        <th width="200px" translate>html.payments.perimeter_name</th>
+                        <th width="170px" translate>html.payments.payment_date</th>
+                        <th width="140px" translate>html.payments.key_period_till</th>
+                        <th width="200px" translate>html.payments.amount</th>
+                        <th translate>html.payments.payment_type</th>
+                    </tr>
+                    <tr class="active">
+                        <th>
+                            <input ng-model="filter.UserDisplayName"
+                                   ng-model-options="{debounce: 500}" class="form-control">
+                        </th>
+                        <th>
+                            <input ng-model="filter.PhoneNumber"
+                                   ng-model-options="{debounce: 500}" class="form-control">
+                        </th>
+                        <th>
+                            <input ng-model="filter.accessPerimeterName" type="text"
+                                   ng-model-options="{debounce: 500}" class="form-control">
+                        </th>
+                        <th class="filter-date form-inline nowrap">
+                            <div style="width: 150px">
+                                <span class="dropdown">
+                                    <a  class="dropdown-toggle" id="PaymentDateFrom-date" role="button" data-toggle="dropdown" data-target="#" href="#">
+                                        <input class="form-control input-date text-center" placeholder="{{ 'html.defaults.from_title' | translate }}" readonly value="{{ filter.PaymentDateFrom | date:'dd-MM-yyyy' }}">
+                                    </a>
+
+                                    <ul class="dropdown-menu" role="menu">
+                                        <datetimepicker
+                                            data-ng-model="filter.PaymentDateFrom"
+                                            data-datetimepicker-config="{dropdownSelector: '#PaymentDateFrom-date', startView:'day', minView:'day' }"
+                                        />
+                                    </ul>
+                                </span>
+                                <button class="btn" ng-click="filter.PaymentDateFrom=undefined" ng-show="filter.PaymentDateFrom" translate><i class="fa fa-close"></i></button>
+                            </div>
+                            <div style="width: 150px; margin-top: 5px">
+                                <span class="dropdown">
+                                    <a  class="dropdown-toggle" id="PaymentDateTill-date" role="button" data-toggle="dropdown" data-target="#" href="#">
+                                        <input class="form-control input-date text-center" placeholder="{{ 'html.defaults.to_title' | translate }}" readonly value="{{ filter.PaymentDateTill | date:'dd-MM-yyyy' }}">
+                                    </a>
+
+                                    <ul class="dropdown-menu" role="menu">
+                                        <datetimepicker
+                                            data-ng-model="filter.PaymentDateTill"
+                                            data-datetimepicker-config="{dropdownSelector: '#PaymentDateTill-date', startView:'day', minView:'day' }"
+                                        />
+                                    </ul>
+                                </span>
+                                <button class="btn" ng-click="filter.PaymentDateTill=undefined" ng-show="filter.PaymentDateTill" translate><i class="fa fa-close"></i></button>
+                            </div>
+                        </th>
+                        <th></th>
+                        <th class="form-inline">
+                            <input ng-model="filter.AmountFrom" type="text" type="text" style="width: 80px"
+                                   ng-model-options="{debounce: 500}" class="form-control">
+                            <span> &mdash; </span>
+                            <input ng-model="filter.AmountTo" type="text" style="width: 80px"
+                                   ng-model-options="{debounce: 500}" class="form-control">
+                        </th>
+                        <th>
+                            <select class="form-control" name="PaymentType" ng-model="filter.PaymentType">
+                                <option ng-repeat="trialType in paymentTypeChoices" value="{{ trialType[0] }}">
+                                    {{ trialType[1] | translate }}</option>
+                            </select>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="obj in objects">
+                        <td>{{ obj.userDisplayName }}</td>
+                        <td>{{ obj.phoneNumber }}</td>
+                        <td>{{ obj.accessPerimeterName }}</td>
+                        <td>{{ obj.paymentDate | date:'dd-MM-yyyy HH:mm' }}</td>
+                        <td>{{ obj.keyPeriodTill | date:'dd-MM-yyyy HH:mm' }}</td>
+                        <td>{{ obj.amount }}</td>
+                        <td>{{ obj.paymentType }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="text-center">
+            <a ng-click="loadObjects(false)" class="btn default uppercase" ng-hide="isLoadedAll" translate>html.defaults.load_more</a>
+        </div>
+
+    </div>
+</div>

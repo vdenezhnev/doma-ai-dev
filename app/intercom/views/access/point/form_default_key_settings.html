@@ -1,0 +1,136 @@
+
+<h4 translate>html.device.key_usage_settings_form.opened_time_title</h4>
+
+<div class="row mb-15">
+    <div class="col-md-6">
+        <div class="input-group">
+            <span class="input-group-addon" translate>html.defaults.default_title</span>
+            <input class="form-control"
+                   type="number"
+                   validator="positive_number"
+                   ng-model="deviceSettings.keepDoorOpened"
+                   message-id="keepDoorOpenedMessageId">
+        </div>
+        <span id="keepDoorOpenedMessageId"></span>
+    </div>
+    <div class="col-md-3">
+        <div class="input-group">
+            <span class="input-group-addon" translate>html.defaults.from_title</span>
+            <input type="text"
+                   class="form-control"
+                   validator="nil_and_more"
+                   ng-model="getKeyUsage('MinOpenedTime').value"
+                   message-id="MinOpenedTimeMessageId">
+        </div>
+        <span id="MinOpenedTimeMessageId"></span>
+    </div>
+    <div class="col-md-3">
+        <div class="input-group">
+            <span class="input-group-addon" translate>html.defaults.to_title</span>
+            <input type="text"
+                   class="form-control"
+                   validator="positive_number"
+                   ng-model="getKeyUsage('MaxOpenedTime').value"
+                   message-id="MaxOpenedTimeMessageId">
+        </div>
+        <span id="MaxOpenedTimeMessageId"></span>
+    </div>
+</div>
+
+<hr>
+
+<div class="form-group">
+    <label>
+        <input type="checkbox" ng-model="getKeyUsage('AutoOpenEnabled').value" ng-true-value="'True'" ng-false-value="'False'">
+        <h4 translate style="display: inline">html.device.settings_form.autoOpen</h4>
+    </label>
+</div>
+
+<div ng-hide="getKeyUsage('AutoOpenEnabled').value == 'False'" class="ml-15">
+
+    <div class="form-group">
+
+        <h4 translate>html.device.key_usage_settings_form.active_distance_title</h4>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <span class="input-group-addon" translate>html.defaults.default_title</span>
+                    <input class="form-control"
+                           type="number"
+                           ng-model="deviceSettings.onMoving.activeDistance"
+                           validator="positive_number"
+                           message-id="activeDistanceMessageId">
+                </div>
+                <span id="activeDistanceMessageId"></span>
+            </div>
+            <div class="col-md-3">
+                <div class="input-group">
+                    <span class="input-group-addon" translate>html.defaults.from_title</span>
+                    <input type="text"
+                           ng-model="getKeyUsage('MinActiveDistance').value"
+                           validator="nil_and_more" class="form-control"
+                           message-id="MinActiveDistanceMessageId">
+                </div>
+                <span id="MinActiveDistanceMessageId"></span>
+            </div>
+            <div class="col-md-3">
+                <div class="input-group">
+                    <span class="input-group-addon" translate>html.defaults.to_title</span>
+                    <input type="text"
+                           ng-model="getKeyUsage('MaxActiveDistance').value"
+                           validator="positive_number"
+                           class="form-control"
+                           message-id="MaxActiveDistanceMessageId">
+                </div>
+                <span id="MaxActiveDistanceMessageId"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>
+            <input type="checkbox" ng-model="deviceSettings.onMoving.autoOpen" >
+            <span translate>html.device.key_usage_settings_form.auto_open_title_2</span>
+        </label>
+    </div>
+
+    <div class="form-group">
+        <label>
+            <input type="checkbox" ng-model="deviceSettings.onMoving.autoClose"> <span translate>html.device.settings_form.autoClose</span>
+        </label>
+    </div>
+
+    <div class="form-group">
+        <label>
+            <input type="checkbox" ng-model="getKeyUsage('KeepOpenedEnabled').value" ng-true-value="'True'" ng-false-value="'False'">
+            <h4 translate style="display: inline" translate>html.device.key_usage_settings_form.keep_opened_title</h4>
+        </label>
+    </div>
+
+    <div class="form-group" ng-hide="getKeyUsage('KeepOpenedEnabled').value == 'False'" style="margin-left: 15px">
+        <label>
+            <input type="checkbox" ng-model="deviceSettings.onMoving.keepOpenedWhileStayingNear">
+            <span translate>html.device.settings_form.keepOpenedWhileStayingNear</span>
+        </label>
+    </div>
+
+</div>
+
+<hr>
+
+<div class="form-group">
+    <h4 translate>html.device.settings_form.gestures_title</h4>
+
+    <div class="form-group ml-15">
+        <label>
+            <input type="checkbox" ng-model="deviceSettings.gestures.useMethod1"> {{ 'html.device.settings_form.gesture_useMethod1' | translate }}
+        </label>
+    </div>
+
+    <div class="form-group ml-15">
+        <label>
+            <input type="checkbox" ng-model="deviceSettings.gestures.useMethod2"> {{ 'html.device.settings_form.gesture_useMethod2' | translate }}
+        </label>
+    </div>
+</div>

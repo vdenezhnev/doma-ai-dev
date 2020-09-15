@@ -1,0 +1,56 @@
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Пользователи</h1>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <i class="fa fa-bar-chart-o fa-fw"></i> Список пользователей
+    </div>
+    <!-- /.panel-heading -->
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="table-responsive">
+                    <form>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="fa fa-search"></i></div>
+
+                                <input type="text" class="form-control" placeholder="Поиск пользователей" ng-model="q" ng-model-options="{debounce: 1000}">
+
+                            </div>
+                        </div>
+                    </form>
+
+                    <table class="table table-bordered table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th style="width: 1%">#ID</th>
+                                <th>Имя</th>
+                                <th>Email</th>
+                                <th>Телефон</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="client in clients">
+                                <td nowrap><a ui-sref="admin.client.detail({id: client.id})">{{ client.id }}</a></td>
+                                <td>{{ client.displayName }}</td>
+                                <td>{{ client.email }}</td>
+                                <td>{{ client.phoneNumber }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <button ng-click="loadClients(20)" ng-hide="loadedAllClients" class="btn btn-default">Загрузить еще</button>
+                <!-- /.table-responsive -->
+            </div>
+            <!-- /.col-lg-8 (nested) -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.panel-body -->
+</div>

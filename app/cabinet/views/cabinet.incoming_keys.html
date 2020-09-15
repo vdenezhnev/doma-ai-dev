@@ -1,0 +1,31 @@
+
+<div class="content-block">
+    <div class="key-items">
+        <div class="key-item" ng-repeat="key in user.data.sentKeys">
+            <div class="row" ng-if-start="key.owner">
+                <div class="cell period">
+                    c {{ key.period.from | date:'H:mm dd.MM.yyyy' }}<br>
+                    по {{ key.period.till | date:'H:mm dd.MM.yyyy' }}
+                </div>
+            </div>
+            <div class="row" ng-if-end>
+                <div class="cell info">
+                    <p class="title" title="{{ key.title }}">{{ key.title }}</p>
+                    <p class="description">
+                        {{ key.owner.phoneNumber }}<br>
+                        {{ key.owner.description }}
+                    </p>
+                </div>
+            </div>
+
+            <div class="row" ng-if-start="key.recipient">
+                <p class="head">{{ key.recipient.displayName }}</p>
+            </div>
+            <div class="row" ng-if-end>
+                <p class="actions">
+                    <a href="#" ng-click="deleteKey(key)" class="key-delete" translate>html.cabinet.keys.delete_key</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

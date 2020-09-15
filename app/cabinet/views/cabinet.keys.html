@@ -1,0 +1,35 @@
+<div class="content-block">
+
+    <p class="keys-actions-link">
+        <span translate>html.cabinet.keys.lost_phone</span>: <a href="#" ng-click="blockKeys()" id="block-keys" translate>html.cabinet.keys.block_keys</a> |
+        <span translate>html.cabinet.keys.find_phone</span>: <a href="#" ng-click="unblockKeys()" id="unblock-keys" translate>html.cabinet.keys.unblock_keys</a>
+    </p>
+
+    <div cg-busy="loader"></div>
+
+    <p class="response-error" ng-if="response.error">{{ response.error }}</p>
+
+
+    <div class="content-block">
+        <div class="key-items">
+            <div class="key-item" ng-repeat="key in user.data.keys">
+                <div class="row">
+                    <div class="cell period">
+                        c {{ key.period.from | date:'H:mm dd.MM.yyyy' }}<br>
+                        по {{ key.period.till | date:'H:mm dd.MM.yyyy' }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="cell info">
+                        <p class="title" title="{{ key.title }}">{{ key.title }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <p class="cell actions">
+                        <a href="#" ng-click="deleteKey(key)" class="key-delete" translate>html.cabinet.keys.delete_key</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

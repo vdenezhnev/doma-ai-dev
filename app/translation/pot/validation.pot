@@ -1,0 +1,49 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+
+#: app/common/validation-rule.js:38
+msgid "validation.email"
+msgstr ""
+
+#: app/common/validation-rule.js:59
+msgid "validation.max_number"
+msgstr ""
+
+#: app/common/validation-rule.js:56
+msgid "validation.min_number"
+msgstr ""
+
+#: app/common/validation-rule.js:65
+msgid "validation.nil_and_more"
+msgstr ""
+
+#: app/common/validation-rule.js:41
+msgid "validation.number"
+msgstr ""
+
+#: app/common/validation-rule.js:44
+msgid "validation.password"
+msgstr ""
+
+#: app/common/validation-rule.js:47
+msgid "validation.password_match"
+msgstr ""
+
+#: app/common/validation-rule.js:50
+msgid "validation.phone"
+msgstr ""
+
+#: app/common/validation-rule.js:62
+msgid "validation.positive_number"
+msgstr ""
+
+#: app/common/validation-rule.js:35
+msgid "validation.required"
+msgstr ""
+
+#: app/common/validation-rule.js:53
+msgid "validation.username"
+msgstr ""

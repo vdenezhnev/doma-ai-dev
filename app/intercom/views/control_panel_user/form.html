@@ -1,0 +1,23 @@
+
+<div class="form-body">
+    <div class="form-group">
+        <label translate>html.control_panel_user.form.display_name</label>
+
+        <input class="form-control" type="text" name="displayName" ng-model="user.displayName"
+               validator="required">
+    </div>
+
+    <div class="form-group">
+        <label translate>html.control_panel_user.form.password</label>
+        <input class="form-control" type="password" name="value" ng-model="user.password"
+               validator="required" autocomplete="new-password">
+    </div>
+
+    <div class="form-group">
+        <label translate>html.control_panel_user.form.access_point_ids</label>
+        <div ng-if="accessPoints.$resolved">
+            <select multiple="true" multi-select ng-model="user.accessPointIds"
+                    ng-options="device.id as (device.displayName + ' ' + device.description) for device in accessPoints.items"></select>
+        </div>
+    </div>
+</div>

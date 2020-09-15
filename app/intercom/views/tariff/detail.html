@@ -1,0 +1,37 @@
+
+<div ng-if="tariff.id">
+    <h3 class="page-title uppercase" translate>html.tariff.detail_title</h3>
+
+    <div class="mb-15">
+        <a ng-click="rollback()" class="btn default uppercase" ng-if="tariff.appliedRevision > 0" translate>html.tariff.tariff_rollback</a>
+    </div>
+
+    <div ng-show="showApplyMessage" class="note note-info">
+        <h4 class="block" translate>html.tariff.tariff_apply_message</h4>
+        <!--<p class="mb-10"><label><input type="checkbox" ng-model="notifyAbonents"> <span translate>html.tariff.tariff_notified_abonents</span></label></p>-->
+        <a ng-click="save(); showApplyMessage=false;" class="btn default uppercase" translate>html.tariff.tariff_apply_button</a>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <form name="TariffForm">
+                <div class="portlet without-title light bordered">
+
+                    <div class="portlet-body form">
+
+                        <ng-include src="'/app/intercom/views/tariff/form.html'"></ng-include>
+
+                        <div class="form-actions">
+                            <button
+                                type="submit"
+                                class="btn blue"
+                                validation-submit="TariffForm"
+                                ng-click="showApplyMessageCall()"
+                                translate>html.defaults.save_title</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

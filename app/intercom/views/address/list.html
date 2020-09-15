@@ -1,0 +1,31 @@
+
+<h1 class="page-title uppercase" translate>html.address.list_title</h1>
+
+<div class="row">
+    <div class="col-md-12">
+
+        <a ui-sref="admin.address.create" class="btn default uppercase" translate>
+            html.address.add_title</a>
+
+        <div class="table-scrollable" ng-if="addresses.$resolved">
+            <table class="table table-hover table-tr-hover">
+                <thead>
+                    <tr>
+                        <th translate>html.address.name_display</th>
+                    </tr>
+                    <tr class="active">
+                        <td>
+                            <input class="form-control" ng-model="q" placeholder="{{ 'html.defaults.search'|translate }}">
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="address in addresses | filter:q"
+                        ui-sref="admin.address.detail({address: address, id: address.id})">
+                        <td>{{ address.value }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+
+<form name="ActivateAccountForm">
+    <h3 class="form-title font-green" translate>html.auth.activate_account_title</h3>
+
+    <div class="form-group">
+        <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="{{ 'html.auth.password_display'|translate }}" name="password"
+               validator="required,password" ng-model="password">
+    </div>
+    <div class="form-actions">
+        <button type="submit" ng-click="submit()" validation-submit="ActivateAccountForm" class="btn btn-success uppercase" translate>html.auth.activate_account_action</button>
+    </div>
+</form>

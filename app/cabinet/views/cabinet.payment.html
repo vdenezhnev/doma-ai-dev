@@ -1,0 +1,38 @@
+
+<div class="content-block" ng-init="tab.active='history'">
+
+    <div class="wallet-block">
+        <p class="count">{{ user.data.balance.value }}<span translate>html.cabinet.payment.ruble</span></p>
+    </div>
+
+    <div class="wallet-operation">
+        <a href="#" ng-click="tab.active='pay'" ng-class="{'selected': tab.active == 'pay'}" translate>html.cabinet.payment.pay_tab_title</a>
+        <div class="separator"></div>
+        <a href="#" ng-click="tab.active='history'" ng-class="{'selected': tab.active == 'history'}" translate>html.cabinet.payment.history_tab_title</a>
+    </div>
+
+    <div class="payment-table payment-block" id="payment-history" ng-if="tab.active == 'history'">
+        <table>
+            <tr ng-repeat="payment in user.data.payments">
+                <td class="date">{{ payment.completed | date:'dd.MM.yyyy' }}</td>
+                <td class="status">
+                    <!--<span ng-if="payment.type == 'recharge'" translate>html.cabinet.payment.refill</span>
+                    <span ng-if="payment.type == 'keyPayment'" translate>html.cabinet.payment.buying_key</span>-->
+                    <span>{{ payment.description }}</span>
+                </td>
+                <td class="price">{{ payment.amount.value }} <span translate>html.cabinet.payment.ruble</span></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="payment-block" id="payment-payform" ng-if="tab.active == 'pay'">
+        <p class="response-error" ng-if="response.error">{{ response.error }}</p>
+
+        <div cg-busy="loader"></div>
+
+        <form class="lk-info-form payment-form" name="PaymentForm">
+            <input type="text" ng-model="data.amount" validator="required, number, maxvalue=50000" maxvalue-error-message="{{ 'html.cabinet.payment.sum_maxvalue_error_message'|translate }}" placeholder="{{ 'html.cabinet.payment.sum'|translate }}"/>
+            <input type="submit" class="button" value="{{ 'html.cabinet.payment.pay'|translate }}" validation-submit="PaymentForm" ng-click="payment()"/>
+        </form>
+    </div>
+</div>

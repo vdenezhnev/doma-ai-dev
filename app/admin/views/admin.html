@@ -1,0 +1,32 @@
+
+<div id="wrapper">
+
+    <div id="sidebar-wrapper">
+
+        <div class="brand">SmartAirkey</div>
+
+        <div class="user-toolbar">
+            <span><i class="fa fa-user fa-fw"></i> {{ user.data.displayName }}</span>
+            <button type="button" class="btn btn-xs pull-right btn-default" ng-click="logout()"><i class="fa fa-sign-out fa-fw"></i></button>
+        </div>
+
+        <ul class="nav nav-pills nav-stacked">
+            <li>
+                <a ui-sref="admin.client.list" ui-sref-active="active"><i class="fa fa-users fa-fw"></i> Пользователи</a>
+            </li>
+            <li>
+                <a ui-sref="admin.lock.list" ui-sref-active="active"><i class="fa fa-key fa-fw"></i> Замки</a>
+            </li>
+            <li>
+                <a ui-sref="admin.accessPoint.list" ui-sref-active="active"><i class="fa fa-key fa-fw"></i> Точки доступа</a>
+            </li>
+            <li>
+                <a ui-sref="admin.company.list" ui-sref-active="active"><i class="fa fa-archive fa-fw"></i> Компании</a>
+            </li>
+        </ul>
+    </div>
+
+    <div id="page-content-wrapper">
+        <div ui-view></div>
+    </div>
+</div>

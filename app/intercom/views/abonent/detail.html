@@ -1,0 +1,22 @@
+
+<h3 class="page-title uppercase" translate>html.abonent.detail_title</h3>
+
+<div class="mb-15"><a ng-click="delete()" class="btn default uppercase" translate>html.defaults.remove_title</a></div>
+
+<div class="row">
+    <div class="col-md-12">
+        <form name="AbonentForm">
+            <div class="portlet without-title light bordered">
+
+                <div class="portlet-body form">
+
+                    <ng-include src="'/app/intercom/views/abonent/form.html'"></ng-include>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn blue" validation-submit="AbonentForm" ng-click="save()" translate>html.defaults.update_title</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

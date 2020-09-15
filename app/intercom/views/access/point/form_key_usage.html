@@ -1,0 +1,55 @@
+
+<div class="form-group">
+
+    <div class="form-group">
+        <label>
+            <input type="checkbox" ng-model="getKeyUsage('AutoOpenEnabled').value" ng-true-value="'True'" ng-false-value="'False'">
+            <span translate>html.device.key_usage_settings_form.auto_open_title</span>
+        </label>
+    </div>
+
+    <div ng-hide="getKeyUsage('AutoOpenEnabled').value == 'False'">
+        <div class="form-group">
+            <label>
+                <input type="checkbox" ng-model="getKeyUsage('KeepOpenedEnabled').value" ng-true-value="'True'" ng-false-value="'False'">
+                <span translate>html.device.key_usage_settings_form.keep_opened_title</span>
+            </label>
+        </div>
+
+        <div class="form-group">
+            <h4 translate>html.device.key_usage_settings_form.opened_time_title</h4>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <span class="input-group-addon" translate>html.defaults.from_title</span>
+                        <input type="text" class="form-control" ng-model="getKeyUsage('MinOpenedTime').value">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <span class="input-group-addon" translate>html.defaults.to_title</span>
+                        <input type="text" class="form-control" ng-model="getKeyUsage('MaxOpenedTime').value">
+                    </div>
+                </div>
+            </div>
+
+            <h4 translate>html.device.key_usage_settings_form.active_distance_title</h4>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <span class="input-group-addon" translate>html.defaults.from_title</span>
+                        <input type="text" ng-model="getKeyUsage('MinActiveDistance').value" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <span class="input-group-addon" translate>html.defaults.to_title</span>
+                        <input type="text" ng-model="getKeyUsage('MaxActiveDistance').value" class="form-control">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

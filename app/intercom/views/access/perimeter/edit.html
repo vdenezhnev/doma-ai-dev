@@ -1,0 +1,27 @@
+
+<form name="AccessPerimeterForm">
+    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-cogs"></i> {{ title }}
+            </div>
+            <div class="actions util-btn-margin-bottom-5">
+                <a ui-sref="admin.access.add_perimeter({parentPerimeter: perimeter, accessObject: accessObject})" class="btn btn-sm default" translate>
+                    html.access.perimeter.button_add_child_perimeter</a>
+                <a ui-sref="admin.access.add_point({parentPerimeter: perimeter})" class="btn btn-sm default" translate>
+                    html.access.perimeter.button_add_access_point</a>
+                <a ng-click="delete()" class="btn btn-sm red" translate>html.defaults.remove_title</a>
+            </div>
+        </div>
+
+        <div class="portlet-body form">
+
+            <ng-include src="'/app/intercom/views/access/perimeter/form.html'"></ng-include>
+
+            <div class="form-actions">
+                <button type="submit" class="btn blue" validation-submit="AccessPerimeterForm" ng-click="submit()" translate>html.defaults.save_title</button>
+                <button class="btn default" ui-sref="admin.access" translate>html.defaults.cancel_title</button>
+            </div>
+        </div>
+    </div>
+</form>

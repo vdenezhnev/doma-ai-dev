@@ -1,0 +1,19 @@
+
+<h1 class="page-title" translate>html.control_panel_user.new_title</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <form name="Form" autocomplete="off">
+            <div class="portlet without-title light bordered">
+                <div class="portlet-body form">
+
+                    <ng-include src="'/app/intercom/views/control_panel_user/form.html'"></ng-include>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn blue" validation-submit="Form" ng-click="save()" translate>html.defaults.add_title</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

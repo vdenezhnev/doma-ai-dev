@@ -1,0 +1,240 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+
+#: app/site/views/_messages.html:3
+msgid "busy.title"
+msgstr ""
+
+#: app/cabinet/controllers.js:76
+#: app/cabinet/controllers.js:91
+msgid "cabinet.keys.key_delete_confirm"
+msgstr ""
+
+#: app/cabinet/controllers.js:78
+#: app/cabinet/controllers.js:93
+msgid "cabinet.keys.key_deleted"
+msgstr ""
+
+#: app/cabinet/controllers.js:61
+msgid "cabinet.keys.keys_locked"
+msgstr ""
+
+#: app/cabinet/controllers.js:69
+msgid "cabinet.keys.keys_unlocked"
+msgstr ""
+
+#: app/cabinet/controllers.js:47
+msgid "cabinet.profile.password_changed"
+msgstr ""
+
+#: app/cabinet/controllers.js:33
+msgid "cabinet.profile.profile_updated"
+msgstr ""
+
+#: app/site/views/_messages.html:1
+msgid "html.auth.email_confirm_title"
+msgstr ""
+
+#: app/site/views/email_confirmation.html:2
+msgid "html.auth.email_confirmed"
+msgstr ""
+
+#: app/site/views/_messages.html:2
+msgid "html.auth.reset_password_title"
+msgstr ""
+
+#: app/cabinet/views/cabinet.keys.html:4
+msgid "html.cabinet.keys.block_keys"
+msgstr ""
+
+#: app/cabinet/views/cabinet.incoming_keys.html:26
+#: app/cabinet/views/cabinet.keys.html:29
+msgid "html.cabinet.keys.delete_key"
+msgstr ""
+
+#: app/cabinet/views/cabinet.keys.html:5
+msgid "html.cabinet.keys.find_phone"
+msgstr ""
+
+#: app/cabinet/views/cabinet.keys.html:4
+msgid "html.cabinet.keys.lost_phone"
+msgstr ""
+
+#: app/cabinet/views/cabinet.keys.html:5
+msgid "html.cabinet.keys.unblock_keys"
+msgstr ""
+
+#: app/cabinet/views/cabinet.html:7
+msgid "html.cabinet.menu.incoming_keys"
+msgstr ""
+
+#: app/cabinet/views/cabinet.html:6
+msgid "html.cabinet.menu.keys"
+msgstr ""
+
+#: app/cabinet/views/cabinet.html:8
+msgid "html.cabinet.menu.payment"
+msgstr ""
+
+#: app/cabinet/views/cabinet.html:5
+msgid "html.cabinet.menu.profile"
+msgstr ""
+
+#: app/cabinet/views/cabinet.profile.html:17
+#: app/site/views/reset_password.html:14
+msgid "html.cabinet.password_form.change_password"
+msgstr ""
+
+#: app/cabinet/views/cabinet.profile.html:13
+#: app/site/views/reset_password.html:9
+msgid "html.cabinet.password_form.new_password"
+msgstr ""
+
+#: app/cabinet/views/cabinet.profile.html:9
+msgid "html.cabinet.password_form.old_password"
+msgstr ""
+
+#: app/cabinet/views/cabinet.payment.html:11
+msgid "html.cabinet.payment.history_tab_title"
+msgstr ""
+
+#: app/cabinet/views/cabinet.payment.html:35
+msgid "html.cabinet.payment.pay"
+msgstr ""
+
+#: app/cabinet/views/cabinet.payment.html:9
+msgid "html.cabinet.payment.pay_tab_title"
+msgstr ""
+
+#: app/cabinet/views/cabinet.payment.html:23
+#: app/cabinet/views/cabinet.payment.html:5
+msgid "html.cabinet.payment.ruble"
+msgstr ""
+
+#: app/cabinet/views/cabinet.payment.html:34
+msgid "html.cabinet.payment.sum"
+msgstr ""
+
+#: app/cabinet/views/cabinet.payment.html:34
+msgid "html.cabinet.payment.sum_maxvalue_error_message"
+msgstr ""
+
+#: app/cabinet/views/cabinet.profile.html:48
+msgid "html.cabinet.profile_form.chnage_password"
+msgstr ""
+
+#: app/cabinet/views/cabinet.profile.html:42
+msgid "html.cabinet.profile_form.email"
+msgstr ""
+
+#: app/cabinet/views/cabinet.profile.html:30
+msgid "html.cabinet.profile_form.name"
+msgstr ""
+
+#: app/cabinet/views/cabinet.profile.html:46
+msgid "html.cabinet.profile_form.password"
+msgstr ""
+
+#: app/cabinet/views/cabinet.profile.html:36
+msgid "html.cabinet.profile_form.phone"
+msgstr ""
+
+#: app/cabinet/views/cabinet.profile.html:52
+msgid "html.cabinet.profile_form.save"
+msgstr ""
+
+#: app/cabinet/views/cabinet.html:3
+msgid "html.cabinet.title"
+msgstr ""
+
+#: app/site/views/reset_password.html:17
+msgid "html.site.password_reset_success"
+msgstr ""
+
+#: app/site/views/user.toolbar.html:2
+msgid "html.user_toolbar.logout"
+msgstr ""
+
+#: app/site/views/auth.toolbar.html:101
+msgid "site.auth_toolbar.cabinet"
+msgstr ""
+
+#: app/site/views/auth.toolbar.html:20
+msgid "site.auth_toolbar.email"
+msgstr ""
+
+#: app/site/views/auth.toolbar.html:41
+msgid "site.auth_toolbar.enter_sms_code"
+msgstr ""
+
+#: app/site/views/auth.toolbar.html:73
+msgid "site.auth_toolbar.forgot_password"
+msgstr ""
+
+#: app/site/views/auth.toolbar.html:98
+msgid "site.auth_toolbar.hello"
+msgstr ""
+
+#: app/site/views/auth.toolbar.html:65
+msgid "site.auth_toolbar.login"
+msgstr ""
+
+#: app/site/views/auth.toolbar.html:100
+msgid "site.auth_toolbar.logout"
+msgstr ""
+
+#: app/site/views/auth.toolbar.html:10
+msgid "site.auth_toolbar.name"
+msgstr ""
+
+#: app/site/views/auth.toolbar.html:24
+#: app/site/views/auth.toolbar.html:68
+msgid "site.auth_toolbar.password"
+msgstr ""
+
+#: app/site/views/auth.toolbar.html:28
+msgid "site.auth_toolbar.password_repeat"
+msgstr ""
+
+#: app/site/views/auth.toolbar.html:15
+#: app/site/views/auth.toolbar.html:89
+msgid "site.auth_toolbar.phone"
+msgstr ""
+
+#: app/site/views/auth.toolbar.html:51
+#: app/site/views/auth.toolbar.html:72
+msgid "site.auth_toolbar.registration"
+msgstr ""
+
+#: app/site/views/auth.toolbar.html:87
+msgid "site.auth_toolbar.restore_password_success_message"
+msgstr ""
+
+#: app/site/views/auth.toolbar.html:48
+msgid "site.auth_toolbar.sms_code_resend"
+msgstr ""
+
+#: app/site/views/auth.toolbar.html:46
+msgid "site.auth_toolbar.sms_code_resend_title"
+msgstr ""
+
+#: app/site/views/auth.toolbar.html:53
+#: app/site/views/auth.toolbar.html:76
+#: app/site/views/auth.toolbar.html:94
+msgid "site.auth_toolbar.submit_login"
+msgstr ""
+
+#: app/site/views/auth.toolbar.html:92
+msgid "site.auth_toolbar.submit_restore_password"
+msgstr ""
+
+#: app/site/views/auth.toolbar.html:32
+msgid "site.auth_toolbar.terms"
+msgstr ""
+
+#: app/site/views/auth.toolbar.html:36
+msgid "site.auth_toolbar.terms_agree"
+msgstr ""

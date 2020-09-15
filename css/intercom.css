@@ -1,0 +1,116 @@
+
+.validation-invalid {
+    margin: 5px 0 5px 0 !important;
+    color: #e73d4a;
+}
+
+.validation-valid {
+    display: none !important;
+}
+
+.page-sidebar .page-sidebar-menu>li.active-light a {
+    background: #3e4b5c!important;
+}
+
+.page-logo {
+    line-height: 46px;
+    text-align: center;
+    font-size: 16px;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.page-content-white .page-title {
+    margin-top: 0px;
+}
+
+.portlet.box.without-title.green {
+    border-top: 1px solid #32c5d2;
+}
+.portlet.box.without-title.blue {
+    border-top: 1px solid #3598DC;
+}
+
+.mh-400 {
+    min-height: 400px;
+}
+.table-tr-hover tbody td {
+    cursor: pointer;
+}
+table th.filter-date a:hover {
+    text-decoration: none;
+}
+
+#loading-bar-spinner {
+    top: 15px;
+}
+#loading-bar-spinner .spinner-icon {
+    border-top-color: #3598dc;
+    border-left-color: #3598dc;
+}
+#loading-bar .bar {
+    background: #3598dc;
+}
+
+.mb-10 {
+    margin-bottom: 10px!important;
+}
+.mb-15 {
+    margin-bottom: 15px!important;
+}
+.ml-15 {
+    margin-left: 15px;
+}
+
+.page-header.navbar .top-menu .navbar-nav > li.dropdown-lang > .dropdown-menu {
+    width: 80px;
+    min-width: 80px;
+}
+.page-header.navbar .top-menu .navbar-nav > li.dropdown-lang .lang {
+    color: #c6cfda;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 300;
+}
+
+.datetimepicker table tr td span {
+    height: 31px;
+    line-height: 31px;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+.input-date {
+    width: 100px !important;
+    padding: 6px !important;
+}
+.nowrap {
+    white-space: nowrap;
+}
+
+.login .content {
+    width: 450px;
+}
+
+.select2-box {
+    width: 350px;
+}
+.select2-box .ui-select-container {
+    width: 300px;
+    display: inline-block;
+    margin-right: 10px;
+}
+.select2-box .btn-trash {
+    display: inline-block;
+}
+.select2-box .ui-select-toggle {
+    overflow: hidden;
+}
+.select2-box .ui-select-match-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.select2-box .ui-select-bootstrap .ui-select-choices-row>a {
+    white-space: normal;
+}

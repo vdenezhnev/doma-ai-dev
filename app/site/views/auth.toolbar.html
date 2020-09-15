@@ -1,0 +1,103 @@
+
+<form class="popup-form" id="register-form" method="POST" name="RegistrationForm"
+      ng-show="auth_tolabar.form == 'registration' && !user.isAuthenticated()"
+      ng-controller="RegistrationCtrl" autocomplete="off">
+
+    <div cg-busy="loader"></div>
+
+    <p class="response-error" ng-if="response.error">{{ response.error }}</p>
+
+    <input type="text" class="login-input" id="name" placeholder="{{ 'site.auth_toolbar.name'|translate }}" name="displayName"
+           ng-hide="smsSended"
+           ng-model="data.displayName"
+           validator="required, username"/>
+
+    <input type="text" class="login-input" id="phone" placeholder="{{ 'site.auth_toolbar.phone'|translate }}" name="phone"
+            ng-model="data.phoneNumber"
+            validator="required, phone"/>
+
+    <div ng-hide="smsSended">
+        <input type="text" class="login-input" name="email" placeholder="{{ 'site.auth_toolbar.email'|translate }}" name="email"
+                ng-model="data.email"
+                validator="required, email" autocomplete="off"/>
+
+        <input type="password" class="login-input" id="password" placeholder="{{ 'site.auth_toolbar.password'|translate }}" name="password"
+                ng-model="data.password"
+                validator="required, password" autocomplete="off"/>
+
+        <input type="password" class="login-input" placeholder="{{ 'site.auth_toolbar.password_repeat'|translate }}" name="passwordAgain"
+                ng-model="data.passwordAgain"
+                validator="required, password_match" validator-match="data.password"/>
+
+        <a href="/{{ language }}/terms/" class="terms" target="_blank" translate>site.auth_toolbar.terms</a>
+
+        <div class="terms-agree">
+            <input type="checkbox" ng-model="agree" id="terms-agree">
+            <label translate>site.auth_toolbar.terms_agree</label>
+        </div>
+    </div>
+
+    <div class="sms-confirm-block" ng-show="smsSended">
+        <p translate>site.auth_toolbar.enter_sms_code</p>
+
+        <input type="text" class="login-input" name="sms-confirm" id="sms-confirm"
+                ng-model="data.phoneNumberConfirmationCode" />
+
+        <p class="small-text" translate>site.auth_toolbar.sms_code_resend_title</p>
+
+        <input type="button" class="button" ng-click="sendAnotherSms()" value="{{ 'site.auth_toolbar.sms_code_resend'|translate }}" id="send-sms" />
+    </div>
+
+    <input type="submit" ng-disabled="!agree" value="{{ 'site.auth_toolbar.registration'|translate }}" class="button" validation-submit="RegistrationForm" ng-click="process()" />
+
+    <p style="text-align: center"><a href="#" ng-click="auth_tolabar.form = 'login'" translate>site.auth_toolbar.submit_login</a></p>
+
+</form>
+
+<form class="popup-form" id="login-form" name="LoginForm" method="POST"
+      ng-show="auth_tolabar.form == 'login' && !user.isAuthenticated()"
+      ng-controller="LoginCtrl">
+
+    <div cg-busy="loader"></div>
+
+    <p class="response-error" ng-if="response.error">{{ response.error }}</p>
+
+    <input type="text" class="login-input" id="login-phone" placeholder="{{ 'site.auth_toolbar.login'|translate }}"
+            ng-model="data.login" name="login" validator="required"/>
+
+    <input type="password" class="login-input" id="login-password" placeholder="{{ 'site.auth_toolbar.password'|translate }}"
+            ng-model="data.password" name="password" validator="required"/>
+
+    <p class="login-links">
+        <a href="#" ng-click="auth_tolabar.form = 'registration'" class="register-link" translate>site.auth_toolbar.registration</a> |
+        <a href="#" ng-click="auth_tolabar.form = 'restore-password'" class="forgot-link" id="forgot-password" translate>site.auth_toolbar.forgot_password</a>
+    </p>
+
+    <input type="submit" value="{{ 'site.auth_toolbar.submit_login'|translate }}" class="button" validation-submit="LoginForm" ng-click="login()">
+</form>
+
+<form class="popup-form" id="restore-password-form" name="RestorePasswordForm" method="POST"
+      ng-show="auth_tolabar.form == 'restore-password' && !user.isAuthenticated()"
+      ng-controller="RestorePasswordCtrl">
+
+    <div cg-busy="loader"></div>
+
+    <p class="response-error" ng-if="response.error">{{ response.error }}</p>
+
+    <p ng-if="success" translate>site.auth_toolbar.restore_password_success_message</p>
+
+    <input type="text" class="login-input" id="restore-phone" placeholder="{{ 'site.auth_toolbar.phone'|translate }}"
+            ng-model="data.phoneNumber" name="phone" validator="phone"/>
+
+    <input type="submit" value="{{ 'site.auth_toolbar.submit_restore_password'|translate }}" class="button" validation-submit="RestorePasswordForm" ng-click="restore()">
+
+    <p style="text-align: center"><a href="#" ng-click="auth_tolabar.form = 'login'" translate>site.auth_toolbar.submit_login</a></p>
+</form>
+
+<div class="lk-form" ng-show="user.isAuthenticated()">
+    <h2><span translate>site.auth_toolbar.hello</span>, {{ user.data.displayName }}</h2>
+    <p class="login-links">
+        <a href="#" ng-click="logout()" class="register-link" translate>site.auth_toolbar.logout</a> |
+        <a href="/{{ language }}/cabinet/" class="forgot-link" translate>site.auth_toolbar.cabinet</a>
+    </p>
+</div>

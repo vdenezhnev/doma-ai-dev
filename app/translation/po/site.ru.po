@@ -1,0 +1,283 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.6\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: app/site/views/_messages.html:3
+msgid "busy.title"
+msgstr "Идет загрузка..."
+
+#: app/cabinet/controllers.js:76 app/cabinet/controllers.js:91
+msgid "cabinet.keys.key_delete_confirm"
+msgstr "Вы уверены, что хотите удалить данный ключ?"
+
+#: app/cabinet/controllers.js:78 app/cabinet/controllers.js:93
+msgid "cabinet.keys.key_deleted"
+msgstr "Ключ удален"
+
+#: app/cabinet/controllers.js:61
+msgid "cabinet.keys.keys_locked"
+msgstr "Ключи заблокированы"
+
+#: app/cabinet/controllers.js:69
+msgid "cabinet.keys.keys_unlocked"
+msgstr "Ключи разблокированы"
+
+#: app/cabinet/controllers.js:47
+msgid "cabinet.profile.password_changed"
+msgstr "Пароль изменен"
+
+#: app/cabinet/controllers.js:33
+msgid "cabinet.profile.profile_updated"
+msgstr "Данные успешно сохранены"
+
+#: app/site/views/_messages.html:1
+msgid "html.auth.email_confirm_title"
+msgstr "Подтверждение email адреса"
+
+#: app/site/views/email_confirmation.html:2
+msgid "html.auth.email_confirmed"
+msgstr "Ваш email подтвержден"
+
+#: app/site/views/_messages.html:2
+msgid "html.auth.reset_password_title"
+msgstr "Смена пароля"
+
+#: app/cabinet/views/cabinet.keys.html:4
+msgid "html.cabinet.keys.block_keys"
+msgstr "Заблокировать все ключи"
+
+#: app/cabinet/views/cabinet.incoming_keys.html:21
+#: app/cabinet/views/cabinet.keys.html:35
+msgid "html.cabinet.keys.delete_key"
+msgstr "Удалить ключ"
+
+#: app/cabinet/views/cabinet.keys.html:5
+msgid "html.cabinet.keys.find_phone"
+msgstr "Нашел телефон"
+
+#: app/cabinet/views/cabinet.keys.html:4
+msgid "html.cabinet.keys.lost_phone"
+msgstr "Потерял телефон"
+
+#: app/cabinet/views/cabinet.keys.html:5
+msgid "html.cabinet.keys.unblock_keys"
+msgstr "Разблокировать все ключи"
+
+#: app/cabinet/views/cabinet.html:7
+msgid "html.cabinet.menu.incoming_keys"
+msgstr "Отправленные ключи"
+
+#: app/cabinet/views/cabinet.html:6
+msgid "html.cabinet.menu.keys"
+msgstr "Список ключей"
+
+#: app/cabinet/views/cabinet.html:8
+msgid "html.cabinet.menu.payment"
+msgstr "Личный счет"
+
+#: app/cabinet/views/cabinet.html:5
+msgid "html.cabinet.menu.profile"
+msgstr "Личные данные"
+
+#: app/cabinet/views/cabinet.profile.html:17
+#: app/site/views/reset_password.html:13
+msgid "html.cabinet.password_form.change_password"
+msgstr "Изменить пароль"
+
+#: app/cabinet/views/cabinet.profile.html:13
+#: app/site/views/reset_password.html:8
+msgid "html.cabinet.password_form.new_password"
+msgstr "Новый пароль"
+
+#: app/cabinet/views/cabinet.profile.html:9
+msgid "html.cabinet.password_form.old_password"
+msgstr "Старый пароль"
+
+#: app/cabinet/views/cabinet.payment.html:11
+msgid "html.cabinet.payment.history_tab_title"
+msgstr "История операций"
+
+#: app/cabinet/views/cabinet.payment.html:35
+msgid "html.cabinet.payment.pay"
+msgstr "Пополнить"
+
+#: app/cabinet/views/cabinet.payment.html:9
+msgid "html.cabinet.payment.pay_tab_title"
+msgstr "Пополнить счет"
+
+#: app/cabinet/views/cabinet.payment.html:23
+#: app/cabinet/views/cabinet.payment.html:5
+msgid "html.cabinet.payment.ruble"
+msgstr "рублей"
+
+#: app/cabinet/views/cabinet.payment.html:34
+msgid "html.cabinet.payment.sum"
+msgstr "Сумма"
+
+#: app/cabinet/views/cabinet.payment.html:34
+msgid "html.cabinet.payment.sum_maxvalue_error_message"
+msgstr "Сумма должна быть не больше 50000 р."
+
+#: app/cabinet/views/cabinet.profile.html:48
+msgid "html.cabinet.profile_form.chnage_password"
+msgstr "Изменить пароль"
+
+#: app/cabinet/views/cabinet.profile.html:42
+msgid "html.cabinet.profile_form.email"
+msgstr "E-mail"
+
+#: app/cabinet/views/cabinet.profile.html:30
+msgid "html.cabinet.profile_form.name"
+msgstr "Имя"
+
+#: app/cabinet/views/cabinet.profile.html:46
+msgid "html.cabinet.profile_form.password"
+msgstr "Пароль"
+
+#: app/cabinet/views/cabinet.profile.html:36
+msgid "html.cabinet.profile_form.phone"
+msgstr "Телефон"
+
+#: app/cabinet/views/cabinet.profile.html:52
+msgid "html.cabinet.profile_form.save"
+msgstr "Сохранить"
+
+#: app/cabinet/views/cabinet.html:3
+msgid "html.cabinet.title"
+msgstr "Мой личный кабинет"
+
+#: app/site/views/reset_password.html:16
+msgid "html.site.password_reset_success"
+msgstr "Ваш пароль успешно изменен"
+
+#: app/site/views/user.toolbar.html:2
+msgid "html.user_toolbar.logout"
+msgstr "Выход"
+
+#: app/site/views/auth.toolbar.html:98
+msgid "site.auth_toolbar.cabinet"
+msgstr "Личный кабинет"
+
+#: app/site/views/auth.toolbar.html:18
+msgid "site.auth_toolbar.email"
+msgstr "Email"
+
+#: app/site/views/auth.toolbar.html:38
+msgid "site.auth_toolbar.enter_sms_code"
+msgstr "Введите код, полученный в sms"
+
+#: app/site/views/auth.toolbar.html:70
+msgid "site.auth_toolbar.forgot_password"
+msgstr "Забыли пароль?"
+
+#: app/site/views/auth.toolbar.html:95
+msgid "site.auth_toolbar.hello"
+msgstr "Здравствуйте"
+
+#: app/site/views/auth.toolbar.html:62
+msgid "site.auth_toolbar.login"
+msgstr "Логин"
+
+#: app/site/views/auth.toolbar.html:97
+msgid "site.auth_toolbar.logout"
+msgstr "Выход"
+
+#: app/site/views/auth.toolbar.html:10
+msgid "site.auth_toolbar.name"
+msgstr "Имя"
+
+#: app/site/views/auth.toolbar.html:22 app/site/views/auth.toolbar.html:65
+msgid "site.auth_toolbar.password"
+msgstr "Пароль"
+
+#: app/site/views/auth.toolbar.html:26
+msgid "site.auth_toolbar.password_repeat"
+msgstr "Повторите пароль"
+
+#: app/site/views/auth.toolbar.html:14 app/site/views/auth.toolbar.html:86
+msgid "site.auth_toolbar.phone"
+msgstr "Телефон"
+
+#: app/site/views/auth.toolbar.html:48 app/site/views/auth.toolbar.html:69
+msgid "site.auth_toolbar.registration"
+msgstr "Регистрация"
+
+#: app/site/views/auth.toolbar.html:84
+msgid "site.auth_toolbar.restore_password_success_message"
+msgstr "Указания по смене пароля отправлены вам на почту"
+
+#: app/site/views/auth.toolbar.html:45
+msgid "site.auth_toolbar.sms_code_resend"
+msgstr "Отправить SMS еще раз"
+
+#: app/site/views/auth.toolbar.html:43
+msgid "site.auth_toolbar.sms_code_resend_title"
+msgstr ""
+"Если SMS не пришло в течении 3 минут, вы можете отправить повторное sms с "
+"кодом"
+
+#: app/site/views/auth.toolbar.html:50 app/site/views/auth.toolbar.html:73
+#: app/site/views/auth.toolbar.html:91
+msgid "site.auth_toolbar.submit_login"
+msgstr "Вход"
+
+#: app/site/views/auth.toolbar.html:89
+msgid "site.auth_toolbar.submit_restore_password"
+msgstr "Изменить пароль"
+
+#: app/site/views/auth.toolbar.html:30
+msgid "site.auth_toolbar.terms"
+msgstr "Условия использования"
+
+#: app/site/views/auth.toolbar.html:34
+msgid "site.auth_toolbar.terms_agree"
+msgstr "С условиями согласен"
+
+#~ msgid "html.cabinet.payment.buying_key"
+#~ msgstr "Покупка ключа"
+
+#~ msgid "html.cabinet.payment.refill"
+#~ msgstr "Пополнение счета"
+
+#~ msgid "validation.email"
+#~ msgstr "Введите правильно свой email"
+
+#~ msgid "validation.max_number"
+#~ msgstr "Значение должно быть меньше"
+
+#~ msgid "validation.min_number"
+#~ msgstr "Значение должно быть больше"
+
+#~ msgid "validation.number"
+#~ msgstr "Значение должно быть числом"
+
+#~ msgid "validation.password"
+#~ msgstr ""
+#~ "Пароль должен иметь как минимум одну заглавную букву и быть не короче 6 "
+#~ "символов"
+
+#~ msgid "validation.password_match"
+#~ msgstr "Пароли должны совпадать"
+
+#~ msgid "validation.phone"
+#~ msgstr "Введите правильно номер телефона"
+
+#~ msgid "validation.required"
+#~ msgstr "Это поле обязательно для заполнения"
+
+#~ msgid "validation.username"
+#~ msgstr "Имя должно быть минимум 3 символа"
+
+#~ msgid "html.cabinet.profile_form.label"
+#~ msgstr "Сохранить"

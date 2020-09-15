@@ -1,0 +1,55 @@
+
+<script type="text/ng-template" id="passwordChangeDialog">
+    <div class="change-pass-form">
+        <div cg-busy="loader"></div>
+        <form id="changePassword" name="ChangePasswordForm">
+            <p class="response-error" ng-if="response.error">{{ response.error }}</p>
+
+            <div class="row">
+                <label translate>html.cabinet.password_form.old_password</label>
+                <input type="password" name="oldPassword" validator="required" ng-model="oldPassword" />
+            </div>
+            <div class="row">
+                <label translate>html.cabinet.password_form.new_password</label>
+                <input type="password" name="newPassword" validator="required, password" ng-model="newPassword" />
+            </div>
+
+            <input type="submit" value="{{ 'html.cabinet.password_form.change_password'|translate }}" class="button" validation-submit="ChangePasswordForm" ng-click="changePassword()" />
+        </form>
+    </div>
+</script>
+
+<div class="content-block">
+    <div cg-busy="loader"></div>
+    <form class="lk-info-form" name="ProfileForm">
+
+        <p class="response-error" ng-if="response.error">{{ response.error }}</p>
+
+        <div class="row">
+            <div class="half-row">
+                <label translate>html.cabinet.profile_form.name</label>
+                <input type="text" name="name" id="name" ng-model="displayName"
+                       validator="required, username"
+                       ng-init="displayName=user.data.displayName" />
+            </div>
+            <div class="half-row">
+                <label translate>html.cabinet.profile_form.phone</label>
+                <input type="text" id="phone" disabled="true" ng-value="user.data.phoneNumber" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="half-row">
+                <label translate>html.cabinet.profile_form.email</label>
+                <input type="text" id="email" disabled="true" ng-value="user.data.email" />
+            </div>
+            <div class="half-row">
+                <label translate>html.cabinet.profile_form.password</label>
+                <input type="password" id="password" disabled="true" value="123456" />
+                <a href="#" ng-dialog="passwordChangeDialog" ng-dialog-controller="ChangePasswordCtrl" class="change-password" translate>html.cabinet.profile_form.chnage_password</a>
+            </div>
+        </div>
+
+        <input type="submit" class="button" value="{{ 'html.cabinet.profile_form.save'|translate }}" validation-submit="ProfileForm" ng-click="updateProfile()">
+    </form>
+
+</div>

@@ -1,0 +1,56 @@
+
+<h1 class="page-title uppercase" translate>html.payment.list_title</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form name="ReportForm">
+            <div class="form-group">
+                <label translate>html.payment.label_access_object</label>
+                <select-access-object name="AccessObjectId" ng-select-model="filter.AccessObjectId" validator="required"></select-access-object>
+            </div>
+
+            <div class="form-group">
+                <label translate>html.payment.label_period</label>
+                <div class="form-inline">
+                    <span class="dropdown">
+                        <a class="dropdown-toggle" id="from-date" role="button" data-toggle="dropdown" data-target="#" href="#">
+                            <input class="form-control input-small text-center" readonly
+                                   placeholder="{{ 'html.journal.date_from_display' | translate }}"
+                                   value="{{ filter.From | date:'dd-MM-yyyy' }}">
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <datetimepicker ng-model="filter.From"
+                                            validator="required"
+                                            message-id="till-message"
+                                            name="From"
+                                            datetimepicker-config="{dropdownSelector: '#from-date', startView:'day', minView:'day' }" />
+                        </ul>
+                    </span>
+
+                    <span> &mdash; </span>
+
+                    <span class="dropdown">
+                        <a  class="dropdown-toggle" id="to-date" role="button" data-toggle="dropdown" data-target="#" href="#">
+                            <input class="form-control input-small text-center" readonly
+                                   placeholder="{{ 'html.journal.date_to_display' | translate }}"
+                                   value="{{ filter.Till | date:'dd-MM-yyyy' }}">
+                        </a>
+
+                        <ul class="dropdown-menu" role="menu">
+                            <datetimepicker data-ng-model="filter.Till"
+                                            validator="required"
+                                            name="Till"
+                                            message-id="till-message"
+                                            data-datetimepicker-config="{dropdownSelector: '#to-date', startView:'day', minView:'day' }"/>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+
+            <div id="till-message"></div>
+
+            <button type="submit" validation-submit="ReportForm" ng-click="downloadReport()" class="btn blue" translate>
+                html.payment.submit_title</button>
+        </form>
+    </div>
+</div>

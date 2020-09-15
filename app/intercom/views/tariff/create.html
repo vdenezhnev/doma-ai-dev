@@ -1,0 +1,19 @@
+
+<h1 class="page-title" translate>html.tariff.new_title</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <form name="TariffForm">
+            <div class="portlet without-title light bordered">
+                <div class="portlet-body form">
+
+                    <ng-include src="'/app/intercom/views/tariff/form.html'"></ng-include>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn blue" validation-submit="TariffForm" ng-click="save()" translate>html.defaults.add_title</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

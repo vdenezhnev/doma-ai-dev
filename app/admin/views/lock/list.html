@@ -1,0 +1,63 @@
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Замки</h1>
+    </div>
+
+    <div class="col-lg-12 mb15">
+        <a ui-sref="admin.lock.create" class="btn btn-success"><i class="fa fa-plus"></i> Добавить замок</a>
+    </div>
+</div>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <i class="fa fa-bar-chart-o fa-fw"></i> Список замков
+    </div>
+    <!-- /.panel-heading -->
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="table-responsive">
+                    <form>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="fa fa-search"></i></div>
+
+                                <input type="text" class="form-control" placeholder="Поиск замков" ng-model="q" ng-model-options="{debounce: 1000}">
+
+                            </div>
+                        </div>
+                    </form>
+
+                    <table class="table table-bordered table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th style="width: 1%">#ID</th>
+                                <th>Тип</th>
+                                <th>Номер телефона контроллера</th>
+                                <th>Версия</th>
+                                <th>Статус</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="lock in locks">
+                                <td nowrap><a ui-sref="admin.lock.detail({id: lock.id})">{{ lock.id }}</a></td>
+                                <td>{{ lock.metadata.type }}</td>
+                                <td>{{ getTransport(lock.connectivity.transports, 'gsm').phoneNumber }}</td>
+                                <td>{{ lock.metadata.version }}</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <button ng-click="loadLocks(20)" ng-hide="loadedAllLocks" class="btn btn-default">Загрузить еще</button>
+                <!-- /.table-responsive -->
+            </div>
+            <!-- /.col-lg-8 (nested) -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.panel-body -->
+</div>

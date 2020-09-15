@@ -1,0 +1,21 @@
+
+<form name="AccessPerimeterForm">
+    <div class="portlet without-title light bordered">
+
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-cogs"></i>
+                <span translate>html.access.perimeter.add_title</span>
+            </div>
+        </div>
+
+        <div class="portlet-body form">
+            <ng-include src="'/app/intercom/views/access/perimeter/form.html'"></ng-include>
+
+            <div class="form-actions">
+                <button type="submit" class="btn blue" validation-submit="AccessPerimeterForm" ng-click="submit()" translate>html.defaults.add_title</button>
+                <a ui-sref="admin.access" class="btn default" translate>html.defaults.cancel_title</a>
+            </div>
+        </div>
+    </div>
+</form>

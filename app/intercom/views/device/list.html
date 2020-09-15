@@ -1,0 +1,34 @@
+
+<h1 class="page-title uppercase" translate>html.menu.devices</h1>
+
+<div class="row">
+    <div class="col-md-12">
+
+        <a ui-sref="admin.device.create" class="btn default uppercase" translate>html.device.add_title</a>
+
+        <div class="table-scrollable" ng-show="devices.length > 0">
+            <table class="table table-hover table-tr-hover">
+                <thead>
+                    <tr>
+                        <th translate>html.device.lockId</th>
+                        <th translate>html.device.installingPlace</th>
+                        <th translate>html.device.lockPhoneNumber</th>
+                        <th translate>html.device.installingDate</th>
+                        <th translate>html.device.comment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="device in devices track by $index" ui-sref="admin.device.detail({id: device.id, device: device})">
+                        <td>{{ device.lockId }}</td>
+                        <td>{{ device.installingPlace }}</td>
+                        <td>{{ device.lockPhoneNumber }}</td>
+                        <td>
+                            <span ng-hide="device.installingPlace == ''">{{ device.installingDate | amDateFormat:'MM.DD.YYYY HH:mm' }}</span>
+                        </td>
+                        <td>{{ device.comment }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

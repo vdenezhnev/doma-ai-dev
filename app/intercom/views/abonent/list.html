@@ -1,0 +1,45 @@
+
+<h1 class="page-title uppercase" translate>html.abonent.list_title</h1>
+
+<div class="row">
+    <div class="col-md-12">
+
+        <a ui-sref="admin.abonent.create" class="btn default uppercase" translate>html.abonent.add_title</a>
+
+        <div class="table-scrollable">
+            <table class="table table-hover table-bordered table-tr-hover">
+                <thead>
+                    <tr>
+                        <th translate>html.abonent.name_display</th>
+                        <th width="200px" translate>html.abonent.phone_display</th>
+                        <th width="300px" translate>html.abonent.building_display</th>
+                        <th width="50px" translate>html.abonent.flat_display</th>
+                    </tr>
+                    <tr class="active">
+                        <th><input ng-model="filter.DisplayName" type="text"
+                                   ng-model-options="{debounce: 500}" class="form-control"></th>
+                        <th><input ng-model="filter.phoneNumber" type="text"
+                                   ng-model-options="{debounce: 500}" class="form-control"></th>
+                        <th><select-address ng-select-model="filter.AddressId"></select-address></th>
+                        <th><input ng-model="filter.Room" type="text"
+                                   ng-model-options="{debounce: 500}" class="form-control"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="abonent in objects | orderBy:'-modified'"
+                        ui-sref="admin.abonent.detail({id: abonent.id, abonent: abonent})">
+                        <td>{{ abonent.displayName }}</td>
+                        <td>{{ abonent.phoneNumber }}</td>
+                        <td>{{ dataService.addresses[abonent.addressId].value }}</td>
+                        <td>{{ abonent.room }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="text-center">
+            <a ng-click="loadObjects(false)" class="btn default uppercase" ng-hide="isLoadedAll" translate>html.defaults.load_more</a>
+        </div>
+
+    </div>
+</div>

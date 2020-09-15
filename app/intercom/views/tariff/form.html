@@ -1,0 +1,63 @@
+
+<div class="form-body">
+    <div class="form-group">
+        <label translate>html.tariff.name_display</label>
+        <input class="form-control" type="text" name="displayName" ng-model="tariff.displayName" validator="required">
+    </div>
+
+    <div class="form-group">
+        <label translate>html.tariff.keys_display</label>
+        <input class="form-control" name="includedKeys" type="number" ng-model="tariff.tariffPacket.includedKeys" validator="required">
+    </div>
+
+    <div class="form-group">
+        <label translate>html.tariff.trial_period_display</label>
+        <select class="form-control" name="trialType" ng-model="tariff.tariffPacket.trialType" validator="required">
+            <option ng-repeat="trialType in tariff.getTrialPeriodTypes()" value="{{ trialType }}">
+                {{ 'html.tariff.trial_type_' + trialType | translate }}</option>
+        </select>
+    </div>
+
+    <div class="form-group" ng-if="!tariff.id">
+        <label translate>html.tariff.keys_type</label>
+        <select class="form-control" name="type" ng-model="tariff.tariffPacket.type" validator="required">
+            <option ng-repeat="trialType in tariffTypes" value="{{ trialType }}">
+                {{ 'html.tariff.tariff_type_' + trialType | translate }}</option>
+        </select>
+    </div>
+
+    <div class="form-group" ng-if="tariff.id">
+        <label translate>html.tariff.keys_type</label>
+        <input class="form-control" value="{{ 'html.tariff.tariff_type_' + tariff.tariffPacket.type | translate }}" disabled="disabled">
+    </div>
+
+    <hr>
+
+    <h3 translate>html.tariff.tariffs_display</h3>
+
+    <div ng-repeat="tariff_period in tariff.tariffPacket.subscriptions track by $index">
+        <h4 class="block" translate>{{ 'html.tariff.period_' + tariff_period.type | translate }}</h4>
+
+        <div class="form-group">
+            <label translate>html.tariff.packet_price</label>
+            <div class="input-group">
+                <input class="form-control" name="tariffPeriodPriceValue_{{ $index }}"
+                       message-id="tariffPeriodPriceValue_{{ $index }}" type="number"
+                       ng-model="tariff_period.price.value" validator="nil_and_more">
+                <span class="input-group-addon">{{ currency }}</span>
+            </div>
+            <span id="tariffPeriodPriceValue_{{ $index }}"></span>
+        </div>
+
+        <div class="form-group">
+            <label translate>html.tariff.extra_key_price</label>
+            <div class="input-group">
+                <input class="form-control" name="tariffPeriodAdditionalPriceValue_{{ $index }}"
+                       message-id="tariffPeriodAdditionalPriceValue_{{ $index }}" type="number"
+                       ng-model="tariff_period.additionalKeyPrice.value" validator="nil_and_more">
+                <span class="input-group-addon">{{ currency }}</span>
+            </div>
+            <span id="tariffPeriodAdditionalPriceValue_{{ $index }}"></span>
+        </div>
+    </div>
+</div>

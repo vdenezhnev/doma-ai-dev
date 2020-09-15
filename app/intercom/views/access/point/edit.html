@@ -1,0 +1,59 @@
+
+<div class="portlet light bordered">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-cogs"></i> {{ title }}
+        </div>
+        <div class="actions">
+            <a ng-click="delete()" class="btn default red" translate>html.defaults.remove_title</a>
+        </div>
+    </div>
+
+    <div class="portlet-body form">
+
+        <div ng-init="showForm='base'">
+            <a ng-click="showForm='base'" ng-class="{'active': showForm == 'base'}"
+               class="btn default" translate>html.access.point.form.base_title</a>
+            <a ng-click="showForm='settings'" ng-class="{'active': showForm == 'settings'}"
+               class="btn default" translate>html.access.point.form.settings_title</a>
+            <a ng-click="showForm='replace'" ng-class="{'active': showForm == 'replace'}"
+               class="btn default" translate>html.access.point.form.replace_title</a>
+        </div>
+
+        <form name="DeviceReplaceForm" ng-show="showForm == 'replace'">
+            <div class="form-body">
+                <div class="form-group">
+                    <label translate>html.access.point.form.new_lock_id_display</label>
+                    <input class="form-control" type="text" name="newLockId" ng-model="newLockId" validator="required">
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn blue" validation-submit="DeviceReplaceForm" ng-click="replace(newLockId)"
+                        translate>html.defaults.save_title</button>
+            </div>
+        </form>
+
+        <form name="AccessObjectForm" ng-show="showForm == 'base'">
+            <ng-include src="'/app/intercom/views/access/point/form.html'"></ng-include>
+
+            <div class="form-actions">
+                <button type="submit" class="btn blue" validation-submit="AccessObjectForm" ng-click="submit()" translate>html.defaults.save_title</button>
+                <button class="btn default" ui-sref="admin.access" translate>html.defaults.cancel_title</button>
+            </div>
+        </form>
+
+        <form name="DeviceDefaultKeySettings" ng-show="showForm == 'settings'" style="margin-top: 20px;">
+            <div class="portlet-body form">
+
+                <ng-include src="'/app/intercom/views/access/point/form_default_key_settings.html'"></ng-include>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn blue" validation-submit="DeviceDefaultKeySettings"
+                            ng-click="updateSettings()" translate>html.defaults.save_title</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>

@@ -1,0 +1,54 @@
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Точки доступа</h1>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-lg-12">
+                <form>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="fa fa-search"></i></div>
+
+                            <input type="text" class="form-control" placeholder="Поиск" ng-model="q" ng-model-options="{debounce: 1000}">
+
+                        </div>
+                    </div>
+                </form>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th style="width: 1%">Компания</th>
+                                <th>ID</th>
+                                <th>Место установки</th>
+                                <th>Дата установки</th>
+                                <th>Комментарий</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="obj in objects">
+                                <td>{{ obj.serviceCompany }}</td>
+                                <td>{{ obj.lockId }}</td>
+                                <td>{{ obj.installingPlace }}</td>
+                                <td>{{ obj.installingDate }}</td>
+                                <td>{{ obj.description }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <button ng-click="loadCompanies(20)" ng-hide="loadedAll" class="btn btn-default">Загрузить еще</button>
+                <!-- /.table-responsive -->
+            </div>
+            <!-- /.col-lg-8 (nested) -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.panel-body -->
+</div>

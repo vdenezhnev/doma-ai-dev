@@ -1,0 +1,58 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.6\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: app/common/validation-rule.js:38
+msgid "validation.email"
+msgstr "Введите правильно свой email"
+
+#: app/common/validation-rule.js:59
+msgid "validation.max_number"
+msgstr "Значение должно быть меньше"
+
+#: app/common/validation-rule.js:56
+msgid "validation.min_number"
+msgstr "Значение должно быть больше"
+
+#: app/common/validation-rule.js:65
+msgid "validation.nil_and_more"
+msgstr "0 или больше"
+
+#: app/common/validation-rule.js:41
+msgid "validation.number"
+msgstr "Значение должно быть числом"
+
+#: app/common/validation-rule.js:44
+msgid "validation.password"
+msgstr "Пароль должен быть не короче 6 символов"
+
+#: app/common/validation-rule.js:47
+msgid "validation.password_match"
+msgstr "Пароли должны совпадать"
+
+#: app/common/validation-rule.js:50
+msgid "validation.phone"
+msgstr "Введите правильно номер телефона"
+
+#: app/common/validation-rule.js:62
+msgid "validation.positive_number"
+msgstr "Введите положительное число"
+
+#: app/common/validation-rule.js:35
+msgid "validation.required"
+msgstr "Это поле обязательно для заполнения"
+
+#: app/common/validation-rule.js:53
+msgid "validation.username"
+msgstr "Имя должно быть минимум 3 символа"

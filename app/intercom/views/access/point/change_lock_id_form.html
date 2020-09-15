@@ -1,0 +1,23 @@
+
+<div class="portlet box green">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-gift"></i>
+            <span translate>html.access.point.change_lock_title</span>
+        </div>
+    </div>
+    <div class="portlet-body">
+        <form name="DeviceReplaceForm">
+            <div class="form-body">
+                <div class="form-group">
+                    <label translate>html.access.point.new_lock_id_display</label>
+                    <input class="form-control" type="text" name="newLockId" ng-model="newLockId" validator="required">
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn blue" validation-submit="DeviceReplaceForm" ng-click="replace(newLockId)" translate>html.defaults.save_title</button>
+            </div>
+        </form>
+    </div>
+</div>

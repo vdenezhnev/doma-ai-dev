@@ -1,0 +1,22 @@
+
+<h3 class="page-title uppercase">{{ title }}</h3>
+
+<div class="mb-15"><a ng-click="delete()" class="btn default uppercase" translate>html.defaults.remove_title</a></div>
+
+<div class="row">
+    <div class="col-md-6">
+        <form name="Form">
+            <div class="portlet without-title light bordered">
+
+                <div class="portlet-body form">
+
+                    <ng-include src="'/app/intercom/views/control_panel_user/form.html'"></ng-include>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn blue" validation-submit="Form" ng-click="save()" translate>html.defaults.save_title</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

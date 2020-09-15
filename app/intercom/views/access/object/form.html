@@ -1,0 +1,56 @@
+
+<div class="form-body">
+    <div class="form-group">
+        <label translate>html.access.object.form.display_name</label>
+        <input class="form-control" type="text" name="displayName" ng-model="accessObject.displayName" validator="required">
+    </div>
+
+    <div class="form-group">
+        <label translate>html.access.object.form.description</label>
+        <input class="form-control" name="includedKeys" ng-model="accessObject.description">
+    </div>
+
+    <span ng-if="accessObject.id">
+        <div class="form-group">
+            <label translate>html.access.object.form.image</label>
+            <div>
+                <a class="btn default" ngf-select="upload($file)" translate>html.access.object.form.upload_title</a>
+                <a class="btn default" ng-click="accessObject.pictureId=undefined" ng-show="accessObject.pictureId" translate>
+                    html.defaults.remove_title</a>
+            </div>
+
+            <div ng-if="accessObject.pictureId" class="portlet solid grey-cararra text-center">
+                <img src="{{ settings.API_HOST }}/api/file/images/binary/{{ accessObject.pictureId }}" style="width: 50%">
+            </div>
+        </div>
+
+        <h3 translate>html.access.object.user_title</h3>
+
+        <div class="form-group">
+            <label translate>html.access.object.form.user_display_name</label>
+            <input class="form-control" name="userDispalyName" ng-model="accessObject.userDispalyName">
+        </div>
+
+        <h4 translate>html.access.object.extra_title</h4>
+        <div class="portlet solid grey-cararra" ng-repeat="description in accessObject.categories track by $index">
+
+            <div class="portlet-body">
+                <div class="form-group">
+                    <label translate>html.access.object.form.heading</label>
+                    <input class="form-control"  ng-model="description.heading">
+                </div>
+
+                <div class="form-group">
+                    <label translate>html.access.object.form.text</label>
+                    <textarea class="form-control" ng-model="description.text"></textarea>
+                </div>
+
+                <a ng-click="accessObject.categories.splice($index, 1)" class="btn btn-sm default" translate>html.defaults.remove_title</a>
+            </div>
+        </div>
+
+        <a ng-click="accessObject.categories.push({})" class="btn btn-sm default" translate>html.defaults.add_title</a>
+
+    </span>
+
+</div>

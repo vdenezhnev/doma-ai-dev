@@ -1,0 +1,37 @@
+{
+  "name": "SmartAirkey",
+  "dependencies": {
+    "angular": "~1.4.8",
+    "angular-resource": "~1.4.7",
+    "angular-sanitize": "~1.4.7",
+    "angular-off-click": "~0.0.9",
+    "urijs": "~1.17.0",
+    "bootstrap": "~3.3.6",
+    "angular-ui-router": "~0.2.15",
+    "angular-permission": "~1.1.1",
+    "angular-cookies": "~1.4.8",
+    "angular-storage": "~0.5.0",
+    "ngstorage": "~0.3.10",
+    "js-base64": "~2.1.9",
+    "angular-notify": "~2.5.0",
+    "ng-dialog": "~0.5.6",
+    "angular-validation": "~1.3.4",
+    "string-format": "~1.0.2",
+    "angular-busy": "~4.1.3",
+    "angular-gettext": "~2.2.0",
+    "angular-loading-bar": "~0.8.0",
+    "angular-animate": "~1.4.8",
+    "angular-cache": "~4.5.0",
+    "lodash": "^4.17.5",
+    "select2": "~4.0.1",
+    "ui-select": "git://github.com/angular-ui/ui-select.git#~0.14.9",
+    "multiselect": "~0.9.12",
+    "moment": "momentjs#^2.15.1",
+    "list-to-tree": "^0.0.6",
+    "ng-file-upload": "^12.2.13",
+    "angular-moment": "^1.0.1"
+  },
+  "resolutions": {
+    "lodash": "^4.17.5"
+  }
+}

@@ -1,0 +1,89 @@
+
+<script type="text/ng-template" id="accessTreeTemplate">
+
+    <i class="jstree-icon jstree-ocl"
+       ng-click="navigate[accessPerimeter.id] = !navigate[accessPerimeter.id]"></i>
+
+    <a class="jstree-anchor" ui-sref="admin.access.edit_perimeter({object: accessPerimeter, accessObject: accessObject})">
+        <i class="jstree-icon jstree-themeicon fa fa-folder icon-state-warning icon-lg jstree-themeicon-custom"></i>
+        {{ accessPerimeter.displayName }}
+    </a>
+
+    <ul class="jstree-children">
+
+        <li ng-repeat="accessPoint in accessPoints[accessPerimeter.id]" class="jstree-node jstree-leaf"
+            ng-class="{
+                'jstree-last': $last && !accessPerimeter.child.length
+            }">
+            <i class="jstree-icon jstree-ocl"></i>
+            <a class="jstree-anchor" ui-sref="admin.access.edit_point({id: accessPoint.id})">
+                <i class="jstree-icon jstree-themeicon fa fa-file icon-state-info jstree-themeicon-custom"></i>
+                {{ accessPoint.displayName }}
+            </a>
+        </li>
+
+        <li ng-repeat="accessPerimeter in accessPerimeter.child | orderBy:'displayName'"
+            ng-include="'accessTreeTemplate'"
+            ng-init="navigate[accessPerimeter.id] = navigate[accessPerimeter.id] == undefined ? false : navigate[accessPerimeter.id]"
+            class="jstree-node"
+            ng-class="{
+                'jstree-last': $last,
+                'jstree-open': navigate[accessPerimeter.id] == true,
+                'jstree-closed': navigate[accessPerimeter.id] == false,
+                'jstree-leaf': !accessPerimeter.child.length && !accessPoints[accessPerimeter.id]
+            }"></li>
+    </ul>
+</script>
+
+<h1 class="page-title uppercase" translate>html.access.title</h1>
+
+<div class="row mb-15">
+    <div class="col-md-12">
+        <a ui-sref="admin.access.add_object" class="btn default uppercase" translate>html.access.object.button_add_title</a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-5">
+        <div class="portlet without-title light bordered">
+            <div class="tree-demo jstree jstree-1 jstree-default">
+                <ul class="jstree-container-ul jstree-children">
+                    <li ng-repeat="accessObject in accessObjects.items | orderBy:'displayName'"
+                        class="jstree-node"
+                        ng-class="{
+                            'jstree-last': $last,
+                            'jstree-open': navigate[accessObject.id] == true,
+                            'jstree-closed': navigate[accessObject.id] == false,
+                            'jstree-leaf': accessObject.getAccessPerimeters().length == 0
+                        }"
+                        ng-init="navigate[accessObject.id] = navigate[accessObject.id] == undefined ? false : navigate[accessObject.id]">
+                        <i class="jstree-icon jstree-ocl" ng-click="navigate[accessObject.id] = !navigate[accessObject.id]"></i>
+
+                        <a class="jstree-anchor" ui-sref="admin.access.edit_object({object: accessObject})"
+                            ng-class="{'jstree-clicked': accessObject.id == selectedId}">
+                            <i class="jstree-icon jstree-themeicon fa fa-folder icon-state-success jstree-themeicon-custom"></i>
+                            {{ accessObject.displayName }}
+                        </a>
+
+                        <ul class="jstree-children" ng-show="navigate[accessObject.id]">
+                            <li ng-repeat="accessPerimeter in accessObject.getAccessPerimeters() | orderBy:'displayName'"
+                                ng-include="'accessTreeTemplate'"
+                                ng-init="navigate[accessPerimeter.id] = navigate[accessPerimeter.id] == undefined ? false : navigate[accessPerimeter.id]"
+                                class="jstree-node"
+                                    ng-class="{
+                                    'jstree-last': $last,
+                                    'jstree-open': navigate[accessPerimeter.id] == true,
+                                    'jstree-closed': navigate[accessPerimeter.id] == false,
+                                    'jstree-leaf': !accessPerimeter.child.length && !accessPoints[accessPerimeter.id]
+                                }"></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-7">
+        <ui-view></ui-view>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+<div class="portlet light bordered">
+    <div class="portlet-title">
+        <div class="caption" translate>html.account.admins_title
+        </div>
+    </div>
+
+    <div class="portlet-body">
+        <form name="AdminsForm">
+            <div class="form-body">
+                <table class="table table-bordered table-hover">
+                    <tbody>
+                        <tr ng-repeat="admin in userData.admins track by $index">
+                            <td><input class="form-control"
+                                       name="admin_displayName_{{ $index }}"
+                                       type="text"
+                                       ng-model="admin.displayName"
+                                       validator="required"></td>
+                            <td><input class="form-control"
+                                       name="admin_email_{{ $index }}"
+                                       type="text"
+                                       ng-model="admin.email"
+                                       validator="email"></td>
+                            <td><input class="form-control"
+                                       name="admin_phoneNumber_{{ $index }}"
+                                       type="text"
+                                       ng-model="admin.phoneNumber"
+                                       mask="{'mask': '+99999999999'}"
+                                       validator="phone"></td>
+                            <td>
+                                <a ng-click="removeAdmin($index)" class="btn default btn-sm"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="4">
+                                <a ng-click="userData.admins.push({})" class="btn btn-sm default"><i class="fa fa-plus"></i>
+                                    <span translate>html.defaults.add_title</span></a>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn blue" validation-submit="AdminsForm" ng-click="updateAdmins()" translate>html.defaults.save_title</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,289 @@
+
+<div class="form-body row">
+
+    <div class="col-md-4">
+
+        <div class="form-group">
+            <label translate>html.abonent.name_display</label>
+            <input class="form-control" type="text" name="displayName" ng-model="abonent.displayName" validator="required">
+        </div>
+
+        <div class="form-group">
+            <label translate>html.abonent.phone_display</label>
+            <input class="form-control" type="text" ng-model="abonent.phoneNumber" name="phoneNumber"
+                   validator="phone,required" mask="{'mask': '+99999999999'}">
+        </div>
+
+        <div class="form-group">
+            <label translate>html.abonent.address_display</label>
+            <select-address ng-select-model="abonent.addressId" name="addressId" validator="required"></select-address>
+        </div>
+
+        <div class="form-group">
+            <label translate>html.abonent.room_display</label>
+            <input class="form-control" type="text" name="room" ng-model="abonent.room">
+        </div>
+
+        <div class="form-group">
+            <label translate>html.abonent.external_id_display</label>
+            <input class="form-control" type="text" name="externalId" ng-model="abonent.externalId">
+        </div>
+
+        <div class="form-group">
+            <label translate>html.abonent.tag_id_display</label>
+            <input class="form-control" type="text" name="tagId" ng-model="abonent.tagId">
+        </div>
+
+        <div class="form-group">
+            <label translate>html.abonent.comments_display</label>
+            <textarea class="form-control" type="text" name="com" ng-model="abonent.comments"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>
+                <input type="checkbox" name="IsAdministrator" ng-model="abonent.isAdministrator">
+                <span translate>html.abonent.admin_display</span>
+            </label>
+        </div>
+
+        <hr>
+
+        <h4 translate>html.abonent.workking_time_display</h4>
+
+        <div class="form-group">
+            <label translate>html.abonent.workking_time_start_display</label>
+            <input class="form-control" type="text" name="WorkingTimeStart" ng-model="abonent.workingTime.start" placeholder="HH:mm">
+        </div>
+
+        <div class="form-group">
+            <label translate>html.abonent.workking_time_end_display</label>
+            <input class="form-control" type="text" name="WorkingTimeEnd" ng-model="abonent.workingTime.end" placeholder="HH:mm">
+        </div>
+
+        <div class="form-group">
+            <label>
+                <input type="checkbox" name="isGsmOpenAllowed" ng-model="abonent.isGsmOpenAllowed">
+                <span translate>html.abonent.isGsmOpenAllowed</span>
+            </label>
+        </div>
+
+        <hr ng-show="abonent.id">
+
+        <h4 ng-show="abonent.id" translate>html.abonent.cars_display</h4>
+
+        <table ng-if="abonent.id" class="table table-bordered table-hover">
+            <thead ng-show="abonent.cars.length">
+                <tr>
+                    <th translate>html.abonent.car_number_display</th>
+                    <th translate>html.abonent.car_model_display</th>
+                    <th style="width: 1px"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="car in abonent.cars track by $index">
+                    <td><input class="form-control"
+                               name="abonentCars_number{{ $index }}"
+                               type="text"
+                               ng-model="car.number"
+                               validator="required"></td>
+                    <td><input class="form-control"
+                               name="abonentCars_model{{ $index }}"
+                               type="text"
+                               ng-model="car.model"
+                               validator="required"></td>
+                    <td>
+                        <a ng-click="abonent.cars.splice($index, 1)" class="btn default btn-sm"><i class="fa fa-trash"></i></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <a ng-click="abonent.cars.push({})" class="btn btn-sm default"><i class="fa fa-plus"></i>
+                            <span translate>html.defaults.add_title</span></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-md-8" ng-if="abonent.id">
+        <h4 translate>html.abonent.perimeters_title</h4>
+
+        <script type="text/ng-template" id="accessTreeTemplate">
+
+            <i class="jstree-icon jstree-ocl"
+               ng-click="navigate[object.id] = !navigate[object.id]"></i>
+
+            <a class="jstree-anchor" ng-if="object.parentId == '0'">
+                <i class="jstree-icon jstree-themeicon jstree-themeicon-custom fa fa-folder icon-state-success"></i>
+                {{ object.displayName }}
+            </a>
+
+            <a ng-click="clickPerimeter(object)" class="jstree-anchor" ng-if="object.parentId != '0'">
+                <i class="jstree-icon jstree-themeicon jstree-themeicon-custom fa fa-folder icon-state-warning"></i>
+                {{ object.displayName }}
+            </a>
+
+            <ul class="jstree-children">
+                <li ng-repeat="object in object.child | orderBy:'displayName'"
+                    ng-include="'accessTreeTemplate'"
+                    ng-init="navigate[object.id] = navigate[object.id] == undefined ? false : navigate[object.id]"
+                    class="jstree-node"
+                    ng-class="{
+                        'jstree-last': $last,
+                        'jstree-open': navigate[object.id] == true,
+                        'jstree-closed': navigate[object.id] == false,
+                        'jstree-leaf': !object.child.length
+                    }"></li>
+            </ul>
+        </script>
+
+        <script type="text/ng-template" id="AccessObjectsTemplate">
+            <div class="tree-demo jstree jstree-1 jstree-default">
+                <ul class="jstree-container-ul jstree-children">
+                    <li ng-repeat="object in objects | orderBy:'displayName'"
+                        class="jstree-node"
+                        ng-class="{
+                            'jstree-last': $last,
+                            'jstree-open': navigate[object.id] == true,
+                            'jstree-closed': navigate[object.id] == false,
+                            'jstree-leaf': !object.child.length
+                        }"
+                        ng-init="navigate[object.id] = navigate[object.id] == undefined ? false : navigate[object.id]"
+                        ng-include="'accessTreeTemplate'">
+                    </li>
+                </ul>
+            </div>
+        </script>
+
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th translate>html.abonent.perimeter</th>
+                    <th translate>html.abonent.perimeter_tariff</th>
+                    <th style="width: 1px"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="perimeter in abonent.perimeters"
+                    ng-init="perimeterObj=dataService.objects.GetItemById(perimeter.accessPerimeterId)"
+                    ng-if="perimeter.added">
+                    <td>
+                        <span ng-repeat="parentPerimeter in dataService.getParentsAccessObjects(perimeterObj, true)">
+                            <span>{{ parentPerimeter.displayName}}</span>
+                            <span ng-show="!$last">&rarr;</span>
+                        </span>
+                    </td>
+                    <td>
+                        {{ dataService.tariffs[perimeter.tariffPolicyId].displayName }}
+                    </td>
+                    <td>
+                        <a ng-click="deletePerimeterKey(perimeter)" class="btn default btn-sm"><i class="fa fa-trash"></i></a>
+                    </td>
+                </tr>
+                <tr ng-repeat="perimeter in abonent.perimeters" ng-if="!perimeter.added">
+                    <td>
+                        <access-objects perimeter-model="perimeter.accessPerimeterId" ng-if="!perimeter.accessPerimeterId"></access-objects>
+
+                        <span ng-repeat="parentPerimeter in dataService.getParentsAccessObjects(perimeter.accessPerimeterId, true)" ng-if="perimeter.accessPerimeterId">
+                            <span>{{ parentPerimeter.displayName}}</span>
+                            <span ng-show="!$last">&rarr;</span>
+                        </span>
+
+                        <a ng-click="perimeter.accessPerimeterId=undefined" ng-if="perimeter.accessPerimeterId" translate>html.defaults.change_title</a>
+                    </td>
+                    <td>
+                        <select-tariff ng-select-model="perimeter.tariffPolicyId"
+                                       name="abonentPerimeters_tariffPolicyId{{ $index }}"></select-tariff></td>
+                    <td>
+                        <a ng-click="deletePerimeterKey(perimeter)" class="btn default btn-sm"><i class="fa fa-trash"></i></a>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4">
+                        <a ng-click="abonent.perimeters.push({})" class="btn btn-sm default"><i class="fa fa-plus"></i>
+                            <span translate>html.defaults.add_title</span></a>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <h4 translate>html.abonent.temporary_access_perimeters</h4>
+
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th translate>html.abonent.perimeter</th>
+                    <th style="width: 162px" translate>html.abonent.start_period</th>
+                    <th style="width: 162px" translate>html.abonent.end_period</th>
+                    <th style="width: 1px"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="perimeter in abonent.temporaryAccessPerimeters">
+                    <td ng-if="perimeter.id" ng-init="perimeterObj=dataService.objects.GetItemById(perimeter.perimeterId)">
+                        <span ng-repeat="parentPerimeter in dataService.getParentsAccessObjects(perimeterObj, true)" ng-if="perimeter.perimeterId">
+                            <span>{{ parentPerimeter.displayName}}</span>
+                            <span ng-show="!$last">&rarr;</span>
+                        </span>
+                    </td>
+                    <td ng-if="!perimeter.id">
+                        <access-objects perimeter-model="perimeter.perimeterId" ng-if="!perimeter.perimeterId"></access-objects>
+
+                        <span ng-repeat="parentPerimeter in dataService.getParentsAccessObjects(perimeter.perimeterId, true)" ng-if="perimeter.perimeterId">
+                            <span>{{ parentPerimeter.displayName}}</span>
+                            <span ng-show="!$last">&rarr;</span>
+                        </span>
+
+                        <a ng-click="perimeter.perimeterId=undefined" ng-if="perimeter.perimeterId" translate>
+                            html.defaults.change_title</a>
+                    </td>
+                    <td>
+                        <span class="dropdown">
+                            <a  class="dropdown-toggle" id="from-date-{{ $index }}" role="button" data-toggle="dropdown" data-target="#" href="#">
+                                <input class="form-control input-small text-center" readonly
+                                       placeholder="{{ 'html.journal.date_from_display' | translate }}"
+                                       name="abonentTemporaryAccessPerimeters_startPeriod{{ $index }}"
+                                       value="{{ perimeter.startPeriod | date:'dd-MM-yyyy HH:mm' }}">
+                            </a>
+
+                            <ul class="dropdown-menu" role="menu">
+                                <datetimepicker data-ng-model="perimeter.startPeriod"
+                                            data-datetimepicker-config="{dropdownSelector: '#from-date-' + $index, startView:'day', minView:'minute' }"/>
+                            </ul>
+                        </span>
+                    </td>
+                    <td>
+                        <span class="dropdown">
+                            <a  class="dropdown-toggle" id="to-date-{{ $index }}" role="button" data-toggle="dropdown" data-target="#" href="#">
+                                <input class="form-control input-small text-center" readonly
+                                       placeholder="{{ 'html.journal.date_to_display' | translate }}"
+                                       name="abonentTemporaryAccessPerimeters_endPeriod{{ $index }}"
+                                       value="{{ perimeter.endPeriod | date:'dd-MM-yyyy HH:mm' }}">
+                            </a>
+
+                            <ul class="dropdown-menu" role="menu">
+                                <datetimepicker data-ng-model="perimeter.endPeriod"
+                                            data-datetimepicker-config="{dropdownSelector: '#to-date-' + $index, startView:'day', minView:'minute' }"/>
+                            </ul>
+                        </span>
+                    </td>
+                    <td>
+                        <a ng-click="deleteTemporaryPerimeterKey(perimeter)" class="btn default btn-sm"><i class="fa fa-trash"></i></a>
+                    </td>
+                </tr>
+
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4">
+                        <a ng-click="abonent.temporaryAccessPerimeters.push({})" class="btn btn-sm default"><i class="fa fa-plus"></i>
+                            <span translate>html.defaults.add_title</span></a>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+
+    </div>
+</div>

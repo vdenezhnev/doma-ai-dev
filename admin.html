@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Панель администратора</title>
+
+    <link rel="shortcut icon" href="icon.png">
+
+    <!-- Bootstrap -->
+    <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:700,300,800,400&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+    <!-- inject:css -->
+    <!-- build:css styles/vendor.css -->
+    <link href="/components/angular-notify/dist/angular-notify.min.css" rel="stylesheet">
+    <link href='/components/angular-loading-bar/build/loading-bar.min.css' rel='stylesheet' media='all' />
+    <link href="/components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- endbuild -->
+    <!-- build:css styles/bundle.css -->
+    <link href="/css/admin.css" rel="stylesheet" type="text/css">
+    <!-- endbuild -->
+    <!-- endinject -->
+
+    <base href="{% url 'admin_api' %}">
+
+    <script>
+        window.__language = '<ENV::LANGUAGE_CODE>';
+        window.__api_host = '<ENV::API_HOST>';
+        window.__api_url = '<ENV::API_URL_ADMIN>';
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body ng-controller="AppCtrl">
+
+    <div ui-view></div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <!-- vendor:js -->
+    <!-- build:js scripts/vendor.js -->
+    <script src="/components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/components/lodash/lodash.js"></script>
+
+    <script src="/components/string-format/string-format.js"></script>
+    <script src="/components/js-base64/base64.js"></script>
+    <script src="/components/angular/angular.js"></script>
+    <script src="/components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="/components/ngstorage/ngStorage.js"></script>
+    <script src="/components/angular-permission/dist/angular-permission.js"></script>
+    <script src="/components/angular-notify/dist/angular-notify.js"></script>
+    <script src="/components/angular-validation/dist/angular-validation.js"></script>
+    <script src="/components/angular-validation/dist/angular-validation-rule.js"></script>
+    <script src="/components/angular-loading-bar/build/loading-bar.js"></script>
+    <script src="/components/angular-animate/angular-animate.js"></script>
+    <script src="/components/angular-modal-service/dst/angular-modal-service.min.js"></script>
+    <script src="/components/jquery.inputmask/jquery.inputmask.js"></script>
+    <!-- endbuild -->
+    <!-- endinject -->
+
+    <!-- bundle:js -->
+    <!-- build:js scripts/bundle.js -->
+    <script src="/app/admin/app.js"></script>
+    <script src="/app/admin/config/route.js"></script>
+    <script src="/app/admin/config/settings.js"></script>
+    <script src="/app/services/session.js"></script>
+    <script src="/app/services/auth.js"></script>
+    <script src="/app/services/user.js"></script>
+    <script src="/app/services/api.js"></script>
+
+    <script src="/app/admin/controllers/AppControllers.js"></script>
+    <script src="/app/admin/controllers/ClientControllers.js"></script>
+    <script src="/app/admin/controllers/LockControllers.js"></script>
+    <script src="/app/admin/controllers/CompanyControllers.js"></script>
+    <script src="/app/admin/controllers/AccessPointControllers.js"></script>
+    <!-- endbuild -->
+    <!-- endinject -->
+
+    <!-- httplog:js -->
+    <!-- build:js scripts/httplog.js -->
+    <script src="/app/common/httplog.js"></script>
+    <!-- endbuild -->
+    <!-- endinject -->
+
+    <!-- {% include "inc/yandex_metrika.html" %} -->
+</body>
+</html>

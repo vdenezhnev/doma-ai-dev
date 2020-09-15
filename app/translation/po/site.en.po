@@ -1,0 +1,326 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.6\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: app/site/views/_messages.html:3
+msgid "busy.title"
+msgstr ""
+
+#: app/cabinet/controllers.js:76 app/cabinet/controllers.js:91
+msgid "cabinet.keys.key_delete_confirm"
+msgstr "Are you sure?"
+
+#: app/cabinet/controllers.js:78 app/cabinet/controllers.js:93
+msgid "cabinet.keys.key_deleted"
+msgstr "Key deleted"
+
+#: app/cabinet/controllers.js:61
+msgid "cabinet.keys.keys_locked"
+msgstr "Ley locked"
+
+#: app/cabinet/controllers.js:69
+msgid "cabinet.keys.keys_unlocked"
+msgstr "Keys unblocked"
+
+#: app/cabinet/controllers.js:47
+msgid "cabinet.profile.password_changed"
+msgstr "Password changed"
+
+#: app/cabinet/controllers.js:33
+msgid "cabinet.profile.profile_updated"
+msgstr "Updated"
+
+#: app/site/views/_messages.html:1
+msgid "html.auth.email_confirm_title"
+msgstr "Confirmed"
+
+#: app/site/views/email_confirmation.html:2
+msgid "html.auth.email_confirmed"
+msgstr "Confirmed"
+
+#: app/site/views/_messages.html:2
+msgid "html.auth.reset_password_title"
+msgstr "Reset password"
+
+#: app/cabinet/views/cabinet.keys.html:4
+msgid "html.cabinet.keys.block_keys"
+msgstr "Block key"
+
+#: app/cabinet/views/cabinet.incoming_keys.html:21
+#: app/cabinet/views/cabinet.keys.html:35
+msgid "html.cabinet.keys.delete_key"
+msgstr "Delete key"
+
+#: app/cabinet/views/cabinet.keys.html:5
+msgid "html.cabinet.keys.find_phone"
+msgstr "Phone found"
+
+#: app/cabinet/views/cabinet.keys.html:4
+msgid "html.cabinet.keys.lost_phone"
+msgstr "Phone lost"
+
+#: app/cabinet/views/cabinet.keys.html:5
+msgid "html.cabinet.keys.unblock_keys"
+msgstr "Unblocking keys"
+
+#: app/cabinet/views/cabinet.html:7
+msgid "html.cabinet.menu.incoming_keys"
+msgstr "Incoming keys"
+
+#: app/cabinet/views/cabinet.html:6
+msgid "html.cabinet.menu.keys"
+msgstr "Keys"
+
+#: app/cabinet/views/cabinet.html:8
+msgid "html.cabinet.menu.payment"
+msgstr "Payment"
+
+#: app/cabinet/views/cabinet.html:5
+msgid "html.cabinet.menu.profile"
+msgstr "Profile"
+
+#: app/cabinet/views/cabinet.profile.html:17
+#: app/site/views/reset_password.html:14
+msgid "html.cabinet.password_form.change_password"
+msgstr "Change password"
+
+#: app/cabinet/views/cabinet.profile.html:13
+#: app/site/views/reset_password.html:9
+msgid "html.cabinet.password_form.new_password"
+msgstr "New password"
+
+#: app/cabinet/views/cabinet.profile.html:9
+msgid "html.cabinet.password_form.old_password"
+msgstr "Old password"
+
+#: app/cabinet/views/cabinet.payment.html:11
+msgid "html.cabinet.payment.history_tab_title"
+msgstr "History"
+
+#: app/cabinet/views/cabinet.payment.html:35
+msgid "html.cabinet.payment.pay"
+msgstr "Pay"
+
+#: app/cabinet/views/cabinet.payment.html:9
+msgid "html.cabinet.payment.pay_tab_title"
+msgstr "Payment"
+
+#: app/cabinet/views/cabinet.payment.html:23
+#: app/cabinet/views/cabinet.payment.html:5
+msgid "html.cabinet.payment.ruble"
+msgstr "Ruble"
+
+#: app/cabinet/views/cabinet.payment.html:34
+msgid "html.cabinet.payment.sum"
+msgstr "Amount"
+
+#: app/cabinet/views/cabinet.payment.html:34
+msgid "html.cabinet.payment.sum_maxvalue_error_message"
+msgstr "Amount is very big"
+
+#: app/cabinet/views/cabinet.profile.html:48
+msgid "html.cabinet.profile_form.chnage_password"
+msgstr "Change password"
+
+#: app/cabinet/views/cabinet.profile.html:42
+msgid "html.cabinet.profile_form.email"
+msgstr "Email"
+
+#: app/cabinet/views/cabinet.profile.html:30
+msgid "html.cabinet.profile_form.name"
+msgstr "Name"
+
+#: app/cabinet/views/cabinet.profile.html:46
+msgid "html.cabinet.profile_form.password"
+msgstr "Password"
+
+#: app/cabinet/views/cabinet.profile.html:36
+msgid "html.cabinet.profile_form.phone"
+msgstr "Phone"
+
+#: app/cabinet/views/cabinet.profile.html:52
+msgid "html.cabinet.profile_form.save"
+msgstr "Save"
+
+#: app/cabinet/views/cabinet.html:3
+msgid "html.cabinet.title"
+msgstr "Your cabinet"
+
+#: app/site/views/reset_password.html:17
+#| msgid "html.cabinet.password_form.new_password"
+msgid "html.site.password_reset_success"
+msgstr "New password"
+
+#: app/site/views/user.toolbar.html:2
+msgid "html.user_toolbar.logout"
+msgstr "Logout"
+
+#: app/site/views/auth.toolbar.html:98
+msgid "site.auth_toolbar.cabinet"
+msgstr "Cabinet"
+
+#: app/site/views/auth.toolbar.html:18
+msgid "site.auth_toolbar.email"
+msgstr "Email"
+
+#: app/site/views/auth.toolbar.html:38
+msgid "site.auth_toolbar.enter_sms_code"
+msgstr "Enter sms code"
+
+#: app/site/views/auth.toolbar.html:70
+msgid "site.auth_toolbar.forgot_password"
+msgstr "Forgot password"
+
+#: app/site/views/auth.toolbar.html:95
+msgid "site.auth_toolbar.hello"
+msgstr "Hello"
+
+#: app/site/views/auth.toolbar.html:62
+msgid "site.auth_toolbar.login"
+msgstr "Login"
+
+#: app/site/views/auth.toolbar.html:97
+msgid "site.auth_toolbar.logout"
+msgstr "Logout"
+
+#: app/site/views/auth.toolbar.html:10
+msgid "site.auth_toolbar.name"
+msgstr "Name"
+
+#: app/site/views/auth.toolbar.html:22 app/site/views/auth.toolbar.html:65
+msgid "site.auth_toolbar.password"
+msgstr "Password"
+
+#: app/site/views/auth.toolbar.html:26
+msgid "site.auth_toolbar.password_repeat"
+msgstr "Repeat password"
+
+#: app/site/views/auth.toolbar.html:14 app/site/views/auth.toolbar.html:86
+msgid "site.auth_toolbar.phone"
+msgstr "Phone"
+
+#: app/site/views/auth.toolbar.html:48 app/site/views/auth.toolbar.html:69
+msgid "site.auth_toolbar.registration"
+msgstr "Registration"
+
+#: app/site/views/auth.toolbar.html:84f
+#| msgid "site.auth_toolbar.password_repeat"
+msgid "site.auth_toolbar.restore_password_success_message"
+msgstr "Instructions for changing password are sent to you email"
+
+#: app/site/views/auth.toolbar.html:45
+msgid "site.auth_toolbar.sms_code_resend"
+msgstr "Resend sms"
+
+#: app/site/views/auth.toolbar.html:43
+msgid "site.auth_toolbar.sms_code_resend_title"
+msgstr "In 3 minute you can resend sms"
+
+#: app/site/views/auth.toolbar.html:50 app/site/views/auth.toolbar.html:73
+#: app/site/views/auth.toolbar.html:91
+msgid "site.auth_toolbar.submit_login"
+msgstr "Submit"
+
+#: app/site/views/auth.toolbar.html:89
+#| msgid "site.auth_toolbar.forgot_password"
+msgid "site.auth_toolbar.submit_restore_password"
+msgstr "Forgot password"
+
+#: app/site/views/auth.toolbar.html:30
+msgid "site.auth_toolbar.terms"
+msgstr "Terms"
+
+#: app/site/views/auth.toolbar.html:34
+msgid "site.auth_toolbar.terms_agree"
+msgstr "I agree"
+
+#~ msgid "html.cabinet.payment.buying_key"
+#~ msgstr "Buying key"
+
+#~ msgid "html.cabinet.payment.refill"
+#~ msgstr "Refill"
+
+#~ msgid "Email"
+#~ msgstr "Email"
+
+#~ msgid "Вход"
+#~ msgstr "Login"
+
+#~ msgid "Выйти"
+#~ msgstr "Logout"
+
+#~ msgid "Забыли пароль?"
+#~ msgstr "Forgot password?"
+
+#~ msgid "Здравствуйте"
+#~ msgstr "Hello"
+
+#~ msgid "Значение должно быть числом"
+#~ msgstr "Value must be integer"
+
+#~ msgid "Идет загрузка..."
+#~ msgstr "Loading…"
+
+#~ msgid "Изменить пароль"
+#~ msgstr "Change password"
+
+#~ msgid "Имя"
+#~ msgstr "Name"
+
+#~ msgid "История операций"
+#~ msgstr "History transactions"
+
+#~ msgid "Личные данные"
+#~ msgstr "Profile"
+
+#~ msgid "Личный кабинет"
+#~ msgstr "Your account"
+
+#~ msgid "Логин"
+#~ msgstr "Login"
+
+#~ msgid "Новый пароль"
+#~ msgstr "New password"
+
+#~ msgid "Пароль"
+#~ msgstr "Password"
+
+#~ msgid "Повторите пароль"
+#~ msgstr "Confirm password"
+
+#~ msgid "Регистрация"
+#~ msgstr "Registration"
+
+#~ msgid "С условиями согласен"
+#~ msgstr "The terms of agreement"
+
+#~ msgid "Сохранить"
+#~ msgstr "Save"
+
+#~ msgid "Старый пароль"
+#~ msgstr "Old password"
+
+#~ msgid "Телефон"
+#~ msgstr "Phone"
+
+#~ msgid "Условия пользования"
+#~ msgstr "Terms of Use"
+
+#~ msgid "Это поле обязательно для заполнения"
+#~ msgstr "Required"
+
+#~ msgid "Ваши ключи"
+#~ msgstr "Your keys"
+
+#~ msgid "(Выйти)"
+#~ msgstr "(Logout)"

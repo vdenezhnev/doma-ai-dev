@@ -1,0 +1,123 @@
+<div class="col-lg-6">
+
+    <div class="form-group">
+        <label>Название</label>
+        <input class="form-control" ng-model="company.companyName">
+    </div>
+
+    <div class="form-group">
+        <label>ИНН</label>
+        <input class="form-control" ng-model="company.inn">
+    </div>
+
+    <div class="form-group">
+        <label>Адрес</label>
+        <input class="form-control" ng-model="company.address.streetAddress">
+    </div>
+
+    <h3>Телефоны</h3>
+
+    <div class="row"></div>
+    <div class="form-group" ng-repeat="phone in company.phoneNumbers track by $index">
+        <div class="input-group">
+            <input type="text" class="form-control" ng-model="company.phoneNumbers[$index]">
+            <span class="input-group-btn">
+                <button class="btn btn-default" ng-disabled="$first" ng-click="company.phoneNumbers.splice($index, 1)"><i class="fa fa-trash"></i></button>
+            </span>
+        </div>
+    </div>
+
+    <a class="btn btn-xs btn-default" ng-click="company.phoneNumbers.push('')"><i class="fa fa-plus"></i> Добавить телефон</a>
+
+    <h3>Поддержка</h3>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label>Имя</label>
+                <input class="form-control" type="text" ng-model="company.support.displayName">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Телефон</label>
+                <input class="form-control" type="text" ng-model="company.support.phoneNumber">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Email</label>
+                <input class="form-control" type="text" ng-model="company.support.email">
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="col-lg-6">
+
+    <h3>Администраторы</h3>
+
+    <div ng-repeat="contact in company.admins track by $index">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Имя</label>
+                    <input class="form-control" type="text" ng-model="contact.displayName">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Телефон</label>
+                    <input class="form-control" type="text" ng-model="contact.phoneNumber">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input class="form-control" type="text" ng-model="contact.email">
+                </div>
+            </div>
+        </div>
+        <a class="btn btn-xs btn-default" ng-click="removeAdmin($index)"><i class="fa fa-trash"></i> Удалить</a>
+        <hr>
+    </div>
+
+    <a class="btn btn-primary" ng-click="updateAdmins()">Обновить информацию об администраторах</a>
+
+    <a class="btn btn-default" ng-click="company.admins.push({})"><i class="fa fa-plus"></i> Добавить администратора</a>
+
+    <hr>
+    <div ng-show="data.acquiringTypes.length > 0">
+        <h3>Оплата</h3>
+        <div class="row">
+            <div class="col-md-8">
+                <select class="form-control" ng-model="data.acquiringType">
+                    <option ng-repeat="obj in data.acquiringTypes" value="{{ obj.code }}">{{ obj.value }}</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <span class="btn btn-default btn-block" ng-click="createMerchantSetting(data.acquiringType)">Добавить</span>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 20px" ng-repeat="obj in data.merchantSettings track by $index">
+            <div class="col-md-6">
+                {{ obj.acquiringType }}
+                {{ obj.userName }}
+            </div>
+            <div class="col-md-6 text-right">
+                <span class="btn btn-default" ng-click="editMerchantSettings(obj)">Настроить</span>
+                <span class="btn btn-default" ng-click="deleteMerchantSetting(obj, $index)">Удалить</span>
+            </div>
+            <hr>
+        </div>
+
+    </div>
+</div>

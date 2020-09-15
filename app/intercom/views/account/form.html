@@ -1,0 +1,70 @@
+
+<form name="ProfileForm">
+    <div class="form-body">
+
+        <div class="form-group">
+            <label translate>html.account.name_display</label>
+            <input class="form-control" name="displayName" ng-model="userData.companyName" disabled>
+        </div>
+
+        <div class="form-group">
+            <label translate>html.account.address_display</label>
+            <input class="form-control" name="streetAddress" ng-model="userData.address.streetAddress" validator="required">
+        </div>
+
+        <div class="form-group">
+            <label translate>html.account.inn_display</label>
+            <input class="form-control" name="streetAddress" ng-model="userData.inn" validator="required" disabled>
+        </div>
+
+        <h4 class="block" translate>html.account.phones_display</h4>
+
+        <div class="row"></div>
+        <div class="form-group" ng-repeat="phone in userData.phoneNumbers track by $index">
+            <div class="input-group">
+                <input type="text" class="form-control" name="phoneNumber_{{ $index }}" message-id="phoneNumber_{{ $index }}"
+                       ng-model="userData.phoneNumbers[$index]"
+                       validator="required,phone"
+                       mask="{'mask': '+99999999999'}">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" ng-disabled="$first" ng-click="userData.phoneNumbers.splice($index, 1)">
+                        <i class="fa fa-trash"></i></button>
+                </span>
+            </div>
+            <span id="phoneNumber_{{ $index }}"></span>
+        </div>
+
+        <a class="btn default btn-sm" ng-click="userData.phoneNumbers.push('')"><i class="fa fa-plus"></i>
+            <span translate>html.account.add_phone_title</span></a>
+
+        <h3 translate>html.account.support</h3>
+
+        <div class="form-group">
+            <label translate>html.account.fio_display</label>
+            <input class="form-control" name="userData.support.displayName" type="text" ng-model="userData.support.displayName" validator="required">
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label translate>html.account.phone_display</label>
+                    <input class="form-control" name="userData.support.phoneNumber" type="text"
+                           ng-model="userData.support.phoneNumber"
+                           validator="required, phone"
+                           mask="{'mask': '+99999999999'}">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label translate>html.account.email_display</label>
+                    <input class="form-control" name="userData.support.email" type="text" ng-model="userData.support.email" validator="required, email">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="form-actions">
+        <button type="submit" class="btn blue" validation-submit="ProfileForm" ng-click="save()" translate>html.defaults.save_title</button>
+    </div>
+</form>
