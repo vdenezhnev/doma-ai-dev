@@ -6,4 +6,4 @@ var gulpif = require('gulp-if');
 exports.default = () => gulp.src(`./${process.env.FEATURE_NAME}.html`)
     .pipe(useref())
     .pipe(gulpif('*.css', minifyCss()))
-    .pipe(gulpif('*.css', gulp.dest(`./dist/ru/${process.env.FEATURE_NAME}`)));
+    .pipe(gulpif('*.css', gulp.dest(`./dist/${process.env.FEATURE_NAME}`)));

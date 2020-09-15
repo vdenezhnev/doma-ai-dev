@@ -9,7 +9,7 @@ var env = require('gulp-env');
 
 
 const index = () => {
-    const distFolder = `dist/${process.env.LANGUAGE_CODE}/${process.env.FEATURE_NAME}`;
+    const distFolder = `dist/${process.env.FEATURE_NAME}`;
     console.log(distFolder);
     var target = gulp.src(`./${process.env.FEATURE_NAME}.html`);
     var styles = gulp.src([`./${distFolder}/**/*.css`], {read: false});
@@ -18,18 +18,22 @@ const index = () => {
     var httplog = gulp.src([`./${distFolder}/**/httplog.js`], {read: false});
 
     return target
-      .pipe(inject(styles, { ignorePath: distFolder, addRootSlash: false }))
-      .pipe(inject(vendor, { ignorePath: distFolder, addRootSlash: true, name: 'vendor' }))
-      .pipe(inject(bundle, { ignorePath: distFolder, addRootSlash: true, name: 'bundle' }))
-      .pipe(gulpif(
-          process.env.DEBUG,
-          inject(httplog, { ignorePath: distFolder + '/', addRootSlash: true, name: 'httplog' }),
-          replace(/<script src="\/app\/common\/httplog\.js"><\/script>/gm, '')
-      ))
-      .pipe(injectEnvs({...process.env, BASE_HREF: `/${process.env.LANGUAGE_CODE}/${process.env.FEATURE_NAME}` }))
-      .pipe(rename(`index.html`))
-      .pipe(gulp.dest(`./${distFolder}/`));
-    };
+        .pipe(inject(styles, { ignorePath: distFolder, addRootSlash: false }))
+        .pipe(inject(vendor, { ignorePath: distFolder, addRootSlash: true, name: 'vendor' }))
+        .pipe(inject(bundle, { ignorePath: distFolder, addRootSlash: true, name: 'bundle' }))
+        .pipe(gulpif(
+            process.env.DEBUG,
+            inject(httplog, { ignorePath: distFolder + '/', addRootSlash: true, name: 'httplog' }),
+            replace(/<script src="\/app\/common\/httplog\.js"><\/script>/gm, '')
+        ))
+        .pipe(injectEnvs({
+            ...process.env,
+            BASE_HREF: `/${process.env.LANGUAGE_CODE}/${process.env.FEATURE_NAME}`,
+            ...(process.env.DEVMODE ? {BASE_HREF: '/'}: {})
+        }))
+        .pipe(rename(`index-${process.env.LANGUAGE_CODE}.html`))
+        .pipe(gulp.dest(`./${distFolder}/`));
+};
 const setLocaleRu = async () => env({
     file: './build/.ru.env.json'
 });

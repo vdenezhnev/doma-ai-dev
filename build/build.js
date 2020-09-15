@@ -8,8 +8,6 @@ gulp.task('img', require('./img').default),
 gulp.task('css', require('./css').default),
 gulp.task('js', require('./js').default),
 gulp.task('index', require('./index').default)
-gulp.task('copy-locales', () => gulp.src('./dist/ru/**')
-    .pipe(gulp.dest(`./dist/en/`)));
 
 const build = gulp.series(
     'html',
@@ -17,7 +15,6 @@ const build = gulp.series(
     'img',
     'css',
     'js',
-    'copy-locales',
     'index'
 );
 
@@ -37,6 +34,14 @@ const buildAdmin = gulp.series(
 );
 exports.buildIntercom = buildIntercom;
 exports.buildAdmin = buildAdmin;
+exports.buildDev = gulp.series(
+    'clean',
+    async () => env.set({
+        DEVMODE: true,
+    }),
+    buildIntercom,
+    buildAdmin
+)
 exports.default = gulp.series(
     'clean',
     buildIntercom,

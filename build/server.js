@@ -6,23 +6,29 @@ var proxyMiddleware = require('http-proxy-middleware').createProxyMiddleware;
 function browserSyncInit(baseDir, browser) {
   browser = browser === undefined ? 'default' : browser;
 
-  var server = {
-    baseDir: baseDir,
-    routes: {
-        'ru/intercom/scripts': 'dist'
-    }
-  };
-
-  server.middleware = [proxyMiddleware('/api', {target: 'https://testacms.smartairkey.com/', changeOrigin: true, secure: true})];
+  // server.middleware = [
+    // proxyMiddleware('/api', {target: 'https://testacms.smartairkey.com/', changeOrigin: true, secure: true}),
+    // proxyMiddleware('/ru/intercom', {target: '/intercom', changeOrigin: false})
+  // ];
 
   browserSync.instance = browserSync.init({
-    startPath: 'ru/intercom/',
-    server: server,
+    startPath: 'index-ru.html',
+    server: {
+      baseDir: "dist/intercom",
+      directory: true,
+      routes: {
+        // 'ru/intercom': '.',
+        // 'en/intercom': '.',
+        // 'ru/admin': 'admin',
+        // 'en/admin': 'admin',
+    }
+  },
     browser: browser,
     ui: {
       port: 4001
     },
-    port: 4000
+    port: 4000,
+    logLevel: 'debug'
   });
 }
 
