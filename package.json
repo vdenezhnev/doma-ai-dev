@@ -5,11 +5,13 @@
   "main": "Gruntfile.js",
   "dependencies": {},
   "scripts": {
+    "postinstall": "bower install",
     "build": "gulp build",
     "extract-i18n": "grunt nggettext_extract",
     "compile-i18n": "grunt nggettext_compile"
   },
   "devDependencies": {
+    "bower": "^1.8.8",
     "browser-sync": "^2.26.12",
     "browser-sync-spa": "^1.0.3",
     "grunt": "^1.3.0",

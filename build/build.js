@@ -20,9 +20,15 @@ const build = gulp.series(
 
 const setIntercomEnv = async () => env({
     file: './build/.intercom.env.json',
+    vars: {
+        API_HOST: process.env.API_HOST || '/',
+    }
 });
 const setAdminEnv = async () => env({
     file: './build/.admin.env.json',
+    vars: {
+        API_HOST: process.env.API_HOST || '/',
+    }
 });
 const buildIntercom = gulp.series(
     setIntercomEnv,

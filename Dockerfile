@@ -1,9 +1,7 @@
 FROM node:14.10-alpine
 
 WORKDIR /acms
-COPY package.json .
-COPY package-lock.json .
+COPY . .
 RUN npm i
 
-COPY . .
 RUN npm run build
