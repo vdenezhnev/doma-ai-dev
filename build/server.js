@@ -9,7 +9,7 @@ function browserSyncInit(baseDir, browser) {
   browserSync.instance = browserSync.init({
     startPath: './index-ru.html',
     server: {
-      baseDir: "dist/intercom",
+      baseDir: baseDir,
       directory: true,
       middleware: [
         proxyMiddleware('/api', {
@@ -30,4 +30,5 @@ function browserSyncInit(baseDir, browser) {
 }
 
 exports.default = () => browserSyncInit('./');
-exports.serveDist = () => browserSyncInit('./dist');
+exports.serveDistIntercom = () => browserSyncInit('./dist/intercom');
+exports.serveDistAdmin = () => browserSyncInit('./dist/admin');

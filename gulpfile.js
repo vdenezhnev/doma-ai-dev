@@ -9,6 +9,7 @@ exports.index = require('./build/index').default;
 exports.build = require('./build/build').default;
 exports.buildDev = require('./build/build').buildDev;
 exports.server = require('./build/server').default;
-exports.serveDist = require('./build/server').serveDist;
+exports.serveDistAdmin = require('./build/server').serveDistAdmin;
+exports.serveDistIntercom = require('./build/server').serveDistIntercom;
 
 exports.default = require('./build/server').default;
