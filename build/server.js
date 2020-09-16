@@ -12,16 +12,18 @@ function browserSyncInit(baseDir, browser) {
   // ];
 
   browserSync.instance = browserSync.init({
-    startPath: 'index-ru.html',
+    startPath: './index-ru.html',
     server: {
       baseDir: "dist/intercom",
       directory: true,
-      routes: {
-        // 'ru/intercom': '.',
-        // 'en/intercom': '.',
-        // 'ru/admin': 'admin',
-        // 'en/admin': 'admin',
-    }
+      middleware: [
+        proxyMiddleware('/api', {
+          target: 'https://apitest.smartairkey.com',
+          changeOrigin: true,
+          secure: true,
+          logLevel: 'debug'
+        })
+      ]
   },
     browser: browser,
     ui: {
