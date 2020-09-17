@@ -2,7 +2,8 @@ FROM node:14.10-alpine as build
 
 WORKDIR /acms
 COPY . .
-ENV API_HOST https://apitest.smartairkey.com/
+ARG API_HOST
+ENV API_HOST=${API_HOST} 
 RUN npm i
 
 RUN npm run build
