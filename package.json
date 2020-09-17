@@ -5,8 +5,11 @@
   "main": "Gruntfile.js",
   "dependencies": {},
   "scripts": {
-    "postinstall": "bower install",
     "build": "gulp build",
+    "build:dev": "gulp buildDev",
+    "serve:intercom": "gulp serveDistIntercom",
+    "serve:admin": "gulp serveDistAdmin",
+    "start": "gulp buildDev && gulp serveDistIntercom",
     "extract-i18n": "grunt nggettext_extract",
     "compile-i18n": "grunt nggettext_compile"
   },

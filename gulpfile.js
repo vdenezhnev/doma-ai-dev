@@ -1,3 +1,5 @@
+var gulp = require('gulp');
+
 exports.clean = require('./build/clean').default;
 exports.html = require('./build/html').default;
 exports.img = require('./build/img').default;
@@ -8,8 +10,10 @@ exports.index = require('./build/index').default;
 
 exports.build = require('./build/build').default;
 exports.buildDev = require('./build/build').buildDev;
-exports.server = require('./build/server').default;
 exports.serveDistAdmin = require('./build/server').serveDistAdmin;
 exports.serveDistIntercom = require('./build/server').serveDistIntercom;
 
-exports.default = require('./build/server').default;
+exports.default = gulp.series(
+    require('./build/build').buildDev,
+    require('./build/server').serveDistIntercom
+);

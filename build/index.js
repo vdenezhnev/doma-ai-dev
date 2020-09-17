@@ -7,10 +7,12 @@ const injectEnvs = require('gulp-inject-envs')
 var env = require('gulp-env');
 
 
-
 const index = () => {
     const distFolder = `dist/${process.env.FEATURE_NAME}`;
-    console.log(distFolder);
+    const injectionOptions = {
+        ignorePath: distFolder,
+        addRootSlash: false
+    }
     var target = gulp.src(`./${process.env.FEATURE_NAME}.html`);
     var styles = gulp.src([`./${distFolder}/**/*.css`], {read: false});
     var vendor = gulp.src([`./${distFolder}/**/vendor.js`], {read: false});
@@ -18,12 +20,12 @@ const index = () => {
     var httplog = gulp.src([`./${distFolder}/**/httplog.js`], {read: false});
 
     return target
-        .pipe(inject(styles, { ignorePath: distFolder, addRootSlash: false }))
-        .pipe(inject(vendor, { ignorePath: distFolder, addRootSlash: true, name: 'vendor' }))
-        .pipe(inject(bundle, { ignorePath: distFolder, addRootSlash: true, name: 'bundle' }))
+        .pipe(inject(styles, injectionOptions))
+        .pipe(inject(vendor, {...injectionOptions, name: 'vendor'}))
+        .pipe(inject(bundle, {...injectionOptions, name: 'bundle'}))
         .pipe(gulpif(
             process.env.DEBUG,
-            inject(httplog, { ignorePath: distFolder + '/', addRootSlash: true, name: 'httplog' }),
+            inject(httplog, {...injectionOptions, name: 'httplog'}),
             replace(/<script src="\/app\/common\/httplog\.js"><\/script>/gm, '')
         ))
         .pipe(injectEnvs({

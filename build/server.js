@@ -29,6 +29,5 @@ function browserSyncInit(baseDir, browser) {
   });
 }
 
-exports.default = () => browserSyncInit('./');
 exports.serveDistIntercom = () => browserSyncInit('./dist/intercom');
 exports.serveDistAdmin = () => browserSyncInit('./dist/admin');
