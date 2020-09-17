@@ -8,10 +8,10 @@ var env = require('gulp-env');
 
 
 const index = () => {
-    const distFolder = `dist/${process.env.FEATURE_NAME}`;
+    const distFolder = `dist/${process.env.LANGUAGE_CODE}/${process.env.FEATURE_NAME}`;
     const injectionOptions = {
-        ignorePath: distFolder,
-        addRootSlash: false
+        ignorePath: 'dist',
+        addRootSlash: true
     }
     var target = gulp.src(`./${process.env.FEATURE_NAME}.html`);
     var styles = gulp.src([`./${distFolder}/**/*.css`], {read: false});
@@ -33,7 +33,7 @@ const index = () => {
             BASE_HREF: `/${process.env.LANGUAGE_CODE}/${process.env.FEATURE_NAME}/`,
             ...(process.env.DEVMODE ? {BASE_HREF: '/'}: {})
         }))
-        .pipe(rename(`index-${process.env.LANGUAGE_CODE}.html`))
+        .pipe(rename(`index.html`))
         .pipe(gulp.dest(`./${distFolder}/`));
 };
 const setLocaleRu = async () => env({

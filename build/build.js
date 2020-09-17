@@ -15,6 +15,7 @@ const build = gulp.series(
     'img',
     'css',
     'js',
+    async () => gulp.src(`./dist/ru/${process.env.FEATURE_NAME}/*`).pipe(gulp.dest(`./dist/en/${process.env.FEATURE_NAME}`)),
     'index'
 );
 

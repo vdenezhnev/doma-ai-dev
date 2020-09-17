@@ -35,7 +35,7 @@
         </form>
 
         <form name="AccessObjectForm" ng-show="showForm == 'base'">
-            <ng-include src="'/app/intercom/views/access/point/form.html'"></ng-include>
+            <ng-include src="'app/intercom/views/access/point/form.html'"></ng-include>
 
             <div class="form-actions">
                 <button type="submit" class="btn blue" validation-submit="AccessObjectForm" ng-click="submit()" translate>html.defaults.save_title</button>
@@ -46,7 +46,7 @@
         <form name="DeviceDefaultKeySettings" ng-show="showForm == 'settings'" style="margin-top: 20px;">
             <div class="portlet-body form">
 
-                <ng-include src="'/app/intercom/views/access/point/form_default_key_settings.html'"></ng-include>
+                <ng-include src="'app/intercom/views/access/point/form_default_key_settings.html'"></ng-include>
 
                 <div class="form-actions">
                     <button type="submit" class="btn blue" validation-submit="DeviceDefaultKeySettings"

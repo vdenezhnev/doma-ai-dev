@@ -1,6 +1,6 @@
 const gulp = require('gulp');
 
 exports.default = gulp.series(
-    () => gulp.src('./fonts/*').pipe(gulp.dest(`./dist/${process.env.FEATURE_NAME}/fonts`)),
-    () => gulp.src('./fonts/Simple-Line-Icons.*').pipe(gulp.dest(`./dist/${process.env.FEATURE_NAME}/styles/fonts`))
+    () => gulp.src('./fonts/*').pipe(gulp.dest(`./dist/ru/${process.env.FEATURE_NAME}/fonts`)),
+    () => gulp.src('./fonts/Simple-Line-Icons.*').pipe(gulp.dest(`./dist/ru/${process.env.FEATURE_NAME}/styles/fonts`))
 );

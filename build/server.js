@@ -3,11 +3,10 @@ var browserSyncSpa = require('browser-sync-spa');
 
 var proxyMiddleware = require('http-proxy-middleware').createProxyMiddleware;
 
-function browserSyncInit(baseDir, browser) {
-  browser = browser === undefined ? 'default' : browser;
+function browserSyncInit(baseDir, startPath) {
 
   browserSync.instance = browserSync.init({
-    startPath: './index-ru.html',
+    startPath: startPath,
     server: {
       baseDir: baseDir,
       directory: true,
@@ -20,7 +19,7 @@ function browserSyncInit(baseDir, browser) {
         })
       ]
   },
-    browser: browser,
+    browser: 'default',
     ui: {
       port: 4001
     },
@@ -29,5 +28,7 @@ function browserSyncInit(baseDir, browser) {
   });
 }
 
-exports.serveDistIntercom = () => browserSyncInit('./dist/intercom');
-exports.serveDistAdmin = () => browserSyncInit('./dist/admin');
+exports.serveDist = () => browserSyncInit('./dist', 'ru/admin/index.html')
+
+exports.serveDistIntercom = () => browserSyncInit('./dist', 'ru/intercom/index.html');
+exports.serveDistAdmin = () => browserSyncInit('./dist', 'ru/admin/index.html');

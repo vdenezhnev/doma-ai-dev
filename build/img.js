@@ -1,4 +1,8 @@
 const gulp = require('gulp');
 
-exports.default = () => gulp.src('./img/*')
-    .pipe(gulp.dest(`./dist/${process.env.FEATURE_NAME}/img/`));
+exports.default = gulp.series(
+    () => gulp.src('./img/*')
+        .pipe(gulp.dest(`./dist/ru/${process.env.FEATURE_NAME}/img/`)),
+    () => gulp.src('./icon.png')
+        .pipe(gulp.dest(`./dist/ru/${process.env.FEATURE_NAME}/`)),
+);

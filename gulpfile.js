@@ -12,8 +12,3 @@ exports.build = require('./build/build').default;
 exports.buildDev = require('./build/build').buildDev;
 exports.serveDistAdmin = require('./build/server').serveDistAdmin;
 exports.serveDistIntercom = require('./build/server').serveDistIntercom;
-
-exports.default = gulp.series(
-    require('./build/build').buildDev,
-    require('./build/server').serveDistIntercom
-);
