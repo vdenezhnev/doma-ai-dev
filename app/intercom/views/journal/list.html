@@ -15,7 +15,7 @@
                         <th width="300px" translate>html.journal.access_point_display</th>
                     </tr>
                     <tr class="active">
-                        <th style="vertical-align: middle" class="filter-date form-inline">
+                        <th style="vertical-align: top" class="filter-date form-inline">
                             <span class="dropdown">
                                 <a  class="dropdown-toggle" id="from-date" role="button" data-toggle="dropdown" data-target="#" href="#">
                                     <input class="form-control input-small text-center" readonly placeholder="{{ 'html.journal.date_from_display' | translate }}" value="{{ filter.From | date:'dd-MM-yyyy' }}">
@@ -54,7 +54,7 @@
                             </div>-->
                         </th>
 
-                        <th>
+                        <th style="vertical-align: top">
                             <div class="input-group">
                                 <input class="form-control" ng-model="filter.UserPhoneNumber" ng-model-options="{updateOn: 'blur'}">
                                 <span class="input-group-btn">

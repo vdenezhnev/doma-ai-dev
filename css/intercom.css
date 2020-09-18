@@ -106,10 +106,11 @@ table th.filter-date a:hover {
 }
 .select2-box .ui-select-toggle {
     overflow: hidden;
+    height: auto;
+    min-height: 34px;
 }
 .select2-box .ui-select-match-text {
-    overflow: hidden;
-    text-overflow: ellipsis;
+    white-space: normal;
 }
 .select2-box .ui-select-bootstrap .ui-select-choices-row>a {
     white-space: normal;
