@@ -30,8 +30,7 @@ const index = () => {
         ))
         .pipe(injectEnvs({
             ...process.env,
-            BASE_HREF: `/${process.env.LANGUAGE_CODE}/${process.env.FEATURE_NAME}/`,
-            ...(process.env.DEVMODE ? {BASE_HREF: '/'}: {})
+            BASE_HREF: `/${process.env.LANGUAGE_CODE}/${process.env.FEATURE_NAME}/`
         }))
         .pipe(rename(`index.html`))
         .pipe(gulp.dest(`./${distFolder}/`));

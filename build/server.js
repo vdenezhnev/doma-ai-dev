@@ -1,10 +1,15 @@
 var browserSync = require('browser-sync');
-var browserSyncSpa = require('browser-sync-spa');
+var spa = require('browser-sync-spa');
 
 var proxyMiddleware = require('http-proxy-middleware').createProxyMiddleware;
 
 function browserSyncInit(baseDir, startPath) {
-
+  browserSync.use(spa({
+    selector: "[ng-app]",
+    history: {
+      index: startPath + '/index.html'
+    }
+  }))
   browserSync.instance = browserSync.init({
     startPath: startPath,
     server: {
@@ -17,8 +22,8 @@ function browserSyncInit(baseDir, startPath) {
           secure: true,
           logLevel: 'debug'
         })
-      ]
-  },
+      ],
+    },
     browser: 'default',
     ui: {
       port: 4001
@@ -28,7 +33,7 @@ function browserSyncInit(baseDir, startPath) {
   });
 }
 
-exports.serveDist = () => browserSyncInit('./dist', 'ru/admin/index.html')
+exports.serveDist = () => browserSyncInit('./dist', 'ru/intercom')
 
-exports.serveDistIntercom = () => browserSyncInit('./dist', 'ru/intercom/index.html');
-exports.serveDistAdmin = () => browserSyncInit('./dist', 'ru/admin/index.html');
+exports.serveDistIntercom = () => browserSyncInit('./dist', 'ru/intercom');
+exports.serveDistAdmin = () => browserSyncInit('./dist', 'ru/admin');
