@@ -47,7 +47,8 @@ exports.buildDev = gulp.series(
         DEVMODE: true,
     }),
     buildIntercom,
-    buildAdmin
+    buildAdmin,
+    async () => gulp.src(`./dist/ru/intercom/index.html`).pipe(gulp.dest(`./dist`)),
 )
 exports.default = gulp.series(
     'clean',

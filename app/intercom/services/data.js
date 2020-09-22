@@ -7,6 +7,7 @@ app.service('DataService', ['$rootScope', '$q', '$http', 'Tariff', 'Address', 'A
         this.objects = {};
         this.accessObjects = {};
         this.accessPoints = {};
+        this.accessObjectsAreLoaded;
         var self = this;
 
         function loadData(factory) {
@@ -119,8 +120,11 @@ app.service('DataService', ['$rootScope', '$q', '$http', 'Tariff', 'Address', 'A
                 self.addresses = addresses;
             });
     
+            var deferred = $q.defer();
+            this.accessObjectsAreLoaded = deferred.promise;
             loadAccessObjects().then(function(accessObjects) {
                 self.objects = accessObjects;
+                deferred.resolve();
             });
 
             loadData(AccessPoint).then(function(accessPoints) {

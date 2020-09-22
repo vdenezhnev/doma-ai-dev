@@ -62,7 +62,7 @@ app.directive('selectAccessObject', ['DataService', function(DataService) {
     };
 }]);
 
-app.directive('selectAccessPoint', ['DataService', function(DataService) {
+app.directive('selectAccessPoint', ['DataService', '$timeout', function(DataService, timeout) {
     return {
         restrict: 'AE',
         link: function (scope, elem, attrs, ngModel) {
@@ -70,6 +70,8 @@ app.directive('selectAccessPoint', ['DataService', function(DataService) {
             scope.selected = {
                 value: null
             };
+            scope.isOpened = false;
+            scope.search = '';
 
             scope.getLabel = function (accessPoint) {
                 var label = '';
@@ -83,22 +85,25 @@ app.directive('selectAccessPoint', ['DataService', function(DataService) {
             scope.$watch(function () {
                 return DataService.accessPoints
             }, function (newVal) {
-                var items = [];
-                if (!_.isEmpty(newVal)) {
-                    console.log(newVal);
-                    for (var key in newVal) {
-                        items.push({
-                            id: newVal[key].id,
-                            name: scope.getLabel(newVal[key])
-                        });
-                    }
-                }
-                scope.items = items;
+                DataService.accessObjectsAreLoaded
+                    .then(() => {
+                        var items = [];
+                        if (!_.isEmpty(newVal)) {
+                            console.log(newVal);
+                            for (var key in newVal) {
+                                items.push({
+                                    id: newVal[key].id,
+                                    name: scope.getLabel(newVal[key])
+                                });
+                            }
+                        }
+                        scope.items = items;
+                    });
             });
 
             scope.$watchCollection('selected', function (newVal) {
-                if (newVal.value) {
-                    ngModel.$setViewValue(newVal.value.id);
+                if (newVal) {
+                    ngModel.$setViewValue(newVal.id);
                 }
                 else {
                     ngModel.$setViewValue(null);
@@ -110,22 +115,54 @@ app.directive('selectAccessPoint', ['DataService', function(DataService) {
                     value: null
                 };
             }
-            // <select ng-model="ngSelectModel" class="form-control" ng-options="accessPoint.id as getLabel(accessPoint) for accessPoint in accessPoints"><option></option></select>
+            scope.selectItem = item => {
+                scope.selected = item;
+                scope.search = '';
+                scope.isOpened = false;
+            };
+            scope.open = () => {
+                scope.isOpened = true;
+                timeout(() => {
+                    const input = elem.find('input')[0];
+                    input.focus();
+                });
+            };
+            scope.close = () => {
+                scope.isOpened = false;
+            };
         },
         replace: true,
         require: 'ngModel',
         template: `
-        <span class="select2-box">
-            <ui-select ng-model="selected.value">
-                <ui-select-match>
-                    <span ng-bind="$select.selected.name"></span>
-                </ui-select-match>
-                <ui-select-choices repeat="item in (items | filter: $select.search) track by item.id">
-                    <span ng-bind="item.name"></span>
-                </ui-select-choices>
-            </ui-select>
-            <span class="btn btn-default btn-trash" ng-click="reset()"><i class="fa fa-trash"/></span>
-        </span>
+            <div class="control-wrapper">
+                <div class="select-wrapper">
+                    <span
+                        ng-click="open()"
+                        class="form-control"
+                    >
+                        {{isOpened ? '' : selected.name}}
+                        <i class="select-toggle-icon fa fa-angle-down"/>
+                    </span>
+
+                    <div class="select-box" ng-if="isOpened">
+                        <input
+                            type="text"
+                            ng-model="search"
+                            ng-blur="close()"
+                            class="form-control"
+                            placeholder="Выберите точку доступа">
+                        <div class="select-popup">
+                            <div
+                                class="select-option"
+                                ng-repeat="item in items | filter:{name: search} track by item.id"
+                                ng-mousedown="selectItem(item)">
+                                {{item.name}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <span class="btn btn-default btn-trash" ng-click="reset()"><i class="fa fa-trash"/></span>
+            </div>
         `
     };
 }]);
@@ -142,7 +179,6 @@ app.directive('accessObjects', ['DataService', function(DataService) {
                 if (scope.perimeterClick)
                     scope.perimeterClick({perimeter: perimeter, model: scope.perimeterModel})
             };
-            
         },
         replace: true,
         scope: {

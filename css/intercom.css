@@ -93,25 +93,58 @@ table th.filter-date a:hover {
     width: 450px;
 }
 
-.select2-box {
+.control-wrapper {
+    display: flex;
+}
+
+.control-wrapper .btn.btn-trash {
+    display: inline-block;
+    align-self: flex-start;
+    margin-left: 10px;
+}
+
+.select-wrapper {
     width: 350px;
+    position: relative;
+    cursor: pointer;
 }
-.select2-box .ui-select-container {
-    width: 300px;
-    display: inline-block;
-    margin-right: 10px;
+
+.select-wrapper .select-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
 }
-.select2-box .btn-trash {
-    display: inline-block;
-}
-.select2-box .ui-select-toggle {
-    overflow: hidden;
+.select-wrapper span.form-control {
+    white-space: normal;
     height: auto;
     min-height: 34px;
 }
-.select2-box .ui-select-match-text {
-    white-space: normal;
+.select-wrapper span.form-control .select-toggle-icon {
+    position: absolute;
+    top: 25%;
+    right: 10px;
 }
-.select2-box .ui-select-bootstrap .ui-select-choices-row>a {
+
+.select-wrapper .select-popup {
+    overflow-y: scroll;
+    max-height: 300px;
+    width: 100%;
+    border: 1px solid #ccc;
+    background-color: white;
+    box-shadow: 5px 5px rgba(102,102,102,.1);
+}
+.select-wrapper .select-popup:empty {
+    display: none;
+}
+
+.select-wrapper .select-popup .select-option {
+    padding: 6px 12px;
+    width: 100%;
+    overflow: hidden;
     white-space: normal;
+    cursor: pointer;
+}
+.select-wrapper .select-popup .select-option:hover {
+    background-color: #f5f5f5;
 }

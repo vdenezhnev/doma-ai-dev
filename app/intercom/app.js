@@ -16,7 +16,6 @@ var app = angular.module('app', [
     'ui.bootstrap.datetimepicker',
     'angularMoment',
     'smartkey.validation-rule',
-    'ui.select',
     'ngSanitize'
 ]);
 
