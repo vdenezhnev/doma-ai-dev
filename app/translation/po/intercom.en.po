@@ -12,6 +12,38 @@ msgstr ""
 "X-Generator: Poedit 2.2.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: app/intercom/views/journal/list.html:16
+msgid "html.journal.key_type_display"
+msgstr "Key type"
+
+#: app/intercom/views/journal/list.html:18
+msgid "html.journal.lock_access_types_display"
+msgstr "Lock access type"
+
+#: app/intercom/controllers/JournalControllers.js:20
+msgid "keyTypes.button"
+msgstr "Exit button"
+
+#: app/intercom/controllers/JournalControllers.js:17
+msgid "keyTypes.card"
+msgstr "Card"
+
+#: app/intercom/controllers/JournalControllers.js:21
+msgid "keyTypes.mobile"
+msgstr "Opening by mobile"
+
+#: app/intercom/controllers/JournalControllers.js:18
+msgid "keyTypes.remote"
+msgstr "Remote opening"
+
+#: app/intercom/controllers/JournalControllers.js:25
+msgid "lockAccessTypes.accessDenied"
+msgstr "Access denied"
+
+#: app/intercom/controllers/JournalControllers.js:24
+msgid "lockAccessTypes.opened"
+msgstr "Access granted"
+
 #: app/intercom/views/payments/list.html:45
 #: app/intercom/views/payments/list.html:60
 msgid "<i class=\"fa fa-close\"></i>"

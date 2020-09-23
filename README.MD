@@ -2,18 +2,13 @@
 ## Установка
 `npm i`
 ## Запуск
-`npx gulp serveDist`
+`npm start`
 ## Сборка
-Запустить `npm run build`, в папке dist появятся 2 бандла intercom и admin. При этом в каждой папке будет по два index.html.
-Локализация версий приложений отличается только этими двумя файлами. Поэтому на стенде нужно настроить прокси след образом
-
- - /ru/intercom -> intercom/index-ru.html в качестве index.html, вся остальная статика из intercom
- - /en/intercom -> intercom/index-en.html в качестве index.html, вся остальная статика из intercom
- - /ru/admin -> admin/index-ru.html в качестве index.html, вся остальная статика из admin, англ локали нет
- - /en/admin -> ru/admin
+Запустить `npm run build`, в папке dist появятся 2 папки ru и en, внутри которых по бандлу для intercom и admin. При этом в каждой папке будет свой index.html.
+Локализация версий приложений отличается только файликами index.html, но для удобства сборки и сервинга на стенде генирится по папки для каждой локали.
 
 ## Локализация
-Все локали хранятся в `app/translation/po` и `app/translation/po`. При необходимости добавления новые текстовок
+Все локали хранятся в `app/translation/po`. При необходимости добавления новые текстовок
 В `html` добавляется илентификатор вместо текста и тег `translate`:
 ```html
 <h1 class="page-title" translate>html.abonent.new_title</h1>

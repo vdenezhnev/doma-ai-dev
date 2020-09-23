@@ -12,13 +12,12 @@ function browserSyncInit(baseDir, startPath) {
   }))
   browserSync.instance = browserSync.init({
     startPath: startPath,
-    watch: true,
     server: {
       baseDir: baseDir,
       directory: true,
       middleware: [
         proxyMiddleware('/api', {
-          target: 'https://apitest.smartairkey.com',
+          target: 'https://apidev.smartairkey.com',
           changeOrigin: true,
           secure: true,
           logLevel: 'debug'

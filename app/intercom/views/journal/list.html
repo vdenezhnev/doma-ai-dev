@@ -9,9 +9,11 @@
             <table class="table table-hover table-bordered">
                 <thead>
                     <tr>
-                        <th translate width="420px">html.journal.date_and_time_display</th>
+                        <th width="420px" translate>html.journal.date_and_time_display</th>
                         <th width="320px" translate>html.journal.user_display</th>
-                        <th translate>html.journal.phone_number_display</th>
+                        <th width="180px" translate>html.journal.phone_number_display</th>
+                        <th translate>html.journal.key_type_display</th>
+                        <th translate>html.journal.lock_access_types_display</th>
                         <th width="300px" translate>html.journal.access_point_display</th>
                     </tr>
                     <tr class="active">
@@ -64,6 +66,28 @@
                                 </span>
                             </div>
                         </th>
+                        <th style="vertical-align: top">
+                            <select
+                                ng-model="filter.keyType"
+                                class="form-control">
+                                <option></option>
+                                <option
+                                    ng-repeat="(key, value) in keyTypes track by $index"
+                                    ng-selected="{{key===filter.keyType}}"
+                                    value="{{::key}}">{{value}}</option>
+                            </select>
+                        </th>
+                        <th style="vertical-align: top">
+                            <select
+                                ng-model="filter.LockAccessType"
+                                class="form-control">
+                                <option></option>
+                                <option
+                                    ng-repeat="(key, value) in lockAccessTypes track by $index"
+                                    ng-selected="{{key===filter.lockAccessType}}"
+                                    value="{{::key}}">{{::value}}</option>
+                            </select>
+                        </th>
                         <th>
                             <select-access-point ng-model="filter.AccessPointId"></select-access-point>
                         </th>
@@ -74,6 +98,8 @@
                         <td>{{ journal.when | amUtc | amLocal | amDateFormat:'DD.MM.YYYY HH:mm' }}</td>
                         <td>{{ journal.userDisplayName }}</td>
                         <td>{{ journal.userPhoneNumber }}</td>
+                        <td>{{ keyTypes[journal.keyType] }}</td>
+                        <td>{{ lockAccessTypes[journal.lockAccessType] }}</td>
                         <td>{{ journal.lockDisplayName }}</td>
                     </tr>
                 </tbody>

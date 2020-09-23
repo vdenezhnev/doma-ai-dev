@@ -13,6 +13,38 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
+#: app/intercom/views/journal/list.html:16
+msgid "html.journal.key_type_display"
+msgstr "Тип идентификатора"
+
+#: app/intercom/views/journal/list.html:18
+msgid "html.journal.lock_access_types_display"
+msgstr "Результат доступа"
+
+#: app/intercom/controllers/JournalControllers.js:20
+msgid "keyTypes.button"
+msgstr "Кнопка выхода"
+
+#: app/intercom/controllers/JournalControllers.js:17
+msgid "keyTypes.card"
+msgstr "Карта"
+
+#: app/intercom/controllers/JournalControllers.js:21
+msgid "keyTypes.mobile"
+msgstr "Открытие с мобильного устройства"
+
+#: app/intercom/controllers/JournalControllers.js:18
+msgid "keyTypes.remote"
+msgstr "Удаленное открытие"
+
+#: app/intercom/controllers/JournalControllers.js:25
+msgid "lockAccessTypes.accessDenied"
+msgstr "Отказ доступа"
+
+#: app/intercom/controllers/JournalControllers.js:24
+msgid "lockAccessTypes.opened"
+msgstr "Предоставление доступа"
+
 #: app/intercom/views/payments/list.html:45
 #: app/intercom/views/payments/list.html:60
 msgid "<i class=\"fa fa-close\"></i>"

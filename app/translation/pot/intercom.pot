@@ -611,7 +611,7 @@ msgstr ""
 
 #: app/intercom/views/abonent/list.html:41
 #: app/intercom/views/access_right/list.html:57
-#: app/intercom/views/journal/list.html:84
+#: app/intercom/views/journal/list.html:112
 #: app/intercom/views/payments/list.html:94
 msgid "html.defaults.load_more"
 msgstr ""
@@ -626,7 +626,7 @@ msgstr ""
 msgid "html.defaults.remove_title"
 msgstr ""
 
-#: app/intercom/views/journal/list.html:42
+#: app/intercom/views/journal/list.html:46
 msgid "html.defaults.reset_title"
 msgstr ""
 
@@ -751,7 +751,7 @@ msgstr ""
 msgid "html.device.settings_form.keepOpenedWhileStayingNear"
 msgstr ""
 
-#: app/intercom/views/journal/list.html:15
+#: app/intercom/views/journal/list.html:19
 msgid "html.journal.access_point_display"
 msgstr ""
 
@@ -760,19 +760,27 @@ msgid "html.journal.date_and_time_display"
 msgstr ""
 
 #: app/intercom/views/abonent/form.html:246
-#: app/intercom/views/journal/list.html:21
+#: app/intercom/views/journal/list.html:25
 #: app/intercom/views/payment/list.html:18
 msgid "html.journal.date_from_display"
 msgstr ""
 
 #: app/intercom/views/abonent/form.html:261
-#: app/intercom/views/journal/list.html:33
+#: app/intercom/views/journal/list.html:37
 #: app/intercom/views/payment/list.html:35
 msgid "html.journal.date_to_display"
 msgstr ""
 
+#: app/intercom/views/journal/list.html:16
+msgid "html.journal.key_type_display"
+msgstr ""
+
 #: app/intercom/views/journal/list.html:3
 msgid "html.journal.list_title"
+msgstr ""
+
+#: app/intercom/views/journal/list.html:18
+msgid "html.journal.lock_access_types_display"
 msgstr ""
 
 #: app/intercom/views/journal/list.html:14
@@ -970,6 +978,30 @@ msgstr ""
 msgid "html.toolbar.settings"
 msgstr ""
 
+#: app/intercom/controllers/JournalControllers.js:20
+msgid "keyTypes.button"
+msgstr ""
+
+#: app/intercom/controllers/JournalControllers.js:17
+msgid "keyTypes.card"
+msgstr ""
+
+#: app/intercom/controllers/JournalControllers.js:21
+msgid "keyTypes.mobile"
+msgstr ""
+
+#: app/intercom/controllers/JournalControllers.js:18
+msgid "keyTypes.remote"
+msgstr ""
+
+#: app/intercom/controllers/JournalControllers.js:25
+msgid "lockAccessTypes.accessDenied"
+msgstr ""
+
+#: app/intercom/controllers/JournalControllers.js:24
+msgid "lockAccessTypes.opened"
+msgstr ""
+
 #: app/intercom/controllers/AddressControllers.js:15
 msgid "notify.addresses.created"
 msgstr ""
@@ -982,7 +1014,7 @@ msgstr ""
 msgid "notify.defaults.are_you_sure"
 msgstr ""
 
-#: app/intercom/app.js:84
+#: app/intercom/app.js:83
 msgid "notify.defaults.changes_will_not_be_saved"
 msgstr ""
 

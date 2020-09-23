@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('JournalListCtrl', ['$scope', '$http', 'Journal',
-    function($scope, $http, Journal) {
+app.controller('JournalListCtrl', ['$scope', '$http', 'Journal', 'gettextCatalog',
+    function($scope, $http, Journal, gettextCatalog) {
 
         $scope.filter = {
             Take: 25,
@@ -12,6 +12,18 @@ app.controller('JournalListCtrl', ['$scope', '$http', 'Journal',
         $scope.total = 0;
         $scope.canLoadMode = false;
         $scope.journals = [];
+        $scope.keyTypes = {
+            ble: 'Bluetooth',
+            card: gettextCatalog.getString('keyTypes.card'),
+            remote: gettextCatalog.getString('keyTypes.remote'),
+            gsm: 'GSM',
+            button: gettextCatalog.getString('keyTypes.button'),
+            mobile: gettextCatalog.getString('keyTypes.mobile')
+        };
+        $scope.lockAccessTypes = {
+            opened: gettextCatalog.getString('lockAccessTypes.opened'),
+            accessDenied: gettextCatalog.getString('lockAccessTypes.accessDenied')
+        }
 
         function modify_filter(filter) {
             if (filter.From) {
