@@ -12,6 +12,7 @@ function browserSyncInit(baseDir, startPath) {
   }))
   browserSync.instance = browserSync.init({
     startPath: startPath,
+    watch: true,
     server: {
       baseDir: baseDir,
       directory: true,
