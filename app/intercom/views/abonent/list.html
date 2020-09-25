@@ -4,7 +4,17 @@
 <div class="row">
     <div class="col-md-12">
 
-        <a ui-sref="admin.abonent.create" class="btn default uppercase" translate>html.abonent.add_title</a>
+        <div class="abonent-toolbar">
+            <a ui-sref="admin.abonent.create" class="btn default uppercase" translate>html.abonent.add_title</a>
+            <div class="import-toolbar">
+                <button ng-click="downloadTemplate()" class="btn default uppercase" translate>html.abonent.download_template_title</button>
+                <button class="btn default uppercase import-btn-wrapper">
+                    <span translate>html.abonent.import_title</span>
+                    <input type="file" class="import-btn-input" file="importedFile">
+                </button>
+                <span class="fa fa-info import-info-title" title={{importInfoTitle}}></span>
+            </div>
+        </div>
 
         <div class="table-scrollable">
             <table class="table table-hover table-bordered table-tr-hover">

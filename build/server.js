@@ -24,7 +24,6 @@ function browserSyncInit(baseDir, startPath) {
         })
       ],
     },
-    browser: 'default',
     ui: {
       port: 4001
     },

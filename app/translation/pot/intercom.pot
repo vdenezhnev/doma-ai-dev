@@ -21,15 +21,15 @@ msgstr ""
 msgid "LockMaintenancePeriod"
 msgstr ""
 
-#: app/intercom/controllers/AbonentControllers.js:74
+#: app/intercom/controllers/AbonentControllers.js:88
 msgid "abonents.abonent_delete_confirm"
 msgstr ""
 
-#: app/intercom/controllers/AbonentControllers.js:76
+#: app/intercom/controllers/AbonentControllers.js:90
 msgid "abonents.abonent_deleted"
 msgstr ""
 
-#: app/intercom/controllers/AbonentControllers.js:67
+#: app/intercom/controllers/AbonentControllers.js:81
 msgid "abonents.abonent_updated"
 msgstr ""
 
@@ -80,7 +80,7 @@ msgstr ""
 msgid "devices.device_updated"
 msgstr ""
 
-#: app/intercom/views/abonent/list.html:7
+#: app/intercom/views/abonent/list.html:8
 msgid "html.abonent.add_title"
 msgstr ""
 
@@ -92,7 +92,7 @@ msgstr ""
 msgid "html.abonent.admin_display"
 msgstr ""
 
-#: app/intercom/views/abonent/list.html:15
+#: app/intercom/views/abonent/list.html:25
 msgid "html.abonent.building_display"
 msgstr ""
 
@@ -116,6 +116,10 @@ msgstr ""
 msgid "html.abonent.detail_title"
 msgstr ""
 
+#: app/intercom/views/abonent/list.html:10
+msgid "html.abonent.download_template_title"
+msgstr ""
+
 #: app/intercom/views/abonent/form.html:219
 msgid "html.abonent.end_period"
 msgstr ""
@@ -124,8 +128,12 @@ msgstr ""
 msgid "html.abonent.external_id_display"
 msgstr ""
 
-#: app/intercom/views/abonent/list.html:16
+#: app/intercom/views/abonent/list.html:26
 msgid "html.abonent.flat_display"
+msgstr ""
+
+#: app/intercom/views/abonent/list.html:12
+msgid "html.abonent.import_title"
 msgstr ""
 
 #: app/intercom/views/abonent/form.html:66
@@ -137,7 +145,7 @@ msgid "html.abonent.list_title"
 msgstr ""
 
 #: app/intercom/views/abonent/form.html:7
-#: app/intercom/views/abonent/list.html:13
+#: app/intercom/views/abonent/list.html:23
 msgid "html.abonent.name_display"
 msgstr ""
 
@@ -159,7 +167,7 @@ msgid "html.abonent.perimeters_title"
 msgstr ""
 
 #: app/intercom/views/abonent/form.html:12
-#: app/intercom/views/abonent/list.html:14
+#: app/intercom/views/abonent/list.html:24
 msgid "html.abonent.phone_display"
 msgstr ""
 
@@ -609,9 +617,9 @@ msgstr ""
 msgid "html.defaults.from_title"
 msgstr ""
 
-#: app/intercom/views/abonent/list.html:41
+#: app/intercom/views/abonent/list.html:51
 #: app/intercom/views/access_right/list.html:57
-#: app/intercom/views/journal/list.html:112
+#: app/intercom/views/journal/list.html:110
 #: app/intercom/views/payments/list.html:94
 msgid "html.defaults.load_more"
 msgstr ""
@@ -626,7 +634,7 @@ msgstr ""
 msgid "html.defaults.remove_title"
 msgstr ""
 
-#: app/intercom/views/journal/list.html:46
+#: app/intercom/views/journal/list.html:44
 msgid "html.defaults.reset_title"
 msgstr ""
 
@@ -751,7 +759,7 @@ msgstr ""
 msgid "html.device.settings_form.keepOpenedWhileStayingNear"
 msgstr ""
 
-#: app/intercom/views/journal/list.html:19
+#: app/intercom/views/journal/list.html:17
 msgid "html.journal.access_point_display"
 msgstr ""
 
@@ -760,18 +768,18 @@ msgid "html.journal.date_and_time_display"
 msgstr ""
 
 #: app/intercom/views/abonent/form.html:246
-#: app/intercom/views/journal/list.html:25
+#: app/intercom/views/journal/list.html:23
 #: app/intercom/views/payment/list.html:18
 msgid "html.journal.date_from_display"
 msgstr ""
 
 #: app/intercom/views/abonent/form.html:261
-#: app/intercom/views/journal/list.html:37
+#: app/intercom/views/journal/list.html:35
 #: app/intercom/views/payment/list.html:35
 msgid "html.journal.date_to_display"
 msgstr ""
 
-#: app/intercom/views/journal/list.html:16
+#: app/intercom/views/journal/list.html:15
 msgid "html.journal.key_type_display"
 msgstr ""
 
@@ -779,7 +787,7 @@ msgstr ""
 msgid "html.journal.list_title"
 msgstr ""
 
-#: app/intercom/views/journal/list.html:18
+#: app/intercom/views/journal/list.html:16
 msgid "html.journal.lock_access_types_display"
 msgstr ""
 
@@ -976,6 +984,10 @@ msgstr ""
 
 #: app/intercom/views/inc/toolbar.html:23
 msgid "html.toolbar.settings"
+msgstr ""
+
+#: app/intercom/controllers/AbonentControllers.js:11
+msgid "importInfoTitle"
 msgstr ""
 
 #: app/intercom/controllers/JournalControllers.js:20

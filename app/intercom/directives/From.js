@@ -89,7 +89,6 @@ app.directive('selectAccessPoint', ['DataService', '$timeout', function(DataServ
                     .then(() => {
                         var items = [];
                         if (!_.isEmpty(newVal)) {
-                            console.log(newVal);
                             for (var key in newVal) {
                                 items.push({
                                     id: newVal[key].id,
@@ -254,3 +253,21 @@ app.directive('mask', function(){
         }
     };
 });
+
+app.directive('file', [function () {
+    return {
+        scope: {
+            file: '='
+        },
+        link: function (scope, element, attributes) {
+            element.bind('change', function (changeEvent) {
+                scope.$apply(function () {
+                    console.log(changeEvent.target.files[0])
+                    scope.file = changeEvent.target.files[0];
+                    // or all selected files:
+                    // scope.fileread = changeEvent.target.files;
+                });
+            });
+        }
+    }
+}]);

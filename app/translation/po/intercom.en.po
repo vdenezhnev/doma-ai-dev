@@ -44,6 +44,18 @@ msgstr "Access denied"
 msgid "lockAccessTypes.opened"
 msgstr "Access granted"
 
+#: app/intercom/views/abonent/list.html:11
+msgid "html.abonent.download_template_title"
+msgstr "Download template of file for import"
+
+#: app/intercom/views/abonent/list.html:10
+msgid "html.abonenst.import_title"
+msgstr "Import subscribers"
+
+#: app/intercom/controllers/AbonentControllers.js:11
+msgid "importInfoTitle"
+msgstr "To successfully upload Subscribers, download the proposed template and fill in all the fields. Save the file and load it by clicking on the "Import subscribers" button. If you already have a file with a list of subscribers, copy the information from it into the proposed template to avoid errors during import."
+
 #: app/intercom/views/payments/list.html:45
 #: app/intercom/views/payments/list.html:60
 msgid "<i class=\"fa fa-close\"></i>"

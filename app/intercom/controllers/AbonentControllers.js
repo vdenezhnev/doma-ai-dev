@@ -1,12 +1,14 @@
 'use strict';
 
-app.controller('AbonentListCtrl', ['$scope', 'Abonent', 'Address', 'AccessObject',
-    function($scope, Abonent, Address, AccessObject) {
+app.controller('AbonentListCtrl', ['$scope', 'Abonent', 'gettextCatalog',
+    function($scope, Abonent, gettextCatalog) {
         $scope.filter = {};
         $scope.take = 20;
         $scope.objects = [];
         $scope.skip = 0;
         $scope.isLoadedAll = false;
+        $scope.importedFile = null;
+        $scope.importInfoTitle = gettextCatalog.getString('importInfoTitle')
 
         $scope.loadObjects = function(reset) {
             Abonent.query(angular.extend({skip: $scope.skip, take: $scope.take}, $scope.filter)).$promise.then(function(response){
@@ -29,8 +31,20 @@ app.controller('AbonentListCtrl', ['$scope', 'Abonent', 'Address', 'AccessObject
                 $scope.loadObjects(true);
             }
         });
+        $scope.$watchCollection('importedFile', function(newVal, oldVal){
+            if (newVal !== oldVal) {
+                console.log(newVal);
+                const fd = new FormData();
+                fd.append('file', newVal);
+                $scope.skip = 0;
+                Abonent.import(fd).$promise
+                    .then(() => $scope.loadObjects(true));
+            }
+        });
 
         $scope.loadObjects();
+
+        $scope.downloadTemplate = () => window.open('assets/abonent-import-template.xlsx', '_blank');
     }
 ]);
 

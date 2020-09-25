@@ -148,3 +148,37 @@ table th.filter-date a:hover {
 .select-wrapper .select-popup .select-option:hover {
     background-color: #f5f5f5;
 }
+.abonent-toolbar {
+    display: flex;
+    justify-content: space-between;
+}
+.import-toolbar {
+    display: inline-flex;
+    align-items: center;
+}
+.import-btn-wrapper {
+    position: relative;
+    margin: 0 8px;
+}
+.import-btn-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    font-size: 0;
+    width: 100%;
+    cursor: pointer;
+}
+
+.import-info-title {
+    width: 24px;
+    height: 24px;
+    background-color: #666;
+    color: white;
+    border-radius: 50% !important;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+}

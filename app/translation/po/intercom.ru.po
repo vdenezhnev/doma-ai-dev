@@ -45,6 +45,19 @@ msgstr "Отказ доступа"
 msgid "lockAccessTypes.opened"
 msgstr "Предоставление доступа"
 
+#: app/intercom/views/abonent/list.html:11
+msgid "html.abonent.download_template_title"
+msgstr "Скачать шаблон импорта"
+
+#: app/intercom/views/abonent/list.html:10
+msgid "html.abonent.import_title"
+msgstr "Импорт абонентов"
+
+#: app/intercom/controllers/AbonentControllers.js:11
+msgid "importInfoTitle"
+msgstr "Для успешной загрузки Абонентов скачайте предложенный шаблон и заполните все поля. Сохраните файл и загрузите, нажав на кнопку "Импорт абонентов". Если у вас уже есть файл со списком абонентов, скопируйте информацию из него в предложенный шаблон для избежания ошибок при импорте."
+
+
 #: app/intercom/views/payments/list.html:45
 #: app/intercom/views/payments/list.html:60
 msgid "<i class=\"fa fa-close\"></i>"

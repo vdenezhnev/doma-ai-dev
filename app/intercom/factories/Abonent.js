@@ -24,6 +24,12 @@ app.factory('Abonent', ['$resource', 'Address', 'settings', function($resource, 
                     abonentId: data.id
                 });
             }
+        },
+        import: {
+            url: settings.API_URL + '?action=ImportAbonents',
+            method: 'POST',
+            transformRequest: angular.identity,
+            headers: {'Content-Type': undefined}
         }
     });
 
