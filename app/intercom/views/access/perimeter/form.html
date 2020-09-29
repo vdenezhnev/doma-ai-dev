@@ -10,6 +10,10 @@
         <input class="form-control" name="includedKeys" ng-model="perimeter.description">
     </div>
 
+    <div style="margin-bottom: 15px">
+        <a ng-click="openQrModalWindow()" class="btn default" translate>html.access.perimeter.form.generateQR</a>
+    </div>
+
     <div ng-if="perimeter.id">
         <div class="form-group">
             <label>

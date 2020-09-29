@@ -39,6 +39,12 @@ app.directive('selectTariff', ['DataService', function(DataService) {
         restrict: 'AE',
         link: function (scope, elem, attrs) {
             scope.tariffs = DataService.tariffs;
+
+            scope.$watch(function () {
+                return DataService.tariffs;
+            }, function (newVal) {
+                scope.tariffs = newVal;
+            });
         },
         replace: true,
         scope: {
