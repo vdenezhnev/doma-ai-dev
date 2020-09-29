@@ -72,8 +72,8 @@ app.controller('EditAccessObjectCtrl', ['$scope', '$controller', '$rootScope', '
     }
 ]);
 
-app.controller('AddAccessPerimeterCtrl', ['$scope', '$state', '$stateParams', '$http', 'AccessPerimeter', 'notify', 'gettextCatalog',
-    function($scope, $state, $stateParams, $http, AccessPerimeter, notify, gettextCatalog) {
+app.controller('AddAccessPerimeterCtrl', ['$scope', '$state', '$stateParams', 'AccessPerimeter', 'notify', 'gettextCatalog', 'ModalService', 'settings',
+    function($scope, $state, $stateParams, AccessPerimeter, notify, gettextCatalog, ModalService, settings) {
         $scope.accessObject = $stateParams.accessObject;
         $scope.parentPerimeter = $stateParams.parentPerimeter;
 
@@ -92,11 +92,23 @@ app.controller('AddAccessPerimeterCtrl', ['$scope', '$state', '$stateParams', '$
                 notify(gettextCatalog.getString('devices.device_updated'));
             });
         }
+
+        $scope.openQrModalWindow = () => {
+            ModalService.showModal({
+                templateUrl: settings.TEMPLATE_DIR + 'access/perimeter/generate-qr.html',
+                controller: 'PerimeterGenerateQRModalCtrl',
+                inputs: {
+                    perimeterId: $scope.perimeter.id,
+                }
+            }).then(function(modal) {
+                modal.element.modal();
+            });
+        };
     }
 ]);
 
-app.controller('EditAccessPerimeterCtrl', ['$scope', '$controller', '$http', '$state', '$stateParams', 'AccessPerimeter', 'notify', 'gettextCatalog',
-    function($scope, $controller, $http, $state, $stateParams, AccessPerimeter, notify, gettextCatalog) {
+app.controller('EditAccessPerimeterCtrl', ['$scope', '$state', '$stateParams', 'AccessPerimeter', 'notify', 'gettextCatalog', 'ModalService', 'settings',
+    function($scope, $state, $stateParams, AccessPerimeter, notify, gettextCatalog, ModalService, settings) {
         if (!$stateParams.object) {
             $state.go('admin.access');
             return;
@@ -124,6 +136,58 @@ app.controller('EditAccessPerimeterCtrl', ['$scope', '$controller', '$http', '$s
                     notify(gettextCatalog.getString('devices.device_updated'));
                 });
             }
+        };
+
+        $scope.openQrModalWindow = () => {
+            ModalService.showModal({
+                templateUrl: settings.TEMPLATE_DIR + 'access/perimeter/generate-qr.html',
+                controller: 'PerimeterGenerateQRModalCtrl',
+                inputs: {
+                    perimeterId: $scope.perimeter.id,
+                }
+            }).then(function(modal) {
+                modal.element.modal();
+            });
+        };
+    }
+]);
+
+app.controller('PerimeterGenerateQRModalCtrl', ['$scope', 'settings', 'notify', 'close', '$element', 'AccessPerimeter', 'perimeterId',
+    function($scope, settings, notify, close, $element, AccessPerimeter, perimeterId) {
+        $scope.qrConfig = {};
+        $scope.closeModal = function() {
+            $element.modal('hide');
+            close(null, 500);
+        };
+        $scope.submitted = false;
+
+        $scope.$watch('qrConfig.addressId', value => {
+            $scope.QRgenerationForm.addressId.$setValidity('required', !!value);
+        });
+        $scope.$watch('qrConfig.tariffPolicyId', value => {
+            $scope.QRgenerationForm.tariffPolicyId.$setValidity('required', !!value);
+        });
+
+        $scope.save = function() {
+            AccessPerimeter.generateQR(angular.extend({
+                perimeterId: perimeterId
+            }, $scope.qrConfig))
+                .$promise
+                .then((pdf) => {
+                    const blob = new Blob([pdf.data], {type : 'application/pdf'});
+                    var anchor = document.createElement('a');
+                    anchor.href = URL.createObjectURL(blob);
+                    anchor.download = 'qr';
+                    document.body.appendChild(anchor); //For FF
+                    anchor.target = '_blank';
+                    anchor.click();
+                    document.body.removeChild(anchor);
+
+                    $scope.closeModal();
+                }, err => notify({
+                    message: err,
+                    classes: 'alert-danger'
+                }));
         };
     }
 ]);

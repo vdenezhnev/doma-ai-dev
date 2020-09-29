@@ -51,28 +51,28 @@ msgstr ""
 msgid "auth.password_changed"
 msgstr ""
 
-#: app/intercom/controllers/AccessControllers.js:120
-#: app/intercom/controllers/AccessControllers.js:210
+#: app/intercom/controllers/AccessControllers.js:132
+#: app/intercom/controllers/AccessControllers.js:274
 #: app/intercom/controllers/DeviceControllers.js:51
 msgid "devices.device_delete_confirm"
 msgstr ""
 
-#: app/intercom/controllers/AccessControllers.js:213
+#: app/intercom/controllers/AccessControllers.js:277
 #: app/intercom/controllers/DeviceControllers.js:53
 msgid "devices.device_deleted"
 msgstr ""
 
-#: app/intercom/controllers/AccessControllers.js:180
+#: app/intercom/controllers/AccessControllers.js:244
 msgid "devices.device_update_settings"
 msgstr ""
 
-#: app/intercom/controllers/AccessControllers.js:115
-#: app/intercom/controllers/AccessControllers.js:124
-#: app/intercom/controllers/AccessControllers.js:149
-#: app/intercom/controllers/AccessControllers.js:174
-#: app/intercom/controllers/AccessControllers.js:186
-#: app/intercom/controllers/AccessControllers.js:196
-#: app/intercom/controllers/AccessControllers.js:205
+#: app/intercom/controllers/AccessControllers.js:127
+#: app/intercom/controllers/AccessControllers.js:136
+#: app/intercom/controllers/AccessControllers.js:213
+#: app/intercom/controllers/AccessControllers.js:238
+#: app/intercom/controllers/AccessControllers.js:250
+#: app/intercom/controllers/AccessControllers.js:260
+#: app/intercom/controllers/AccessControllers.js:269
 #: app/intercom/controllers/AccessControllers.js:29
 #: app/intercom/controllers/AccessControllers.js:51
 #: app/intercom/controllers/AccessControllers.js:92
@@ -267,11 +267,47 @@ msgstr ""
 msgid "html.access.perimeter.form.display_name"
 msgstr ""
 
-#: app/intercom/views/access/perimeter/form.html:17
+#: app/intercom/views/access/perimeter/form.html:14
+msgid "html.access.perimeter.form.generateQR"
+msgstr ""
+
+#: app/intercom/views/access/perimeter/generate-qr.html:9
+msgid "html.access.perimeter.generateQR.address"
+msgstr ""
+
+#: app/intercom/views/access/perimeter/generate-qr.html:44
+msgid "html.access.perimeter.generateQR.cancel"
+msgstr ""
+
+#: app/intercom/views/access/perimeter/generate-qr.html:15
+msgid "html.access.perimeter.generateQR.flats"
+msgstr ""
+
+#: app/intercom/views/access/perimeter/generate-qr.html:18
+msgid "html.access.perimeter.generateQR.from"
+msgstr ""
+
+#: app/intercom/views/access/perimeter/generate-qr.html:35
+msgid "html.access.perimeter.generateQR.generate"
+msgstr ""
+
+#: app/intercom/views/access/perimeter/generate-qr.html:29
+msgid "html.access.perimeter.generateQR.tarrif"
+msgstr ""
+
+#: app/intercom/views/access/perimeter/generate-qr.html:3
+msgid "html.access.perimeter.generateQR.title"
+msgstr ""
+
+#: app/intercom/views/access/perimeter/generate-qr.html:22
+msgid "html.access.perimeter.generateQR.to"
+msgstr ""
+
+#: app/intercom/views/access/perimeter/form.html:21
 msgid "html.access.perimeter.restrictPassPermanentKeys"
 msgstr ""
 
-#: app/intercom/views/access/perimeter/form.html:24
+#: app/intercom/views/access/perimeter/form.html:28
 msgid "html.access.perimeter.restrictPassTemporaryKeys"
 msgstr ""
 
@@ -1026,7 +1062,7 @@ msgstr ""
 msgid "notify.defaults.are_you_sure"
 msgstr ""
 
-#: app/intercom/app.js:83
+#: app/intercom/app.js:84
 msgid "notify.defaults.changes_will_not_be_saved"
 msgstr ""
 
@@ -1052,6 +1088,11 @@ msgstr ""
 
 #: app/intercom/controllers/TariffControllers.js:51
 msgid "tariffs.tariff_updated"
+msgstr ""
+
+#: app/intercom/views/access/perimeter/generate-qr.html:11
+#: app/intercom/views/access/perimeter/generate-qr.html:31
+msgid "validation.required"
 msgstr ""
 
 #: app/intercom/views/tariff/form.html:39

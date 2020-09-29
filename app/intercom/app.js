@@ -16,7 +16,8 @@ var app = angular.module('app', [
     'ui.bootstrap.datetimepicker',
     'angularMoment',
     'smartkey.validation-rule',
-    'ngSanitize'
+    'ngSanitize',
+    'angularModalService'
 ]);
 
 app.config(['$httpProvider', '$locationProvider', function($httpProvider, $locationProvider) {

@@ -13,6 +13,42 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
+#: app/intercom/views/access/perimeter/form.html:14
+msgid "html.access.perimeter.form.generateQR"
+msgstr "Сгенерировать QR-код"
+
+#: app/intercom/views/access/perimeter/generate-qr.html:9
+msgid "html.access.perimeter.generateQR.address"
+msgstr "Адрес"
+
+#: app/intercom/views/access/perimeter/generate-qr.html:44
+msgid "html.access.perimeter.generateQR.cancel"
+msgstr "Отмена"
+
+#: app/intercom/views/access/perimeter/generate-qr.html:15
+msgid "html.access.perimeter.generateQR.flats"
+msgstr "Квартиры"
+
+#: app/intercom/views/access/perimeter/generate-qr.html:18
+msgid "html.access.perimeter.generateQR.from"
+msgstr "С"
+
+#: app/intercom/views/access/perimeter/generate-qr.html:35
+msgid "html.access.perimeter.generateQR.generate"
+msgstr "Сгенерировать"
+
+#: app/intercom/views/access/perimeter/generate-qr.html:29
+msgid "html.access.perimeter.generateQR.tarrif"
+msgstr "Тариф"
+
+#: app/intercom/views/access/perimeter/generate-qr.html:3
+msgid "html.access.perimeter.generateQR.title"
+msgstr "Генерация QR-кода"
+
+#: app/intercom/views/access/perimeter/generate-qr.html:22
+msgid "html.access.perimeter.generateQR.to"
+msgstr "По"
+
 #: app/intercom/views/journal/list.html:16
 msgid "html.journal.key_type_display"
 msgstr "Тип идентификатора"

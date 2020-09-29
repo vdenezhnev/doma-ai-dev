@@ -182,3 +182,7 @@ table th.filter-date a:hover {
     justify-content: center;
     align-items: center;
 }
+
+body[ng-controller] .modal-backdrop.in {
+    z-index: 0 !important;
+}

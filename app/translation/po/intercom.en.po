@@ -12,6 +12,42 @@ msgstr ""
 "X-Generator: Poedit 2.2.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: app/intercom/views/access/perimeter/form.html:14
+msgid "html.access.perimeter.form.generateQR"
+msgstr "Generate QR-code"
+
+#: app/intercom/views/access/perimeter/generate-qr.html:9
+msgid "html.access.perimeter.generateQR.address"
+msgstr "Address"
+
+#: app/intercom/views/access/perimeter/generate-qr.html:44
+msgid "html.access.perimeter.generateQR.cancel"
+msgstr "Cancel"
+
+#: app/intercom/views/access/perimeter/generate-qr.html:15
+msgid "html.access.perimeter.generateQR.flats"
+msgstr "Apartments"
+
+#: app/intercom/views/access/perimeter/generate-qr.html:18
+msgid "html.access.perimeter.generateQR.from"
+msgstr "From"
+
+#: app/intercom/views/access/perimeter/generate-qr.html:35
+msgid "html.access.perimeter.generateQR.generate"
+msgstr "Generate"
+
+#: app/intercom/views/access/perimeter/generate-qr.html:29
+msgid "html.access.perimeter.generateQR.tarrif"
+msgstr "Tariff"
+
+#: app/intercom/views/access/perimeter/generate-qr.html:3
+msgid "html.access.perimeter.generateQR.title"
+msgstr "Generation of QR-code"
+
+#: app/intercom/views/access/perimeter/generate-qr.html:22
+msgid "html.access.perimeter.generateQR.to"
+msgstr "To"
+
 #: app/intercom/views/journal/list.html:16
 msgid "html.journal.key_type_display"
 msgstr "Key type"

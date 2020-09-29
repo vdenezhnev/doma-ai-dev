@@ -21,8 +21,18 @@ app.factory('AccessPerimeter', ['$resource', 'settings', function($resource, set
         query: {
             url: settings.API_URL + '?action=GetAccessPerimeters',
             isArray: false
+        },
+        generateQR: {
+            url: settings.API_URL + '?action=GeneratePerimeterKeyRequestPdf',
+            responseType: 'arraybuffer',
+            transformResponse: function(data, headersGetter) {
+                return {
+                  data: data,
+                  headers: headersGetter
+                }
+            }
         }
     });
-    
+
     return AccessPerimeter;
 }]);
