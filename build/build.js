@@ -17,7 +17,7 @@ const build = gulp.series(
     'assets',
     'css',
     'js',
-    async () => gulp.src(`./dist/ru/${process.env.FEATURE_NAME}/*`).pipe(gulp.dest(`./dist/en/${process.env.FEATURE_NAME}`)),
+    async () => gulp.src(`./dist/${process.env.FEATURE_NAME}-ru/*`).pipe(gulp.dest(`./dist/${process.env.FEATURE_NAME}-en/`)),
     'index'
 );
 
@@ -50,7 +50,7 @@ exports.buildDev = gulp.series(
     }),
     buildIntercom,
     buildAdmin,
-    async () => gulp.src(`./dist/ru/intercom/index.html`).pipe(gulp.dest(`./dist`)),
+    async () => gulp.src(`./dist/intercom-ru/index.html`).pipe(gulp.dest(`./dist`))
 )
 exports.default = gulp.series(
     'clean',

@@ -32,7 +32,7 @@ function browserSyncInit(baseDir, startPath) {
   });
 }
 
-exports.serveDist = () => browserSyncInit('./dist', 'ru/intercom')
+exports.serveDist = () => browserSyncInit('./dist', 'intercom-ru')
 
-exports.serveDistIntercom = () => browserSyncInit('./dist', 'ru/intercom');
-exports.serveDistAdmin = () => browserSyncInit('./dist', 'ru/admin');
+exports.serveDistIntercom = () => browserSyncInit('./dist', 'intercom-ru');
+exports.serveDistAdmin = () => browserSyncInit('./dist', 'admin-ru');

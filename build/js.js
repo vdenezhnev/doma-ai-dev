@@ -8,4 +8,4 @@ exports.default =  () => gulp.src(`./${process.env.FEATURE_NAME}.html`)
     .pipe(useref())
     .pipe(gulpif('*.js', ngAnnotate()))
     .pipe(gulpif(!process.env.DEVMODE, gulpif('*.js', uglify())))
-    .pipe(gulpif('*.js', gulp.dest(`./dist/ru/${process.env.FEATURE_NAME}`)));
+    .pipe(gulpif('*.js', gulp.dest(`./dist/${process.env.FEATURE_NAME}-ru`)));
