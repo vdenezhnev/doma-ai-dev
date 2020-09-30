@@ -4,13 +4,21 @@ app.config(['$stateProvider', 'settings', function($stateProvider, settings) {
     $stateProvider
         .state('admin', {
             url: '/',
+            abstract: true,
             templateUrl: settings.TEMPLATE_DIR + 'admin.html',
+            redirectTo: 'admin.client.list',
             data: {
                 permissions: {
                     except: ['anonymous'],
                     redirectTo: 'login'
                 }
             }
+        })
+        .state('admin.home', {
+            url: '',
+            controller: ['$state', function ($state) {
+                $state.go('admin.client.list');
+            }]
         })
 
         .state('admin.client', {
