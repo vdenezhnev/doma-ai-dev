@@ -6,10 +6,10 @@
   "dependencies": {},
   "scripts": {
     "build": "gulp build",
-    "build:dev": "gulp buildDev",
-    "serve:intercom": "gulp serveDistIntercom",
-    "serve:admin": "gulp serveDistAdmin",
-    "start": "gulp buildDev && gulp serveDistIntercom",
+    "start": "gulp serveIntercomRu",
+    "serve:intercom:ru": "gulp serveIntercomRu",
+    "serve:intercom:en": "gulp serveIntercomEn",
+    "serve:admin": "gulp serveAdmin",
     "extract-i18n": "grunt nggettext_extract",
     "compile-i18n": "grunt nggettext_compile"
   },

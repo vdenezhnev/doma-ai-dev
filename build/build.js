@@ -51,16 +51,23 @@ const buildAdmin = gulp.series(
     setLocaleRu,
     build
 );
-exports.buildIntercom = buildIntercom;
-exports.buildAdmin = buildAdmin;
-exports.buildDev = gulp.series(
+exports.buildAdminDev = gulp.series(
     'clean',
     async () => env.set({
         DEVMODE: true,
     }),
-    buildIntercom,
     buildAdmin,
-    async () => gulp.src(`./dist/intercom-en/index.html`).pipe(gulp.dest(`./dist`))
+    async () => gulp.src(`./dist/admin-ru/index.html`).pipe(gulp.dest(`./dist`))
+);
+exports.buildIntercomDev = (locale) => gulp.series(
+    'clean',
+    async () => env.set({
+        DEVMODE: true,
+    }),
+    locale === 'ru' ? setLocaleRu : setLocaleEn,
+    setIntercomEnv,
+    build,
+    async () => gulp.src(`./dist/intercom-${locale}/index.html`).pipe(gulp.dest(`./dist`))
 )
 exports.default = gulp.series(
     'clean',
