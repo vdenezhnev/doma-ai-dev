@@ -25,7 +25,7 @@ app.service('Language', ['$location', function($location) {
     
     this.setLanguage = function(code) {
         var uri = URI(window.location);
-        var regex = new RegExp('^\/(' + self.active + ')\/');
-        window.location = uri.path().replace(regex, '/' + code + '/');
+        var regex = new RegExp('^\/(intercom-' + self.active + ')\/');
+        window.location = uri.path().replace(regex, '/intercom-' + code + '/');
     };
 }]);
