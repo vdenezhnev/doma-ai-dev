@@ -11,8 +11,9 @@ app.controller('AddressCreateCtrl', ['$scope', '$state', 'Address', 'notify', 'g
         $scope.address = new Address();
 
         $scope.save = function() {
-            $scope.address.$save().then(function(response) {
+            $scope.address.$save().then(function() {
                 notify(gettextCatalog.getString('notify.addresses.created'));
+                $state.current.showConfirmation = false;
                 $scope.$emit('updateAddresses');
                 $state.go('admin.address.list');
             });
@@ -31,8 +32,9 @@ app.controller('AddressDetailCtrl', ['$scope', '$controller', '$state', '$stateP
         $scope.title = $scope.address.value;
 
         $scope.save = function() {
-            $scope.address.$save(function(response){
+            $scope.address.$save(function(){
                 notify(gettextCatalog.getString('notify.addresses.updated'));
+                $state.current.showConfirmation = false;
                 $scope.$emit('updateAddresses');
                 $state.go('admin.address.list');
             });
