@@ -1,5 +1,5 @@
 
-app.factory('AccessPerimeter', ['$resource', 'settings', function($resource, settings) {
+app.factory('AccessPerimeter', ['$resource', '$q', 'settings', function($resource, $q, settings) {
     var AccessPerimeter = $resource(settings.API_URL, {}, {
         save: {
             method: 'POST',
@@ -29,6 +29,20 @@ app.factory('AccessPerimeter', ['$resource', 'settings', function($resource, set
                 return {
                   data: data,
                   headers: headersGetter
+                }
+            },
+            interceptor: {
+                responseError: function(error) {
+                    if (error) {
+                        var headers = error.headers();
+
+                        if (headers && headers['content-type'] && headers['content-type'].startsWith('application/json')) {
+                            var decoder = new TextDecoder("utf-8");
+                            var json = JSON.parse(decoder.decode(error.data.data));
+
+                            return $q.reject(json);
+                        }
+                    }
                 }
             }
         }

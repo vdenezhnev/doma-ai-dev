@@ -35,15 +35,5 @@ const index = () => {
         .pipe(rename(`index.html`))
         .pipe(gulp.dest(`./${distFolder}/`));
 };
-const setLocaleRu = async () => env({
-    file: './build/.ru.env.json'
-});
-const setLocaleEn = async () => env({
-    file: './build/.en.env.json'
-});
-exports.default =  gulp.series(
-    setLocaleRu,
-    index,
-    setLocaleEn,
-    index
-);
+
+exports.default =  index;

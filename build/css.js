@@ -7,9 +7,9 @@ exports.default = gulp.series(
     () => gulp.src(`./${process.env.FEATURE_NAME}.html`)
         .pipe(useref({allowEmpty: true}))
         .pipe(gulpif('*.css', minifyCss()))
-        .pipe(gulpif('*.css', gulp.dest(`./dist/${process.env.FEATURE_NAME}-ru`))),
+        .pipe(gulpif('*.css', gulp.dest(`./dist/${process.env.FEATURE_NAME}-${process.env.LANGUAGE_CODE}`))),
     () => gulp.src(`components/metronic/theme/assets/global/plugins/jstree/dist/themes/default/32px.png`)
-        .pipe(gulp.dest(`./dist/${process.env.FEATURE_NAME}-ru/styles`)),
+        .pipe(gulp.dest(`./dist/${process.env.FEATURE_NAME}-${process.env.LANGUAGE_CODE}/styles`)),
     () => gulp.src(`components/metronic/theme/assets/global/plugins/jquery-multi-select/img/switch.png`)
-        .pipe(gulp.dest(`./dist/${process.env.FEATURE_NAME}-ru/img`)),
+        .pipe(gulp.dest(`./dist/${process.env.FEATURE_NAME}-${process.env.LANGUAGE_CODE}/img`)),
 );

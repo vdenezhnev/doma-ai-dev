@@ -185,7 +185,7 @@ app.controller('PerimeterGenerateQRModalCtrl', ['$scope', 'settings', 'notify', 
 
                     $scope.closeModal();
                 }, err => notify({
-                    message: err,
+                    message: err.error,
                     classes: 'alert-danger'
                 }));
         };

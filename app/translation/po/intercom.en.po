@@ -85,6 +85,10 @@ msgid "html.abonent.download_template_title"
 msgstr "Download template of file for import"
 
 #: app/intercom/views/abonent/list.html:10
+msgid "html.abonent.import_title"
+msgstr "Import subscribers"
+
+#: app/intercom/views/abonent/list.html:10
 msgid "html.abonenst.import_title"
 msgstr "Import subscribers"
 

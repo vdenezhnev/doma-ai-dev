@@ -10,6 +10,13 @@ gulp.task('css', require('./css').default),
 gulp.task('js', require('./js').default),
 gulp.task('index', require('./index').default)
 
+const setLocaleRu = async () => env({
+    file: './build/.ru.env.json'
+});
+const setLocaleEn = async () => env({
+    file: './build/.en.env.json'
+});
+
 const build = gulp.series(
     'html',
     'fonts',
@@ -17,7 +24,6 @@ const build = gulp.series(
     'assets',
     'css',
     'js',
-    async () => gulp.src(`./dist/${process.env.FEATURE_NAME}-ru/*`).pipe(gulp.dest(`./dist/${process.env.FEATURE_NAME}-en/`)),
     'index'
 );
 
@@ -35,22 +41,33 @@ const setAdminEnv = async () => env({
 });
 const buildIntercom = gulp.series(
     setIntercomEnv,
+    setLocaleRu,
+    build,
+    setLocaleEn,
     build
 );
 const buildAdmin = gulp.series(
     setAdminEnv,
+    setLocaleRu,
     build
 );
-exports.buildIntercom = buildIntercom;
-exports.buildAdmin = buildAdmin;
-exports.buildDev = gulp.series(
+exports.buildAdminDev = gulp.series(
     'clean',
     async () => env.set({
         DEVMODE: true,
     }),
-    buildIntercom,
     buildAdmin,
-    async () => gulp.src(`./dist/intercom-ru/index.html`).pipe(gulp.dest(`./dist`))
+    async () => gulp.src(`./dist/admin-ru/index.html`).pipe(gulp.dest(`./dist`))
+);
+exports.buildIntercomDev = (locale) => gulp.series(
+    'clean',
+    async () => env.set({
+        DEVMODE: true,
+    }),
+    locale === 'ru' ? setLocaleRu : setLocaleEn,
+    setIntercomEnv,
+    build,
+    async () => gulp.src(`./dist/intercom-${locale}/index.html`).pipe(gulp.dest(`./dist`))
 )
 exports.default = gulp.series(
     'clean',
