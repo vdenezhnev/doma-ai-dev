@@ -1,14 +1,36 @@
 var gulp = require('gulp');
+var browserSync = require('browser-sync');
 
-exports.clean = require('./build/clean').default;
-exports.html = require('./build/html').default;
-exports.img = require('./build/img').default;
-exports.fonts = require('./build/fonts').default;
-exports.css = require('./build/css').default;
-exports.js = require('./build/js').default;
-exports.index = require('./build/index').default;
+const serve = (buildTask, serveTask) => {
+    buildTask(() => {
+        serveTask();
+        gulp.watch('app/**', {
+            ignoreInitial: true
+        }, (done) => {
+            buildTask(() => {
+                browserSync.reload();
+                done();
+            });
+        });
+    });
+}
 
+exports.serveAdmin = () => {
+    const buildAdminDev = require('./build/build').buildAdminDev;
+    const serveAdmin = () => require('./build/server').serveDist('admin', 'ru');
+
+    serve(buildAdminDev, serveAdmin);
+};
+exports.serveIntercomRu = () => {
+    const buildIntercomDev = require('./build/build').buildIntercomDev('ru');
+    const serveIntercom = () => require('./build/server').serveDist('intercom', 'ru');
+
+    serve(buildIntercomDev, serveIntercom);
+};
+exports.serveIntercomEn = () => {
+    const buildIntercomDev = require('./build/build').buildIntercomDev('en');
+    const serveIntercom = () => require('./build/server').serveDist('intercom', 'en');
+
+    serve(buildIntercomDev, serveIntercom);
+};
 exports.build = require('./build/build').default;
-exports.buildDev = require('./build/build').buildDev;
-exports.serveDistAdmin = require('./build/server').serveDistAdmin;
-exports.serveDistIntercom = require('./build/server').serveDistIntercom;

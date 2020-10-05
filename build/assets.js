@@ -1,4 +1,4 @@
 const gulp = require('gulp');
 
 exports.default = () => gulp.src('./assets/*')
-    .pipe(gulp.dest(`./dist/ru/${process.env.FEATURE_NAME}/assets/`));
+    .pipe(gulp.dest(`./dist/${process.env.FEATURE_NAME}-${process.env.LANGUAGE_CODE}/assets/`));

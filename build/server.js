@@ -12,12 +12,13 @@ function browserSyncInit(baseDir, startPath) {
   }))
   browserSync.instance = browserSync.init({
     startPath: startPath,
+    // watch: true,
     server: {
       baseDir: baseDir,
       directory: true,
       middleware: [
         proxyMiddleware('/api', {
-          target: 'https://apidev.smartairkey.com',
+          target: 'https://apitest.smartairkey.com',
           changeOrigin: true,
           secure: true,
           logLevel: 'debug'
@@ -32,7 +33,5 @@ function browserSyncInit(baseDir, startPath) {
   });
 }
 
-exports.serveDist = () => browserSyncInit('./dist', 'ru/intercom')
+exports.serveDist = (app, locale) => browserSyncInit('./dist', `${app}-${locale}`)
 
-exports.serveDistIntercom = () => browserSyncInit('./dist', 'ru/intercom');
-exports.serveDistAdmin = () => browserSyncInit('./dist', 'ru/admin');

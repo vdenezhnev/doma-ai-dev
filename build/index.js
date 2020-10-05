@@ -8,7 +8,7 @@ var env = require('gulp-env');
 
 
 const index = () => {
-    const distFolder = `dist/${process.env.LANGUAGE_CODE}/${process.env.FEATURE_NAME}`;
+    const distFolder = `dist/${process.env.FEATURE_NAME}-${process.env.LANGUAGE_CODE}`;
     const injectionOptions = {
         ignorePath: 'dist',
         addRootSlash: true
@@ -30,20 +30,10 @@ const index = () => {
         ))
         .pipe(injectEnvs({
             ...process.env,
-            BASE_HREF: `/${process.env.LANGUAGE_CODE}/${process.env.FEATURE_NAME}/`
+            BASE_HREF: `/${process.env.FEATURE_NAME}-${process.env.LANGUAGE_CODE}/`
         }))
         .pipe(rename(`index.html`))
         .pipe(gulp.dest(`./${distFolder}/`));
 };
-const setLocaleRu = async () => env({
-    file: './build/.ru.env.json'
-});
-const setLocaleEn = async () => env({
-    file: './build/.en.env.json'
-});
-exports.default =  gulp.series(
-    setLocaleRu,
-    index,
-    setLocaleEn,
-    index
-);
+
+exports.default =  index;
