@@ -132,3 +132,27 @@ app.controller('ConfirmPasswordResetWebCtrl', ['$scope', '$stateParams', '$state
         }
     }
 ]);
+
+app.controller('MobilePasswordResetWebCtrl', ['$scope', '$stateParams', '$http', 'settings', 'notify', 'gettextCatalog',
+    function($scope, $stateParams, $http, settings, notify, gettextCatalog) {
+        $scope.code = $stateParams.code;
+        $scope.passwordChanged = false;
+
+        if ($scope.code) {
+            $scope.submit = function () {
+                $http.post(settings.API_HOST + 'api/web', {
+                    Action: 'ConfirmPasswordReset',
+                    ConfirmationCode: $stateParams.code,
+                    NewPassword: Base64.encode($scope.password)
+                }).then(function successCallback(response) {
+                    notify(gettextCatalog.getString('auth.password_changed'));
+                    $scope.passwordChanged = true;
+                });
+            };
+
+            $scope.isDisabledButton = function () {
+                return $scope.PasswordResetForm.new_password.$pristine || $scope.PasswordResetForm.new_password_confirm.$pristine || $scope.PasswordResetForm.$invalid;
+            }
+        }
+    }
+]);
