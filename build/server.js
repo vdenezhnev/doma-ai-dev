@@ -18,7 +18,7 @@ function browserSyncInit(baseDir, startPath) {
       directory: true,
       middleware: [
         proxyMiddleware('/api', {
-          target: 'https://apitest.smartairkey.com',
+          target: 'https://apidev.smartairkey.com',
           changeOrigin: true,
           secure: true,
           logLevel: 'debug'

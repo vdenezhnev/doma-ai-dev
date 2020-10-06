@@ -48,7 +48,7 @@
     <div ng-repeat="transport in lock.connectivity.transports">
 
         <div ng-if="transport.type == 'wiFiDirect'">
-            <h3>WifiDirect</h3>
+            <h3><label><input type="checkbox" ng-model="transport.isActivated" /> WifiDirect</label></h3>
 
             <div class="form-group">
                 <label>MAC-адрес</label>
@@ -57,7 +57,7 @@
         </div>
 
         <div ng-if="transport.type == 'blueTooth'">
-            <h3>Bluetooth</h3>
+            <h3><label><input type="checkbox" ng-model="transport.isActivated" /> Bluetooth</label></h3>
 
             <div class="form-group">
                 <label>Имя устройства</label>
@@ -81,7 +81,7 @@
         </div>
 
         <div ng-if="transport.type == 'blueToothLe'">
-            <h3>BLE</h3>
+            <h3><label><input type="checkbox" ng-model="transport.isActivated" /> BLE</label></h3>
 
             <div class="form-group">
                 <label>Имя устройства</label>
@@ -109,19 +109,19 @@
             </div>
         </div>
 
-        <div ng-show="transport.type == 'gsm' && filter.gsmActive">
-            <h3><label><input type="checkbox" ng-model="filter.gsmActive" /> GSM</label></h3>
+        <div ng-show="transport.type == 'gsm'">
+            <h3><label><input type="checkbox" ng-model="transport.isActivated" /> GSM</label></h3>
 
-            <div class="form-group" ng-show="filter.gsmActive">
+            <div class="form-group">
                 <label>Номер телефона контроллера</label>
                 <input class="form-control" ng-model="transport.phoneNumber" mask="{mask: '+9{*}'}">
             </div>
         </div>
 
-    </div>
+        <div ng-show="transport.type == 'nfc'">
+            <h3><label><input type="checkbox" ng-model="transport.isActivated" /> NFC</label></h3>
+        </div>
 
-    <div ng-if="!filter.gsmActive">
-        <h3><label><input type="checkbox" ng-model="filter.gsmActive" /> GSM</label></h3>
     </div>
 
 </div>
