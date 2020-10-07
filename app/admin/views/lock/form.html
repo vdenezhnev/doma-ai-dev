@@ -47,6 +47,78 @@
 
     <div ng-repeat="transport in lock.connectivity.transports">
 
+        <div ng-if="transport.type == 'blueToothLe'">
+            <h3><label><input type="checkbox" ng-model="transport.isActivated" /> BLE</label></h3>
+
+            <div class="form-group">
+                <label>Имя устройства</label>
+                <input class="form-control" ng-model="transport.deviceName">
+            </div>
+
+            <div class="form-group">
+                <label>MAC-адрес</label>
+                <input class="form-control" ng-model="transport.macAddress">
+            </div>
+
+            <div class="form-group">
+                <label>Service Uuid</label>
+                <input class="form-control" ng-model="transport.serviceUuid">
+            </div>
+
+            <div class="form-group">
+                <label>CharData Uuid</label>
+                <input class="form-control" ng-model="transport.charDataUuid">
+            </div>
+
+            <div class="form-group">
+                <label>CharRssi Uuid</label>
+                <input class="form-control" ng-model="transport.charRssiUuid">
+            </div>
+        </div>
+
+        <div ng-show="transport.type == 'nfc'">
+            <h3><label><input type="checkbox" ng-model="transport.isActivated" /> NFC</label></h3>
+        </div>
+
+        <div ng-show="transport.type == 'gsm'">
+            <h3><label><input type="checkbox" ng-model="transport.isActivated" /> GSM</label></h3>
+
+            <div class="form-group">
+                <label>Номер телефона контроллера</label>
+                <input class="form-control" ng-model="transport.phoneNumber" mask="{mask: '+9{*}'}">
+            </div>
+        </div>
+
+        <div ng-show="transport.type == 'internet'">
+            <h3><label><input type="checkbox" ng-model="transport.isActivated" /> Internet</label></h3>
+
+            <div class="form-group">
+                <label>Радиус</label>
+                <input class="form-control" ng-model="transport.radius">
+            </div>
+
+            <div class="form-group">
+                <label>Url</label>
+                <input class="form-control" ng-model="transport.url">
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">Ограничение по геопозиции</div>
+                <div class="panel-body">
+                    <div class="form-group" style="display: flex;">
+                        <div style="width: 50%; padding-right: 5px;">
+                            <label>Широта</label>
+                            <input class="form-control" ng-model="transport.coordinate.x">
+                        </div>
+                        <div style="width: 50%;">
+                            <label>Долгота</label>
+                            <input class="form-control" ng-model="transport.coordinate.y">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div ng-if="transport.type == 'wiFiDirect'">
             <h3><label><input type="checkbox" ng-model="transport.isActivated" /> WifiDirect</label></h3>
 
@@ -78,48 +150,6 @@
                 <label>Insecure Uuid</label>
                 <input class="form-control" ng-model="transport.insecureUuid">
             </div>
-        </div>
-
-        <div ng-if="transport.type == 'blueToothLe'">
-            <h3><label><input type="checkbox" ng-model="transport.isActivated" /> BLE</label></h3>
-
-            <div class="form-group">
-                <label>Имя устройства</label>
-                <input class="form-control" ng-model="transport.deviceName">
-            </div>
-
-            <div class="form-group">
-                <label>MAC-адрес</label>
-                <input class="form-control" ng-model="transport.macAddress">
-            </div>
-
-            <div class="form-group">
-                <label>Service Uuid</label>
-                <input class="form-control" ng-model="transport.serviceUuid">
-            </div>
-
-            <div class="form-group">
-                <label>CharData Uuid</label>
-                <input class="form-control" ng-model="transport.charDataUuid">
-            </div>
-
-            <div class="form-group">
-                <label>CharRssi Uuid</label>
-                <input class="form-control" ng-model="transport.charRssiUuid">
-            </div>
-        </div>
-
-        <div ng-show="transport.type == 'gsm'">
-            <h3><label><input type="checkbox" ng-model="transport.isActivated" /> GSM</label></h3>
-
-            <div class="form-group">
-                <label>Номер телефона контроллера</label>
-                <input class="form-control" ng-model="transport.phoneNumber" mask="{mask: '+9{*}'}">
-            </div>
-        </div>
-
-        <div ng-show="transport.type == 'nfc'">
-            <h3><label><input type="checkbox" ng-model="transport.isActivated" /> NFC</label></h3>
         </div>
 
     </div>
