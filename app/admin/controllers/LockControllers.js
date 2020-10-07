@@ -133,32 +133,14 @@ app.controller('LockCreateCtrl', ['$scope', '$state', 'notify', 'Api', 'settings
                     useMethod2: false
                 },
                 transports: [
-                    {type: 'wiFiDirect'},
-                    {type: 'blueTooth'},
-                    {type: 'blueToothLe'},
-                    {type: 'gsm'}
+                    {type: 'wiFiDirect', isActivated: false},
+                    {type: 'blueTooth', isActivated: false},
+                    {type: 'blueToothLe', isActivated: false},
+                    {type: 'gsm', isActivated: false},
+                    {type: 'nfc', isActivated: false}
                 ]
             }
         };
-
-        $scope.filter = {
-            gsmActive: false
-        };
-
-        $scope.$watch('filter.gsmActive', function (newVal) {
-            console.log(newVal);
-            if (newVal === true) {
-                $scope.lock.connectivity.transports.push({type: 'gsm'});
-            }
-            else {
-                var index = _.findIndex($scope.lock.connectivity.transports, function (o) {
-                    return o.type === 'gsm';
-                });
-                if (index !== -1) {
-                    $scope.lock.connectivity.transports.splice(index, 1);
-                }
-            }
-        });
 
         $scope.save = function() {
             Api.post(settings.API_URL, angular.extend({Action: 'RegisterLock'}, $scope.lock), function() {
