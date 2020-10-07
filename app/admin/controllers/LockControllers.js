@@ -48,35 +48,26 @@ app.controller('LockListCtrl', ['$scope', 'Api', 'settings',
 
 app.controller('LockDetailCtrl', ['$scope', '$state', '$stateParams', 'notify', 'Api', 'settings',
     function($scope, $state, $stateParams, notify, Api, settings) {
-        $scope.filter = {
-            gsmActive: false
-        };
-
+        const TRANSPORT_TYPES = ['blueToothLe', 'nfc', 'gsm', 'internet', 'wiFiDirect', 'blueTooth'];
+        let tempTransports = [];
         Api.get(settings.API_URL, {'Action': 'GetLockById', 'LockId': $stateParams.id}, function(response) {
             $scope.lock = response.data;
-            var index = _.findIndex($scope.lock.connectivity.transports, function (o) {
-                return o.type === 'gsm';
+            const transports = response.data.connectivity.transports.map(item => item.type);
+
+            TRANSPORT_TYPES.forEach(type => {
+                if (!transports.includes(type)) {
+                    $scope.lock.connectivity.transports.push({type: type, isActivated: false});
+                }
             });
-            if (index !== -1) {
-                $scope.filter.gsmActive = true;
-            }
+
+            $scope.lock.connectivity.transports.forEach((transport, index) => {
+                const tIndex = TRANSPORT_TYPES.findIndex(item => item === transport.type);
+
+                tempTransports[tIndex] = transport;
+            });
+            $scope.lock.connectivity.transports = [...tempTransports];
         });
         $scope.isNew = false;
-
-        $scope.$watch('filter.gsmActive', function (newVal) {
-            if ($scope.lock) {
-                var index = _.findIndex($scope.lock.connectivity.transports, function (o) {
-                    return o.type === 'gsm';
-                });
-                if (newVal === true && index === -1) {
-                    $scope.lock.connectivity.transports.push({type: 'gsm'});
-                } else if (newVal === false) {
-                    if (index !== -1) {
-                        $scope.lock.connectivity.transports.splice(index, 1);
-                    }
-                }
-            }
-        });
 
         $scope.save = function() {
             Api.post(settings.API_URL, {
@@ -133,11 +124,12 @@ app.controller('LockCreateCtrl', ['$scope', '$state', 'notify', 'Api', 'settings
                     useMethod2: false
                 },
                 transports: [
-                    {type: 'wiFiDirect', isActivated: false},
-                    {type: 'blueTooth', isActivated: false},
                     {type: 'blueToothLe', isActivated: false},
+                    {type: 'nfc', isActivated: false},
                     {type: 'gsm', isActivated: false},
-                    {type: 'nfc', isActivated: false}
+                    {type: 'internet', isActivated: false},
+                    {type: 'wiFiDirect', isActivated: false},
+                    {type: 'blueTooth', isActivated: false}
                 ]
             }
         };
