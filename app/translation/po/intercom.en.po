@@ -181,7 +181,7 @@ msgstr "New"
 msgid "html.abonent.address_display"
 msgstr "Address"
 
-#: app/intercom/views/abonent/form.html:45
+#: app/intercom/views/abonent/form.html:50
 msgid "html.abonent.admin_display"
 msgstr "Admin"
 
@@ -189,19 +189,19 @@ msgstr "Admin"
 msgid "html.abonent.building_display"
 msgstr "Building"
 
-#: app/intercom/views/abonent/form.html:78
+#: app/intercom/views/abonent/form.html:83
 msgid "html.abonent.car_model_display"
 msgstr "Model"
 
-#: app/intercom/views/abonent/form.html:77
+#: app/intercom/views/abonent/form.html:82
 msgid "html.abonent.car_number_display"
 msgstr "Number"
 
-#: app/intercom/views/abonent/form.html:72
+#: app/intercom/views/abonent/form.html:77
 msgid "html.abonent.cars_display"
 msgstr "Cars"
 
-#: app/intercom/views/abonent/form.html:38
+#: app/intercom/views/abonent/form.html:43
 msgid "html.abonent.comments_display"
 msgstr "Comments"
 
@@ -209,11 +209,15 @@ msgstr "Comments"
 msgid "html.abonent.detail_title"
 msgstr "User"
 
+#: app/intercom/views/abonent/form.html:23
+msgid "html.abonent.floor_display"
+msgstr "Elevator"
+
 #: app/intercom/views/abonent/form.html:219
 msgid "html.abonent.end_period"
 msgstr "End period"
 
-#: app/intercom/views/abonent/form.html:28
+#: app/intercom/views/abonent/form.html:33
 msgid "html.abonent.external_id_display"
 msgstr "External id"
 
@@ -221,7 +225,7 @@ msgstr "External id"
 msgid "html.abonent.flat_display"
 msgstr "Apartment"
 
-#: app/intercom/views/abonent/form.html:66
+#: app/intercom/views/abonent/form.html:71
 msgid "html.abonent.isGsmOpenAllowed"
 msgstr "Open by call"
 
@@ -238,16 +242,16 @@ msgstr "Name"
 msgid "html.abonent.new_title"
 msgstr "New"
 
-#: app/intercom/views/abonent/form.html:161
-#: app/intercom/views/abonent/form.html:217
+#: app/intercom/views/abonent/form.html:166
+#: app/intercom/views/abonent/form.html:222
 msgid "html.abonent.perimeter"
 msgstr "Perimeter"
 
-#: app/intercom/views/abonent/form.html:162
+#: app/intercom/views/abonent/form.html:167
 msgid "html.abonent.perimeter_tariff"
 msgstr "Tariff"
 
-#: app/intercom/views/abonent/form.html:109
+#: app/intercom/views/abonent/form.html:114
 msgid "html.abonent.perimeters_title"
 msgstr "Perimeters"
 
@@ -256,31 +260,31 @@ msgstr "Perimeters"
 msgid "html.abonent.phone_display"
 msgstr "Phone"
 
-#: app/intercom/views/abonent/form.html:23
+#: app/intercom/views/abonent/form.html:28
 msgid "html.abonent.room_display"
 msgstr "Room"
 
-#: app/intercom/views/abonent/form.html:218
+#: app/intercom/views/abonent/form.html:223
 msgid "html.abonent.start_period"
 msgstr "Start period"
 
-#: app/intercom/views/abonent/form.html:33
+#: app/intercom/views/abonent/form.html:38
 msgid "html.abonent.tag_id_display"
 msgstr "ID rfid"
 
-#: app/intercom/views/abonent/form.html:212
+#: app/intercom/views/abonent/form.html:217
 msgid "html.abonent.temporary_access_perimeters"
 msgstr "Temporary perimeters"
 
-#: app/intercom/views/abonent/form.html:51
+#: app/intercom/views/abonent/form.html:56
 msgid "html.abonent.workking_time_display"
 msgstr "Working time"
 
-#: app/intercom/views/abonent/form.html:59
+#: app/intercom/views/abonent/form.html:64
 msgid "html.abonent.workking_time_end_display"
 msgstr "Working end time"
 
-#: app/intercom/views/abonent/form.html:54
+#: app/intercom/views/abonent/form.html:59
 msgid "html.abonent.workking_time_start_display"
 msgstr "Working start time"
 
@@ -380,7 +384,11 @@ msgstr "Description"
 msgid "html.access.point.form.display_name"
 msgstr "Name"
 
-#: app/intercom/views/access/point/form.html:28
+#: app/intercom/views/access/point/form.html:30
+msgid "html.access.point.form.elevator"
+msgstr "Elevator"
+
+#: app/intercom/views/access/point/form.html:35
 msgid "html.access.point.form.lockPhoneNumber"
 msgstr "Lock phone number"
 
@@ -658,9 +666,9 @@ msgid "html.control_panel_user.new_title"
 msgstr "New"
 
 #: app/intercom/views/abonent/create.html:13
-#: app/intercom/views/abonent/form.html:101
-#: app/intercom/views/abonent/form.html:206
-#: app/intercom/views/abonent/form.html:282
+#: app/intercom/views/abonent/form.html:106
+#: app/intercom/views/abonent/form.html:211
+#: app/intercom/views/abonent/form.html:287
 #: app/intercom/views/access/object/add.html:15
 #: app/intercom/views/access/object/form.html:52
 #: app/intercom/views/access/perimeter/add.html:16
@@ -687,8 +695,8 @@ msgstr "Back"
 msgid "html.defaults.cancel_title"
 msgstr "Cancel"
 
-#: app/intercom/views/abonent/form.html:192
-#: app/intercom/views/abonent/form.html:239
+#: app/intercom/views/abonent/form.html:197
+#: app/intercom/views/abonent/form.html:244
 msgid "html.defaults.change_title"
 msgstr "Change"
 
@@ -859,14 +867,14 @@ msgstr "Access point"
 msgid "html.journal.date_and_time_display"
 msgstr "Date and Time"
 
-#: app/intercom/views/abonent/form.html:246
-#: app/intercom/views/journal/list.html:21
+#: app/intercom/views/abonent/form.html:251
+#: app/intercom/views/journal/list.html:23
 #: app/intercom/views/payment/list.html:18
 msgid "html.journal.date_from_display"
 msgstr "Date from"
 
-#: app/intercom/views/abonent/form.html:261
-#: app/intercom/views/journal/list.html:33
+#: app/intercom/views/abonent/form.html:266
+#: app/intercom/views/journal/list.html:35
 #: app/intercom/views/payment/list.html:35
 msgid "html.journal.date_to_display"
 msgstr "Date to"
