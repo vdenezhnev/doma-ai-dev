@@ -222,6 +222,9 @@ app.controller('EditAccessPointCtrl', ['$scope', '$controller', '$state', '$stat
         $scope.title = $scope.point.displayName;
         $scope.deviceSettings = point.defaultKeySettings;
         $scope.deviceKeyUsage = point.keyUsage.restrictions;
+        $scope.transports = point.transports;
+        $scope.isOpeningByInternet = point.isOpeningByInternet || false;
+        $scope.isOpeningByPhone = point.isOpeningByInternet || false;
 
         $scope.getKeyUsage = function(key) {
             var result = $.grep($scope.deviceKeyUsage, function(e){ return e.key == key; });
@@ -259,6 +262,15 @@ app.controller('EditAccessPointCtrl', ['$scope', '$controller', '$state', '$stat
                 }, function (response) {
                     notify(gettextCatalog.getString('devices.device_updated'));
                 });
+
+                $scope.point.isOpeningByInternet = $scope.isOpeningByInternet;
+                $scope.point.isOpeningByPhone = $scope.isOpeningByPhone;
+                $scope.point.transports = $scope.transports;
+                $scope.point.$save(function () {
+                    $scope.$emit('updatePoint');
+                    notify(gettextCatalog.getString('devices.device_updated'));
+                });
+
             }
         };
 
@@ -279,13 +291,5 @@ app.controller('EditAccessPointCtrl', ['$scope', '$controller', '$state', '$stat
                 });
             }
         };
-
-        /*$controller('ObjectWatchChangesCtrl', {
-            $scope: $scope,
-            $state: $state,
-            object: {
-                point: $scope.point
-            }
-        });*/
     }
 ]);

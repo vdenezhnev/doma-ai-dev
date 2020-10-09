@@ -811,6 +811,34 @@ msgstr ""
 msgid "html.device.settings_form.keepOpenedWhileStayingNear"
 msgstr ""
 
+#: app/intercom/views/access/point/form_default_key_settings.html:184
+msgid "html.device.settings_form.transport_gsm"
+msgstr ""
+
+#: app/intercom/views/access/point/form_default_key_settings.html:187
+msgid "html.device.settings_form.transport_gsm_phone"
+msgstr ""
+
+#: app/intercom/views/access/point/form_default_key_settings.html:142
+msgid "html.device.settings_form.transport_internet"
+msgstr ""
+
+#: app/intercom/views/access/point/form_default_key_settings.html:145
+msgid "html.device.settings_form.transport_internet_geo"
+msgstr ""
+
+#: app/intercom/views/access/point/form_default_key_settings.html:151
+msgid "html.device.settings_form.transport_internet_radius"
+msgstr ""
+
+#: app/intercom/views/access/point/form_default_key_settings.html:162
+msgid "html.device.settings_form.transport_internet_x"
+msgstr ""
+
+#: app/intercom/views/access/point/form_default_key_settings.html:171
+msgid "html.device.settings_form.transport_internet_y"
+msgstr ""
+
 #: app/intercom/views/journal/list.html:17
 msgid "html.journal.access_point_display"
 msgstr ""
