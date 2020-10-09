@@ -39,6 +39,14 @@ app.config(['$stateProvider', 'settings', function($stateProvider, settings) {
                 code: null
             }
         })
+        .state('auth.mobile_password_reset', {
+            url: '/reset_password?code',
+            controller: 'MobilePasswordResetWebCtrl',
+            templateUrl: settings.TEMPLATE_DIR + 'auth/mobile_reset_password.html',
+            params: {
+                code: null
+            }
+        })
         .state('auth.activate_account', {
             url: settings.AUTH_ACTIVATION_ACCOUNT_URL,
             controller: 'ActivateAccountCtrl',

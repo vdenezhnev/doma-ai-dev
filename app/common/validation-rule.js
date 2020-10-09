@@ -7,6 +7,7 @@
         password: /^(?=.*).{6,}$/,
         phone: /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\.\/0-9]*$/,
         username: /^(.+){3,}$/,
+        email: /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,10}|[0-9]{1,3})(\]?)$/,
         password_match: function(value, scope, element, attrs) {
           return value == scope.$eval(attrs.validatorMatch);
         },
