@@ -36,6 +36,51 @@
                             <tr>
                                 <th style="width: 1%">Название</th>
                                 <th>Адрес</th>
+                                <th>
+                                    Доступно<br/>
+                                    <div style="display: flex;">
+                                        <input type="text"
+                                                placeholder="от"
+                                                class="form-control"
+                                                style="width: 50px;"
+                                                ng-model="keysFilter.available.from"/>
+                                        <input type="text"
+                                                placeholder="до"
+                                                class="form-control"
+                                                style="width: 50px;"
+                                                ng-model="keysFilter.available.to"/>
+                                    </div>
+                                </th>
+                                <th>
+                                    Использовано<br/>
+                                    <div style="display: flex;">
+                                        <input type="text"
+                                                placeholder="от"
+                                                class="form-control"
+                                                style="width: 50px;"
+                                                ng-model="keysFilter.used.from"/>
+                                        <input type="text"
+                                                placeholder="до"
+                                                class="form-control"
+                                                style="width: 50px;"
+                                                ng-model="keysFilter.used.to"/>
+                                    </div>
+                                </th>
+                                <th>
+                                    Осталось<br/>
+                                    <div style="display: flex;">
+                                        <input type="text"
+                                                placeholder="от"
+                                                class="form-control"
+                                                style="width: 50px;"
+                                                ng-model="keysFilter.remaining.from"/>
+                                        <input type="text"
+                                                placeholder="до"
+                                                class="form-control"
+                                                style="width: 50px;"
+                                                ng-model="keysFilter.remaining.to"/>
+                                    </div>
+                                </th>
                                 <th>Телефоны</th>
                                 <th>Email</th>
                             </tr>
@@ -44,6 +89,9 @@
                             <tr ng-repeat="company in objects">
                                 <td nowrap><a ui-sref="admin.company.detail({id: company.id, company: company})">{{ company.companyName }}</a></td>
                                 <td>{{ company.address.streetAddress }}</td>
+                                <td>{{ company.keyCount.available }}</td>
+                                <td>{{ company.keyCount.used }}</td>
+                                <td>{{ company.keyCount.remaining }}</td>
                                 <td>{{ company.phoneNumbers.join(', ') }}</td>
                                 <td>{{ company.support.email }}</td>
                             </tr>

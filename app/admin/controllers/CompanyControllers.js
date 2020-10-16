@@ -6,8 +6,29 @@ app.controller('CompanyListCtrl', ['$scope', 'Api', 'settings',
         $scope.skip = 0;
         $scope.loadedAllCompanies = false;
 
+        $scope.keysFilter = {
+            available: {
+                from: null,
+                to: null
+            },
+            used: {
+                from: null,
+                to: null
+            },
+            remaining: {
+                from: null,
+                to: null
+            }
+        }
+
         $scope.loadObjects = function(take, reset) {
             var action = $scope.q ? 'SearchServiceCompanies' : 'GetLatestRegisteredServiceCompanies';
+
+            for (var typeKey in $scope.keysFilter) {
+                $scope.keysFilter[typeKey].from = null;
+                $scope.keysFilter[typeKey].to = null;
+            }
+
             Api.get(settings.API_URL, {
                 'Action': action,
                 'Skip': $scope.skip,
