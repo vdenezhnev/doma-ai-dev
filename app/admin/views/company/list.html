@@ -73,12 +73,12 @@
                                                 placeholder="от"
                                                 class="form-control"
                                                 style="width: 50px;"
-                                                ng-model="keysFilter.remaining.from"/>
+                                                ng-model="keysFilter.remain.from"/>
                                         <input type="text"
                                                 placeholder="до"
                                                 class="form-control"
                                                 style="width: 50px;"
-                                                ng-model="keysFilter.remaining.to"/>
+                                                ng-model="keysFilter.remain.to"/>
                                     </div>
                                 </th>
                                 <th>Телефоны</th>
@@ -91,7 +91,7 @@
                                 <td>{{ company.address.streetAddress }}</td>
                                 <td>{{ company.keyCount.available }}</td>
                                 <td>{{ company.keyCount.used }}</td>
-                                <td>{{ company.keyCount.remaining }}</td>
+                                <td>{{ company.keyCount.remain }}</td>
                                 <td>{{ company.phoneNumbers.join(', ') }}</td>
                                 <td>{{ company.support.email }}</td>
                             </tr>

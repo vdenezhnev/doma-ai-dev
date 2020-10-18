@@ -15,7 +15,7 @@ app.controller('CompanyListCtrl', ['$scope', 'Api', 'settings',
                 from: null,
                 to: null
             },
-            remaining: {
+            remain: {
                 from: null,
                 to: null
             }
