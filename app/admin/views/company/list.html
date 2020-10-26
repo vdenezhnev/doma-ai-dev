@@ -37,48 +37,55 @@
                                 <th style="width: 1%">Название</th>
                                 <th>Адрес</th>
                                 <th>
-                                    Доступно<br/>
+                                    <div style="text-align: center;">Доступно</div>
                                     <div style="display: flex;">
-                                        <input type="text"
+                                        <input type="number"
                                                 placeholder="от"
                                                 class="form-control"
-                                                style="width: 50px;"
-                                                ng-model="keysFilter.available.from"/>
-                                        <input type="text"
+                                                style="width: 85px;"
+                                                ng-model="keysFilter.available.from"
+                                                ng-model-options="{debounce: 1000}"
+                                                message-id="MinOpenedTimeMessageId"/>
+                                        <input type="number"
                                                 placeholder="до"
                                                 class="form-control"
-                                                style="width: 50px;"
-                                                ng-model="keysFilter.available.to"/>
+                                                style="width: 85px;"
+                                                ng-model="keysFilter.available.to"
+                                                ng-model-options="{debounce: 1000}"/>
                                     </div>
                                 </th>
                                 <th>
-                                    Использовано<br/>
+                                    <div style="text-align: center;">Использовано</div>
                                     <div style="display: flex;">
-                                        <input type="text"
+                                        <input type="number"
                                                 placeholder="от"
                                                 class="form-control"
-                                                style="width: 50px;"
-                                                ng-model="keysFilter.used.from"/>
-                                        <input type="text"
+                                                style="width: 85px;"
+                                                ng-model="keysFilter.used.from"
+                                                ng-model-options="{debounce: 1000}"/>
+                                        <input type="number"
                                                 placeholder="до"
                                                 class="form-control"
-                                                style="width: 50px;"
-                                                ng-model="keysFilter.used.to"/>
+                                                style="width: 85px;"
+                                                ng-model="keysFilter.used.to"
+                                                ng-model-options="{debounce: 1000}"/>
                                     </div>
                                 </th>
                                 <th>
-                                    Осталось<br/>
+                                    <div style="text-align: center;">Осталось</div>
                                     <div style="display: flex;">
-                                        <input type="text"
+                                        <input type="number"
                                                 placeholder="от"
                                                 class="form-control"
-                                                style="width: 50px;"
-                                                ng-model="keysFilter.remaining.from"/>
-                                        <input type="text"
+                                                style="width: 85px;"
+                                                ng-model="keysFilter.remain.from"
+                                                ng-model-options="{debounce: 1000}"/>
+                                        <input type="number"
                                                 placeholder="до"
                                                 class="form-control"
-                                                style="width: 50px;"
-                                                ng-model="keysFilter.remaining.to"/>
+                                                style="width: 85px;"
+                                                ng-model="keysFilter.remain.to"
+                                                ng-model-options="{debounce: 1000}"/>
                                     </div>
                                 </th>
                                 <th>Телефоны</th>
@@ -91,7 +98,7 @@
                                 <td>{{ company.address.streetAddress }}</td>
                                 <td>{{ company.keyCount.available }}</td>
                                 <td>{{ company.keyCount.used }}</td>
-                                <td>{{ company.keyCount.remaining }}</td>
+                                <td>{{ company.keyCount.remain }}</td>
                                 <td>{{ company.phoneNumbers.join(', ') }}</td>
                                 <td>{{ company.support.email }}</td>
                             </tr>

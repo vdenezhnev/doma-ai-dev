@@ -66,8 +66,8 @@ app.controller('AbonentCreateCtrl', ['$scope', '$state', 'Abonent', 'Device',
     }
 ]);
 
-app.controller('AbonentDetailCtrl', ['$scope', '$controller', '$rootScope', '$state', '$stateParams', 'Abonent', 'AccessObject', 'notify', 'gettextCatalog',
-    function($scope, $controller, $rootScope, $state, $stateParams, Abonent, AccessObject, notify, gettextCatalog) {
+app.controller('AbonentDetailCtrl', ['$scope', '$controller', '$state', '$stateParams', 'Abonent', 'notify', 'gettextCatalog', 'User',
+    function($scope, $controller, $state, $stateParams, Abonent, notify, gettextCatalog, User) {
 
         if (!$stateParams.abonent) {
             $state.go('admin.abonent.list');
@@ -80,6 +80,7 @@ app.controller('AbonentDetailCtrl', ['$scope', '$controller', '$rootScope', '$st
             $scope.abonent.$save(function(response) {
                 notify(gettextCatalog.getString('abonents.abonent_updated'));
                 $state.current.showConfirmation = false;
+                User.updateKeyCountInfo();
                 $state.go('admin.abonent.list');
             });
         };
