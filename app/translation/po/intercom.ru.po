@@ -53,7 +53,7 @@ msgstr "По"
 msgid "html.journal.key_type_display"
 msgstr "Тип идентификатора"
 
-#: app/intercom/views/journal/list.html:18
+#: app/intercom/views/journal/list.html:17
 msgid "html.journal.lock_access_types_display"
 msgstr "Результат доступа"
 
@@ -111,11 +111,11 @@ msgstr "Оплата ключа за год"
 msgid "LockMaintenancePeriod"
 msgstr "Оплата ключа за период"
 
-#: app/intercom/controllers/AbonentControllers.js:74
+#: app/intercom/controllers/AbonentControllers.js:89
 msgid "abonents.abonent_delete_confirm"
 msgstr "Вы уверены, что хотите удалить абонента?"
 
-#: app/intercom/controllers/AbonentControllers.js:76
+#: app/intercom/controllers/AbonentControllers.js:91
 msgid "abonents.abonent_deleted"
 msgstr "Абонент удален"
 
@@ -878,11 +878,11 @@ msgstr "Жесты"
 msgid "html.device.settings_form.keepOpenedWhileStayingNear"
 msgstr "Активно в ключе по умолчанию"
 
-#: app/intercom/views/access/point/form_default_key_settings.html:181
+#: app/intercom/views/access/point/form_default_key_settings.html:182
 msgid "html.device.settings_form.transport_gsm"
 msgstr "Разрешить открытие звонком"
 
-#: app/intercom/views/access/point/form_default_key_settings.html:184
+#: app/intercom/views/access/point/form_default_key_settings.html:185
 msgid "html.device.settings_form.transport_gsm_phone"
 msgstr "Номер телефона"
 
@@ -898,30 +898,34 @@ msgstr "Ограничение по геопозиции"
 msgid "html.device.settings_form.transport_internet_radius"
 msgstr "Радиус"
 
-#: app/intercom/views/access/point/form_default_key_settings.html:159
+#: app/intercom/views/access/point/form_default_key_settings.html:160
 msgid "html.device.settings_form.transport_internet_x"
 msgstr "Широта"
 
-#: app/intercom/views/access/point/form_default_key_settings.html:168
+#: app/intercom/views/access/point/form_default_key_settings.html:169
 msgid "html.device.settings_form.transport_internet_y"
 msgstr "Долгота"
 
-#: app/intercom/views/journal/list.html:15
+#: app/intercom/views/journal/list.html:18
 msgid "html.journal.access_point_display"
 msgstr "Точка доступа"
+
+#: app/intercom/views/journal/list.html:16
+msgid "html.journal.card_id"
+msgstr "ID карты"
 
 #: app/intercom/views/journal/list.html:12
 msgid "html.journal.date_and_time_display"
 msgstr "Время"
 
 #: app/intercom/views/abonent/form.html:251
-#: app/intercom/views/journal/list.html:23
+#: app/intercom/views/journal/list.html:24
 #: app/intercom/views/payment/list.html:18
 msgid "html.journal.date_from_display"
 msgstr "Дата от"
 
 #: app/intercom/views/abonent/form.html:266
-#: app/intercom/views/journal/list.html:35
+#: app/intercom/views/journal/list.html:36
 #: app/intercom/views/payment/list.html:35
 msgid "html.journal.date_to_display"
 msgstr "Дата до"
