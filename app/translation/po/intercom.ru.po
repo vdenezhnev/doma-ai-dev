@@ -132,13 +132,13 @@ msgstr "Пароль изменен"
 msgid "account.profile_updated"
 msgstr "Профиль обновлен"
 
-#: app/intercom/controllers/AuthControllers.js:76
+#: app/intercom/controllers/AuthControllers.js:90
 msgid "auth.account_activated"
 msgstr "Аккаунт активирован"
 
-#: app/intercom/controllers/AuthControllers.js:109
-#: app/intercom/controllers/AuthControllers.js:128
-#: app/intercom/controllers/AuthControllers.js:148
+#: app/intercom/controllers/AuthControllers.js:123
+#: app/intercom/controllers/AuthControllers.js:142
+#: app/intercom/controllers/AuthControllers.js:162
 msgid "auth.password_changed"
 msgstr "Пароль изменен"
 
@@ -1173,6 +1173,18 @@ msgstr "Тариф отменен"
 #: app/intercom/controllers/TariffControllers.js:51
 msgid "tariffs.tariff_updated"
 msgstr "Тариф обновлен"
+
+#: app/intercom/views/modals/keys.html:9
+msgid "html.modals.keys_message"
+msgstr "Пожалуйста, закажите дополнительные ключи, обратившись к поставщику системы или производителю по электронной почте"
+
+#: app/intercom/views/modals/keys.html:10
+msgid "html.modals.keys_message_phone"
+msgstr "или по телефону"
+
+#: app/intercom/views/modals/keys.html:4
+msgid "html.modals.keys_title"
+msgstr "Остаток ключей равен"
 
 #: app/intercom/views/tariff/form.html:39
 msgid "{{ 'html.tariff.period_' + tariff_period.type | translate }}"

@@ -42,13 +42,13 @@ msgstr ""
 msgid "account.profile_updated"
 msgstr ""
 
-#: app/intercom/controllers/AuthControllers.js:76
+#: app/intercom/controllers/AuthControllers.js:90
 msgid "auth.account_activated"
 msgstr ""
 
-#: app/intercom/controllers/AuthControllers.js:109
-#: app/intercom/controllers/AuthControllers.js:128
-#: app/intercom/controllers/AuthControllers.js:148
+#: app/intercom/controllers/AuthControllers.js:123
+#: app/intercom/controllers/AuthControllers.js:142
+#: app/intercom/controllers/AuthControllers.js:162
 msgid "auth.password_changed"
 msgstr ""
 
@@ -936,6 +936,18 @@ msgstr ""
 
 #: app/intercom/views/inc/sidebar.html:22
 msgid "html.menu.tariffs"
+msgstr ""
+
+#: app/intercom/views/modals/keys.html:9
+msgid "html.modals.keys_message"
+msgstr ""
+
+#: app/intercom/views/modals/keys.html:10
+msgid "html.modals.keys_message_phone"
+msgstr ""
+
+#: app/intercom/views/modals/keys.html:4
+msgid "html.modals.keys_title"
 msgstr ""
 
 #: app/intercom/views/payment/list.html:8
