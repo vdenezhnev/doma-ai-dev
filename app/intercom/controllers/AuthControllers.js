@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('LoginCtrl', ['$scope', '$http', '$httpParamSerializer', 'settings', 'User', function($scope, $http, $httpParamSerializer, settings, User) {
+app.controller('LoginCtrl', ['$scope', '$http', '$httpParamSerializer', 'settings', 'User', 'ModalService', '$timeout', function($scope, $http, $httpParamSerializer, settings, User, ModalService, $timeout) {
     $scope.login = '';
     $scope.password = '';
     $scope.defaultCompanyProfiles = [];
@@ -39,6 +39,20 @@ app.controller('LoginCtrl', ['$scope', '$http', '$httpParamSerializer', 'setting
             ServiceCompanyId: id
         }).then(function successCallback(response) {
            User.load(response.data.profiles[0], response.data.credentials);
+
+           if (response.data.profiles[0] && response.data.profiles[0].keyCount.remain < 10) {
+                $timeout(function () {
+                    ModalService.showModal({
+                        templateUrl: `${settings.TEMPLATE_DIR}modals/keys.html`,
+                        controller: 'KeysAlertCtrl',
+                        inputs: {
+                            remainingKeys: response.data.profiles[0].keyCount.remain,
+                        }
+                    }).then(function(modal) {
+                        modal.element.modal();
+                    });
+                }, 1000, false);
+           }
         });
     };
 
@@ -154,5 +168,15 @@ app.controller('MobilePasswordResetWebCtrl', ['$scope', '$stateParams', '$http',
                 return $scope.PasswordResetForm.new_password.$pristine || $scope.PasswordResetForm.new_password_confirm.$pristine || $scope.PasswordResetForm.$invalid;
             }
         }
+    }
+]);
+
+app.controller('KeysAlertCtrl', ['$scope', 'close', '$element', 'remainingKeys',
+    function($scope, close, $element, remainingKeys) {
+        $scope.remainingKeys = remainingKeys;
+        $scope.closeModal = function() {
+            $element.modal('hide');
+            close(null, 500);
+        };
     }
 ]);
