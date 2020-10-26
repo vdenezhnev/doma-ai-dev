@@ -3,11 +3,6 @@ app.controller('AccountProfileCtrl', ['$scope', '$controller', '$state', '$http'
     function($scope, $controller, $state, $http, User, settings, notify, gettextCatalog) {
         $scope.userData = angular.copy(User.data);
 
-        $http.get(`${settings.API_URL}?action=GetKeyCountServiceCompany`)
-            .then(function successCallback(response) {
-                angular.extend($scope.userData.keyCount, response.data);
-            });
-
         $scope.save = function() {
             $http.post(settings.API_URL, angular.extend({Action: 'UpdateServiceCompany'}, $scope.userData))
                 .then(function successCallback(response) {
