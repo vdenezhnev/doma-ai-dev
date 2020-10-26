@@ -146,15 +146,16 @@
             </label>
 
             <div class="row" style="margin-left: 15px;">
-                <div class="col-md-3">
+                <div class="col-md-9 col-lg-4">
                     <div class="input-group">
                         <span class="input-group-addon" translate>html.device.settings_form.transport_internet_radius</span>
                         <input class="form-control"
                             type="number"
+                            ng-disabled="!transport.geoRestriction"
                             ng-model="transport.radius">
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-9 col-lg-4">
                     <div class="input-group">
                         <span class="input-group-addon" translate>html.device.settings_form.transport_internet_x</span>
                         <input type="text"
@@ -163,7 +164,7 @@
                             class="form-control">
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-9 col-lg-4">
                     <div class="input-group">
                         <span class="input-group-addon" translate>html.device.settings_form.transport_internet_y</span>
                         <input type="text"
