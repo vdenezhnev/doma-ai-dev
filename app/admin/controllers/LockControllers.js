@@ -127,7 +127,7 @@ app.controller('LockCreateCtrl', ['$scope', '$state', 'notify', 'Api', 'settings
                     {type: 'blueToothLe', isActivated: false},
                     {type: 'nfc', isActivated: false},
                     {type: 'gsm', isActivated: false},
-                    {type: 'internet', isActivated: false},
+                    {type: 'internet', isActivated: false, radius: 0, coordinate: { x: 0, y: 0 }},
                     {type: 'wiFiDirect', isActivated: false},
                     {type: 'blueTooth', isActivated: false}
                 ]

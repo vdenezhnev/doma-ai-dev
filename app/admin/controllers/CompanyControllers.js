@@ -21,20 +21,32 @@ app.controller('CompanyListCtrl', ['$scope', 'Api', 'settings',
             }
         }
 
-        $scope.loadObjects = function(take, reset) {
-            var action = $scope.q ? 'SearchServiceCompanies' : 'GetLatestRegisteredServiceCompanies';
-
-            for (var typeKey in $scope.keysFilter) {
-                $scope.keysFilter[typeKey].from = null;
-                $scope.keysFilter[typeKey].to = null;
-            }
-
-            Api.get(settings.API_URL, {
+        $scope.loadObjects = function(take, reset, filter) {
+            var action = ($scope.q || filter) ? 'SearchServiceCompanies' : 'GetLatestRegisteredServiceCompanies';
+            var request = {
                 'Action': action,
                 'Skip': $scope.skip,
                 'Take': take,
                 'SearchPhrase': $scope.q
-            }, function(response) {
+            };
+
+            if (filter) {
+                request.availableFrom = filter.available.from;
+                request.availableTo = filter.available.to;
+                request.usedFrom = filter.used.from;
+                request.usedTo = filter.used.to;
+                request.remainFrom = filter.remain.from;
+                request.remainTo = filter.remain.to;
+            }
+
+            if (!reset) {
+                for (var typeKey in $scope.keysFilter) {
+                    $scope.keysFilter[typeKey].from = null;
+                    $scope.keysFilter[typeKey].to = null;
+                }
+            }
+
+            Api.get(settings.API_URL, request, function(response) {
                 $scope.skip += response.data.length;
 
                 if (reset) {
@@ -55,6 +67,12 @@ app.controller('CompanyListCtrl', ['$scope', 'Api', 'settings',
             }
         });
 
+        $scope.$watch('keysFilter', function(newVal, oldVal){
+            if (!angular.equals(newVal, oldVal)) {
+                $scope.loadObjects(20, true, newVal);
+            }
+        }, true);
+
         $scope.loadObjects(20, false);
     }
 ]);
@@ -66,6 +84,7 @@ app.controller('CompanyDetailCtrl', ['$scope', '$http', '$state', '$stateParams'
         }
 
         $scope.company = $stateParams.company;
+        $scope.isCreate = false;
         $scope.data = {
             acquiringTypes: [],
             merchantSettings: [],
@@ -193,6 +212,7 @@ app.controller('CompanyDetailCtrl', ['$scope', '$http', '$state', '$stateParams'
 
 app.controller('CompanyCreateCtrl', ['$scope', '$state', 'Api', 'settings', 'notify',
     function($scope, $state, Api, settings, notify) {
+        $scope.isCreate = true;
 
         $scope.company = {
             phoneNumbers: [''],

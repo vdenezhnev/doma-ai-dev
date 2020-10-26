@@ -106,10 +106,6 @@
             </div>
             <div class="panel-body">
                 <div class="form-group">
-                    <label>Радиус</label>
-                    <input class="form-control" ng-model="transport.radius">
-                </div>
-                <div class="form-group">
                     <label>Url</label>
                     <input class="form-control" ng-model="transport.url">
                 </div>
@@ -118,14 +114,18 @@
                         <input type="checkbox" ng-model="transport.geoRestriction" /> Ограничение по геопозиции
                     </div>
                     <div class="panel-body">
+                        <div class="form-group">
+                            <label>Радиус</label>
+                            <input type="number" class="form-control" ng-model="transport.radius" ng-disabled="!transport.geoRestriction" ng-required="transport.geoRestriction">
+                        </div>
                         <div class="form-group" style="display: flex;">
                             <div style="width: 50%; padding-right: 5px;">
                                 <label>Широта</label>
-                                <input class="form-control" ng-model="transport.coordinate.x" ng-disabled="!transport.geoRestriction">
+                                <input class="form-control" ng-model="transport.coordinate.x" ng-disabled="!transport.geoRestriction" ng-required="transport.geoRestriction">
                             </div>
                             <div style="width: 50%;">
                                 <label>Долгота</label>
-                                <input class="form-control" ng-model="transport.coordinate.y" ng-disabled="!transport.geoRestriction">
+                                <input class="form-control" ng-model="transport.coordinate.y" ng-disabled="!transport.geoRestriction" ng-required="transport.geoRestriction">
                             </div>
                         </div>
                     </div>
