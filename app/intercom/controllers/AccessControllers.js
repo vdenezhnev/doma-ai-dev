@@ -216,15 +216,18 @@ app.controller('AddAccessPointCtrl', ['$scope', '$state', '$stateParams', '$http
     }
 ]);
 
-app.controller('EditAccessPointCtrl', ['$scope', '$controller', '$state', '$stateParams', '$http', 'AccessPoint', 'notify', 'gettextCatalog', 'point',
-    function($scope, $controller, $state, $stateParams, $http, AccessPoint, notify, gettextCatalog, point) {
+app.controller('EditAccessPointCtrl', ['$scope', '$state', 'AccessPoint', 'notify', 'gettextCatalog', 'point',
+    function($scope, $state, AccessPoint, notify, gettextCatalog, point) {
+        var vm = this;
+
         $scope.point = point;
         $scope.title = $scope.point.displayName;
         $scope.deviceSettings = point.defaultKeySettings;
         $scope.deviceKeyUsage = point.keyUsage.restrictions;
         $scope.transports = point.transports;
-        $scope.isOpeningByInternet = point.isOpeningByInternet || false;
-        $scope.isOpeningByPhone = point.isOpeningByInternet || false;
+
+        vm.isOpeningByInternet = !!point.isOpeningByInternet;
+        vm.isOpeningByPhone = !!point.isOpeningByPhone;
 
         $scope.getKeyUsage = function(key) {
             var result = $.grep($scope.deviceKeyUsage, function(e){ return e.key == key; });
@@ -263,8 +266,8 @@ app.controller('EditAccessPointCtrl', ['$scope', '$controller', '$state', '$stat
                     notify(gettextCatalog.getString('devices.device_updated'));
                 });
 
-                $scope.point.isOpeningByInternet = $scope.isOpeningByInternet;
-                $scope.point.isOpeningByPhone = $scope.isOpeningByPhone;
+                $scope.point.isOpeningByInternet = vm.isOpeningByInternet;
+                $scope.point.isOpeningByPhone = vm.isOpeningByPhone;
                 $scope.point.transports = $scope.transports;
                 $scope.point.$save(function () {
                     $scope.$emit('updatePoint');
