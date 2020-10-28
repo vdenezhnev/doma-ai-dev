@@ -39,13 +39,6 @@ app.controller('CompanyListCtrl', ['$scope', 'Api', 'settings',
                 request.remainTo = filter.remain.to;
             }
 
-            if (!reset) {
-                for (var typeKey in $scope.keysFilter) {
-                    $scope.keysFilter[typeKey].from = null;
-                    $scope.keysFilter[typeKey].to = null;
-                }
-            }
-
             Api.get(settings.API_URL, request, function(response) {
                 $scope.skip += response.data.length;
 
@@ -63,12 +56,13 @@ app.controller('CompanyListCtrl', ['$scope', 'Api', 'settings',
         $scope.$watch('q', function(newVal, oldVal){
             if (newVal !== oldVal) {
                 $scope.skip = 0;
-                $scope.loadObjects(20, true);
+                $scope.loadObjects(20, true, $scope.keysFilter);
             }
         });
 
         $scope.$watch('keysFilter', function(newVal, oldVal){
             if (!angular.equals(newVal, oldVal)) {
+                $scope.skip = 0;
                 $scope.loadObjects(20, true, newVal);
             }
         }, true);
