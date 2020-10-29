@@ -94,6 +94,16 @@ app.config(['$stateProvider', 'settings', function($stateProvider, settings) {
             templateUrl: settings.TEMPLATE_DIR + 'access_point/list.html'
         })
 
+        .state('admin.payments', {
+            abstract: true,
+            templateUrl: settings.TEMPLATE_DIR + 'payments/base.html'
+        })
+        .state('admin.payments.list', {
+            url: "payments",
+            controller: 'PaymentsListCtrl',
+            templateUrl: settings.TEMPLATE_DIR + 'payments/list.html'
+        })
+
         .state('login', {
             url: "/login",
             controller: 'LoginCtrl',
