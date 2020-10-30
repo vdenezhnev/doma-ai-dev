@@ -1,8 +1,9 @@
 'use strict';
 
-app.controller('PaymentsListCtrl', ['$scope', 'Api', 'settings', 'ModalService',
-    function($scope, Api, settings, ModalService) {
+app.controller('PaymentsListCtrl', ['$scope', 'Api', 'settings', 'ModalService', 'notify',
+    function($scope, Api, settings, ModalService, notify) {
         $scope.checkedAll = false;
+        $scope.isDisabledChangePaymentDate = true;
         $scope.payments = [];
         $scope.skip = 0;
         $scope.loadedAllPayments = false;
@@ -55,18 +56,49 @@ app.controller('PaymentsListCtrl', ['$scope', 'Api', 'settings', 'ModalService',
         };
 
         $scope.setNewPaymentDate = function(newDate) {
-            // TODO
+            if (newDate && $scope.payments.length) {
+                var checkedPayments = $scope.payments.filter(item => item.checked).map(item => item.id);
+                Api.post(settings.API_URL, {
+                    Action: 'UpdateAccessPointsForSimCardPayment',
+                    AccessPointIds: checkedPayments,
+                    PaymentDate: newDate
+                }, function() {
+                    notify('Записи обновлены');
+
+                    $scope.payments.forEach(function (item) {
+                        if (checkedPayments.includes(item.id)) {
+                            item.paymentDate = newDate;
+                        }
+                    });
+                });
+            }
         };
 
         $scope.setAllSelected = function() {
            angular.forEach($scope.payments, function (value) {
                value.checked = $scope.checkedAll ? true : false;
            });
+           $scope.onCheck();
         }
 
-        $scope.onCheck = function (payment) {
-            // TODO
+        $scope.onCheck = function () {
+            if ($scope.payments && $scope.payments.length) {
+                var checkedPayments = $scope.payments.filter(item => item.checked).length;
+
+                if (!Boolean(checkedPayments)) {
+                    $scope.checkedAll = false;
+                } else if (checkedPayments === $scope.payments.length) {
+                    $scope.checkedAll = true;
+                }
+
+                $scope.isDisabledChangePaymentDate = !Boolean(checkedPayments);
+            }
         };
+
+        $scope.resetFilter = function () {
+            $scope.listFilter.payment.to = null;
+            $scope.listFilter.payment.from = null;
+        }
 
         $scope.$watch('q', function(newVal, oldVal){
             if (newVal != oldVal) {
