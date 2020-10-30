@@ -1,34 +1,56 @@
 
-<div id="wrapper">
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header" ng-class="{'navbar-right': isRTL}">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu-navbar-collapse" aria-expanded="false">
+          <span class="sr-only">Toggle</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">{{'NAVBAR_BRAND' | translate}}</a>
+      </div>
 
-    <div id="sidebar-wrapper">
-
-        <div class="brand">SmartAirkey</div>
-
-        <div class="user-toolbar">
-            <span><i class="fa fa-user fa-fw"></i> {{ user.data.displayName }}</span>
-            <button type="button" class="btn btn-xs pull-right btn-default" ng-click="logout()"><i class="fa fa-sign-out fa-fw"></i></button>
-        </div>
-
-        <ul class="nav nav-pills nav-stacked">
+      <div class="collapse navbar-collapse" id="menu-navbar-collapse">
+        <ul class="nav navbar-nav" ng-class="{'navbar-right': isRTL}">
             <li>
-                <a ui-sref="admin.client.list" ui-sref-active="active"><i class="fa fa-users fa-fw"></i> Пользователи</a>
+                <a ui-sref="admin.client.list" ui-sref-active="active"><i class="fa fa-users fa-fw"></i> {{'NAVBAR_USERS' | translate }}</a>
             </li>
             <li>
-                <a ui-sref="admin.lock.list" ui-sref-active="active"><i class="fa fa-key fa-fw"></i> Замки</a>
+                <a ui-sref="admin.lock.list" ui-sref-active="active"><i class="fa fa-key fa-fw"></i> {{'NAVBAR_LOCKS' | translate}}</a>
             </li>
             <li>
-                <a ui-sref="admin.accessPoint.list" ui-sref-active="active"><i class="fa fa-key fa-fw"></i> Точки доступа</a>
+                <a ui-sref="admin.accessPoint.list" ui-sref-active="active"><i class="fa fa-key fa-fw"></i> {{'NAVBAR_ACCESS_POINTS' | translate}}</a>
             </li>
             <li>
-                <a ui-sref="admin.company.list" ui-sref-active="active"><i class="fa fa-archive fa-fw"></i> Компании</a>
+                <a ui-sref="admin.company.list" ui-sref-active="active"><i class="fa fa-archive fa-fw"></i> {{'NAVBAR_COMPANIES' | translate}}</a>
             </li>
             <li>
-                <a ui-sref="admin.payments.list" ui-sref-active="active"><i class="fa fa-credit-card fa-fw"></i> Оплаты SIM-карт</a>
+                <a ui-sref="admin.payments.list" ui-sref-active="active"><i class="fa fa-credit-card fa-fw"></i> {{'NAVBAR_PAYMENS' | translate}}</a>
             </li>
         </ul>
-    </div>
 
+        <ul class="nav navbar-nav" ng-class="{'navbar-right': !isRTL}">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ user.data.displayName }} <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#" ng-click="logout()"><i class="fa fa-sign-out fa-fw"></i> {{'NAVBAR_LOGOUT' | translate}}</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ selectedLocale }} <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li ng-repeat="locale in availableLocales" ng-if="locale.key !== selectedLocale">
+                <a href="#" ng-click="onChangeLocale(locale.key)">{{ locale.displayName }} ({{locale.key}})</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+</nav>
+
+<div id="wrapper" style="margin-top: 50px;">
     <div id="page-content-wrapper">
         <div ui-view></div>
     </div>

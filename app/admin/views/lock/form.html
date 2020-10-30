@@ -1,12 +1,12 @@
 <div class="col-lg-6">
 
     <div class="form-group" ng-if="!isNew">
-        <label>ID</label>
+        <label translate>FORM_FIELD_ID</label>
         <input class="form-control" ng-disabled="true" ng-model="lock.id">
     </div>
 
     <div class="form-group" ng-if="isNew">
-        <label>ID</label>
+        <label translate>FORM_FIELD_ID</label>
         <input class="form-control" ng-model="lock.lockId">
     </div>
 
@@ -21,24 +21,24 @@
     <hr>
 
     <div class="form-group">
-        <label>Дистанция</label>
+        <label translate>LOCKS_FORM_DISTANCE</label>
         <input class="form-control" ng-model="lock.connectivity.onMoving.activeDistance">
     </div>
 
     <div class="form-group">
-        <label>Время открытия</label>
+        <label translate>LOCKS_FORM_OPENING_TIME</label>
         <input class="form-control" ng-model="lock.connectivity.activeTime">
     </div>
 
     <div class="checkbox">
         <label>
-            <input type="checkbox" ng-model="lock.connectivity.onMoving.autoOpen"> Автооткрытие
+            <input type="checkbox" ng-model="lock.connectivity.onMoving.autoOpen"> {{ 'LOCKS_FORM_AUTO_OPEN' | translate }}
         </label>
     </div>
 
     <div class="checkbox">
         <label>
-            <input type="checkbox" ng-model="lock.connectivity.onMoving.autoClose"> Автозакрытие
+            <input type="checkbox" ng-model="lock.connectivity.onMoving.autoClose"> {{ 'LOCKS_FORM_AUTO_CLOSE' | translate }}
         </label>
     </div>
 </div>
@@ -50,27 +50,27 @@
         <!-- BLE -->
         <div class="panel panel-default" ng-if="transport.type == 'blueToothLe'">
             <div class="panel-heading">
-                <h3 style="margin: 0;"><input type="checkbox" ng-model="transport.isActivated" /> BLE</h3>
+                <h3 style="margin: 0;"><input type="checkbox" ng-model="transport.isActivated" /> {{ 'LOCKS_TRANSPORT_BLE' | translate }}</h3>
             </div>
             <div class="panel-body">
                 <div class="form-group">
-                    <label>Имя устройства</label>
+                    <label translate>LOCKS_FORM_BLE_DEVICE_NAME</label>
                     <input class="form-control" ng-model="transport.deviceName">
                 </div>
                 <div class="form-group">
-                    <label>MAC-адрес</label>
+                    <label translate>LOCKS_FORM_BLE_MAC</label>
                     <input class="form-control" ng-model="transport.macAddress">
                 </div>
                 <div class="form-group">
-                    <label>Service Uuid</label>
+                    <label translate>LOCKS_FORM_BLE_SERVICE_UUID</label>
                     <input class="form-control" ng-model="transport.serviceUuid">
                 </div>
                 <div class="form-group">
-                    <label>CharData Uuid</label>
+                    <label translate>LOCKS_FORM_BLE_CHARDATA_UUID</label>
                     <input class="form-control" ng-model="transport.charDataUuid">
                 </div>
                 <div class="form-group">
-                    <label>CharRssi Uuid</label>
+                    <label translate>LOCKS_FORM_BLE_CHARRSSI_UUID</label>
                     <input class="form-control" ng-model="transport.charRssiUuid">
                 </div>
             </div>
@@ -79,21 +79,21 @@
         <!-- NFC -->
         <div class="panel panel-default" ng-if="transport.type == 'nfc'">
             <div class="panel-heading">
-                <h3 style="margin: 0;"><input type="checkbox" ng-model="transport.isActivated" /> NFC</h3>
+                <h3 style="margin: 0;"><input type="checkbox" ng-model="transport.isActivated" /> {{ 'LOCKS_TRANSPORT_NFC' | translate }}</h3>
             </div>
         </div>
 
         <!-- GSM -->
         <div class="panel panel-default" ng-if="transport.type == 'gsm'">
             <div class="panel-heading">
-                <h3 style="margin: 0;"><input type="checkbox" ng-model="transport.isActivated" /> GSM</h3>
+                <h3 style="margin: 0;"><input type="checkbox" ng-model="transport.isActivated" /> {{ 'LOCKS_TRANSPORT_GSM' | translate }}</h3>
             </div>
             <div class="panel-body">
                 <div class="form-group">
-                    <input type="checkbox" ng-model="transport.isIntegratedSimCard" /> Встроенная сим-карта
+                    <input type="checkbox" ng-model="transport.isIntegratedSimCard" /> {{ 'LOCKS_FORM_GSM_INTEGRATED_SIM' | translate }}
                 </div>
                 <div class="form-group">
-                    <label>Номер телефона контроллера</label>
+                    <label translate>LOCKS_FORM_GSM_CONTROLLER_PHONE_NUMBER</label>
                     <input class="form-control" ng-model="transport.phoneNumber" mask="{mask: '+9{*}'}">
                 </div>
             </div>
@@ -102,29 +102,29 @@
         <!-- Internet -->
         <div class="panel panel-default" ng-if="transport.type == 'internet'">
             <div class="panel-heading">
-                <h3 style="margin: 0;"><input type="checkbox" ng-model="transport.isActivated" /> Internet</h3>
+                <h3 style="margin: 0;"><input type="checkbox" ng-model="transport.isActivated" /> {{ 'LOCKS_TRANSPORT_INTERNET' | translate }}</h3>
             </div>
             <div class="panel-body">
                 <div class="form-group">
-                    <label>Url</label>
+                    <label translate>LOCKS_FORM_INTERNET_URL</label>
                     <input class="form-control" ng-model="transport.url">
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <input type="checkbox" ng-model="transport.geoRestriction" /> Ограничение по геопозиции
+                        <input type="checkbox" ng-model="transport.geoRestriction" /> {{ 'LOCKS_FORM_INTERNET_GEO' | translate }}
                     </div>
                     <div class="panel-body">
                         <div class="form-group">
-                            <label>Радиус</label>
+                            <label translate>LOCKS_FORM_INTERNET_RADIUS</label>
                             <input type="number" class="form-control" ng-model="transport.radius" ng-disabled="!transport.geoRestriction" ng-required="transport.geoRestriction">
                         </div>
                         <div class="form-group" style="display: flex;">
                             <div style="width: 50%; padding-right: 5px;">
-                                <label>Широта</label>
+                                <label translate>LOCKS_FORM_INTERNET_LATITUDE</label>
                                 <input class="form-control" ng-model="transport.coordinate.x" ng-disabled="!transport.geoRestriction" ng-required="transport.geoRestriction">
                             </div>
                             <div style="width: 50%;">
-                                <label>Долгота</label>
+                                <label translate>LOCKS_FORM_INTERNET_LONGITUDE</label>
                                 <input class="form-control" ng-model="transport.coordinate.y" ng-disabled="!transport.geoRestriction" ng-required="transport.geoRestriction">
                             </div>
                         </div>
@@ -136,11 +136,11 @@
         <!-- WiFi direct -->
         <div class="panel panel-default" ng-if="transport.type == 'wiFiDirect'">
             <div class="panel-heading">
-                <h3 style="margin: 0;"><input type="checkbox" ng-model="transport.isActivated" /> WifiDirect</h3>
+                <h3 style="margin: 0;"><input type="checkbox" ng-model="transport.isActivated" /> {{ 'LOCKS_TRANSPORT_WIFI_DIRECT' | translate }}</h3>
             </div>
             <div class="panel-body">
                 <div class="form-group">
-                    <label>MAC-адрес</label>
+                    <label translate>LOCKS_FORM_WIFI_MAC</label>
                     <input class="form-control" ng-model="transport.macAddress">
                 </div>
             </div>
@@ -149,23 +149,23 @@
         <!-- Bluetooth -->
         <div class="panel panel-default" ng-if="transport.type == 'blueTooth'">
             <div class="panel-heading">
-                <h3 style="margin: 0;"><input type="checkbox" ng-model="transport.isActivated" /> Bluetooth</h3>
+                <h3 style="margin: 0;"><input type="checkbox" ng-model="transport.isActivated" /> {{ 'LOCKS_TRANSPORT_BT' | translate }}</h3>
             </div>
             <div class="panel-body">
                 <div class="form-group">
-                    <label>Имя устройства</label>
+                    <label translate>LOCKS_FORM_BT_DEVICE_NAME</label>
                     <input class="form-control" ng-model="transport.deviceName">
                 </div>
                 <div class="form-group">
-                    <label>MAC-адрес</label>
+                    <label translate>LOCKS_FORM_BT_MAC</label>
                     <input class="form-control" ng-model="transport.macAddress">
                 </div>
                 <div class="form-group">
-                    <label>Secure Uuid</label>
+                    <label translate>LOCKS_FORM_BT_SECURE_UUID</label>
                     <input class="form-control" ng-model="transport.secureUuid">
                 </div>
                 <div class="form-group">
-                    <label>Insecure Uuid</label>
+                    <label translate>LOCKS_FORM_BT_INSECURE_UUID</label>
                     <input class="form-control" ng-model="transport.insecureUuid">
                 </div>
             </div>

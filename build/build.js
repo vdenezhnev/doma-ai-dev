@@ -8,7 +8,8 @@ gulp.task('img', require('./img').default),
 gulp.task('assets', require('./assets').default),
 gulp.task('css', require('./css').default),
 gulp.task('js', require('./js').default),
-gulp.task('index', require('./index').default)
+gulp.task('index', require('./index').default),
+gulp.task('locale', require('./locale').default)
 
 const setLocaleRu = async () => env({
     file: './build/.ru.env.json'
@@ -49,7 +50,8 @@ const buildIntercom = gulp.series(
 const buildAdmin = gulp.series(
     setAdminEnv,
     setLocaleRu,
-    build
+    build,
+    'locale'
 );
 exports.buildAdminDev = gulp.series(
     'clean',
