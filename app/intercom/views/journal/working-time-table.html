@@ -1,0 +1,25 @@
+<div class="column">
+    <button class="btn" ng-click="downloadCSV()" ng-disabled="!workingTimeList.length" translate>html.journal.getCSV</button>
+</div>
+<div class="table-scrollable mh-400">
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                <th width="260px" translate>html.journal.date</th>
+                <th translate>html.journal.user_display</th>
+                <th width="180px" translate>html.journal.entryTime</th>
+                <th width="180px" translate>html.journal.exitTime</th>
+                <th width="180px" translate>html.journal.workTime</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="workingTime in workingTimeList track by $index" ng-class="{'active': workingTime.isGroupRow}">
+                <td>{{ workingTime.entryExitDate | amUtc | amLocal | amDateFormat:'DD.MM.YYYY' }}</td>
+                <td>{{ workingTime.userName }}</td>
+                <td>{{ workingTime.entryTime }}</td>
+                <td>{{ workingTime.exitTime }}</td>
+                <td>{{ workingTime.workTime }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

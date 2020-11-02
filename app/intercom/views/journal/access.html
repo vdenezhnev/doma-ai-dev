@@ -1,0 +1,106 @@
+<div class="table-scrollable mh-400">
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                <th width="260px" translate>html.journal.date_and_time_display</th>
+                <th width="320px" translate>html.journal.user_display</th>
+                <th width="180px" translate>html.journal.phone_number_display</th>
+                <th translate>html.journal.key_type_display</th>
+                <th width="180px" translate>html.journal.card_id</th>
+                <th translate>html.journal.lock_access_types_display</th>
+                <th width="300px" translate>html.journal.access_point_display</th>
+            </tr>
+            <tr class="active">
+                <th style="vertical-align: top" class="filter-date form-inline">
+                    <span class="dropdown">
+                        <a  class="dropdown-toggle" id="from-date" role="button" data-toggle="dropdown" data-target="#" href="#">
+                            <input class="form-control input-small text-center"
+                                   readonly
+                                   placeholder="{{ 'html.journal.date_from_display' | translate }}"
+                                   value="{{ filter.From | date:'dd-MM-yyyy' }}"
+                                   style="padding: 0; width: 90px!important;">
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <datetimepicker data-ng-model="filter.From"
+                                        data-datetimepicker-config="{dropdownSelector: '#from-date', startView:'day', minView:'day' }"/>
+                        </ul>
+                    </span>
+
+                    <span> &mdash; </span>
+
+                    <span class="dropdown">
+                        <a  class="dropdown-toggle" id="to-date" role="button" data-toggle="dropdown" data-target="#" href="#">
+                            <input class="form-control input-small text-center"
+                                   readonly
+                                   placeholder="{{ 'html.journal.date_to_display' | translate }}"
+                                   value="{{ filter.Till | date:'dd-MM-yyyy' }}"
+                                   style="padding: 0; width: 90px!important;">
+                        </a>
+
+                        <ul class="dropdown-menu" role="menu">
+                            <datetimepicker data-ng-model="filter.Till"
+                                        data-datetimepicker-config="{dropdownSelector: '#to-date', startView:'day', minView:'day' }"/>
+                        </ul>
+                    </span>
+
+                    <button class="btn" ng-click="resetDateFilter()" ng-show="filter.From || filter.Till" translate>html.defaults.reset_title</button>
+
+                </th>
+
+                <th></th>
+
+                <th style="vertical-align: top">
+                    <div class="input-group">
+                        <input class="form-control" ng-model="filter.UserPhoneNumber" ng-model-options="{updateOn: 'blur'}" style="min-width: 125px;">
+                        <span class="input-group-btn">
+                            <button class="btn" type="button">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </th>
+                <th style="vertical-align: top">
+                    <select
+                        ng-model="filter.keyType"
+                        class="form-control">
+                        <option></option>
+                        <option
+                            ng-repeat="(key, value) in keyTypes track by $index"
+                            ng-selected="{{key===filter.keyType}}"
+                            value="{{::key}}">{{value}}</option>
+                    </select>
+                </th>
+                <th></th>
+                <th style="vertical-align: top">
+                    <select
+                        ng-model="filter.LockAccessType"
+                        class="form-control">
+                        <option></option>
+                        <option
+                            ng-repeat="(key, value) in lockAccessTypes track by $index"
+                            ng-selected="{{key===filter.lockAccessType}}"
+                            value="{{::key}}">{{::value}}</option>
+                    </select>
+                </th>
+                <th>
+                    <select-access-point ng-model="filter.AccessPointId"></select-access-point>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="journal in journals track by $index">
+                <td>{{ journal.when | amUtc | amLocal | amDateFormat:'DD.MM.YYYY HH:mm' }}</td>
+                <td>{{ journal.userDisplayName }}</td>
+                <td>{{ journal.userPhoneNumber }}</td>
+                <td>{{ keyTypes[journal.keyType] }}</td>
+                <td>{{ journal.pacsCode }}</td>
+                <td>{{ lockAccessTypes[journal.lockAccessType] }}</td>
+                <td>{{ journal.perimeters }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="text-center">
+    <a ng-click="loadMore()" class="btn default uppercase" ng-show="canLoadMode" translate>html.defaults.load_more</a>
+</div>
