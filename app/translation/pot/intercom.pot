@@ -21,11 +21,11 @@ msgstr ""
 msgid "LockMaintenancePeriod"
 msgstr ""
 
-#: app/intercom/controllers/AbonentControllers.js:88
+#: app/intercom/controllers/AbonentControllers.js:89
 msgid "abonents.abonent_delete_confirm"
 msgstr ""
 
-#: app/intercom/controllers/AbonentControllers.js:90
+#: app/intercom/controllers/AbonentControllers.js:91
 msgid "abonents.abonent_deleted"
 msgstr ""
 
@@ -42,38 +42,39 @@ msgstr ""
 msgid "account.profile_updated"
 msgstr ""
 
-#: app/intercom/controllers/AuthControllers.js:76
+#: app/intercom/controllers/AuthControllers.js:90
 msgid "auth.account_activated"
 msgstr ""
 
-#: app/intercom/controllers/AuthControllers.js:109
-#: app/intercom/controllers/AuthControllers.js:128
-#: app/intercom/controllers/AuthControllers.js:148
+#: app/intercom/controllers/AuthControllers.js:123
+#: app/intercom/controllers/AuthControllers.js:142
+#: app/intercom/controllers/AuthControllers.js:162
 msgid "auth.password_changed"
 msgstr ""
 
 #: app/intercom/controllers/AccessControllers.js:132
-#: app/intercom/controllers/AccessControllers.js:274
+#: app/intercom/controllers/AccessControllers.js:286
 #: app/intercom/controllers/DeviceControllers.js:51
 msgid "devices.device_delete_confirm"
 msgstr ""
 
-#: app/intercom/controllers/AccessControllers.js:277
+#: app/intercom/controllers/AccessControllers.js:289
 #: app/intercom/controllers/DeviceControllers.js:53
 msgid "devices.device_deleted"
 msgstr ""
 
-#: app/intercom/controllers/AccessControllers.js:244
+#: app/intercom/controllers/AccessControllers.js:247
 msgid "devices.device_update_settings"
 msgstr ""
 
 #: app/intercom/controllers/AccessControllers.js:127
 #: app/intercom/controllers/AccessControllers.js:136
 #: app/intercom/controllers/AccessControllers.js:213
-#: app/intercom/controllers/AccessControllers.js:238
-#: app/intercom/controllers/AccessControllers.js:250
-#: app/intercom/controllers/AccessControllers.js:260
-#: app/intercom/controllers/AccessControllers.js:269
+#: app/intercom/controllers/AccessControllers.js:241
+#: app/intercom/controllers/AccessControllers.js:253
+#: app/intercom/controllers/AccessControllers.js:263
+#: app/intercom/controllers/AccessControllers.js:271
+#: app/intercom/controllers/AccessControllers.js:281
 #: app/intercom/controllers/AccessControllers.js:29
 #: app/intercom/controllers/AccessControllers.js:51
 #: app/intercom/controllers/AccessControllers.js:92
@@ -89,7 +90,7 @@ msgstr ""
 msgid "html.abonent.address_display"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:45
+#: app/intercom/views/abonent/form.html:50
 msgid "html.abonent.admin_display"
 msgstr ""
 
@@ -97,19 +98,19 @@ msgstr ""
 msgid "html.abonent.building_display"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:78
+#: app/intercom/views/abonent/form.html:83
 msgid "html.abonent.car_model_display"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:77
+#: app/intercom/views/abonent/form.html:82
 msgid "html.abonent.car_number_display"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:72
+#: app/intercom/views/abonent/form.html:77
 msgid "html.abonent.cars_display"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:38
+#: app/intercom/views/abonent/form.html:43
 msgid "html.abonent.comments_display"
 msgstr ""
 
@@ -121,11 +122,11 @@ msgstr ""
 msgid "html.abonent.download_template_title"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:219
+#: app/intercom/views/abonent/form.html:224
 msgid "html.abonent.end_period"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:28
+#: app/intercom/views/abonent/form.html:33
 msgid "html.abonent.external_id_display"
 msgstr ""
 
@@ -133,11 +134,15 @@ msgstr ""
 msgid "html.abonent.flat_display"
 msgstr ""
 
+#: app/intercom/views/abonent/form.html:23
+msgid "html.abonent.floor_display"
+msgstr ""
+
 #: app/intercom/views/abonent/list.html:12
 msgid "html.abonent.import_title"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:66
+#: app/intercom/views/abonent/form.html:71
 msgid "html.abonent.isGsmOpenAllowed"
 msgstr ""
 
@@ -154,16 +159,16 @@ msgstr ""
 msgid "html.abonent.new_title"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:161
-#: app/intercom/views/abonent/form.html:217
+#: app/intercom/views/abonent/form.html:166
+#: app/intercom/views/abonent/form.html:222
 msgid "html.abonent.perimeter"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:162
+#: app/intercom/views/abonent/form.html:167
 msgid "html.abonent.perimeter_tariff"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:109
+#: app/intercom/views/abonent/form.html:114
 msgid "html.abonent.perimeters_title"
 msgstr ""
 
@@ -172,31 +177,31 @@ msgstr ""
 msgid "html.abonent.phone_display"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:23
+#: app/intercom/views/abonent/form.html:28
 msgid "html.abonent.room_display"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:218
+#: app/intercom/views/abonent/form.html:223
 msgid "html.abonent.start_period"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:33
+#: app/intercom/views/abonent/form.html:38
 msgid "html.abonent.tag_id_display"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:212
+#: app/intercom/views/abonent/form.html:217
 msgid "html.abonent.temporary_access_perimeters"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:51
+#: app/intercom/views/abonent/form.html:56
 msgid "html.abonent.workking_time_display"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:59
+#: app/intercom/views/abonent/form.html:64
 msgid "html.abonent.workking_time_end_display"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:54
+#: app/intercom/views/abonent/form.html:59
 msgid "html.abonent.workking_time_start_display"
 msgstr ""
 
@@ -332,7 +337,11 @@ msgstr ""
 msgid "html.access.point.form.display_name"
 msgstr ""
 
-#: app/intercom/views/access/point/form.html:28
+#: app/intercom/views/access/point/form.html:30
+msgid "html.access.point.form.elevator"
+msgstr ""
+
+#: app/intercom/views/access/point/form.html:35
 msgid "html.access.point.form.lockPhoneNumber"
 msgstr ""
 
@@ -458,6 +467,22 @@ msgstr ""
 
 #: app/intercom/views/account/form.html:16
 msgid "html.account.inn_display"
+msgstr ""
+
+#: app/intercom/views/account/form.html:65
+msgid "html.account.keys"
+msgstr ""
+
+#: app/intercom/views/account/form.html:69
+msgid "html.account.keys.available"
+msgstr ""
+
+#: app/intercom/views/account/form.html:89
+msgid "html.account.keys.remain"
+msgstr ""
+
+#: app/intercom/views/account/form.html:79
+msgid "html.account.keys.used"
 msgstr ""
 
 #: app/intercom/views/account/form.html:6
@@ -610,9 +635,9 @@ msgid "html.control_panel_user.new_title"
 msgstr ""
 
 #: app/intercom/views/abonent/create.html:13
-#: app/intercom/views/abonent/form.html:101
-#: app/intercom/views/abonent/form.html:206
-#: app/intercom/views/abonent/form.html:282
+#: app/intercom/views/abonent/form.html:106
+#: app/intercom/views/abonent/form.html:211
+#: app/intercom/views/abonent/form.html:287
 #: app/intercom/views/access/object/add.html:15
 #: app/intercom/views/access/object/form.html:52
 #: app/intercom/views/access/perimeter/add.html:16
@@ -639,8 +664,8 @@ msgstr ""
 msgid "html.defaults.cancel_title"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:192
-#: app/intercom/views/abonent/form.html:239
+#: app/intercom/views/abonent/form.html:197
+#: app/intercom/views/abonent/form.html:244
 msgid "html.defaults.change_title"
 msgstr ""
 
@@ -663,7 +688,7 @@ msgstr ""
 
 #: app/intercom/views/abonent/list.html:51
 #: app/intercom/views/access_right/list.html:57
-#: app/intercom/views/journal/list.html:110
+#: app/intercom/views/journal/list.html:113
 #: app/intercom/views/payments/list.html:94
 msgid "html.defaults.load_more"
 msgstr ""
@@ -678,7 +703,7 @@ msgstr ""
 msgid "html.defaults.remove_title"
 msgstr ""
 
-#: app/intercom/views/journal/list.html:44
+#: app/intercom/views/journal/list.html:45
 msgid "html.defaults.reset_title"
 msgstr ""
 
@@ -689,7 +714,7 @@ msgstr ""
 #: app/intercom/views/access/point/edit.html:41
 #: app/intercom/views/access/point/edit.html:52
 #: app/intercom/views/account/change_password.html:21
-#: app/intercom/views/account/form.html:68
+#: app/intercom/views/account/form.html:101
 #: app/intercom/views/account/form_admins.html:46
 #: app/intercom/views/address/detail.html:14
 #: app/intercom/views/control_panel_user/detail.html:16
@@ -803,22 +828,54 @@ msgstr ""
 msgid "html.device.settings_form.keepOpenedWhileStayingNear"
 msgstr ""
 
-#: app/intercom/views/journal/list.html:17
+#: app/intercom/views/access/point/form_default_key_settings.html:182
+msgid "html.device.settings_form.transport_gsm"
+msgstr ""
+
+#: app/intercom/views/access/point/form_default_key_settings.html:185
+msgid "html.device.settings_form.transport_gsm_phone"
+msgstr ""
+
+#: app/intercom/views/access/point/form_default_key_settings.html:142
+msgid "html.device.settings_form.transport_internet"
+msgstr ""
+
+#: app/intercom/views/access/point/form_default_key_settings.html:145
+msgid "html.device.settings_form.transport_internet_geo"
+msgstr ""
+
+#: app/intercom/views/access/point/form_default_key_settings.html:151
+msgid "html.device.settings_form.transport_internet_radius"
+msgstr ""
+
+#: app/intercom/views/access/point/form_default_key_settings.html:160
+msgid "html.device.settings_form.transport_internet_x"
+msgstr ""
+
+#: app/intercom/views/access/point/form_default_key_settings.html:169
+msgid "html.device.settings_form.transport_internet_y"
+msgstr ""
+
+#: app/intercom/views/journal/list.html:18
 msgid "html.journal.access_point_display"
+msgstr ""
+
+#: app/intercom/views/journal/list.html:16
+msgid "html.journal.card_id"
 msgstr ""
 
 #: app/intercom/views/journal/list.html:12
 msgid "html.journal.date_and_time_display"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:246
-#: app/intercom/views/journal/list.html:23
+#: app/intercom/views/abonent/form.html:251
+#: app/intercom/views/journal/list.html:24
 #: app/intercom/views/payment/list.html:18
 msgid "html.journal.date_from_display"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:261
-#: app/intercom/views/journal/list.html:35
+#: app/intercom/views/abonent/form.html:266
+#: app/intercom/views/journal/list.html:36
 #: app/intercom/views/payment/list.html:35
 msgid "html.journal.date_to_display"
 msgstr ""
@@ -831,7 +888,7 @@ msgstr ""
 msgid "html.journal.list_title"
 msgstr ""
 
-#: app/intercom/views/journal/list.html:16
+#: app/intercom/views/journal/list.html:17
 msgid "html.journal.lock_access_types_display"
 msgstr ""
 
@@ -879,6 +936,18 @@ msgstr ""
 
 #: app/intercom/views/inc/sidebar.html:22
 msgid "html.menu.tariffs"
+msgstr ""
+
+#: app/intercom/views/modals/keys.html:9
+msgid "html.modals.keys_message"
+msgstr ""
+
+#: app/intercom/views/modals/keys.html:10
+msgid "html.modals.keys_message_phone"
+msgstr ""
+
+#: app/intercom/views/modals/keys.html:4
+msgid "html.modals.keys_title"
 msgstr ""
 
 #: app/intercom/views/payment/list.html:8
@@ -1019,15 +1088,19 @@ msgstr ""
 msgid "html.tariff.trial_type_tillTheEndOfNextMonth"
 msgstr ""
 
-#: app/intercom/views/inc/toolbar.html:26
+#: app/intercom/views/inc/toolbar.html:30
 msgid "html.toolbar.change_password"
 msgstr ""
 
-#: app/intercom/views/inc/toolbar.html:29
+#: app/intercom/views/inc/toolbar.html:5
+msgid "html.toolbar.keys.remain"
+msgstr ""
+
+#: app/intercom/views/inc/toolbar.html:33
 msgid "html.toolbar.logout"
 msgstr ""
 
-#: app/intercom/views/inc/toolbar.html:23
+#: app/intercom/views/inc/toolbar.html:27
 msgid "html.toolbar.settings"
 msgstr ""
 

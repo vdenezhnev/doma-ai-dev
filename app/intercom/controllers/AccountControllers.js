@@ -1,7 +1,10 @@
 
 app.controller('AccountProfileCtrl', ['$scope', '$controller', '$state', '$http', 'User', 'settings', 'notify', 'gettextCatalog',
     function($scope, $controller, $state, $http, User, settings, notify, gettextCatalog) {
-        $scope.userData = angular.copy(User.data);
+        User.updateKeyCountInfo()
+            .then(function() {
+                $scope.userData = angular.copy(User.data);
+            });
 
         $scope.save = function() {
             $http.post(settings.API_URL, angular.extend({Action: 'UpdateServiceCompany'}, $scope.userData))

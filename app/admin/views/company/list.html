@@ -36,6 +36,58 @@
                             <tr>
                                 <th style="width: 1%">Название</th>
                                 <th>Адрес</th>
+                                <th>
+                                    <div style="text-align: center;">Доступно</div>
+                                    <div style="display: flex;">
+                                        <input type="number"
+                                                placeholder="от"
+                                                class="form-control"
+                                                style="width: 85px;"
+                                                ng-model="keysFilter.available.from"
+                                                ng-model-options="{debounce: 1000}"
+                                                message-id="MinOpenedTimeMessageId"/>
+                                        <input type="number"
+                                                placeholder="до"
+                                                class="form-control"
+                                                style="width: 85px;"
+                                                ng-model="keysFilter.available.to"
+                                                ng-model-options="{debounce: 1000}"/>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div style="text-align: center;">Использовано</div>
+                                    <div style="display: flex;">
+                                        <input type="number"
+                                                placeholder="от"
+                                                class="form-control"
+                                                style="width: 85px;"
+                                                ng-model="keysFilter.used.from"
+                                                ng-model-options="{debounce: 1000}"/>
+                                        <input type="number"
+                                                placeholder="до"
+                                                class="form-control"
+                                                style="width: 85px;"
+                                                ng-model="keysFilter.used.to"
+                                                ng-model-options="{debounce: 1000}"/>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div style="text-align: center;">Осталось</div>
+                                    <div style="display: flex;">
+                                        <input type="number"
+                                                placeholder="от"
+                                                class="form-control"
+                                                style="width: 85px;"
+                                                ng-model="keysFilter.remain.from"
+                                                ng-model-options="{debounce: 1000}"/>
+                                        <input type="number"
+                                                placeholder="до"
+                                                class="form-control"
+                                                style="width: 85px;"
+                                                ng-model="keysFilter.remain.to"
+                                                ng-model-options="{debounce: 1000}"/>
+                                    </div>
+                                </th>
                                 <th>Телефоны</th>
                                 <th>Email</th>
                             </tr>
@@ -44,6 +96,9 @@
                             <tr ng-repeat="company in objects">
                                 <td nowrap><a ui-sref="admin.company.detail({id: company.id, company: company})">{{ company.companyName }}</a></td>
                                 <td>{{ company.address.streetAddress }}</td>
+                                <td>{{ company.keyCount.available }}</td>
+                                <td>{{ company.keyCount.used }}</td>
+                                <td>{{ company.keyCount.remain }}</td>
                                 <td>{{ company.phoneNumbers.join(', ') }}</td>
                                 <td>{{ company.support.email }}</td>
                             </tr>
@@ -51,7 +106,7 @@
                     </table>
                 </div>
 
-                <button ng-click="loadObjects(20)" ng-hide="loadedAllCompanies" class="btn btn-default">Загрузить еще</button>
+                <button ng-click="loadObjects(20, false, keysFilter)" ng-hide="loadedAllCompanies" class="btn btn-default">Загрузить еще</button>
                 <!-- /.table-responsive -->
             </div>
             <!-- /.col-lg-8 (nested) -->

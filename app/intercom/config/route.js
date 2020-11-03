@@ -253,6 +253,7 @@ app.config(['$stateProvider', 'settings', function($stateProvider, settings) {
         .state('admin.access.edit_point', {
             url: 'edit_point/:id/',
             controller: 'EditAccessPointCtrl',
+            controllerAs: 'vm',
             templateUrl: settings.TEMPLATE_DIR + 'access/point/edit.html',
             resolve: {
                 point: function(AccessPoint, $stateParams) {

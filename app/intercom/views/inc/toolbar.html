@@ -1,6 +1,10 @@
 <div class="top-menu">
+    <p class="navbar-text"
+       style="background-color: rgb(201, 48, 44); padding: 13px; margin: 0; color: #c6cfda"
+       ng-if="user.data.keyCount.remain < 10">
+       <span translate>html.toolbar.keys.remain</span>: {{ user.data.keyCount.remain }}
+    </p>
     <ul class="nav navbar-nav pull-right">
-
         <li class="dropdown dropdown-lang dropdown-user">
             <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                 <span class="fa fa-flag username"></span> <span class="username">{{ language.getTitle() }} </span>

@@ -1,6 +1,6 @@
 'use strict';
 
-app.service('User', ['$http', '$q', 'Session', function($http, $q, Session){
+app.service('User', ['$http', 'Session', 'settings', function($http, Session, settings){
 
     var self = this;
 
@@ -18,6 +18,13 @@ app.service('User', ['$http', '$q', 'Session', function($http, $q, Session){
             return Session.token || {};
         }
     });
+
+    this.updateKeyCountInfo = function () {
+        return $http.get(`${settings.API_URL}?action=GetKeyCountServiceCompany`)
+            .then(function successCallback(response) {
+                angular.extend(self.data.keyCount, response.data);
+            });
+    };
 
     this.isAuthenticated = function() {
         return this.data.id !== undefined;

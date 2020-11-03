@@ -24,6 +24,13 @@
         </select>
     </div>
 
+    <div class="form-group">
+        <label>
+            <input type="checkbox" name="IsLift" ng-model="point.isLift">
+            <span translate>html.access.point.form.elevator</span>
+        </label>
+    </div>
+
     <div class="form-group" ng-show="point.lockPhoneNumber !== undefined">
         <label translate>html.access.point.form.lockPhoneNumber</label>
         <input class="form-control" name="lockPhoneNumber" ng-model="point.lockPhoneNumber" disabled >

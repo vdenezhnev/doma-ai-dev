@@ -134,3 +134,60 @@
         </label>
     </div>
 </div>
+
+<hr ng-if="!!transports.length">
+<div class="form-group" ng-repeat="transport in transports">
+    <!-- Internet -->
+    <div ng-if="transport.type === 'internet' && transport.isActivated">
+        <h4><input type="checkbox" ng-model="vm.isOpeningByInternet"> {{ 'html.device.settings_form.transport_internet' | translate }}</h4>
+        <div class="form-group ml-15">
+            <label>
+                <input type="checkbox" ng-model="transport.geoRestriction"> {{ 'html.device.settings_form.transport_internet_geo' | translate }}
+            </label>
+
+            <div class="row" style="margin-left: 15px;">
+                <div class="col-md-9 col-lg-4">
+                    <div class="input-group">
+                        <span class="input-group-addon" translate>html.device.settings_form.transport_internet_radius</span>
+                        <input class="form-control"
+                            type="number"
+                            ng-disabled="!transport.geoRestriction"
+                            ng-model="transport.radius">
+                    </div>
+                </div>
+                <div class="col-md-9 col-lg-4">
+                    <div class="input-group">
+                        <span class="input-group-addon" translate>html.device.settings_form.transport_internet_x</span>
+                        <input type="text"
+                            ng-model="transport.coordinate.x"
+                            ng-disabled="!transport.geoRestriction"
+                            class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-9 col-lg-4">
+                    <div class="input-group">
+                        <span class="input-group-addon" translate>html.device.settings_form.transport_internet_y</span>
+                        <input type="text"
+                            ng-model="transport.coordinate.y"
+                            ng-disabled="!transport.geoRestriction"
+                            class="form-control">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- GSM -->
+    <div ng-if="transport.type === 'gsm' && transport.isActivated">
+        <h4><input type="checkbox" ng-model="vm.isOpeningByPhone"> {{ 'html.device.settings_form.transport_gsm' | translate }}</h4>
+        <div class="form-group ml-15">
+            <div class="input-group col-md-6">
+                <span class="input-group-addon" translate>html.device.settings_form.transport_gsm_phone</span>
+                <input class="form-control"
+                       mask="{mask: '+9{*}'}"
+                       ng-disabled="transport.isIntegratedSimCard"
+                       ng-model="transport.phoneNumber">
+            </div>
+        </div>
+    </div>
+</div>

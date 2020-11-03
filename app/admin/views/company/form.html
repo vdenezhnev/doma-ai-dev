@@ -55,6 +55,23 @@
         </div>
     </div>
 
+    <h3>Ключи</h3>
+
+    <div class="form-group">
+        <div class="input-group col-md-6" style="margin-bottom: 15px;">
+            <span class="input-group-addon" style="width: 120px;">Доступно</span>
+            <input type="number" class="form-control" ng-model="company.keyCount.available">
+        </div>
+        <div class="input-group col-md-6" style="margin-bottom: 15px;" ng-if="!isCreate">
+            <span class="input-group-addon" style="width: 120px;">Использовано</span>
+            <input type="text" class="form-control" ng-disabled="true" ng-model="company.keyCount.used">
+        </div>
+        <div class="input-group col-md-6" style="margin-bottom: 15px;" ng-if="!isCreate">
+            <span class="input-group-addon" style="width: 120px;">Осталось</span>
+            <input type="text" class="form-control" ng-disabled="true" ng-model="company.keyCount.remain">
+        </div>
+    </div>
+
 </div>
 
 <div class="col-lg-6">

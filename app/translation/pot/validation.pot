@@ -4,46 +4,46 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: \n"
 
-#: app/common/validation-rule.js:38
+#: app/common/validation-rule.js:39
 msgid "validation.email"
 msgstr ""
 
-#: app/common/validation-rule.js:59
+#: app/common/validation-rule.js:60
 msgid "validation.max_number"
 msgstr ""
 
-#: app/common/validation-rule.js:56
+#: app/common/validation-rule.js:57
 msgid "validation.min_number"
 msgstr ""
 
-#: app/common/validation-rule.js:65
+#: app/common/validation-rule.js:66
 msgid "validation.nil_and_more"
 msgstr ""
 
-#: app/common/validation-rule.js:41
+#: app/common/validation-rule.js:42
 msgid "validation.number"
 msgstr ""
 
-#: app/common/validation-rule.js:44
+#: app/common/validation-rule.js:45
 msgid "validation.password"
 msgstr ""
 
-#: app/common/validation-rule.js:47
+#: app/common/validation-rule.js:48
 msgid "validation.password_match"
 msgstr ""
 
-#: app/common/validation-rule.js:50
+#: app/common/validation-rule.js:51
 msgid "validation.phone"
 msgstr ""
 
-#: app/common/validation-rule.js:62
+#: app/common/validation-rule.js:63
 msgid "validation.positive_number"
 msgstr ""
 
-#: app/common/validation-rule.js:35
+#: app/common/validation-rule.js:36
 msgid "validation.required"
 msgstr ""
 
-#: app/common/validation-rule.js:53
+#: app/common/validation-rule.js:54
 msgid "validation.username"
 msgstr ""
