@@ -1,21 +1,21 @@
 <div class="col-lg-6">
 
     <div class="form-group">
-        <label>Название</label>
+        <label translate>COMPANIES_FORM_NAME</label>
         <input class="form-control" ng-model="company.companyName">
     </div>
 
     <div class="form-group">
-        <label>ИНН</label>
+        <label translate>COMPANIES_FORM_INN</label>
         <input class="form-control" ng-model="company.inn">
     </div>
 
     <div class="form-group">
-        <label>Адрес</label>
+        <label translate>COMPANIES_FORM_ADDRESS</label>
         <input class="form-control" ng-model="company.address.streetAddress">
     </div>
 
-    <h3>Телефоны</h3>
+    <h3 translate>COMPANIES_FORM_PHONES_TITLE</h3>
 
     <div class="row"></div>
     <div class="form-group" ng-repeat="phone in company.phoneNumbers track by $index">
@@ -27,14 +27,14 @@
         </div>
     </div>
 
-    <a class="btn btn-xs btn-default" ng-click="company.phoneNumbers.push('')"><i class="fa fa-plus"></i> Добавить телефон</a>
+    <a class="btn btn-xs btn-default" ng-click="company.phoneNumbers.push('')"><i class="fa fa-plus"></i> {{ 'BUTTON_ADD_PHONE_NUMBER' | translate }}</a>
 
-    <h3>Поддержка</h3>
+    <h3 translate>COMPANIES_FORM_SUPPORT_TITLE</h3>
 
     <div class="row">
         <div class="col-md-12">
             <div class="form-group">
-                <label>Имя</label>
+                <label translate>COMPANIES_FORM_SUPPORT_NAME</label>
                 <input class="form-control" type="text" ng-model="company.support.displayName">
             </div>
         </div>
@@ -43,31 +43,31 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                <label>Телефон</label>
+                <label translate>COMPANIES_FORM_SUPPORT_PHONE</label>
                 <input class="form-control" type="text" ng-model="company.support.phoneNumber">
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <label>Email</label>
+                <label translate>COMPANIES_FORM_SUPPORT_EMAIL</label>
                 <input class="form-control" type="text" ng-model="company.support.email">
             </div>
         </div>
     </div>
 
-    <h3>Ключи</h3>
+    <h3 translate>COMPANIES_FORM_KEYS_TITLE</h3>
 
     <div class="form-group">
         <div class="input-group col-md-6" style="margin-bottom: 15px;">
-            <span class="input-group-addon" style="width: 120px;">Доступно</span>
+            <span class="input-group-addon" style="width: 120px;" translate>COMPANIES_FORM_KEYS_AVAILABLE</span>
             <input type="number" class="form-control" ng-model="company.keyCount.available">
         </div>
         <div class="input-group col-md-6" style="margin-bottom: 15px;" ng-if="!isCreate">
-            <span class="input-group-addon" style="width: 120px;">Использовано</span>
+            <span class="input-group-addon" style="width: 120px;" translate>COMPANIES_FORM_KEYS_USED</span>
             <input type="text" class="form-control" ng-disabled="true" ng-model="company.keyCount.used">
         </div>
         <div class="input-group col-md-6" style="margin-bottom: 15px;" ng-if="!isCreate">
-            <span class="input-group-addon" style="width: 120px;">Осталось</span>
+            <span class="input-group-addon" style="width: 120px;" translate>COMPANIES_FORM_KEYS_REMAINING</span>
             <input type="text" class="form-control" ng-disabled="true" ng-model="company.keyCount.remain">
         </div>
     </div>
@@ -76,13 +76,13 @@
 
 <div class="col-lg-6">
 
-    <h3>Администраторы</h3>
+    <h3 translate>COMPANIES_FORM_ADMIN_TITLE</h3>
 
     <div ng-repeat="contact in company.admins track by $index">
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
-                    <label>Имя</label>
+                    <label translate>COMPANIES_FORM_ADMIN_NAME</label>
                     <input class="form-control" type="text" ng-model="contact.displayName">
                 </div>
             </div>
@@ -91,28 +91,28 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label>Телефон</label>
+                    <label translate>COMPANIES_FORM_ADMIN_PHONE</label>
                     <input class="form-control" type="text" ng-model="contact.phoneNumber">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label>Email</label>
+                    <label translate>COMPANIES_FORM_ADMIN_EMAIL</label>
                     <input class="form-control" type="text" ng-model="contact.email">
                 </div>
             </div>
         </div>
-        <a class="btn btn-xs btn-default" ng-click="removeAdmin($index)"><i class="fa fa-trash"></i> Удалить</a>
+        <a class="btn btn-xs btn-default" ng-click="removeAdmin($index)"><i class="fa fa-trash"></i> {{ 'BUTTON_DELETE' | translate }}</a>
         <hr>
     </div>
 
-    <a class="btn btn-primary" ng-click="updateAdmins()">Обновить информацию об администраторах</a>
+    <a class="btn btn-primary" ng-click="updateAdmins()" translate>BUTTON_UPDATE_ADMIN_INFO</a>
 
-    <a class="btn btn-default" ng-click="company.admins.push({})"><i class="fa fa-plus"></i> Добавить администратора</a>
+    <a class="btn btn-default" ng-click="company.admins.push({})"><i class="fa fa-plus"></i> {{ 'BUTTON_ADD_ADMIN' | translate }}</a>
 
     <hr>
     <div ng-show="data.acquiringTypes.length > 0">
-        <h3>Оплата</h3>
+        <h3 translate>COMPANIES_FORM_PAYMENT_TITLE</h3>
         <div class="row">
             <div class="col-md-8">
                 <select class="form-control" ng-model="data.acquiringType">
@@ -120,7 +120,7 @@
                 </select>
             </div>
             <div class="col-md-4">
-                <span class="btn btn-default btn-block" ng-click="createMerchantSetting(data.acquiringType)">Добавить</span>
+                <span class="btn btn-default btn-block" ng-click="createMerchantSetting(data.acquiringType)" translate>BUTTON_ADD</span>
             </div>
         </div>
 
@@ -130,8 +130,8 @@
                 {{ obj.userName }}
             </div>
             <div class="col-md-6 text-right">
-                <span class="btn btn-default" ng-click="editMerchantSettings(obj)">Настроить</span>
-                <span class="btn btn-default" ng-click="deleteMerchantSetting(obj, $index)">Удалить</span>
+                <span class="btn btn-default" ng-click="editMerchantSettings(obj)" translate>BUTTON_SETUP</span>
+                <span class="btn btn-default" ng-click="deleteMerchantSetting(obj, $index)" translate>BUTTON_DELETE</span>
             </div>
             <hr>
         </div>

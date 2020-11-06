@@ -1,7 +1,23 @@
 'use strict';
 
-app.controller('AppCtrl', ['$scope', '$http', '$state', 'User', 'notify',
-    function($scope, $http, $state, User, notify) {
+app.controller('AppCtrl', ['$scope', 'User', 'notify', 'availableLocales', '$localStorage', 'defaultLocale',
+    function($scope, User, notify, availableLocales, $localStorage, defaultLocale) {
+        $scope.availableLocales = availableLocales;
+        $scope.selectedLocale = $localStorage.user_locale;
+
+        if (!$scope.selectedLocale) {
+            $scope.selectedLocale = defaultLocale.key;
+            $localStorage.user_locale = defaultLocale.key;
+        }
+
+        $scope.isRTL = $scope.selectedLocale === 'AR';
+
+        $scope.onChangeLocale = function (locale) {
+            $localStorage.user_locale = locale;
+            $scope.selectedLocale = locale;
+            $scope.$emit('user:changeLocale', { locale: locale });
+        };
+
         $scope.logout = function () {
             User.unload();
         };

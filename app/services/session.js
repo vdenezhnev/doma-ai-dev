@@ -25,7 +25,13 @@ app.service('Session', ['$localStorage', function($localStorage) {
     Object.defineProperty(this, 'user', SessionProperty(USER_STORAGE_KEY));
 
     this.destroy = function() {
+        const selectedLocale = $localStorage.user_locale;
+
         $localStorage.$reset({TOKEN_SESSION_KEY: null});
         $localStorage.$reset({USER_STORAGE_KEY: null});
+
+        if (selectedLocale) {
+            $localStorage.user_locale = selectedLocale;
+        }
     };
 }]);
