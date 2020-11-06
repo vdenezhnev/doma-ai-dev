@@ -10,6 +10,8 @@ var app = angular.module('app', [
     'ngAnimate',
     'angular-loading-bar',
     'angularModalService',
+    'angularMoment',
+    'ui.bootstrap.datetimepicker'
 ]);
 
 app.config(['$httpProvider', '$locationProvider', '$stateProvider',

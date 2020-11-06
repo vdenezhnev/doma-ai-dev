@@ -186,3 +186,11 @@ table th.filter-date a:hover {
 body[ng-controller] .modal-backdrop.in {
     z-index: 0 !important;
 }
+
+.datetime-field {
+    cursor: pointer;
+}
+
+.datetime-field:read-only {
+    background-color: #fff !important;
+}

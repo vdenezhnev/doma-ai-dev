@@ -1,0 +1,103 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Оплаты SIM-карт</h1>
+    </div>
+
+    <div class="col-lg-12 mb15">
+        <button class="btn btn-success" ng-click="changePaymentDate()" ng-disabled="isDisabledChangePaymentDate"> Изменить</button>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <i class="fa fa-bar-chart-o fa-fw"></i> Список SIM-карт
+    </div>
+    <!-- /.panel-heading -->
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-lg-12">
+                <div>
+                    <form>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="fa fa-search"></i></div>
+
+                                <input type="text" class="form-control" placeholder="Поиск" ng-model="q" ng-model-options="{debounce: 1000}">
+
+                            </div>
+                        </div>
+                    </form>
+
+                    <table class="table table-bordered table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th style="width: 1%">
+                                    <input type="checkbox" ng-model="checkedAll" ng-click="setAllSelected()"/>
+                                </th>
+                                <th style="vertical-align: top;">Компания</th>
+                                <th style="vertical-align: top;">ID</th>
+                                <th style="vertical-align: top;">Место установки</th>
+                                <th style="width: 285px;">
+                                    <div style="text-align: center;">Оплачено до</div>
+                                    <div style="display: flex;">
+                                        <div class="form-inline">
+                                            <span class="dropdown">
+                                                <a class="dropdown-toggle" id="payment-from" role="button" data-toggle="dropdown" data-target="#" href="#">
+                                                    <input class="form-control datetime-field"
+                                                           placeholder="от"
+                                                           readonly
+                                                           style="width: 100%;"
+                                                           value="{{ listFilter.payment.from | date:'dd-MM-yyyy' }}"/>
+                                                </a>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <datetimepicker ng-model="listFilter.payment.from"
+                                                                    ng-model-options="{debounce: 500}"
+                                                                    datetimepicker-config="{dropdownSelector: '#payment-from', startView:'day', minView:'day' }" />
+                                                </ul>
+                                            </span>
+                                        </div>
+                                        <div class="form-inline">
+                                            <span class="dropdown">
+                                                <a class="dropdown-toggle" id="payment-to" role="button" data-toggle="dropdown" data-target="#" href="#">
+                                                    <input class="form-control datetime-field"
+                                                           placeholder="до"
+                                                           readonly
+                                                           style="width: 100%;"
+                                                           value="{{ listFilter.payment.to | date:'dd-MM-yyyy' }}"/>
+                                                </a>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <datetimepicker ng-model="listFilter.payment.to"
+                                                                    ng-model-options="{debounce: 500}"
+                                                                    datetimepicker-config="{dropdownSelector: '#payment-to', startView:'day', minView:'day' }" />
+                                                </ul>
+                                            </span>
+                                        </div>
+                                        <button class="btn btn-default" ng-click="resetFilter()">Сброс</button>
+                                    </div>
+                                </th>
+                                <th style="vertical-align: top; width: 200px;">Номер телефона</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="payment in payments">
+                                <td nowrap>
+                                    <input type="checkbox"
+                                           ng-model="payment.checked"
+                                           ng-click="onCheck()"
+                                    />
+                                </td>
+                                <td>{{ payment.serviceCompany }}</td>
+                                <td>{{ payment.id }}</td>
+                                <td>{{ payment.installingPlace }}</td>
+                                <td>{{ payment.paymentDate | date:'dd-MM-yyyy' }}</td>
+                                <td>{{ payment.lockPhoneNumber }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <button ng-click="loadPayments(20, false, listFilter)" ng-hide="loadedAllPayments" class="btn btn-default">Загрузить еще</button>
+            </div>
+        </div>
+    </div>
+</div>
