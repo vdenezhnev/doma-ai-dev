@@ -22,8 +22,15 @@ app.config(['$httpProvider', '$locationProvider', '$stateProvider',
     $locationProvider.html5Mode(true);
 }]);
 
-app.run(['$rootScope', '$injector', '$timeout', '$state', 'Permission', 'User', 'Api', 'settings',
-    function($rootScope, $injector, $timeout, $state, Permission, User, Api, settings){
+app.constant('availableLocales', [
+    { key: 'EN', displayName: 'English', isEnabled: true },
+    { key: 'RU', displayName: 'Русский', isEnabled: true },
+    { key: 'AR', displayName: 'العربية', isEnabled: true },
+]);
+app.constant('defaultLocale', { key: 'EN', displayName: 'English', isEnabled: true});
+
+app.run(['$rootScope', '$timeout', '$state', 'Permission', 'User', '$localStorage', 'notify',
+    function($rootScope, $timeout, $state, Permission, User, $localStorage, notify){
     $rootScope.user = User;
 
     User.listen($rootScope);
@@ -38,8 +45,29 @@ app.run(['$rootScope', '$injector', '$timeout', '$state', 'Permission', 'User', 
         });
     });
 
+    $rootScope.$on('user:changeLocale', function () {
+        document.location.reload();
+    });
+
     Permission.defineRole('anonymous', function (stateParams){
         return User.isAuthenticated() ? false : true;
+    });
+
+    var selectedLocale = $localStorage.user_locale;
+    if (selectedLocale && selectedLocale === 'AR') {
+        document.body.style.direction = 'rtl';
+    } else {
+        document.body.style.direction = 'ltr';
+    }
+
+    moment.locale(selectedLocale.toLowerCase() || 'en', {
+        longDateFormat : {
+            LT : 'HH:mm'
+        }
+    });
+
+    notify.config({
+        duration: 3000
     });
 }]);
 

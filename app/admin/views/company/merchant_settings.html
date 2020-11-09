@@ -1,32 +1,32 @@
 <div style="position: fixed; width: 100%; top: 100px; z-index: 5000;">
     <div class="panel panel-default" style="width: 600px; margin: 0 auto">
         <div class="panel-heading">
-            <i class="fa fa-edit"></i> Настройки метода
+            <i class="fa fa-edit"></i> {{ 'COMPANIES_METHOD_SETTINGS_TITLE' | translate }}
         </div>
 
         <div class="panel-body">
             <div class="form-group">
-                <label>Логин</label>
+                <label translate>COMPANIES_METHOD_SETTINGS_LOGIN</label>
                 <input class="form-control" ng-model="obj.userName">
             </div>
 
             <div class="form-group">
-                <label>Пароль</label>
+                <label translate>COMPANIES_METHOD_SETTINGS_PASSWORD</label>
                 <input class="form-control" ng-model="obj.password">
             </div>
 
             <div class="form-group">
-                <label>Токен</label>
+                <label translate>COMPANIES_METHOD_SETTINGS_TOKEN</label>
                 <input class="form-control" ng-model="obj.token">
             </div>
 
             <div class="form-group">
-                <label>Включен <input type="checkbox" ng-model="obj.enabled"></label>
+                <label>{{ 'COMPANIES_METHOD_SETTINGS_ENABLED' | translate }} <input type="checkbox" ng-model="obj.enabled"></label>
             </div>
         </div>
         <div class="panel-footer">
-            <button class="btn btn-default btn-primary" ng-click="save()">Сохранить</button>
-            <button class="btn btn-default btn-default" ng-click="closeModal()">Закрыть</button>
+            <button class="btn btn-default btn-primary" ng-click="save()" translate>BUTTON_SAVE</button>
+            <button class="btn btn-default btn-default" ng-click="closeModal()" translate>BUTTON_CLOSE</button>
         </div>
     </div>
 </div>

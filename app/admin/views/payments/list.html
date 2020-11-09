@@ -1,16 +1,16 @@
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Оплаты SIM-карт</h1>
+        <h1 class="page-header" translate>PAYMENTS_LIST_TITLE</h1>
     </div>
 
     <div class="col-lg-12 mb15">
-        <button class="btn btn-success" ng-click="changePaymentDate()" ng-disabled="isDisabledChangePaymentDate"> Изменить</button>
+        <button class="btn btn-success" ng-click="changePaymentDate()" ng-disabled="isDisabledChangePaymentDate" translate> BUTTON_CHANGE</button>
     </div>
 </div>
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        <i class="fa fa-bar-chart-o fa-fw"></i> Список SIM-карт
+        <i class="fa fa-bar-chart-o fa-fw"></i> {{ 'PAYMENTS_LIST' | translate }}
     </div>
     <!-- /.panel-heading -->
     <div class="panel-body">
@@ -22,7 +22,7 @@
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-search"></i></div>
 
-                                <input type="text" class="form-control" placeholder="Поиск" ng-model="q" ng-model-options="{debounce: 1000}">
+                                <input type="text" class="form-control" placeholder="{{ 'PAYMENTS_SEARCH_PLACEHOLDER' | translate }}" ng-model="q" ng-model-options="{debounce: 1000}">
 
                             </div>
                         </div>
@@ -34,17 +34,17 @@
                                 <th style="width: 1%">
                                     <input type="checkbox" ng-model="checkedAll" ng-click="setAllSelected()"/>
                                 </th>
-                                <th style="vertical-align: top;">Компания</th>
-                                <th style="vertical-align: top;">ID</th>
-                                <th style="vertical-align: top;">Место установки</th>
+                                <th style="vertical-align: top;" translate>TABLE_CELL_COMPANY</th>
+                                <th style="vertical-align: top;" translate>TABLE_CELL_ID</th>
+                                <th style="vertical-align: top;" translate>TABLE_CELL_INSTALLATION_SITE</th>
                                 <th style="width: 285px;">
-                                    <div style="text-align: center;">Оплачено до</div>
+                                    <div style="text-align: center;" translate>TABLE_CELL_PAID_UP_TO</div>
                                     <div style="display: flex;">
                                         <div class="form-inline">
                                             <span class="dropdown">
                                                 <a class="dropdown-toggle" id="payment-from" role="button" data-toggle="dropdown" data-target="#" href="#">
                                                     <input class="form-control datetime-field"
-                                                           placeholder="от"
+                                                           placeholder="{{ 'COMPONENT_DATETIME_FROM' | translate }}"
                                                            readonly
                                                            style="width: 100%;"
                                                            value="{{ listFilter.payment.from | date:'dd-MM-yyyy' }}"/>
@@ -60,7 +60,7 @@
                                             <span class="dropdown">
                                                 <a class="dropdown-toggle" id="payment-to" role="button" data-toggle="dropdown" data-target="#" href="#">
                                                     <input class="form-control datetime-field"
-                                                           placeholder="до"
+                                                           placeholder="{{ 'COMPONENT_DATETIME_TO' | translate }}"
                                                            readonly
                                                            style="width: 100%;"
                                                            value="{{ listFilter.payment.to | date:'dd-MM-yyyy' }}"/>
@@ -72,10 +72,10 @@
                                                 </ul>
                                             </span>
                                         </div>
-                                        <button class="btn btn-default" ng-click="resetFilter()">Сброс</button>
+                                        <button class="btn btn-default" ng-click="resetFilter()" translate>BUTTON_RESET</button>
                                     </div>
                                 </th>
-                                <th style="vertical-align: top; width: 200px;">Номер телефона</th>
+                                <th style="vertical-align: top; width: 200px;" translate>TABLE_CELL_PAYMENTS_PHONE_NUMBER</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -87,7 +87,7 @@
                                     />
                                 </td>
                                 <td>{{ payment.serviceCompany }}</td>
-                                <td>{{ payment.id }}</td>
+                                <td>{{ payment.lockId }}</td>
                                 <td>{{ payment.installingPlace }}</td>
                                 <td>{{ payment.paymentDate | date:'dd-MM-yyyy' }}</td>
                                 <td>{{ payment.lockPhoneNumber }}</td>
@@ -96,7 +96,9 @@
                     </table>
                 </div>
 
-                <button ng-click="loadPayments(20, false, listFilter)" ng-hide="loadedAllPayments" class="btn btn-default">Загрузить еще</button>
+                <button ng-click="loadPayments(20, false, listFilter)" ng-hide="loadedAllPayments" class="btn btn-default" translate>
+                    BUTTON_LOAD_MORE
+                </button>
             </div>
         </div>
     </div>

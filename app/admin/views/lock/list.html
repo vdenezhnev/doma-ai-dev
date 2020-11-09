@@ -1,18 +1,18 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Замки</h1>
+        <h1 class="page-header">{{'LOCKS_TITLE' | translate }}</h1>
     </div>
 
     <div class="col-lg-12 mb15">
-        <a ui-sref="admin.lock.create" class="btn btn-success"><i class="fa fa-plus"></i> Добавить замок</a>
+        <a ui-sref="admin.lock.create" class="btn btn-success"><i class="fa fa-plus"></i> {{'BUTTON_ADD_LOCK' | translate }}</a>
     </div>
 </div>
 
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        <i class="fa fa-bar-chart-o fa-fw"></i> Список замков
+        <i class="fa fa-bar-chart-o fa-fw"></i> {{'LOCKS_LIST' | translate }}
     </div>
     <!-- /.panel-heading -->
     <div class="panel-body">
@@ -24,7 +24,7 @@
                             <div class="input-group">
                                 <div class="input-group-addon"><i class="fa fa-search"></i></div>
 
-                                <input type="text" class="form-control" placeholder="Поиск замков" ng-model="q" ng-model-options="{debounce: 1000}">
+                                <input type="text" class="form-control" placeholder="{{'LOCKS_SEARCH_PLACEHOLDER' | translate }}" ng-model="q" ng-model-options="{debounce: 1000}">
 
                             </div>
                         </div>
@@ -33,13 +33,13 @@
                     <table class="table table-bordered table-hover table-striped">
                         <thead>
                             <tr>
-                                <th style="width: 1%">#ID</th>
-                                <th>DeviceName (PID)</th>
-                                <th>Тип</th>
-                                <th>Номер телефона контроллера</th>
-                                <th>SSID</th>
-                                <th>Версия</th>
-                                <th>Статус</th>
+                                <th style="width: 1%">#{{'TABLE_CELL_ID' | translate }}</th>
+                                <th translate>TABLE_CELL_DEVICE_NAME</th>
+                                <th translate>TABLE_CELL_DEVICE_TYPE</th>
+                                <th translate>TABLE_CELL_DEVICE_CONTROLLER_PHONE_NUMBER</th>
+                                <th translate>TABLE_CELL_DEVICE_SSID</th>
+                                <th translate>TABLE_CELL_DEVICE_VERSION</th>
+                                <th translate>TABLE_CELL_DEVICE_STATUS</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -56,7 +56,7 @@
                     </table>
                 </div>
 
-                <button ng-click="loadLocks(20)" ng-hide="loadedAllLocks" class="btn btn-default">Загрузить еще</button>
+                <button ng-click="loadLocks(20)" ng-hide="loadedAllLocks" class="btn btn-default">{{'BUTTON_LOAD_MORE' | translate }}</button>
                 <!-- /.table-responsive -->
             </div>
             <!-- /.col-lg-8 (nested) -->
