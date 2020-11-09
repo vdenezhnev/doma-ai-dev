@@ -24,8 +24,8 @@ app.controller('PaymentsListCtrl', ['$scope', 'Api', 'settings', 'ModalService',
             };
 
             if (filter) {
-                request.paymentTo = filter.payment.from;
-                request.paymentFrom = filter.payment.to;
+                request.paymentTo = filter.payment.to;
+                request.paymentFrom = filter.payment.from;
             }
 
             Api.get(settings.API_URL, request, function(response) {
@@ -70,6 +70,8 @@ app.controller('PaymentsListCtrl', ['$scope', 'Api', 'settings', 'ModalService',
                             item.paymentDate = newDate;
                         }
                     });
+                }, function(error) {
+                    notify(error);
                 });
             }
         };
