@@ -133,5 +133,10 @@ app.controller('ChangePaymentDateCtrl', ['$scope', 'close', '$element',
             $element.modal('hide');
             close($scope.newDate, 500);
         };
+
+        $scope.closeCancelModal = function() {
+            $element.modal('hide');
+            close(null, 500);
+        };
     }
 ]);

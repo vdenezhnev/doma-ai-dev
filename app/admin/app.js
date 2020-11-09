@@ -23,14 +23,14 @@ app.config(['$httpProvider', '$locationProvider', '$stateProvider',
 }]);
 
 app.constant('availableLocales', [
-    { key: 'EN', displayName: 'English'},
-    { key: 'RU', displayName: 'Русский'},
-    { key: 'AR', displayName: 'العربية'},
+    { key: 'EN', displayName: 'English', isEnabled: true },
+    { key: 'RU', displayName: 'Русский', isEnabled: true },
+    { key: 'AR', displayName: 'العربية', isEnabled: true },
 ]);
-app.constant('defaultLocale', { key: 'EN', displayName: 'English'});
+app.constant('defaultLocale', { key: 'EN', displayName: 'English', isEnabled: true});
 
-app.run(['$rootScope', '$timeout', '$state', 'Permission', 'User', '$localStorage',
-    function($rootScope, $timeout, $state, Permission, User, $localStorage){
+app.run(['$rootScope', '$timeout', '$state', 'Permission', 'User', '$localStorage', 'notify',
+    function($rootScope, $timeout, $state, Permission, User, $localStorage, notify){
     $rootScope.user = User;
 
     User.listen($rootScope);
@@ -59,6 +59,16 @@ app.run(['$rootScope', '$timeout', '$state', 'Permission', 'User', '$localStorag
     } else {
         document.body.style.direction = 'ltr';
     }
+
+    moment.locale(selectedLocale.toLowerCase() || 'en', {
+        longDateFormat : {
+            LT : 'HH:mm'
+        }
+    });
+
+    notify.config({
+        duration: 3000
+    });
 }]);
 
 app.factory('AdminInterceptor', ['$q', '$injector', function($q, $injector) {
