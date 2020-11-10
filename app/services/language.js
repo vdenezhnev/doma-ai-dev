@@ -5,16 +5,18 @@ app.service('Language', ['$location', function($location) {
     
     this.languages = {
         ru: 'Ру',
-        en: 'En'
+        en: 'En',
+        ar: 'Ar'
     };
 
     this.codes = {
         ru: 'ru',
-        en: 'en'
+        en: 'en',
+        ar: 'ar'
     };
-    
+
     this.active = window.__language;
-    
+
     this.getTitle = function () {
         return self.languages[self.active];
     };
@@ -22,7 +24,7 @@ app.service('Language', ['$location', function($location) {
     this.getCode = function () {
         return self.codes[self.active];
     };
-    
+
     this.setLanguage = function(code) {
         var uri = URI(window.location);
         var regex = new RegExp('^\/(intercom-' + self.active + ')\/');
