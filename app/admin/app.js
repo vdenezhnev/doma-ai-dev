@@ -25,12 +25,12 @@ app.config(['$httpProvider', '$locationProvider', '$stateProvider',
 app.constant('availableLocales', [
     { key: 'EN', displayName: 'English', isEnabled: true },
     { key: 'RU', displayName: 'Русский', isEnabled: true },
-    { key: 'AR', displayName: 'العربية', isEnabled: true },
+    { key: 'AR', displayName: 'العربية', isEnabled: false },
 ]);
 app.constant('defaultLocale', { key: 'EN', displayName: 'English', isEnabled: true});
 
-app.run(['$rootScope', '$timeout', '$state', 'Permission', 'User', '$localStorage', 'notify',
-    function($rootScope, $timeout, $state, Permission, User, $localStorage, notify){
+app.run(['$rootScope', '$timeout', '$state', 'Permission', 'User', '$localStorage', 'notify', 'defaultLocale',
+    function($rootScope, $timeout, $state, Permission, User, $localStorage, notify, defaultLocale){
     $rootScope.user = User;
 
     User.listen($rootScope);
@@ -54,13 +54,18 @@ app.run(['$rootScope', '$timeout', '$state', 'Permission', 'User', '$localStorag
     });
 
     var selectedLocale = $localStorage.user_locale;
-    if (selectedLocale && selectedLocale === 'AR') {
+
+    if (!selectedLocale) {
+        selectedLocale = defaultLocale.key;
+    }
+
+    if (selectedLocale === 'AR') {
         document.body.style.direction = 'rtl';
     } else {
         document.body.style.direction = 'ltr';
     }
 
-    moment.locale(selectedLocale.toLowerCase() || 'en', {
+    moment.locale(selectedLocale === 'AR' ? 'en' : selectedLocale.toLowerCase(), {
         longDateFormat : {
             LT : 'HH:mm'
         }

@@ -40,7 +40,7 @@
         <label translate>html.access.point.form.simCardPaymentTo</label>
         <input class="form-control"
                name="paymentDate"
-               value="{{ point.paymentDate | date:'dd-MM-yyyy' }}"
+               value="{{ point.paymentDate | date:'dd.MM.yyyy' }}"
                disabled
                ng-if="vm.isDisabledPaymentDate"/>
         <div class="form-inline" ng-if="!vm.isDisabledPaymentDate">
