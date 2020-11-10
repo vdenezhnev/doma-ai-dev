@@ -123,12 +123,12 @@ msgstr "Абонент удален"
 msgid "abonents.abonent_updated"
 msgstr "Абонент обновлен"
 
-#: app/intercom/controllers/AccountControllers.js:74
+#: app/intercom/controllers/AccountControllers.js:77
 msgid "account.password_changed"
 msgstr "Пароль изменен"
 
-#: app/intercom/controllers/AccountControllers.js:45
-#: app/intercom/controllers/AccountControllers.js:9
+#: app/intercom/controllers/AccountControllers.js:48
+#: app/intercom/controllers/AccountControllers.js:12
 msgid "account.profile_updated"
 msgstr "Профиль обновлен"
 
@@ -143,17 +143,17 @@ msgid "auth.password_changed"
 msgstr "Пароль изменен"
 
 #: app/intercom/controllers/AccessControllers.js:132
-#: app/intercom/controllers/AccessControllers.js:286
+#: app/intercom/controllers/AccessControllers.js:292
 #: app/intercom/controllers/DeviceControllers.js:51
 msgid "devices.device_delete_confirm"
 msgstr "Вы уверены, что хотите удалить данный объект?"
 
-#: app/intercom/controllers/AccessControllers.js:289
+#: app/intercom/controllers/AccessControllers.js:295
 #: app/intercom/controllers/DeviceControllers.js:53
 msgid "devices.device_deleted"
 msgstr "Объект удален"
 
-#: app/intercom/controllers/AccessControllers.js:247
+#: app/intercom/controllers/AccessControllers.js:253
 msgid "devices.device_update_settings"
 msgstr ""
 "Сохранение изменений приведет к обновлению данных у всех абонентов. Вы "
@@ -162,11 +162,11 @@ msgstr ""
 #: app/intercom/controllers/AccessControllers.js:127
 #: app/intercom/controllers/AccessControllers.js:136
 #: app/intercom/controllers/AccessControllers.js:213
-#: app/intercom/controllers/AccessControllers.js:241
-#: app/intercom/controllers/AccessControllers.js:253
-#: app/intercom/controllers/AccessControllers.js:263
-#: app/intercom/controllers/AccessControllers.js:271
-#: app/intercom/controllers/AccessControllers.js:281
+#: app/intercom/controllers/AccessControllers.js:247
+#: app/intercom/controllers/AccessControllers.js:259
+#: app/intercom/controllers/AccessControllers.js:269
+#: app/intercom/controllers/AccessControllers.js:277
+#: app/intercom/controllers/AccessControllers.js:287
 #: app/intercom/controllers/AccessControllers.js:29
 #: app/intercom/controllers/AccessControllers.js:51
 #: app/intercom/controllers/AccessControllers.js:92
@@ -408,6 +408,10 @@ msgstr "Изменить"
 #: app/intercom/views/access/point/edit.html:17
 msgid "html.access.point.form.settings_title"
 msgstr "Настройки"
+
+#: app/intercom/views/access/point/form.html:40
+msgid "html.access.point.form.simCardPaymentTo"
+msgstr "Сим-карта оплачена до"
 
 #: app/intercom/views/access/point/form.html:19
 msgid "html.access.point.form.type"
@@ -736,9 +740,9 @@ msgstr "По умолчанию"
 msgid "html.defaults.from_title"
 msgstr "от"
 
-#: app/intercom/views/abonent/list.html:41
+#: app/intercom/views/abonent/list.html:51
 #: app/intercom/views/access_right/list.html:57
-#: app/intercom/views/journal/list.html:84
+#: app/intercom/views/journal/list.html:121
 #: app/intercom/views/payments/list.html:94
 msgid "html.defaults.load_more"
 msgstr "Загрузить еще"
@@ -753,7 +757,7 @@ msgstr "Загрузить еще"
 msgid "html.defaults.remove_title"
 msgstr "Удалить"
 
-#: app/intercom/views/journal/list.html:42
+#: app/intercom/views/journal/list.html:53
 msgid "html.defaults.reset_title"
 msgstr "Сброс"
 
@@ -919,13 +923,13 @@ msgid "html.journal.date_and_time_display"
 msgstr "Время"
 
 #: app/intercom/views/abonent/form.html:251
-#: app/intercom/views/journal/list.html:24
+#: app/intercom/views/journal/list.html:26
 #: app/intercom/views/payment/list.html:18
 msgid "html.journal.date_from_display"
 msgstr "Дата от"
 
 #: app/intercom/views/abonent/form.html:266
-#: app/intercom/views/journal/list.html:36
+#: app/intercom/views/journal/list.html:42
 #: app/intercom/views/payment/list.html:35
 msgid "html.journal.date_to_display"
 msgstr "Дата до"
@@ -1194,7 +1198,7 @@ msgstr ""
 msgid "Выберите управляющую компанию"
 msgstr ""
 
-#: app/intercom/controllers/AccountControllers.js:20
+#: app/intercom/controllers/AccountControllers.js:23
 msgid "Удален"
 msgstr ""
 

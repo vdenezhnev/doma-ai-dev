@@ -25,7 +25,7 @@ app.config(['$httpProvider', '$locationProvider', '$stateProvider',
 app.constant('availableLocales', [
     { key: 'EN', displayName: 'English', isEnabled: true },
     { key: 'RU', displayName: 'Русский', isEnabled: true },
-    { key: 'AR', displayName: 'العربية', isEnabled: true },
+    { key: 'AR', displayName: 'العربية', isEnabled: false },
 ]);
 app.constant('defaultLocale', { key: 'EN', displayName: 'English', isEnabled: true});
 
