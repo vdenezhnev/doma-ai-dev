@@ -226,8 +226,8 @@ app.controller('EditAccessPointCtrl', ['$scope', '$state', 'AccessPoint', 'notif
         $scope.deviceKeyUsage = point.keyUsage.restrictions;
         $scope.transports = point.transports;
 
-        var gsmTransport = $scope.transports.find(item => item.type === 'gsm');
-        vm.isDisabledPaymentDate = gsmTransport && gsmTransport.isIntegratedSimCard;
+        var gsmTransport = !!$scope.transports.length && $scope.transports.find(item => item.type === 'gsm');
+        vm.isDisabledPaymentDate = !Boolean(gsmTransport) || (gsmTransport && gsmTransport.isIntegratedSimCard);
 
         vm.isOpeningByInternet = !!point.isOpeningByInternet;
         vm.isOpeningByPhone = !!point.isOpeningByPhone;
