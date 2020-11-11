@@ -24,8 +24,8 @@ app.controller('PaymentsListCtrl', ['$scope', 'Api', 'settings', 'ModalService',
             };
 
             if (filter) {
-                request.paymentTo = filter.payment.to;
-                request.paymentFrom = filter.payment.from;
+                request.paymentDateTo = filter.payment.to;
+                request.paymentDateFrom = filter.payment.from;
             }
 
             Api.get(settings.API_URL, request, function(response) {
