@@ -49,35 +49,35 @@ msgstr "Генерация QR-кода"
 msgid "html.access.perimeter.generateQR.to"
 msgstr "По"
 
-#: app/intercom/views/journal/list.html:16
+#: app/intercom/views/journal/access.html:8
 msgid "html.journal.key_type_display"
 msgstr "Тип идентификатора"
 
-#: app/intercom/views/journal/list.html:17
+#: app/intercom/views/journal/access.html:10
 msgid "html.journal.lock_access_types_display"
 msgstr "Результат доступа"
 
-#: app/intercom/controllers/JournalControllers.js:20
+#: app/intercom/controllers/JournalControllers.js:30
 msgid "keyTypes.button"
 msgstr "Кнопка выхода"
 
-#: app/intercom/controllers/JournalControllers.js:17
+#: app/intercom/controllers/JournalControllers.js:27
 msgid "keyTypes.card"
 msgstr "Карта"
 
-#: app/intercom/controllers/JournalControllers.js:21
+#: app/intercom/controllers/JournalControllers.js:31
 msgid "keyTypes.mobile"
 msgstr "Открытие с мобильного устройства"
 
-#: app/intercom/controllers/JournalControllers.js:18
+#: app/intercom/controllers/JournalControllers.js:28
 msgid "keyTypes.remote"
 msgstr "Удаленное открытие"
 
-#: app/intercom/controllers/JournalControllers.js:25
+#: app/intercom/controllers/JournalControllers.js:35
 msgid "lockAccessTypes.accessDenied"
 msgstr "Отказ доступа"
 
-#: app/intercom/controllers/JournalControllers.js:24
+#: app/intercom/controllers/JournalControllers.js:34
 msgid "lockAccessTypes.opened"
 msgstr "Предоставление доступа"
 
@@ -720,6 +720,7 @@ msgstr "Отмена"
 
 #: app/intercom/views/abonent/form.html:197
 #: app/intercom/views/abonent/form.html:244
+#: app/intercom/views/journal/working-time.html:105
 msgid "html.defaults.change_title"
 msgstr "Изменить"
 
@@ -742,7 +743,7 @@ msgstr "от"
 
 #: app/intercom/views/abonent/list.html:51
 #: app/intercom/views/access_right/list.html:57
-#: app/intercom/views/journal/list.html:121
+#: app/intercom/views/journal/access.html:105
 #: app/intercom/views/payments/list.html:94
 msgid "html.defaults.load_more"
 msgstr "Загрузить еще"
@@ -757,7 +758,7 @@ msgstr "Загрузить еще"
 msgid "html.defaults.remove_title"
 msgstr "Удалить"
 
-#: app/intercom/views/journal/list.html:53
+#: app/intercom/views/journal/list.html:46
 msgid "html.defaults.reset_title"
 msgstr "Сброс"
 
@@ -910,39 +911,75 @@ msgstr "Широта"
 msgid "html.device.settings_form.transport_internet_y"
 msgstr "Долгота"
 
-#: app/intercom/views/journal/list.html:18
+#: app/intercom/views/journal/list.html:11
 msgid "html.journal.access_point_display"
 msgstr "Точка доступа"
 
-#: app/intercom/views/journal/list.html:16
+#: app/intercom/views/journal/list.html:9
 msgid "html.journal.card_id"
 msgstr "ID карты"
 
-#: app/intercom/views/journal/list.html:12
+#: app/intercom/views/journal/working-time-table.html:8
+msgid "html.journal.date"
+msgstr "Дата"
+
+#: app/intercom/views/journal/access.html:5
 msgid "html.journal.date_and_time_display"
 msgstr "Время"
 
 #: app/intercom/views/abonent/form.html:251
-#: app/intercom/views/journal/list.html:26
+#: app/intercom/views/journal/access.html:19
+#: app/intercom/views/journal/working-time.html:19
 #: app/intercom/views/payment/list.html:18
 msgid "html.journal.date_from_display"
 msgstr "Дата от"
 
 #: app/intercom/views/abonent/form.html:266
-#: app/intercom/views/journal/list.html:42
+#: app/intercom/views/journal/access.html:35
+#: app/intercom/views/journal/working-time.html:36
 #: app/intercom/views/payment/list.html:35
 msgid "html.journal.date_to_display"
 msgstr "Дата до"
+
+#: app/intercom/views/journal/working-time-table.html:10
+msgid "html.journal.entryTime"
+msgstr "Вход"
+
+#: app/intercom/views/journal/working-time-table.html:11
+msgid "html.journal.exitTime"
+msgstr "Выход"
+
+#: app/intercom/views/journal/working-time-table.html:2
+msgid "html.journal.getCSV"
+msgstr "Скачать CSV"
+
+#: app/intercom/views/journal/working-time.html:132
+msgid "html.journal.getReport"
+msgstr "Сформировать отчет"
+
+#: app/intercom/views/journal/working-time.html:125
+msgid "html.journal.groupByDays"
+msgstr "Суммировать по дням"
+
+#: app/intercom/views/journal/working-time.html:133
+msgid "html.journal.resetFilter"
+msgstr "Сбросить"
+
+#: app/intercom/views/journal/list.html:3
+msgid "html.journal.reports"
+msgstr "Отчеты"
 
 #: app/intercom/views/journal/list.html:3
 msgid "html.journal.list_title"
 msgstr "Журналы доступа"
 
-#: app/intercom/views/journal/list.html:14
+#: app/intercom/views/journal/access.html:7
 msgid "html.journal.phone_number_display"
 msgstr "Телефон"
 
-#: app/intercom/views/journal/list.html:13
+#: app/intercom/views/journal/access.html:6
+#: app/intercom/views/journal/working-time-table.html:9
+#: app/intercom/views/journal/working-time.html:115
 msgid "html.journal.user_display"
 msgstr "Пользователь"
 
@@ -987,6 +1024,7 @@ msgstr "Тарифы"
 msgid "html.payment.label_access_object"
 msgstr "Объект"
 
+#: app/intercom/views/journal/working-time.html:10
 #: app/intercom/views/payment/list.html:13
 msgid "html.payment.label_period"
 msgstr "За период"
@@ -1019,6 +1057,7 @@ msgstr "Дата оплаты"
 msgid "html.payments.payment_type"
 msgstr "Назначение платежа"
 
+#: app/intercom/views/journal/working-time.html:56
 #: app/intercom/views/payments/list.html:12
 msgid "html.payments.perimeter_name"
 msgstr "Зона доступа"

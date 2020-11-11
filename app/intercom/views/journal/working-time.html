@@ -1,0 +1,146 @@
+<div>
+    <div class="row">
+        <form name="WorkingTimeReportForm">
+            <div class="col-md-12">
+                <div class="portlet without-title light bordered">
+                    <div class="portlet-body form">
+                        <div class="row">
+                            <div class="column">
+                                <div class="col-md-8">
+                                    <label translate>html.payment.label_period</label>
+                                    <div class="column">
+                                        <div class="col-md-3" style="padding-left: 0;">
+                                            <span class="dropdown">
+                                                <a class="dropdown-toggle" id="wtr-from-date" role="button" data-toggle="dropdown" data-target="#" href="#" style="text-decoration: none;">
+                                                    <input class="form-control datetime-field"
+                                                           readonly
+                                                           type="text"
+                                                           name="fromDate"
+                                                           placeholder="{{ 'html.journal.date_from_display' | translate }}"
+                                                           value="{{ workingTimeFilter.period.from | date:'dd.MM.yyyy' }}">
+                                                </a>
+                                                <ul class="dropdown-menu" role="menu" style="margin-top: 45px;">
+                                                    <datetimepicker ng-model="workingTimeFilter.period.from"
+                                                                    name="from"
+                                                                    datetimepicker-config="{dropdownSelector: '#wtr-from-date', startView:'day', minView:'day' }" />
+                                                </ul>
+                                            </span>
+                                        </div>
+                                        <div class="col-md-3" style="padding-left: 0;">
+                                            <span class="dropdown">
+                                                <a class="dropdown-toggle" id="wtr-to-date" role="button" data-toggle="dropdown" data-target="#" href="#" style="text-decoration: none;">
+                                                    <input class="form-control datetime-field"
+                                                           readonly
+                                                           type="text"
+                                                           name="toDate"
+                                                           placeholder="{{ 'html.journal.date_to_display' | translate }}"
+                                                           value="{{ workingTimeFilter.period.to | date:'dd.MM.yyyy' }}">
+                                                </a>
+                                                <ul class="dropdown-menu" role="menu" style="margin-top: 45px;">
+                                                    <datetimepicker ng-model="workingTimeFilter.period.to"
+                                                                    name="to"
+                                                                    datetimepicker-config="{dropdownSelector: '#wtr-to-date', startView:'day', minView:'day' }" />
+                                                </ul>
+                                            </span>
+                                        </div>
+                                        <div class="col-md-1" style="padding-left: 0;">
+                                            <span class="btn btn-default btn-trash" ng-click="resetWTFilterDates()"><i class="fa fa-trash"/></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label style="margin-top: 15px;" translate>html.payments.perimeter_name</label>
+                                    <div class="form-control" style="height: auto; min-height: 34px; overflow-y: auto; max-height: 250px;" ng-click="showTree()">
+                                        <script type="text/ng-template" id="AccessObjectsTemplate">
+                                            <div class="tree-demo jstree jstree-1 jstree-default">
+                                                <ul class="jstree-container-ul jstree-children">
+                                                    <li ng-repeat="object in objects | orderBy:'displayName'"
+                                                        class="jstree-node"
+                                                        ng-class="{
+                                                            'jstree-last': $last,
+                                                            'jstree-open': navigate[object.id] == true,
+                                                            'jstree-closed': navigate[object.id] == false,
+                                                            'jstree-leaf': !object.child.length
+                                                        }"
+                                                        ng-init="navigate[object.id] = navigate[object.id] == undefined ? false : navigate[object.id]"
+                                                        ng-include="'accessTreeTemplate'">
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </script>
+                                        <script type="text/ng-template" id="accessTreeTemplate">
+                                            <i class="jstree-icon jstree-ocl"
+                                            ng-click="navigate[object.id] = !navigate[object.id]"></i>
+                                            <a class="jstree-anchor" ng-if="object.parentId == '0'">
+                                                <i class="jstree-icon jstree-themeicon jstree-themeicon-custom fa fa-folder icon-state-success"></i>
+                                                {{ object.displayName }}
+                                            </a>
+                                            <a ng-click="clickPerimeter(object)" class="jstree-anchor" ng-if="object.parentId != '0'">
+                                                <i class="jstree-icon jstree-themeicon jstree-themeicon-custom fa fa-folder icon-state-warning"></i>
+                                                {{ object.displayName }}
+                                            </a>
+                                            <ul class="jstree-children">
+                                                <li ng-repeat="object in object.child | orderBy:'displayName'"
+                                                    ng-include="'accessTreeTemplate'"
+                                                    ng-init="navigate[object.id] = navigate[object.id] == undefined ? false : navigate[object.id]"
+                                                    class="jstree-node"
+                                                    ng-class="{
+                                                        'jstree-last': $last,
+                                                        'jstree-open': navigate[object.id] == true,
+                                                        'jstree-closed': navigate[object.id] == false,
+                                                        'jstree-leaf': !object.child.length
+                                                    }"></li>
+                                            </ul>
+                                        </script>
+                                        <div ng-if="showPerimeterTree">
+                                            <access-objects perimeter-model="workingTimeFilter.perimeterId" ng-if="!workingTimeFilter.perimeterId"></access-objects>
+                                            <span ng-repeat="parentPerimeter in dataService.getParentsAccessObjects(workingTimeFilter.perimeterId, true)" ng-if="workingTimeFilter.perimeterId">
+                                                <span>{{ parentPerimeter.displayName}}</span>
+                                                <span ng-show="!$last">&rarr;</span>
+                                            </span>
+                                            <a ng-click="workingTimeFilter.perimeterId=null" ng-if="workingTimeFilter.perimeterId" translate>
+                                                html.defaults.change_title</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label style="margin-top: 15px;" translate>html.journal.user_display</label>
+                                <input class="form-control" type="text" name="displayName" ng-model="workingTimeFilter.user">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label style="margin-top: 15px;">
+                                        <input type="checkbox" name="groupByDay" ng-model="workingTimeFilter.sumByDays">
+                                        <span translate>html.journal.groupByDays</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn blue" ng-click="compileReport()" translate>html.journal.getReport</button>
+                            <button class="btn" ng-click="resetWTFilter()" translate>html.journal.resetFilter</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="row" ng-if="workingTimeList.length">
+        <div class="col-md-12">
+            <ng-include src="'app/intercom/views/journal/working-time-table.html'"></ng-include>
+        </div>
+    </div>
+</div>
