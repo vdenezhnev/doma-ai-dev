@@ -1,0 +1,16 @@
+<div style="position: fixed; width: 100%; top: 100px; z-index: 5000;">
+    <form class="panel panel-default" style="width: 600px; margin: 0 auto">
+        <div class="panel-heading" translate>
+            PAYMENTS_CHANGE_DATE_TITLE
+        </div>
+
+        <div class="panel-body">
+            <datetimepicker ng-model="newDate"
+                            datetimepicker-config="calendarOptions" />
+        </div>
+        <div class="panel-footer">
+            <button class="btn btn-default" ng-click="closeModal()" translate>BUTTON_OK</button>
+            <button class="btn btn-default" ng-click="closeCancelModal()" translate>BUTTON_CLOSE</button>
+        </div>
+    </form>
+</div>

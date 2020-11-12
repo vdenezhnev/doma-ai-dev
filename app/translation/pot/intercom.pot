@@ -33,12 +33,12 @@ msgstr ""
 msgid "abonents.abonent_updated"
 msgstr ""
 
-#: app/intercom/controllers/AccountControllers.js:74
+#: app/intercom/controllers/AccountControllers.js:77
 msgid "account.password_changed"
 msgstr ""
 
-#: app/intercom/controllers/AccountControllers.js:45
-#: app/intercom/controllers/AccountControllers.js:9
+#: app/intercom/controllers/AccountControllers.js:12
+#: app/intercom/controllers/AccountControllers.js:48
 msgid "account.profile_updated"
 msgstr ""
 
@@ -53,28 +53,28 @@ msgid "auth.password_changed"
 msgstr ""
 
 #: app/intercom/controllers/AccessControllers.js:132
-#: app/intercom/controllers/AccessControllers.js:286
+#: app/intercom/controllers/AccessControllers.js:292
 #: app/intercom/controllers/DeviceControllers.js:51
 msgid "devices.device_delete_confirm"
 msgstr ""
 
-#: app/intercom/controllers/AccessControllers.js:289
+#: app/intercom/controllers/AccessControllers.js:295
 #: app/intercom/controllers/DeviceControllers.js:53
 msgid "devices.device_deleted"
 msgstr ""
 
-#: app/intercom/controllers/AccessControllers.js:247
+#: app/intercom/controllers/AccessControllers.js:253
 msgid "devices.device_update_settings"
 msgstr ""
 
 #: app/intercom/controllers/AccessControllers.js:127
 #: app/intercom/controllers/AccessControllers.js:136
 #: app/intercom/controllers/AccessControllers.js:213
-#: app/intercom/controllers/AccessControllers.js:241
-#: app/intercom/controllers/AccessControllers.js:253
-#: app/intercom/controllers/AccessControllers.js:263
-#: app/intercom/controllers/AccessControllers.js:271
-#: app/intercom/controllers/AccessControllers.js:281
+#: app/intercom/controllers/AccessControllers.js:247
+#: app/intercom/controllers/AccessControllers.js:259
+#: app/intercom/controllers/AccessControllers.js:269
+#: app/intercom/controllers/AccessControllers.js:277
+#: app/intercom/controllers/AccessControllers.js:287
 #: app/intercom/controllers/AccessControllers.js:29
 #: app/intercom/controllers/AccessControllers.js:51
 #: app/intercom/controllers/AccessControllers.js:92
@@ -359,6 +359,10 @@ msgstr ""
 
 #: app/intercom/views/access/point/edit.html:17
 msgid "html.access.point.form.settings_title"
+msgstr ""
+
+#: app/intercom/views/access/point/form.html:40
+msgid "html.access.point.form.simCardPaymentTo"
 msgstr ""
 
 #: app/intercom/views/access/point/form.html:19
@@ -666,6 +670,7 @@ msgstr ""
 
 #: app/intercom/views/abonent/form.html:197
 #: app/intercom/views/abonent/form.html:244
+#: app/intercom/views/journal/working-time.html:105
 msgid "html.defaults.change_title"
 msgstr ""
 
@@ -688,7 +693,7 @@ msgstr ""
 
 #: app/intercom/views/abonent/list.html:51
 #: app/intercom/views/access_right/list.html:57
-#: app/intercom/views/journal/list.html:113
+#: app/intercom/views/journal/access.html:105
 #: app/intercom/views/payments/list.html:94
 msgid "html.defaults.load_more"
 msgstr ""
@@ -703,7 +708,7 @@ msgstr ""
 msgid "html.defaults.remove_title"
 msgstr ""
 
-#: app/intercom/views/journal/list.html:45
+#: app/intercom/views/journal/access.html:46
 msgid "html.defaults.reset_title"
 msgstr ""
 
@@ -856,48 +861,84 @@ msgstr ""
 msgid "html.device.settings_form.transport_internet_y"
 msgstr ""
 
-#: app/intercom/views/journal/list.html:18
+#: app/intercom/views/journal/access.html:11
 msgid "html.journal.access_point_display"
 msgstr ""
 
-#: app/intercom/views/journal/list.html:16
+#: app/intercom/views/journal/access.html:9
 msgid "html.journal.card_id"
 msgstr ""
 
-#: app/intercom/views/journal/list.html:12
+#: app/intercom/views/journal/working-time-table.html:8
+msgid "html.journal.date"
+msgstr ""
+
+#: app/intercom/views/journal/access.html:5
 msgid "html.journal.date_and_time_display"
 msgstr ""
 
 #: app/intercom/views/abonent/form.html:251
-#: app/intercom/views/journal/list.html:24
+#: app/intercom/views/journal/access.html:19
+#: app/intercom/views/journal/working-time.html:19
 #: app/intercom/views/payment/list.html:18
 msgid "html.journal.date_from_display"
 msgstr ""
 
 #: app/intercom/views/abonent/form.html:266
-#: app/intercom/views/journal/list.html:36
+#: app/intercom/views/journal/access.html:35
+#: app/intercom/views/journal/working-time.html:36
 #: app/intercom/views/payment/list.html:35
 msgid "html.journal.date_to_display"
 msgstr ""
 
-#: app/intercom/views/journal/list.html:15
+#: app/intercom/views/journal/working-time-table.html:10
+msgid "html.journal.entryTime"
+msgstr ""
+
+#: app/intercom/views/journal/working-time-table.html:11
+msgid "html.journal.exitTime"
+msgstr ""
+
+#: app/intercom/views/journal/working-time-table.html:2
+msgid "html.journal.getCSV"
+msgstr ""
+
+#: app/intercom/views/journal/working-time.html:132
+msgid "html.journal.getReport"
+msgstr ""
+
+#: app/intercom/views/journal/working-time.html:125
+msgid "html.journal.groupByDays"
+msgstr ""
+
+#: app/intercom/views/journal/access.html:8
 msgid "html.journal.key_type_display"
 msgstr ""
 
-#: app/intercom/views/journal/list.html:3
-msgid "html.journal.list_title"
-msgstr ""
-
-#: app/intercom/views/journal/list.html:17
+#: app/intercom/views/journal/access.html:10
 msgid "html.journal.lock_access_types_display"
 msgstr ""
 
-#: app/intercom/views/journal/list.html:14
+#: app/intercom/views/journal/access.html:7
 msgid "html.journal.phone_number_display"
 msgstr ""
 
-#: app/intercom/views/journal/list.html:13
+#: app/intercom/views/journal/list.html:3
+msgid "html.journal.reports"
+msgstr ""
+
+#: app/intercom/views/journal/working-time.html:133
+msgid "html.journal.resetFilter"
+msgstr ""
+
+#: app/intercom/views/journal/access.html:6
+#: app/intercom/views/journal/working-time-table.html:9
+#: app/intercom/views/journal/working-time.html:115
 msgid "html.journal.user_display"
+msgstr ""
+
+#: app/intercom/views/journal/working-time-table.html:12
+msgid "html.journal.workTime"
 msgstr ""
 
 #: app/intercom/views/inc/sidebar.html:16
@@ -954,6 +995,7 @@ msgstr ""
 msgid "html.payment.label_access_object"
 msgstr ""
 
+#: app/intercom/views/journal/working-time.html:10
 #: app/intercom/views/payment/list.html:13
 msgid "html.payment.label_period"
 msgstr ""
@@ -986,6 +1028,7 @@ msgstr ""
 msgid "html.payments.payment_type"
 msgstr ""
 
+#: app/intercom/views/journal/working-time.html:56
 #: app/intercom/views/payments/list.html:12
 msgid "html.payments.perimeter_name"
 msgstr ""
@@ -1108,27 +1151,27 @@ msgstr ""
 msgid "importInfoTitle"
 msgstr ""
 
-#: app/intercom/controllers/JournalControllers.js:20
+#: app/intercom/controllers/JournalControllers.js:30
 msgid "keyTypes.button"
 msgstr ""
 
-#: app/intercom/controllers/JournalControllers.js:17
+#: app/intercom/controllers/JournalControllers.js:27
 msgid "keyTypes.card"
 msgstr ""
 
-#: app/intercom/controllers/JournalControllers.js:21
+#: app/intercom/controllers/JournalControllers.js:31
 msgid "keyTypes.mobile"
 msgstr ""
 
-#: app/intercom/controllers/JournalControllers.js:18
+#: app/intercom/controllers/JournalControllers.js:28
 msgid "keyTypes.remote"
 msgstr ""
 
-#: app/intercom/controllers/JournalControllers.js:25
+#: app/intercom/controllers/JournalControllers.js:35
 msgid "lockAccessTypes.accessDenied"
 msgstr ""
 
-#: app/intercom/controllers/JournalControllers.js:24
+#: app/intercom/controllers/JournalControllers.js:34
 msgid "lockAccessTypes.opened"
 msgstr ""
 
@@ -1185,6 +1228,6 @@ msgstr ""
 msgid "Выберите управляющую компанию"
 msgstr ""
 
-#: app/intercom/controllers/AccountControllers.js:20
+#: app/intercom/controllers/AccountControllers.js:23
 msgid "Удален"
 msgstr ""
