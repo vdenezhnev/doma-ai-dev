@@ -96,7 +96,8 @@ app.controller('JournalListCtrl', ['$scope', 'Journal', 'gettextCatalog', '$http
                 UserName: $scope.workingTimeFilter.user,
                 From: $scope.workingTimeFilter.period.from,
                 Till: $scope.workingTimeFilter.period.to,
-                PerimeterId: $scope.workingTimeFilter.perimeterId
+                PerimeterId: $scope.workingTimeFilter.perimeterId,
+                TimeOffset: moment().utcOffset()
             });
 
             $http.get(settings.API_URL + '?' + queryParams).then(function(response){
@@ -125,14 +126,15 @@ app.controller('JournalListCtrl', ['$scope', 'Journal', 'gettextCatalog', '$http
                 UserName: $scope.workingTimeFilter.user,
                 From: $scope.workingTimeFilter.period.from,
                 Till: $scope.workingTimeFilter.period.to,
-                PerimeterId: $scope.workingTimeFilter.perimeterId
+                PerimeterId: $scope.workingTimeFilter.perimeterId,
+                TimeOffset: moment().utcOffset()
             };
             $http.get(settings.API_URL + '?' + $httpParamSerializer(getParams), {
                 responseType: 'arraybuffer'
             }).success(function(data, status, headers) {
                 const filename = 'working_time_' + moment($scope.filter.From).format('YYYY_MM_DD') + '-'
                     + moment($scope.filter.To).format('YYYY_MM_DD');
-                const contentType = 'text/csv';
+                const contentType = 'application/vnd.ms-excel';
                 const linkElement = document.createElement('a');
 
                 try {

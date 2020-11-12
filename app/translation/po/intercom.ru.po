@@ -951,7 +951,7 @@ msgstr "Выход"
 
 #: app/intercom/views/journal/working-time-table.html:2
 msgid "html.journal.getCSV"
-msgstr "Скачать CSV"
+msgstr "Скачать"
 
 #: app/intercom/views/journal/working-time.html:132
 msgid "html.journal.getReport"
