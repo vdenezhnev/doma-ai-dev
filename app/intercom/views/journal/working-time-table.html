@@ -14,7 +14,7 @@
         </thead>
         <tbody>
             <tr ng-repeat="workingTime in workingTimeList track by $index" ng-class="{'active': workingTime.isGroupRow}">
-                <td>{{ workingTime.entryExitDate | amUtc | amLocal | amDateFormat:'DD.MM.YYYY' }}</td>
+                <td>{{ workingTime.entryExitDate | amDateFormat:'DD.MM.YYYY' }}</td>
                 <td>{{ workingTime.userName }}</td>
                 <td>{{ workingTime.entryTime }}</td>
                 <td>{{ workingTime.exitTime }}</td>

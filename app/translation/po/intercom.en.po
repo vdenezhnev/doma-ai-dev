@@ -949,7 +949,11 @@ msgstr "Exit time"
 
 #: app/intercom/views/journal/working-time-table.html:2
 msgid "html.journal.getCSV"
-msgstr "Get CSV"
+msgstr "Download"
+
+#: app/intercom/views/journal/working-time-table.html:12
+msgid "html.journal.workTime"
+msgstr "Work time"
 
 #: app/intercom/views/journal/working-time.html:132
 msgid "html.journal.getReport"
