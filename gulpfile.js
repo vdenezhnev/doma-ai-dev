@@ -33,4 +33,10 @@ exports.serveIntercomEn = () => {
 
     serve(buildIntercomDev, serveIntercom);
 };
+exports.serveIntercomAr = () => {
+    const buildIntercomDev = require('./build/build').buildIntercomDev('ar');
+    const serveIntercom = () => require('./build/server').serveDist('intercom', 'ar');
+
+    serve(buildIntercomDev, serveIntercom);
+};
 exports.build = require('./build/build').default;

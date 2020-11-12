@@ -17,6 +17,9 @@ const setLocaleRu = async () => env({
 const setLocaleEn = async () => env({
     file: './build/.en.env.json'
 });
+const setLocaleAr = async () => env({
+    file: './build/.ar.env.json'
+});
 
 const build = gulp.series(
     'html',
@@ -45,6 +48,8 @@ const buildIntercom = gulp.series(
     setLocaleRu,
     build,
     setLocaleEn,
+    build,
+    setLocaleAr,
     build
 );
 const buildAdmin = gulp.series(
@@ -66,7 +71,7 @@ exports.buildIntercomDev = (locale) => gulp.series(
     async () => env.set({
         DEVMODE: true,
     }),
-    locale === 'ru' ? setLocaleRu : setLocaleEn,
+    locale === 'ru' ? setLocaleRu : (locale === 'ar' ? setLocaleAr : setLocaleEn),
     setIntercomEnv,
     build,
     async () => gulp.src(`./dist/intercom-${locale}/index.html`).pipe(gulp.dest(`./dist`))

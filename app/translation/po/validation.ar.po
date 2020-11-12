@@ -1,0 +1,57 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: app/common/validation-rule.js:38
+msgid "validation.email"
+msgstr "Wrong email"
+
+#: app/common/validation-rule.js:59
+msgid "validation.max_number"
+msgstr "Value must be less then"
+
+#: app/common/validation-rule.js:56
+msgid "validation.min_number"
+msgstr "Value must be greater then"
+
+#: app/common/validation-rule.js:65
+msgid "validation.nil_and_more"
+msgstr "0 or more"
+
+#: app/common/validation-rule.js:41
+msgid "validation.number"
+msgstr "Value must be a number"
+
+#: app/common/validation-rule.js:44
+msgid "validation.password"
+msgstr "The password must be at least 6 characters"
+
+#: app/common/validation-rule.js:47
+msgid "validation.password_match"
+msgstr "Passwords must match"
+
+#: app/common/validation-rule.js:50
+msgid "validation.phone"
+msgstr "Wrong phone"
+
+#: app/common/validation-rule.js:62
+msgid "validation.positive_number"
+msgstr "Value must be greater then 0"
+
+#: app/common/validation-rule.js:35
+msgid "validation.required"
+msgstr "مطلوب"
+
+#: app/common/validation-rule.js:53
+msgid "validation.username"
+msgstr ""
