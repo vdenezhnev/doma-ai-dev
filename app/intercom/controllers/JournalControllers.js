@@ -133,7 +133,7 @@ app.controller('JournalListCtrl', ['$scope', 'Journal', 'gettextCatalog', '$http
                 responseType: 'arraybuffer'
             }).success(function(data, status, headers) {
                 const filename = 'working_time_' + moment($scope.filter.From).format('YYYY_MM_DD') + '-'
-                    + moment($scope.filter.To).format('YYYY_MM_DD');
+                    + moment($scope.filter.To).format('YYYY_MM_DD') + '.xlsx';
                 const contentType = 'application/vnd.ms-excel';
                 const linkElement = document.createElement('a');
 
