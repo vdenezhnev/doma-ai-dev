@@ -1,4 +1,4 @@
-<div class="top-menu">
+<div class="top-menu" style="display: flex;">
     <p class="navbar-text"
        style="background-color: rgb(201, 48, 44); padding: 13px; margin: 0; color: #c6cfda"
        ng-if="user.data.keyCount.remain < 10">
@@ -10,7 +10,7 @@
                 <span class="fa fa-flag username"></span> <span class="username">{{ language.getTitle() }} </span>
                 <i class="fa fa-angle-down"></i>
             </a>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu" ng-class="{'dropdown-rtl': isRTL, 'dropdown-lang': isRTL}">
                 <li ng-repeat="(code, title) in language.languages" ng-hide="language.active == code">
                     <a ng-click="language.setLanguage(code)"><i class="fa fa-flag-o"></i> {{ title }}</a>
                 </li>
@@ -22,7 +22,7 @@
                 <span class="username"> {{ user.data.companyName }} </span>
                 <i class="fa fa-angle-down"></i>
             </a>
-            <ul class="dropdown-menu dropdown-menu-default">
+            <ul class="dropdown-menu" ng-class="{'rtl-text': isRTL, 'dropdown-rtl': isRTL}">
                 <li>
                     <a ui-sref="admin.account.profile"><i class="icon-user"></i> <span translate>html.toolbar.settings</span></a>
                 </li>
@@ -35,4 +35,14 @@
             </ul>
         </li>
     </ul>
+    <button type="button"
+            class="navbar-toggle menu-toggler responsive-toggler"
+            data-toggle="collapse"
+            data-target=".navbar-collapse"
+            aria-expanded="false"
+            style="padding: 2px; border: none;">
+        <span class="icon-bar" style="width: 20px;"></span>
+        <span class="icon-bar" style="width: 20px;"></span>
+        <span class="icon-bar" style="width: 20px;"></span>
+    </button>
 </div>

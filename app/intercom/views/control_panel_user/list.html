@@ -8,7 +8,7 @@
             html.defaults.add_title</a>
 
         <div class="table-scrollable" ng-if="users.$resolved">
-            <table class="table table-hover table-tr-hover">
+            <table class="table table-hover table-tr-hover" ng-class="{'rtl-text': isRTL}">
                 <thead>
                     <tr>
                         <th translate>html.control_panel_user.list.login</th>
