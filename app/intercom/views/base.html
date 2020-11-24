@@ -2,22 +2,10 @@
 <div class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
 
     <div class="page-header navbar navbar-fixed-top navbar-default">
-        <div class="page-header-inner ">
+        <div class="page-header-inner justify-flex">
             <div class="page-logo cursor-pointer" ui-sref="admin.home">
                 <span>{{ title }}</span>
             </div>
-
-            <button type="button"
-                    class="navbar-toggle menu-toggler responsive-toggler"
-                    data-toggle="collapse"
-                    data-target=".navbar-collapse"
-                    aria-expanded="false"
-                    style="padding: 2px; border: none;">
-                <span class="icon-bar" style="width: 20px;"></span>
-                <span class="icon-bar" style="width: 20px;"></span>
-                <span class="icon-bar" style="width: 20px;"></span>
-            </button>
-
             <ng-include src="'app/intercom/views/inc/toolbar.html'"></ng-include>
         </div>
     </div>
@@ -29,7 +17,7 @@
         <ng-include src="'app/intercom/views/inc/sidebar.html'"></ng-include>
 
         <div class="page-content-wrapper">
-            <div class="page-content">
+            <div class="page-content" style="margin: 0;">
                 <ui-view></ui-view>
             </div>
         </div>

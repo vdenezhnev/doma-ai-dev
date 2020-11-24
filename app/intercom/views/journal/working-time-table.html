@@ -2,7 +2,7 @@
     <button class="btn" ng-click="downloadCSV()" ng-disabled="!workingTimeList.length" translate>html.journal.getCSV</button>
 </div>
 <div class="table-scrollable mh-400">
-    <table class="table table-hover table-bordered">
+    <table class="table table-hover table-bordered" ng-class="{'rtl-text': isRTL}">
         <thead>
             <tr>
                 <th width="260px" translate>html.journal.date</th>

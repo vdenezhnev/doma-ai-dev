@@ -76,7 +76,7 @@
 
         <h4 ng-show="abonent.id" translate>html.abonent.cars_display</h4>
 
-        <table ng-if="abonent.id" class="table table-bordered table-hover">
+        <table ng-if="abonent.id" class="table table-bordered table-hover" ng-class="{'rtl-text': isRTL}">
             <thead ng-show="abonent.cars.length">
                 <tr>
                     <th translate>html.abonent.car_number_display</th>
@@ -143,7 +143,7 @@
         </script>
 
         <script type="text/ng-template" id="AccessObjectsTemplate">
-            <div class="tree-demo jstree jstree-1 jstree-default">
+            <div class="tree-demo jstree jstree-1 jstree-default tree-ltr">
                 <ul class="jstree-container-ul jstree-children">
                     <li ng-repeat="object in objects | orderBy:'displayName'"
                         class="jstree-node"
@@ -160,7 +160,7 @@
             </div>
         </script>
 
-        <table class="table table-bordered table-hover">
+        <table class="table table-bordered table-hover" ng-class="{'rtl-text': isRTL}">
             <thead>
                 <tr>
                     <th translate>html.abonent.perimeter</th>
@@ -216,7 +216,7 @@
 
         <h4 translate>html.abonent.temporary_access_perimeters</h4>
 
-        <table class="table table-bordered table-hover">
+        <table class="table table-bordered table-hover" ng-class="{'rtl-text': isRTL}">
             <thead>
                 <tr>
                     <th translate>html.abonent.perimeter</th>
