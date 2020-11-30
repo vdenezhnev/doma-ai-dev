@@ -16,6 +16,7 @@ app.constant('LOCALE_RU', {
     NAVBAR_COMPANIES: 'Компании',
     NAVBAR_PAYMENS: 'Оплаты Sim-карт',
     NAVBAR_LOGOUT: 'Выход',
+    NAVBAR_LOCAL_KEYS: 'Локальные ключи',
 
     BUTTON_LOAD_MORE: 'Загрузить еще',
     BUTTON_ADD_LOCK: 'Добавить замок',
@@ -61,6 +62,8 @@ app.constant('LOCALE_RU', {
     TABLE_CELL_KEYS_AVAILABLE: 'Доступно',
     TABLE_CELL_KEYS_USED: 'Использовано',
     TABLE_CELL_KEYS_REMAINING: 'Осталось',
+    TABLE_CELL_UUID: 'UUID',
+    TABLE_CELL_DATE: 'Дата',
 
     COMPONENT_DATETIME_FROM: 'от',
     COMPONENT_DATETIME_TO: 'до',
@@ -156,5 +159,9 @@ app.constant('LOCALE_RU', {
     COMPANIES_FORM_ADMIN_NAME: 'Имя',
     COMPANIES_FORM_ADMIN_PHONE: 'Телефон',
     COMPANIES_FORM_ADMIN_EMAIL: 'E-mail',
-    COMPANIES_FORM_PAYMENT_TITLE: 'Оплата'
+    COMPANIES_FORM_PAYMENT_TITLE: 'Оплата',
+
+    LOCAL_KEYS_TITLE: 'Цифровые ключи локальных серверов',
+    LOCAL_KEYS_LIST: 'Список цифровых ключей',
+    LOCAL_KEYS_SEARCH_PLACEHOLDER: 'Поиск',
 });
