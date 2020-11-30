@@ -15,6 +15,10 @@
                                        type="text"
                                        ng-model="admin.displayName"
                                        validator="required"></td>
+                            <td><select class="form-control"
+                                        ng-model="admin.roleId">
+                                    <option ng-repeat="role in rolesList" value="{{ role.id }}">{{ role.name }}</option>
+                                </select></td>
                             <td><input class="form-control"
                                        name="admin_email_{{ $index }}"
                                        type="text"
