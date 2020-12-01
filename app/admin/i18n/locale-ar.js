@@ -16,6 +16,7 @@ app.constant('LOCALE_AR', {
     NAVBAR_COMPANIES: 'الشركات',
     NAVBAR_PAYMENS: 'الدفع عن طريق بطاقةsim',
     NAVBAR_LOGOUT: 'تسجيل الخروج',
+    NAVBAR_LOCAL_KEYS: 'Local keys',
 
     BUTTON_LOAD_MORE: 'تحميل المزيد',
     BUTTON_ADD_LOCK: 'اضافة قفل',
@@ -61,6 +62,8 @@ app.constant('LOCALE_AR', {
     TABLE_CELL_KEYS_AVAILABLE: 'متاح',
     TABLE_CELL_KEYS_USED: 'استخدام',
     TABLE_CELL_KEYS_REMAINING: 'المغادره',
+    TABLE_CELL_UUID: 'UUID',
+    TABLE_CELL_DATE: 'Date',
 
     COMPONENT_DATETIME_FROM: 'من',
     COMPONENT_DATETIME_TO: 'الى',
@@ -156,5 +159,9 @@ app.constant('LOCALE_AR', {
     COMPANIES_FORM_ADMIN_NAME: 'الاسم',
     COMPANIES_FORM_ADMIN_PHONE: 'رقم الهاتف',
     COMPANIES_FORM_ADMIN_EMAIL: 'البريد الالكتروني',
-    COMPANIES_FORM_PAYMENT_TITLE: 'Payment'
+    COMPANIES_FORM_PAYMENT_TITLE: 'Payment',
+
+    LOCAL_KEYS_TITLE: 'Local server keys',
+    LOCAL_KEYS_LIST: 'Local server keys list',
+    LOCAL_KEYS_SEARCH_PLACEHOLDER: 'بحث',
 });

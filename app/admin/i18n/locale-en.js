@@ -16,6 +16,7 @@ app.constant('LOCALE_EN', {
     NAVBAR_COMPANIES: 'Companies',
     NAVBAR_PAYMENS: 'SIM-cards payments',
     NAVBAR_LOGOUT: 'Logout',
+    NAVBAR_LOCAL_KEYS: 'Local keys',
 
     BUTTON_LOAD_MORE: 'Load more',
     BUTTON_ADD_LOCK: 'Add lock',
@@ -61,6 +62,8 @@ app.constant('LOCALE_EN', {
     TABLE_CELL_KEYS_AVAILABLE: 'Available',
     TABLE_CELL_KEYS_USED: 'Used',
     TABLE_CELL_KEYS_REMAINING: 'Remaining',
+    TABLE_CELL_UUID: 'UUID',
+    TABLE_CELL_DATE: 'Date',
 
     COMPONENT_DATETIME_FROM: 'from',
     COMPONENT_DATETIME_TO: 'to',
@@ -156,5 +159,9 @@ app.constant('LOCALE_EN', {
     COMPANIES_FORM_ADMIN_NAME: 'Name',
     COMPANIES_FORM_ADMIN_PHONE: 'Phone number',
     COMPANIES_FORM_ADMIN_EMAIL: 'E-mail',
-    COMPANIES_FORM_PAYMENT_TITLE: 'Payment'
+    COMPANIES_FORM_PAYMENT_TITLE: 'Payment',
+
+    LOCAL_KEYS_TITLE: 'Local server keys',
+    LOCAL_KEYS_LIST: 'Local server keys list',
+    LOCAL_KEYS_SEARCH_PLACEHOLDER: 'Search',
 });

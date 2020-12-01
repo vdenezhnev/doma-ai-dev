@@ -104,6 +104,16 @@ app.config(['$stateProvider', 'settings', function($stateProvider, settings) {
             templateUrl: settings.TEMPLATE_DIR + 'payments/list.html'
         })
 
+        .state('admin.localKeys', {
+            abstract: true,
+            templateUrl: settings.TEMPLATE_DIR + 'local_keys/base.html'
+        })
+        .state('admin.localKeys.list', {
+            url: "local-keys",
+            controller: 'LocalKeysListCtrl',
+            templateUrl: settings.TEMPLATE_DIR + 'local_keys/list.html'
+        })
+
         .state('login', {
             url: "/login",
             controller: 'LoginCtrl',
