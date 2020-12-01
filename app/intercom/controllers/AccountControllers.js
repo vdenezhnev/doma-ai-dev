@@ -1,9 +1,16 @@
 
 app.controller('AccountProfileCtrl', ['$scope', '$controller', '$state', '$http', 'User', 'settings', 'notify', 'gettextCatalog',
     function($scope, $controller, $state, $http, User, settings, notify, gettextCatalog) {
+        $scope.rolesList = [];
+
         User.updateKeyCountInfo()
             .then(function() {
                 $scope.userData = angular.copy(User.data);
+
+                return $http.get(settings.API_URL + '?action=GetNameRoles');
+            })
+            .then(function(response) {
+                $scope.rolesList = response.data;
             });
 
         $scope.save = function() {

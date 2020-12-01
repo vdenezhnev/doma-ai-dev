@@ -33,12 +33,12 @@ msgstr ""
 msgid "abonents.abonent_updated"
 msgstr ""
 
-#: app/intercom/controllers/AccountControllers.js:77
+#: app/intercom/controllers/AccountControllers.js:84
 msgid "account.password_changed"
 msgstr ""
 
-#: app/intercom/controllers/AccountControllers.js:12
-#: app/intercom/controllers/AccountControllers.js:48
+#: app/intercom/controllers/AccountControllers.js:19
+#: app/intercom/controllers/AccountControllers.js:55
 msgid "account.profile_updated"
 msgstr ""
 
@@ -111,6 +111,7 @@ msgid "html.abonent.cars_display"
 msgstr ""
 
 #: app/intercom/views/abonent/form.html:43
+#: app/intercom/views/roles/form.html:12
 msgid "html.abonent.comments_display"
 msgstr ""
 
@@ -152,6 +153,7 @@ msgstr ""
 
 #: app/intercom/views/abonent/form.html:7
 #: app/intercom/views/abonent/list.html:23
+#: app/intercom/views/roles/form.html:7
 msgid "html.abonent.name_display"
 msgstr ""
 
@@ -646,7 +648,7 @@ msgstr ""
 #: app/intercom/views/access/object/form.html:52
 #: app/intercom/views/access/perimeter/add.html:16
 #: app/intercom/views/access/point/add.html:16
-#: app/intercom/views/account/form_admins.html:38
+#: app/intercom/views/account/form_admins.html:42
 #: app/intercom/views/address/create.html:13
 #: app/intercom/views/control_panel_user/create.html:13
 #: app/intercom/views/control_panel_user/list.html:7
@@ -705,6 +707,7 @@ msgstr ""
 #: app/intercom/views/access/point/edit.html:8
 #: app/intercom/views/control_panel_user/detail.html:4
 #: app/intercom/views/device/detail.html:6
+#: app/intercom/views/roles/edit.html:4
 msgid "html.defaults.remove_title"
 msgstr ""
 
@@ -720,7 +723,7 @@ msgstr ""
 #: app/intercom/views/access/point/edit.html:52
 #: app/intercom/views/account/change_password.html:21
 #: app/intercom/views/account/form.html:101
-#: app/intercom/views/account/form_admins.html:46
+#: app/intercom/views/account/form_admins.html:50
 #: app/intercom/views/address/detail.html:14
 #: app/intercom/views/control_panel_user/detail.html:16
 #: app/intercom/views/tariff/detail.html:25
@@ -741,6 +744,7 @@ msgstr ""
 
 #: app/intercom/views/abonent/detail.html:16
 #: app/intercom/views/device/detail.html:18
+#: app/intercom/views/roles/edit.html:16
 msgid "html.defaults.update_title"
 msgstr ""
 
@@ -915,6 +919,10 @@ msgstr ""
 msgid "html.journal.key_type_display"
 msgstr ""
 
+#: app/intercom/views/journal/list.html:9
+msgid "html.journal.list_title"
+msgstr ""
+
 #: app/intercom/views/journal/access.html:10
 msgid "html.journal.lock_access_types_display"
 msgstr ""
@@ -937,6 +945,7 @@ msgstr ""
 msgid "html.journal.user_display"
 msgstr ""
 
+#: app/intercom/views/journal/list.html:12
 #: app/intercom/views/journal/working-time-table.html:12
 msgid "html.journal.workTime"
 msgstr ""
@@ -1031,6 +1040,102 @@ msgstr ""
 #: app/intercom/views/journal/working-time.html:56
 #: app/intercom/views/payments/list.html:12
 msgid "html.payments.perimeter_name"
+msgstr ""
+
+#: app/intercom/controllers/RolesControllers.js:22
+#: app/intercom/controllers/RolesControllers.js:55
+msgid "html.roles.accessJournal_title"
+msgstr ""
+
+#: app/intercom/controllers/RolesControllers.js:24
+#: app/intercom/controllers/RolesControllers.js:57
+msgid "html.roles.accessRight_title"
+msgstr ""
+
+#: app/intercom/views/roles/list.html:8
+msgid "html.roles.addRole"
+msgstr ""
+
+#: app/intercom/controllers/RolesControllers.js:21
+#: app/intercom/controllers/RolesControllers.js:54
+msgid "html.roles.address_title"
+msgstr ""
+
+#: app/intercom/controllers/RolesControllers.js:16
+#: app/intercom/controllers/RolesControllers.js:49
+msgid "html.roles.admins_title"
+msgstr ""
+
+#: app/intercom/controllers/RolesControllers.js:23
+#: app/intercom/controllers/RolesControllers.js:56
+msgid "html.roles.controlPanel_title"
+msgstr ""
+
+#: app/intercom/views/roles/create.html:2
+msgid "html.roles.createRole"
+msgstr ""
+
+#: app/intercom/controllers/RolesControllers.js:97
+msgid "html.roles.deleteRolesConfirm"
+msgstr ""
+
+#: app/intercom/controllers/RolesControllers.js:99
+msgid "html.roles.deleteRolesSuccess"
+msgstr ""
+
+#: app/intercom/views/roles/edit.html:2
+msgid "html.roles.editRole"
+msgstr ""
+
+#: app/intercom/controllers/RolesControllers.js:25
+#: app/intercom/controllers/RolesControllers.js:58
+msgid "html.roles.payment_title"
+msgstr ""
+
+#: app/intercom/views/roles/form.html:16
+msgid "html.roles.rightsTitle"
+msgstr ""
+
+#: app/intercom/views/roles/list.html:17
+msgid "html.roles.roleChangeDate"
+msgstr ""
+
+#: app/intercom/views/roles/list.html:16
+msgid "html.roles.roleComment"
+msgstr ""
+
+#: app/intercom/views/roles/list.html:15
+msgid "html.roles.roleName"
+msgstr ""
+
+#: app/intercom/views/roles/list.html:2
+msgid "html.roles.roles"
+msgstr ""
+
+#: app/intercom/controllers/RolesControllers.js:26
+#: app/intercom/controllers/RolesControllers.js:59
+#: app/intercom/views/inc/sidebar.html:76
+msgid "html.roles.roles_title"
+msgstr ""
+
+#: app/intercom/controllers/RolesControllers.js:20
+#: app/intercom/controllers/RolesControllers.js:53
+msgid "html.roles.rossetaLock_title"
+msgstr ""
+
+#: app/intercom/controllers/RolesControllers.js:18
+#: app/intercom/controllers/RolesControllers.js:51
+msgid "html.roles.tariff_title"
+msgstr ""
+
+#: app/intercom/controllers/RolesControllers.js:17
+#: app/intercom/controllers/RolesControllers.js:50
+msgid "html.roles.users_title"
+msgstr ""
+
+#: app/intercom/controllers/RolesControllers.js:19
+#: app/intercom/controllers/RolesControllers.js:52
+msgid "html.roles.zones_title"
 msgstr ""
 
 #: app/intercom/views/_messages.html:20
@@ -1187,7 +1292,7 @@ msgstr ""
 msgid "notify.defaults.are_you_sure"
 msgstr ""
 
-#: app/intercom/app.js:84
+#: app/intercom/app.js:102
 msgid "notify.defaults.changes_will_not_be_saved"
 msgstr ""
 
@@ -1228,6 +1333,10 @@ msgstr ""
 msgid "Выберите управляющую компанию"
 msgstr ""
 
-#: app/intercom/controllers/AccountControllers.js:23
+#: app/intercom/views/roles/create.html:13
+msgid "Добавить"
+msgstr ""
+
+#: app/intercom/controllers/AccountControllers.js:30
 msgid "Удален"
 msgstr ""
