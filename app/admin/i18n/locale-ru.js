@@ -146,6 +146,7 @@ app.constant('LOCALE_RU', {
     COMPANIES_FORM_NAME: 'Название',
     COMPANIES_FORM_INN: 'ИНН',
     COMPANIES_FORM_ADDRESS: 'Адрес',
+    COMPANIES_FORM_REGION: 'Регион',
     COMPANIES_FORM_PHONES_TITLE: 'Телефоны',
     COMPANIES_FORM_SUPPORT_TITLE: 'Поддержка',
     COMPANIES_FORM_SUPPORT_NAME: 'Имя',
@@ -159,6 +160,7 @@ app.constant('LOCALE_RU', {
     COMPANIES_FORM_ADMIN_NAME: 'Имя',
     COMPANIES_FORM_ADMIN_PHONE: 'Телефон',
     COMPANIES_FORM_ADMIN_EMAIL: 'E-mail',
+    COMPANIES_FORM_ADMIN_ROLE: 'Роль',
     COMPANIES_FORM_PAYMENT_TITLE: 'Оплата',
 
     LOCAL_KEYS_TITLE: 'Цифровые ключи локальных серверов',

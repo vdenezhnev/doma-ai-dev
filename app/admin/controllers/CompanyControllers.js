@@ -85,6 +85,10 @@ app.controller('CompanyDetailCtrl', ['$scope', '$http', '$state', '$stateParams'
             acquiringType: null
         };
 
+        Api.get(settings.API_URL, {Action: 'GetNameRoles', serviceCompanyId: $scope.company.id}, function (response) {
+            $scope.rolesList = response.data;
+        });
+
         $scope.save = function() {
             var data = angular.extend({
                 Action: 'UpdateServiceCompany',
@@ -210,7 +214,8 @@ app.controller('CompanyCreateCtrl', ['$scope', '$state', 'Api', 'settings', 'not
 
         $scope.company = {
             phoneNumbers: [''],
-            admins: []
+            admins: [],
+            region: 'ru'
         };
 
         $scope.save = function() {

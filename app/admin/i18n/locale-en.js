@@ -146,6 +146,7 @@ app.constant('LOCALE_EN', {
     COMPANIES_FORM_NAME: 'Name',
     COMPANIES_FORM_INN: 'TIN',
     COMPANIES_FORM_ADDRESS: 'Address',
+    COMPANIES_FORM_REGION: 'Region',
     COMPANIES_FORM_PHONES_TITLE: 'Phone numbers',
     COMPANIES_FORM_SUPPORT_TITLE: 'Support',
     COMPANIES_FORM_SUPPORT_NAME: 'Name',
@@ -159,6 +160,7 @@ app.constant('LOCALE_EN', {
     COMPANIES_FORM_ADMIN_NAME: 'Name',
     COMPANIES_FORM_ADMIN_PHONE: 'Phone number',
     COMPANIES_FORM_ADMIN_EMAIL: 'E-mail',
+    COMPANIES_FORM_ADMIN_ROLE: 'Role',
     COMPANIES_FORM_PAYMENT_TITLE: 'Payment',
 
     LOCAL_KEYS_TITLE: 'Local server keys',

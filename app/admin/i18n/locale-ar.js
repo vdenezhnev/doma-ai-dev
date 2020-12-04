@@ -146,6 +146,7 @@ app.constant('LOCALE_AR', {
     COMPANIES_FORM_NAME: 'الاسم',
     COMPANIES_FORM_INN: 'TRN',
     COMPANIES_FORM_ADDRESS: 'العنوان',
+    COMPANIES_FORM_REGION: 'Region',
     COMPANIES_FORM_PHONES_TITLE: 'الهاتف',
     COMPANIES_FORM_SUPPORT_TITLE: 'الدعم',
     COMPANIES_FORM_SUPPORT_NAME: 'الاسم',
@@ -159,6 +160,7 @@ app.constant('LOCALE_AR', {
     COMPANIES_FORM_ADMIN_NAME: 'الاسم',
     COMPANIES_FORM_ADMIN_PHONE: 'رقم الهاتف',
     COMPANIES_FORM_ADMIN_EMAIL: 'البريد الالكتروني',
+    COMPANIES_FORM_ADMIN_ROLE: 'Role',
     COMPANIES_FORM_PAYMENT_TITLE: 'Payment',
 
     LOCAL_KEYS_TITLE: 'Local server keys',
