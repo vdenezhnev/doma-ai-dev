@@ -34,6 +34,9 @@ app.run(['$rootScope', '$injector', '$timeout', '$state', 'Permission', 'User', 
     function($rootScope, $injector, $timeout, $state, Permission, User, Language, DataService, notify, gettextCatalog, settings){
 
         $rootScope.user = User;
+        $rootScope.hasAccess = function (police) {
+            return $rootScope.user.role && $rootScope.user.role.policies && $rootScope.user.role.policies.includes(police);
+        };
         $rootScope.dataService = DataService;
         User.listen($rootScope);
 

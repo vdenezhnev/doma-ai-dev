@@ -563,6 +563,10 @@ msgstr "Телефон"
 msgid "html.account.phones_display"
 msgstr "Телефоны"
 
+#: app/intercom/views/account/form.html:24
+msgid "html.account.region_display"
+msgstr "Регион"
+
 #: app/intercom/views/account/form.html:40
 msgid "html.account.support"
 msgstr "Поддержка"
@@ -1267,7 +1271,7 @@ msgstr "Адреса"
 #: app/intercom/controllers/RolesControllers.js:16
 #: app/intercom/controllers/RolesControllers.js:49
 msgid "html.roles.admins_title"
-msgstr "Администраторы"
+msgstr "Управление аккаунтом"
 
 #: app/intercom/controllers/RolesControllers.js:23
 #: app/intercom/controllers/RolesControllers.js:56

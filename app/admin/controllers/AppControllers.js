@@ -37,7 +37,7 @@ app.controller('LoginCtrl', ['$scope', '$http', '$state', 'notify', 'settings', 
                 Login: $scope.login,
                 Password: Base64.encode($scope.password)
             }).then(function successCallback(response) {
-                User.load(response.data.profile, response.data.credentials);
+                User.load(response.data.profile, response.data.credentials, response.data.role);
             });
         }
     }

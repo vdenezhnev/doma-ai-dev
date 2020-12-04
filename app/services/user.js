@@ -13,6 +13,15 @@ app.service('User', ['$http', 'Session', 'settings', function($http, Session, se
         }
     });
 
+    Object.defineProperty(this, 'role', {
+        get: function() {
+            return Session.role || {};
+        },
+        set: function(value) {
+            Session.role = value;
+        }
+    });
+
     Object.defineProperty(this, 'token', {
         get: function() {
             return Session.token || {};
@@ -30,9 +39,14 @@ app.service('User', ['$http', 'Session', 'settings', function($http, Session, se
         return this.data.id !== undefined;
     };
 
-    this.load = function(profile, credentials) {
-        if (profile != null)
+    this.load = function(profile, credentials, role) {
+        if (profile != null) {
             this.data = profile;
+        }
+
+        if (role) {
+            this.role = role;
+        }
 
         if (credentials != undefined && credentials != null)
             Session.token = credentials.apiKeyId + ':' + credentials.token;

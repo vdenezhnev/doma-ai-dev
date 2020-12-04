@@ -13,7 +13,7 @@ app.controller('RolesListCtrl', ['$scope', '$http', 'settings',
 app.controller('RoleCreateCtrl', ['$scope', '$state', '$http', 'settings', 'gettextCatalog',
     function($scope, $state, $http, settings, gettextCatalog) {
         $scope.policesList = [
-            {name: 'admin', displayName: gettextCatalog.getString('html.roles.admins_title')},
+            {name: 'accountManager', displayName: gettextCatalog.getString('html.roles.admins_title')},
             {name: 'user', displayName: gettextCatalog.getString('html.roles.users_title')},
             {name: 'tarif', displayName: gettextCatalog.getString('html.roles.tariff_title')},
             {name: 'accsessPerimeterAndPoint', displayName: gettextCatalog.getString('html.roles.zones_title')},
@@ -46,7 +46,7 @@ app.controller('RoleCreateCtrl', ['$scope', '$state', '$http', 'settings', 'gett
 app.controller('RoleDetailCtrl', ['$scope', '$state', '$stateParams', 'notify', 'gettextCatalog', '$http', 'settings',
     function($scope, $state, $stateParams, notify, gettextCatalog, $http, settings) {
         $scope.policesList = [
-            {name: 'admin', displayName: gettextCatalog.getString('html.roles.admins_title')},
+            {name: 'accountManager', displayName: gettextCatalog.getString('html.roles.admins_title')},
             {name: 'user', displayName: gettextCatalog.getString('html.roles.users_title')},
             {name: 'tarif', displayName: gettextCatalog.getString('html.roles.tariff_title')},
             {name: 'accsessPerimeterAndPoint', displayName: gettextCatalog.getString('html.roles.zones_title')},
@@ -64,7 +64,7 @@ app.controller('RoleDetailCtrl', ['$scope', '$state', '$stateParams', 'notify', 
             return;
         }
 
-        $scope.isAdminDefault = !!$stateParams.role.isAdminDefault;
+        $scope.isDefault = !!$stateParams.role.isDefault;
         $scope.form = {
             name: $stateParams.role.name,
             comment: $stateParams.role.comment
@@ -94,7 +94,7 @@ app.controller('RoleDetailCtrl', ['$scope', '$state', '$stateParams', 'notify', 
 
         $scope.delete = function() {
             // gettextCatalog.getString('abonents.abonent_delete_confirm')
-            if (!$scope.isAdminDefault && window.confirm(gettextCatalog.getString('html.roles.deleteRolesConfirm'))) {
+            if (!$scope.isDefault && window.confirm(gettextCatalog.getString('html.roles.deleteRolesConfirm'))) {
                 $http.post(settings.API_URL, {action: 'DeleteRole', id: $stateParams.role.id}).then(function () {
                     notify(gettextCatalog.getString('html.roles.deleteRolesSuccess'));
                     $state.current.showConfirmation = false;

@@ -23,7 +23,7 @@
                 <i class="fa fa-angle-down"></i>
             </a>
             <ul class="dropdown-menu" ng-class="{'rtl-text': isRTL, 'dropdown-rtl': isRTL}">
-                <li>
+                <li ng-if="hasAccess('accountManager')">
                     <a ui-sref="admin.account.profile"><i class="icon-user"></i> <span translate>html.toolbar.settings</span></a>
                 </li>
                 <li>

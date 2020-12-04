@@ -447,7 +447,7 @@ msgstr ""
 msgid "html.account.account_update_display"
 msgstr ""
 
-#: app/intercom/views/account/form.html:38
+#: app/intercom/views/account/form.html:51
 msgid "html.account.add_phone_title"
 msgstr ""
 
@@ -463,31 +463,31 @@ msgstr ""
 msgid "html.account.change_password_title"
 msgstr ""
 
-#: app/intercom/views/account/form.html:59
+#: app/intercom/views/account/form.html:72
 msgid "html.account.email_display"
 msgstr ""
 
-#: app/intercom/views/account/form.html:43
+#: app/intercom/views/account/form.html:56
 msgid "html.account.fio_display"
 msgstr ""
 
-#: app/intercom/views/account/form.html:16
+#: app/intercom/views/account/form.html:18
 msgid "html.account.inn_display"
 msgstr ""
 
-#: app/intercom/views/account/form.html:65
+#: app/intercom/views/account/form.html:78
 msgid "html.account.keys"
 msgstr ""
 
-#: app/intercom/views/account/form.html:69
+#: app/intercom/views/account/form.html:82
 msgid "html.account.keys.available"
 msgstr ""
 
-#: app/intercom/views/account/form.html:89
+#: app/intercom/views/account/form.html:102
 msgid "html.account.keys.remain"
 msgstr ""
 
-#: app/intercom/views/account/form.html:79
+#: app/intercom/views/account/form.html:92
 msgid "html.account.keys.used"
 msgstr ""
 
@@ -504,16 +504,20 @@ msgstr ""
 msgid "html.account.old_password_display"
 msgstr ""
 
-#: app/intercom/views/account/form.html:50
+#: app/intercom/views/account/form.html:63
 #: app/intercom/views/payments/list.html:11
 msgid "html.account.phone_display"
 msgstr ""
 
-#: app/intercom/views/account/form.html:20
+#: app/intercom/views/account/form.html:33
 msgid "html.account.phones_display"
 msgstr ""
 
-#: app/intercom/views/account/form.html:40
+#: app/intercom/views/account/form.html:24
+msgid "html.account.region_display"
+msgstr ""
+
+#: app/intercom/views/account/form.html:53
 msgid "html.account.support"
 msgstr ""
 
@@ -653,6 +657,7 @@ msgstr ""
 #: app/intercom/views/control_panel_user/create.html:13
 #: app/intercom/views/control_panel_user/list.html:7
 #: app/intercom/views/device/create.html:13
+#: app/intercom/views/roles/create.html:13
 #: app/intercom/views/tariff/create.html:13
 msgid "html.defaults.add_title"
 msgstr ""
@@ -722,7 +727,7 @@ msgstr ""
 #: app/intercom/views/access/point/edit.html:41
 #: app/intercom/views/access/point/edit.html:52
 #: app/intercom/views/account/change_password.html:21
-#: app/intercom/views/account/form.html:101
+#: app/intercom/views/account/form.html:114
 #: app/intercom/views/account/form_admins.html:50
 #: app/intercom/views/address/detail.html:14
 #: app/intercom/views/control_panel_user/detail.html:16
@@ -958,7 +963,7 @@ msgstr ""
 msgid "html.menu.access_points"
 msgstr ""
 
-#: app/intercom/views/inc/sidebar.html:64
+#: app/intercom/views/inc/sidebar.html:58
 msgid "html.menu.access_right"
 msgstr ""
 
@@ -966,7 +971,7 @@ msgstr ""
 msgid "html.menu.addresses"
 msgstr ""
 
-#: app/intercom/views/inc/sidebar.html:58
+#: app/intercom/views/inc/sidebar.html:52
 msgid "html.menu.control_panel_users"
 msgstr ""
 
@@ -975,11 +980,11 @@ msgstr ""
 msgid "html.menu.devices"
 msgstr ""
 
-#: app/intercom/views/inc/sidebar.html:52
+#: app/intercom/views/inc/sidebar.html:46
 msgid "html.menu.journal"
 msgstr ""
 
-#: app/intercom/views/inc/sidebar.html:70
+#: app/intercom/views/inc/sidebar.html:64
 #: app/intercom/views/payments/list.html:2
 msgid "html.menu.payments"
 msgstr ""
@@ -1114,7 +1119,7 @@ msgstr ""
 
 #: app/intercom/controllers/RolesControllers.js:26
 #: app/intercom/controllers/RolesControllers.js:59
-#: app/intercom/views/inc/sidebar.html:76
+#: app/intercom/views/inc/sidebar.html:70
 msgid "html.roles.roles_title"
 msgstr ""
 
@@ -1292,7 +1297,7 @@ msgstr ""
 msgid "notify.defaults.are_you_sure"
 msgstr ""
 
-#: app/intercom/app.js:102
+#: app/intercom/app.js:105
 msgid "notify.defaults.changes_will_not_be_saved"
 msgstr ""
 
@@ -1331,10 +1336,6 @@ msgstr ""
 
 #: app/intercom/views/auth/login.html:22
 msgid "Выберите управляющую компанию"
-msgstr ""
-
-#: app/intercom/views/roles/create.html:13
-msgid "Добавить"
 msgstr ""
 
 #: app/intercom/controllers/AccountControllers.js:30

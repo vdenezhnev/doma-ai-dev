@@ -27,7 +27,7 @@ app.controller('RegistrationCtrl', ['$rootScope', '$scope', 'UserClient', 'User'
                 DisplayName: $scope.data.displayName,
                 Password: Base64.encode($scope.data.password)
             }).then(function successCallback(response) {
-                User.load(response.data.profile, response.data.credentials);
+                User.load(response.data.profile, response.data.credentials, response.data.role);
                 window.location.href = '/' + $rootScope.language + '/cabinet/profile'
             }, function errorCallback(response) {
                 $scope.response = response.data;
