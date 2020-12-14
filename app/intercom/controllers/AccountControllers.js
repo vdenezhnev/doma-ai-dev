@@ -27,7 +27,7 @@ app.controller('AccountProfileCtrl', ['$scope', '$controller', '$state', '$http'
             if (admin.id) {
                 $http.post(settings.API_URL, {Action: 'RemoveAdminsServiceCompany', Admins: [admin.id]})
                     .success(function (response) {
-                        notify(gettextCatalog.getString('Удален'));
+                        notify(gettextCatalog.getString('account.admin_deleted'));
                         User.data = response;
                         $scope.userData = angular.copy(User.data);
                     });

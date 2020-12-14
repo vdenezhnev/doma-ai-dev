@@ -166,4 +166,24 @@ app.constant('LOCALE_RU', {
     LOCAL_KEYS_TITLE: 'Цифровые ключи локальных серверов',
     LOCAL_KEYS_LIST: 'Список цифровых ключей',
     LOCAL_KEYS_SEARCH_PLACEHOLDER: 'Поиск',
+
+    NOTIFY_PROFILE_UPDATED: 'Профиль обновлен',
+    NOTIFY_PASSWORD_UPDATED: 'Пароль изменен',
+    NOTIFY_USER_UPDATED: 'Пользователь удален',
+    NOTIFY_KEYS_BLOCKED: 'Ключи заблокированы',
+    NOTIFY_KEYS_UNBLOCKED: 'Ключи разблокированы',
+    NOTIFY_KEY_DELETED: 'Ключ удален',
+    NOTIFY_COMPANY_UPDATED: 'Компания обновлена',
+    NOTIFY_COMPANY_ADDED: 'Компания добавлена',
+    NOTIFY_ADMIN_DELETED: 'Админ удален',
+    NOTIFY_DATA_UPDATED: 'Данные обновлены',
+    NOTIFY_SETTINGS_UPDATED: 'Настройки обновлены',
+    NOTIFY_LOCK_UPDATED: 'Замок обновлен',
+    NOTIFY_LOCK_DELETED: 'Замок удален',
+    NOTIFY_LOCK_ADDED: 'Замок добавлен',
+    NOTIFY_ENTRIES_UPDATED: 'Записи обновлены',
+
+    NOTIFY_MESSAGE_USER_DELETE_CONFIRM: 'Вы действительно хотите удалить данного пользователя?',
+    NOTIFY_MESSAGE_LOCK_DELETE_CONFIRM: 'Вы действительно хотите удалить данный замок?',
+    NOTIFY_MESSAGE_KEY_DELETE_CONFIRM: 'Вы действительно хотите удалить данный ключ?'
 });

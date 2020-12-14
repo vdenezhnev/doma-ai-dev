@@ -33,6 +33,10 @@ msgstr ""
 msgid "abonents.abonent_updated"
 msgstr ""
 
+#: app/intercom/controllers/AccountControllers.js:30
+msgid "account.admin_deleted"
+msgstr ""
+
 #: app/intercom/controllers/AccountControllers.js:84
 msgid "account.password_changed"
 msgstr ""
@@ -592,6 +596,10 @@ msgstr ""
 msgid "html.auth.password_change_action"
 msgstr ""
 
+#: app/intercom/views/auth/confirm_password_reset_web.html:17
+msgid "html.auth.password_changes"
+msgstr ""
+
 #: app/intercom/views/auth/activate_account.html:6
 #: app/intercom/views/auth/confirm_password_reset.html:6
 #: app/intercom/views/auth/confirm_password_reset_web.html:8
@@ -608,7 +616,17 @@ msgstr ""
 msgid "html.auth.restore_password_title"
 msgstr ""
 
+#: app/intercom/views/auth/login.html:29
+msgid "html.auth.search_company_placeholder"
+msgstr ""
+
+#: app/intercom/views/auth/login.html:22
+msgid "html.auth.select_company"
+msgstr ""
+
 #: app/intercom/views/_messages.html:16
+#: app/intercom/views/auth/confirm_password_reset_web.html:15
+#: app/intercom/views/auth/mobile_reset_password.html:19
 msgid "html.auth.wrong_url"
 msgstr ""
 
@@ -1332,12 +1350,4 @@ msgstr ""
 
 #: app/intercom/views/tariff/form.html:39
 msgid "{{ 'html.tariff.period_' + tariff_period.type | translate }}"
-msgstr ""
-
-#: app/intercom/views/auth/login.html:22
-msgid "Выберите управляющую компанию"
-msgstr ""
-
-#: app/intercom/controllers/AccountControllers.js:30
-msgid "Удален"
 msgstr ""

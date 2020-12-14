@@ -166,4 +166,24 @@ app.constant('LOCALE_AR', {
     LOCAL_KEYS_TITLE: 'Local server keys',
     LOCAL_KEYS_LIST: 'Local server keys list',
     LOCAL_KEYS_SEARCH_PLACEHOLDER: 'بحث',
+
+    NOTIFY_PROFILE_UPDATED: 'Profile updated',
+    NOTIFY_PASSWORD_UPDATED: 'Password updated',
+    NOTIFY_USER_UPDATED: 'User updated',
+    NOTIFY_KEYS_BLOCKED: 'Keys blocked',
+    NOTIFY_KEYS_UNBLOCKED: 'Keys unblocked',
+    NOTIFY_KEY_DELETED: 'Key deleted',
+    NOTIFY_COMPANY_UPDATED: 'Company updated',
+    NOTIFY_COMPANY_ADDED: 'Company added',
+    NOTIFY_ADMIN_DELETED: 'Admin deleted',
+    NOTIFY_DATA_UPDATED: 'Data updated',
+    NOTIFY_SETTINGS_UPDATED: 'Settings updated',
+    NOTIFY_LOCK_UPDATED: 'Lock updated',
+    NOTIFY_LOCK_DELETED: 'Lock deleted',
+    NOTIFY_LOCK_ADDED: 'Lock added',
+    NOTIFY_ENTRIES_UPDATED: 'Entries updated',
+
+    NOTIFY_MESSAGE_USER_DELETE_CONFIRM: 'Are you sure, you want to delete this user?',
+    NOTIFY_MESSAGE_LOCK_DELETE_CONFIRM: 'Are you sure, you want to delete this lock?',
+    NOTIFY_MESSAGE_KEY_DELETE_CONFIRM: 'Are you sure, you want to delete this key?'
 });

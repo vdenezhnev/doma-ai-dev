@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('PaymentsListCtrl', ['$scope', 'Api', 'settings', 'ModalService', 'notify',
-    function($scope, Api, settings, ModalService, notify) {
+app.controller('PaymentsListCtrl', ['$scope', 'Api', 'settings', 'ModalService', 'notify', '$filter',
+    function($scope, Api, settings, ModalService, notify, $filter) {
         $scope.checkedAll = false;
         $scope.isDisabledChangePaymentDate = true;
         $scope.payments = [];
@@ -63,7 +63,7 @@ app.controller('PaymentsListCtrl', ['$scope', 'Api', 'settings', 'ModalService',
                     AccessPointIds: checkedPayments,
                     PaymentDate: newDate
                 }, function() {
-                    notify('Записи обновлены');
+                    notify($filter('translate')('NOTIFY_ENTRIES_UPDATED'));
 
                     $scope.payments.forEach(function (item) {
                         if (checkedPayments.includes(item.id)) {

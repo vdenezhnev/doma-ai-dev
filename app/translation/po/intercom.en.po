@@ -134,6 +134,10 @@ msgstr "You password has been changed"
 msgid "account.profile_updated"
 msgstr "Profile updated successfully"
 
+#: app/intercom/controllers/AccountControllers.js:30
+msgid "account.admin_deleted"
+msgstr "Deleted"
+
 #: app/intercom/controllers/AuthControllers.js:90
 msgid "auth.account_activated"
 msgstr "Your account successfully activated"
@@ -638,6 +642,10 @@ msgstr "Change your password"
 msgid "html.auth.password_change_action"
 msgstr "Change"
 
+#: app/intercom/views/auth/confirm_password_reset_web.html:17
+msgid "html.auth.password_changes"
+msgstr "Password was changed"
+
 #: app/intercom/views/auth/activate_account.html:6
 #: app/intercom/views/auth/confirm_password_reset.html:6
 #: app/intercom/views/auth/confirm_password_reset_web.html:8
@@ -654,7 +662,17 @@ msgstr "Password recovery instructions have been sent to your email"
 msgid "html.auth.restore_password_title"
 msgstr "Forgot password?"
 
+#: app/intercom/views/auth/login.html:29
+msgid "html.auth.search_company_placeholder"
+msgstr "Search for name, address, phone number or email"
+
+#: app/intercom/views/auth/login.html:22
+msgid "html.auth.select_company"
+msgstr "Select company"
+
 #: app/intercom/views/_messages.html:16
+#: app/intercom/views/auth/confirm_password_reset_web.html:15
+#: app/intercom/views/auth/mobile_reset_password.html:19
 msgid "html.auth.wrong_url"
 msgstr "Wrong url"
 

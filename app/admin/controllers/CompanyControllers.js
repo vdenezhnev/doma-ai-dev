@@ -71,8 +71,8 @@ app.controller('CompanyListCtrl', ['$scope', 'Api', 'settings',
     }
 ]);
 
-app.controller('CompanyDetailCtrl', ['$scope', '$http', '$state', '$stateParams', 'ModalService', 'Api', 'settings', 'notify',
-    function($scope, $http, $state, $stateParams, ModalService, Api, settings, notify) {
+app.controller('CompanyDetailCtrl', ['$scope', '$http', '$state', '$stateParams', 'ModalService', 'Api', 'settings', 'notify', '$filter',
+    function($scope, $http, $state, $stateParams, ModalService, Api, settings, notify, $filter) {
         if (!$stateParams.company) {
             $state.go('admin.company.list');
         }
@@ -95,7 +95,7 @@ app.controller('CompanyDetailCtrl', ['$scope', '$http', '$state', '$stateParams'
                 ServiceCompanyId: $scope.company.id
             }, angular.copy($scope.company));
             Api.post(settings.API_URL, data, function(response) {
-                notify('Компания обновлена');
+                notify($filter('translate')('NOTIFY_COMPANY_UPDATED'));
                 $state.go('admin.company.detail', {id: response.data.id, company: response.data});
             });
         };
@@ -108,7 +108,7 @@ app.controller('CompanyDetailCtrl', ['$scope', '$http', '$state', '$stateParams'
                     ServiceCompanyId: $scope.company.id,
                     Admins: [admin.id]
                 }).then(function successCallback(response) {
-                    notify(gettextCatalog.getString('Удален'));
+                    notify($filter('translate')('NOTIFY_ADMIN_DELETED'));
                     $scope.company = response.data;
                 });
             }
@@ -135,8 +135,7 @@ app.controller('CompanyDetailCtrl', ['$scope', '$http', '$state', '$stateParams'
                 ServiceCompanyId: $scope.company.id,
                 Admins: updateAdmins
             }).then(function successCallback(response) {
-                notify('Данные обновлены');
-                console.log(response);
+                notify($filter('translate')('NOTIFY_DATA_UPDATED'));
                 $scope.company = response.data;
             });
 
@@ -145,7 +144,6 @@ app.controller('CompanyDetailCtrl', ['$scope', '$http', '$state', '$stateParams'
                 $scope.company.id,
                 Admins: addAdmins
             }).then(function successCallback(response) {
-                console.log(response);
                 $scope.company = response.data;
             });
         };
@@ -208,8 +206,8 @@ app.controller('CompanyDetailCtrl', ['$scope', '$http', '$state', '$stateParams'
     }
 ]);
 
-app.controller('CompanyCreateCtrl', ['$scope', '$state', 'Api', 'settings', 'notify',
-    function($scope, $state, Api, settings, notify) {
+app.controller('CompanyCreateCtrl', ['$scope', '$state', 'Api', 'settings', 'notify', '$filter',
+    function($scope, $state, Api, settings, notify, $filter) {
         $scope.isCreate = true;
 
         $scope.company = {
@@ -221,7 +219,7 @@ app.controller('CompanyCreateCtrl', ['$scope', '$state', 'Api', 'settings', 'not
         $scope.save = function() {
             var data = angular.copy($scope.company);
             Api.post(settings.API_URL, angular.extend({Action: 'RegisterServiceCompany'}, data), function(response) {
-                notify('Компания добавлена');
+                notify($filter('translate')('NOTIFY_COMPANY_ADDED'));
                 $state.go('admin.company.detail', {id: response.data.id, company: response.data});
             });
         };
@@ -229,8 +227,8 @@ app.controller('CompanyCreateCtrl', ['$scope', '$state', 'Api', 'settings', 'not
 ]);
 
 
-app.controller('UpdateMerchantSettingCtrl', ['$scope', '$state', 'Api', 'settings', 'notify', 'obj', 'close', '$element', 'onUpdate',
-    function($scope, $state, Api, settings, notify, obj, close, $element, onUpdate) {
+app.controller('UpdateMerchantSettingCtrl', ['$scope', '$state', 'Api', 'settings', 'notify', 'obj', 'close', '$element', 'onUpdate', '$filter',
+    function($scope, $state, Api, settings, notify, obj, close, $element, onUpdate, $filter) {
         $scope.obj = {
             id: obj.id,
             MerchantSettingId: obj.id,
@@ -247,7 +245,7 @@ app.controller('UpdateMerchantSettingCtrl', ['$scope', '$state', 'Api', 'setting
         $scope.save = function() {
             var data = angular.copy($scope.obj);
             Api.post(settings.API_URL, angular.extend({Action: 'UpdateMerchantSetting'}, data), function(response) {
-                notify('Настройки обновлены');
+                notify($filter('translate')('NOTIFY_SETTINGS_UPDATED'));
                 onUpdate(response.data);
                 $scope.closeModal();
             });
