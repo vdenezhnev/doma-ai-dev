@@ -94,7 +94,7 @@ msgstr "استيراد المشتركين"
 
 #: app/intercom/controllers/AbonentControllers.js:11
 msgid "importInfoTitle"
-msgstr "To successfully upload Subscribers, download the proposed template and fill in all the fields. Save the file and load it by clicking on the "Import subscribers" button. If you already have a file with a list of subscribers, copy the information from it into the proposed template to avoid errors during import."
+msgstr "لتحميل المشتركين بنجاح ، قم بتنزيل النموذج المقترح واملأ جميع الحقول. احفظ الملف وقم بتحميله بالنقر فوق الزر "استيراد المشتركين". إذا كان لديك بالفعل ملف بقائمة المشتركين ، فقم بنسخ المعلومات منه في النموذج المقترح لتجنب الأخطاء أثناء الاستيراد"
 
 #: app/intercom/views/payments/list.html:45
 #: app/intercom/views/payments/list.html:60
@@ -115,53 +115,53 @@ msgstr "فترة الدفع"
 
 #: app/intercom/controllers/AbonentControllers.js:89
 msgid "abonents.abonent_delete_confirm"
-msgstr "Are you sure?"
+msgstr "هل أنت واثق؟"
 
 #: app/intercom/controllers/AbonentControllers.js:91
 msgid "abonents.abonent_deleted"
-msgstr "User has been removed"
+msgstr "تمت إزالة المستخدم"
 
 #: app/intercom/controllers/AbonentControllers.js:67
 msgid "abonents.abonent_updated"
-msgstr "User has been updated"
+msgstr "تم تحديث المستخدم"
 
 #: app/intercom/controllers/AccountControllers.js:77
 msgid "account.password_changed"
-msgstr "You password has been changed"
+msgstr "تم تغيير كلمة السر الخاصة بك"
 
 #: app/intercom/controllers/AccountControllers.js:48
 #: app/intercom/controllers/AccountControllers.js:12
 msgid "account.profile_updated"
-msgstr "Profile updated successfully"
+msgstr "تم تحديث الملف الشخصي بنجاح"
 
 #: app/intercom/controllers/AccountControllers.js:30
 msgid "account.admin_deleted"
-msgstr "Deleted"
+msgstr "تم الحذف"
 
 #: app/intercom/controllers/AuthControllers.js:90
 msgid "auth.account_activated"
-msgstr "Your account successfully activated"
+msgstr "تم تفعيل حسابك بنجاح"
 
 #: app/intercom/controllers/AuthControllers.js:123
 #: app/intercom/controllers/AuthControllers.js:142
 #: app/intercom/controllers/AuthControllers.js:162
 msgid "auth.password_changed"
-msgstr "You password has been changed"
+msgstr "تم تغيير كلمة السر الخاصة بك"
 
 #: app/intercom/controllers/AccessControllers.js:132
 #: app/intercom/controllers/AccessControllers.js:292
 #: app/intercom/controllers/DeviceControllers.js:51
 msgid "devices.device_delete_confirm"
-msgstr "Are you sure?"
+msgstr "هل أنت واثق؟"
 
 #: app/intercom/controllers/AccessControllers.js:295
 #: app/intercom/controllers/DeviceControllers.js:53
 msgid "devices.device_deleted"
-msgstr "Access point removed successfully"
+msgstr "تمت إزالة نقطة الوصول بنجاح"
 
 #: app/intercom/controllers/AccessControllers.js:253
 msgid "devices.device_update_settings"
-msgstr "Saving the changes will result in updating the data for all clients. Are you sure want to continue?"
+msgstr "سيؤدي حفظ التغييرات إلى تحديث البيانات لجميع العملاء. هل أنت متأكد من أنك تريد الاستمرار؟"
 
 #: app/intercom/controllers/AccessControllers.js:127
 #: app/intercom/controllers/AccessControllers.js:136
@@ -176,7 +176,7 @@ msgstr "Saving the changes will result in updating the data for all clients. Are
 #: app/intercom/controllers/AccessControllers.js:92
 #: app/intercom/controllers/DeviceControllers.js:45
 msgid "devices.device_updated"
-msgstr "Access point updated successfully"
+msgstr "تم تحديث نقطة الوصول بنجاح"
 
 #: app/intercom/views/abonent/list.html:7
 msgid "html.abonent.add_title"
@@ -569,7 +569,7 @@ msgstr "الهاتف"
 
 #: app/intercom/views/account/form.html:24
 msgid "html.account.region_display"
-msgstr "Region"
+msgstr "منطقة"
 
 #: app/intercom/views/account/form.html:40
 msgid "html.account.support"
@@ -594,11 +594,11 @@ msgstr "جديد"
 
 #: app/intercom/views/auth/activate_account.html:10
 msgid "html.auth.activate_account_action"
-msgstr "Activate account"
+msgstr "تفعيل حساب"
 
 #: app/intercom/views/auth/activate_account.html:3
 msgid "html.auth.activate_account_title"
-msgstr "Activate account"
+msgstr "تفعيل حساب"
 
 #: app/intercom/views/auth/confirm_password_reset.html:10
 #: app/intercom/views/auth/confirm_password_reset_web.html:12
@@ -614,11 +614,11 @@ msgstr "تغيير كلمة المرور"
 
 #: app/intercom/views/_messages.html:15
 msgid "html.auth.email_confirm_title"
-msgstr "Confirm email"
+msgstr "تأكيد عنوان البريد الإلكتروني"
 
 #: app/intercom/views/_messages.html:17
 msgid "html.auth.email_confirmed_title"
-msgstr "Confirmed"
+msgstr "تم تأكيد"
 
 #: app/intercom/views/auth/login.html:16
 msgid "html.auth.login_action"
@@ -636,15 +636,15 @@ msgstr "تسجيل الدخول"
 
 #: app/intercom/views/_messages.html:18
 msgid "html.auth.new_password_title"
-msgstr "Change your password"
+msgstr "تغير كلمة المرور الخاصة بك"
 
 #: app/intercom/views/_messages.html:19
 msgid "html.auth.password_change_action"
-msgstr "Change"
+msgstr "تغير"
 
 #: app/intercom/views/auth/confirm_password_reset_web.html:17
 msgid "html.auth.password_changes"
-msgstr "Password was changed"
+msgstr "تم تغيير كلمة المرور"
 
 #: app/intercom/views/auth/activate_account.html:6
 #: app/intercom/views/auth/confirm_password_reset.html:6
@@ -655,7 +655,7 @@ msgstr "الرقم السري"
 
 #: app/intercom/views/auth/restore_password.html:19
 msgid "html.auth.restore_password_success_text"
-msgstr "Password recovery instructions have been sent to your email"
+msgstr "تم إرسال تعليمات استعادة كلمة المرور إلى بريدك الإلكتروني"
 
 #: app/intercom/views/auth/login.html:17
 #: app/intercom/views/auth/restore_password.html:3
@@ -664,17 +664,17 @@ msgstr "نسيت كلمة المرور؟"
 
 #: app/intercom/views/auth/login.html:29
 msgid "html.auth.search_company_placeholder"
-msgstr "Search for name, address, phone number or email"
+msgstr "ابحث عن الاسم أو العنوان أو رقم الهاتف أو البريد الإلكتروني"
 
 #: app/intercom/views/auth/login.html:22
 msgid "html.auth.select_company"
-msgstr "Select company"
+msgstr "اختر شركة"
 
 #: app/intercom/views/_messages.html:16
 #: app/intercom/views/auth/confirm_password_reset_web.html:15
 #: app/intercom/views/auth/mobile_reset_password.html:19
 msgid "html.auth.wrong_url"
-msgstr "Wrong url"
+msgstr "رابط خطأ"
 
 #: app/intercom/views/control_panel_user/form.html:17
 msgid "html.control_panel_user.form.access_point_ids"
@@ -702,7 +702,7 @@ msgstr "دخول "
 
 #: app/intercom/views/control_panel_user/list.html:2
 msgid "html.control_panel_user.list_title"
-msgstr "List"
+msgstr "قائمة"
 
 #: app/intercom/views/control_panel_user/create.html:2
 msgid "html.control_panel_user.new_title"
@@ -727,7 +727,7 @@ msgstr "جديد"
 
 #: app/intercom/views/auth/restore_password.html:13
 msgid "html.defaults.back_title"
-msgstr "Back"
+msgstr "عودة"
 
 #: app/intercom/views/access/object/add.html:16
 #: app/intercom/views/access/object/edit.html:20
@@ -741,11 +741,11 @@ msgstr "اغلاق"
 #: app/intercom/views/abonent/form.html:197
 #: app/intercom/views/abonent/form.html:244
 msgid "html.defaults.change_title"
-msgstr "Change"
+msgstr "تغير"
 
 #: app/intercom/views/auth/restore_password.html:14
 msgid "html.defaults.continue_title"
-msgstr "Continue"
+msgstr "استمر"
 
 #: app/intercom/views/access/point/form_default_key_settings.html:58
 #: app/intercom/views/access/point/form_default_key_settings.html:7
@@ -912,11 +912,11 @@ msgstr "رقم الهاتف"
 
 #: app/intercom/views/access/point/form_default_key_settings.html:142
 msgid "html.device.settings_form.transport_internet"
-msgstr "Allow open from Internet"
+msgstr "السماح بالفتح من الإنترنت"
 
 #: app/intercom/views/access/point/form_default_key_settings.html:145
 msgid "html.device.settings_form.transport_internet_geo"
-msgstr "Geoposition restriction"
+msgstr "قيود الموقع الجغرافي"
 
 #: app/intercom/views/access/point/form_default_key_settings.html:151
 msgid "html.device.settings_form.transport_internet_radius"
@@ -956,27 +956,27 @@ msgstr "الى تاريخ"
 
 #: app/intercom/views/journal/working-time-table.html:10
 msgid "html.journal.entryTime"
-msgstr "Entry time"
+msgstr "وقت دخول"
 
 #: app/intercom/views/journal/working-time-table.html:11
 msgid "html.journal.exitTime"
-msgstr "Exit time"
+msgstr "وقت الخروج"
 
 #: app/intercom/views/journal/working-time-table.html:2
 msgid "html.journal.getCSV"
-msgstr "Download"
+msgstr "تحميل"
 
 #: app/intercom/views/journal/working-time-table.html:12
 msgid "html.journal.workTime"
-msgstr "Working time"
+msgstr "وقت العمل"
 
 #: app/intercom/views/journal/working-time.html:132
 msgid "html.journal.getReport"
-msgstr "Get report"
+msgstr "احصل على تقرير"
 
 #: app/intercom/views/journal/working-time.html:125
 msgid "html.journal.groupByDays"
-msgstr "Group by days"
+msgstr "تجميع حسب الأيام"
 
 #: app/intercom/views/journal/working-time.html:133
 msgid "html.journal.resetFilter"
@@ -984,11 +984,11 @@ msgstr "اعادة تعيين"
 
 #: app/intercom/views/journal/list.html:3
 msgid "html.journal.reports"
-msgstr "Reports"
+msgstr "التقارير"
 
 #: app/intercom/views/journal/working-time-table.html:8
 msgid "html.journal.date"
-msgstr "Date"
+msgstr "تاريخ"
 
 #: app/intercom/views/journal/list.html:3
 msgid "html.journal.list_title"
@@ -1041,11 +1041,11 @@ msgstr "سعر الخطة"
 
 #: app/intercom/views/payment/list.html:8
 msgid "html.payment.label_access_object"
-msgstr "Access object"
+msgstr "كائن الوصول"
 
 #: app/intercom/views/payment/list.html:13
 msgid "html.payment.label_period"
-msgstr "Period"
+msgstr "فترة"
 
 #: app/intercom/views/payment/list.html:2
 msgid "html.payment.list_title"
@@ -1053,11 +1053,11 @@ msgstr "الفواتي"
 
 #: app/intercom/views/payment/list.html:52
 msgid "html.payment.submit_title"
-msgstr "Submit"
+msgstr "إرسال"
 
 #: app/intercom/views/payments/list.html:10
 msgid "html.payments.abonent"
-msgstr "Abonent"
+msgstr "أبونينت"
 
 #: app/intercom/views/payments/list.html:15
 msgid "html.payments.amount"
@@ -1065,11 +1065,11 @@ msgstr "المبلغ"
 
 #: app/intercom/views/payments/list.html:14
 msgid "html.payments.key_period_till"
-msgstr "Period till"
+msgstr "الفترة حتى"
 
 #: app/intercom/views/payments/list.html:13
 msgid "html.payments.payment_date"
-msgstr "Payment date"
+msgstr "تاريخ الدفع"
 
 #: app/intercom/views/payments/list.html:16
 msgid "html.payments.payment_type"
@@ -1077,12 +1077,12 @@ msgstr "نوع الدفع"
 
 #: app/intercom/views/payments/list.html:12
 msgid "html.payments.perimeter_name"
-msgstr "Perimeter name"
+msgstr "اسم المحيط"
 
 #: app/intercom/views/_messages.html:20
 #: app/intercom/views/auth/mobile_reset_password.html:21
 msgid "html.site.password_changed"
-msgstr "Password was changed"
+msgstr "تم تغيير كلمة المرور"
 
 #: app/intercom/views/tariff/list.html:7
 msgid "html.tariff.add_title"
@@ -1143,7 +1143,7 @@ msgstr "تطبيق"
 
 #: app/intercom/views/tariff/detail.html:10
 msgid "html.tariff.tariff_apply_message"
-msgstr "Attention! All users will receive the update."
+msgstr "انتباه! سيتلقى جميع المستخدمين التحديث."
 
 #: app/intercom/views/tariff/list.html:13
 msgid "html.tariff.tariff_display"
@@ -1151,7 +1151,7 @@ msgstr "سعر الخطة"
 
 #: app/intercom/views/tariff/detail.html:6
 msgid "html.tariff.tariff_rollback"
-msgstr "Rollback pricing plan"
+msgstr "خطة تسعير التراجع"
 
 #: app/intercom/views/_messages.html:10
 msgid "html.tariff.tariff_type_access"
@@ -1195,47 +1195,47 @@ msgstr "الضبط"
 
 #: app/intercom/controllers/AddressControllers.js:15
 msgid "notify.addresses.created"
-msgstr "Created"
+msgstr "إنشاء"
 
 #: app/intercom/controllers/AddressControllers.js:35
 msgid "notify.addresses.updated"
-msgstr "Updated"
+msgstr "تحديث"
 
 #: app/intercom/controllers/ControlPanelUserControllers.js:31
 msgid "notify.defaults.are_you_sure"
-msgstr "Are you sure?"
+msgstr "هل أنت واثق؟"
 
 #: app/intercom/app.js:82
 msgid "notify.defaults.changes_will_not_be_saved"
-msgstr "The changes you made will not be saved. Do you want to go to another page?"
+msgstr "لن يتم حفظ التغييرات التي أجريتها. هل تريد الانتقال إلى صفحة أخرى؟"
 
 #: app/intercom/controllers/ControlPanelUserControllers.js:52
 msgid "notify.defaults.created"
-msgstr "Created"
+msgstr "إنشاء"
 
 #: app/intercom/controllers/ControlPanelUserControllers.js:34
 msgid "notify.defaults.removed"
-msgstr "Removed"
+msgstr "إزالة"
 
 #: app/intercom/controllers/ControlPanelUserControllers.js:23
 msgid "notify.defaults.updated"
-msgstr "Updated"
+msgstr "تحديث"
 
 #: app/intercom/controllers/TariffControllers.js:62
 msgid "tariffs.tariff_applied"
-msgstr "Applied"
+msgstr "تطبيق"
 
 #: app/intercom/controllers/TariffControllers.js:73
 msgid "tariffs.tariff_rollbacked"
-msgstr "Rollbacked"
+msgstr "مراجعة"
 
 #: app/intercom/controllers/TariffControllers.js:51
 msgid "tariffs.tariff_updated"
-msgstr "Updated"
+msgstr "تحديث"
 
 #: app/intercom/views/modals/keys.html:9
 msgid "html.modals.keys_message"
-msgstr "To order additional keys you can take this e-mail"
+msgstr "لطلب مفاتيح إضافية ، يمكنك أن تأخذ هذا البريد الإلكتروني"
 
 #: app/intercom/views/modals/keys.html:10
 msgid "html.modals.keys_message_phone"
@@ -1260,98 +1260,98 @@ msgstr ""
 #: app/intercom/controllers/RolesControllers.js:22
 #: app/intercom/controllers/RolesControllers.js:55
 msgid "html.roles.accessJournal_title"
-msgstr "Access logs"
+msgstr "سجلات الوصول"
 
 #: app/intercom/controllers/RolesControllers.js:24
 #: app/intercom/controllers/RolesControllers.js:57
 msgid "html.roles.accessRight_title"
-msgstr "Access rights"
+msgstr "حقوق الوصول"
 
 #: app/intercom/views/roles/list.html:8
 msgid "html.roles.addRole"
-msgstr "Add role"
+msgstr "أضف دورًا"
 
 #: app/intercom/controllers/RolesControllers.js:21
 #: app/intercom/controllers/RolesControllers.js:54
 msgid "html.roles.address_title"
-msgstr "Addresses"
+msgstr "عناوين"
 
 #: app/intercom/controllers/RolesControllers.js:16
 #: app/intercom/controllers/RolesControllers.js:49
 msgid "html.roles.admins_title"
-msgstr "Account settings"
+msgstr "إعدادت الحساب"
 
 #: app/intercom/controllers/RolesControllers.js:23
 #: app/intercom/controllers/RolesControllers.js:56
 msgid "html.roles.controlPanel_title"
-msgstr "Panel users"
+msgstr "مستخدمي اللوحة"
 
 #: app/intercom/views/roles/create.html:2
 msgid "html.roles.createRole"
-msgstr "Create role"
+msgstr "خلق دور"
 
 #: app/intercom/controllers/RolesControllers.js:97
 msgid "html.roles.deleteRolesConfirm"
-msgstr "Are you sure, want to delete this role?"
+msgstr "هل أنت متأكد ، تريد حذف هذا الدور؟"
 
 #: app/intercom/controllers/RolesControllers.js:99
 msgid "html.roles.deleteRolesSuccess"
-msgstr "Role deleted"
+msgstr "تم حذف الدور"
 
 #: app/intercom/views/roles/edit.html:2
 msgid "html.roles.editRole"
-msgstr "Edit role"
+msgstr "تحرير الدور"
 
 #: app/intercom/controllers/RolesControllers.js:25
 #: app/intercom/controllers/RolesControllers.js:58
 msgid "html.roles.payment_title"
-msgstr "Payments"
+msgstr "المدفوعات"
 
 #: app/intercom/views/roles/form.html:16
 msgid "html.roles.rightsTitle"
-msgstr "Rights"
+msgstr "حقوق"
 
 #: app/intercom/views/roles/list.html:17
 msgid "html.roles.roleChangeDate"
-msgstr "Change date"
+msgstr "تاريخ التغيي"
 
 #: app/intercom/views/roles/list.html:16
 msgid "html.roles.roleComment"
-msgstr "Comment"
+msgstr "تعليق"
 
 #: app/intercom/views/roles/list.html:15
 msgid "html.roles.roleName"
-msgstr "Name"
+msgstr "اسم"
 
 #: app/intercom/views/roles/list.html:2
 msgid "html.roles.roles"
-msgstr "System roles"
+msgstr "أدوار النظام"
 
 #: app/intercom/controllers/RolesControllers.js:26
 #: app/intercom/controllers/RolesControllers.js:59
 #: app/intercom/views/inc/sidebar.html:76
 msgid "html.roles.roles_title"
-msgstr "Roles"
+msgstr "الأدوار"
 
 #: app/intercom/controllers/RolesControllers.js:20
 #: app/intercom/controllers/RolesControllers.js:53
 msgid "html.roles.rossetaLock_title"
-msgstr "Devices"
+msgstr "الأجهزة"
 
 #: app/intercom/controllers/RolesControllers.js:18
 #: app/intercom/controllers/RolesControllers.js:51
 msgid "html.roles.tariff_title"
-msgstr "Tariffs"
+msgstr "التعريفات"
 
 #: app/intercom/controllers/RolesControllers.js:17
 #: app/intercom/controllers/RolesControllers.js:50
 msgid "html.roles.users_title"
-msgstr "Users"
+msgstr "المستخدمون"
 
 #: app/intercom/controllers/RolesControllers.js:19
 #: app/intercom/controllers/RolesControllers.js:52
 msgid "html.roles.zones_title"
-msgstr "Access control zones"
+msgstr "مناطق التحكم في الوصول"
 
 #~ msgid "html.tariff.tariff_apply"
 #~ msgstr "Apply pricing plan"
@@ -1378,7 +1378,7 @@ msgstr "Access control zones"
 #~ msgstr "Sensitivity level"
 
 #~ msgid "buildings.building_delete_confirm"
-#~ msgstr "Are you sure?"
+#~ msgstr "هل أنت واثق؟"
 
 #~ msgid "buildings.building_deleted"
 #~ msgstr "Building removed successfully"

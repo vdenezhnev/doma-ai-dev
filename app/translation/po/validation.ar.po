@@ -14,39 +14,39 @@ msgstr ""
 
 #: app/common/validation-rule.js:38
 msgid "validation.email"
-msgstr "Wrong email"
+msgstr "بريد إلكتروني خاطئ"
 
 #: app/common/validation-rule.js:59
 msgid "validation.max_number"
-msgstr "Value must be less then"
+msgstr "يجب أن تكون القيمة أقل من"
 
 #: app/common/validation-rule.js:56
 msgid "validation.min_number"
-msgstr "Value must be greater then"
+msgstr "يجب أن تكون القيمة أكبر من"
 
 #: app/common/validation-rule.js:65
 msgid "validation.nil_and_more"
-msgstr "0 or more"
+msgstr "0 أو أكثر"
 
 #: app/common/validation-rule.js:41
 msgid "validation.number"
-msgstr "Value must be a number"
+msgstr "يجب أن تكون القيمة رقمًا"
 
 #: app/common/validation-rule.js:44
 msgid "validation.password"
-msgstr "The password must be at least 6 characters"
+msgstr "يجب أن تتكون كلمة المرور من 6 أحرف على الأقل"
 
 #: app/common/validation-rule.js:47
 msgid "validation.password_match"
-msgstr "Passwords must match"
+msgstr "الكلمة السريه يجب ان تتطابق"
 
 #: app/common/validation-rule.js:50
 msgid "validation.phone"
-msgstr "Wrong phone"
+msgstr "هاتف خاطئ"
 
 #: app/common/validation-rule.js:62
 msgid "validation.positive_number"
-msgstr "Value must be greater then 0"
+msgstr "يجب أن تكون القيمة أكبر من 0"
 
 #: app/common/validation-rule.js:35
 msgid "validation.required"
