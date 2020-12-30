@@ -72,10 +72,10 @@
                         </thead>
                         <tbody>
                             <tr ng-repeat="key in keys">
-                                <td>{{ payment.serviceCompany }}</td>
-                                <td>{{ payment.id }}</td>
-                                <td>{{ payment.createDate | date:'dd-MM-yyyy' }}</td>
-                                <td>{{ payment.phoneNumber }}</td>
+                                <td>{{ key.serviceCompany }}</td>
+                                <td>{{ key.id }}</td>
+                                <td>{{ key.createDate | date:'dd-MM-yyyy' }}</td>
+                                <td>{{ key.phoneNumber }}</td>
                             </tr>
                         </tbody>
                     </table>
