@@ -184,7 +184,7 @@ table th.filter-date a:hover {
 }
 
 body[ng-controller] .modal-backdrop.in {
-    z-index: 0 !important;
+    z-index: 10000 !important;
 }
 
 .datetime-field {
