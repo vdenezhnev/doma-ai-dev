@@ -38,7 +38,7 @@ app.controller('LoginCtrl', ['$scope', '$http', '$httpParamSerializer', 'setting
             Password: Base64.encode($scope.password),
             ServiceCompanyId: id
         }).then(function successCallback(response) {
-           User.load(response.data.profiles[0], response.data.credentials);
+           User.load(response.data.profiles[0], response.data.credentials, response.data.role);
 
            if (response.data.profiles[0] && response.data.profiles[0].keyCount.remain < 10) {
                 $timeout(function () {

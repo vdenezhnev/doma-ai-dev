@@ -184,7 +184,7 @@ table th.filter-date a:hover {
 }
 
 body[ng-controller] .modal-backdrop.in {
-    z-index: 0 !important;
+    z-index: 10000 !important;
 }
 
 .datetime-field {
@@ -193,4 +193,72 @@ body[ng-controller] .modal-backdrop.in {
 
 .datetime-field:read-only {
     background-color: #fff !important;
+}
+
+.justify-flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.tree-ltr {
+    direction: ltr !important;
+}
+
+table.rtl-text tr th {
+    text-align: right;
+}
+
+.rtl-text {
+    text-align: right !important;
+}
+
+@media (max-width: 991px){
+    .page-container {
+        display: block;
+    }
+}
+
+@media (min-width:992px){
+    .page-container {
+        display: flex;
+    }
+}
+
+.block-caption {
+    line-height: 18px;
+    font-size: 18px;
+    padding: 10px 0;
+    color: #666;
+}
+
+.portlet > .portlet-title:after,
+.portlet > .portlet-title:before {
+    content: none !important;
+}
+
+.dropdown-rtl {
+    right: -80px !important;
+}
+
+.dropdown-rtl.dropdown-lang {
+    right: -120px !important;
+    direction: ltr;
+}
+
+.dropdown-rtl.dropdown-period {
+    right: 15px !important;
+    width: 205px;
+}
+
+.block-column-rtl {
+    padding-right: 0 !important;
+    padding-left: 15px !important;
+}
+
+.page-header.navbar .top-menu .navbar-nav > li.dropdown .dropdown-menu.dropdown-rtl:before {
+    right: 170px;
+}
+
+.page-header.navbar .top-menu .navbar-nav > li.dropdown .dropdown-menu.dropdown-rtl:after {
+    right: 170px;
 }

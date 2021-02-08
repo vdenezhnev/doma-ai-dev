@@ -132,6 +132,10 @@ msgstr "Пароль изменен"
 msgid "account.profile_updated"
 msgstr "Профиль обновлен"
 
+#: app/intercom/controllers/AccountControllers.js:30
+msgid "account.admin_deleted"
+msgstr "Удален"
+
 #: app/intercom/controllers/AuthControllers.js:90
 msgid "auth.account_activated"
 msgstr "Аккаунт активирован"
@@ -563,6 +567,10 @@ msgstr "Телефон"
 msgid "html.account.phones_display"
 msgstr "Телефоны"
 
+#: app/intercom/views/account/form.html:24
+msgid "html.account.region_display"
+msgstr "Регион"
+
 #: app/intercom/views/account/form.html:40
 msgid "html.account.support"
 msgstr "Поддержка"
@@ -634,6 +642,10 @@ msgstr "Смена пароля"
 msgid "html.auth.password_change_action"
 msgstr "Изменить пароль"
 
+#: app/intercom/views/auth/confirm_password_reset_web.html:17
+msgid "html.auth.password_changes"
+msgstr "Пароль изменен"
+
 #: app/intercom/views/auth/activate_account.html:6
 #: app/intercom/views/auth/confirm_password_reset.html:6
 #: app/intercom/views/auth/confirm_password_reset_web.html:8
@@ -652,7 +664,17 @@ msgstr ""
 msgid "html.auth.restore_password_title"
 msgstr "Восстановление пароля"
 
+#: app/intercom/views/auth/login.html:29
+msgid "html.auth.search_company_placeholder"
+msgstr "Введите название, адрес, телефон или email УК"
+
+#: app/intercom/views/auth/login.html:22
+msgid "html.auth.select_company"
+msgstr "Выберите управляющую компанию"
+
 #: app/intercom/views/_messages.html:16
+#: app/intercom/views/auth/confirm_password_reset_web.html:15
+#: app/intercom/views/auth/mobile_reset_password.html:19
 msgid "html.auth.wrong_url"
 msgstr "Неверный адрес"
 
@@ -1244,6 +1266,102 @@ msgstr ""
 #: app/intercom/controllers/AccountControllers.js:23
 msgid "Удален"
 msgstr ""
+
+#: app/intercom/controllers/RolesControllers.js:22
+#: app/intercom/controllers/RolesControllers.js:55
+msgid "html.roles.accessJournal_title"
+msgstr "Журналы доступа"
+
+#: app/intercom/controllers/RolesControllers.js:24
+#: app/intercom/controllers/RolesControllers.js:57
+msgid "html.roles.accessRight_title"
+msgstr "Права доступа"
+
+#: app/intercom/views/roles/list.html:8
+msgid "html.roles.addRole"
+msgstr "Добавить роль"
+
+#: app/intercom/controllers/RolesControllers.js:21
+#: app/intercom/controllers/RolesControllers.js:54
+msgid "html.roles.address_title"
+msgstr "Адреса"
+
+#: app/intercom/controllers/RolesControllers.js:16
+#: app/intercom/controllers/RolesControllers.js:49
+msgid "html.roles.admins_title"
+msgstr "Управление аккаунтом"
+
+#: app/intercom/controllers/RolesControllers.js:23
+#: app/intercom/controllers/RolesControllers.js:56
+msgid "html.roles.controlPanel_title"
+msgstr "КПП"
+
+#: app/intercom/views/roles/create.html:2
+msgid "html.roles.createRole"
+msgstr "Создание роли"
+
+#: app/intercom/controllers/RolesControllers.js:97
+msgid "html.roles.deleteRolesConfirm"
+msgstr "Вы уверены, что хотите удалить роль?"
+
+#: app/intercom/controllers/RolesControllers.js:99
+msgid "html.roles.deleteRolesSuccess"
+msgstr "Роль успешно удалена"
+
+#: app/intercom/views/roles/edit.html:2
+msgid "html.roles.editRole"
+msgstr "Редактирование роли"
+
+#: app/intercom/controllers/RolesControllers.js:25
+#: app/intercom/controllers/RolesControllers.js:58
+msgid "html.roles.payment_title"
+msgstr "Платежи"
+
+#: app/intercom/views/roles/form.html:16
+msgid "html.roles.rightsTitle"
+msgstr "Права"
+
+#: app/intercom/views/roles/list.html:17
+msgid "html.roles.roleChangeDate"
+msgstr "Дата изменения"
+
+#: app/intercom/views/roles/list.html:16
+msgid "html.roles.roleComment"
+msgstr "Комментарий"
+
+#: app/intercom/views/roles/list.html:15
+msgid "html.roles.roleName"
+msgstr "Название роли"
+
+#: app/intercom/views/roles/list.html:2
+msgid "html.roles.roles"
+msgstr "Роли в системе"
+
+#: app/intercom/controllers/RolesControllers.js:26
+#: app/intercom/controllers/RolesControllers.js:59
+#: app/intercom/views/inc/sidebar.html:76
+msgid "html.roles.roles_title"
+msgstr "Роли"
+
+#: app/intercom/controllers/RolesControllers.js:20
+#: app/intercom/controllers/RolesControllers.js:53
+msgid "html.roles.rossetaLock_title"
+msgstr "Контроллеры"
+
+#: app/intercom/controllers/RolesControllers.js:18
+#: app/intercom/controllers/RolesControllers.js:51
+msgid "html.roles.tariff_title"
+msgstr "Тарифы"
+
+#: app/intercom/controllers/RolesControllers.js:17
+#: app/intercom/controllers/RolesControllers.js:50
+msgid "html.roles.users_title"
+msgstr "Пользователи"
+
+#: app/intercom/controllers/RolesControllers.js:19
+#: app/intercom/controllers/RolesControllers.js:52
+msgid "html.roles.zones_title"
+msgstr "Зоны и точки доступа"
 
 #~ msgid "html.tariff.tariff_apply"
 #~ msgstr "Применить тариф"

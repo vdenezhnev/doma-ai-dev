@@ -1,13 +1,13 @@
 <div class="portlet light bordered">
-    <div class="portlet-title">
-        <div class="caption" translate>html.account.admins_title
+    <div class="portlet-title justify-flex">
+        <div class="block-caption" translate>html.account.admins_title
         </div>
     </div>
 
     <div class="portlet-body">
         <form name="AdminsForm">
             <div class="form-body">
-                <table class="table table-bordered table-hover">
+                <table class="table table-bordered table-hover" ng-class="{'rtl-text': isRTL}">
                     <tbody>
                         <tr ng-repeat="admin in userData.admins track by $index">
                             <td><input class="form-control"
@@ -15,6 +15,10 @@
                                        type="text"
                                        ng-model="admin.displayName"
                                        validator="required"></td>
+                            <td><select class="form-control"
+                                        ng-model="admin.roleId">
+                                    <option ng-repeat="role in rolesList" value="{{ role.id }}">{{ role.name }}</option>
+                                </select></td>
                             <td><input class="form-control"
                                        name="admin_email_{{ $index }}"
                                        type="text"

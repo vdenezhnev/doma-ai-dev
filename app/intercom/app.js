@@ -34,9 +34,13 @@ app.run(['$rootScope', '$injector', '$timeout', '$state', 'Permission', 'User', 
     function($rootScope, $injector, $timeout, $state, Permission, User, Language, DataService, notify, gettextCatalog, settings){
 
         $rootScope.user = User;
+        $rootScope.hasAccess = function (police) {
+            return $rootScope.user.role && $rootScope.user.role.policies && $rootScope.user.role.policies.includes(police);
+        };
         $rootScope.dataService = DataService;
         User.listen($rootScope);
 
+        $rootScope.isRTL = false;
         $rootScope.language = Language;
         $rootScope.currency = window.__currency;
         $rootScope.title = window.__title;
@@ -67,7 +71,24 @@ app.run(['$rootScope', '$injector', '$timeout', '$state', 'Permission', 'User', 
             }
         });
 
-        moment.locale($rootScope.language.active, {
+        if ($rootScope.language.active === 'ar') {
+            var sheet = document.createElement('style');
+
+            $rootScope.isRTL = true;
+            sheet.innerHTML = `
+                @media (min-width:992px){
+                    .col-md-1,.col-md-10,.col-md-11,.col-md-12,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,.col-md-7,.col-md-8,.col-md-9{
+                        float: right !important;
+                    }
+                }`;
+
+            document.body.style.direction = 'rtl';
+            document.body.appendChild(sheet);
+        } else {
+            document.body.style.direction = 'ltr';
+        }
+
+        moment.locale($rootScope.language.active === 'ar' ? 'en' : $rootScope.language.active, {
             longDateFormat : {
                 LT : 'HH:mm'
             }

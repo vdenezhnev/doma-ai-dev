@@ -16,6 +16,7 @@ app.constant('LOCALE_EN', {
     NAVBAR_COMPANIES: 'Companies',
     NAVBAR_PAYMENS: 'SIM-cards payments',
     NAVBAR_LOGOUT: 'Logout',
+    NAVBAR_LOCAL_KEYS: 'Local keys',
 
     BUTTON_LOAD_MORE: 'Load more',
     BUTTON_ADD_LOCK: 'Add lock',
@@ -61,6 +62,8 @@ app.constant('LOCALE_EN', {
     TABLE_CELL_KEYS_AVAILABLE: 'Available',
     TABLE_CELL_KEYS_USED: 'Used',
     TABLE_CELL_KEYS_REMAINING: 'Remaining',
+    TABLE_CELL_UUID: 'UUID',
+    TABLE_CELL_DATE: 'Date',
 
     COMPONENT_DATETIME_FROM: 'from',
     COMPONENT_DATETIME_TO: 'to',
@@ -143,6 +146,7 @@ app.constant('LOCALE_EN', {
     COMPANIES_FORM_NAME: 'Name',
     COMPANIES_FORM_INN: 'TIN',
     COMPANIES_FORM_ADDRESS: 'Address',
+    COMPANIES_FORM_REGION: 'Region',
     COMPANIES_FORM_PHONES_TITLE: 'Phone numbers',
     COMPANIES_FORM_SUPPORT_TITLE: 'Support',
     COMPANIES_FORM_SUPPORT_NAME: 'Name',
@@ -156,5 +160,30 @@ app.constant('LOCALE_EN', {
     COMPANIES_FORM_ADMIN_NAME: 'Name',
     COMPANIES_FORM_ADMIN_PHONE: 'Phone number',
     COMPANIES_FORM_ADMIN_EMAIL: 'E-mail',
-    COMPANIES_FORM_PAYMENT_TITLE: 'Payment'
+    COMPANIES_FORM_ADMIN_ROLE: 'Role',
+    COMPANIES_FORM_PAYMENT_TITLE: 'Payment',
+
+    LOCAL_KEYS_TITLE: 'Local server keys',
+    LOCAL_KEYS_LIST: 'Local server keys list',
+    LOCAL_KEYS_SEARCH_PLACEHOLDER: 'Search',
+
+    NOTIFY_PROFILE_UPDATED: 'Profile updated',
+    NOTIFY_PASSWORD_UPDATED: 'Password updated',
+    NOTIFY_USER_UPDATED: 'User updated',
+    NOTIFY_KEYS_BLOCKED: 'Keys blocked',
+    NOTIFY_KEYS_UNBLOCKED: 'Keys unblocked',
+    NOTIFY_KEY_DELETED: 'Key deleted',
+    NOTIFY_COMPANY_UPDATED: 'Company updated',
+    NOTIFY_COMPANY_ADDED: 'Company added',
+    NOTIFY_ADMIN_DELETED: 'Admin deleted',
+    NOTIFY_DATA_UPDATED: 'Data updated',
+    NOTIFY_SETTINGS_UPDATED: 'Settings updated',
+    NOTIFY_LOCK_UPDATED: 'Lock updated',
+    NOTIFY_LOCK_DELETED: 'Lock deleted',
+    NOTIFY_LOCK_ADDED: 'Lock added',
+    NOTIFY_ENTRIES_UPDATED: 'Entries updated',
+
+    NOTIFY_MESSAGE_USER_DELETE_CONFIRM: 'Are you sure, you want to delete this user?',
+    NOTIFY_MESSAGE_LOCK_DELETE_CONFIRM: 'Are you sure, you want to delete this lock?',
+    NOTIFY_MESSAGE_KEY_DELETE_CONFIRM: 'Are you sure, you want to delete this key?'
 });

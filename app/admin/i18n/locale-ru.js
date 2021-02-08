@@ -16,6 +16,7 @@ app.constant('LOCALE_RU', {
     NAVBAR_COMPANIES: 'Компании',
     NAVBAR_PAYMENS: 'Оплаты Sim-карт',
     NAVBAR_LOGOUT: 'Выход',
+    NAVBAR_LOCAL_KEYS: 'Локальные ключи',
 
     BUTTON_LOAD_MORE: 'Загрузить еще',
     BUTTON_ADD_LOCK: 'Добавить замок',
@@ -61,6 +62,8 @@ app.constant('LOCALE_RU', {
     TABLE_CELL_KEYS_AVAILABLE: 'Доступно',
     TABLE_CELL_KEYS_USED: 'Использовано',
     TABLE_CELL_KEYS_REMAINING: 'Осталось',
+    TABLE_CELL_UUID: 'UUID',
+    TABLE_CELL_DATE: 'Дата',
 
     COMPONENT_DATETIME_FROM: 'от',
     COMPONENT_DATETIME_TO: 'до',
@@ -143,6 +146,7 @@ app.constant('LOCALE_RU', {
     COMPANIES_FORM_NAME: 'Название',
     COMPANIES_FORM_INN: 'ИНН',
     COMPANIES_FORM_ADDRESS: 'Адрес',
+    COMPANIES_FORM_REGION: 'Регион',
     COMPANIES_FORM_PHONES_TITLE: 'Телефоны',
     COMPANIES_FORM_SUPPORT_TITLE: 'Поддержка',
     COMPANIES_FORM_SUPPORT_NAME: 'Имя',
@@ -156,5 +160,30 @@ app.constant('LOCALE_RU', {
     COMPANIES_FORM_ADMIN_NAME: 'Имя',
     COMPANIES_FORM_ADMIN_PHONE: 'Телефон',
     COMPANIES_FORM_ADMIN_EMAIL: 'E-mail',
-    COMPANIES_FORM_PAYMENT_TITLE: 'Оплата'
+    COMPANIES_FORM_ADMIN_ROLE: 'Роль',
+    COMPANIES_FORM_PAYMENT_TITLE: 'Оплата',
+
+    LOCAL_KEYS_TITLE: 'Цифровые ключи локальных серверов',
+    LOCAL_KEYS_LIST: 'Список цифровых ключей',
+    LOCAL_KEYS_SEARCH_PLACEHOLDER: 'Поиск',
+
+    NOTIFY_PROFILE_UPDATED: 'Профиль обновлен',
+    NOTIFY_PASSWORD_UPDATED: 'Пароль изменен',
+    NOTIFY_USER_UPDATED: 'Пользователь удален',
+    NOTIFY_KEYS_BLOCKED: 'Ключи заблокированы',
+    NOTIFY_KEYS_UNBLOCKED: 'Ключи разблокированы',
+    NOTIFY_KEY_DELETED: 'Ключ удален',
+    NOTIFY_COMPANY_UPDATED: 'Компания обновлена',
+    NOTIFY_COMPANY_ADDED: 'Компания добавлена',
+    NOTIFY_ADMIN_DELETED: 'Админ удален',
+    NOTIFY_DATA_UPDATED: 'Данные обновлены',
+    NOTIFY_SETTINGS_UPDATED: 'Настройки обновлены',
+    NOTIFY_LOCK_UPDATED: 'Замок обновлен',
+    NOTIFY_LOCK_DELETED: 'Замок удален',
+    NOTIFY_LOCK_ADDED: 'Замок добавлен',
+    NOTIFY_ENTRIES_UPDATED: 'Записи обновлены',
+
+    NOTIFY_MESSAGE_USER_DELETE_CONFIRM: 'Вы действительно хотите удалить данного пользователя?',
+    NOTIFY_MESSAGE_LOCK_DELETE_CONFIRM: 'Вы действительно хотите удалить данный замок?',
+    NOTIFY_MESSAGE_KEY_DELETE_CONFIRM: 'Вы действительно хотите удалить данный ключ?'
 });

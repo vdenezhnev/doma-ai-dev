@@ -10,64 +10,64 @@
                 <div class="sidebar-toggler"> </div>
             </li>
 
-            <li class="nav-item start" ui-sref-active="active-light">
+            <li class="nav-item start" ui-sref-active="active-light" ng-if="hasAccess('user')">
                 <a ui-sref="admin.abonent.list" class="nav-link">
                     <i class="icon-user"></i>
                     <span class="title" translate>html.menu.abonents</span>
                 </a>
             </li>
-            <li class="nav-item start" ui-sref-active="active-light">
+            <li class="nav-item start" ui-sref-active="active-light" ng-if="hasAccess('tarif')">
                 <a ui-sref="admin.tariff.list" class="nav-link">
                     <i class="icon-tag"></i>
                     <span class="title" translate>html.menu.tariffs</span>
                 </a>
             </li>
-            <li class="nav-item start" ui-sref-active="active-light">
+            <li class="nav-item start" ui-sref-active="active-light" ng-if="hasAccess('accsessPerimeterAndPoint')">
                 <a ui-sref="admin.access" class="nav-link">
                     <i class="icon-pointer"></i>
                     <span class="title" translate>html.menu.access_points</span>
                 </a>
             </li>
-            <li class="nav-item start" ui-sref-active="active-light">
+            <li class="nav-item start" ui-sref-active="active-light" ng-if="hasAccess('rossetaLock')">
                 <a ui-sref="admin.device.list" class="nav-link">
                     <i class="icon-pointer"></i>
                     <span class="title" translate>html.menu.devices</span>
                 </a>
             </li>
-            <li class="nav-item start" ui-sref-active="active-light">
+            <li class="nav-item start" ui-sref-active="active-light" ng-if="hasAccess('address')">
                 <a ui-sref="admin.address.list" class="nav-link">
                     <i class="icon-home"></i>
                     <span class="title" translate>html.menu.addresses</span>
                 </a>
             </li>
-            <!--<li class="nav-item start" ui-sref-active="active-light">
-                <a ui-sref="admin.payment.list" class="nav-link">
-                    <i class="icon-calendar"></i>
-                    <span class="title" translate>html.menu.payments</span>
-                </a>
-            </li>-->
-            <li class="nav-item start" ui-sref-active="active-light">
+            <li class="nav-item start" ui-sref-active="active-light" ng-if="hasAccess('accessJournal')">
                 <a ui-sref="admin.journal.list" class="nav-link">
                     <i class="icon-notebook"></i>
                     <span class="title" translate>html.menu.journal</span>
                 </a>
             </li>
-            <li class="nav-item start" ui-sref-active="active-light">
+            <li class="nav-item start" ui-sref-active="active-light" ng-if="hasAccess('controlPanel')">
                 <a ui-sref="admin.control_panel_user.list" class="nav-link">
                     <i class="icon-home"></i>
                     <span class="title" translate>html.menu.control_panel_users</span>
                 </a>
             </li>
-            <li class="nav-item start" ui-sref-active="active-light">
+            <li class="nav-item start" ui-sref-active="active-light" ng-if="hasAccess('accessRight')">
                 <a ui-sref="admin.access_right.list" class="nav-link">
                     <i class="fa fa-tasks"></i>
                     <span class="title" translate>html.menu.access_right</span>
                 </a>
             </li>
-            <li class="nav-item start" ui-sref-active="active-light">
+            <li class="nav-item start" ui-sref-active="active-light" ng-if="hasAccess('payment')">
                 <a ui-sref="admin.payments" class="nav-link">
                     <i class="icon-calendar"></i>
                     <span class="title" translate>html.menu.payments</span>
+                </a>
+            </li>
+            <li class="nav-item start" ui-sref-active="active-light" ng-if="hasAccess('role')">
+                <a ui-sref="admin.roles.list" class="nav-link">
+                    <i class="icon-users"></i>
+                    <span class="title" translate>html.roles.roles_title</span>
                 </a>
             </li>
         </ul>

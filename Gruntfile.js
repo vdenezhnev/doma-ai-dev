@@ -36,11 +36,13 @@ module.exports = function(grunt) {
                 ],
                 'app/translation/i18n/intercom.js': [
                     'app/translation/po/intercom.ru.po',
-                    'app/translation/po/intercom.en.po'
+                    'app/translation/po/intercom.en.po',
+                    'app/translation/po/intercom.ar.po'
                 ],
                 'app/translation/i18n/validation.js': [
                     'app/translation/po/validation.ru.po',
-                    'app/translation/po/validation.en.po'
+                    'app/translation/po/validation.en.po',
+                    'app/translation/po/validation.ar.po'
                 ]
               }
             }

@@ -165,6 +165,30 @@ app.config(['$stateProvider', 'settings', function($stateProvider, settings) {
             }
         })
 
+        .state('admin.roles', {
+            url: 'roles/',
+            abstract: true,
+            templateUrl: settings.TEMPLATE_DIR + 'roles/base.html'
+        })
+        .state('admin.roles.list', {
+            url: 'list',
+            controller: 'RolesListCtrl',
+            templateUrl: settings.TEMPLATE_DIR + 'roles/list.html'
+        })
+        .state('admin.roles.create', {
+            url: 'create',
+            controller: 'RoleCreateCtrl',
+            templateUrl: settings.TEMPLATE_DIR + 'roles/create.html'
+        })
+        .state('admin.roles.detail', {
+            url: 'detail/:id',
+            controller: 'RoleDetailCtrl',
+            templateUrl: settings.TEMPLATE_DIR + 'roles/edit.html',
+            params: {
+                role: null
+            }
+        })
+
         .state('admin.payments', {
             url: 'payments',
             controller: 'PaymentsCtrl',

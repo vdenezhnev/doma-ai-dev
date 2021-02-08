@@ -12,21 +12,21 @@
                validator="required" ng-model="password" />
     </div>
 
-    <div class="form-actions">
+    <div class="form-actions justify-flex">
         <button type="submit" validation-submit="LoginForm" ng-click="submit()" class="btn green uppercase" translate>html.auth.login_action</button>
         <a ui-sref="auth.restore_password" class="forget-password" translate>html.auth.restore_password_title</a>
     </div>
 </form>
 
 <form ng-show="companyProfiles !== undefined">
-    <h4 class="form-title font-green" translate>Выберите управляющую компанию</h4>
+    <h4 class="form-title font-green" translate>html.auth.select_company</h4>
 
     <div class="form-group" ng-show="hasMoreProfiles">
         <div class="input-group">
             <input
                 class="form-control form-control-solid placeholder-no-fix"
                 type="text"
-                placeholder="Введите название, адрес, телефон или email УК"
+                placeholder="{{ 'html.auth.search_company_placeholder'|translate }}"
                 name="q"
                 ng-model="q"
                 autocomplete="off"

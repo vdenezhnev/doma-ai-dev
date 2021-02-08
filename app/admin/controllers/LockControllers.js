@@ -46,8 +46,8 @@ app.controller('LockListCtrl', ['$scope', 'Api', 'settings',
     }
 ]);
 
-app.controller('LockDetailCtrl', ['$scope', '$state', '$stateParams', 'notify', 'Api', 'settings',
-    function($scope, $state, $stateParams, notify, Api, settings) {
+app.controller('LockDetailCtrl', ['$scope', '$state', '$stateParams', 'notify', 'Api', 'settings', '$filter',
+    function($scope, $state, $stateParams, notify, Api, settings, $filter) {
         const TRANSPORT_TYPES = ['blueToothLe', 'nfc', 'gsm', 'internet', 'wiFiDirect', 'blueTooth'];
         let tempTransports = [];
         Api.get(settings.API_URL, {'Action': 'GetLockById', 'LockId': $stateParams.id}, function(response) {
@@ -75,17 +75,17 @@ app.controller('LockDetailCtrl', ['$scope', '$state', '$stateParams', 'notify', 
                 LockId: $scope.lock.id,
                 connectivity: $scope.lock.connectivity
             }, function() {
-                notify('Замок обновлен');
+                notify($filter('translate')('NOTIFY_LOCK_UPDATED'));
             });
         };
 
         $scope.delete = function() {
-            if (window.confirm('Вы действительно хотите удалить данный замок?')) {
+            if (window.confirm($filter('translate')('NOTIFY_MESSAGE_LOCK_DELETE_CONFIRM'))) {
                 Api.post(settings.API_URL, {
                     'Action': 'DeleteLock',
                     'LockId': $scope.lock.id
                 }, function () {
-                    notify('Замок удален');
+                    notify($filter('translate')('NOTIFY_LOCK_DELETED'));
                     $state.go('admin.lock.list');
                 });
             }
@@ -93,8 +93,8 @@ app.controller('LockDetailCtrl', ['$scope', '$state', '$stateParams', 'notify', 
     }
 ]);
 
-app.controller('LockReplaceCtrl', ['$scope', '$state', '$stateParams', 'notify', 'Api', 'settings',
-    function($scope, $state, $stateParams, notify, Api, settings) {
+app.controller('LockReplaceCtrl', ['$scope', '$state', '$stateParams', 'notify', 'Api', 'settings', '$filter',
+    function($scope, $state, $stateParams, notify, Api, settings, $filter) {
         Api.get(settings.API_URL, {Action: 'GetLockById', LockId: $stateParams.id}, function(response) {
             $scope.lock = response.data;
         });
@@ -105,15 +105,15 @@ app.controller('LockReplaceCtrl', ['$scope', '$state', '$stateParams', 'notify',
                 ReplaceableLockId: $scope.lock.id,
                 ReplacementLockId: newLockId
             }, function() {
-                notify('Замок обновлен');
+                notify($filter('translate')('NOTIFY_LOCK_UPDATED'));
                 $state.go('admin.lock.detail', {id: newLockId});
             });
         };
     }
 ]);
 
-app.controller('LockCreateCtrl', ['$scope', '$state', 'notify', 'Api', 'settings',
-    function($scope, $state, notify, Api, settings) {
+app.controller('LockCreateCtrl', ['$scope', '$state', 'notify', 'Api', 'settings', '$filter',
+    function($scope, $state, notify, Api, settings, $filter) {
         $scope.createForm = true;
         $scope.isNew = true;
 
@@ -137,7 +137,7 @@ app.controller('LockCreateCtrl', ['$scope', '$state', 'notify', 'Api', 'settings
         $scope.save = function() {
             Api.post(settings.API_URL, angular.extend({Action: 'RegisterLock'}, $scope.lock), function() {
                 $state.go('admin.lock.detail', {id: $scope.lock.lockId});
-                notify('Замок добавлен');
+                notify($filter('translate')('NOTIFY_LOCK_ADDED'));
             });
         };
     }

@@ -15,6 +15,14 @@
         <input class="form-control" ng-model="company.address.streetAddress">
     </div>
 
+    <div class="form-group">
+        <label translate>COMPANIES_FORM_REGION</label>
+        <select class="form-control"
+                ng-model="company.region">
+            <option ng-repeat="region in ['ru', 'en']" value="{{ region }}">{{ region }}</option>
+        </select>
+    </div>
+
     <h3 translate>COMPANIES_FORM_PHONES_TITLE</h3>
 
     <div class="row"></div>
@@ -79,11 +87,28 @@
     <h3 translate>COMPANIES_FORM_ADMIN_TITLE</h3>
 
     <div ng-repeat="contact in company.admins track by $index">
-        <div class="row">
+        <div class="row" ng-if="isCreate">
             <div class="col-md-12">
                 <div class="form-group">
                     <label translate>COMPANIES_FORM_ADMIN_NAME</label>
                     <input class="form-control" type="text" ng-model="contact.displayName">
+                </div>
+            </div>
+        </div>
+        <div class="row" ng-if="!isCreate">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label translate>COMPANIES_FORM_ADMIN_NAME</label>
+                    <input class="form-control" type="text" ng-model="contact.displayName">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label translate>COMPANIES_FORM_ADMIN_ROLE</label>
+                    <select class="form-control"
+                            ng-model="contact.roleId">
+                        <option ng-repeat="role in rolesList" value="{{ role.id }}">{{ role.name }}</option>
+                    </select>
                 </div>
             </div>
         </div>

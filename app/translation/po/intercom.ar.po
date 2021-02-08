@@ -1,0 +1,1462 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: app/intercom/views/access/perimeter/form.html:14
+msgid "html.access.perimeter.form.generateQR"
+msgstr "انشاء QR- كود"
+
+#: app/intercom/views/access/perimeter/generate-qr.html:9
+msgid "html.access.perimeter.generateQR.address"
+msgstr "الموقع"
+
+#: app/intercom/views/access/perimeter/generate-qr.html:44
+msgid "html.access.perimeter.generateQR.cancel"
+msgstr "اغلاق"
+
+#: app/intercom/views/access/perimeter/generate-qr.html:15
+msgid "html.access.perimeter.generateQR.flats"
+msgstr "شقه"
+
+#: app/intercom/views/access/perimeter/generate-qr.html:18
+msgid "html.access.perimeter.generateQR.from"
+msgstr "من"
+
+#: app/intercom/views/access/perimeter/generate-qr.html:35
+msgid "html.access.perimeter.generateQR.generate"
+msgstr "انشاء"
+
+#: app/intercom/views/access/perimeter/generate-qr.html:29
+msgid "html.access.perimeter.generateQR.tarrif"
+msgstr "التعرفة"
+
+#: app/intercom/views/access/perimeter/generate-qr.html:3
+msgid "html.access.perimeter.generateQR.title"
+msgstr "QR-code"
+
+#: app/intercom/views/access/perimeter/generate-qr.html:22
+msgid "html.access.perimeter.generateQR.to"
+msgstr "الى"
+
+#: app/intercom/views/journal/list.html:16
+msgid "html.journal.key_type_display"
+msgstr "نوع المفتاح"
+
+#: app/intercom/views/journal/list.html:17
+msgid "html.journal.lock_access_types_display"
+msgstr "نوع وصول القفل"
+
+#: app/intercom/controllers/JournalControllers.js:20
+msgid "keyTypes.button"
+msgstr "زر الخروج"
+
+#: app/intercom/controllers/JournalControllers.js:17
+msgid "keyTypes.card"
+msgstr "بطاقة"
+
+#: app/intercom/controllers/JournalControllers.js:21
+msgid "keyTypes.mobile"
+msgstr "فتح عن طريق الهاتف"
+
+#: app/intercom/controllers/JournalControllers.js:18
+msgid "keyTypes.remote"
+msgstr "الفتح عن بعد"
+
+#: app/intercom/controllers/JournalControllers.js:25
+msgid "lockAccessTypes.accessDenied"
+msgstr "تم الرفض"
+
+#: app/intercom/controllers/JournalControllers.js:24
+msgid "lockAccessTypes.opened"
+msgstr "لقد تم منح الوصول"
+
+#: app/intercom/views/abonent/list.html:11
+msgid "html.abonent.download_template_title"
+msgstr "قم بتنزيل نموذج الملف للاستيراد"
+
+#: app/intercom/views/abonent/list.html:10
+msgid "html.abonent.import_title"
+msgstr "استيراد المشتركين"
+
+#: app/intercom/views/abonent/list.html:10
+msgid "html.abonenst.import_title"
+msgstr "استيراد المشتركين"
+
+#: app/intercom/controllers/AbonentControllers.js:11
+msgid "importInfoTitle"
+msgstr "لتحميل المشتركين بنجاح ، قم بتنزيل النموذج المقترح واملأ جميع الحقول. احفظ الملف وقم بتحميله بالنقر فوق الزر "استيراد المشتركين". إذا كان لديك بالفعل ملف بقائمة المشتركين ، فقم بنسخ المعلومات منه في النموذج المقترح لتجنب الأخطاء أثناء الاستيراد"
+
+#: app/intercom/views/payments/list.html:45
+#: app/intercom/views/payments/list.html:60
+msgid "<i class=\"fa fa-close\"></i>"
+msgstr ""
+
+#: app/intercom/controllers/PaymentControllers.js:50
+msgid "LockMaintenancePerMonth"
+msgstr "الدفع الشهري"
+
+#: app/intercom/controllers/PaymentControllers.js:51
+msgid "LockMaintenancePerYear"
+msgstr "الدفع السنوي"
+
+#: app/intercom/controllers/PaymentControllers.js:52
+msgid "LockMaintenancePeriod"
+msgstr "فترة الدفع"
+
+#: app/intercom/controllers/AbonentControllers.js:89
+msgid "abonents.abonent_delete_confirm"
+msgstr "هل أنت واثق؟"
+
+#: app/intercom/controllers/AbonentControllers.js:91
+msgid "abonents.abonent_deleted"
+msgstr "تمت إزالة المستخدم"
+
+#: app/intercom/controllers/AbonentControllers.js:67
+msgid "abonents.abonent_updated"
+msgstr "تم تحديث المستخدم"
+
+#: app/intercom/controllers/AccountControllers.js:77
+msgid "account.password_changed"
+msgstr "تم تغيير كلمة السر الخاصة بك"
+
+#: app/intercom/controllers/AccountControllers.js:48
+#: app/intercom/controllers/AccountControllers.js:12
+msgid "account.profile_updated"
+msgstr "تم تحديث الملف الشخصي بنجاح"
+
+#: app/intercom/controllers/AccountControllers.js:30
+msgid "account.admin_deleted"
+msgstr "تم الحذف"
+
+#: app/intercom/controllers/AuthControllers.js:90
+msgid "auth.account_activated"
+msgstr "تم تفعيل حسابك بنجاح"
+
+#: app/intercom/controllers/AuthControllers.js:123
+#: app/intercom/controllers/AuthControllers.js:142
+#: app/intercom/controllers/AuthControllers.js:162
+msgid "auth.password_changed"
+msgstr "تم تغيير كلمة السر الخاصة بك"
+
+#: app/intercom/controllers/AccessControllers.js:132
+#: app/intercom/controllers/AccessControllers.js:292
+#: app/intercom/controllers/DeviceControllers.js:51
+msgid "devices.device_delete_confirm"
+msgstr "هل أنت واثق؟"
+
+#: app/intercom/controllers/AccessControllers.js:295
+#: app/intercom/controllers/DeviceControllers.js:53
+msgid "devices.device_deleted"
+msgstr "تمت إزالة نقطة الوصول بنجاح"
+
+#: app/intercom/controllers/AccessControllers.js:253
+msgid "devices.device_update_settings"
+msgstr "سيؤدي حفظ التغييرات إلى تحديث البيانات لجميع العملاء. هل أنت متأكد من أنك تريد الاستمرار؟"
+
+#: app/intercom/controllers/AccessControllers.js:127
+#: app/intercom/controllers/AccessControllers.js:136
+#: app/intercom/controllers/AccessControllers.js:213
+#: app/intercom/controllers/AccessControllers.js:247
+#: app/intercom/controllers/AccessControllers.js:259
+#: app/intercom/controllers/AccessControllers.js:269
+#: app/intercom/controllers/AccessControllers.js:277
+#: app/intercom/controllers/AccessControllers.js:287
+#: app/intercom/controllers/AccessControllers.js:29
+#: app/intercom/controllers/AccessControllers.js:51
+#: app/intercom/controllers/AccessControllers.js:92
+#: app/intercom/controllers/DeviceControllers.js:45
+msgid "devices.device_updated"
+msgstr "تم تحديث نقطة الوصول بنجاح"
+
+#: app/intercom/views/abonent/list.html:7
+msgid "html.abonent.add_title"
+msgstr "جديد"
+
+#: app/intercom/views/abonent/form.html:18
+msgid "html.abonent.address_display"
+msgstr "الموقع"
+
+#: app/intercom/views/abonent/form.html:50
+msgid "html.abonent.admin_display"
+msgstr "مشرف"
+
+#: app/intercom/views/abonent/list.html:15
+msgid "html.abonent.building_display"
+msgstr "بناء"
+
+#: app/intercom/views/abonent/form.html:83
+msgid "html.abonent.car_model_display"
+msgstr "الطراز"
+
+#: app/intercom/views/abonent/form.html:82
+msgid "html.abonent.car_number_display"
+msgstr "الرقم"
+
+#: app/intercom/views/abonent/form.html:77
+msgid "html.abonent.cars_display"
+msgstr "السيارات"
+
+#: app/intercom/views/abonent/form.html:43
+msgid "html.abonent.comments_display"
+msgstr "ملاحظات"
+
+#: app/intercom/views/abonent/detail.html:2
+msgid "html.abonent.detail_title"
+msgstr "المستخدم"
+
+#: app/intercom/views/abonent/form.html:23
+msgid "html.abonent.floor_display"
+msgstr "مصعد"
+
+#: app/intercom/views/abonent/form.html:219
+msgid "html.abonent.end_period"
+msgstr "فترة النهاية"
+
+#: app/intercom/views/abonent/form.html:33
+msgid "html.abonent.external_id_display"
+msgstr "معرف خارجي"
+
+#: app/intercom/views/abonent/list.html:16
+msgid "html.abonent.flat_display"
+msgstr "شقة"
+
+#: app/intercom/views/abonent/form.html:71
+msgid "html.abonent.isGsmOpenAllowed"
+msgstr "فتح عن طريق مكالمة"
+
+#: app/intercom/views/abonent/list.html:2
+msgid "html.abonent.list_title"
+msgstr "المستخدمون"
+
+#: app/intercom/views/abonent/form.html:7
+#: app/intercom/views/abonent/list.html:13
+msgid "html.abonent.name_display"
+msgstr "الاسم"
+
+#: app/intercom/views/abonent/create.html:2
+msgid "html.abonent.new_title"
+msgstr "جديد"
+
+#: app/intercom/views/abonent/form.html:166
+#: app/intercom/views/abonent/form.html:222
+msgid "html.abonent.perimeter"
+msgstr "محيط"
+
+#: app/intercom/views/abonent/form.html:167
+msgid "html.abonent.perimeter_tariff"
+msgstr "التعرفة"
+
+#: app/intercom/views/abonent/form.html:114
+msgid "html.abonent.perimeters_title"
+msgstr "محيط"
+
+#: app/intercom/views/abonent/form.html:12
+#: app/intercom/views/abonent/list.html:14
+msgid "html.abonent.phone_display"
+msgstr "الهاتف"
+
+#: app/intercom/views/abonent/form.html:28
+msgid "html.abonent.room_display"
+msgstr "غرفة"
+
+#: app/intercom/views/abonent/form.html:223
+msgid "html.abonent.start_period"
+msgstr "فترة البداية"
+
+#: app/intercom/views/abonent/form.html:38
+msgid "html.abonent.tag_id_display"
+msgstr "معرف ID"
+
+#: app/intercom/views/abonent/form.html:217
+msgid "html.abonent.temporary_access_perimeters"
+msgstr "محيطات مؤقتة"
+
+#: app/intercom/views/abonent/form.html:56
+msgid "html.abonent.workking_time_display"
+msgstr "وقت العمل"
+
+#: app/intercom/views/abonent/form.html:64
+msgid "html.abonent.workking_time_end_display"
+msgstr "وقت نهاية العمل"
+
+#: app/intercom/views/abonent/form.html:59
+msgid "html.abonent.workking_time_start_display"
+msgstr "وقت بداية العمل"
+
+#: app/intercom/views/access/object/add.html:6
+msgid "html.access.object.add_title"
+msgstr "Add object"
+
+#: app/intercom/views/access/object/edit.html:9
+msgid "html.access.object.button_add_perimeter_title"
+msgstr "اضافة محيط"
+
+#: app/intercom/views/access/base.html:42
+msgid "html.access.object.button_add_title"
+msgstr "اضافة"
+
+#: app/intercom/views/access/object/form.html:34
+msgid "html.access.object.extra_title"
+msgstr "إضافي"
+
+#: app/intercom/views/access/object/form.html:9
+msgid "html.access.object.form.description"
+msgstr "الوصف"
+
+#: app/intercom/views/access/object/form.html:4
+msgid "html.access.object.form.display_name"
+msgstr "الاسم"
+
+#: app/intercom/views/access/object/form.html:39
+msgid "html.access.object.form.heading"
+msgstr "Title"
+
+#: app/intercom/views/access/object/form.html:15
+msgid "html.access.object.form.image"
+msgstr "صوره"
+
+#: app/intercom/views/access/object/form.html:44
+msgid "html.access.object.form.text"
+msgstr "ملاحظات"
+
+#: app/intercom/views/access/object/form.html:17
+msgid "html.access.object.form.upload_title"
+msgstr "تحميل"
+
+#: app/intercom/views/access/object/form.html:30
+msgid "html.access.object.form.user_display_name"
+msgstr "المستخدم"
+
+#: app/intercom/views/access/object/form.html:27
+msgid "html.access.object.user_title"
+msgstr "المستخدم"
+
+#: app/intercom/views/access/perimeter/add.html:8
+msgid "html.access.perimeter.add_title"
+msgstr "اضافة"
+
+#: app/intercom/views/access/perimeter/edit.html:11
+msgid "html.access.perimeter.button_add_access_point"
+msgstr "اضافة نقطة الوصول"
+
+#: app/intercom/views/access/perimeter/edit.html:9
+msgid "html.access.perimeter.button_add_child_perimeter"
+msgstr "Add child perimeter"
+
+#: app/intercom/views/access/perimeter/form.html:9
+msgid "html.access.perimeter.form.description"
+msgstr "الوصف"
+
+#: app/intercom/views/access/perimeter/form.html:4
+msgid "html.access.perimeter.form.display_name"
+msgstr "الاسم"
+
+#: app/intercom/views/access/perimeter/form.html:17
+msgid "html.access.perimeter.restrictPassPermanentKeys"
+msgstr "منع نقل المفتاح الرئيسي"
+
+#: app/intercom/views/access/perimeter/form.html:24
+msgid "html.access.perimeter.restrictPassTemporaryKeys"
+msgstr "منع نقل المفتاح المؤقت"
+
+#: app/intercom/views/access/point/add.html:7
+msgid "html.access.point.add_title"
+msgstr "اضافة"
+
+#: app/intercom/views/access/point/change_lock_id_form.html:6
+msgid "html.access.point.change_lock_title"
+msgstr "Change lock"
+
+#: app/intercom/views/access/point/edit.html:15
+msgid "html.access.point.form.base_title"
+msgstr "نقاط الوصول"
+
+#: app/intercom/views/access/point/form.html:14
+msgid "html.access.point.form.description"
+msgstr "الوصف"
+
+#: app/intercom/views/access/point/form.html:9
+msgid "html.access.point.form.display_name"
+msgstr "الاسم"
+
+#: app/intercom/views/access/point/form.html:30
+msgid "html.access.point.form.elevator"
+msgstr "مصعد"
+
+#: app/intercom/views/access/point/form.html:35
+msgid "html.access.point.form.lockPhoneNumber"
+msgstr "رقم قفل الهاتف"
+
+#: app/intercom/views/access/point/form.html:4
+msgid "html.access.point.form.lock_id"
+msgstr "معرف القفل"
+
+#: app/intercom/views/access/point/edit.html:26
+msgid "html.access.point.form.new_lock_id_display"
+msgstr "معرف القفل الجديد"
+
+#: app/intercom/views/access/point/edit.html:19
+msgid "html.access.point.form.replace_title"
+msgstr "استبدال"
+
+#: app/intercom/views/access/point/edit.html:17
+msgid "html.access.point.form.settings_title"
+msgstr "الضبط"
+
+#: app/intercom/views/access/point/form.html:40
+msgid "html.access.point.form.simCardPaymentTo"
+msgstr "Sim-card paid up to"
+
+#: app/intercom/views/access/point/form.html:19
+msgid "html.access.point.form.type"
+msgstr "النوع"
+
+#: app/intercom/views/access/point/change_lock_id_form.html:13
+msgid "html.access.point.new_lock_id_display"
+msgstr "معرف القفل الجديد"
+
+#: app/intercom/views/access/point/form.html:21
+msgid "html.access.point.type_default"
+msgstr "افتراضي"
+
+#: app/intercom/views/access/point/form.html:22
+msgid "html.access.point.type_entrance"
+msgstr "Entrance"
+
+#: app/intercom/views/access/point/form.html:23
+msgid "html.access.point.type_exit"
+msgstr "Exit"
+
+#: app/intercom/views/access/base.html:38
+msgid "html.access.title"
+msgstr "الوصول"
+
+#: app/intercom/views/access_right/list.html:16
+msgid "html.access_right.address"
+msgstr "الموقع"
+
+#: app/intercom/views/access_right/list.html:19
+msgid "html.access_right.carModel"
+msgstr "طراز السياره"
+
+#: app/intercom/views/access_right/list.html:20
+msgid "html.access_right.carNumber"
+msgstr "رقم السياره"
+
+#: app/intercom/views/access_right/list.html:17
+msgid "html.access_right.from"
+msgstr "من"
+
+#: app/intercom/views/access_right/list.html:2
+msgid "html.access_right.list_title"
+msgstr "حقوق الوصول"
+
+#: app/intercom/views/access_right/list.html:15
+msgid "html.access_right.owner"
+msgstr "المالك"
+
+#: app/intercom/views/access_right/list.html:14
+msgid "html.access_right.perimeterPath"
+msgstr "محيط"
+
+#: app/intercom/views/access_right/list.html:18
+msgid "html.access_right.till"
+msgstr "الى"
+
+#: app/intercom/views/access_right/list.html:13
+msgid "html.access_right.type"
+msgstr "النوع"
+
+#: app/intercom/views/access_right/list.html:11
+msgid "html.access_right.userDisplayName"
+msgstr "المستخدم"
+
+#: app/intercom/views/access_right/list.html:12
+msgid "html.access_right.userPhoneNumber"
+msgstr "الهاتف"
+
+#: app/intercom/views/_messages.html:2
+msgid "html.account.account_type_administrator"
+msgstr "Administrator"
+
+#: app/intercom/views/_messages.html:3
+msgid "html.account.account_type_support"
+msgstr "الدعم"
+
+#: app/intercom/views/account/profile.html:2
+msgid "html.account.account_update_display"
+msgstr "الضبط - > ضبط الحساب"
+
+#: app/intercom/views/account/form.html:38
+msgid "html.account.add_phone_title"
+msgstr "جديد"
+
+#: app/intercom/views/account/form.html:11
+msgid "html.account.address_display"
+msgstr "الموقع"
+
+#: app/intercom/views/account/form_admins.html:3
+msgid "html.account.admins_title"
+msgstr "المشرفون"
+
+#: app/intercom/views/account/change_password.html:2
+msgid "html.account.change_password_title"
+msgstr "تغيير كلمة المرور"
+
+#: app/intercom/views/account/form.html:59
+msgid "html.account.email_display"
+msgstr "البربد الالكتروني"
+
+#: app/intercom/views/account/form.html:43
+msgid "html.account.fio_display"
+msgstr "الاسم"
+
+#: app/intercom/views/account/form.html:16
+msgid "html.account.inn_display"
+msgstr "INN"
+
+#: app/intercom/views/account/form.html:65
+msgid "html.account.keys"
+msgstr "المفاتيح"
+
+#: app/intercom/views/account/form.html:69
+msgid "html.account.keys.available"
+msgstr "متاح"
+
+#: app/intercom/views/account/form.html:89
+msgid "html.account.keys.remain"
+msgstr "المتبقي"
+
+#: app/intercom/views/account/form.html:79
+msgid "html.account.keys.used"
+msgstr "الاستخدام"
+
+#: app/intercom/views/account/form.html:6
+msgid "html.account.name_display"
+msgstr "الاسم"
+
+#: app/intercom/views/account/change_password.html:15
+#: app/intercom/views/auth/mobile_reset_password.html:8
+msgid "html.account.new_password_display"
+msgstr "كلمة المرور الجديدة"
+
+#: app/intercom/views/account/change_password.html:10
+msgid "html.account.old_password_display"
+msgstr "كلمة المرور القديمة"
+
+#: app/intercom/views/auth/mobile_reset_password.html:12
+msgid "html.auth.confirm_new_password"
+msgstr "Confirm new password"
+
+#: app/intercom/views/account/form.html:50
+#: app/intercom/views/payments/list.html:11
+msgid "html.account.phone_display"
+msgstr "الهاتف"
+
+#: app/intercom/views/account/form.html:20
+msgid "html.account.phones_display"
+msgstr "الهاتف"
+
+#: app/intercom/views/account/form.html:24
+msgid "html.account.region_display"
+msgstr "منطقة"
+
+#: app/intercom/views/account/form.html:40
+msgid "html.account.support"
+msgstr "الدعم"
+
+#: app/intercom/views/address/list.html:7
+msgid "html.address.add_title"
+msgstr "اضافة"
+
+#: app/intercom/views/address/list.html:2
+msgid "html.address.list_title"
+msgstr "العناوين"
+
+#: app/intercom/views/address/form.html:4
+#: app/intercom/views/address/list.html:14
+msgid "html.address.name_display"
+msgstr "الاسم"
+
+#: app/intercom/views/address/create.html:2
+msgid "html.address.new_title"
+msgstr "جديد"
+
+#: app/intercom/views/auth/activate_account.html:10
+msgid "html.auth.activate_account_action"
+msgstr "تفعيل حساب"
+
+#: app/intercom/views/auth/activate_account.html:3
+msgid "html.auth.activate_account_title"
+msgstr "تفعيل حساب"
+
+#: app/intercom/views/auth/confirm_password_reset.html:10
+#: app/intercom/views/auth/confirm_password_reset_web.html:12
+#: app/intercom/views/auth/mobile_reset_password.html:16
+msgid "html.auth.change_password_action"
+msgstr "تغيير كلمة المرور"
+
+#: app/intercom/views/auth/confirm_password_reset.html:3
+#: app/intercom/views/auth/confirm_password_reset_web.html:3
+#: app/intercom/views/auth/mobile_reset_password.html:3
+msgid "html.auth.change_password_title"
+msgstr "تغيير كلمة المرور"
+
+#: app/intercom/views/_messages.html:15
+msgid "html.auth.email_confirm_title"
+msgstr "تأكيد عنوان البريد الإلكتروني"
+
+#: app/intercom/views/_messages.html:17
+msgid "html.auth.email_confirmed_title"
+msgstr "تم تأكيد"
+
+#: app/intercom/views/auth/login.html:16
+msgid "html.auth.login_action"
+msgstr "دخول"
+
+#: app/intercom/views/auth/login.html:6
+#: app/intercom/views/auth/restore_password.html:8
+msgid "html.auth.login_display"
+msgstr "الحساب"
+
+#: app/intercom/views/auth/login.html:3
+#: app/intercom/views/auth/restore_password.html:20
+msgid "html.auth.login_title"
+msgstr "تسجيل الدخول"
+
+#: app/intercom/views/_messages.html:18
+msgid "html.auth.new_password_title"
+msgstr "تغير كلمة المرور الخاصة بك"
+
+#: app/intercom/views/_messages.html:19
+msgid "html.auth.password_change_action"
+msgstr "تغير"
+
+#: app/intercom/views/auth/confirm_password_reset_web.html:17
+msgid "html.auth.password_changes"
+msgstr "تم تغيير كلمة المرور"
+
+#: app/intercom/views/auth/activate_account.html:6
+#: app/intercom/views/auth/confirm_password_reset.html:6
+#: app/intercom/views/auth/confirm_password_reset_web.html:8
+#: app/intercom/views/auth/login.html:11
+msgid "html.auth.password_display"
+msgstr "الرقم السري"
+
+#: app/intercom/views/auth/restore_password.html:19
+msgid "html.auth.restore_password_success_text"
+msgstr "تم إرسال تعليمات استعادة كلمة المرور إلى بريدك الإلكتروني"
+
+#: app/intercom/views/auth/login.html:17
+#: app/intercom/views/auth/restore_password.html:3
+msgid "html.auth.restore_password_title"
+msgstr "نسيت كلمة المرور؟"
+
+#: app/intercom/views/auth/login.html:29
+msgid "html.auth.search_company_placeholder"
+msgstr "ابحث عن الاسم أو العنوان أو رقم الهاتف أو البريد الإلكتروني"
+
+#: app/intercom/views/auth/login.html:22
+msgid "html.auth.select_company"
+msgstr "اختر شركة"
+
+#: app/intercom/views/_messages.html:16
+#: app/intercom/views/auth/confirm_password_reset_web.html:15
+#: app/intercom/views/auth/mobile_reset_password.html:19
+msgid "html.auth.wrong_url"
+msgstr "رابط خطأ"
+
+#: app/intercom/views/control_panel_user/form.html:17
+msgid "html.control_panel_user.form.access_point_ids"
+msgstr "نقطة الدخول"
+
+#: app/intercom/views/control_panel_user/form.html:4
+msgid "html.control_panel_user.form.display_name"
+msgstr "الاسم"
+
+#: app/intercom/views/control_panel_user/form.html:11
+msgid "html.control_panel_user.form.password"
+msgstr "الرقم السري"
+
+#: app/intercom/views/control_panel_user/list.html:16
+msgid "html.control_panel_user.list.accessPointDisplayNames"
+msgstr "نقطة الدخول"
+
+#: app/intercom/views/control_panel_user/list.html:15
+msgid "html.control_panel_user.list.displayName"
+msgstr "الاسم"
+
+#: app/intercom/views/control_panel_user/list.html:14
+msgid "html.control_panel_user.list.login"
+msgstr "دخول "
+
+#: app/intercom/views/control_panel_user/list.html:2
+msgid "html.control_panel_user.list_title"
+msgstr "قائمة"
+
+#: app/intercom/views/control_panel_user/create.html:2
+msgid "html.control_panel_user.new_title"
+msgstr "جديد"
+
+#: app/intercom/views/abonent/create.html:13
+#: app/intercom/views/abonent/form.html:106
+#: app/intercom/views/abonent/form.html:211
+#: app/intercom/views/abonent/form.html:287
+#: app/intercom/views/access/object/add.html:15
+#: app/intercom/views/access/object/form.html:52
+#: app/intercom/views/access/perimeter/add.html:16
+#: app/intercom/views/access/point/add.html:16
+#: app/intercom/views/account/form_admins.html:38
+#: app/intercom/views/address/create.html:13
+#: app/intercom/views/control_panel_user/create.html:13
+#: app/intercom/views/control_panel_user/list.html:7
+#: app/intercom/views/device/create.html:13
+#: app/intercom/views/tariff/create.html:13
+msgid "html.defaults.add_title"
+msgstr "جديد"
+
+#: app/intercom/views/auth/restore_password.html:13
+msgid "html.defaults.back_title"
+msgstr "عودة"
+
+#: app/intercom/views/access/object/add.html:16
+#: app/intercom/views/access/object/edit.html:20
+#: app/intercom/views/access/perimeter/add.html:17
+#: app/intercom/views/access/perimeter/edit.html:23
+#: app/intercom/views/access/point/add.html:17
+#: app/intercom/views/access/point/edit.html:42
+msgid "html.defaults.cancel_title"
+msgstr "اغلاق"
+
+#: app/intercom/views/abonent/form.html:197
+#: app/intercom/views/abonent/form.html:244
+msgid "html.defaults.change_title"
+msgstr "تغير"
+
+#: app/intercom/views/auth/restore_password.html:14
+msgid "html.defaults.continue_title"
+msgstr "استمر"
+
+#: app/intercom/views/access/point/form_default_key_settings.html:58
+#: app/intercom/views/access/point/form_default_key_settings.html:7
+msgid "html.defaults.default_title"
+msgstr "افتراضي"
+
+#: app/intercom/views/access/point/form_default_key_settings.html:18
+#: app/intercom/views/access/point/form_default_key_settings.html:69
+#: app/intercom/views/access/point/form_key_usage.html:25
+#: app/intercom/views/access/point/form_key_usage.html:42
+#: app/intercom/views/payments/list.html:35
+msgid "html.defaults.from_title"
+msgstr "من "
+
+#: app/intercom/views/abonent/list.html:51
+#: app/intercom/views/access_right/list.html:57
+#: app/intercom/views/journal/list.html:121
+#: app/intercom/views/payments/list.html:94
+msgid "html.defaults.load_more"
+msgstr "تحميل المزيد"
+
+#: app/intercom/views/abonent/detail.html:4
+#: app/intercom/views/access/object/form.html:18
+#: app/intercom/views/access/object/form.html:48
+#: app/intercom/views/access/perimeter/edit.html:13
+#: app/intercom/views/access/point/edit.html:8
+#: app/intercom/views/control_panel_user/detail.html:4
+#: app/intercom/views/device/detail.html:6
+msgid "html.defaults.remove_title"
+msgstr "حذف"
+
+#: app/intercom/views/journal/list.html:53
+msgid "html.defaults.reset_title"
+msgstr "اعادة تعيين"
+
+#: app/intercom/views/access/object/edit.html:19
+#: app/intercom/views/access/perimeter/edit.html:22
+#: app/intercom/views/access/point/change_lock_id_form.html:19
+#: app/intercom/views/access/point/edit.html:32
+#: app/intercom/views/access/point/edit.html:41
+#: app/intercom/views/access/point/edit.html:52
+#: app/intercom/views/account/change_password.html:21
+#: app/intercom/views/account/form.html:101
+#: app/intercom/views/account/form_admins.html:46
+#: app/intercom/views/address/detail.html:14
+#: app/intercom/views/control_panel_user/detail.html:16
+#: app/intercom/views/tariff/detail.html:25
+msgid "html.defaults.save_title"
+msgstr "حفظ"
+
+#: app/intercom/views/address/list.html:18
+msgid "html.defaults.search"
+msgstr "بحث"
+
+#: app/intercom/views/access/point/form_default_key_settings.html:29
+#: app/intercom/views/access/point/form_default_key_settings.html:79
+#: app/intercom/views/access/point/form_key_usage.html:31
+#: app/intercom/views/access/point/form_key_usage.html:48
+#: app/intercom/views/payments/list.html:50
+msgid "html.defaults.to_title"
+msgstr "الى"
+
+#: app/intercom/views/abonent/detail.html:16
+#: app/intercom/views/device/detail.html:18
+msgid "html.defaults.update_title"
+msgstr "تطبيق"
+
+#: app/intercom/views/device/list.html:7
+msgid "html.device.add_title"
+msgstr "جديد"
+
+#: app/intercom/views/device/list.html:17
+msgid "html.device.comment"
+msgstr "ملاحظات"
+
+#: app/intercom/views/device/detail.html:3
+msgid "html.device.detail_title"
+msgstr "نقاط الوصول"
+
+#: app/intercom/views/device/form.html:11
+msgid "html.device.form.comment"
+msgstr "ملاحظات"
+
+#: app/intercom/views/device/form.html:5
+msgid "html.device.form.lock_id"
+msgstr "معرف القفل"
+
+#: app/intercom/views/device/list.html:16
+msgid "html.device.installingDate"
+msgstr "موقع التركيب"
+
+#: app/intercom/views/device/list.html:14
+msgid "html.device.installingPlace"
+msgstr "موقع التركيب"
+
+#: app/intercom/views/access/point/form_default_key_settings.html:53
+#: app/intercom/views/access/point/form_key_usage.html:37
+msgid "html.device.key_usage_settings_form.active_distance_title"
+msgstr "المسافة"
+
+#: app/intercom/views/access/point/form_key_usage.html:7
+msgid "html.device.key_usage_settings_form.auto_open_title"
+msgstr "الفتح التلقائي مسموح به"
+
+#: app/intercom/views/access/point/form_default_key_settings.html:94
+msgid "html.device.key_usage_settings_form.auto_open_title_2"
+msgstr "يتم تمكين الفتح التلقائي افتراضيًا في مفتاح المستخدم"
+
+#: app/intercom/views/access/point/form_default_key_settings.html:107
+#: app/intercom/views/access/point/form_key_usage.html:15
+msgid "html.device.key_usage_settings_form.keep_opened_title"
+msgstr "يُسمح بالبقاء مفتوحًا أثناء العمل"
+
+#: app/intercom/views/access/point/form_default_key_settings.html:2
+#: app/intercom/views/access/point/form_key_usage.html:20
+msgid "html.device.key_usage_settings_form.opened_time_title"
+msgstr "وقت الفتح"
+
+#: app/intercom/views/device/list.html:13
+msgid "html.device.lockId"
+msgstr "معرف القفل"
+
+#: app/intercom/views/device/list.html:15
+msgid "html.device.lockPhoneNumber"
+msgstr "رقم قفل الهاتف"
+
+#: app/intercom/views/device/create.html:2
+msgid "html.device.new_title"
+msgstr "جديد"
+
+#: app/intercom/views/access/point/form_default_key_settings.html:100
+msgid "html.device.settings_form.autoClose"
+msgstr "يتم تمكين الإغلاق التلقائي بشكل افتراضي في مفتاح المستخدم"
+
+#: app/intercom/views/access/point/form_default_key_settings.html:45
+msgid "html.device.settings_form.autoOpen"
+msgstr "الفتح التلقائي مسموح به"
+
+#: app/intercom/views/_messages.html:12
+#: app/intercom/views/access/point/form_default_key_settings.html:127
+msgid "html.device.settings_form.gesture_useMethod1"
+msgstr "يتم تمكينه افتراضيًا في مفتاح المستخدم Nod"
+
+#: app/intercom/views/_messages.html:13
+#: app/intercom/views/access/point/form_default_key_settings.html:133
+msgid "html.device.settings_form.gesture_useMethod2"
+msgstr "يتم تمكين تويست افتراضيًا في مفتاح المستخدم"
+
+#: app/intercom/views/access/point/form_default_key_settings.html:123
+msgid "html.device.settings_form.gestures_title"
+msgstr "إيماءات"
+
+#: app/intercom/views/access/point/form_default_key_settings.html:114
+msgid "html.device.settings_form.keepOpenedWhileStayingNear"
+msgstr "يتم تمكين الوظيفة افتراضيًا في مفتاح المستخدم"
+
+#: app/intercom/views/access/point/form_default_key_settings.html:182
+msgid "html.device.settings_form.transport_gsm"
+msgstr "السماح بالفتح من المكالمة"
+
+#: app/intercom/views/access/point/form_default_key_settings.html:185
+msgid "html.device.settings_form.transport_gsm_phone"
+msgstr "رقم الهاتف"
+
+#: app/intercom/views/access/point/form_default_key_settings.html:142
+msgid "html.device.settings_form.transport_internet"
+msgstr "السماح بالفتح من الإنترنت"
+
+#: app/intercom/views/access/point/form_default_key_settings.html:145
+msgid "html.device.settings_form.transport_internet_geo"
+msgstr "قيود الموقع الجغرافي"
+
+#: app/intercom/views/access/point/form_default_key_settings.html:151
+msgid "html.device.settings_form.transport_internet_radius"
+msgstr "قطر"
+
+#: app/intercom/views/access/point/form_default_key_settings.html:160
+msgid "html.device.settings_form.transport_internet_x"
+msgstr "خط طول"
+
+#: app/intercom/views/access/point/form_default_key_settings.html:169
+msgid "html.device.settings_form.transport_internet_y"
+msgstr "خط عرض"
+
+#: app/intercom/views/journal/list.html:18
+msgid "html.journal.access_point_display"
+msgstr "نقاط الوصول"
+
+#: app/intercom/views/journal/list.html:16
+msgid "html.journal.card_id"
+msgstr "بطاقة الهوية"
+
+#: app/intercom/views/journal/list.html:12
+msgid "html.journal.date_and_time_display"
+msgstr "التاريخ والوقت"
+
+#: app/intercom/views/abonent/form.html:251
+#: app/intercom/views/journal/list.html:26
+#: app/intercom/views/payment/list.html:18
+msgid "html.journal.date_from_display"
+msgstr "من تاريخ"
+
+#: app/intercom/views/abonent/form.html:266
+#: app/intercom/views/journal/list.html:42
+#: app/intercom/views/payment/list.html:35
+msgid "html.journal.date_to_display"
+msgstr "الى تاريخ"
+
+#: app/intercom/views/journal/working-time-table.html:10
+msgid "html.journal.entryTime"
+msgstr "وقت دخول"
+
+#: app/intercom/views/journal/working-time-table.html:11
+msgid "html.journal.exitTime"
+msgstr "وقت الخروج"
+
+#: app/intercom/views/journal/working-time-table.html:2
+msgid "html.journal.getCSV"
+msgstr "تحميل"
+
+#: app/intercom/views/journal/working-time-table.html:12
+msgid "html.journal.workTime"
+msgstr "وقت العمل"
+
+#: app/intercom/views/journal/working-time.html:132
+msgid "html.journal.getReport"
+msgstr "احصل على تقرير"
+
+#: app/intercom/views/journal/working-time.html:125
+msgid "html.journal.groupByDays"
+msgstr "تجميع حسب الأيام"
+
+#: app/intercom/views/journal/working-time.html:133
+msgid "html.journal.resetFilter"
+msgstr "اعادة تعيين"
+
+#: app/intercom/views/journal/list.html:3
+msgid "html.journal.reports"
+msgstr "التقارير"
+
+#: app/intercom/views/journal/working-time-table.html:8
+msgid "html.journal.date"
+msgstr "تاريخ"
+
+#: app/intercom/views/journal/list.html:3
+msgid "html.journal.list_title"
+msgstr "سجلات الوصول"
+
+#: app/intercom/views/journal/list.html:14
+msgid "html.journal.phone_number_display"
+msgstr "رقم الهاتف"
+
+#: app/intercom/views/journal/list.html:13
+msgid "html.journal.user_display"
+msgstr "المستخدم"
+
+#: app/intercom/views/inc/sidebar.html:16
+msgid "html.menu.abonents"
+msgstr "المستخدمون"
+
+#: app/intercom/views/inc/sidebar.html:28
+msgid "html.menu.access_points"
+msgstr "مناطق التحكم في الوصول"
+
+#: app/intercom/views/inc/sidebar.html:64
+msgid "html.menu.access_right"
+msgstr "حقوق الوصول"
+
+#: app/intercom/views/inc/sidebar.html:40
+msgid "html.menu.addresses"
+msgstr "العناوين"
+
+#: app/intercom/views/inc/sidebar.html:58
+msgid "html.menu.control_panel_users"
+msgstr "مستخدمي اللوحة"
+
+#: app/intercom/views/device/list.html:2 app/intercom/views/inc/sidebar.html:34
+msgid "html.menu.devices"
+msgstr "الاجهزة"
+
+#: app/intercom/views/inc/sidebar.html:52
+msgid "html.menu.journal"
+msgstr "سجلات الوصول"
+
+#: app/intercom/views/inc/sidebar.html:70
+#: app/intercom/views/payments/list.html:2
+msgid "html.menu.payments"
+msgstr "الفواتي"
+
+#: app/intercom/views/inc/sidebar.html:22
+msgid "html.menu.tariffs"
+msgstr "سعر الخطة"
+
+#: app/intercom/views/payment/list.html:8
+msgid "html.payment.label_access_object"
+msgstr "كائن الوصول"
+
+#: app/intercom/views/payment/list.html:13
+msgid "html.payment.label_period"
+msgstr "فترة"
+
+#: app/intercom/views/payment/list.html:2
+msgid "html.payment.list_title"
+msgstr "الفواتي"
+
+#: app/intercom/views/payment/list.html:52
+msgid "html.payment.submit_title"
+msgstr "إرسال"
+
+#: app/intercom/views/payments/list.html:10
+msgid "html.payments.abonent"
+msgstr "أبونينت"
+
+#: app/intercom/views/payments/list.html:15
+msgid "html.payments.amount"
+msgstr "المبلغ"
+
+#: app/intercom/views/payments/list.html:14
+msgid "html.payments.key_period_till"
+msgstr "الفترة حتى"
+
+#: app/intercom/views/payments/list.html:13
+msgid "html.payments.payment_date"
+msgstr "تاريخ الدفع"
+
+#: app/intercom/views/payments/list.html:16
+msgid "html.payments.payment_type"
+msgstr "نوع الدفع"
+
+#: app/intercom/views/payments/list.html:12
+msgid "html.payments.perimeter_name"
+msgstr "اسم المحيط"
+
+#: app/intercom/views/_messages.html:20
+#: app/intercom/views/auth/mobile_reset_password.html:21
+msgid "html.site.password_changed"
+msgstr "تم تغيير كلمة المرور"
+
+#: app/intercom/views/tariff/list.html:7
+msgid "html.tariff.add_title"
+msgstr "جديد"
+
+#: app/intercom/views/tariff/detail.html:3
+msgid "html.tariff.detail_title"
+msgstr "سعر الخطة"
+
+#: app/intercom/views/tariff/form.html:53
+msgid "html.tariff.extra_key_price"
+msgstr "سعر الخدمة للمفتاح الإضافي"
+
+#: app/intercom/views/tariff/form.html:9
+msgid "html.tariff.keys_display"
+msgstr "عدد المفاتيح المضمنة"
+
+#: app/intercom/views/tariff/form.html:22
+#: app/intercom/views/tariff/form.html:30
+msgid "html.tariff.keys_type"
+msgstr "نوع المفتاح"
+
+#: app/intercom/views/tariff/list.html:2
+msgid "html.tariff.list_title"
+msgstr "سعر الخطة"
+
+#: app/intercom/views/tariff/form.html:4
+msgid "html.tariff.name_display"
+msgstr "الاسم"
+
+#: app/intercom/views/tariff/create.html:2
+msgid "html.tariff.new_title"
+msgstr "جديد"
+
+#: app/intercom/views/tariff/form.html:42
+msgid "html.tariff.packet_price"
+msgstr "سعر الخدمة"
+
+#: app/intercom/views/_messages.html:5
+msgid "html.tariff.period_monthly"
+msgstr "الدفع الشهري"
+
+#: app/intercom/views/_messages.html:6
+msgid "html.tariff.period_yearly"
+msgstr "السعر السنوي"
+
+#: app/intercom/views/tariff/list.html:14
+msgid "html.tariff.price_month_display"
+msgstr "شهري "
+
+#: app/intercom/views/tariff/list.html:15
+msgid "html.tariff.price_year_display"
+msgstr "سنوي"
+
+#: app/intercom/views/tariff/detail.html:12
+msgid "html.tariff.tariff_apply_button"
+msgstr "تطبيق"
+
+#: app/intercom/views/tariff/detail.html:10
+msgid "html.tariff.tariff_apply_message"
+msgstr "انتباه! سيتلقى جميع المستخدمين التحديث."
+
+#: app/intercom/views/tariff/list.html:13
+msgid "html.tariff.tariff_display"
+msgstr "سعر الخطة"
+
+#: app/intercom/views/tariff/detail.html:6
+msgid "html.tariff.tariff_rollback"
+msgstr "خطة تسعير التراجع"
+
+#: app/intercom/views/_messages.html:10
+msgid "html.tariff.tariff_type_access"
+msgstr "الوصول"
+
+#: app/intercom/views/_messages.html:9
+msgid "html.tariff.tariff_type_serviceCompany"
+msgstr "خدمة الشركات"
+
+#: app/intercom/views/tariff/form.html:36
+msgid "html.tariff.tariffs_display"
+msgstr "سعر الخطة"
+
+#: app/intercom/views/tariff/form.html:14
+msgid "html.tariff.trial_period_display"
+msgstr "تجريبي"
+
+#: app/intercom/views/_messages.html:7
+msgid "html.tariff.trial_type_disabled"
+msgstr "تعطيل"
+
+#: app/intercom/views/_messages.html:8
+msgid "html.tariff.trial_type_tillTheEndOfNextMonth"
+msgstr "حتى نهاية الشهر"
+
+#: app/intercom/views/inc/toolbar.html:30
+msgid "html.toolbar.change_password"
+msgstr "تغيير كلمة المرور"
+
+#: app/intercom/views/inc/toolbar.html:5
+msgid "html.toolbar.keys.remain"
+msgstr "المفاتيح المتبقية"
+
+#: app/intercom/views/inc/toolbar.html:33
+msgid "html.toolbar.logout"
+msgstr "تسجيل الخروج"
+
+#: app/intercom/views/inc/toolbar.html:28
+msgid "html.toolbar.settings"
+msgstr "الضبط"
+
+#: app/intercom/controllers/AddressControllers.js:15
+msgid "notify.addresses.created"
+msgstr "إنشاء"
+
+#: app/intercom/controllers/AddressControllers.js:35
+msgid "notify.addresses.updated"
+msgstr "تحديث"
+
+#: app/intercom/controllers/ControlPanelUserControllers.js:31
+msgid "notify.defaults.are_you_sure"
+msgstr "هل أنت واثق؟"
+
+#: app/intercom/app.js:82
+msgid "notify.defaults.changes_will_not_be_saved"
+msgstr "لن يتم حفظ التغييرات التي أجريتها. هل تريد الانتقال إلى صفحة أخرى؟"
+
+#: app/intercom/controllers/ControlPanelUserControllers.js:52
+msgid "notify.defaults.created"
+msgstr "إنشاء"
+
+#: app/intercom/controllers/ControlPanelUserControllers.js:34
+msgid "notify.defaults.removed"
+msgstr "إزالة"
+
+#: app/intercom/controllers/ControlPanelUserControllers.js:23
+msgid "notify.defaults.updated"
+msgstr "تحديث"
+
+#: app/intercom/controllers/TariffControllers.js:62
+msgid "tariffs.tariff_applied"
+msgstr "تطبيق"
+
+#: app/intercom/controllers/TariffControllers.js:73
+msgid "tariffs.tariff_rollbacked"
+msgstr "مراجعة"
+
+#: app/intercom/controllers/TariffControllers.js:51
+msgid "tariffs.tariff_updated"
+msgstr "تحديث"
+
+#: app/intercom/views/modals/keys.html:9
+msgid "html.modals.keys_message"
+msgstr "لطلب مفاتيح إضافية ، يمكنك أن تأخذ هذا البريد الإلكتروني"
+
+#: app/intercom/views/modals/keys.html:10
+msgid "html.modals.keys_message_phone"
+msgstr "or phone"
+
+#: app/intercom/views/modals/keys.html:4
+msgid "html.modals.keys_title"
+msgstr "المفاتيح المتبقية"
+
+#: app/intercom/views/tariff/form.html:39
+msgid "{{ 'html.tariff.period_' + tariff_period.type | translate }}"
+msgstr ""
+
+#: app/intercom/views/auth/login.html:22
+msgid "Выберите управляющую компанию"
+msgstr ""
+
+#: app/intercom/controllers/AccountControllers.js:23
+msgid "Удален"
+msgstr ""
+
+#: app/intercom/controllers/RolesControllers.js:22
+#: app/intercom/controllers/RolesControllers.js:55
+msgid "html.roles.accessJournal_title"
+msgstr "سجلات الوصول"
+
+#: app/intercom/controllers/RolesControllers.js:24
+#: app/intercom/controllers/RolesControllers.js:57
+msgid "html.roles.accessRight_title"
+msgstr "حقوق الوصول"
+
+#: app/intercom/views/roles/list.html:8
+msgid "html.roles.addRole"
+msgstr "أضف دورًا"
+
+#: app/intercom/controllers/RolesControllers.js:21
+#: app/intercom/controllers/RolesControllers.js:54
+msgid "html.roles.address_title"
+msgstr "عناوين"
+
+#: app/intercom/controllers/RolesControllers.js:16
+#: app/intercom/controllers/RolesControllers.js:49
+msgid "html.roles.admins_title"
+msgstr "إعدادت الحساب"
+
+#: app/intercom/controllers/RolesControllers.js:23
+#: app/intercom/controllers/RolesControllers.js:56
+msgid "html.roles.controlPanel_title"
+msgstr "مستخدمي اللوحة"
+
+#: app/intercom/views/roles/create.html:2
+msgid "html.roles.createRole"
+msgstr "خلق دور"
+
+#: app/intercom/controllers/RolesControllers.js:97
+msgid "html.roles.deleteRolesConfirm"
+msgstr "هل أنت متأكد ، تريد حذف هذا الدور؟"
+
+#: app/intercom/controllers/RolesControllers.js:99
+msgid "html.roles.deleteRolesSuccess"
+msgstr "تم حذف الدور"
+
+#: app/intercom/views/roles/edit.html:2
+msgid "html.roles.editRole"
+msgstr "تحرير الدور"
+
+#: app/intercom/controllers/RolesControllers.js:25
+#: app/intercom/controllers/RolesControllers.js:58
+msgid "html.roles.payment_title"
+msgstr "المدفوعات"
+
+#: app/intercom/views/roles/form.html:16
+msgid "html.roles.rightsTitle"
+msgstr "حقوق"
+
+#: app/intercom/views/roles/list.html:17
+msgid "html.roles.roleChangeDate"
+msgstr "تاريخ التغيي"
+
+#: app/intercom/views/roles/list.html:16
+msgid "html.roles.roleComment"
+msgstr "تعليق"
+
+#: app/intercom/views/roles/list.html:15
+msgid "html.roles.roleName"
+msgstr "اسم"
+
+#: app/intercom/views/roles/list.html:2
+msgid "html.roles.roles"
+msgstr "أدوار النظام"
+
+#: app/intercom/controllers/RolesControllers.js:26
+#: app/intercom/controllers/RolesControllers.js:59
+#: app/intercom/views/inc/sidebar.html:76
+msgid "html.roles.roles_title"
+msgstr "الأدوار"
+
+#: app/intercom/controllers/RolesControllers.js:20
+#: app/intercom/controllers/RolesControllers.js:53
+msgid "html.roles.rossetaLock_title"
+msgstr "الأجهزة"
+
+#: app/intercom/controllers/RolesControllers.js:18
+#: app/intercom/controllers/RolesControllers.js:51
+msgid "html.roles.tariff_title"
+msgstr "التعريفات"
+
+#: app/intercom/controllers/RolesControllers.js:17
+#: app/intercom/controllers/RolesControllers.js:50
+msgid "html.roles.users_title"
+msgstr "المستخدمون"
+
+#: app/intercom/controllers/RolesControllers.js:19
+#: app/intercom/controllers/RolesControllers.js:52
+msgid "html.roles.zones_title"
+msgstr "مناطق التحكم في الوصول"
+
+#~ msgid "html.tariff.tariff_apply"
+#~ msgstr "Apply pricing plan"
+
+#~ msgid "html.tariff.tariff_notified_abonents"
+#~ msgstr "Notify all users"
+
+#~ msgid "html.payments.key"
+#~ msgstr "Key"
+
+#~ msgid "html.payments.list_title"
+#~ msgstr "Paymenys"
+
+#~ msgid "html.device.list_title"
+#~ msgstr "مناطق التحكم في الوصول"
+
+#~ msgid "html.device.settings_form.fakeSetting"
+#~ msgstr "Tap is allowed"
+
+#~ msgid "html.device.settings_form.openWhileTooCloseToLock"
+#~ msgstr "يتم تمكين الوظيفة افتراضيًا في مفتاح المستخدم"
+
+#~ msgid "html.device.settings_form.tooCloseToLockDistance"
+#~ msgstr "Sensitivity level"
+
+#~ msgid "buildings.building_delete_confirm"
+#~ msgstr "هل أنت واثق؟"
+
+#~ msgid "buildings.building_deleted"
+#~ msgstr "Building removed successfully"
+
+#~ msgid "buildings.building_updated"
+#~ msgstr "Building updated successfully"
+
+#~ msgid "html.abonent.devices_display"
+#~ msgstr "نقطة الدخول"
+
+#~ msgid "html.account.contacts_display"
+#~ msgstr "Contacts"
+
+#~ msgid "html.building.add_title"
+#~ msgstr "جديد"
+
+#~ msgid "html.building.address_display"
+#~ msgstr "الموقع"
+
+#~ msgid "html.building.detail_title"
+#~ msgstr "بناء"
+
+#~ msgid "html.building.list_title"
+#~ msgstr "Buildings"
+
+#~ msgid "html.building.name_display"
+#~ msgstr "الاسم"
+
+#~ msgid "html.building.new_title"
+#~ msgstr "جديد"
+
+#~ msgid "html.device.address_display"
+#~ msgstr "بناء"
+
+#~ msgid "html.device.lock_id_display"
+#~ msgstr "معرف القفل"
+
+#~ msgid "html.device.name_display"
+#~ msgstr "الاسم"
+
+#~ msgid "html.device.new_lock_id_display"
+#~ msgstr "New lock Id"
+
+#~ msgid "html.device.porch_display"
+#~ msgstr "Entrance number"
+
+#~ msgid "html.device.replace_title"
+#~ msgstr "Change Lock Id"
+
+#~ msgid "html.device.settings_form.title"
+#~ msgstr "Lock settings"
+
+#~ msgid "html.device.tariff_display"
+#~ msgstr "Plan"
+
+#~ msgid "html.menu.buildings"
+#~ msgstr "Buildings"
+
+#~ msgid "html.payment.address_display"
+#~ msgstr "الموقع"
+
+#~ msgid "html.payment.choose_address"
+#~ msgstr "-- Choose address --"
+
+#~ msgid "html.payment.sum_display"
+#~ msgstr "المبلغ"
+
+#~ msgid "html.device.default_key_settings_form.title"
+#~ msgstr "Настройки ключей по умолчанию"
+
+#~ msgid "html.device.key_usage_settings_form.title"
+#~ msgstr "Настройка ограничений"
+
+#~ msgid "html.device.settings_form.activeDistance"
+#~ msgstr "Дистанция"
+
+#~ msgid "html.device.settings_form.keepDoorOpened"
+#~ msgstr "Время открытия"
+
+#~ msgid "html.defaults.replace_title"
+#~ msgstr "Изменить"

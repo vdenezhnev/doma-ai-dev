@@ -33,8 +33,8 @@ app.controller('ClientListCtrl', ['$scope', '$timeout', 'Api', 'settings',
     }
 ]);
 
-app.controller('ClientDetailCtrl', ['$scope', '$timeout', '$state', '$stateParams', 'notify', 'Api', 'settings',
-    function($scope, $timeout, $state, $stateParams, notify, Api, settings) {
+app.controller('ClientDetailCtrl', ['$scope', '$timeout', '$state', '$stateParams', 'notify', 'Api', 'settings', '$filter',
+    function($scope, $timeout, $state, $stateParams, notify, Api, settings, $filter) {
         Api.get(settings.API_URL, {'Action': 'GetUserProfile', 'UserId': $stateParams.id}, function(response) {
             $scope.client = response.data;
         });
@@ -49,7 +49,7 @@ app.controller('ClientDetailCtrl', ['$scope', '$timeout', '$state', '$stateParam
                 'Email': $scope.client.email,
                 'PhoneNumber': $scope.client.phoneNumber
             }, function() {
-                notify('Профиль обновлен');
+                notify($filter('translate')('NOTIFY_PROFILE_UPDATED'));
             });
         };
 
@@ -59,18 +59,18 @@ app.controller('ClientDetailCtrl', ['$scope', '$timeout', '$state', '$stateParam
                 'UserId': $scope.client.id,
                 'NewPassword': Base64.encode($scope.password.value)
             }, function() {
-                notify('Пароль изменен');
+                notify($filter('translate')('NOTIFY_PASSWORD_UPDATED'));
                 $scope.password.value = null;
             });
         };
 
         $scope.delete = function() {
-            if (window.confirm('Вы действительно хотите удалить данного пользователя?')) {
+            if (window.confirm($filter('translate')('NOTIFY_MESSAGE_USER_DELETE_CONFIRM'))) {
                 Api.post(settings.API_URL, {
                     'Action': 'DeleteUser',
                     'UserId': $scope.client.id
                 }, function () {
-                    notify('Пользователь удален');
+                    notify($filter('translate')('NOTIFY_USER_UPDATED'));
                     $state.go('admin.client.list');
                 });
             }
@@ -81,7 +81,7 @@ app.controller('ClientDetailCtrl', ['$scope', '$timeout', '$state', '$stateParam
                 'Action': 'BlockUserPhoneKeys',
                 'UserId': $scope.client.id
             }, function () {
-                notify('Ключи заблокированы');
+                notify($filter('translate')('NOTIFY_KEYS_BLOCKED'));
             });
         };
 
@@ -90,12 +90,12 @@ app.controller('ClientDetailCtrl', ['$scope', '$timeout', '$state', '$stateParam
                 'Action': 'UnblockMobilePhoneKeys',
                 'UserId': $scope.client.id
             }, function () {
-                notify('Ключи раззаблокированы');
+                notify($filter('translate')('NOTIFY_KEYS_UNBLOCKED'));
             });
         };
 
         $scope.deleteKey = function(key) {
-            if (window.confirm('Вы действительно хотите удалить данный ключ?')) {
+            if (window.confirm($filter('translate')('NOTIFY_MESSAGE_KEY_DELETE_CONFIRM'))) {
                 Api.post(settings.API_URL, {
                     'Action': 'DeleteUserKey',
                     'UserId': $scope.client.id,
@@ -107,7 +107,7 @@ app.controller('ClientDetailCtrl', ['$scope', '$timeout', '$state', '$stateParam
                     else {
                         $scope.client.keys.splice(key, 1);
                     }
-                    notify('Ключ удален');
+                    notify($filter('translate')('NOTIFY_KEY_DELETED'));
                 });
             }
         };

@@ -1,0 +1,22 @@
+
+<h3 class="page-title uppercase" translate>html.roles.editRole</h3>
+
+<div class="mb-15"><a ng-click="delete()" ng-disabled="isDefault" class="btn default uppercase" translate>html.defaults.remove_title</a></div>
+
+<div class="row">
+    <div class="col-md-12">
+        <form name="RolesForm">
+            <div class="portlet without-title light bordered">
+
+                <div class="portlet-body form">
+
+                    <ng-include src="'app/intercom/views/roles/form.html'"></ng-include>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn blue" validation-submit="RolesForm" ng-disabled="isDefault" ng-click="save()" translate>html.defaults.update_title</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

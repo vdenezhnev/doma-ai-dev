@@ -1,0 +1,26 @@
+
+<div class="form-body row">
+
+    <div class="col-md-4">
+
+        <div class="form-group">
+            <label translate>html.abonent.name_display</label>
+            <input class="form-control" type="text" name="displayName" ng-model="form.name" validator="required" ng-disabled="isDefault">
+        </div>
+
+        <div class="form-group">
+            <label translate>html.abonent.comments_display</label>
+            <textarea class="form-control" type="text" name="comment" ng-model="form.comment" ng-disabled="isDefault"></textarea>
+        </div>
+
+        <h4 translate>html.roles.rightsTitle</h4>
+
+        <div class="form-group" ng-repeat="right in policesList">
+            <label>
+                <input type="checkbox" name="{{right.name}}" ng-model="right.isChecked" ng-disabled="isDefault">
+                <span>{{right.displayName}}</span>
+            </label>
+        </div>
+
+    </div>
+</div>
