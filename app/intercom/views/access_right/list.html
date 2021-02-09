@@ -33,7 +33,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="object in objects track by $index" ng-click="openDetails(object)" class="cursor-pointer">
+                    <tr ng-repeat="object in objects track by $index" ng-click="openDetails(object)" ng-class="{'cursor-pointer': hasAccess('user')}">
                         <td>{{ object.userDisplayName }}</td>
                         <td>{{ object.userPhoneNumber }}</td>
                         <td>{{ object.type }}</td>

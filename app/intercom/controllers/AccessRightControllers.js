@@ -38,7 +38,10 @@ app.controller('AccessRightListCtrl', ['$scope', '$state', 'Abonent', 'AccessRig
         });
 
         $scope.openDetails = function (obj) {
-            // if (obj.owner.match(/^\+\d{8,}$/)) {
+            if (!$scope.hasAccess('user')) {
+                return;
+            }
+
             Abonent.query({skip: 0, take: 20, phoneNumber: obj.userPhoneNumber}, function (response) {
                 if (response.items.length > 0) {
                     var abonent = response.items[0];
