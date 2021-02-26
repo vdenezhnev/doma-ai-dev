@@ -185,5 +185,12 @@ app.constant('LOCALE_EN', {
 
     NOTIFY_MESSAGE_USER_DELETE_CONFIRM: 'Are you sure, you want to delete this user?',
     NOTIFY_MESSAGE_LOCK_DELETE_CONFIRM: 'Are you sure, you want to delete this lock?',
-    NOTIFY_MESSAGE_KEY_DELETE_CONFIRM: 'Are you sure, you want to delete this key?'
+    NOTIFY_MESSAGE_KEY_DELETE_CONFIRM: 'Are you sure, you want to delete this key?',
+
+    KEY_STATUS_none: 'None',
+    KEY_STATUS_sent: 'Sent',
+    KEY_STATUS_approved: 'Approved',
+    KEY_STATUS_rejected: 'Rejected',
+    KEY_STATUS_deleteUser: 'Deleted by user',
+    KEY_STATUS_deleteAdmin: 'Deleted by admin'
 });

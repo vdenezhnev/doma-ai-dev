@@ -185,5 +185,12 @@ app.constant('LOCALE_RU', {
 
     NOTIFY_MESSAGE_USER_DELETE_CONFIRM: 'Вы действительно хотите удалить данного пользователя?',
     NOTIFY_MESSAGE_LOCK_DELETE_CONFIRM: 'Вы действительно хотите удалить данный замок?',
-    NOTIFY_MESSAGE_KEY_DELETE_CONFIRM: 'Вы действительно хотите удалить данный ключ?'
+    NOTIFY_MESSAGE_KEY_DELETE_CONFIRM: 'Вы действительно хотите удалить данный ключ?',
+
+    KEY_STATUS_none: 'Не определён',
+    KEY_STATUS_sent: 'Отправлен',
+    KEY_STATUS_approved: 'Подтверждён',
+    KEY_STATUS_rejected: 'Отклонён',
+    KEY_STATUS_deleteUser: 'Удалён пользователем',
+    KEY_STATUS_deleteAdmin: 'Удалён администратором'
 });

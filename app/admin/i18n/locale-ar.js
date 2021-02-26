@@ -185,5 +185,12 @@ app.constant('LOCALE_AR', {
 
     NOTIFY_MESSAGE_USER_DELETE_CONFIRM: 'هل أنت متأكد أنك تريد حذف هذا المستخدم؟',
     NOTIFY_MESSAGE_LOCK_DELETE_CONFIRM: 'هل أنت متأكد أنك تريد حذف هذا القفل؟',
-    NOTIFY_MESSAGE_KEY_DELETE_CONFIRM: 'هل أنت متأكد أنك تريد حذف هذا المفتاح؟'
+    NOTIFY_MESSAGE_KEY_DELETE_CONFIRM: 'هل أنت متأكد أنك تريد حذف هذا المفتاح؟',
+
+    KEY_STATUS_none: 'None',
+    KEY_STATUS_sent: 'Sent',
+    KEY_STATUS_approved: 'Approved',
+    KEY_STATUS_rejected: 'Rejected',
+    KEY_STATUS_deleteUser: 'Deleted by user',
+    KEY_STATUS_deleteAdmin: 'Deleted by admin'
 });
