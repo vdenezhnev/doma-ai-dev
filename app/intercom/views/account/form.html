@@ -38,7 +38,7 @@
                 <input type="text" class="form-control" name="phoneNumber_{{ $index }}" message-id="phoneNumber_{{ $index }}"
                        ng-model="userData.phoneNumbers[$index]"
                        validator="required,phone"
-                       mask="{'mask': '+99999999999'}">
+                       mask="{'mask': '+99999999999[99]'}">
                 <span class="input-group-btn">
                     <button class="btn btn-default" ng-disabled="$first" ng-click="userData.phoneNumbers.splice($index, 1)">
                         <i class="fa fa-trash"></i></button>
@@ -63,8 +63,8 @@
                     <label translate>html.account.phone_display</label>
                     <input class="form-control" name="userData.support.phoneNumber" type="text"
                            ng-model="userData.support.phoneNumber"
-                           validator="required, phone"
-                           mask="{'mask': '+99999999999'}">
+                           validator="required,phone"
+                           mask="{'mask': '+99999999999[99]'}">
                 </div>
             </div>
             <div class="col-md-6">
