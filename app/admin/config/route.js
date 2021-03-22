@@ -114,6 +114,16 @@ app.config(['$stateProvider', 'settings', function($stateProvider, settings) {
             templateUrl: settings.TEMPLATE_DIR + 'local_keys/list.html'
         })
 
+        .state('admin.postamates', {
+            abstract: true,
+            templateUrl: settings.TEMPLATE_DIR + 'local_keys/base.html'
+        })
+        .state('admin.postamates.list', {
+            url: "postamates",
+            controller: 'PostamatesListCtrl',
+            templateUrl: settings.TEMPLATE_DIR + 'postamates/list.html'
+        })
+
         .state('login', {
             url: "/login",
             controller: 'LoginCtrl',

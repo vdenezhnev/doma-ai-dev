@@ -17,6 +17,7 @@ app.constant('LOCALE_EN', {
     NAVBAR_PAYMENS: 'SIM-cards payments',
     NAVBAR_LOGOUT: 'Logout',
     NAVBAR_LOCAL_KEYS: 'Local keys',
+    NAVBAR_POSTAMATES: 'Postamates',
 
     BUTTON_LOAD_MORE: 'Load more',
     BUTTON_ADD_LOCK: 'Add lock',
@@ -64,6 +65,8 @@ app.constant('LOCALE_EN', {
     TABLE_CELL_KEYS_REMAINING: 'Remaining',
     TABLE_CELL_UUID: 'UUID',
     TABLE_CELL_DATE: 'Date',
+    TABLE_CELL_POSTAMAT_ID: 'Postamat ID',
+    TABLE_CELL_PUBLIC_ID: 'Public ID',
 
     COMPONENT_DATETIME_FROM: 'from',
     COMPONENT_DATETIME_TO: 'to',
@@ -167,6 +170,10 @@ app.constant('LOCALE_EN', {
     LOCAL_KEYS_TITLE: 'Local server keys',
     LOCAL_KEYS_LIST: 'Local server keys list',
     LOCAL_KEYS_SEARCH_PLACEHOLDER: 'Search',
+
+    POSTAMATES_TITLE: 'Postamates',
+    POSTAMATES_LIST: 'Postamates list',
+    POSTAMATES_SEARCH_PLACEHOLDER: 'Search',
 
     NOTIFY_PROFILE_UPDATED: 'Profile updated',
     NOTIFY_PASSWORD_UPDATED: 'Password updated',

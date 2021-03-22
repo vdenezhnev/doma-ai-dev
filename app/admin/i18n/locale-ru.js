@@ -17,6 +17,7 @@ app.constant('LOCALE_RU', {
     NAVBAR_PAYMENS: 'Оплаты Sim-карт',
     NAVBAR_LOGOUT: 'Выход',
     NAVBAR_LOCAL_KEYS: 'Локальные ключи',
+    NAVBAR_POSTAMATES: 'Постаматы',
 
     BUTTON_LOAD_MORE: 'Загрузить еще',
     BUTTON_ADD_LOCK: 'Добавить замок',
@@ -64,6 +65,8 @@ app.constant('LOCALE_RU', {
     TABLE_CELL_KEYS_REMAINING: 'Осталось',
     TABLE_CELL_UUID: 'UUID',
     TABLE_CELL_DATE: 'Дата',
+    TABLE_CELL_POSTAMAT_ID: 'Postamat ID',
+    TABLE_CELL_PUBLIC_ID: 'Public ID',
 
     COMPONENT_DATETIME_FROM: 'от',
     COMPONENT_DATETIME_TO: 'до',
@@ -167,6 +170,10 @@ app.constant('LOCALE_RU', {
     LOCAL_KEYS_TITLE: 'Цифровые ключи локальных серверов',
     LOCAL_KEYS_LIST: 'Список цифровых ключей',
     LOCAL_KEYS_SEARCH_PLACEHOLDER: 'Поиск',
+
+    POSTAMATES_TITLE: 'Постаматы',
+    POSTAMATES_LIST: 'Список постаматов',
+    POSTAMATES_SEARCH_PLACEHOLDER: 'Поиск',
 
     NOTIFY_PROFILE_UPDATED: 'Профиль обновлен',
     NOTIFY_PASSWORD_UPDATED: 'Пароль изменен',

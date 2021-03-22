@@ -17,6 +17,7 @@ app.constant('LOCALE_AR', {
     NAVBAR_PAYMENS: 'الدفع عن طريق بطاقةsim',
     NAVBAR_LOGOUT: 'تسجيل الخروج',
     NAVBAR_LOCAL_KEYS: 'مفاتيح محلية',
+    NAVBAR_POSTAMATES: 'Postamates',
 
     BUTTON_LOAD_MORE: 'تحميل المزيد',
     BUTTON_ADD_LOCK: 'اضافة قفل',
@@ -64,6 +65,8 @@ app.constant('LOCALE_AR', {
     TABLE_CELL_KEYS_REMAINING: 'المغادره',
     TABLE_CELL_UUID: 'UUID',
     TABLE_CELL_DATE: 'تاريخ',
+    TABLE_CELL_POSTAMAT_ID: 'Postamat ID',
+    TABLE_CELL_PUBLIC_ID: 'Public ID',
 
     COMPONENT_DATETIME_FROM: 'من',
     COMPONENT_DATETIME_TO: 'الى',
@@ -167,6 +170,10 @@ app.constant('LOCALE_AR', {
     LOCAL_KEYS_TITLE: 'مفاتيح الخادم المحلي',
     LOCAL_KEYS_LIST: 'قائمة مفاتيح الخادم المحلي',
     LOCAL_KEYS_SEARCH_PLACEHOLDER: 'بحث',
+
+    POSTAMATES_TITLE: 'Postamates',
+    POSTAMATES_LIST: 'Postamates list',
+    POSTAMATES_SEARCH_PLACEHOLDER: 'Search',
 
     NOTIFY_PROFILE_UPDATED: 'تحديث الملف الشخصي',
     NOTIFY_PASSWORD_UPDATED: 'تم تحديث كلمة السر',
