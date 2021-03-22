@@ -55,3 +55,7 @@ msgstr "Required"
 #: app/common/validation-rule.js:53
 msgid "validation.username"
 msgstr ""
+
+#: app/intercom/views/account/form.html:40
+msgid "validation.api_token"
+msgstr "Maximum value length is 32 characters"

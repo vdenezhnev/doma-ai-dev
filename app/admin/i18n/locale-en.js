@@ -162,6 +162,7 @@ app.constant('LOCALE_EN', {
     COMPANIES_FORM_ADMIN_EMAIL: 'E-mail',
     COMPANIES_FORM_ADMIN_ROLE: 'Role',
     COMPANIES_FORM_PAYMENT_TITLE: 'Payment',
+    COMPANIES_FORM_API_TOKEN: 'Api-token',
 
     LOCAL_KEYS_TITLE: 'Local server keys',
     LOCAL_KEYS_LIST: 'Local server keys list',

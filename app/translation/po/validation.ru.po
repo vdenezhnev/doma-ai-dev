@@ -56,3 +56,7 @@ msgstr "Это поле обязательно для заполнения"
 #: app/common/validation-rule.js:53
 msgid "validation.username"
 msgstr "Имя должно быть минимум 3 символа"
+
+#: app/intercom/views/account/form.html:40
+msgid "validation.api_token"
+msgstr "Максимальная длина значения 32 символа"

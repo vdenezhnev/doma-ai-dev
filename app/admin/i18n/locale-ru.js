@@ -162,6 +162,7 @@ app.constant('LOCALE_RU', {
     COMPANIES_FORM_ADMIN_EMAIL: 'E-mail',
     COMPANIES_FORM_ADMIN_ROLE: 'Роль',
     COMPANIES_FORM_PAYMENT_TITLE: 'Оплата',
+    COMPANIES_FORM_API_TOKEN: 'Api-token',
 
     LOCAL_KEYS_TITLE: 'Цифровые ключи локальных серверов',
     LOCAL_KEYS_LIST: 'Список цифровых ключей',

@@ -162,6 +162,7 @@ app.constant('LOCALE_AR', {
     COMPANIES_FORM_ADMIN_EMAIL: 'البريد الالكتروني',
     COMPANIES_FORM_ADMIN_ROLE: 'وظيفة',
     COMPANIES_FORM_PAYMENT_TITLE: 'دفع',
+    COMPANIES_FORM_API_TOKEN: 'Api-token',
 
     LOCAL_KEYS_TITLE: 'مفاتيح الخادم المحلي',
     LOCAL_KEYS_LIST: 'قائمة مفاتيح الخادم المحلي',
