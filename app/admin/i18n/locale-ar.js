@@ -40,6 +40,8 @@ app.constant('LOCALE_AR', {
     BUTTON_UPDATE_ADMIN_INFO: 'تحديث المعلومات حول المسؤولين',
     BUTTON_ADD_ADMIN: 'إضافة مسؤول',
     BUTTON_SETUP: 'الضبط',
+    BUTTON_POSTAMAT_ADD: 'Add postamat',
+    BUTTON_POSTAMAT_DELETE: 'Delete postamat',
 
     TABLE_CELL_ID: 'ID',
     TABLE_CELL_USER_NAME: 'الاسم',
@@ -166,6 +168,10 @@ app.constant('LOCALE_AR', {
     COMPANIES_FORM_ADMIN_ROLE: 'وظيفة',
     COMPANIES_FORM_PAYMENT_TITLE: 'دفع',
     COMPANIES_FORM_API_TOKEN: 'Api-token',
+    POSTAMAT_FORM_ID: 'Postamat ID',
+    POSTAMAT_FORM_PID: 'PID',
+    POSTAMAT_FORM_CELLS: 'Cells',
+    POSTAMAT_FORM_CAMERA_ADDRESS: 'Remote camera address (RTSP)',
 
     LOCAL_KEYS_TITLE: 'مفاتيح الخادم المحلي',
     LOCAL_KEYS_LIST: 'قائمة مفاتيح الخادم المحلي',
@@ -174,6 +180,9 @@ app.constant('LOCALE_AR', {
     POSTAMATES_TITLE: 'Postamates',
     POSTAMATES_LIST: 'Postamates list',
     POSTAMATES_SEARCH_PLACEHOLDER: 'Search',
+    POSTAMAT_CREATE_TITLE: 'Creating postamat',
+    POSTAMAT_CREATE: 'Postamat data',
+    POSTAMAT_EDIT: 'Editing postamat',
 
     NOTIFY_PROFILE_UPDATED: 'تحديث الملف الشخصي',
     NOTIFY_PASSWORD_UPDATED: 'تم تحديث كلمة السر',
@@ -190,10 +199,14 @@ app.constant('LOCALE_AR', {
     NOTIFY_LOCK_DELETED: 'تم حذف القفل',
     NOTIFY_LOCK_ADDED: 'تمت إضافة القفل',
     NOTIFY_ENTRIES_UPDATED: 'تم تحديث الإدخالات',
+    NOTIFY_POSTAMAT_ADDED: 'Postamat added',
+    NOTIFY_POSTAMAT_UPDATED: 'Postamat updated',
+    NOTIFY_POSTAMAT_DELETED: 'Postamat deleted',
 
     NOTIFY_MESSAGE_USER_DELETE_CONFIRM: 'هل أنت متأكد أنك تريد حذف هذا المستخدم؟',
     NOTIFY_MESSAGE_LOCK_DELETE_CONFIRM: 'هل أنت متأكد أنك تريد حذف هذا القفل؟',
     NOTIFY_MESSAGE_KEY_DELETE_CONFIRM: 'هل أنت متأكد أنك تريد حذف هذا المفتاح؟',
+    NOTIFY_MESSAGE_POSTAMAT_DELETE_CONFIRM: 'Are you sure, you want to delete this postamat?',
 
     KEY_STATUS_none: 'None',
     KEY_STATUS_sent: 'Sent',

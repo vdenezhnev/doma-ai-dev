@@ -2,6 +2,10 @@
     <div class="col-lg-12">
         <h1 class="page-header" translate>POSTAMATES_TITLE</h1>
     </div>
+
+    <div class="col-lg-12 mb15">
+        <a ui-sref="admin.postamates.create" class="btn btn-success"><i class="fa fa-plus"></i> {{ 'BUTTON_POSTAMAT_ADD' | translate }}</a>
+    </div>
 </div>
 
 <div class="panel panel-default">
@@ -32,7 +36,7 @@
                         </thead>
                         <tbody>
                             <tr ng-repeat="postamat in postamates">
-                                <td>{{ postamat.id }}</td>
+                                <td><a ui-sref="admin.postamates.detail({id: postamat.id, postamat: postamat})">{{ postamat.id }}</a></td>
                                 <td>{{ postamat.pid }}</td>
                                 <td>{{ postamat.status }}</td>
                             </tr>

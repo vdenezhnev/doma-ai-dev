@@ -123,6 +123,19 @@ app.config(['$stateProvider', 'settings', function($stateProvider, settings) {
             controller: 'PostamatesListCtrl',
             templateUrl: settings.TEMPLATE_DIR + 'postamates/list.html'
         })
+        .state('admin.postamates.create', {
+            url: "postamates/create",
+            controller: 'PostamatCreateCtrl',
+            templateUrl: settings.TEMPLATE_DIR + 'postamates/create.html'
+        })
+        .state('admin.postamates.detail', {
+            url: "postamates/:id",
+            controller: 'PostamatDetailCtrl',
+            templateUrl: settings.TEMPLATE_DIR + 'postamates/detail.html',
+            params: {
+                postamat: null
+            }
+        })
 
         .state('login', {
             url: "/login",
