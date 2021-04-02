@@ -4,6 +4,8 @@ WORKDIR /acms
 COPY . .
 ARG API_HOST
 ENV API_HOST=${API_HOST} 
+ENV API_URL_INTERCOM=api/web/intercoms
+ENV API_URL_ADMIN=api/admin
 RUN npm i
 
 RUN npm run build
