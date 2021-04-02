@@ -35,6 +35,8 @@ const setIntercomEnv = async () => env({
     file: './build/.intercom.env.json',
     vars: {
         API_HOST: process.env.API_HOST || '/',
+        APP_INTERCOM_TITLE: process.env.APP_INTERCOM_TITLE || "SmartAirkey",
+        APP_BRAND_ID: process.env.APP_BRAND_ID || "smartairkey",
     }
 });
 const setAdminEnv = async () => env({
