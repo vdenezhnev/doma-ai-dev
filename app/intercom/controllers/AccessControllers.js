@@ -1,6 +1,6 @@
 
-app.controller('AccessCtrl', ['$scope', '$http', 'AccessObject', 'AccessPoint', '$timeout',
-    function($scope, $http, AccessObject, AccessPoint, $timeout) {
+app.controller('AccessCtrl', ['$scope', 'AccessObject', 'AccessPoint',
+    function($scope, AccessObject, AccessPoint) {
         $scope.accessPoints = AccessPoint.grouped();
         $scope.accessObjects = AccessObject.query();
         $scope.navigate = {};
@@ -192,8 +192,8 @@ app.controller('PerimeterGenerateQRModalCtrl', ['$scope', 'settings', 'notify', 
     }
 ]);
 
-app.controller('AddAccessPointCtrl', ['$scope', '$state', '$stateParams', '$http', 'AccessPoint', 'notify', 'gettextCatalog',
-    function($scope, $state, $stateParams, $http, AccessPoint, notify, gettextCatalog) {
+app.controller('AddAccessPointCtrl', ['$scope', '$state', '$stateParams', 'AccessPoint', 'PostamatAccessPoint', 'notify', 'gettextCatalog',
+    function($scope, $state, $stateParams, AccessPoint, PostamatAccessPoint, notify, gettextCatalog) {
         $scope.perimeter = $stateParams.parentPerimeter;
 
         if (!$scope.perimeter) {
@@ -202,100 +202,141 @@ app.controller('AddAccessPointCtrl', ['$scope', '$state', '$stateParams', '$http
         }
 
         $scope.point = new AccessPoint();
+        $scope.point.isPostamatAccessPoint = false;
         if ($scope.perimeter) {
             $scope.point.PerimeterId = $scope.perimeter.id;
         }
 
         $scope.submit = function () {
-            $scope.point.$save(function () {
-                $scope.$emit('updatePoint');
-                $state.go('admin.access');
-                notify(gettextCatalog.getString('devices.device_updated'));
-            });
+            if (vm.isPostamat) {
+                var postamatPoint = new PostamatAccessPoint();
+
+                if ($scope.perimeter) {
+                    postamatPoint.PerimeterId = $scope.perimeter.id;
+                }
+
+                postamatPoint.postamatId = $scope.point.postamatId;
+                postamatPoint.displayName = $scope.point.displayName;
+                postamatPoint.description = $scope.point.description;
+                postamatPoint.$save(onAfterSave);
+            } else {
+                $scope.point.$save(onAfterSave);
+            }
+        };
+
+        function onAfterSave() {
+            $scope.$emit('updatePoint');
+            $state.go('admin.access');
+            notify(gettextCatalog.getString('devices.device_updated'));
         }
     }
 ]);
 
-app.controller('EditAccessPointCtrl', ['$scope', '$state', 'AccessPoint', 'notify', 'gettextCatalog', 'point',
-    function($scope, $state, AccessPoint, notify, gettextCatalog, point) {
+app.controller('EditAccessPointCtrl', ['$scope', '$state', 'AccessPoint', 'PostamatAccessPoint', 'notify', 'gettextCatalog', 'point',
+    function($scope, $state, AccessPoint, PostamatAccessPoint, notify, gettextCatalog, point) {
         var vm = this;
 
+        vm.isEditPoint = true;
+
         $scope.point = point;
+        $scope.point.isPostamatAccessPoint = !!point.postamatId;
         $scope.title = $scope.point.displayName;
-        $scope.deviceSettings = point.defaultKeySettings;
-        $scope.deviceKeyUsage = point.keyUsage.restrictions;
-        $scope.transports = point.transports;
 
-        var gsmTransport = !!$scope.transports.length && $scope.transports.find(item => item.type === 'gsm');
-        vm.isDisabledPaymentDate = !Boolean(gsmTransport) || (gsmTransport && gsmTransport.isIntegratedSimCard);
+        if (!$scope.point.isPostamatAccessPoint) {
+            $scope.deviceSettings = point.defaultKeySettings;
+            $scope.deviceKeyUsage = point.keyUsage.restrictions;
+            $scope.transports = point.transports;
 
-        vm.isOpeningByInternet = !!point.isOpeningByInternet;
-        vm.isOpeningByPhone = !!point.isOpeningByPhone;
+            var gsmTransport = !!$scope.transports.length && $scope.transports.find(item => item.type === 'gsm');
+            vm.isDisabledPaymentDate = !Boolean(gsmTransport) || (gsmTransport && gsmTransport.isIntegratedSimCard);
+            vm.isOpeningByInternet = !!point.isOpeningByInternet;
+            vm.isOpeningByPhone = !!point.isOpeningByPhone;
 
-        $scope.getKeyUsage = function(key) {
-            var result = $.grep($scope.deviceKeyUsage, function(e){ return e.key == key; });
-            if (result.length === 1) {
-                return result[0];
-            }
-        };
-        
-        $scope.replace = function(lockId) {
-            AccessPoint.replace({
-                accessPointId: point.id,
-                lockId: lockId
-            }, function(response) {
-                notify(gettextCatalog.getString('devices.device_updated'));
-                $state.go('admin.device.detail', {id: response.id, device: response}, {reload: true});
-            });
-        };
-        
-        $scope.updateSettings = function() {
-            if (window.confirm(gettextCatalog.getString('devices.device_update_settings'))) {
-                new AccessPoint.update({
-                    'action': 'UpdateAccessPointDefaultKeySettings',
-                    'accessPointId': $scope.point.id,
-                    'defaultKeySettings': $scope.deviceSettings
-                }, function (response) {
+            $scope.getKeyUsage = function(key) {
+                var result = $.grep($scope.deviceKeyUsage, function(e){ return e.key == key; });
+                if (result.length === 1) {
+                    return result[0];
+                }
+            };
+
+            $scope.replace = function(lockId) {
+                AccessPoint.replace({
+                    accessPointId: point.id,
+                    lockId: lockId
+                }, function(response) {
                     notify(gettextCatalog.getString('devices.device_updated'));
+                    $state.go('admin.device.detail', {id: response.id, device: response}, {reload: true});
                 });
+            };
 
-                new AccessPoint.update({
-                    'action': 'UpdateAccessPointKeyUsage',
-                    'accessPointId': $scope.point.id,
-                    'keyUsage': {
-                        'restrictions': $scope.deviceKeyUsage
-                    }
-                }, function (response) {
-                    notify(gettextCatalog.getString('devices.device_updated'));
-                });
+            $scope.updateSettings = function() {
+                if (window.confirm(gettextCatalog.getString('devices.device_update_settings'))) {
+                    new AccessPoint.update({
+                        'action': 'UpdateAccessPointDefaultKeySettings',
+                        'accessPointId': $scope.point.id,
+                        'defaultKeySettings': $scope.deviceSettings
+                    }, function (response) {
+                        notify(gettextCatalog.getString('devices.device_updated'));
+                    });
 
-                $scope.point.isOpeningByInternet = vm.isOpeningByInternet;
-                $scope.point.isOpeningByPhone = vm.isOpeningByPhone;
-                $scope.point.transports = $scope.transports;
-                $scope.point.$save(function () {
-                    $scope.$emit('updatePoint');
-                    notify(gettextCatalog.getString('devices.device_updated'));
-                });
+                    new AccessPoint.update({
+                        'action': 'UpdateAccessPointKeyUsage',
+                        'accessPointId': $scope.point.id,
+                        'keyUsage': {
+                            'restrictions': $scope.deviceKeyUsage
+                        }
+                    }, function (response) {
+                        notify(gettextCatalog.getString('devices.device_updated'));
+                    });
 
-            }
-        };
+                    $scope.point.isOpeningByInternet = vm.isOpeningByInternet;
+                    $scope.point.isOpeningByPhone = vm.isOpeningByPhone;
+                    $scope.point.transports = $scope.transports;
+                    $scope.point.$save(function () {
+                        $scope.$emit('updatePoint');
+                        notify(gettextCatalog.getString('devices.device_updated'));
+                    });
+
+                }
+            };
+        }
 
         $scope.submit = function () {
-            $scope.point.$save(function () {
-                $scope.$emit('updatePoint');
-                $state.go('admin.access');
-                notify(gettextCatalog.getString('devices.device_updated'));
-            });
+            if ($scope.point.isPostamatAccessPoint) {
+                var postamatPoint = new PostamatAccessPoint();
+
+                Object.assign(postamatPoint, $scope.point);
+                postamatPoint.$save(function() {
+                    onAfterSave(gettextCatalog.getString('devices.device_updated'));
+                });
+            } else {
+                $scope.point.$save(function () {
+                    onAfterSave(gettextCatalog.getString('devices.device_updated'));
+                });
+            }
         };
 
         $scope.delete = function () {
             if (window.confirm(gettextCatalog.getString('devices.device_delete_confirm'))) {
-                $scope.point.$delete(function () {
-                    $scope.$emit('updatePoint');
-                    notify(gettextCatalog.getString('devices.device_deleted'));
-                    $state.go('admin.access');
-                });
+                if ($scope.point.isPostamatAccessPoint) {
+                    var postamatPoint = new PostamatAccessPoint();
+
+                    postamatPoint.id = $scope.point.id;
+                    postamatPoint.$delete(function() {
+                        onAfterSave(gettextCatalog.getString('devices.device_deleted'));
+                    });
+                } else {
+                    $scope.point.$delete(function () {
+                        onAfterSave(gettextCatalog.getString('devices.device_deleted'));
+                    });
+                }
             }
         };
+
+        function onAfterSave(notifyString) {
+            $scope.$emit('updatePoint');
+            $state.go('admin.access');
+            notify(notifyString);
+        }
     }
 ]);

@@ -14,10 +14,16 @@
         <div ng-init="showForm='base'">
             <a ng-click="showForm='base'" ng-class="{'active': showForm == 'base'}"
                class="btn default" translate>html.access.point.form.base_title</a>
-            <a ng-click="showForm='settings'" ng-class="{'active': showForm == 'settings'}"
-               class="btn default" translate>html.access.point.form.settings_title</a>
-            <a ng-click="showForm='replace'" ng-class="{'active': showForm == 'replace'}"
-               class="btn default" translate>html.access.point.form.replace_title</a>
+            <a ng-click="showForm='settings'"
+               ng-class="{'active': showForm == 'settings'}"
+               class="btn default"
+               ng-if="!point.isPostamatAccessPoint"
+               translate>html.access.point.form.settings_title</a>
+            <a ng-click="showForm='replace'"
+               ng-class="{'active': showForm == 'replace'}"
+               class="btn default"
+               ng-if="!point.isPostamatAccessPoint"
+               translate>html.access.point.form.replace_title</a>
         </div>
 
         <form name="DeviceReplaceForm" ng-show="showForm == 'replace'">
