@@ -987,6 +987,10 @@ msgstr "Сформировать отчет"
 msgid "html.journal.groupByDays"
 msgstr "Суммировать по дням"
 
+#: app/intercom/views/journal/working-time.html:136
+msgid "html.journal.isEventPass"
+msgstr "Учитывать событие прохода"
+
 #: app/intercom/views/journal/working-time.html:133
 msgid "html.journal.resetFilter"
 msgstr "Сбросить"

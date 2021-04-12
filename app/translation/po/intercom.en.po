@@ -985,6 +985,10 @@ msgstr "Get report"
 msgid "html.journal.groupByDays"
 msgstr "Group by days"
 
+#: app/intercom/views/journal/working-time.html:136
+msgid "html.journal.isEventPass"
+msgstr "Is event pass"
+
 #: app/intercom/views/journal/working-time.html:133
 msgid "html.journal.resetFilter"
 msgstr "Reset filter"
