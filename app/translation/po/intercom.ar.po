@@ -978,6 +978,10 @@ msgstr "احصل على تقرير"
 msgid "html.journal.groupByDays"
 msgstr "تجميع حسب الأيام"
 
+#: app/intercom/views/journal/working-time.html:136
+msgid "html.journal.isEventPass"
+msgstr "Is event pass"
+
 #: app/intercom/views/journal/working-time.html:133
 msgid "html.journal.resetFilter"
 msgstr "اعادة تعيين"
