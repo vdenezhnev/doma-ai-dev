@@ -42,6 +42,7 @@ app.constant('LOCALE_RU', {
     BUTTON_SETUP: 'Настроить',
     BUTTON_POSTAMAT_ADD: 'Добавить постамат',
     BUTTON_POSTAMAT_DELETE: 'Удалить постамат',
+    BUTTON_POSTAMAT_CELL_FREE: 'Освободить',
 
     TABLE_CELL_ID: 'ID',
     TABLE_CELL_USER_NAME: 'Имя',
@@ -69,6 +70,7 @@ app.constant('LOCALE_RU', {
     TABLE_CELL_DATE: 'Дата',
     TABLE_CELL_POSTAMAT_ID: 'Postamat ID',
     TABLE_CELL_PUBLIC_ID: 'Public ID',
+    TABLE_CELL_USER: 'Пользователь',
 
     COMPONENT_DATETIME_FROM: 'от',
     COMPONENT_DATETIME_TO: 'до',
@@ -172,6 +174,7 @@ app.constant('LOCALE_RU', {
     POSTAMAT_FORM_PID: 'PID',
     POSTAMAT_FORM_CELLS: 'Количество ячеек',
     POSTAMAT_FORM_CAMERA_ADDRESS: 'Адрес камеры наблюдения (в формате RTSP)',
+    POSTAMAT_FORM_CELLS_DETAIL: 'Ячейки',
 
     LOCAL_KEYS_TITLE: 'Цифровые ключи локальных серверов',
     LOCAL_KEYS_LIST: 'Список цифровых ключей',
@@ -202,16 +205,21 @@ app.constant('LOCALE_RU', {
     NOTIFY_POSTAMAT_ADDED: 'Постамат добавлен',
     NOTIFY_POSTAMAT_UPDATED: 'Постамат обновлен',
     NOTIFY_POSTAMAT_DELETED: 'Постамат удален',
+    NOTIFY_POSTAMAT_CELL_RELEASED: 'Ячейка освобождена',
 
     NOTIFY_MESSAGE_USER_DELETE_CONFIRM: 'Вы действительно хотите удалить данного пользователя?',
     NOTIFY_MESSAGE_LOCK_DELETE_CONFIRM: 'Вы действительно хотите удалить данный замок?',
     NOTIFY_MESSAGE_KEY_DELETE_CONFIRM: 'Вы действительно хотите удалить данный ключ?',
     NOTIFY_MESSAGE_POSTAMAT_DELETE_CONFIRM: 'Вы действительно хотите удалить данный постамат?',
+    NOTIFY_MESSAGE_POSTAMAT_CELL_RELEASE_CONFIRM: 'Вы действительно хотите освободить эту ячейку?',
 
     KEY_STATUS_none: 'Не определён',
     KEY_STATUS_sent: 'Отправлен',
     KEY_STATUS_approved: 'Подтверждён',
     KEY_STATUS_rejected: 'Отклонён',
     KEY_STATUS_deleteUser: 'Удалён пользователем',
-    KEY_STATUS_deleteAdmin: 'Удалён администратором'
+    KEY_STATUS_deleteAdmin: 'Удалён администратором',
+
+    POSTAMAT_STATUS_filled: 'Заполнена',
+    POSTAMAT_STATUS_empty: 'Пустая'
 });

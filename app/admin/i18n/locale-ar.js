@@ -42,6 +42,7 @@ app.constant('LOCALE_AR', {
     BUTTON_SETUP: 'الضبط',
     BUTTON_POSTAMAT_ADD: 'Add postamat',
     BUTTON_POSTAMAT_DELETE: 'Delete postamat',
+    BUTTON_POSTAMAT_CELL_FREE: 'Release',
 
     TABLE_CELL_ID: 'ID',
     TABLE_CELL_USER_NAME: 'الاسم',
@@ -69,6 +70,7 @@ app.constant('LOCALE_AR', {
     TABLE_CELL_DATE: 'تاريخ',
     TABLE_CELL_POSTAMAT_ID: 'Postamat ID',
     TABLE_CELL_PUBLIC_ID: 'Public ID',
+    TABLE_CELL_USER: 'User',
 
     COMPONENT_DATETIME_FROM: 'من',
     COMPONENT_DATETIME_TO: 'الى',
@@ -172,6 +174,7 @@ app.constant('LOCALE_AR', {
     POSTAMAT_FORM_PID: 'PID',
     POSTAMAT_FORM_CELLS: 'Cells',
     POSTAMAT_FORM_CAMERA_ADDRESS: 'Remote camera address (RTSP)',
+    POSTAMAT_FORM_CELLS_DETAIL: 'Cells details',
 
     LOCAL_KEYS_TITLE: 'مفاتيح الخادم المحلي',
     LOCAL_KEYS_LIST: 'قائمة مفاتيح الخادم المحلي',
@@ -202,16 +205,21 @@ app.constant('LOCALE_AR', {
     NOTIFY_POSTAMAT_ADDED: 'Postamat added',
     NOTIFY_POSTAMAT_UPDATED: 'Postamat updated',
     NOTIFY_POSTAMAT_DELETED: 'Postamat deleted',
+    NOTIFY_POSTAMAT_CELL_RELEASED: 'Cell released',
 
     NOTIFY_MESSAGE_USER_DELETE_CONFIRM: 'هل أنت متأكد أنك تريد حذف هذا المستخدم؟',
     NOTIFY_MESSAGE_LOCK_DELETE_CONFIRM: 'هل أنت متأكد أنك تريد حذف هذا القفل؟',
     NOTIFY_MESSAGE_KEY_DELETE_CONFIRM: 'هل أنت متأكد أنك تريد حذف هذا المفتاح؟',
     NOTIFY_MESSAGE_POSTAMAT_DELETE_CONFIRM: 'Are you sure, you want to delete this postamat?',
+    NOTIFY_MESSAGE_POSTAMAT_CELL_RELEASE_CONFIRM: 'Are you sure, you want to release this postamat?',
 
     KEY_STATUS_none: 'None',
     KEY_STATUS_sent: 'Sent',
     KEY_STATUS_approved: 'Approved',
     KEY_STATUS_rejected: 'Rejected',
     KEY_STATUS_deleteUser: 'Deleted by user',
-    KEY_STATUS_deleteAdmin: 'Deleted by admin'
+    KEY_STATUS_deleteAdmin: 'Deleted by admin',
+
+    POSTAMAT_STATUS_filled: 'Filled',
+    POSTAMAT_STATUS_empty: 'Empty'
 });

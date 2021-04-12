@@ -14,6 +14,28 @@
         <input class="form-control" ng-model="postamat.cellCount" ng-disabled="!isCreate">
     </div>
 
+    <div class="form-group" ng-if="!isCreate && !!cells.length">
+        <label translate>POSTAMAT_FORM_CELLS_DETAIL</label>
+        <table class="table table-bordered table-hover table-striped">
+            <thead>
+                <tr>
+                    <th style="vertical-align: top;" translate>TABLE_CELL_DEVICE_STATUS</th>
+                    <th style="vertical-align: top;" translate>TABLE_CELL_USER</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="cell in cells">
+                    <td>{{ 'POSTAMAT_STATUS_' + cell.status | translate }}</td>
+                    <td><a ui-sref="admin.client.detail({id: cell.userId})">{{ cell.userId }}</a></td>
+                    <td style="text-align: center;">
+                        <button class="btn btn-primary" ng-click="onCellFree(cell)" translate>BUTTON_POSTAMAT_CELL_FREE</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
     <div class="form-group">
         <label translate>POSTAMAT_FORM_CAMERA_ADDRESS</label>
         <input class="form-control" ng-model="postamat.rtspAddress">

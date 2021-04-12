@@ -43,12 +43,18 @@ app.controller('PostamatesListCtrl', ['$scope', 'Api', 'settings',
 
 app.controller('PostamatDetailCtrl', ['$scope', '$state', '$stateParams', 'Api', 'settings', 'notify', '$filter',
     function($scope, $state, $stateParams, Api, settings, notify, $filter) {
+        $scope.cells = [];
+
         if (!$stateParams.postamat) {
             $state.go('admin.postamates.list');
         }
 
         $scope.postamat = $stateParams.postamat;
         $scope.isCreate = false;
+
+        Api.get(settings.API_URL, {action: 'GetPostamat', id: $scope.postamat.id}, function(response) {
+            $scope.cells = response.data.cells;
+        });
 
         $scope.save = function() {
             var data = angular.extend({Action: 'UpdatePostamat'}, angular.copy($scope.postamat));
@@ -69,6 +75,19 @@ app.controller('PostamatDetailCtrl', ['$scope', '$state', '$stateParams', 'Api',
                 });
             }
         };
+
+        $scope.onCellFree = function(cell) {
+            if (window.confirm($filter('translate')('NOTIFY_MESSAGE_POSTAMAT_CELL_RELEASE_CONFIRM'))) {
+                Api.post(settings.API_URL, {
+                    Action: 'ReleasePostamatCell',
+                    id: $scope.postamat.id,
+                    cellNumber: cell.number
+                }, function () {
+                    notify($filter('translate')('NOTIFY_POSTAMAT_CELL_RELEASED'));
+                    $scope.cells = $scope.cells.filter(c => c.number !== cell.number);
+                });
+            }
+        }
     }
 ]);
 
