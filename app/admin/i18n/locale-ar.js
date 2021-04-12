@@ -211,7 +211,7 @@ app.constant('LOCALE_AR', {
     NOTIFY_MESSAGE_LOCK_DELETE_CONFIRM: 'هل أنت متأكد أنك تريد حذف هذا القفل؟',
     NOTIFY_MESSAGE_KEY_DELETE_CONFIRM: 'هل أنت متأكد أنك تريد حذف هذا المفتاح؟',
     NOTIFY_MESSAGE_POSTAMAT_DELETE_CONFIRM: 'Are you sure, you want to delete this postamat?',
-    NOTIFY_MESSAGE_POSTAMAT_CELL_RELEASE_CONFIRM: 'Are you sure, you want to release this postamat?',
+    NOTIFY_MESSAGE_POSTAMAT_CELL_RELEASE_CONFIRM: 'Are you sure, you want to release this cell?',
 
     KEY_STATUS_none: 'None',
     KEY_STATUS_sent: 'Sent',
