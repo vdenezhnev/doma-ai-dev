@@ -71,6 +71,7 @@ app.constant('LOCALE_AR', {
     TABLE_CELL_POSTAMAT_ID: 'Postamat ID',
     TABLE_CELL_PUBLIC_ID: 'Public ID',
     TABLE_CELL_USER: 'User',
+    TABLE_CELL_POSTAMAT_CELL_NUMBER: 'Cell number',
 
     COMPONENT_DATETIME_FROM: 'من',
     COMPONENT_DATETIME_TO: 'الى',

@@ -71,6 +71,7 @@ app.constant('LOCALE_RU', {
     TABLE_CELL_POSTAMAT_ID: 'Postamat ID',
     TABLE_CELL_PUBLIC_ID: 'Public ID',
     TABLE_CELL_USER: 'Пользователь',
+    TABLE_CELL_POSTAMAT_CELL_NUMBER: 'Номер',
 
     COMPONENT_DATETIME_FROM: 'от',
     COMPONENT_DATETIME_TO: 'до',

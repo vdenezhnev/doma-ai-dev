@@ -19,6 +19,7 @@
         <table class="table table-bordered table-hover table-striped">
             <thead>
                 <tr>
+                    <th style="vertical-align: top;" translate>TABLE_CELL_POSTAMAT_CELL_NUMBER</th>
                     <th style="vertical-align: top;" translate>TABLE_CELL_DEVICE_STATUS</th>
                     <th style="vertical-align: top;" translate>TABLE_CELL_USER</th>
                     <th></th>
@@ -26,6 +27,7 @@
             </thead>
             <tbody>
                 <tr ng-repeat="cell in cells">
+                    <td>{{ cell.number }}</td>
                     <td>{{ 'POSTAMAT_STATUS_' + cell.status | translate }}</td>
                     <td><a ui-sref="admin.client.detail({id: cell.userId})">{{ cell.userId }}</a></td>
                     <td style="text-align: center;">
