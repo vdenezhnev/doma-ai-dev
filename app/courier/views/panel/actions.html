@@ -1,0 +1,55 @@
+<div style="text-align: center;">
+  <div class="col-md-12">
+    <h3 ng-if="isValidAccess()">
+      <span translate>ACCESS_GRANTED</span><br/>
+      <small><span translate>VALID_TO</span>: {{panelData.validTill | date:'dd.MM.yyyy hh:mm:ss'}}</small>
+    </h3>
+    <h3 ng-if="!isValidAccess()" class="text-danger">
+      <span translate>ACCESS_DENIED</span>
+    </h3>
+  </div>
+
+  <div class="col-md-12" ng-if="panelData.pictureId">
+    <a href="#" class="thumbnail">
+      <img ng-src="{{accessPointPictureSrc}}" style="max-height: 450px;">
+    </a>
+  </div>
+
+  <div class="col-md-12">
+    <table class="table">
+      <tbody>
+        <tr>
+          <td><span translate>ADDRESS</span>:</td>
+          <td>{{panelData.address}}</td>
+        </tr>
+        <tr ng-if="panelData.courierPostamatKey && panelData.courierPostamatKey.cellNumber">
+          <td><span translate>CELL</span>:</td>
+          <td>{{panelData.courierPostamatKey.cellNumber}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div
+    class="col-md-12"
+    ng-if="isValidAccess() && panelData.courierPerimeterKeys && panelData.courierPerimeterKeys.length">
+    <button
+      class="btn btn-primary"
+      style="width: 100%;"
+      ng-repeat="action in panelData.courierPerimeterKeys"
+      ng-click="onOpenPerimeter(action)">
+      <span translate>OPEN</span> "{{ action.title }}"
+    </button>
+  </div>
+
+  <div
+    class="col-md-12"
+    ng-if="isValidAccess() && panelData.courierPostamatKey">
+    <button
+      class="btn btn-warning"
+      style="width: 100%;"
+      ng-click="onOpenCell()">
+      <span translate>OPEN</span> "{{ panelData.courierPostamatKey.title }}"
+    </button>
+  </div>
+</div>

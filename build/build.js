@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var env = require('gulp-env');
+var buildCourier = require('./build-courier').default;
 
 gulp.task('clean', require('./clean').default),
 gulp.task('html', require('./html').default),
@@ -79,9 +80,10 @@ exports.buildIntercomDev = (locale) => gulp.series(
     setIntercomEnv,
     build,
     async () => gulp.src(`./dist/intercom-${locale}/index.html`).pipe(gulp.dest(`./dist`))
-)
+);
 exports.default = gulp.series(
     'clean',
     buildIntercom,
-    buildAdmin
-)
+    buildAdmin,
+    buildCourier
+);
