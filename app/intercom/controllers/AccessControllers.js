@@ -208,7 +208,7 @@ app.controller('AddAccessPointCtrl', ['$scope', '$state', '$stateParams', 'Acces
         }
 
         $scope.submit = function () {
-            if (vm.isPostamat) {
+            if ($scope.point.isPostamatAccessPoint) {
                 var postamatPoint = new PostamatAccessPoint();
 
                 if ($scope.perimeter) {

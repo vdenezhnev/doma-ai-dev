@@ -385,6 +385,10 @@ msgstr "Access point"
 msgid "html.access.point.form.description"
 msgstr "Description"
 
+#: app/intercom/views/access/point/form.html:26
+msgid "html.access.point.form.postamat"
+msgstr "Postamat"
+
 #: app/intercom/views/access/point/form.html:9
 msgid "html.access.point.form.display_name"
 msgstr "Name"
