@@ -18,7 +18,7 @@
   <div class="col-md-12">
     <table class="table">
       <tbody>
-        <tr>
+        <tr ng-if="panelData.address">
           <td><span translate>ADDRESS</span>:</td>
           <td>{{panelData.address}}</td>
         </tr>
@@ -35,7 +35,7 @@
     ng-if="isValidAccess() && panelData.courierPerimeterKeys && panelData.courierPerimeterKeys.length">
     <button
       class="btn btn-primary"
-      style="width: 100%;"
+      style="width: 100%; margin-bottom: 5px;"
       ng-repeat="action in panelData.courierPerimeterKeys"
       ng-click="onOpenPerimeter(action)">
       <span translate>OPEN</span> "{{ action.title }}"

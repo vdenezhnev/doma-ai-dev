@@ -9,5 +9,8 @@
   ADDRESS: 'Address',
   VALID_TO: 'Valid to',
   ACCESS_GRANTED: 'Access granted',
-  ACCESS_DENIED: 'Access denied'
+  ACCESS_DENIED: 'Access denied',
+
+  NOTIFY_LOCK_OPENED: 'Lock opened',
+  NOTIFY_CELL_OPENED: 'Postamat cell opened'
 });
