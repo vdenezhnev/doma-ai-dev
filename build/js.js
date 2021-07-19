@@ -9,3 +9,9 @@ exports.default =  () => gulp.src(`./${process.env.FEATURE_NAME}.html`)
     .pipe(gulpif('*.js', ngAnnotate()))
     .pipe(gulpif(!process.env.DEVMODE, gulpif('*.js', uglify())))
     .pipe(gulpif('*.js', gulp.dest(`./dist/${process.env.FEATURE_NAME}-${process.env.LANGUAGE_CODE}`)));
+
+exports.build =  () => gulp.src(`./${process.env.FEATURE_NAME}.html`)
+    .pipe(useref())
+    .pipe(gulpif('*.js', ngAnnotate()))
+    .pipe(gulpif(!process.env.DEVMODE, gulpif('*.js', uglify())))
+    .pipe(gulpif('*.js', gulp.dest(`./dist/${process.env.FEATURE_NAME}`)));

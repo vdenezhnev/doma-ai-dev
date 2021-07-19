@@ -385,6 +385,10 @@ msgstr "Точка доступа"
 msgid "html.access.point.form.description"
 msgstr "Описание"
 
+#: app/intercom/views/access/point/form.html:26
+msgid "html.access.point.form.postamat"
+msgstr "Постамат"
+
 #: app/intercom/views/access/point/form.html:9
 msgid "html.access.point.form.display_name"
 msgstr "Название"
@@ -986,6 +990,10 @@ msgstr "Сформировать отчет"
 #: app/intercom/views/journal/working-time.html:125
 msgid "html.journal.groupByDays"
 msgstr "Суммировать по дням"
+
+#: app/intercom/views/journal/working-time.html:136
+msgid "html.journal.isEventPass"
+msgstr "Учитывать событие прохода"
 
 #: app/intercom/views/journal/working-time.html:133
 msgid "html.journal.resetFilter"

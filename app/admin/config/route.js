@@ -114,6 +114,29 @@ app.config(['$stateProvider', 'settings', function($stateProvider, settings) {
             templateUrl: settings.TEMPLATE_DIR + 'local_keys/list.html'
         })
 
+        .state('admin.postamates', {
+            abstract: true,
+            templateUrl: settings.TEMPLATE_DIR + 'local_keys/base.html'
+        })
+        .state('admin.postamates.list', {
+            url: "postamates",
+            controller: 'PostamatesListCtrl',
+            templateUrl: settings.TEMPLATE_DIR + 'postamates/list.html'
+        })
+        .state('admin.postamates.create', {
+            url: "postamates/create",
+            controller: 'PostamatCreateCtrl',
+            templateUrl: settings.TEMPLATE_DIR + 'postamates/create.html'
+        })
+        .state('admin.postamates.detail', {
+            url: "postamates/:id",
+            controller: 'PostamatDetailCtrl',
+            templateUrl: settings.TEMPLATE_DIR + 'postamates/detail.html',
+            params: {
+                postamat: null
+            }
+        })
+
         .state('login', {
             url: "/login",
             controller: 'LoginCtrl',

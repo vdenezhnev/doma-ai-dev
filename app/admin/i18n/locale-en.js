@@ -17,6 +17,7 @@ app.constant('LOCALE_EN', {
     NAVBAR_PAYMENS: 'SIM-cards payments',
     NAVBAR_LOGOUT: 'Logout',
     NAVBAR_LOCAL_KEYS: 'Local keys',
+    NAVBAR_POSTAMATES: 'Postamates',
 
     BUTTON_LOAD_MORE: 'Load more',
     BUTTON_ADD_LOCK: 'Add lock',
@@ -39,6 +40,9 @@ app.constant('LOCALE_EN', {
     BUTTON_UPDATE_ADMIN_INFO: 'Update information about admins',
     BUTTON_ADD_ADMIN: 'Add administrator',
     BUTTON_SETUP: 'Settings',
+    BUTTON_POSTAMAT_ADD: 'Add postamat',
+    BUTTON_POSTAMAT_DELETE: 'Delete postamat',
+    BUTTON_POSTAMAT_CELL_FREE: 'Release',
 
     TABLE_CELL_ID: 'ID',
     TABLE_CELL_USER_NAME: 'Name',
@@ -64,6 +68,10 @@ app.constant('LOCALE_EN', {
     TABLE_CELL_KEYS_REMAINING: 'Remaining',
     TABLE_CELL_UUID: 'UUID',
     TABLE_CELL_DATE: 'Date',
+    TABLE_CELL_POSTAMAT_ID: 'Postamat ID',
+    TABLE_CELL_PUBLIC_ID: 'Public ID',
+    TABLE_CELL_USER: 'User',
+    TABLE_CELL_POSTAMAT_CELL_NUMBER: 'Cell number',
 
     COMPONENT_DATETIME_FROM: 'from',
     COMPONENT_DATETIME_TO: 'to',
@@ -162,10 +170,23 @@ app.constant('LOCALE_EN', {
     COMPANIES_FORM_ADMIN_EMAIL: 'E-mail',
     COMPANIES_FORM_ADMIN_ROLE: 'Role',
     COMPANIES_FORM_PAYMENT_TITLE: 'Payment',
+    COMPANIES_FORM_API_TOKEN: 'Api-token',
+    POSTAMAT_FORM_ID: 'Postamat ID',
+    POSTAMAT_FORM_PID: 'PID',
+    POSTAMAT_FORM_CELLS: 'Cells',
+    POSTAMAT_FORM_CAMERA_ADDRESS: 'Remote camera address (RTSP)',
+    POSTAMAT_FORM_CELLS_DETAIL: 'Cells details',
 
     LOCAL_KEYS_TITLE: 'Local server keys',
     LOCAL_KEYS_LIST: 'Local server keys list',
     LOCAL_KEYS_SEARCH_PLACEHOLDER: 'Search',
+
+    POSTAMATES_TITLE: 'Postamates',
+    POSTAMATES_LIST: 'Postamates list',
+    POSTAMATES_SEARCH_PLACEHOLDER: 'Search',
+    POSTAMAT_CREATE_TITLE: 'Creating postamat',
+    POSTAMAT_CREATE: 'Postamat data',
+    POSTAMAT_EDIT: 'Editing postamat',
 
     NOTIFY_PROFILE_UPDATED: 'Profile updated',
     NOTIFY_PASSWORD_UPDATED: 'Password updated',
@@ -182,8 +203,24 @@ app.constant('LOCALE_EN', {
     NOTIFY_LOCK_DELETED: 'Lock deleted',
     NOTIFY_LOCK_ADDED: 'Lock added',
     NOTIFY_ENTRIES_UPDATED: 'Entries updated',
+    NOTIFY_POSTAMAT_ADDED: 'Postamat added',
+    NOTIFY_POSTAMAT_UPDATED: 'Postamat updated',
+    NOTIFY_POSTAMAT_DELETED: 'Postamat deleted',
+    NOTIFY_POSTAMAT_CELL_RELEASED: 'Cell released',
 
     NOTIFY_MESSAGE_USER_DELETE_CONFIRM: 'Are you sure, you want to delete this user?',
     NOTIFY_MESSAGE_LOCK_DELETE_CONFIRM: 'Are you sure, you want to delete this lock?',
-    NOTIFY_MESSAGE_KEY_DELETE_CONFIRM: 'Are you sure, you want to delete this key?'
+    NOTIFY_MESSAGE_KEY_DELETE_CONFIRM: 'Are you sure, you want to delete this key?',
+    NOTIFY_MESSAGE_POSTAMAT_DELETE_CONFIRM: 'Are you sure, you want to delete this postamat?',
+    NOTIFY_MESSAGE_POSTAMAT_CELL_RELEASE_CONFIRM: 'Are you sure, you want to release this cell?',
+
+    KEY_STATUS_none: 'None',
+    KEY_STATUS_sent: 'Sent',
+    KEY_STATUS_approved: 'Approved',
+    KEY_STATUS_rejected: 'Rejected',
+    KEY_STATUS_deleteUser: 'Deleted by user',
+    KEY_STATUS_deleteAdmin: 'Deleted by admin',
+
+    POSTAMAT_STATUS_filled: 'Filled',
+    POSTAMAT_STATUS_empty: 'Empty'
 });

@@ -250,15 +250,17 @@ app.directive('multiSelect', ['$timeout', function($timeout) {
     };
 }]);
 
-app.directive('mask', function(){
+app.directive('mask', ['$timeout', function($timeout) {
     return {
         restrict: 'A',
         link: function(scope, el, attrs){
             var mask = scope.$eval(attrs.mask);
-            $(el).inputmask(mask.mask);
+            $timeout(function() {
+                $(el).inputmask(mask.mask);
+            });
         }
     };
-});
+}]);
 
 app.directive('file', [function () {
     return {
@@ -268,7 +270,6 @@ app.directive('file', [function () {
         link: function (scope, element, attributes) {
             element.bind('change', function (changeEvent) {
                 scope.$apply(function () {
-                    console.log(changeEvent.target.files[0])
                     scope.file = changeEvent.target.files[0];
                     // or all selected files:
                     // scope.fileread = changeEvent.target.files;

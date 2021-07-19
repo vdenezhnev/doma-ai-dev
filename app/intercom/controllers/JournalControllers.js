@@ -9,7 +9,8 @@ app.controller('JournalListCtrl', ['$scope', 'Journal', 'gettextCatalog', '$http
             },
             perimeterId: null,
             user: null,
-            sumByDays: false
+            sumByDays: false,
+            isEventPass: false
         };
 
         $scope.filter = {
@@ -97,6 +98,7 @@ app.controller('JournalListCtrl', ['$scope', 'Journal', 'gettextCatalog', '$http
                 From: $scope.workingTimeFilter.period.from,
                 Till: $scope.workingTimeFilter.period.to,
                 PerimeterId: $scope.workingTimeFilter.perimeterId,
+                IsEventPass: $scope.workingTimeFilter.isEventPass,
                 TimeOffset: moment().utcOffset()
             });
 
@@ -123,6 +125,7 @@ app.controller('JournalListCtrl', ['$scope', 'Journal', 'gettextCatalog', '$http
             var getParams = {
                 action: 'ExportReportDataLockAccessHistoryJournal',
                 IsSumWorkDay: $scope.workingTimeFilter.sumByDays,
+                IsEventPass: $scope.workingTimeFilter.isEventPass,
                 UserName: $scope.workingTimeFilter.user,
                 From: $scope.workingTimeFilter.period.from,
                 Till: $scope.workingTimeFilter.period.to,

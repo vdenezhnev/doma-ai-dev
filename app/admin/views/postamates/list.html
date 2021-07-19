@@ -1,0 +1,53 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header" translate>POSTAMATES_TITLE</h1>
+    </div>
+
+    <div class="col-lg-12 mb15">
+        <a ui-sref="admin.postamates.create" class="btn btn-success"><i class="fa fa-plus"></i> {{ 'BUTTON_POSTAMAT_ADD' | translate }}</a>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <i class="fa fa-bar-chart-o fa-fw"></i> {{ 'POSTAMATES_LIST' | translate }}
+    </div>
+    <!-- /.panel-heading -->
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-lg-12">
+                <div>
+                    <form>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                                <input type="text" class="form-control" placeholder="{{ 'POSTAMATES_SEARCH_PLACEHOLDER' | translate }}" ng-model="q" ng-model-options="{debounce: 1000}">
+                            </div>
+                        </div>
+                    </form>
+
+                    <table class="table table-bordered table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th style="vertical-align: top;" translate>TABLE_CELL_POSTAMAT_ID</th>
+                                <th style="vertical-align: top;" translate>TABLE_CELL_PUBLIC_ID</th>
+                                <th style="vertical-align: top; width: 200px;" translate>TABLE_CELL_DEVICE_STATUS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="postamat in postamates">
+                                <td><a ui-sref="admin.postamates.detail({id: postamat.id, postamat: postamat})">{{ postamat.id }}</a></td>
+                                <td>{{ postamat.pid }}</td>
+                                <td>{{ postamat.status }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <button ng-click="loadPostamates(20, false, listFilter)" ng-hide="loadedAllPostamates" class="btn btn-default" translate>
+                    BUTTON_LOAD_MORE
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

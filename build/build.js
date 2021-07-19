@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var env = require('gulp-env');
+var buildCourier = require('./build-courier').default;
 
 gulp.task('clean', require('./clean').default),
 gulp.task('html', require('./html').default),
@@ -35,12 +36,16 @@ const setIntercomEnv = async () => env({
     file: './build/.intercom.env.json',
     vars: {
         API_HOST: process.env.API_HOST || '/',
+        API_URL_INTERCOM: process.env.API_URL_INTERCOM || 'api/web/intercoms',
+        APP_INTERCOM_TITLE: process.env.APP_INTERCOM_TITLE || 'SmartAirkey',
+        APP_BRAND_ID: process.env.APP_BRAND_ID || 'smartairkey',
     }
 });
 const setAdminEnv = async () => env({
     file: './build/.admin.env.json',
     vars: {
         API_HOST: process.env.API_HOST || '/',
+        API_URL_ADMIN: process.env.API_URL_ADMIN || 'api/admin',
     }
 });
 const buildIntercom = gulp.series(
@@ -75,9 +80,10 @@ exports.buildIntercomDev = (locale) => gulp.series(
     setIntercomEnv,
     build,
     async () => gulp.src(`./dist/intercom-${locale}/index.html`).pipe(gulp.dest(`./dist`))
-)
+);
 exports.default = gulp.series(
     'clean',
     buildIntercom,
-    buildAdmin
-)
+    buildAdmin,
+    buildCourier
+);

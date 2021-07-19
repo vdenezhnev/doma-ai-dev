@@ -22,6 +22,12 @@ function browserSyncInit(baseDir, startPath) {
           changeOrigin: true,
           secure: true,
           logLevel: 'debug'
+        }),
+        proxyMiddleware('/api/file', {
+          target: 'https://apidev.smartairkey.com',
+          changeOrigin: true,
+          secure: true,
+          logLevel: 'debug'
         })
       ],
     },
@@ -33,5 +39,11 @@ function browserSyncInit(baseDir, startPath) {
   });
 }
 
-exports.serveDist = (app, locale) => browserSyncInit('./dist', `${app}-${locale}`)
+exports.serveDist = (app, locale) => {
+  if (locale) {
+    return browserSyncInit('./dist', `${app}-${locale}`);
+  }
+
+  return browserSyncInit('./dist', `${app}`);
+};
 

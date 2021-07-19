@@ -23,7 +23,7 @@
                         <td>{{ device.installingPlace }}</td>
                         <td>{{ device.lockPhoneNumber }}</td>
                         <td>
-                            <span ng-hide="device.installingPlace == ''">{{ device.installingDate | amDateFormat:'MM.DD.YYYY HH:mm' }}</span>
+                            <span ng-hide="device.installingPlace == ''">{{ device.installingDate | amDateFormat:'DD.MM.YYYY HH:mm' }}</span>
                         </td>
                         <td>{{ device.comment }}</td>
                     </tr>

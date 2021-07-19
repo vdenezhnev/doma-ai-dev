@@ -21,6 +21,12 @@ exports.serveAdmin = () => {
 
     serve(buildAdminDev, serveAdmin);
 };
+exports.serveCourier = () => {
+    const buildCourierDev = require('./build/build-courier').buildCourierDev;
+    const serveCourier = () => require('./build/server').serveDist('courier');
+
+    serve(buildCourierDev, serveCourier);
+};
 exports.serveIntercomRu = () => {
     const buildIntercomDev = require('./build/build').buildIntercomDev('ru');
     const serveIntercom = () => require('./build/server').serveDist('intercom', 'ru');

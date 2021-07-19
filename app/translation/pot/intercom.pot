@@ -9,6 +9,10 @@ msgstr ""
 msgid "<i class=\"fa fa-close\"></i>"
 msgstr ""
 
+#: app/intercom/views/account/form.html:34
+msgid "Api-token"
+msgstr ""
+
 #: app/intercom/controllers/PaymentControllers.js:50
 msgid "LockMaintenancePerMonth"
 msgstr ""
@@ -21,15 +25,15 @@ msgstr ""
 msgid "LockMaintenancePeriod"
 msgstr ""
 
-#: app/intercom/controllers/AbonentControllers.js:89
+#: app/intercom/controllers/AbonentControllers.js:88
 msgid "abonents.abonent_delete_confirm"
 msgstr ""
 
-#: app/intercom/controllers/AbonentControllers.js:91
+#: app/intercom/controllers/AbonentControllers.js:90
 msgid "abonents.abonent_deleted"
 msgstr ""
 
-#: app/intercom/controllers/AbonentControllers.js:81
+#: app/intercom/controllers/AbonentControllers.js:80
 msgid "abonents.abonent_updated"
 msgstr ""
 
@@ -451,7 +455,7 @@ msgstr ""
 msgid "html.account.account_update_display"
 msgstr ""
 
-#: app/intercom/views/account/form.html:51
+#: app/intercom/views/account/form.html:61
 msgid "html.account.add_phone_title"
 msgstr ""
 
@@ -467,11 +471,11 @@ msgstr ""
 msgid "html.account.change_password_title"
 msgstr ""
 
-#: app/intercom/views/account/form.html:72
+#: app/intercom/views/account/form.html:82
 msgid "html.account.email_display"
 msgstr ""
 
-#: app/intercom/views/account/form.html:56
+#: app/intercom/views/account/form.html:66
 msgid "html.account.fio_display"
 msgstr ""
 
@@ -479,19 +483,19 @@ msgstr ""
 msgid "html.account.inn_display"
 msgstr ""
 
-#: app/intercom/views/account/form.html:78
+#: app/intercom/views/account/form.html:88
 msgid "html.account.keys"
 msgstr ""
 
-#: app/intercom/views/account/form.html:82
+#: app/intercom/views/account/form.html:92
 msgid "html.account.keys.available"
 msgstr ""
 
-#: app/intercom/views/account/form.html:102
+#: app/intercom/views/account/form.html:112
 msgid "html.account.keys.remain"
 msgstr ""
 
-#: app/intercom/views/account/form.html:92
+#: app/intercom/views/account/form.html:102
 msgid "html.account.keys.used"
 msgstr ""
 
@@ -508,12 +512,12 @@ msgstr ""
 msgid "html.account.old_password_display"
 msgstr ""
 
-#: app/intercom/views/account/form.html:63
+#: app/intercom/views/account/form.html:73
 #: app/intercom/views/payments/list.html:11
 msgid "html.account.phone_display"
 msgstr ""
 
-#: app/intercom/views/account/form.html:33
+#: app/intercom/views/account/form.html:43
 msgid "html.account.phones_display"
 msgstr ""
 
@@ -521,7 +525,7 @@ msgstr ""
 msgid "html.account.region_display"
 msgstr ""
 
-#: app/intercom/views/account/form.html:53
+#: app/intercom/views/account/form.html:63
 msgid "html.account.support"
 msgstr ""
 
@@ -745,7 +749,7 @@ msgstr ""
 #: app/intercom/views/access/point/edit.html:41
 #: app/intercom/views/access/point/edit.html:52
 #: app/intercom/views/account/change_password.html:21
-#: app/intercom/views/account/form.html:114
+#: app/intercom/views/account/form.html:124
 #: app/intercom/views/account/form_admins.html:50
 #: app/intercom/views/address/detail.html:14
 #: app/intercom/views/control_panel_user/detail.html:16
@@ -1315,7 +1319,7 @@ msgstr ""
 msgid "notify.defaults.are_you_sure"
 msgstr ""
 
-#: app/intercom/app.js:105
+#: app/intercom/app.js:109
 msgid "notify.defaults.changes_will_not_be_saved"
 msgstr ""
 
@@ -1341,6 +1345,10 @@ msgstr ""
 
 #: app/intercom/controllers/TariffControllers.js:51
 msgid "tariffs.tariff_updated"
+msgstr ""
+
+#: app/intercom/views/account/form.html:40
+msgid "validation.api_token"
 msgstr ""
 
 #: app/intercom/views/access/perimeter/generate-qr.html:11

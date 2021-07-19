@@ -279,9 +279,14 @@ app.config(['$stateProvider', 'settings', function($stateProvider, settings) {
             controller: 'EditAccessPointCtrl',
             controllerAs: 'vm',
             templateUrl: settings.TEMPLATE_DIR + 'access/point/edit.html',
+            params: {
+                accessPoint: null
+            },
             resolve: {
-                point: function(AccessPoint, $stateParams) {
-                    return AccessPoint.get({AccessPointId: $stateParams.id}).$promise;
+                point: function(AccessPoint, PostamatAccessPoint, $stateParams) {
+                    return $stateParams.accessPoint.isPostamatAccessPoint ?
+                        PostamatAccessPoint.get({Id: $stateParams.id}).$promise :
+                        AccessPoint.get({AccessPointId: $stateParams.id}).$promise;
                 }
             }
         })

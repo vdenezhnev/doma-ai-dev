@@ -4,6 +4,21 @@ app.service('User', ['$http', 'Session', 'settings', function($http, Session, se
 
     var self = this;
 
+    const routesToRoles = {
+        accountManager: '',
+        user: 'admin.abonent.list',
+        tarif: 'admin.tariff.list',
+        accsessPerimeterAndPoint: 'admin.access',
+        rossetaLock: 'admin.device.list',
+        address: 'admin.address.list',
+        accessJournal: 'admin.journal.list',
+        controlPanel: 'admin.control_panel_user.list',
+        accessRight: 'admin.access_right.list',
+        payment: 'admin.payments',
+        role: 'admin.roles.list'
+    };
+    const rolesList = ['user', 'tarif', 'accsessPerimeterAndPoint', 'rossetaLock', 'address', 'accessJournal', 'controlPanel', 'accessRight', 'payment', 'role'];
+
     Object.defineProperty(this, 'data', {
         get: function() {
             return Session.user || {};
@@ -70,4 +85,16 @@ app.service('User', ['$http', 'Session', 'settings', function($http, Session, se
             }
         });
     };
+
+    this.getRouteAfterLogin = function(userPolices) {
+        const notFoundPageRoute = 'admin.404';
+
+        if (userPolices && userPolices.length) {
+            const firstValidPolicy = userPolices.find(policy => rolesList.includes(policy) && routesToRoles[policy]);
+
+            return firstValidPolicy ? routesToRoles[firstValidPolicy] : notFoundPageRoute;
+        }
+
+        return notFoundPageRoute;
+    }
 }]);

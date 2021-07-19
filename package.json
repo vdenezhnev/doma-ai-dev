@@ -11,6 +11,7 @@
     "serve:intercom:en": "gulp serveIntercomEn",
     "serve:intercom:ar": "gulp serveIntercomAr",
     "serve:admin": "gulp serveAdmin",
+    "serve:courier": "gulp serveCourier",
     "extract-i18n": "grunt nggettext_extract",
     "compile-i18n": "grunt nggettext_compile"
   },

@@ -17,6 +17,7 @@ app.constant('LOCALE_RU', {
     NAVBAR_PAYMENS: 'Оплаты Sim-карт',
     NAVBAR_LOGOUT: 'Выход',
     NAVBAR_LOCAL_KEYS: 'Локальные ключи',
+    NAVBAR_POSTAMATES: 'Постаматы',
 
     BUTTON_LOAD_MORE: 'Загрузить еще',
     BUTTON_ADD_LOCK: 'Добавить замок',
@@ -39,6 +40,9 @@ app.constant('LOCALE_RU', {
     BUTTON_UPDATE_ADMIN_INFO: 'Обновить информацию об администраторах',
     BUTTON_ADD_ADMIN: 'Добавить администратора',
     BUTTON_SETUP: 'Настроить',
+    BUTTON_POSTAMAT_ADD: 'Добавить постамат',
+    BUTTON_POSTAMAT_DELETE: 'Удалить постамат',
+    BUTTON_POSTAMAT_CELL_FREE: 'Освободить',
 
     TABLE_CELL_ID: 'ID',
     TABLE_CELL_USER_NAME: 'Имя',
@@ -64,6 +68,10 @@ app.constant('LOCALE_RU', {
     TABLE_CELL_KEYS_REMAINING: 'Осталось',
     TABLE_CELL_UUID: 'UUID',
     TABLE_CELL_DATE: 'Дата',
+    TABLE_CELL_POSTAMAT_ID: 'Postamat ID',
+    TABLE_CELL_PUBLIC_ID: 'Public ID',
+    TABLE_CELL_USER: 'Пользователь',
+    TABLE_CELL_POSTAMAT_CELL_NUMBER: 'Номер',
 
     COMPONENT_DATETIME_FROM: 'от',
     COMPONENT_DATETIME_TO: 'до',
@@ -162,10 +170,23 @@ app.constant('LOCALE_RU', {
     COMPANIES_FORM_ADMIN_EMAIL: 'E-mail',
     COMPANIES_FORM_ADMIN_ROLE: 'Роль',
     COMPANIES_FORM_PAYMENT_TITLE: 'Оплата',
+    COMPANIES_FORM_API_TOKEN: 'Api-token',
+    POSTAMAT_FORM_ID: 'Postamat ID',
+    POSTAMAT_FORM_PID: 'PID',
+    POSTAMAT_FORM_CELLS: 'Количество ячеек',
+    POSTAMAT_FORM_CAMERA_ADDRESS: 'Адрес камеры наблюдения (в формате RTSP)',
+    POSTAMAT_FORM_CELLS_DETAIL: 'Ячейки',
 
     LOCAL_KEYS_TITLE: 'Цифровые ключи локальных серверов',
     LOCAL_KEYS_LIST: 'Список цифровых ключей',
     LOCAL_KEYS_SEARCH_PLACEHOLDER: 'Поиск',
+
+    POSTAMATES_TITLE: 'Постаматы',
+    POSTAMATES_LIST: 'Список постаматов',
+    POSTAMATES_SEARCH_PLACEHOLDER: 'Поиск',
+    POSTAMAT_CREATE_TITLE: 'Создание постамата',
+    POSTAMAT_CREATE: 'Данные постамата',
+    POSTAMAT_EDIT: 'Редактирование постамата',
 
     NOTIFY_PROFILE_UPDATED: 'Профиль обновлен',
     NOTIFY_PASSWORD_UPDATED: 'Пароль изменен',
@@ -182,8 +203,24 @@ app.constant('LOCALE_RU', {
     NOTIFY_LOCK_DELETED: 'Замок удален',
     NOTIFY_LOCK_ADDED: 'Замок добавлен',
     NOTIFY_ENTRIES_UPDATED: 'Записи обновлены',
+    NOTIFY_POSTAMAT_ADDED: 'Постамат добавлен',
+    NOTIFY_POSTAMAT_UPDATED: 'Постамат обновлен',
+    NOTIFY_POSTAMAT_DELETED: 'Постамат удален',
+    NOTIFY_POSTAMAT_CELL_RELEASED: 'Ячейка освобождена',
 
     NOTIFY_MESSAGE_USER_DELETE_CONFIRM: 'Вы действительно хотите удалить данного пользователя?',
     NOTIFY_MESSAGE_LOCK_DELETE_CONFIRM: 'Вы действительно хотите удалить данный замок?',
-    NOTIFY_MESSAGE_KEY_DELETE_CONFIRM: 'Вы действительно хотите удалить данный ключ?'
+    NOTIFY_MESSAGE_KEY_DELETE_CONFIRM: 'Вы действительно хотите удалить данный ключ?',
+    NOTIFY_MESSAGE_POSTAMAT_DELETE_CONFIRM: 'Вы действительно хотите удалить данный постамат?',
+    NOTIFY_MESSAGE_POSTAMAT_CELL_RELEASE_CONFIRM: 'Вы действительно хотите освободить эту ячейку?',
+
+    KEY_STATUS_none: 'Не определён',
+    KEY_STATUS_sent: 'Отправлен',
+    KEY_STATUS_approved: 'Подтверждён',
+    KEY_STATUS_rejected: 'Отклонён',
+    KEY_STATUS_deleteUser: 'Удалён пользователем',
+    KEY_STATUS_deleteAdmin: 'Удалён администратором',
+
+    POSTAMAT_STATUS_filled: 'Заполнена',
+    POSTAMAT_STATUS_empty: 'Пустая'
 });

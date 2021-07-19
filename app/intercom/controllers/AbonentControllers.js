@@ -33,7 +33,6 @@ app.controller('AbonentListCtrl', ['$scope', 'Abonent', 'gettextCatalog',
         });
         $scope.$watchCollection('importedFile', function(newVal, oldVal) {
             if (newVal !== oldVal) {
-                console.log(newVal);
                 const fd = new FormData();
                 fd.append('file', newVal);
                 $scope.skip = 0;

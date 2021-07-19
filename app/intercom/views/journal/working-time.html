@@ -128,6 +128,17 @@
                             </div>
                         </div>
 
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>
+                                        <input type="checkbox" name="isEventPass" ng-model="workingTimeFilter.isEventPass">
+                                        <span translate>html.journal.isEventPass</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="form-actions">
                             <button type="submit" class="btn blue" ng-click="compileReport()" translate>html.journal.getReport</button>
                             <button class="btn" ng-click="resetWTFilter()" translate>html.journal.resetFilter</button>

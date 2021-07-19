@@ -1,8 +1,13 @@
 
 <div class="form-body">
-    <div class="form-group">
+    <div class="form-group" ng-if="!point.isPostamatAccessPoint">
         <label translate>html.access.point.form.lock_id</label>
         <input class="form-control" name="lockId" ng-model="point.lockId" validator="required">
+    </div>
+
+    <div class="form-group" ng-if="point.isPostamatAccessPoint">
+        <label>Postamat ID</label>
+        <input class="form-control" name="postamatId" ng-model="point.postamatId" validator="required">
     </div>
 
     <div class="form-group">
@@ -16,6 +21,13 @@
     </div>
 
     <div class="form-group">
+        <label>
+            <input type="checkbox" name="postamat" ng-model="point.isPostamatAccessPoint" ng-disabled="vm.isEditPoint">
+            <span translate>html.access.point.form.postamat</span>
+        </label>
+    </div>
+
+    <div class="form-group" ng-if="!point.isPostamatAccessPoint">
         <label translate>html.access.point.form.type</label>
         <select name="type" ng-model="point.type" class="form-control">
             <option value="Default" translate>html.access.point.type_default</option>
@@ -24,19 +36,19 @@
         </select>
     </div>
 
-    <div class="form-group">
+    <div class="form-group" ng-if="!point.isPostamatAccessPoint">
         <label>
             <input type="checkbox" name="IsLift" ng-model="point.isLift">
             <span translate>html.access.point.form.elevator</span>
         </label>
     </div>
 
-    <div class="form-group" ng-show="point.lockPhoneNumber !== undefined">
+    <div class="form-group" ng-show="point.lockPhoneNumber !== undefined" ng-if="!point.isPostamatAccessPoint">
         <label translate>html.access.point.form.lockPhoneNumber</label>
         <input class="form-control" name="lockPhoneNumber" ng-model="point.lockPhoneNumber" disabled >
     </div>
 
-    <div class="form-group">
+    <div class="form-group" ng-if="!point.isPostamatAccessPoint">
         <label translate>html.access.point.form.simCardPaymentTo</label>
         <input class="form-control"
                name="paymentDate"

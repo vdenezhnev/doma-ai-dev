@@ -53,7 +53,11 @@ app.run(['$rootScope', '$injector', '$timeout', '$state', 'Permission', 'User', 
 
         $rootScope.$on('user:login', function (event) {
             $timeout(function(){
-                $state.go('admin.home');
+                if ($rootScope.user.role && $rootScope.user.role.policies) {
+                    $state.go(User.getRouteAfterLogin($rootScope.user.role.policies));
+                } else {
+                    $state.go('admin.404');
+                }
             });
         });
 
