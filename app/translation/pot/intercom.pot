@@ -61,29 +61,31 @@ msgid "auth.password_changed"
 msgstr ""
 
 #: app/intercom/controllers/AccessControllers.js:132
-#: app/intercom/controllers/AccessControllers.js:292
+#: app/intercom/controllers/AccessControllers.js:320
 #: app/intercom/controllers/DeviceControllers.js:51
 msgid "devices.device_delete_confirm"
 msgstr ""
 
-#: app/intercom/controllers/AccessControllers.js:295
+#: app/intercom/controllers/AccessControllers.js:326
+#: app/intercom/controllers/AccessControllers.js:330
 #: app/intercom/controllers/DeviceControllers.js:53
 msgid "devices.device_deleted"
 msgstr ""
 
-#: app/intercom/controllers/AccessControllers.js:253
+#: app/intercom/controllers/AccessControllers.js:273
 msgid "devices.device_update_settings"
 msgstr ""
 
 #: app/intercom/controllers/AccessControllers.js:127
 #: app/intercom/controllers/AccessControllers.js:136
-#: app/intercom/controllers/AccessControllers.js:213
-#: app/intercom/controllers/AccessControllers.js:247
-#: app/intercom/controllers/AccessControllers.js:259
-#: app/intercom/controllers/AccessControllers.js:269
-#: app/intercom/controllers/AccessControllers.js:277
-#: app/intercom/controllers/AccessControllers.js:287
+#: app/intercom/controllers/AccessControllers.js:230
+#: app/intercom/controllers/AccessControllers.js:267
+#: app/intercom/controllers/AccessControllers.js:279
+#: app/intercom/controllers/AccessControllers.js:289
 #: app/intercom/controllers/AccessControllers.js:29
+#: app/intercom/controllers/AccessControllers.js:297
+#: app/intercom/controllers/AccessControllers.js:310
+#: app/intercom/controllers/AccessControllers.js:314
 #: app/intercom/controllers/AccessControllers.js:51
 #: app/intercom/controllers/AccessControllers.js:92
 #: app/intercom/controllers/DeviceControllers.js:45
@@ -339,19 +341,19 @@ msgstr ""
 msgid "html.access.point.form.base_title"
 msgstr ""
 
-#: app/intercom/views/access/point/form.html:14
+#: app/intercom/views/access/point/form.html:19
 msgid "html.access.point.form.description"
 msgstr ""
 
-#: app/intercom/views/access/point/form.html:9
+#: app/intercom/views/access/point/form.html:14
 msgid "html.access.point.form.display_name"
 msgstr ""
 
-#: app/intercom/views/access/point/form.html:30
+#: app/intercom/views/access/point/form.html:42
 msgid "html.access.point.form.elevator"
 msgstr ""
 
-#: app/intercom/views/access/point/form.html:35
+#: app/intercom/views/access/point/form.html:47
 msgid "html.access.point.form.lockPhoneNumber"
 msgstr ""
 
@@ -359,11 +361,15 @@ msgstr ""
 msgid "html.access.point.form.lock_id"
 msgstr ""
 
-#: app/intercom/views/access/point/edit.html:26
+#: app/intercom/views/access/point/edit.html:32
 msgid "html.access.point.form.new_lock_id_display"
 msgstr ""
 
-#: app/intercom/views/access/point/edit.html:19
+#: app/intercom/views/access/point/form.html:26
+msgid "html.access.point.form.postamat"
+msgstr ""
+
+#: app/intercom/views/access/point/edit.html:22
 msgid "html.access.point.form.replace_title"
 msgstr ""
 
@@ -371,11 +377,11 @@ msgstr ""
 msgid "html.access.point.form.settings_title"
 msgstr ""
 
-#: app/intercom/views/access/point/form.html:40
+#: app/intercom/views/access/point/form.html:52
 msgid "html.access.point.form.simCardPaymentTo"
 msgstr ""
 
-#: app/intercom/views/access/point/form.html:19
+#: app/intercom/views/access/point/form.html:31
 msgid "html.access.point.form.type"
 msgstr ""
 
@@ -383,15 +389,15 @@ msgstr ""
 msgid "html.access.point.new_lock_id_display"
 msgstr ""
 
-#: app/intercom/views/access/point/form.html:21
+#: app/intercom/views/access/point/form.html:33
 msgid "html.access.point.type_default"
 msgstr ""
 
-#: app/intercom/views/access/point/form.html:22
+#: app/intercom/views/access/point/form.html:34
 msgid "html.access.point.type_entrance"
 msgstr ""
 
-#: app/intercom/views/access/point/form.html:23
+#: app/intercom/views/access/point/form.html:35
 msgid "html.access.point.type_exit"
 msgstr ""
 
@@ -693,7 +699,7 @@ msgstr ""
 #: app/intercom/views/access/perimeter/add.html:17
 #: app/intercom/views/access/perimeter/edit.html:23
 #: app/intercom/views/access/point/add.html:17
-#: app/intercom/views/access/point/edit.html:42
+#: app/intercom/views/access/point/edit.html:48
 msgid "html.defaults.cancel_title"
 msgstr ""
 
@@ -745,9 +751,9 @@ msgstr ""
 #: app/intercom/views/access/object/edit.html:19
 #: app/intercom/views/access/perimeter/edit.html:22
 #: app/intercom/views/access/point/change_lock_id_form.html:19
-#: app/intercom/views/access/point/edit.html:32
-#: app/intercom/views/access/point/edit.html:41
-#: app/intercom/views/access/point/edit.html:52
+#: app/intercom/views/access/point/edit.html:38
+#: app/intercom/views/access/point/edit.html:47
+#: app/intercom/views/access/point/edit.html:58
 #: app/intercom/views/account/change_password.html:21
 #: app/intercom/views/account/form.html:124
 #: app/intercom/views/account/form_admins.html:50
@@ -934,12 +940,16 @@ msgstr ""
 msgid "html.journal.getCSV"
 msgstr ""
 
-#: app/intercom/views/journal/working-time.html:132
+#: app/intercom/views/journal/working-time.html:143
 msgid "html.journal.getReport"
 msgstr ""
 
 #: app/intercom/views/journal/working-time.html:125
 msgid "html.journal.groupByDays"
+msgstr ""
+
+#: app/intercom/views/journal/working-time.html:136
+msgid "html.journal.isEventPass"
 msgstr ""
 
 #: app/intercom/views/journal/access.html:8
@@ -962,7 +972,7 @@ msgstr ""
 msgid "html.journal.reports"
 msgstr ""
 
-#: app/intercom/views/journal/working-time.html:133
+#: app/intercom/views/journal/working-time.html:144
 msgid "html.journal.resetFilter"
 msgstr ""
 
@@ -1283,27 +1293,27 @@ msgstr ""
 msgid "importInfoTitle"
 msgstr ""
 
-#: app/intercom/controllers/JournalControllers.js:30
+#: app/intercom/controllers/JournalControllers.js:31
 msgid "keyTypes.button"
 msgstr ""
 
-#: app/intercom/controllers/JournalControllers.js:27
+#: app/intercom/controllers/JournalControllers.js:28
 msgid "keyTypes.card"
 msgstr ""
 
-#: app/intercom/controllers/JournalControllers.js:31
+#: app/intercom/controllers/JournalControllers.js:32
 msgid "keyTypes.mobile"
 msgstr ""
 
-#: app/intercom/controllers/JournalControllers.js:28
+#: app/intercom/controllers/JournalControllers.js:29
 msgid "keyTypes.remote"
 msgstr ""
 
-#: app/intercom/controllers/JournalControllers.js:35
+#: app/intercom/controllers/JournalControllers.js:36
 msgid "lockAccessTypes.accessDenied"
 msgstr ""
 
-#: app/intercom/controllers/JournalControllers.js:34
+#: app/intercom/controllers/JournalControllers.js:35
 msgid "lockAccessTypes.opened"
 msgstr ""
 

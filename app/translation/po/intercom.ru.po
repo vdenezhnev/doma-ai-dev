@@ -1039,7 +1039,7 @@ msgstr "КПП"
 
 #: app/intercom/views/device/list.html:2 app/intercom/views/inc/sidebar.html:34
 msgid "html.menu.devices"
-msgstr "Контроллеры SmartAirkey"
+msgstr "Контроллеры"
 
 #: app/intercom/views/inc/sidebar.html:52
 msgid "html.menu.journal"
