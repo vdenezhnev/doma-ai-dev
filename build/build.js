@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var env = require('gulp-env');
 var buildCourier = require('./build-courier').default;
+var buildLaskomexIntercom = require('./build-laskomex-intercom').default;
 
 gulp.task('clean', require('./clean').default),
 gulp.task('html', require('./html').default),
@@ -41,6 +42,7 @@ const setIntercomEnv = async () => env({
         APP_BRAND_ID: process.env.APP_BRAND_ID || 'smartairkey',
     }
 });
+
 const setAdminEnv = async () => env({
     file: './build/.admin.env.json',
     vars: {
@@ -48,6 +50,7 @@ const setAdminEnv = async () => env({
         API_URL_ADMIN: process.env.API_URL_ADMIN || 'api/admin',
     }
 });
+
 const buildIntercom = gulp.series(
     setIntercomEnv,
     setLocaleRu,
@@ -57,6 +60,7 @@ const buildIntercom = gulp.series(
     setLocaleAr,
     build
 );
+
 const buildAdmin = gulp.series(
     setAdminEnv,
     setLocaleRu,
@@ -81,9 +85,11 @@ exports.buildIntercomDev = (locale) => gulp.series(
     build,
     async () => gulp.src(`./dist/intercom-${locale}/index.html`).pipe(gulp.dest(`./dist`))
 );
+
 exports.default = gulp.series(
     'clean',
     buildIntercom,
+    buildLaskomexIntercom,
     buildAdmin,
     buildCourier
 );
