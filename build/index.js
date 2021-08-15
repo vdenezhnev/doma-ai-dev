@@ -62,7 +62,7 @@ const indexWithOutLangCode = () => {
 };
 
 const laskomexIndex = () => {
-    const distFolder = `dist/laskomex/${process.env.FEATURE_NAME}-${process.env.LANGUAGE_CODE}`;
+    const distFolder = `dist/${process.env.FEATURE_NAME}-${process.env.LANGUAGE_CODE}`;
     var target = gulp.src(`./${process.env.FEATURE_NAME}.html`);
     var styles = gulp.src([`./${distFolder}/**/*.css`], {read: false});
     var vendor = gulp.src([`./${distFolder}/**/vendor.js`], {read: false});
@@ -83,7 +83,7 @@ const laskomexIndex = () => {
             BASE_HREF: `/${process.env.FEATURE_NAME}-${process.env.LANGUAGE_CODE}/`
         }))
         .pipe(rename(`index.html`))
-        .pipe(gulp.dest(`./${distFolder}/`));
+        .pipe(gulp.dest(`./dist/laskomex/${process.env.FEATURE_NAME}-${process.env.LANGUAGE_CODE}/`));
 };
 
 exports.default = index;
