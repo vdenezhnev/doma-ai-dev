@@ -25,15 +25,15 @@ msgstr ""
 msgid "LockMaintenancePeriod"
 msgstr ""
 
-#: app/intercom/controllers/AbonentControllers.js:88
+#: app/intercom/controllers/AbonentControllers.js:89
 msgid "abonents.abonent_delete_confirm"
 msgstr ""
 
-#: app/intercom/controllers/AbonentControllers.js:90
+#: app/intercom/controllers/AbonentControllers.js:91
 msgid "abonents.abonent_deleted"
 msgstr ""
 
-#: app/intercom/controllers/AbonentControllers.js:80
+#: app/intercom/controllers/AbonentControllers.js:81
 msgid "abonents.abonent_updated"
 msgstr ""
 

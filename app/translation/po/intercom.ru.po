@@ -224,7 +224,7 @@ msgstr "Окончание"
 
 #: app/intercom/views/abonent/form.html:33
 msgid "html.abonent.external_id_display"
-msgstr "ID пользователя во внутренней системе"
+msgstr "ID выданной карты или метки"
 
 #: app/intercom/views/abonent/list.html:16
 msgid "html.abonent.flat_display"

@@ -224,7 +224,7 @@ msgstr "End period"
 
 #: app/intercom/views/abonent/form.html:33
 msgid "html.abonent.external_id_display"
-msgstr "External id"
+msgstr "ID of the issued card or tag"
 
 #: app/intercom/views/abonent/list.html:16
 msgid "html.abonent.flat_display"
