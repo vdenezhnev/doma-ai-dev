@@ -26,7 +26,6 @@ app.controller('ControlPanelUserDetailCtrl', ['$scope', '$state', '$stateParams'
         };
 
         $scope.accessPoints = AccessPoint.query();
-
         $scope.delete = function () {
             if (window.confirm(gettextCatalog.getString('notify.defaults.are_you_sure'))) {
                 var user = new ControlPanelUser({id: $scope.user.id});
