@@ -16,7 +16,7 @@ $stateProvider
   })
 
   .state('lock.open', {
-    url: "open?lockId&uuid",
+    url: "open?locks&uuid",
     controller: 'LockCtrl',
     templateUrl: settings.TEMPLATE_DIR + 'lock/open.html'
   })
