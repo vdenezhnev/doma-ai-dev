@@ -25,7 +25,7 @@ app.controller('LockCtrl', ['$scope', '$stateParams', '$state', '$http', '$filte
         function getStatusOnOpen(lockId) {
             $http.get(`${settings.API_URL}/lockstate?lock=${lockId}`)
                 .then(function (response) {
-                    if (response.data.LockOpen || response.data.DoorOpen) {
+                    if (response.data.LockOpen) {
                         notify($filter('translate')('NOTIFY_LOCK_OPENED'));
                     } else {
                         notify('Не удалось открыть замок');
@@ -41,7 +41,7 @@ app.controller('LockCtrl', ['$scope', '$stateParams', '$state', '$http', '$filte
                 .then(function (response) {
                     var isAvailable =
                         response.data.Status === 'Online' &&
-                        !response.data.LockOpen && !response.data.DoorOpen;
+                        !response.data.LockOpen;
 
                     $scope.lockIds.push({
                             lockId: lockId,

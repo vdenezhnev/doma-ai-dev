@@ -14,6 +14,8 @@
                         <th width="140px" translate>html.payments.key_period_till</th>
                         <th width="200px" translate>html.payments.amount</th>
                         <th translate>html.payments.payment_type</th>
+                        <th width="200px" translate>html.payments.description</th>
+                        <th width="200px" translate>html.payments.account_number</th>
                     </tr>
                     <tr class="active">
                         <th>
@@ -74,6 +76,8 @@
                                     {{ trialType[1] | translate }}</option>
                             </select>
                         </th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -85,6 +89,8 @@
                         <td>{{ obj.keyPeriodTill | date:'dd-MM-yyyy HH:mm' }}</td>
                         <td>{{ obj.amount }}</td>
                         <td>{{ obj.paymentType }}</td>
+                        <td>{{ obj.description }}</td>
+                        <td>{{ obj.account }}</td>
                     </tr>
                 </tbody>
             </table>

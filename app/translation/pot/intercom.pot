@@ -4,8 +4,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: \n"
 
-#: app/intercom/views/payments/list.html:45
-#: app/intercom/views/payments/list.html:60
+#: app/intercom/views/payments/list.html:47
+#: app/intercom/views/payments/list.html:62
 msgid "<i class=\"fa fa-close\"></i>"
 msgstr ""
 
@@ -722,14 +722,15 @@ msgstr ""
 #: app/intercom/views/access/point/form_default_key_settings.html:69
 #: app/intercom/views/access/point/form_key_usage.html:25
 #: app/intercom/views/access/point/form_key_usage.html:42
-#: app/intercom/views/payments/list.html:35
+#: app/intercom/views/payments/list.html:37
 msgid "html.defaults.from_title"
 msgstr ""
 
 #: app/intercom/views/abonent/list.html:51
 #: app/intercom/views/access_right/list.html:57
+#: app/intercom/views/device/list.html:35
 #: app/intercom/views/journal/access.html:105
-#: app/intercom/views/payments/list.html:94
+#: app/intercom/views/payments/list.html:100
 msgid "html.defaults.load_more"
 msgstr ""
 
@@ -771,7 +772,7 @@ msgstr ""
 #: app/intercom/views/access/point/form_default_key_settings.html:79
 #: app/intercom/views/access/point/form_key_usage.html:31
 #: app/intercom/views/access/point/form_key_usage.html:48
-#: app/intercom/views/payments/list.html:50
+#: app/intercom/views/payments/list.html:52
 msgid "html.defaults.to_title"
 msgstr ""
 
@@ -1058,8 +1059,16 @@ msgstr ""
 msgid "html.payments.abonent"
 msgstr ""
 
+#: app/intercom/views/payments/list.html:18
+msgid "html.payments.account_number"
+msgstr ""
+
 #: app/intercom/views/payments/list.html:15
 msgid "html.payments.amount"
+msgstr ""
+
+#: app/intercom/views/payments/list.html:17
+msgid "html.payments.description"
 msgstr ""
 
 #: app/intercom/views/payments/list.html:14
@@ -1325,7 +1334,7 @@ msgstr ""
 msgid "notify.addresses.updated"
 msgstr ""
 
-#: app/intercom/controllers/ControlPanelUserControllers.js:31
+#: app/intercom/controllers/ControlPanelUserControllers.js:30
 msgid "notify.defaults.are_you_sure"
 msgstr ""
 
@@ -1333,11 +1342,11 @@ msgstr ""
 msgid "notify.defaults.changes_will_not_be_saved"
 msgstr ""
 
-#: app/intercom/controllers/ControlPanelUserControllers.js:52
+#: app/intercom/controllers/ControlPanelUserControllers.js:51
 msgid "notify.defaults.created"
 msgstr ""
 
-#: app/intercom/controllers/ControlPanelUserControllers.js:34
+#: app/intercom/controllers/ControlPanelUserControllers.js:33
 msgid "notify.defaults.removed"
 msgstr ""
 

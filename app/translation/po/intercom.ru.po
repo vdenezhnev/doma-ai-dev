@@ -1096,6 +1096,12 @@ msgstr "Назначение платежа"
 msgid "html.payments.perimeter_name"
 msgstr "Зона доступа"
 
+msgid "html.payments.description"
+msgstr "Описание"
+
+msgid "html.payments.account_number"
+msgstr "Лицевой счет"
+
 #: app/intercom/views/_messages.html:20
 #: app/intercom/views/auth/mobile_reset_password.html:21
 msgid "html.site.password_changed"

@@ -1094,6 +1094,12 @@ msgstr "Payment type"
 msgid "html.payments.perimeter_name"
 msgstr "Perimeter name"
 
+msgid "html.payments.description"
+msgstr "Description"
+
+msgid "html.payments.account_number"
+msgstr "Account number"
+
 #: app/intercom/views/_messages.html:20
 #: app/intercom/views/auth/mobile_reset_password.html:21
 msgid "html.site.password_changed"
