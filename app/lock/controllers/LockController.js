@@ -6,55 +6,49 @@ app.controller('LockCtrl', ['$scope', '$stateParams', '$state', '$http', '$filte
             $state.go('lock.404');
         }
 
-        $scope.lockIds = [];
-        $stateParams.locks.split(',')
-            .forEach(function (lock) {
-                getStatus(lock);
-            });
+        $scope.locks = [];
+        getStatus($stateParams.locks);
 
         $scope.uuid = $stateParams.uuid;
 
         $scope.onOpenLock = function (lockId) {
             $http.get(`${settings.API_URL}/open?lock=${lockId}&uuid=${$stateParams.uuid}`)
-                .then(getStatusOnOpen(lockId))
                 .catch(function () {
                     notify('Не удалось открыть замок');
                 });
         };
 
-        function getStatusOnOpen(lockId) {
-            $http.get(`${settings.API_URL}/lockstate?lock=${lockId}`)
-                .then(function (response) {
-                    if (response.data.LockOpen) {
-                        notify($filter('translate')('NOTIFY_LOCK_OPENED'));
-                    } else {
-                        notify('Не удалось открыть замок');
-                    }
-                })
-                .catch(function () {
-                    notify(`Не удалось узнать состояние замка ${lockId}`);
+        $scope.isAvailable = function (lock) {
+            return lock.Status === 'Online' && !lock.LockOpen;
+        };
+
+        function getStatus(locks) {
+            var eventSource = new EventSource(`${settings.API_URL}/lockstate?locks=${locks}`);
+
+            eventSource.onmessage = function (event) {
+                var lockState = JSON.parse(event.data);
+                var eventLock = $scope.locks.find(function (e) {
+                    return e.LockID === lockState.LockID;
                 });
-        }
 
-        function getStatus(lockId) {
-            return $http.get(`${settings.API_URL}/lockstate?lock=${lockId}`)
-                .then(function (response) {
-                    var isAvailable =
-                        response.data.Status === 'Online' &&
-                        !response.data.LockOpen;
-
-                    $scope.lockIds.push({
-                            lockId: lockId,
-                            status: isAvailable
+                if (eventLock === undefined) {
+                    $scope.locks.push(lockState);
+                } else {
+                    if (!(lockState.Status === undefined && lockState.LockOpen === undefined)) {
+                        if (lockState.Status !== undefined) {
+                            eventLock.Status = lockState.Status;
                         }
-                    );
-                    if (!isAvailable) {
-                        notify(`${lockId} недоступен для открытия`);
+                        if (lockState.LockOpen !== undefined) {
+                            eventLock.LockOpen = lockState.LockOpen;
+                        }
+                        if (eventLock.Status === 'Online' && eventLock.LockOpen) {
+                            notify(`Замок ${eventLock.LockID} открыт`);
+                        } else {
+                            notify(`Замок ${eventLock.LockID} закрыт`);
+                        }
                     }
-                })
-                .catch(function () {
-                    notify(`Не удалось узнать состояние замка ${lockId}`);
-                });
+                }
+            };
         }
     }
 ]);

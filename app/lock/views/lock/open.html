@@ -11,11 +11,10 @@
     <button
       class="btn btn-primary"
       style="width: 60%; margin-bottom: 20px;"
-      ng-repeat="lock in lockIds"
-      ng-click="onOpenLock(lock.lockId)"
-      ng-if="lock.status"
-      >
-      <span translate>OPEN</span> <b>{{ lock.lockId }}</b>
+      ng-repeat="lock in locks"
+      ng-click="onOpenLock(lock.LockID)"
+      ng-disabled="!isAvailable(lock)">
+      <span translate>OPEN</span> <b>{{ lock.LockID }}</b>
     </button>
   </div>
 </div>
