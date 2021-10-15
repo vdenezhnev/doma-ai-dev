@@ -213,7 +213,8 @@ app.controller('CompanyCreateCtrl', ['$scope', '$state', 'Api', 'settings', 'not
         $scope.company = {
             phoneNumbers: [''],
             admins: [],
-            region: 'ru'
+            region: 'ru',
+            brand: 'SmartAirkey'
         };
 
         $scope.save = function() {

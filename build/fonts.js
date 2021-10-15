@@ -9,3 +9,8 @@ exports.build = gulp.series(
     () => gulp.src('./fonts/*').pipe(gulp.dest(`./dist/${process.env.FEATURE_NAME}/fonts`)),
     () => gulp.src('./fonts/Simple-Line-Icons.*').pipe(gulp.dest(`./dist/${process.env.FEATURE_NAME}/styles/fonts`))
 );
+
+exports.laskomex = gulp.series(
+    () => gulp.src('./fonts/*').pipe(gulp.dest(`./dist/laskomex/${process.env.FEATURE_NAME}-${process.env.LANGUAGE_CODE}/fonts`)),
+    () => gulp.src('./fonts/Simple-Line-Icons.*').pipe(gulp.dest(`./dist/laskomex/${process.env.FEATURE_NAME}-${process.env.LANGUAGE_CODE}/styles/fonts`))
+);

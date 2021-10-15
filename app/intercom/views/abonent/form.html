@@ -34,9 +34,9 @@
             <input class="form-control" type="text" name="externalId" ng-model="abonent.externalId">
         </div>
 
-        <div class="form-group">
+        <div class="form-group" ng-if="showRfid">
             <label translate>html.abonent.tag_id_display</label>
-            <input class="form-control" type="text" name="tagId" ng-model="abonent.tagId">
+            <input class="form-control" type="text" name="tagId" ng-model="abonent.tagId" >
         </div>
 
         <div class="form-group">

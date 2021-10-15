@@ -17,12 +17,12 @@
             <a ng-click="showForm='settings'"
                ng-class="{'active': showForm == 'settings'}"
                class="btn default"
-               ng-if="!point.isPostamatAccessPoint"
+               ng-show="!point.isPostamatAccessPoint"
                translate>html.access.point.form.settings_title</a>
             <a ng-click="showForm='replace'"
                ng-class="{'active': showForm == 'replace'}"
                class="btn default"
-               ng-if="!point.isPostamatAccessPoint"
+               ng-show="!point.isPostamatAccessPoint"
                translate>html.access.point.form.replace_title</a>
         </div>
 

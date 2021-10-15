@@ -27,6 +27,12 @@ exports.serveCourier = () => {
 
     serve(buildCourierDev, serveCourier);
 };
+exports.serveLock = () => {
+    const buildLockDev = require('./build/build-lock').buildLockDev;
+    const serveLock = () => require('./build/server').serveDist('lock');
+
+    serve(buildLockDev, serveLock);
+};
 exports.serveIntercomRu = () => {
     const buildIntercomDev = require('./build/build').buildIntercomDev('ru');
     const serveIntercom = () => require('./build/server').serveDist('intercom', 'ru');

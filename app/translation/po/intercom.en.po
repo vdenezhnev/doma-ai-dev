@@ -224,7 +224,7 @@ msgstr "End period"
 
 #: app/intercom/views/abonent/form.html:33
 msgid "html.abonent.external_id_display"
-msgstr "External id"
+msgstr "ID of the issued card or tag"
 
 #: app/intercom/views/abonent/list.html:16
 msgid "html.abonent.flat_display"
@@ -1093,6 +1093,12 @@ msgstr "Payment type"
 #: app/intercom/views/payments/list.html:12
 msgid "html.payments.perimeter_name"
 msgstr "Perimeter name"
+
+msgid "html.payments.description"
+msgstr "Description"
+
+msgid "html.payments.account_number"
+msgstr "Account number"
 
 #: app/intercom/views/_messages.html:20
 #: app/intercom/views/auth/mobile_reset_password.html:21

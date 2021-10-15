@@ -15,3 +15,9 @@ exports.build =  () => gulp.src(`./${process.env.FEATURE_NAME}.html`)
     .pipe(gulpif('*.js', ngAnnotate()))
     .pipe(gulpif(!process.env.DEVMODE, gulpif('*.js', uglify())))
     .pipe(gulpif('*.js', gulp.dest(`./dist/${process.env.FEATURE_NAME}`)));
+
+exports.laskomex =  () => gulp.src(`./${process.env.FEATURE_NAME}.html`)
+    .pipe(useref())
+    .pipe(gulpif('*.js', ngAnnotate()))
+    .pipe(gulpif(!process.env.DEVMODE, gulpif('*.js', uglify())))
+    .pipe(gulpif('*.js', gulp.dest(`./dist/laskomex/${process.env.FEATURE_NAME}-${process.env.LANGUAGE_CODE}`)));

@@ -224,7 +224,7 @@ msgstr "Окончание"
 
 #: app/intercom/views/abonent/form.html:33
 msgid "html.abonent.external_id_display"
-msgstr "ID пользователя во внутренней системе"
+msgstr "ID выданной карты или метки"
 
 #: app/intercom/views/abonent/list.html:16
 msgid "html.abonent.flat_display"
@@ -1039,7 +1039,7 @@ msgstr "КПП"
 
 #: app/intercom/views/device/list.html:2 app/intercom/views/inc/sidebar.html:34
 msgid "html.menu.devices"
-msgstr "Контроллеры SmartAirkey"
+msgstr "Контроллеры"
 
 #: app/intercom/views/inc/sidebar.html:52
 msgid "html.menu.journal"
@@ -1095,6 +1095,12 @@ msgstr "Назначение платежа"
 #: app/intercom/views/payments/list.html:12
 msgid "html.payments.perimeter_name"
 msgstr "Зона доступа"
+
+msgid "html.payments.description"
+msgstr "Описание"
+
+msgid "html.payments.account_number"
+msgstr "Лицевой счет"
 
 #: app/intercom/views/_messages.html:20
 #: app/intercom/views/auth/mobile_reset_password.html:21

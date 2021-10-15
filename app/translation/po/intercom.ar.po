@@ -1087,6 +1087,12 @@ msgstr "نوع الدفع"
 msgid "html.payments.perimeter_name"
 msgstr "اسم المحيط"
 
+msgid "html.payments.description"
+msgstr "وصف"
+
+msgid "html.payments.account_number"
+msgstr "رقم حساب"
+
 #: app/intercom/views/_messages.html:20
 #: app/intercom/views/auth/mobile_reset_password.html:21
 msgid "html.site.password_changed"
