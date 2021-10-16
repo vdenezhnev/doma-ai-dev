@@ -19,7 +19,7 @@ app.controller('LockCtrl', ['$scope', '$stateParams', '$state', '$http', '$filte
         };
 
         $scope.isAvailable = function (lock) {
-            return lock.Status === 'Online' && !lock.LockOpen;
+            return lock.Status === 'Online';
         };
 
         function getStatus(locks) {
