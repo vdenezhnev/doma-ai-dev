@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('LoginCtrl', ['$scope', '$http', '$httpParamSerializer', 'settings', 'User', 'ModalService', '$timeout', function($scope, $http, $httpParamSerializer, settings, User, ModalService, $timeout) {
+app.controller('LoginCtrl', ['$scope', '$http', '$httpParamSerializer', 'Api', 'settings', 'User', 'ModalService', '$timeout', function($scope, $http, $httpParamSerializer, Api, settings, User, ModalService, $timeout) {
     $scope.login = '';
     $scope.password = '';
     $scope.defaultCompanyProfiles = [];
@@ -14,6 +14,8 @@ app.controller('LoginCtrl', ['$scope', '$http', '$httpParamSerializer', 'setting
             Login: $scope.login,
             Password: Base64.encode($scope.password)
         }).then(function successCallback(response) {
+            // Store intercoms token to request a list of companies
+            User.load(null, response.data.credentials, null);
             $scope.hasMoreProfiles = response.data.hasMoreProfiles;
             if ($scope.hasMoreProfiles) {
                 $scope.defaultCompanyProfiles = [];
@@ -21,7 +23,7 @@ app.controller('LoginCtrl', ['$scope', '$http', '$httpParamSerializer', 'setting
             }
             else {
                 if (response.data.profiles.length === 1) {
-                    $scope.selectProfile(response.data.profiles[0].id);
+                    $scope.selectProfileAndRole(response.data.profiles[0], response.data.role);
                 }
                 else {
                     $scope.defaultCompanyProfiles = response.data.profiles;
@@ -38,33 +40,37 @@ app.controller('LoginCtrl', ['$scope', '$http', '$httpParamSerializer', 'setting
             Password: Base64.encode($scope.password),
             ServiceCompanyId: id
         }).then(function successCallback(response) {
-           User.load(response.data.profiles[0], response.data.credentials, response.data.role);
-
-           if (response.data.profiles[0] && response.data.profiles[0].keyCount.remain < 10) {
-                $timeout(function () {
-                    ModalService.showModal({
-                        templateUrl: `${settings.TEMPLATE_DIR}modals/keys.html`,
-                        controller: 'KeysAlertCtrl',
-                        inputs: {
-                            remainingKeys: response.data.profiles[0].keyCount.remain,
-                        }
-                    }).then(function(modal) {
-                        modal.element.modal();
-                    });
-                }, 1000, false);
-           }
+            User.load(null, response.data.credentials, null);
+            $scope.selectProfileAndRole(response.data.profiles[0], response.data.role);
         });
+    };
+
+    $scope.selectProfileAndRole = function (profile, role) {
+        User.load(profile, null, role);
+        if (profile && profile.keyCount.remain < 10) {
+            $timeout(function () {
+                ModalService.showModal({
+                    templateUrl: `${settings.TEMPLATE_DIR}modals/keys.html`,
+                    controller: 'KeysAlertCtrl',
+                    inputs: {
+                        remainingKeys: profile.keyCount.remain,
+                    }
+                }).then(function(modal) {
+                    modal.element.modal();
+                });
+            }, 1000, false);
+       }
     };
 
     $scope.$watch('q', function (newVal, oldVal) {
         if (newVal !== oldVal) {
             if (newVal.length > 2) {
-                var params = {
-                    Action: 'GetLoginUserServiceCompanyProfiles',
-                    Login: $scope.login,
-                    Filter: newVal
+                var request = {
+                    'Action': 'GetLoginUserServiceCompanyProfiles',
+                    'Login': $scope.login,
+                    'Filter': newVal
                 };
-                $http.get(settings.API_URL + '?' + $httpParamSerializer(params)).then(function (response) {
+                Api.get(settings.API_URL, request, function (response) {
                     $scope.companyProfiles = response.data.profiles;
                 });
             }
