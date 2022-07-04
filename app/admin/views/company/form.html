@@ -159,16 +159,23 @@
                     <label translate>COMPANIES_FORM_LOCALSERVER_NAME</label>
                     <input class="form-control" type="text" ng-model="localServer.name">
                 </div>
+
             </div>
             <div class="col-md-6">
                 <div class="row">
                     <label translate>COMPANIES_FORM_LOCALSERVER_TOKEN</label>
                 </div>
                 <div class="row form-group">
-                    <textarea name="text" cols="25" rows="4">SAS-TOKEN {{localServer.localServerApiKey.apiKeyId}}:{{localServer.localServerApiKey.token}}</textarea>
+                    <textarea name="text" cols="30" rows="4" readonly>SAS-TOKEN {{localServer.localServerApiKey.apiKeyId}}:{{localServer.localServerApiKey.token}}</textarea>
                 </div>
                 <div class="row">
                     <a class="btn btn-primary" ng-click="updateLocalServerToken(localServer.id)" translate>BUTTON_UPDATE_TOKEN</a>
+                </div>
+                <div class="row">
+                    <label translate>COMPANIES_FORM_LOCALSERVER_CONNECTION_STATUS</label>
+                </div>
+                <div class="row form-group">
+                    <textarea name="text" cols="25" rows="1" readonly>{{localServer.isConnected ? 'COMPANIES_FORM_LOCALSERVER_CONNECTION_STATUS_CONNECTED': 'COMPANIES_FORM_LOCALSERVER_CONNECTION_STATUS_DISCONNECTED' | translate }}</textarea>
                 </div>
             </div>
         </div>
