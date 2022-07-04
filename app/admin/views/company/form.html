@@ -148,6 +148,39 @@
 
     <a class="btn btn-default" ng-click="company.admins.push({})"><i class="fa fa-plus"></i> {{ 'BUTTON_ADD_ADMIN' | translate }}</a>
 
+
+    <h3 translate>COMPANIES_FORM_LOCALSERVERS_TITLE</h3>
+
+    <div ng-repeat="localServer in localServers track by $index">
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label translate>COMPANIES_FORM_LOCALSERVER_NAME</label>
+                    <input class="form-control" type="text" ng-model="localServer.name">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <label translate>COMPANIES_FORM_LOCALSERVER_TOKEN</label>
+                </div>
+                <div class="row form-group">
+                    <textarea name="text" cols="25" rows="4">SAS-TOKEN {{localServer.localServerApiKey.apiKeyId}}:{{localServer.localServerApiKey.token}}</textarea>
+                </div>
+                <div class="row">
+                    <a class="btn btn-primary" ng-click="updateLocalServerToken(localServer.id)" translate>BUTTON_UPDATE_TOKEN</a>
+                </div>
+            </div>
+        </div>
+
+        <a class="btn btn-xs btn-default" ng-click="removeLocalServer($index)"><i class="fa fa-trash"></i> {{ 'BUTTON_DELETE' | translate }}</a>
+        <hr>
+    </div>
+
+    <a class="btn btn-primary" ng-click="createOrUpdateLocalServers()" translate>BUTTON_UPDATE_LOCALSERVERS_INFO</a>
+
+    <a class="btn btn-default" ng-click="localServers.push({})"><i class="fa fa-plus"></i> {{ 'BUTTON_ADD_LOCALSERVER' | translate }}</a>
+
     <hr>
     <div ng-show="data.acquiringTypes.length > 0">
         <h3 translate>COMPANIES_FORM_PAYMENT_TITLE</h3>

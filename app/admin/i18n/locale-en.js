@@ -43,6 +43,9 @@ app.constant('LOCALE_EN', {
     BUTTON_POSTAMAT_ADD: 'Add postamat',
     BUTTON_POSTAMAT_DELETE: 'Delete postamat',
     BUTTON_POSTAMAT_CELL_FREE: 'Release',
+    BUTTON_UPDATE_TOKEN: 'Update token',
+    BUTTON_ADD_LOCALSERVER: 'Add a local server',
+    BUTTON_UPDATE_LOCALSERVERS_INFO: 'Update information about local servers',
 
     TABLE_CELL_ID: 'ID',
     TABLE_CELL_USER_NAME: 'Name',
@@ -170,6 +173,9 @@ app.constant('LOCALE_EN', {
     COMPANIES_FORM_ADMIN_PHONE: 'Phone number',
     COMPANIES_FORM_ADMIN_EMAIL: 'E-mail',
     COMPANIES_FORM_ADMIN_ROLE: 'Role',
+    COMPANIES_FORM_LOCALSERVERS_TITLE: 'Local servers',
+    COMPANIES_FORM_LOCALSERVER_NAME: 'Name',
+    COMPANIES_FORM_LOCALSERVER_TOKEN: 'Token',
     COMPANIES_FORM_PAYMENT_TITLE: 'Payment',
     COMPANIES_FORM_API_TOKEN: 'Api-token',
     POSTAMAT_FORM_ID: 'Postamat ID',
@@ -214,6 +220,8 @@ app.constant('LOCALE_EN', {
     NOTIFY_MESSAGE_KEY_DELETE_CONFIRM: 'Are you sure, you want to delete this key?',
     NOTIFY_MESSAGE_POSTAMAT_DELETE_CONFIRM: 'Are you sure, you want to delete this postamat?',
     NOTIFY_MESSAGE_POSTAMAT_CELL_RELEASE_CONFIRM: 'Are you sure, you want to release this cell?',
+
+    NOTIFY_LOCALSERVER_DELETED: 'Local server deleted',
 
     KEY_STATUS_none: 'None',
     KEY_STATUS_sent: 'Sent',
