@@ -93,7 +93,10 @@ app.controller('CompanyDetailCtrl', ['$scope', '$http', '$state', '$stateParams'
             $scope.rolesList = response.data;
         });
 
-        $scope.save = function() {
+        $scope.save = function () {
+
+            $scope.createOrUpdateLocalServers();
+
             var data = angular.extend({
                 Action: 'UpdateServiceCompany',
                 ServiceCompanyId: $scope.company.id
