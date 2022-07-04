@@ -164,7 +164,7 @@ app.controller('CompanyDetailCtrl', ['$scope', '$http', '$state', '$stateParams'
                     ServiceCompanyId: $scope.company.id,
                     LocalServers: $scope.localServers
                 }).then(function successCallback(response) {
-                    notify($filter('translate')('NOTIFY_DATA_UPDATED'));
+                    notify($filter('translate')('NOTIFY_LOCALSERVERS_UPDATED'));
                     $scope.localServers = response.data;
                 });
             }
@@ -176,7 +176,6 @@ app.controller('CompanyDetailCtrl', ['$scope', '$http', '$state', '$stateParams'
                 Action: 'GetLocalServers',
                 ServiceCompanyId: $scope.company.id
             }).then(function successCallback(response) {
-                notify($filter('translate')('NOTIFY_DATA_UPDATED'));
                 $scope.localServers = response.data;
             });
 
@@ -187,20 +186,23 @@ app.controller('CompanyDetailCtrl', ['$scope', '$http', '$state', '$stateParams'
         }
 
         $scope.removeLocalServer = function ($index) {
-            
-            var localServer = $scope.localServers[$index];
-            if (localServer.id) {
-                Api.post(settings.API_URL, {
-                    Action: 'UnregisterLocalServer',
-                    ServiceCompanyId: $scope.company.id,
-                    LocalServerId: localServer.id
-                }).then(function successCallback(response) {
-                    notify($filter('translate')('NOTIFY_LOCALSERVER_DELETED'));
+
+            if (confirm($filter('translate')('NOTIFY_MESSAGE_LOCALSERVER_DELETE_CONFIRM'))) {
+
+                var localServer = $scope.localServers[$index];
+                if (localServer.id) {
+                    Api.post(settings.API_URL, {
+                        Action: 'UnregisterLocalServer',
+                        ServiceCompanyId: $scope.company.id,
+                        LocalServerId: localServer.id
+                    }).then(function successCallback(response) {
+                        notify($filter('translate')('NOTIFY_LOCALSERVER_DELETED'));
+                        $scope.localServers.splice($index, 1);
+                    });
+                }
+                else {
                     $scope.localServers.splice($index, 1);
-                });
-            }
-            else {
-                $scope.localServers.splice($index, 1);
+                }
             }
         };
 

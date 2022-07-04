@@ -223,8 +223,11 @@ app.constant('LOCALE_EN', {
     NOTIFY_MESSAGE_KEY_DELETE_CONFIRM: 'Are you sure, you want to delete this key?',
     NOTIFY_MESSAGE_POSTAMAT_DELETE_CONFIRM: 'Are you sure, you want to delete this postamat?',
     NOTIFY_MESSAGE_POSTAMAT_CELL_RELEASE_CONFIRM: 'Are you sure, you want to release this cell?',
+    NOTIFY_MESSAGE_LOCALSERVER_DELETE_CONFIRM: 'Are you sure, you want to delete this local server?',
 
     NOTIFY_LOCALSERVER_DELETED: 'Local server deleted',
+    NOTIFY_LOCALSERVERS_UPDATED: 'Local servers updated',
+    
 
     KEY_STATUS_none: 'None',
     KEY_STATUS_sent: 'Sent',
@@ -234,5 +237,5 @@ app.constant('LOCALE_EN', {
     KEY_STATUS_deleteAdmin: 'Deleted by admin',
 
     POSTAMAT_STATUS_filled: 'Filled',
-    POSTAMAT_STATUS_empty: 'Empty'
+    POSTAMAT_STATUS_empty: 'Empty',
 });

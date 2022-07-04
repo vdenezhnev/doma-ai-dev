@@ -45,7 +45,7 @@ app.constant('LOCALE_RU', {
     BUTTON_POSTAMAT_CELL_FREE: 'Освободить',
     BUTTON_UPDATE_TOKEN: 'Обновить токен',
     BUTTON_ADD_LOCALSERVER: 'Добавить локальный сервер',
-    BUTTON_UPDATE_LOCALSERVERS_INFO: 'Обновить информацию об локальных серверах',
+    BUTTON_UPDATE_LOCALSERVERS_INFO: 'Обновить информацию о локальных серверах',
 
     TABLE_CELL_ID: 'ID',
     TABLE_CELL_USER_NAME: 'Имя',
@@ -223,8 +223,11 @@ app.constant('LOCALE_RU', {
     NOTIFY_MESSAGE_KEY_DELETE_CONFIRM: 'Вы действительно хотите удалить данный ключ?',
     NOTIFY_MESSAGE_POSTAMAT_DELETE_CONFIRM: 'Вы действительно хотите удалить данный постамат?',
     NOTIFY_MESSAGE_POSTAMAT_CELL_RELEASE_CONFIRM: 'Вы действительно хотите освободить эту ячейку?',
+    NOTIFY_MESSAGE_LOCALSERVER_DELETE_CONFIRM: 'Вы уверены, что хотите удалить этот локальный сервер?',
 
     NOTIFY_LOCALSERVER_DELETED: 'Локальный сервер удален',
+    NOTIFY_LOCALSERVERS_UPDATED: 'Локальные сервера обновлены',
+    
 
     KEY_STATUS_none: 'Не определён',
     KEY_STATUS_sent: 'Отправлен',
