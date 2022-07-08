@@ -57,27 +57,27 @@ msgstr "Тип идентификатора"
 msgid "html.journal.lock_access_types_display"
 msgstr "Результат доступа"
 
-#: app/intercom/controllers/JournalControllers.js:30
+#: app/intercom/controllers/JournalControllers.js:31
 msgid "keyTypes.button"
 msgstr "Кнопка выхода"
 
-#: app/intercom/controllers/JournalControllers.js:27
+#: app/intercom/controllers/JournalControllers.js:28
 msgid "keyTypes.card"
 msgstr "Карта"
 
-#: app/intercom/controllers/JournalControllers.js:31
+#: app/intercom/controllers/JournalControllers.js:32
 msgid "keyTypes.mobile"
 msgstr "Открытие с мобильного устройства"
 
-#: app/intercom/controllers/JournalControllers.js:28
+#: app/intercom/controllers/JournalControllers.js:29
 msgid "keyTypes.remote"
 msgstr "Удаленное открытие"
 
-#: app/intercom/controllers/JournalControllers.js:35
+#: app/intercom/controllers/JournalControllers.js:36
 msgid "lockAccessTypes.accessDenied"
 msgstr "Отказ доступа"
 
-#: app/intercom/controllers/JournalControllers.js:34
+#: app/intercom/controllers/JournalControllers.js:35
 msgid "lockAccessTypes.opened"
 msgstr "Предоставление доступа"
 
@@ -1489,3 +1489,7 @@ msgstr "Зоны и точки доступа"
 
 #~ msgid "html.defaults.replace_title"
 #~ msgstr "Изменить"
+
+#: app/intercom/controllers/JournalControllers.js:111
+msgid "journals.no_records"
+msgstr "Отчёты не найдены"

@@ -56,27 +56,27 @@ msgstr "Key type"
 msgid "html.journal.lock_access_types_display"
 msgstr "Lock access type"
 
-#: app/intercom/controllers/JournalControllers.js:30
+#: app/intercom/controllers/JournalControllers.js:31
 msgid "keyTypes.button"
 msgstr "Exit button"
 
-#: app/intercom/controllers/JournalControllers.js:27
+#: app/intercom/controllers/JournalControllers.js:28
 msgid "keyTypes.card"
 msgstr "Card"
 
-#: app/intercom/controllers/JournalControllers.js:31
+#: app/intercom/controllers/JournalControllers.js:32
 msgid "keyTypes.mobile"
 msgstr "Opening by mobile"
 
-#: app/intercom/controllers/JournalControllers.js:28
+#: app/intercom/controllers/JournalControllers.js:29
 msgid "keyTypes.remote"
 msgstr "Remote opening"
 
-#: app/intercom/controllers/JournalControllers.js:35
+#: app/intercom/controllers/JournalControllers.js:36
 msgid "lockAccessTypes.accessDenied"
 msgstr "Access denied"
 
-#: app/intercom/controllers/JournalControllers.js:34
+#: app/intercom/controllers/JournalControllers.js:35
 msgid "lockAccessTypes.opened"
 msgstr "Access granted"
 
@@ -1481,3 +1481,7 @@ msgstr "Access control zones"
 
 #~ msgid "html.defaults.replace_title"
 #~ msgstr "Изменить"
+
+#: app/intercom/controllers/JournalControllers.js:111
+msgid "journals.no_records"
+msgstr "No records found"
