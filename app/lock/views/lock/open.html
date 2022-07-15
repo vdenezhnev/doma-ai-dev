@@ -9,11 +9,11 @@
 
   <div class="d-flex justify-content-center">
     <button
-      class="btn btn-primary"
       style="width: 60%; margin-bottom: 20px;"
       ng-repeat="lock in locks"
       ng-click="onOpenLock(lock.LockID)"
-      ng-disabled="!isAvailable(lock)">
+      ng-disabled="!isAvailable(lock)"
+      ng-class="{'btn btn-success': lock.LockOpen, 'btn btn-primary': !lock.LockOpen}">
       <span translate>OPEN</span> <b>{{ lock.LockID }}</b>
     </button>
   </div>

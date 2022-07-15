@@ -43,6 +43,9 @@ app.constant('LOCALE_AR', {
     BUTTON_POSTAMAT_ADD: 'Add postamat',
     BUTTON_POSTAMAT_DELETE: 'Delete postamat',
     BUTTON_POSTAMAT_CELL_FREE: 'Release',
+    BUTTON_UPDATE_TOKEN: 'رمز التحديث',
+    BUTTON_ADD_LOCALSERVER: 'إضافة خادم محلي',
+    BUTTON_UPDATE_LOCALSERVERS_INFO: 'تحديث المعلومات حول الخوادم المحلية',
 
     TABLE_CELL_ID: 'ID',
     TABLE_CELL_USER_NAME: 'الاسم',
@@ -169,6 +172,12 @@ app.constant('LOCALE_AR', {
     COMPANIES_FORM_ADMIN_PHONE: 'رقم الهاتف',
     COMPANIES_FORM_ADMIN_EMAIL: 'البريد الالكتروني',
     COMPANIES_FORM_ADMIN_ROLE: 'وظيفة',
+    COMPANIES_FORM_LOCALSERVERS_TITLE: 'الخوادم المحلية',
+    COMPANIES_FORM_LOCALSERVER_NAME: 'الاسم',
+    COMPANIES_FORM_LOCALSERVER_TOKEN: 'رمز',
+    COMPANIES_FORM_LOCALSERVER_CONNECTION_STATUS: 'الحالة',
+    COMPANIES_FORM_LOCALSERVER_CONNECTION_STATUS_CONNECTED: 'على الانترنت',
+    COMPANIES_FORM_LOCALSERVER_CONNECTION_STATUS_DISCONNECTED: 'غير متصل',
     COMPANIES_FORM_PAYMENT_TITLE: 'دفع',
     COMPANIES_FORM_API_TOKEN: 'Api-token',
     POSTAMAT_FORM_ID: 'Postamat ID',
@@ -213,6 +222,10 @@ app.constant('LOCALE_AR', {
     NOTIFY_MESSAGE_KEY_DELETE_CONFIRM: 'هل أنت متأكد أنك تريد حذف هذا المفتاح؟',
     NOTIFY_MESSAGE_POSTAMAT_DELETE_CONFIRM: 'Are you sure, you want to delete this postamat?',
     NOTIFY_MESSAGE_POSTAMAT_CELL_RELEASE_CONFIRM: 'Are you sure, you want to release this cell?',
+    NOTIFY_MESSAGE_LOCALSERVER_DELETE_CONFIRM: 'هل أنت متأكد, تريد حذف هذا الخادم المحلي?',
+
+    NOTIFY_LOCALSERVER_DELETED: 'تم حذف الخادم المحلي',
+    NOTIFY_LOCALSERVERS_UPDATED: 'تحديث الخوادم المحلية',
 
     KEY_STATUS_none: 'None',
     KEY_STATUS_sent: 'Sent',

@@ -78,6 +78,7 @@ app.controller('CompanyDetailCtrl', ['$scope', '$http', '$state', '$stateParams'
         }
 
         $scope.company = $stateParams.company;
+        $scope.localServers = [];
         $scope.isCreate = false;
         $scope.data = {
             acquiringTypes: [],
@@ -85,11 +86,17 @@ app.controller('CompanyDetailCtrl', ['$scope', '$http', '$state', '$stateParams'
             acquiringType: null
         };
 
+        
+        
+
         Api.get(settings.API_URL, {Action: 'GetNameRoles', serviceCompanyId: $scope.company.id}, function (response) {
             $scope.rolesList = response.data;
         });
 
-        $scope.save = function() {
+        $scope.save = function () {
+
+            $scope.createOrUpdateLocalServers();
+
             var data = angular.extend({
                 Action: 'UpdateServiceCompany',
                 ServiceCompanyId: $scope.company.id
@@ -146,6 +153,75 @@ app.controller('CompanyDetailCtrl', ['$scope', '$http', '$state', '$stateParams'
             }).then(function successCallback(response) {
                 $scope.company = response.data;
             });
+        };
+
+        $scope.createOrUpdateLocalServers = function () {
+
+            if ($scope.localServers) {
+
+                Api.post(settings.API_URL, {
+                    Action: 'CreateOrUpdateLocalServers',
+                    ServiceCompanyId: $scope.company.id,
+                    LocalServers: $scope.localServers
+                }).then(function successCallback(response) {
+                    notify($filter('translate')('NOTIFY_LOCALSERVERS_UPDATED'));
+                    $scope.localServers = response.data;
+                });
+            }
+        };
+
+        $scope.getLocalServers = function () {
+
+            Api.post(settings.API_URL, {
+                Action: 'GetLocalServers',
+                ServiceCompanyId: $scope.company.id
+            }).then(function successCallback(response) {
+                $scope.localServers = response.data;
+            });
+
+        };
+
+        if ($scope.company.id) {
+            $scope.getLocalServers();
+        }
+
+        $scope.removeLocalServer = function ($index) {
+
+            if (confirm($filter('translate')('NOTIFY_MESSAGE_LOCALSERVER_DELETE_CONFIRM'))) {
+
+                var localServer = $scope.localServers[$index];
+                if (localServer.id) {
+                    Api.post(settings.API_URL, {
+                        Action: 'UnregisterLocalServer',
+                        ServiceCompanyId: $scope.company.id,
+                        LocalServerId: localServer.id
+                    }).then(function successCallback(response) {
+                        notify($filter('translate')('NOTIFY_LOCALSERVER_DELETED'));
+                        $scope.localServers.splice($index, 1);
+                    });
+                }
+                else {
+                    $scope.localServers.splice($index, 1);
+                }
+            }
+        };
+
+        $scope.updateLocalServerToken = function (localServerId) {
+
+            if (localServerId) {
+
+                Api.post(settings.API_URL, {
+                    Action: 'RefreshLocalServerToken',
+                    LocalServerId: localServerId
+                }).then(function successCallback(response) {
+                    angular.forEach($scope.localServers, function (localServer, i) {
+                        if (localServer.id == localServerId) {
+                            localServer.localServerApiKey = response.data.apiKey;
+                        }
+                    });
+                    notify($filter('translate')('NOTIFY_DATA_UPDATED'));
+                });
+            }
         };
 
         $scope.createMerchantSetting = function(acquiringType) {
