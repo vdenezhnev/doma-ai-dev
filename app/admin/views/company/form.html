@@ -16,7 +16,7 @@
     </div>
 
     <div class="form-group">
-        <label translate>COMPANIES_FORM_REGION</label>
+        <label translate>COMPANIES_FORM_LANGUAGE</label>
         <select class="form-control"
                 ng-model="company.region">
             <option ng-repeat="region in ['ru', 'en']" value="{{ region }}">{{ region }}</option>
@@ -27,13 +27,13 @@
         <label translate>COMPANIES_FORM_BRAND</label>
         <select class="form-control"
                 ng-model="company.brand">
-            <option ng-repeat="brand in ['SmartAirkey', 'Laskomex']" value="{{ brand }}">{{ brand }}</option>
+            <option ng-repeat="brand in brandsList" value="{{ brand }}">{{ brand }}</option>
         </select>
     </div>
 
     <div class="form-group">
         <label translate>COMPANIES_FORM_API_TOKEN</label>
-        <input class="form-control" ng-model="company.serviceCompanyApiKey.token">
+        <input class="form-control" ng-model="company.serviceCompanyApiKey.token" readonly>
     </div>
 
     <h3 translate>COMPANIES_FORM_PHONES_TITLE</h3>

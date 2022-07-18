@@ -158,6 +158,7 @@ app.constant('LOCALE_RU', {
     COMPANIES_FORM_INN: 'ИНН',
     COMPANIES_FORM_ADDRESS: 'Адрес',
     COMPANIES_FORM_REGION: 'Регион',
+    COMPANIES_FORM_LANGUAGE: 'Язык',
     COMPANIES_FORM_BRAND: 'Бренд',
     COMPANIES_FORM_PHONES_TITLE: 'Телефоны',
     COMPANIES_FORM_SUPPORT_TITLE: 'Поддержка',

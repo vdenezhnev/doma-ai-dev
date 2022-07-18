@@ -93,6 +93,10 @@ app.controller('CompanyDetailCtrl', ['$scope', '$http', '$state', '$stateParams'
             $scope.rolesList = response.data;
         });
 
+        Api.get(settings.API_URL, { Action: 'GetBrandServiceCompanies' }, function (response) {
+            $scope.brandsList = response.data;
+        });
+
         $scope.save = function () {
 
             $scope.createOrUpdateLocalServers();
