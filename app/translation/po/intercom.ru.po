@@ -1017,6 +1017,13 @@ msgstr "Телефон"
 msgid "html.journal.user_display"
 msgstr "Пользователь"
 
+#: app/intercom/views/journal/access.html:93
+#: app/intercom/views/journal/access.html:94
+#: app/intercom/views/journal/access.html:96
+#: app/intercom/views/journal/access.html:98
+msgid "html.journal.null_value"
+msgstr "Неизвестно"
+
 #: app/intercom/views/inc/sidebar.html:16
 msgid "html.menu.abonents"
 msgstr "Абоненты"
