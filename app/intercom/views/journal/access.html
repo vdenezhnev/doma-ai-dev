@@ -90,12 +90,12 @@
         <tbody>
             <tr ng-repeat="journal in journals track by $index">
                 <td>{{ journal.when | amUtc | amLocal | amDateFormat:'DD.MM.YYYY HH:mm' }}</td>
-                <td>{{ journal.userDisplayName }}</td>
-                <td>{{ journal.userPhoneNumber }}</td>
+                <td>{{ journal.userDisplayName ? journal.userDisplayName : ('html.journal.null_value' | translate) }}</td>
+                <td>{{ journal.userPhoneNumber ? journal.userPhoneNumber : ('html.journal.null_value' | translate) }}</td>
                 <td>{{ keyTypes[journal.keyType] }}</td>
-                <td>{{ journal.pacsCode }}</td>
+                <td>{{ journal.pacsCode ? journal.pacsCode : ('html.journal.null_value' | translate) }}</td>
                 <td>{{ lockAccessTypes[journal.lockAccessType] }}</td>
-                <td>{{ journal.perimeters }}</td>
+                <td>{{ journal.perimeters ? journal.perimeters : ('html.journal.null_value' | translate) }}</td>
             </tr>
         </tbody>
     </table>
