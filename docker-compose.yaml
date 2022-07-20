@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+
+  acms:
+    container_name: acms
+    image: smartairkey/acmsuae:late
+    restart: always
+    ports:
+      - "127.0.0.1:8082:80"
+    networks:
+      - acms
+
+networks:
+  acms:
