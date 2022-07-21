@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('JournalListCtrl', ['$scope', 'Journal', 'gettextCatalog', '$httpParamSerializer', '$http', 'settings',
-    function($scope, Journal, gettextCatalog, $httpParamSerializer, $http, settings) {
+app.controller('JournalListCtrl', ['$scope', 'notify', 'Api', 'Journal', 'gettextCatalog', '$httpParamSerializer', '$http', 'settings', 'gettextCatalog',
+    function($scope, notify, Api, Journal, gettextCatalog, $httpParamSerializer, $http, settings, gettextCatalog) {
         const emptyWTFilter = {
             period: {
                 from: null,
@@ -92,7 +92,7 @@ app.controller('JournalListCtrl', ['$scope', 'Journal', 'gettextCatalog', '$http
         }
 
         $scope.compileReport = function () {
-            var queryParams = $httpParamSerializer({
+            var request = {
                 Action: 'GetReportDataLockAccessHistoryJournal',
                 UserName: $scope.workingTimeFilter.user,
                 From: $scope.workingTimeFilter.period.from,
@@ -100,12 +100,17 @@ app.controller('JournalListCtrl', ['$scope', 'Journal', 'gettextCatalog', '$http
                 PerimeterId: $scope.workingTimeFilter.perimeterId,
                 IsEventPass: $scope.workingTimeFilter.isEventPass,
                 TimeOffset: moment().utcOffset()
-            });
+            };
 
-            $http.get(settings.API_URL + '?' + queryParams).then(function(response){
+            Api.get(settings.API_URL, request, function(response) {
                 const responseData = response.data;
                 if (responseData && responseData.records && responseData.records.length) {
                     $scope.workingTimeList = getFilteredRecords(responseData.records, $scope.workingTimeFilter.sumByDays);
+                } else {
+                    notify({
+                        message: gettextCatalog.getString('journals.no_records'),
+                        classes: 'alert-danger'
+                    });
                 }
             });
         }
