@@ -56,27 +56,27 @@ msgstr "نوع المفتاح"
 msgid "html.journal.lock_access_types_display"
 msgstr "نوع وصول القفل"
 
-#: app/intercom/controllers/JournalControllers.js:20
+#: app/intercom/controllers/JournalControllers.js:31
 msgid "keyTypes.button"
 msgstr "زر الخروج"
 
-#: app/intercom/controllers/JournalControllers.js:17
+#: app/intercom/controllers/JournalControllers.js:28
 msgid "keyTypes.card"
 msgstr "بطاقة"
 
-#: app/intercom/controllers/JournalControllers.js:21
+#: app/intercom/controllers/JournalControllers.js:32
 msgid "keyTypes.mobile"
 msgstr "فتح عن طريق الهاتف"
 
-#: app/intercom/controllers/JournalControllers.js:18
+#: app/intercom/controllers/JournalControllers.js:29
 msgid "keyTypes.remote"
 msgstr "الفتح عن بعد"
 
-#: app/intercom/controllers/JournalControllers.js:25
+#: app/intercom/controllers/JournalControllers.js:36
 msgid "lockAccessTypes.accessDenied"
 msgstr "تم الرفض"
 
-#: app/intercom/controllers/JournalControllers.js:24
+#: app/intercom/controllers/JournalControllers.js:35
 msgid "lockAccessTypes.opened"
 msgstr "لقد تم منح الوصول"
 
@@ -1474,3 +1474,8 @@ msgstr "مناطق التحكم في الوصول"
 
 #~ msgid "html.defaults.replace_title"
 #~ msgstr "Изменить"
+
+#: app/intercom/controllers/JournalControllers.js:111
+msgid "journals.no_records"
+msgstr "لا توجد سجلات"
+
