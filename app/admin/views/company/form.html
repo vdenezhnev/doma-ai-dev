@@ -160,37 +160,34 @@
                     <input class="form-control" type="text" ng-model="localServer.name">
                 </div>
 
-                <h3 translate>COMPANIES_FORM_KEYS_TITLE</h3>
                 <div class="form-group">
+                    <label translate>COMPANIES_FORM_KEYS_TITLE</label>
+
                     <div class="input-group col-md-6" style="margin-bottom: 15px;">
-                        <span class="input-group-addon" style="width: 120px;" translate>COMPANIES_FORM_KEYS_AVAILABLE</span>
-                        <input type="number" class="form-control" ng-model="localServer.keyCount.available">
+                        <span class="input-group-addon" style="min-width: 100px;" translate>COMPANIES_FORM_KEYS_AVAILABLE</span>
+                        <input type="number" class="form-control" style="min-width: 100px;" ng-model="localServer.keyCount.available">
                     </div>
-                    <div class="input-group col-md-6" style="margin-bottom: 15px;" >
-                        <span class="input-group-addon" style="width: 120px;" translate>COMPANIES_FORM_KEYS_USED</span>
-                        <input type="text" class="form-control" ng-disabled="true" ng-model="localServer.keyCount.used">
+                    <div class="input-group col-md-6" style="margin-bottom: 15px;">
+                        <span class="input-group-addon" style="min-width: 100px;" translate>COMPANIES_FORM_KEYS_USED</span>
+                        <input type="text" class="form-control" style="min-width: 100px;" ng-disabled="true" ng-model="localServer.keyCount.used">
                     </div>
-                    <div class="input-group col-md-6" style="margin-bottom: 15px;" >
-                        <span class="input-group-addon" style="width: 120px;" translate>COMPANIES_FORM_KEYS_REMAINING</span>
-                        <input type="text" class="form-control" ng-disabled="true" ng-model="localServer.keyCount.remain">
+                    <div class="input-group col-md-6" style="margin-bottom: 15px;">
+                        <span class="input-group-addon" style="min-width: 100px;" translate>COMPANIES_FORM_KEYS_REMAINING</span>
+                        <input type="text" class="form-control" style="min-width: 100px;" ng-disabled="true" ng-model="localServer.keyCount.remain">
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="row">
+                <div class="form-group">
                     <label translate>COMPANIES_FORM_LOCALSERVER_TOKEN</label>
+                    <textarea name="text" class="form-control" rows="5" style="resize: none;" readonly>SAS-TOKEN {{localServer.localServerApiKey.apiKeyId}}:{{localServer.localServerApiKey.token}}</textarea>
                 </div>
-                <div class="row form-group">
-                    <textarea name="text" cols="30" rows="4" readonly>SAS-TOKEN {{localServer.localServerApiKey.apiKeyId}}:{{localServer.localServerApiKey.token}}</textarea>
-                </div>
-                <div class="row">
+                <div class="form-group">
                     <a class="btn btn-primary" ng-click="updateLocalServerToken(localServer.id)" translate>BUTTON_UPDATE_TOKEN</a>
                 </div>
-                <div class="row">
+                <div class="form-group">
                     <label translate>COMPANIES_FORM_LOCALSERVER_CONNECTION_STATUS</label>
-                </div>
-                <div class="row form-group">
-                    <textarea name="text" cols="25" rows="1" readonly>{{localServer.isConnected ? 'COMPANIES_FORM_LOCALSERVER_CONNECTION_STATUS_CONNECTED': 'COMPANIES_FORM_LOCALSERVER_CONNECTION_STATUS_DISCONNECTED' | translate }}</textarea>
+                    <textarea name="text" class="form-control" rows="1" style="resize: none;" readonly>{{localServer.isConnected ? 'COMPANIES_FORM_LOCALSERVER_CONNECTION_STATUS_CONNECTED': 'COMPANIES_FORM_LOCALSERVER_CONNECTION_STATUS_DISCONNECTED' | translate }}</textarea>
                 </div>
             </div>
         </div>
