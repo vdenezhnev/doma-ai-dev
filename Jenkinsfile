@@ -13,7 +13,7 @@ pipeline {
     stages {
         stage('Prepare') {
             when {
-                expression { params.DEPLOY }
+                expression { env.BRANCH_NAME == 'main-net6' }
             }
             steps {
                 sshagent(credentials : ['infra-key']) {
@@ -26,7 +26,7 @@ pipeline {
         }
         stage('Build image') {
             when {
-                expression { params.DEPLOY }
+                expression { env.BRANCH_NAME == 'main-net6' }
             }
             steps {
                 sshagent(credentials : ['infra-key']) {
@@ -36,7 +36,7 @@ pipeline {
         }
         stage('Deploy') {
             when {
-                expression { params.DEPLOY }
+                expression { env.BRANCH_NAME == 'main-net6' }
             }
             steps {
                 sshagent(credentials : ['infra-key']) {
