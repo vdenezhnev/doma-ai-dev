@@ -148,10 +148,9 @@
 
     <a class="btn btn-default" ng-click="company.admins.push({})"><i class="fa fa-plus"></i> {{ 'BUTTON_ADD_ADMIN' | translate }}</a>
 
-
     <h3 translate>COMPANIES_FORM_LOCALSERVERS_TITLE</h3>
 
-    <div ng-repeat="localServer in localServers track by $index">
+    <div ng-repeat="localServer in localServers track by $index" ng-if="!isCreate">
 
         <div class="row">
             <div class="col-md-6">
@@ -196,9 +195,9 @@
         <hr>
     </div>
 
-    <a class="btn btn-primary" ng-click="createOrUpdateLocalServers()" translate>BUTTON_UPDATE_LOCALSERVERS_INFO</a>
+    <a class="btn btn-primary" ng-click="createOrUpdateLocalServers()" ng-if="!isCreate" translate>BUTTON_UPDATE_LOCALSERVERS_INFO</a>
 
-    <a class="btn btn-default" ng-click="localServers.push({})"><i class="fa fa-plus"></i> {{ 'BUTTON_ADD_LOCALSERVER' | translate }}</a>
+    <a class="btn btn-default" ng-click="localServers.push({})" ng-if="!isCreate"><i class="fa fa-plus"></i> {{ 'BUTTON_ADD_LOCALSERVER' | translate }}</a>
 
     <hr>
     <div ng-show="data.acquiringTypes.length > 0">

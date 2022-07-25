@@ -297,6 +297,10 @@ app.controller('CompanyCreateCtrl', ['$scope', '$state', 'Api', 'settings', 'not
             brand: 'SmartAirkey'
         };
 
+        Api.get(settings.API_URL, { Action: 'GetBrandServiceCompanies' }, function (response) {
+            $scope.brandsList = response.data;
+        });
+
         $scope.save = function() {
             var data = angular.copy($scope.company);
             Api.post(settings.API_URL, angular.extend({Action: 'RegisterServiceCompany'}, data), function(response) {
