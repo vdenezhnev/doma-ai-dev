@@ -1,3 +1,11 @@
+def NotifySlack(STATUS) {
+    sh """
+    curl -X POST -H 'Content-type: application/json' \
+    --data '{"text":"APP: ${env.APP}\nBRANCH: ${env.BRANCH_NAME}\nCOMMIT: ${env.GIT_COMMIT}\nSTATUS: ${STATUS}"}'\
+    ${SLACK_HOOK}
+    """
+}
+
 pipeline {
     agent any
     parameters {
@@ -9,6 +17,8 @@ pipeline {
         API_HOST='https://api.airkey.ae/'
         APP_INTERCOM_TITLE='SmartAirkey'
         APP_BRAND_ID='smartairkey'
+        SLACK_HOOK=credentials('SLACK_HOOK')
+        APP='acms-ae'
     }
     stages {
         stage('Prepare') {
@@ -16,6 +26,7 @@ pipeline {
                 expression { env.BRANCH_NAME == 'main-net6' }
             }
             steps {
+                NotifySlack("Start deploy")
                 sshagent(credentials : ['infra-key']) {
                     sh 'ssh -o StrictHostKeyChecking=no infrastructure@${SERVER} sudo mkdir -p ${WORK_DIR}'
                     sh 'ssh -o StrictHostKeyChecking=no infrastructure@${SERVER} sudo chown infrastructure.infrastructure ${WORK_DIR}'
@@ -45,12 +56,16 @@ pipeline {
                     sh 'ssh -o StrictHostKeyChecking=no infrastructure@${SERVER} sudo docker-compose -f ${WORK_DIR}/docker-compose.yml up -d --force-recreate acms'
                     sh 'ssh -o StrictHostKeyChecking=no infrastructure@${SERVER} sudo docker system prune -a -f'
                 }
+                NotifySlack("Deploy complete")
             }
         }
     }
     post {
+        failure { 
+            NotifySlack("Deploy error")
+        }
         cleanup {
             deleteDir()
         }
-    }
+    }    
 }
