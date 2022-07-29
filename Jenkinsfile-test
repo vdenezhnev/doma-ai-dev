@@ -8,9 +8,6 @@ def NotifySlack(STATUS) {
 
 pipeline {
     agent any
-    parameters {
-        booleanParam(name: 'DEPLOY', defaultValue: false, description: 'Deploy')
-    }
     environment {
         SERVER='172.31.1.60'
         WORK_DIR='/opt/acms'
