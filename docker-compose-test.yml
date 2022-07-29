@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+
+  acms:
+    container_name: acms
+    image: smartairkey/acmsuae:late
+    restart: always
+    ports:
+      - "127.0.0.1:8082:80"
+    networks:
+      - acms
+    logging:
+      driver: "elastic/elastic-logging-plugin:7.10.2"
+      options:
+        hosts: "http://172.31.1.70:9200"
+        index: "acms-test-ae-%{+yyyy.MM.dd}"
+
+networks:
+  acms:
