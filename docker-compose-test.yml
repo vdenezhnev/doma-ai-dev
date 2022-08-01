@@ -14,7 +14,7 @@ services:
       driver: "elastic/elastic-logging-plugin:7.10.2"
       options:
         hosts: "http://172.31.1.70:9200"
-        index: "acms-ae-%{+yyyy.MM.dd}"
+        index: "acms-test-ae-%{+yyyy.MM.dd}"
 
 networks:
   acms:

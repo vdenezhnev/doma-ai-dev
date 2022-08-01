@@ -8,25 +8,19 @@ def NotifySlack(STATUS) {
 
 pipeline {
     agent any
-    parameters {
-        booleanParam(name: 'DEPLOY', defaultValue: false, description: 'Deploy')
-    }
     environment {
-        SERVER='172.31.26.199'
+        SERVER='172.31.1.60'
         WORK_DIR='/opt/acms'
-        API_HOST='https://api.airkey.ae/'
+        API_HOST='https://testapi.airkey.ae/'
         APP_INTERCOM_TITLE='SmartAirkey'
         APP_BRAND_ID='smartairkey'
         SLACK_HOOK=credentials('SLACK_HOOK')
-        APP='acms-ae'
+        APP='acms-test-ae'
     }
     stages {
         stage('Prepare') {
-            when {
-                expression { env.BRANCH_NAME == 'main-net6' }
-            }
             steps {
-                NotifySlack("Start deploy")
+                NotifySlack("Start deploy in test environments")
                 sshagent(credentials : ['infra-key']) {
                     sh 'ssh -o StrictHostKeyChecking=no infrastructure@${SERVER} sudo mkdir -p ${WORK_DIR}'
                     sh 'ssh -o StrictHostKeyChecking=no infrastructure@${SERVER} sudo chown infrastructure.infrastructure ${WORK_DIR}'
@@ -36,9 +30,6 @@ pipeline {
             }
         }
         stage('Build image') {
-            when {
-                expression { env.BRANCH_NAME == 'main-net6' }
-            }
             steps {
                 sshagent(credentials : ['infra-key']) {
                     sh 'ssh -o StrictHostKeyChecking=no infrastructure@${SERVER} sudo docker build --no-cache -t smartairkey/acmsuae:late --build-arg API_HOST="${API_HOST}" --build-arg APP_INTERCOM_TITLE="${APP_INTERCOM_TITLE}" --build-arg APP_BRAND_ID="${APP_BRAND_ID}" ${WORK_DIR}'
@@ -46,9 +37,6 @@ pipeline {
             }
         }
         stage('Deploy') {
-            when {
-                expression { env.BRANCH_NAME == 'main-net6' }
-            }
             steps {
                 sshagent(credentials : ['infra-key']) {
                     sh 'ssh -o StrictHostKeyChecking=no infrastructure@${SERVER} sudo docker-compose -f ${WORK_DIR}/docker-compose.yml stop acms'
@@ -56,13 +44,13 @@ pipeline {
                     sh 'ssh -o StrictHostKeyChecking=no infrastructure@${SERVER} sudo docker-compose -f ${WORK_DIR}/docker-compose.yml up -d --force-recreate acms'
                     sh 'ssh -o StrictHostKeyChecking=no infrastructure@${SERVER} sudo docker system prune -a -f'
                 }
-                NotifySlack("Deploy complete")
+                NotifySlack("Deploy in test environments complete")
             }
         }
     }
     post {
         failure { 
-            NotifySlack("Deploy error")
+            NotifySlack("Deploy in test environments error")
         }
         cleanup {
             deleteDir()
