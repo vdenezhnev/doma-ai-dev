@@ -15,6 +15,10 @@ services:
       options:
         hosts: "http://172.31.1.70:9200"
         index: "acms-test-ae-%{+yyyy.MM.dd}"
+    networks:
+      - test-stage
 
 networks:
-  acms:
+  test-stage:
+    name: test-stage
+    driver: bridge
