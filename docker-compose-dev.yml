@@ -19,6 +19,6 @@ services:
         index: "acms-dev-ae-%{+yyyy.MM.dd}"
 
 networks:
-  test-stage:
+  dev-stage:
     name: dev-stage
     driver: bridge
