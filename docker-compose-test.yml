@@ -11,7 +11,9 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.whoami.rule=Host(`testacms.airkey.ae`)"
-      - "traefik.http.routers.whoami.entrypoints=http"
+      - "traefik.http.routers.whoami.entrypoints=websecure"
+      - "traefik.http.routers.whoami.tls.certresolver=le"
+      - "traefik.http.routers.whoami.tls.options=whoami@file"
     logging:
       driver: "elastic/elastic-logging-plugin:7.10.2"
       options:
