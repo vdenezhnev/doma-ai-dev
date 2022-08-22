@@ -16,7 +16,7 @@
     </div>
 
     <div class="form-group">
-        <label translate>COMPANIES_FORM_REGION</label>
+        <label translate>COMPANIES_FORM_LANGUAGE</label>
         <select class="form-control"
                 ng-model="company.region">
             <option ng-repeat="region in ['ru', 'en']" value="{{ region }}">{{ region }}</option>
@@ -27,13 +27,13 @@
         <label translate>COMPANIES_FORM_BRAND</label>
         <select class="form-control"
                 ng-model="company.brand">
-            <option ng-repeat="brand in ['SmartAirkey', 'Laskomex']" value="{{ brand }}">{{ brand }}</option>
+            <option ng-repeat="brand in brandsList" value="{{ brand }}">{{ brand }}</option>
         </select>
     </div>
 
     <div class="form-group">
         <label translate>COMPANIES_FORM_API_TOKEN</label>
-        <input class="form-control" ng-model="company.serviceCompanyApiKey.token">
+        <input class="form-control" ng-model="company.serviceCompanyApiKey.token" >
     </div>
 
     <h3 translate>COMPANIES_FORM_PHONES_TITLE</h3>
@@ -148,6 +148,57 @@
 
     <a class="btn btn-default" ng-click="company.admins.push({})"><i class="fa fa-plus"></i> {{ 'BUTTON_ADD_ADMIN' | translate }}</a>
 
+    <h3 translate>COMPANIES_FORM_LOCALSERVERS_TITLE</h3>
+
+    <div ng-repeat="localServer in localServers track by $index" ng-if="!isCreate">
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label translate>COMPANIES_FORM_LOCALSERVER_NAME</label>
+                    <input class="form-control" type="text" ng-model="localServer.name">
+                </div>
+
+                <div class="form-group">
+                    <label translate>COMPANIES_FORM_KEYS_TITLE</label>
+
+                    <div class="input-group col-md-6" style="margin-bottom: 15px;">
+                        <span class="input-group-addon" style="min-width: 100px;" translate>COMPANIES_FORM_KEYS_AVAILABLE</span>
+                        <input type="number" class="form-control" style="min-width: 100px;" ng-model="localServer.keyCount.available">
+                    </div>
+                    <div class="input-group col-md-6" style="margin-bottom: 15px;">
+                        <span class="input-group-addon" style="min-width: 100px;" translate>COMPANIES_FORM_KEYS_USED</span>
+                        <input type="text" class="form-control" style="min-width: 100px;" ng-disabled="true" ng-model="localServer.keyCount.used">
+                    </div>
+                    <div class="input-group col-md-6" style="margin-bottom: 15px;">
+                        <span class="input-group-addon" style="min-width: 100px;" translate>COMPANIES_FORM_KEYS_REMAINING</span>
+                        <input type="text" class="form-control" style="min-width: 100px;" ng-disabled="true" ng-model="localServer.keyCount.remain">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label translate>COMPANIES_FORM_LOCALSERVER_TOKEN</label>
+                    <textarea name="text" class="form-control" rows="5" style="resize: none;" readonly>SAS-TOKEN {{localServer.localServerApiKey.apiKeyId}}:{{localServer.localServerApiKey.token}}</textarea>
+                </div>
+                <div class="form-group">
+                    <a class="btn btn-primary" ng-click="updateLocalServerToken(localServer.id)" translate>BUTTON_UPDATE_TOKEN</a>
+                </div>
+                <div class="form-group">
+                    <label translate>COMPANIES_FORM_LOCALSERVER_CONNECTION_STATUS</label>
+                    <textarea name="text" class="form-control" rows="1" style="resize: none;" readonly>{{localServer.isConnected ? 'COMPANIES_FORM_LOCALSERVER_CONNECTION_STATUS_CONNECTED': 'COMPANIES_FORM_LOCALSERVER_CONNECTION_STATUS_DISCONNECTED' | translate }}</textarea>
+                </div>
+            </div>
+        </div>
+
+        <a class="btn btn-xs btn-default" ng-click="removeLocalServer($index)"><i class="fa fa-trash"></i> {{ 'BUTTON_DELETE' | translate }}</a>
+        <hr>
+    </div>
+
+    <a class="btn btn-primary" ng-click="createOrUpdateLocalServers()" ng-if="!isCreate" translate>BUTTON_UPDATE_LOCALSERVERS_INFO</a>
+
+    <a class="btn btn-default" ng-click="localServers.push({})" ng-if="!isCreate"><i class="fa fa-plus"></i> {{ 'BUTTON_ADD_LOCALSERVER' | translate }}</a>
+
     <hr>
     <div ng-show="data.acquiringTypes.length > 0">
         <h3 translate>COMPANIES_FORM_PAYMENT_TITLE</h3>
@@ -173,6 +224,5 @@
             </div>
             <hr>
         </div>
-
     </div>
 </div>
