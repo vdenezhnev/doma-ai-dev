@@ -172,6 +172,8 @@ app.constant('LOCALE_RU', {
     COMPANIES_FORM_ADMIN_ROLE: 'Роль',
     COMPANIES_FORM_PAYMENT_TITLE: 'Оплата',
     COMPANIES_FORM_API_TOKEN: 'Api-token',
+    COMPANIES_FORM_USERS_TITLE: 'Пользователи',
+    COMPANIES_FORM_CREATE_USER_WHEN_REGISTERING_ABONENT: 'Создавать пользователей при регистрации абонентов',
     POSTAMAT_FORM_ID: 'Postamat ID',
     POSTAMAT_FORM_PID: 'PID',
     POSTAMAT_FORM_CELLS: 'Количество ячеек',
