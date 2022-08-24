@@ -56,6 +56,10 @@ app.controller('AbonentCreateCtrl', ['$scope', '$state', 'Abonent', 'Device',
             temporaryAccessPerimeters: []
         });
 
+        Abonent.getStatusCreateAbonentUser().$promise.then(function (response) {
+            $scope.createAbonentUser = response.status;
+        });
+
         $scope.save = function() {
             $scope.abonent.$save().then(function(response) {
                 $state.go('admin.abonent.list');
