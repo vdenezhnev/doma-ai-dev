@@ -76,103 +76,114 @@
         </div>
     </div>
 
-    <h3 translate>COMPANIES_FORM_KEYS_TITLE</h3>
+    <h3 translate>COMPANIES_FORM_USERS_TITLE</h3>
 
-    <div class="form-group">
-        <div class="input-group col-md-6" style="margin-bottom: 15px;">
-            <span class="input-group-addon" style="width: 120px;" translate>COMPANIES_FORM_KEYS_AVAILABLE</span>
-            <input type="number" class="form-control" ng-model="company.keyCount.available">
-        </div>
-        <div class="input-group col-md-6" style="margin-bottom: 15px;" ng-if="!isCreate">
-            <span class="input-group-addon" style="width: 120px;" translate>COMPANIES_FORM_KEYS_USED</span>
-            <input type="text" class="form-control" ng-disabled="true" ng-model="company.keyCount.used">
-        </div>
-        <div class="input-group col-md-6" style="margin-bottom: 15px;" ng-if="!isCreate">
-            <span class="input-group-addon" style="width: 120px;" translate>COMPANIES_FORM_KEYS_REMAINING</span>
-            <input type="text" class="form-control" ng-disabled="true" ng-model="company.keyCount.remain">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label translate>COMPANIES_FORM_CREATE_USER_WHEN_REGISTERING_ABONENT</label>
+                <input type="checkbox" ng-model="company.createAbonentUser" />
+            </div>
         </div>
     </div>
 
-</div>
+        <h3 translate>COMPANIES_FORM_KEYS_TITLE</h3>
 
-<div class="col-lg-6">
-
-    <h3 translate>COMPANIES_FORM_ADMIN_TITLE</h3>
-
-    <div ng-repeat="contact in company.admins track by $index">
-        <div class="row" ng-if="isCreate">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label translate>COMPANIES_FORM_ADMIN_NAME</label>
-                    <input class="form-control" type="text" ng-model="contact.displayName">
-                </div>
+        <div class="form-group">
+            <div class="input-group col-md-6" style="margin-bottom: 15px;">
+                <span class="input-group-addon" style="width: 120px;" translate>COMPANIES_FORM_KEYS_AVAILABLE</span>
+                <input type="number" class="form-control" ng-model="company.keyCount.available">
             </div>
-        </div>
-        <div class="row" ng-if="!isCreate">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label translate>COMPANIES_FORM_ADMIN_NAME</label>
-                    <input class="form-control" type="text" ng-model="contact.displayName">
-                </div>
+            <div class="input-group col-md-6" style="margin-bottom: 15px;" ng-if="!isCreate">
+                <span class="input-group-addon" style="width: 120px;" translate>COMPANIES_FORM_KEYS_USED</span>
+                <input type="text" class="form-control" ng-disabled="true" ng-model="company.keyCount.used">
             </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label translate>COMPANIES_FORM_ADMIN_ROLE</label>
-                    <select class="form-control"
-                            ng-model="contact.roleId">
-                        <option ng-repeat="role in rolesList" value="{{ role.id }}">{{ role.name }}</option>
-                    </select>
-                </div>
+            <div class="input-group col-md-6" style="margin-bottom: 15px;" ng-if="!isCreate">
+                <span class="input-group-addon" style="width: 120px;" translate>COMPANIES_FORM_KEYS_REMAINING</span>
+                <input type="text" class="form-control" ng-disabled="true" ng-model="company.keyCount.remain">
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label translate>COMPANIES_FORM_ADMIN_PHONE</label>
-                    <input class="form-control" type="text" ng-model="contact.phoneNumber">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label translate>COMPANIES_FORM_ADMIN_EMAIL</label>
-                    <input class="form-control" type="text" ng-model="contact.email">
-                </div>
-            </div>
-        </div>
-        <a class="btn btn-xs btn-default" ng-click="removeAdmin($index)"><i class="fa fa-trash"></i> {{ 'BUTTON_DELETE' | translate }}</a>
-        <hr>
     </div>
 
-    <a class="btn btn-primary" ng-click="updateAdmins()" translate>BUTTON_UPDATE_ADMIN_INFO</a>
+    <div class="col-lg-6">
 
-    <a class="btn btn-default" ng-click="company.admins.push({})"><i class="fa fa-plus"></i> {{ 'BUTTON_ADD_ADMIN' | translate }}</a>
+        <h3 translate>COMPANIES_FORM_ADMIN_TITLE</h3>
 
-    <hr>
-    <div ng-show="data.acquiringTypes.length > 0">
-        <h3 translate>COMPANIES_FORM_PAYMENT_TITLE</h3>
-        <div class="row">
-            <div class="col-md-8">
-                <select class="form-control" ng-model="data.acquiringType">
-                    <option ng-repeat="obj in data.acquiringTypes" value="{{ obj.code }}">{{ obj.value }}</option>
-                </select>
+        <div ng-repeat="contact in company.admins track by $index">
+            <div class="row" ng-if="isCreate">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label translate>COMPANIES_FORM_ADMIN_NAME</label>
+                        <input class="form-control" type="text" ng-model="contact.displayName">
+                    </div>
+                </div>
             </div>
-            <div class="col-md-4">
-                <span class="btn btn-default btn-block" ng-click="createMerchantSetting(data.acquiringType)" translate>BUTTON_ADD</span>
+            <div class="row" ng-if="!isCreate">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label translate>COMPANIES_FORM_ADMIN_NAME</label>
+                        <input class="form-control" type="text" ng-model="contact.displayName">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label translate>COMPANIES_FORM_ADMIN_ROLE</label>
+                        <select class="form-control"
+                                ng-model="contact.roleId">
+                            <option ng-repeat="role in rolesList" value="{{ role.id }}">{{ role.name }}</option>
+                        </select>
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <div class="row" style="margin-top: 20px" ng-repeat="obj in data.merchantSettings track by $index">
-            <div class="col-md-6">
-                {{ obj.acquiringType }}
-                {{ obj.userName }}
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label translate>COMPANIES_FORM_ADMIN_PHONE</label>
+                        <input class="form-control" type="text" ng-model="contact.phoneNumber">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label translate>COMPANIES_FORM_ADMIN_EMAIL</label>
+                        <input class="form-control" type="text" ng-model="contact.email">
+                    </div>
+                </div>
             </div>
-            <div class="col-md-6 text-right">
-                <span class="btn btn-default" ng-click="editMerchantSettings(obj)" translate>BUTTON_SETUP</span>
-                <span class="btn btn-default" ng-click="deleteMerchantSetting(obj, $index)" translate>BUTTON_DELETE</span>
-            </div>
+            <a class="btn btn-xs btn-default" ng-click="removeAdmin($index)"><i class="fa fa-trash"></i> {{ 'BUTTON_DELETE' | translate }}</a>
             <hr>
         </div>
 
+        <a class="btn btn-primary" ng-click="updateAdmins()" translate>BUTTON_UPDATE_ADMIN_INFO</a>
+
+        <a class="btn btn-default" ng-click="company.admins.push({})"><i class="fa fa-plus"></i> {{ 'BUTTON_ADD_ADMIN' | translate }}</a>
+
+        <hr>
+        <div ng-show="data.acquiringTypes.length > 0">
+            <h3 translate>COMPANIES_FORM_PAYMENT_TITLE</h3>
+            <div class="row">
+                <div class="col-md-8">
+                    <select class="form-control" ng-model="data.acquiringType">
+                        <option ng-repeat="obj in data.acquiringTypes" value="{{ obj.code }}">{{ obj.value }}</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <span class="btn btn-default btn-block" ng-click="createMerchantSetting(data.acquiringType)" translate>BUTTON_ADD</span>
+                </div>
+            </div>
+
+            <div class="row" style="margin-top: 20px" ng-repeat="obj in data.merchantSettings track by $index">
+                <div class="col-md-6">
+                    {{ obj.acquiringType }}
+                    {{ obj.userName }}
+                </div>
+                <div class="col-md-6 text-right">
+                    <span class="btn btn-default" ng-click="editMerchantSettings(obj)" translate>BUTTON_SETUP</span>
+                    <span class="btn btn-default" ng-click="deleteMerchantSetting(obj, $index)" translate>BUTTON_DELETE</span>
+                </div>
+                <hr>
+            </div>
+
+        </div>
     </div>
-</div>

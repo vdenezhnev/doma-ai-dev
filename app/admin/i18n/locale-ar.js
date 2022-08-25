@@ -171,6 +171,8 @@ app.constant('LOCALE_AR', {
     COMPANIES_FORM_ADMIN_ROLE: 'وظيفة',
     COMPANIES_FORM_PAYMENT_TITLE: 'دفع',
     COMPANIES_FORM_API_TOKEN: 'Api-token',
+    COMPANIES_FORM_USERS_TITLE: 'المستخدمين',
+    COMPANIES_FORM_CREATE_USER_WHEN_REGISTERING_ABONENT: 'إنشاء مستخدمين عند تسجيل المعتدين',
     POSTAMAT_FORM_ID: 'Postamat ID',
     POSTAMAT_FORM_PID: 'PID',
     POSTAMAT_FORM_CELLS: 'Cells',
