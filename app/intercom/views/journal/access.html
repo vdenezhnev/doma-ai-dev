@@ -5,6 +5,7 @@
                 <th width="260px" translate>html.journal.date_and_time_display</th>
                 <th width="320px" translate>html.journal.user_display</th>
                 <th width="180px" translate>html.journal.phone_number_display</th>
+                <th width="180px" translate>html.journal.cars_display</th>
                 <th translate>html.journal.key_type_display</th>
                 <th width="180px" translate>html.journal.card_id</th>
                 <th translate>html.journal.lock_access_types_display</th>
@@ -13,7 +14,7 @@
             <tr class="active">
                 <th style="vertical-align: top" class="filter-date form-inline">
                     <span class="dropdown">
-                        <a  class="dropdown-toggle" id="from-date" role="button" data-toggle="dropdown" data-target="#" href="#">
+                        <a class="dropdown-toggle" id="from-date" role="button" data-toggle="dropdown" data-target="#" href="#">
                             <input class="form-control input-small text-center"
                                    readonly
                                    placeholder="{{ 'html.journal.date_from_display' | translate }}"
@@ -22,14 +23,14 @@
                         </a>
                         <ul class="dropdown-menu" role="menu">
                             <datetimepicker data-ng-model="filter.From"
-                                        data-datetimepicker-config="{dropdownSelector: '#from-date', startView:'day', minView:'day' }"/>
+                                            data-datetimepicker-config="{dropdownSelector: '#from-date', startView:'day', minView:'day' }" />
                         </ul>
                     </span>
 
                     <span> &mdash; </span>
 
                     <span class="dropdown">
-                        <a  class="dropdown-toggle" id="to-date" role="button" data-toggle="dropdown" data-target="#" href="#">
+                        <a class="dropdown-toggle" id="to-date" role="button" data-toggle="dropdown" data-target="#" href="#">
                             <input class="form-control input-small text-center"
                                    readonly
                                    placeholder="{{ 'html.journal.date_to_display' | translate }}"
@@ -39,7 +40,7 @@
 
                         <ul class="dropdown-menu" role="menu">
                             <datetimepicker data-ng-model="filter.Till"
-                                        data-datetimepicker-config="{dropdownSelector: '#to-date', startView:'day', minView:'day' }"/>
+                                            data-datetimepicker-config="{dropdownSelector: '#to-date', startView:'day', minView:'day' }" />
                         </ul>
                     </span>
 
@@ -59,27 +60,39 @@
                         </span>
                     </div>
                 </th>
+
                 <th style="vertical-align: top">
-                    <select
-                        ng-model="filter.keyType"
-                        class="form-control">
+                    <div class="input-group">
+                        <input class="form-control" ng-model="filter.Cars" ng-model-options="{updateOn: 'blur'}" style="min-width: 125px;">
+                        <span class="input-group-btn">
+                            <button class="btn" type="button">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </th>
+
+                <th style="vertical-align: top">
+                    <select ng-model="filter.keyType"
+                            class="form-control">
                         <option></option>
-                        <option
-                            ng-repeat="(key, value) in keyTypes track by $index"
-                            ng-selected="{{key===filter.keyType}}"
-                            value="{{::key}}">{{value}}</option>
+                        <option ng-repeat="(key, value) in keyTypes track by $index"
+                                ng-selected="{{key===filter.keyType}}"
+                                value="{{::key}}">
+                            {{value}}
+                        </option>
                     </select>
                 </th>
                 <th></th>
                 <th style="vertical-align: top">
-                    <select
-                        ng-model="filter.LockAccessType"
-                        class="form-control">
+                    <select ng-model="filter.LockAccessType"
+                            class="form-control">
                         <option></option>
-                        <option
-                            ng-repeat="(key, value) in lockAccessTypes track by $index"
-                            ng-selected="{{key===filter.lockAccessType}}"
-                            value="{{::key}}">{{::value}}</option>
+                        <option ng-repeat="(key, value) in lockAccessTypes track by $index"
+                                ng-selected="{{key===filter.lockAccessType}}"
+                                value="{{::key}}">
+                            {{::value}}
+                        </option>
                     </select>
                 </th>
                 <th>
