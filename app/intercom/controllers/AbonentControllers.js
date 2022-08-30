@@ -13,6 +13,7 @@ app.controller('AbonentListCtrl', ['$scope', 'Abonent', 'gettextCatalog',
         $scope.loadObjects = function(reset) {
             Abonent.query(angular.extend({skip: $scope.skip, take: $scope.take}, $scope.filter)).$promise.then(function(response) {
                 $scope.skip += response.items.length;
+                $scope.$emit('updateAddresses');
 
                 if (reset) {
                     $scope.objects = response.items;
