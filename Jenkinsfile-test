@@ -39,9 +39,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 sshagent(credentials : ['infra-key']) {
-                    sh 'ssh -o StrictHostKeyChecking=no infrastructure@${SERVER} sudo docker-compose -f ${WORK_DIR}/docker-compose.yml stop acms'
-                    sh 'ssh -o StrictHostKeyChecking=no infrastructure@${SERVER} sudo docker-compose -f ${WORK_DIR}/docker-compose.yml rm -f acms'
-                    sh 'ssh -o StrictHostKeyChecking=no infrastructure@${SERVER} sudo docker-compose -f ${WORK_DIR}/docker-compose.yml up -d --force-recreate acms'
+                    sh 'ssh -o StrictHostKeyChecking=no infrastructure@${SERVER} sudo docker-compose -f ${WORK_DIR}/docker-compose-test.yml stop acms'
+                    sh 'ssh -o StrictHostKeyChecking=no infrastructure@${SERVER} sudo docker-compose -f ${WORK_DIR}/docker-compose-test.yml rm -f acms'
+                    sh 'ssh -o StrictHostKeyChecking=no infrastructure@${SERVER} sudo docker-compose -f ${WORK_DIR}/docker-compose-test.yml up -d --force-recreate acms'
                     sh 'ssh -o StrictHostKeyChecking=no infrastructure@${SERVER} sudo docker system prune -a -f'
                 }
                 NotifySlack("Deploy in test environments complete")
