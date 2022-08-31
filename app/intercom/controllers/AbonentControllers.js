@@ -45,6 +45,8 @@ app.controller('AbonentListCtrl', ['$scope', 'Abonent', 'gettextCatalog',
         $scope.loadObjects();
 
         $scope.downloadTemplate = () => window.open(`assets/abonent-import-template_${$scope.language.active}.xlsx`, '_blank');
+
+        $scope.user.updateKeyCountInfo();
     }
 ]);
 
