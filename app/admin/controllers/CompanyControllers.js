@@ -78,7 +78,6 @@ app.controller('CompanyDetailCtrl', ['$scope', '$http', '$state', '$stateParams'
         }
 
         $scope.company = $stateParams.company;
-        $scope.localServers = [];
         $scope.isCreate = false;
         $scope.data = {
             acquiringTypes: [],
