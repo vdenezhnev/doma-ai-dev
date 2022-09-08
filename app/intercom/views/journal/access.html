@@ -63,7 +63,7 @@
 
                 <th style="vertical-align: top">
                     <div class="input-group">
-                        <input class="form-control" ng-model="filter.Cars" ng-model-options="{updateOn: 'blur'}" style="min-width: 125px;">
+                        <input class="form-control" ng-model="filter.CarNumber" ng-model-options="{updateOn: 'blur'}" style="min-width: 125px;">
                         <span class="input-group-btn">
                             <button class="btn" type="button">
                                 <i class="fa fa-search"></i>
@@ -105,6 +105,7 @@
                 <td>{{ journal.when | amUtc | amLocal | amDateFormat:'DD.MM.YYYY HH:mm' }}</td>
                 <td>{{ journal.userDisplayName ? journal.userDisplayName : ('html.journal.null_value' | translate) }}</td>
                 <td>{{ journal.userPhoneNumber ? journal.userPhoneNumber : ('html.journal.null_value' | translate) }}</td>
+                <td>{{ journal.cars ? journal.cars : ('html.journal.null_value' | translate) }}</td>
                 <td>{{ keyTypes[journal.keyType] }}</td>
                 <td>{{ journal.pacsCode ? journal.pacsCode : ('html.journal.null_value' | translate) }}</td>
                 <td>{{ lockAccessTypes[journal.lockAccessType] }}</td>
