@@ -5,9 +5,9 @@ app.controller('DeviceListCtrl', ['$scope', '$http', 'Device', function($scope, 
     $scope.devices = [];
 
     $scope.loadDevices = function () {
-        Device.query({Skip: $scope.skip, Take: 20}, function (response) {
+        Device.query({Skip: $scope.skip, Take: 100}, function (response) {
             $scope.devices = $scope.devices.concat(response);
-            if (response.length < 20) {
+            if (response.length < 100) {
                 $scope.loadedAllDevices = true;
             }
             $scope.skip += response.length;
