@@ -1,7 +1,7 @@
 
 app.controller('TariffListCtrl', ['$scope', '$http', 'Tariff',
     function($scope, $http, Tariff) {
-        $scope.tariffs = Tariff.query({Skip: 0, Take: 20});
+        $scope.tariffs = Tariff.query({Skip: 0, Take: 100});
     }
 ]);
 
