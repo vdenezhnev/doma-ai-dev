@@ -22,7 +22,7 @@ app.controller('LockCtrl', ['$scope', '$stateParams', '$state', '$http', '$filte
         }
 
         $scope.onOpenLock = function (lockId) {
-            $http.get(`${$stateParams.online_server}/open?lock=${lockId}&uuid=${$stateParams.uuid}`)
+            $http.get(`https://${$stateParams.online_server}/open?lock=${lockId}&uuid=${$stateParams.uuid}`)
                 .catch(function () {
                     notify('Не удалось открыть замок');
                 });
