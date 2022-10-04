@@ -236,6 +236,9 @@ app.constant('LOCALE_AR', {
     KEY_STATUS_rejected: 'Rejected',
     KEY_STATUS_deleteUser: 'Deleted by user',
     KEY_STATUS_deleteAdmin: 'Deleted by admin',
+    KEY_STATUS_deleteByAdmin: 'حذف من قبل المشرف',
+    KEY_STATUS_deleteByUser: 'حذف من قبل المستخدم',
+    KEY_STATUS_deleteBySender: 'حذف من قبل المرسل',
 
     POSTAMAT_STATUS_filled: 'Filled',
     POSTAMAT_STATUS_empty: 'Empty'

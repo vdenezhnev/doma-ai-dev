@@ -238,6 +238,9 @@ app.constant('LOCALE_EN', {
     KEY_STATUS_rejected: 'Rejected',
     KEY_STATUS_deleteUser: 'Deleted by user',
     KEY_STATUS_deleteAdmin: 'Deleted by admin',
+    KEY_STATUS_deleteByAdmin: 'Deleted by admin',
+    KEY_STATUS_deleteByUser: 'Deleted by user',
+    KEY_STATUS_deleteBySender: 'Deleted by sender',
 
     POSTAMAT_STATUS_filled: 'Filled',
     POSTAMAT_STATUS_empty: 'Empty',
