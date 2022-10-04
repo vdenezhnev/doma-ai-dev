@@ -69,6 +69,7 @@ app.constant('LOCALE_AR', {
     TABLE_CELL_KEYS_AVAILABLE: 'متاح',
     TABLE_CELL_KEYS_USED: 'استخدام',
     TABLE_CELL_KEYS_REMAINING: 'المغادره',
+    TABLE_CELL_KEYS_TITLE: 'العنوان',
     TABLE_CELL_UUID: 'UUID',
     TABLE_CELL_DATE: 'تاريخ',
     TABLE_CELL_POSTAMAT_ID: 'Postamat ID',

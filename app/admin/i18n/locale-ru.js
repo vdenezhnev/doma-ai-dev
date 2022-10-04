@@ -69,6 +69,7 @@ app.constant('LOCALE_RU', {
     TABLE_CELL_KEYS_AVAILABLE: 'Доступно',
     TABLE_CELL_KEYS_USED: 'Использовано',
     TABLE_CELL_KEYS_REMAINING: 'Осталось',
+    TABLE_CELL_KEYS_TITLE: 'Название',
     TABLE_CELL_UUID: 'UUID',
     TABLE_CELL_DATE: 'Дата',
     TABLE_CELL_POSTAMAT_ID: 'Postamat ID',

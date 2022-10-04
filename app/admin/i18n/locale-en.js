@@ -69,6 +69,7 @@ app.constant('LOCALE_EN', {
     TABLE_CELL_KEYS_AVAILABLE: 'Available',
     TABLE_CELL_KEYS_USED: 'Used',
     TABLE_CELL_KEYS_REMAINING: 'Remaining',
+    TABLE_CELL_KEYS_TITLE: 'Title',
     TABLE_CELL_UUID: 'UUID',
     TABLE_CELL_DATE: 'Date',
     TABLE_CELL_POSTAMAT_ID: 'Postamat ID',
