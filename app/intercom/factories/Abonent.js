@@ -16,6 +16,10 @@ app.factory('Abonent', ['$resource', 'Address', 'settings', function($resource, 
             url: settings.API_URL + '?action=SearchAbonents',
             isArray: false
         },
+
+        getStatusCreateAbonentUser: {
+            url: settings.API_URL + '?action=GetStatusCreateAbonentUser'
+        },
         delete: {
             method: 'POST',
             transformRequest: function(data, headers) {

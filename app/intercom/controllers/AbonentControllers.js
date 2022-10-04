@@ -13,6 +13,7 @@ app.controller('AbonentListCtrl', ['$scope', 'Abonent', 'gettextCatalog',
         $scope.loadObjects = function(reset) {
             Abonent.query(angular.extend({skip: $scope.skip, take: $scope.take}, $scope.filter)).$promise.then(function(response) {
                 $scope.skip += response.items.length;
+                $scope.$emit('updateAddresses');
 
                 if (reset) {
                     $scope.objects = response.items;
@@ -44,6 +45,8 @@ app.controller('AbonentListCtrl', ['$scope', 'Abonent', 'gettextCatalog',
         $scope.loadObjects();
 
         $scope.downloadTemplate = () => window.open(`assets/abonent-import-template_${$scope.language.active}.xlsx`, '_blank');
+
+        $scope.user.updateKeyCountInfo();
     }
 ]);
 
@@ -54,6 +57,10 @@ app.controller('AbonentCreateCtrl', ['$scope', '$state', 'Abonent', 'Device',
             cars: [],
             perimeters: [],
             temporaryAccessPerimeters: []
+        });
+
+        Abonent.getStatusCreateAbonentUser().$promise.then(function (response) {
+            $scope.createAbonentUser = response.status;
         });
 
         $scope.save = function() {

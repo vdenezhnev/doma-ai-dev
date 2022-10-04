@@ -78,16 +78,12 @@ app.controller('CompanyDetailCtrl', ['$scope', '$http', '$state', '$stateParams'
         }
 
         $scope.company = $stateParams.company;
-        $scope.localServers = [];
         $scope.isCreate = false;
         $scope.data = {
             acquiringTypes: [],
             merchantSettings: [],
             acquiringType: null
         };
-
-        
-        
 
         Api.get(settings.API_URL, {Action: 'GetNameRoles', serviceCompanyId: $scope.company.id}, function (response) {
             $scope.rolesList = response.data;
@@ -176,13 +172,16 @@ app.controller('CompanyDetailCtrl', ['$scope', '$http', '$state', '$stateParams'
 
         $scope.getLocalServers = function () {
 
+            $scope.isLocalServersData = false;
             Api.post(settings.API_URL, {
                 Action: 'GetLocalServers',
                 ServiceCompanyId: $scope.company.id
             }).then(function successCallback(response) {
-                $scope.localServers = response.data;
+                if (response.data != 'null') {
+                    $scope.localServers = response.data;
+                    $scope.isLocalServersData = true;
+                }
             });
-
         };
 
         if ($scope.company.id) {
