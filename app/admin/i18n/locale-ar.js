@@ -240,6 +240,7 @@ app.constant('LOCALE_AR', {
     KEY_STATUS_deleteByAdmin: 'حذف من قبل المشرف',
     KEY_STATUS_deleteByUser: 'حذف من قبل المستخدم',
     KEY_STATUS_deleteBySender: 'حذف من قبل المرسل',
+    KEY_STATUS_expired: 'منتهية الصلاحية',
 
     POSTAMAT_STATUS_filled: 'Filled',
     POSTAMAT_STATUS_empty: 'Empty'

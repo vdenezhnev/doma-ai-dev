@@ -242,6 +242,7 @@ app.constant('LOCALE_EN', {
     KEY_STATUS_deleteByAdmin: 'Deleted by admin',
     KEY_STATUS_deleteByUser: 'Deleted by user',
     KEY_STATUS_deleteBySender: 'Deleted by sender',
+    KEY_STATUS_expired: 'Expired',
 
     POSTAMAT_STATUS_filled: 'Filled',
     POSTAMAT_STATUS_empty: 'Empty',

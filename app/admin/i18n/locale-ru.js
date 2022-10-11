@@ -242,6 +242,7 @@ app.constant('LOCALE_RU', {
     KEY_STATUS_deleteByAdmin: 'Удалён администратором',
     KEY_STATUS_deleteByUser: 'Удалён пользователем',
     KEY_STATUS_deleteBySender: 'Удалён отправителем',
+    KEY_STATUS_expired: 'Истёкший',
 
     POSTAMAT_STATUS_filled: 'Заполнена',
     POSTAMAT_STATUS_empty: 'Пустая'
