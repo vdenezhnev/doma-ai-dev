@@ -18,7 +18,8 @@ app.controller('LockCtrl', ['$scope', '$stateParams', '$state', '$http', '$filte
             let lock = prelocks[i]
             fetch(`https://${$stateParams.online_server}/lockauth?lock=${lock}&uuid=${$stateParams.uuid}`)
                 .then(function(data){ return data.json();})
-                .then(function(data){getStatus(lock, data.Token)});
+                .then(function(data){getStatus(lock, data.Token)})
+                .catch(function(){getStatus(lock, '')});
         }
 
         $scope.onOpenLock = function (lockId) {
@@ -40,7 +41,7 @@ app.controller('LockCtrl', ['$scope', '$stateParams', '$state', '$http', '$filte
         $scope.isDoorOpen = function (lock) {
             return lock.DoorOpen === true;
         }
-        // https://online.airkey.ae:4445/lockstate?lock=78BQ3VH3RI6T46S&uuid=11111111-2222-3333-0000-000000000000&token=C232211054508A44
+
         function getStatus(lock, token) {
             var eventSource = new EventSource(`https://${$stateParams.online_server}/lockstate?lock=${lock}&uuid=${$stateParams.uuid}&token=${token}`);
 
@@ -68,6 +69,16 @@ app.controller('LockCtrl', ['$scope', '$stateParams', '$state', '$http', '$filte
                         }
                     }
                 }
+            };
+            eventSource.onerror = function () {
+                var lockState = {
+                    LockID: lock,
+                    Status: false,
+                    LockOpen: false,
+                };
+
+                $scope.locks.push(lockState);
+                $scope.$apply()
             };
         }
     }
