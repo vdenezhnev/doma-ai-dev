@@ -76,9 +76,13 @@ app.controller('LockCtrl', ['$scope', '$stateParams', '$state', '$http', '$filte
                     Status: false,
                     LockOpen: false,
                 };
-
-                $scope.locks.push(lockState);
-                $scope.$apply()
+                var eventLock = $scope.locks.find(function (e) {
+                    return e.LockID === lockState.LockID;
+                });
+                if (eventLock === undefined) {
+                    $scope.locks.push(lockState);
+                    $scope.$apply()
+                }
             };
         }
     }
