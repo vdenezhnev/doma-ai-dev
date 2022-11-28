@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+
+  acms:
+    container_name: acms-dev
+    image: smartairkey/acms-test:late
+    restart: always
+    ports:
+      - "8080:80"
+    logging:
+      driver: "elastic/elastic-logging-plugin:7.10.2"
+      options:
+        hosts: "http://157.175.156.105:9200"
+        index: "acms-ae-%{+yyyy.MM.dd}"
+  
