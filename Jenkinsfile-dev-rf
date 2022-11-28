@@ -23,7 +23,7 @@ pipeline {
     stages {
         stage('Prepare') {
             when {
-                expression { env.BRANCH_NAME == 'main-net6' }
+                expression { env.BRANCH_NAME == 'dev_Net6_RF' }
             }
             steps {
                 NotifySlack("Start deploy")
