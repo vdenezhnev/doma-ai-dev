@@ -23,7 +23,7 @@ services:
       - test-stage
 
 networks:
-  dev-stage:
+  test-stage:
     name: test-stage
     driver: bridge
   
