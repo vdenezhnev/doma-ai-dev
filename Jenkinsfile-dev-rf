@@ -1,0 +1,71 @@
+def NotifySlack(STATUS) {
+    sh """
+    curl -X POST -H 'Content-type: application/json' \
+    --data '{"text":"APP: ${env.APP}\nBRANCH: ${env.BRANCH_NAME}\nCOMMIT: ${env.GIT_COMMIT}\nSTATUS: ${STATUS}"}'\
+    ${SLACK_HOOK}
+    """
+}
+
+pipeline {
+    agent any
+    parameters {
+        booleanParam(name: 'DEPLOY', defaultValue: false, description: 'Deploy')
+    }
+    environment {
+        SERVER='devapi.smartairkey.com'
+        WORK_DIR='/opt/acms'
+        API_HOST='https://devapi.smartairkey.com/'
+        APP_INTERCOM_TITLE='SmartAirkey'
+        APP_BRAND_ID='smartairkey'
+        SLACK_HOOK=credentials('SLACK_HOOK')
+        APP='acms-dev-rf'
+    }
+    stages {
+        stage('Prepare') {
+            when {
+                expression { env.BRANCH_NAME == 'dev_Net6_RF' }
+            }
+            steps {
+                NotifySlack("Start deploy")
+                sshagent(credentials : ['infra-key']) {
+                    sh 'ssh -o StrictHostKeyChecking=no infrastructure@${SERVER} sudo mkdir -p ${WORK_DIR}'
+                    sh 'ssh -o StrictHostKeyChecking=no infrastructure@${SERVER} sudo chown infrastructure.infrastructure ${WORK_DIR}'
+                    sh 'ssh -o StrictHostKeyChecking=no infrastructure@${SERVER} sudo rm -rf ${WORK_DIR}/*'
+                    sh 'scp -r * infrastructure@${SERVER}:${WORK_DIR}'
+                }
+            }
+        }
+        stage('Build image') {
+            when {
+                expression { env.BRANCH_NAME == 'dev_Net6_RF' }
+            }
+            steps {
+                sshagent(credentials : ['infra-key']) {
+                    sh 'ssh -o StrictHostKeyChecking=no infrastructure@${SERVER} sudo docker build --no-cache -t smartairkey/acms-dev:late --build-arg API_HOST="${API_HOST}" --build-arg APP_INTERCOM_TITLE="${APP_INTERCOM_TITLE}" --build-arg APP_BRAND_ID="${APP_BRAND_ID}" ${WORK_DIR}'
+                }
+            }
+        }
+        stage('Deploy') {
+            when {
+                expression { env.BRANCH_NAME == 'dev_Net6_RF' }
+            }
+            steps {
+                sshagent(credentials : ['infra-key']) {
+                    sh 'ssh -o StrictHostKeyChecking=no infrastructure@${SERVER} sudo docker-compose -f ${WORK_DIR}/docker-compose-dev-rf.yml stop acms'
+                    sh 'ssh -o StrictHostKeyChecking=no infrastructure@${SERVER} sudo docker-compose -f ${WORK_DIR}/docker-compose-dev-rf.yml rm -f acms'
+                    sh 'ssh -o StrictHostKeyChecking=no infrastructure@${SERVER} sudo docker-compose -f ${WORK_DIR}/docker-compose-dev-rf.yml up -d --force-recreate acms'
+                    sh 'ssh -o StrictHostKeyChecking=no infrastructure@${SERVER} sudo docker system prune -a -f'
+                }
+                NotifySlack("Deploy complete")
+            }
+        }
+    }
+    post {
+        failure { 
+            NotifySlack("Deploy error")
+        }
+        cleanup {
+            deleteDir()
+        }
+    }    
+}

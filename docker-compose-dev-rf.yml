@@ -1,0 +1,29 @@
+version: "3.9"
+
+services:
+
+  acms:
+    container_name: acms-dev
+    image: smartairkey/acms-dev:late
+    restart: always
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.acms.entrypoints=websecure
+      - traefik.http.routers.acms.rule=Host(`devacms.smartairkey.com`)
+      - traefik.http.routers.acms.service=origin
+      - traefik.http.services.origin.loadbalancer.server.port=80
+      - traefik.http.routers.acms.tls=true
+      - traefik.http.routers.acms.tls.certresolver=le
+    logging:
+      driver: "elastic/elastic-logging-plugin:7.10.2"
+      options:
+        hosts: "http://157.175.156.105:9200"
+        index: "acms-dev-rf-%{+yyyy.MM.dd}"
+    networks:
+      - test-stage
+
+networks:
+  test-stage:
+    name: test-stage
+    driver: bridge
+  
