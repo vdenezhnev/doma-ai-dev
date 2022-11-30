@@ -1,4 +1,3 @@
-
 var flatten = function(ob) {
     var toReturn = {};
 
