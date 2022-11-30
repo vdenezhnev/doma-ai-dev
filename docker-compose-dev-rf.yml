@@ -8,12 +8,12 @@ services:
     restart: always
     labels:
       - traefik.enable=true
-      - traefik.http.routers.keyserver.entrypoints=websecure
-      - traefik.http.routers.keyserver.rule=Host(`devacms.smartairkey.com`)
-      - traefik.http.routers.keyserver.service=origin
+      - traefik.http.routers.acms.entrypoints=websecure
+      - traefik.http.routers.acms.rule=Host(`devacms.smartairkey.com`)
+      - traefik.http.routers.acms.service=origin
       - traefik.http.services.origin.loadbalancer.server.port=80
-      - traefik.http.routers.keyserver.tls=true
-      - traefik.http.routers.keyserver.tls.certresolver=le
+      - traefik.http.routers.acms.tls=true
+      - traefik.http.routers.acms.tls.certresolver=le
     logging:
       driver: "elastic/elastic-logging-plugin:7.10.2"
       options:
