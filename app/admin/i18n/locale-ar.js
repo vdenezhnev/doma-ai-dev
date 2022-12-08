@@ -69,6 +69,7 @@ app.constant('LOCALE_AR', {
     TABLE_CELL_KEYS_AVAILABLE: 'متاح',
     TABLE_CELL_KEYS_USED: 'استخدام',
     TABLE_CELL_KEYS_REMAINING: 'المغادره',
+    TABLE_CELL_KEYS_TITLE: 'العنوان',
     TABLE_CELL_UUID: 'UUID',
     TABLE_CELL_DATE: 'تاريخ',
     TABLE_CELL_POSTAMAT_ID: 'Postamat ID',
@@ -236,6 +237,10 @@ app.constant('LOCALE_AR', {
     KEY_STATUS_rejected: 'Rejected',
     KEY_STATUS_deleteUser: 'Deleted by user',
     KEY_STATUS_deleteAdmin: 'Deleted by admin',
+    KEY_STATUS_deleteByAdmin: 'حذف من قبل المشرف',
+    KEY_STATUS_deleteByUser: 'حذف من قبل المستخدم',
+    KEY_STATUS_deleteBySender: 'حذف من قبل المرسل',
+    KEY_STATUS_expired: 'منتهية الصلاحية',
 
     POSTAMAT_STATUS_filled: 'Filled',
     POSTAMAT_STATUS_empty: 'Empty'

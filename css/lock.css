@@ -1,0 +1,20 @@
+.lock-main {
+    display: flex;
+    flex-direction: column;
+}
+.lock-state {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.lock-state .lock-icons {
+    width: 100px;
+    display: flex;
+    flex-direction: row;
+    margin-left: 10px;
+    margin-top: 3px;
+    gap: 5px;
+}

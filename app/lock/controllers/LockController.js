@@ -2,17 +2,28 @@
 
 app.controller('LockCtrl', ['$scope', '$stateParams', '$state', '$http', '$filter', 'settings', 'notify', 'ModalService',
     function ($scope, $stateParams, $state, $http, $filter, settings, notify, ModalService) {
-        if (!$stateParams.locks || !$stateParams.uuid) {
+        if (!$stateParams.locks || !$stateParams.uuid || !$stateParams.online_server) {
             $state.go('lock.404');
         }
 
         $scope.locks = [];
-        getStatus($stateParams.locks);
 
         $scope.uuid = $stateParams.uuid;
 
+        $scope.online_server = $stateParams.online_server;
+
+        var prelocks = $stateParams.locks.split(',');
+
+        for (var i = 0; i < prelocks.length; i++) {
+            let lock = prelocks[i]
+            fetch(`https://${$stateParams.online_server}/lockauth?lock=${lock}&uuid=${$stateParams.uuid}`)
+                .then(function(data){ return data.json();})
+                .then(function(data){getStatus(lock, data.Token)})
+                .catch(function(){getStatus(lock, '')});
+        }
+
         $scope.onOpenLock = function (lockId) {
-            $http.get(`${settings.API_URL}/open?lock=${lockId}&uuid=${$stateParams.uuid}`)
+            $http.get(`https://${$stateParams.online_server}/open?lock=${lockId}&uuid=${$stateParams.uuid}`)
                 .catch(function () {
                     notify('Не удалось открыть замок');
                 });
@@ -21,9 +32,18 @@ app.controller('LockCtrl', ['$scope', '$stateParams', '$state', '$http', '$filte
         $scope.isAvailable = function (lock) {
             return lock.Status === 'Online';
         };
+        $scope.isOpen = function (lock) {
+            return lock.LockOpen === true;
+        }
+        $scope.isConnected = function (lock) {
+            return lock.Connected === true;
+        }
+        $scope.isDoorOpen = function (lock) {
+            return lock.DoorOpen === true;
+        }
 
-        function getStatus(locks) {
-            var eventSource = new EventSource(`${settings.API_URL}/lockstate?locks=${locks}`);
+        function getStatus(lock, token) {
+            var eventSource = new EventSource(`https://${$stateParams.online_server}/lockstate?lock=${lock}&uuid=${$stateParams.uuid}&token=${token}`);
 
             eventSource.onmessage = function (event) {
                 var lockState = JSON.parse(event.data);
@@ -33,6 +53,7 @@ app.controller('LockCtrl', ['$scope', '$stateParams', '$state', '$http', '$filte
 
                 if (eventLock === undefined) {
                     $scope.locks.push(lockState);
+                    $scope.$apply()
                 } else {
                     if (!(lockState.Status === undefined && lockState.LockOpen === undefined)) {
                         if (lockState.Status !== undefined) {
@@ -47,6 +68,20 @@ app.controller('LockCtrl', ['$scope', '$stateParams', '$state', '$http', '$filte
                             notify(`Замок ${eventLock.LockID} закрыт`);
                         }
                     }
+                }
+            };
+            eventSource.onerror = function () {
+                var lockState = {
+                    LockID: lock,
+                    Status: false,
+                    LockOpen: false,
+                };
+                var eventLock = $scope.locks.find(function (e) {
+                    return e.LockID === lockState.LockID;
+                });
+                if (eventLock === undefined) {
+                    $scope.locks.push(lockState);
+                    $scope.$apply()
                 }
             };
         }
