@@ -6,4 +6,5 @@
   INFO: 'You are going to open lock',
   OPEN: 'Open',
   NOTIFY_LOCK_OPENED: 'Lock opened',
+  TITLE: 'Lock opening',
 });

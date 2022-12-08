@@ -69,6 +69,7 @@ app.constant('LOCALE_EN', {
     TABLE_CELL_KEYS_AVAILABLE: 'Available',
     TABLE_CELL_KEYS_USED: 'Used',
     TABLE_CELL_KEYS_REMAINING: 'Remaining',
+    TABLE_CELL_KEYS_TITLE: 'Title',
     TABLE_CELL_UUID: 'UUID',
     TABLE_CELL_DATE: 'Date',
     TABLE_CELL_POSTAMAT_ID: 'Postamat ID',
@@ -238,6 +239,10 @@ app.constant('LOCALE_EN', {
     KEY_STATUS_rejected: 'Rejected',
     KEY_STATUS_deleteUser: 'Deleted by user',
     KEY_STATUS_deleteAdmin: 'Deleted by admin',
+    KEY_STATUS_deleteByAdmin: 'Deleted by admin',
+    KEY_STATUS_deleteByUser: 'Deleted by user',
+    KEY_STATUS_deleteBySender: 'Deleted by sender',
+    KEY_STATUS_expired: 'Expired',
 
     POSTAMAT_STATUS_filled: 'Filled',
     POSTAMAT_STATUS_empty: 'Empty',

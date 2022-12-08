@@ -9,13 +9,13 @@ def NotifySlack(STATUS) {
 pipeline {
     agent any
     environment {
-        SERVER='172.31.1.60'
+        SERVER='172.31.1.80'
         WORK_DIR='/opt/acms'
-        API_HOST='https://testapi.airkey.ae/'
+        API_HOST='https://devapi.airkey.ae/'
         APP_INTERCOM_TITLE='SmartAirkey'
         APP_BRAND_ID='smartairkey'
         SLACK_HOOK=credentials('SLACK_HOOK')
-        APP='acms-test-ae'
+        APP='acms-dev-ae'
     }
     stages {
         stage('Prepare') {
@@ -39,9 +39,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 sshagent(credentials : ['infra-key']) {
-                    sh 'ssh -o StrictHostKeyChecking=no infrastructure@${SERVER} sudo docker-compose -f ${WORK_DIR}/docker-compose-test.yml stop acms'
-                    sh 'ssh -o StrictHostKeyChecking=no infrastructure@${SERVER} sudo docker-compose -f ${WORK_DIR}/docker-compose-test.yml rm -f acms'
-                    sh 'ssh -o StrictHostKeyChecking=no infrastructure@${SERVER} sudo docker-compose -f ${WORK_DIR}/docker-compose-test.yml up -d --force-recreate acms'
+                    sh 'ssh -o StrictHostKeyChecking=no infrastructure@${SERVER} sudo docker-compose -f ${WORK_DIR}/docker-compose-dev.yml stop acms'
+                    sh 'ssh -o StrictHostKeyChecking=no infrastructure@${SERVER} sudo docker-compose -f ${WORK_DIR}/docker-compose-dev.yml rm -f acms'
+                    sh 'ssh -o StrictHostKeyChecking=no infrastructure@${SERVER} sudo docker-compose -f ${WORK_DIR}/docker-compose-dev.yml up -d --force-recreate acms'
                     sh 'ssh -o StrictHostKeyChecking=no infrastructure@${SERVER} sudo docker system prune -a -f'
                 }
                 NotifySlack("Deploy in test environments complete")

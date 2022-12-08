@@ -69,6 +69,7 @@ app.constant('LOCALE_RU', {
     TABLE_CELL_KEYS_AVAILABLE: 'Доступно',
     TABLE_CELL_KEYS_USED: 'Использовано',
     TABLE_CELL_KEYS_REMAINING: 'Осталось',
+    TABLE_CELL_KEYS_TITLE: 'Название',
     TABLE_CELL_UUID: 'UUID',
     TABLE_CELL_DATE: 'Дата',
     TABLE_CELL_POSTAMAT_ID: 'Postamat ID',
@@ -238,6 +239,10 @@ app.constant('LOCALE_RU', {
     KEY_STATUS_rejected: 'Отклонён',
     KEY_STATUS_deleteUser: 'Удалён пользователем',
     KEY_STATUS_deleteAdmin: 'Удалён администратором',
+    KEY_STATUS_deleteByAdmin: 'Удалён администратором',
+    KEY_STATUS_deleteByUser: 'Удалён пользователем',
+    KEY_STATUS_deleteBySender: 'Удалён отправителем',
+    KEY_STATUS_expired: 'Истёкший',
 
     POSTAMAT_STATUS_filled: 'Заполнена',
     POSTAMAT_STATUS_empty: 'Пустая'

@@ -39,7 +39,7 @@
                                                            placeholder="{{ 'COMPONENT_DATETIME_FROM' | translate }}"
                                                            readonly
                                                            style="width: 100%;"
-                                                           value="{{ listFilter.keyDate.from | date:'dd-MM-yyyy' }}"/>
+                                                           value="{{ listFilter.keyDate.from | date:'dd-MM-yyyy' }}" />
                                                 </a>
                                                 <ul class="dropdown-menu" role="menu">
                                                     <datetimepicker ng-model="listFilter.keyDate.from"
@@ -55,7 +55,7 @@
                                                            placeholder="{{ 'COMPONENT_DATETIME_TO' | translate }}"
                                                            readonly
                                                            style="width: 100%;"
-                                                           value="{{ listFilter.keyDate.to | date:'dd-MM-yyyy' }}"/>
+                                                           value="{{ listFilter.keyDate.to | date:'dd-MM-yyyy' }}" />
                                                 </a>
                                                 <ul class="dropdown-menu" role="menu">
                                                     <datetimepicker ng-model="listFilter.keyDate.to"
@@ -68,6 +68,7 @@
                                     </div>
                                 </th>
                                 <th style="vertical-align: top; width: 200px;" translate>TABLE_CELL_USER_PHONE_NUMBER</th>
+                                <th style="vertical-align: top; width: 200px;" translate>TABLE_CELL_KEYS_TITLE</th>
                                 <th style="vertical-align: top; width: 200px;" translate>TABLE_CELL_DEVICE_STATUS</th>
                             </tr>
                         </thead>
@@ -77,6 +78,7 @@
                                 <td>{{ key.id }}</td>
                                 <td>{{ key.createDate | date:'dd-MM-yyyy' }}</td>
                                 <td>{{ key.phoneNumber }}</td>
+                                <td>{{ key.title }}</td>
                                 <td>{{ 'KEY_STATUS_' + key.status | translate}}</td>
                             </tr>
                         </tbody>

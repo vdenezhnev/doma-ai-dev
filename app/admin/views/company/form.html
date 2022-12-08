@@ -187,6 +187,31 @@
                             <input type="text" class="form-control" style="min-width: 100px;" ng-disabled="true" ng-model="localServer.keyCount.remain">
                         </div>
                     </div>
+
+
+                    <div class="form-group">
+                        <label>Is Parking </label>
+                        <input type="checkbox" ng-model="localServer.isParking" />
+                    </div>
+
+                    <div class="form-group" ng-if="localServer.isParking">
+
+                        <label translate>Parking places</label>
+                        <div class="input-group col-md-6" style="margin-bottom: 15px;">
+                            <span class="input-group-addon" style="min-width: 100px;" translate>COMPANIES_FORM_KEYS_AVAILABLE</span>
+                            <input type="number" class="form-control" style="min-width: 100px;" ng-disabled="true" ng-model="localServer.parkingSpace.allPlacesCount">
+                        </div>
+
+                        <div class="input-group col-md-6" style="margin-bottom: 15px;">
+                            <span class="input-group-addon" style="min-width: 100px;" translate>COMPANIES_FORM_KEYS_REMAINING</span>
+                            <input type="text" class="form-control" style="min-width: 100px;" ng-disabled="true" ng-model="localServer.parkingSpace.vacantPlacesCount">
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-if="localServer.isParking">
+                        <label translate>Parking Polygon</label>
+                        <textarea name="text" class="form-control" rows="1" ng-model="localServer.parkingSpace.polygon">></textarea>
+                    </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">

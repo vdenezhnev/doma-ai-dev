@@ -7,10 +7,10 @@ services:
     image: smartairkey/acmsuae:late
     restart: always
     networks:
-      - test-stage
+      - dev-stage
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.whoami.rule=Host(`testacms.airkey.ae`)"
+      - "traefik.http.routers.whoami.rule=Host(`devacms.airkey.ae`)"
       - "traefik.http.routers.whoami.entrypoints=websecure"
       - "traefik.http.routers.whoami.tls.certresolver=le"
       - "traefik.http.routers.whoami.tls.options=whoami@file"
@@ -18,9 +18,9 @@ services:
       driver: "elastic/elastic-logging-plugin:7.10.2"
       options:
         hosts: "http://172.31.1.70:9200"
-        index: "acms-test-ae-%{+yyyy.MM.dd}"
+        index: "acms-dev-ae-%{+yyyy.MM.dd}"
 
 networks:
-  test-stage:
-    name: test-stage
+  dev-stage:
+    name: dev-stage
     driver: bridge
