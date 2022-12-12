@@ -190,13 +190,13 @@
 
 
                     <div class="form-group">
-                        <label>Is Parking </label>
+                        <label translate>COMPANIES_FORM_IS_PARKING</label>
                         <input type="checkbox" ng-model="localServer.isParking" />
                     </div>
 
                     <div class="form-group" ng-if="localServer.isParking">
 
-                        <label translate>Parking places</label>
+                        <label translate>COMPANIES_FORM_PARKING_PLACES</label>
                         <div class="input-group col-md-6" style="margin-bottom: 15px;">
                             <span class="input-group-addon" style="min-width: 100px;" translate>COMPANIES_FORM_KEYS_AVAILABLE</span>
                             <input type="number" class="form-control" style="min-width: 100px;" ng-disabled="true" ng-model="localServer.parkingSpace.allPlacesCount">
@@ -209,7 +209,15 @@
                     </div>
 
                     <div class="form-group" ng-if="localServer.isParking">
-                        <label translate>Parking Polygon</label>
+                        <label translate>COMPANIES_FORM_ADDRESS</label>
+                        <textarea name="text" class="form-control" rows="1" ng-model="localServer.parkingSpace.address">></textarea>
+                    </div>
+                    <div class="form-group" ng-if="localServer.isParking">
+                        <label translate>COMPANIES_FORM_PARKING_INFO</label>
+                        <textarea name="text" class="form-control" rows="1" ng-model="localServer.parkingSpace.info">></textarea>
+                    </div>
+                    <div class="form-group" ng-if="localServer.isParking">
+                        <label translate>COMPANIES_FORM_PARKING_POLYGON</label>
                         <textarea name="text" class="form-control" rows="1" ng-model="localServer.parkingSpace.polygon">></textarea>
                     </div>
                 </div>
