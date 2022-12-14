@@ -208,6 +208,16 @@
                         </div>
                     </div>
 
+                    <div class="form-group" ng-if="localServer.isParking" >
+                        <label translate>COMPANIES_FORM_PICTURES</label>
+                        <div class="input-group col-md-12" style="margin-bottom: 15px;" ng-repeat="i in [0, 1, 2, 3, 4]">
+                            <div class="col-md-12" style="margin-bottom: 10px;" ng-if="!!localServer.parkingSpace.pictures[i]" ng-init="imgSrc = getApiImg(localServer.parkingSpace.pictures[i])">
+                                <img style="max-width: 200px; max-height: 150px; object-fit: cover;" ng-src="{{imgSrc}}" />
+                            </div>
+                            <input type="file" class="form-control" accept="image/png, image/jpeg" ng-model="files" select-ng-files ng-change="uploadLocalServerImage(files, localServer.id, i)"/>
+                        </div>
+                    </div>
+
                     <div class="form-group" ng-if="localServer.isParking">
                         <label translate>COMPANIES_FORM_ADDRESS</label>
                         <textarea name="text" class="form-control" rows="1" ng-model="localServer.parkingSpace.address">></textarea>

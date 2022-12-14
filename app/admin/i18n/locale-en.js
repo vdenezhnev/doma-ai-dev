@@ -188,6 +188,7 @@ app.constant('LOCALE_EN', {
     COMPANIES_FORM_PARKING_POLYGON: 'Parking Polygon',
     COMPANIES_FORM_PARKING_PLACES: 'Parking places',
     COMPANIES_FORM_IS_PARKING: 'Is Parking',
+    COMPANIES_FORM_PICTURES: 'Pictures',
     COMPANIES_FORM_CREATE_USER_WHEN_REGISTERING_ABONENT: 'Create users when registering abonents',
     POSTAMAT_FORM_ID: 'Postamat ID',
     POSTAMAT_FORM_PID: 'PID',
