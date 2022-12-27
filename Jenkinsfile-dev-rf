@@ -12,7 +12,7 @@ pipeline {
         booleanParam(name: 'DEPLOY', defaultValue: false, description: 'Deploy')
     }
     environment {
-        SERVER='devapi.smartairkey.com'
+        SERVER='devacms.smartairkey.com'
         WORK_DIR='/opt/acms'
         API_HOST='https://devapi.smartairkey.com/'
         APP_INTERCOM_TITLE='SmartAirkey'
