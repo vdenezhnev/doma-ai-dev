@@ -159,7 +159,7 @@
 
         <a class="btn btn-default" ng-click="company.admins.push({})"><i class="fa fa-plus"></i> {{ 'BUTTON_ADD_ADMIN' | translate }}</a>
 
-    <div ng-show="isLocalServersData">
+    <div>
         <h3 translate>COMPANIES_FORM_LOCALSERVERS_TITLE</h3>
 
         <div ng-repeat="localServer in localServers track by $index" ng-if="!isCreate">
