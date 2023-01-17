@@ -188,7 +188,7 @@ app.constant('LOCALE_RU', {
     COMPANIES_FORM_PARKING_POLYGON: 'Парковочный полигон',
     COMPANIES_FORM_PARKING_PLACES: 'Парковочные места',
     COMPANIES_FORM_IS_PARKING: 'Это парковка',
-    COMPANIES_FORM_PICTURE: 'Картинки',
+    COMPANIES_FORM_PICTURES: 'Картинки',
     COMPANIES_FORM_CREATE_USER_WHEN_REGISTERING_ABONENT: 'Создавать пользователей при регистрации абонентов',
     POSTAMAT_FORM_ID: 'Postamat ID',
     POSTAMAT_FORM_PID: 'PID',
