@@ -170,6 +170,8 @@ app.controller('CompanyDetailCtrl', ['$scope', '$http', '$state', '$stateParams'
             }
         };
 
+
+
         $scope.getLocalServers = function () {
 
             $scope.isLocalServersData = false;
@@ -227,6 +229,39 @@ app.controller('CompanyDetailCtrl', ['$scope', '$http', '$state', '$stateParams'
             }
         };
 
+        $scope.getApiImg = function (id) {
+            return settings.API_GET_IMAGE_URL + id;
+        }
+
+        $scope.uploadLocalServerImage = function (files, localServerId, i) {
+            var file = files[0];
+            var reader = new FileReader();
+            var base64string = '';
+            reader.onload = function() {
+                base64string = reader.result.replace('data:image/jpeg;base64,', '');
+                base64string = base64string.replace('data:image/png;base64,', '');
+                if (typeof base64string === 'string') {
+                    Api.post(settings.API_URL, {
+                        Action: 'UploadImage',
+                        FileName: files[0].name,
+                        Content: base64string
+                    }).then(function (response) {
+                        angular.forEach($scope.localServers, function (localServer, j) {
+                            if (localServer.id == localServerId) {
+                                if (!localServer.parkingSpace.pictures || localServer.parkingSpace.pictures.length !== 5) {
+                                    localServer.parkingSpace.pictures = [null, null, null, null, null]
+                                }
+                                localServer.parkingSpace.pictures[i] = response.data.id;
+                                $scope.save();
+                            }
+                        });
+                    })
+                }
+            };
+            reader.readAsDataURL(file);
+
+        }
+
         $scope.createMerchantSetting = function(acquiringType) {
             if (acquiringType) {
                 var data = angular.extend({
@@ -277,10 +312,10 @@ app.controller('CompanyDetailCtrl', ['$scope', '$http', '$state', '$stateParams'
         });
 
         Api.get(
-            settings.API_URL, 
+            settings.API_URL,
             {Action: 'GetMerchantSettingsByServiceCompany', ServiceCompanyId: $scope.company.id},
             function (response) {
-              $scope.data.merchantSettings = response.data;
+                $scope.data.merchantSettings = response.data;
             });
     }
 ]);

@@ -8,6 +8,9 @@ def NotifySlack(STATUS) {
 
 pipeline {
     agent any
+    triggers {
+        pollSCM('* * * * *') // Enabling build on Push
+    }
     parameters {
         booleanParam(name: 'DEPLOY', defaultValue: false, description: 'Deploy')
     }

@@ -12,7 +12,7 @@ pipeline {
         booleanParam(name: 'DEPLOY', defaultValue: false, description: 'Deploy')
     }
     environment {
-        SERVER='devapi.smartairkey.com'
+        SERVER='devacms.smartairkey.com'
         WORK_DIR='/opt/acms'
         API_HOST='https://devapi.smartairkey.com/'
         APP_INTERCOM_TITLE='SmartAirkey'
@@ -23,7 +23,7 @@ pipeline {
     stages {
         stage('Prepare') {
             when {
-                expression { env.BRANCH_NAME == 'dev_Net6_RF' }
+                expression { env.BRANCH_NAME == 'main-net6' }
             }
             steps {
                 NotifySlack("Start deploy")
@@ -37,7 +37,7 @@ pipeline {
         }
         stage('Build image') {
             when {
-                expression { env.BRANCH_NAME == 'dev_Net6_RF' }
+                expression { env.BRANCH_NAME == 'main-net6' }
             }
             steps {
                 sshagent(credentials : ['infra-key']) {
@@ -47,7 +47,7 @@ pipeline {
         }
         stage('Deploy') {
             when {
-                expression { env.BRANCH_NAME == 'dev_Net6_RF' }
+                expression { env.BRANCH_NAME == 'main-net6' }
             }
             steps {
                 sshagent(credentials : ['infra-key']) {
