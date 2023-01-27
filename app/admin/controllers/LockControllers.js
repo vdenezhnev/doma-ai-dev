@@ -70,7 +70,6 @@ app.controller('LockDetailCtrl', ['$scope', '$state', '$stateParams', 'notify', 
         $scope.isNew = false;
 
         $scope.allowEditLockVersion = false;
-
         $scope.oldLockVersion = "";
 
         $scope.save = function () {
