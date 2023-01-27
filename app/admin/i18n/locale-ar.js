@@ -232,6 +232,7 @@ app.constant('LOCALE_AR', {
     NOTIFY_MESSAGE_POSTAMAT_DELETE_CONFIRM: 'Are you sure, you want to delete this postamat?',
     NOTIFY_MESSAGE_POSTAMAT_CELL_RELEASE_CONFIRM: 'Are you sure, you want to release this cell?',
     NOTIFY_MESSAGE_LOCALSERVER_DELETE_CONFIRM: 'هل أنت متأكد, تريد حذف هذا الخادم المحلي?',
+    NOTIFY_MESSAGE_LOCK_VERSION_CHANGE_CONFIRM: 'هل أنت متأكد أنك تريد تغيير إصدار القفل?',
 
     NOTIFY_LOCALSERVER_DELETED: 'تم حذف الخادم المحلي',
     NOTIFY_LOCALSERVERS_UPDATED: 'تحديث الخوادم المحلية',

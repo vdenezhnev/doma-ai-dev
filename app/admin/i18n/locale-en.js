@@ -233,6 +233,7 @@ app.constant('LOCALE_EN', {
     NOTIFY_MESSAGE_POSTAMAT_DELETE_CONFIRM: 'Are you sure, you want to delete this postamat?',
     NOTIFY_MESSAGE_POSTAMAT_CELL_RELEASE_CONFIRM: 'Are you sure, you want to release this cell?',
     NOTIFY_MESSAGE_LOCALSERVER_DELETE_CONFIRM: 'Are you sure, you want to delete this local server?',
+    NOTIFY_MESSAGE_LOCK_VERSION_CHANGE_CONFIRM: 'Are you sure you want to change the lock version?',
 
     NOTIFY_LOCALSERVER_DELETED: 'Local server deleted',
     NOTIFY_LOCALSERVERS_UPDATED: 'Local servers updated',

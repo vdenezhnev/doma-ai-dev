@@ -69,12 +69,17 @@ app.controller('LockDetailCtrl', ['$scope', '$state', '$stateParams', 'notify', 
         });
         $scope.isNew = false;
 
-        $scope.save = function() {
+        $scope.allowEditLockVersion = false;
+
+        $scope.oldLockVersion = "";
+
+        $scope.save = function () {
             Api.post(settings.API_URL, {
                 Action: 'UpdateLock',
                 LockId: $scope.lock.id,
-                connectivity: $scope.lock.connectivity
-            }, function() {
+                connectivity: $scope.lock.connectivity,
+                metadata: ($scope.allowEditLockVersion && $scope.oldLockVersion != $scope.lock.metadata.version) ? $scope.lock.metadata : null
+            }, function () {
                 notify($filter('translate')('NOTIFY_LOCK_UPDATED'));
             });
         };
@@ -88,6 +93,15 @@ app.controller('LockDetailCtrl', ['$scope', '$state', '$stateParams', 'notify', 
                     notify($filter('translate')('NOTIFY_LOCK_DELETED'));
                     $state.go('admin.lock.list');
                 });
+            }
+        };
+
+        $scope.allowUpdateVersion = function () {
+            if ($scope.allowEditLockVersion == false) {
+                $scope.oldLockVersion = $scope.lock.metadata.version;
+            }
+            if (window.confirm($filter('translate')('NOTIFY_MESSAGE_LOCK_VERSION_CHANGE_CONFIRM'))) {
+                $scope.allowEditLockVersion = true;
             }
         };
     }

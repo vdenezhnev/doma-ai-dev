@@ -233,6 +233,7 @@ app.constant('LOCALE_RU', {
     NOTIFY_MESSAGE_POSTAMAT_DELETE_CONFIRM: 'Вы действительно хотите удалить данный постамат?',
     NOTIFY_MESSAGE_POSTAMAT_CELL_RELEASE_CONFIRM: 'Вы действительно хотите освободить эту ячейку?',
     NOTIFY_MESSAGE_LOCALSERVER_DELETE_CONFIRM: 'Вы уверены, что хотите удалить этот локальный сервер?',
+    NOTIFY_MESSAGE_LOCK_VERSION_CHANGE_CONFIRM: 'Вы уверены, что хотите изменить версию замка?',
 
     NOTIFY_LOCALSERVER_DELETED: 'Локальный сервер удален',
     NOTIFY_LOCALSERVERS_UPDATED: 'Локальные сервера обновлены',
