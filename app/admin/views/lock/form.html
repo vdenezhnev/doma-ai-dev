@@ -45,8 +45,7 @@
         <label translate>TABLE_CELL_DEVICE_VERSION</label>
         <div class="form-group" style="display: flex;">
             <div style="width: 50%; padding-right: 5px;">
-                <input class="form-control" ng-model="lock.metadata.version" ng-if="!allowEditLockVersion" readonly>
-                <input class="form-control" ng-model="lock.metadata.version" ng-if="allowEditLockVersion">
+                <input class="form-control" ng-model="lock.metadata.version" ng-readonly="!allowEditLockVersion">
             </div>
             <div style="width: 50%;">
                 <button ng-click="allowUpdateVersion()" ng-hide="allowEditLockVersion" class="btn btn-primary" translate>BUTTON_CHANGE</button>
