@@ -26,7 +26,7 @@ pipeline {
     stages {
         stage('Prepare') {
             when {
-                expression { env.BRANCH_NAME == 'main-net6' }
+                expression { env.BRANCH_NAME == 'dev_Net6_RF' }
             }
             steps {
                 NotifySlack("Start deploy")
@@ -40,7 +40,7 @@ pipeline {
         }
         stage('Build image') {
             when {
-                expression { env.BRANCH_NAME == 'main-net6' }
+                expression { env.BRANCH_NAME == 'dev_Net6_RF' }
             }
             steps {
                 sshagent(credentials : ['infra-key']) {
@@ -50,7 +50,7 @@ pipeline {
         }
         stage('Deploy') {
             when {
-                expression { env.BRANCH_NAME == 'main-net6' }
+                expression { env.BRANCH_NAME == 'dev_Net6_RF' }
             }
             steps {
                 sshagent(credentials : ['infra-key']) {
