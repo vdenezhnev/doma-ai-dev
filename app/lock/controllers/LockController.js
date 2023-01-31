@@ -6,7 +6,11 @@ app.controller('LockCtrl', ['$scope', '$stateParams', '$state', '$http', '$filte
             $state.go('lock.404');
         }
 
-        $scope.locks = [];
+        $scope.locks = $stateParams.locks.split(',').map(function (l) {
+            return {
+                LockID: l
+            }
+        });
 
         $scope.uuid = $stateParams.uuid;
 
@@ -51,7 +55,7 @@ app.controller('LockCtrl', ['$scope', '$stateParams', '$state', '$http', '$filte
                     return e.LockID === lockState.LockID;
                 });
 
-                if (eventLock === undefined) {
+                if (eventLock.Status === undefined) {
                     $scope.locks.push(lockState);
                     $scope.$apply()
                 } else {
