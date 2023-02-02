@@ -1,4 +1,3 @@
-
 app.factory('AccessPerimeter', ['$resource', '$q', 'settings', function($resource, $q, settings) {
     var AccessPerimeter = $resource(settings.API_URL, {}, {
         save: {
