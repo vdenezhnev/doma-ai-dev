@@ -8,7 +8,10 @@ app.controller('LockCtrl', ['$scope', '$stateParams', '$state', '$http', '$filte
 
     $scope.locks = $stateParams.locks.split(',').map(function (l) {
       return {
-        LockID: l
+        LockID: l,
+        Status: false,
+        LockOpen: false,
+        isLoaded: false
       }
     });
 
@@ -45,6 +48,9 @@ app.controller('LockCtrl', ['$scope', '$stateParams', '$state', '$http', '$filte
     $scope.isOpen = function (lock) {
       return lock.LockOpen === true;
     }
+    $scope.isNotLoaded = function (lock) {
+      return lock.isLoaded === false;
+    }
     $scope.isConnected = function (lock) {
       return lock.Connected === true;
     }
@@ -54,6 +60,14 @@ app.controller('LockCtrl', ['$scope', '$stateParams', '$state', '$http', '$filte
 
     function getStatus(lock, token) {
       var eventSource = new EventSource(`https://${$stateParams.online_server}/lockstate?lock=${lock}&uuid=${$stateParams.uuid}&token=${token}`);
+
+      eventSource.onopen = function () {
+        var eventLock = $scope.locks.find(function (e) {
+          return e.LockID === lock;
+        });
+        eventLock.isLoaded = true;
+        $scope.$apply();
+      }
 
       eventSource.onmessage = function (event) {
         var lockState = JSON.parse(event.data);
@@ -69,11 +83,7 @@ app.controller('LockCtrl', ['$scope', '$stateParams', '$state', '$http', '$filte
           if (lockState.LockOpen !== undefined) {
             eventLock.LockOpen = lockState.LockOpen;
           }
-          if (eventLock.Status === 'Online' && eventLock.LockOpen) {
-            notify(`Замок ${eventLock.LockID} открыт`);
-          } else {
-            notify(`Замок ${eventLock.LockID} закрыт`);
-          }
+          $scope.$apply();
         }
 
       };
@@ -85,6 +95,8 @@ app.controller('LockCtrl', ['$scope', '$stateParams', '$state', '$http', '$filte
           eventLock.Status = false;
           eventLock.LockOpen = false;
         }
+        eventLock.isLoaded = true;
+        $scope.$apply();
       };
     }
   }
