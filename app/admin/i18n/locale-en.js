@@ -76,6 +76,7 @@ app.constant('LOCALE_EN', {
     TABLE_CELL_PUBLIC_ID: 'Public ID',
     TABLE_CELL_USER: 'User',
     TABLE_CELL_POSTAMAT_CELL_NUMBER: 'Cell number',
+    TABLE_CELL_LOCAL_SERVER: 'Local server',
 
     COMPONENT_DATETIME_FROM: 'from',
     COMPONENT_DATETIME_TO: 'to',
