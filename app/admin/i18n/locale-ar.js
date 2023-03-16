@@ -76,6 +76,7 @@ app.constant('LOCALE_AR', {
     TABLE_CELL_PUBLIC_ID: 'Public ID',
     TABLE_CELL_USER: 'User',
     TABLE_CELL_POSTAMAT_CELL_NUMBER: 'Cell number',
+    TABLE_CELL_LOCAL_SERVER: 'الخادم المحلي',
 
     COMPONENT_DATETIME_FROM: 'من',
     COMPONENT_DATETIME_TO: 'الى',
