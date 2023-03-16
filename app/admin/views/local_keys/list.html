@@ -70,6 +70,7 @@
                                 <th style="vertical-align: top; width: 200px;" translate>TABLE_CELL_USER_PHONE_NUMBER</th>
                                 <th style="vertical-align: top; width: 200px;" translate>TABLE_CELL_KEYS_TITLE</th>
                                 <th style="vertical-align: top; width: 200px;" translate>TABLE_CELL_DEVICE_STATUS</th>
+                                <th style="vertical-align: top; width: 200px;" translate>TABLE_CELL_LOCAL_SERVER</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -80,6 +81,7 @@
                                 <td>{{ key.phoneNumber }}</td>
                                 <td>{{ key.title }}</td>
                                 <td>{{ 'KEY_STATUS_' + key.status | translate}}</td>
+                                <td>{{ key.localServerName}}</td>
                             </tr>
                         </tbody>
                     </table>
