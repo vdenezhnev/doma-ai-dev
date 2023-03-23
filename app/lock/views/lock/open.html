@@ -12,10 +12,9 @@
          ng-repeat="lock in locks">
       <button
               style="width: 60%;"
-              ​
               ng-click="onOpenLock(lock.LockID)"
               ng-disabled="!isAvailable(lock)"
-              ng-class="{'btn btn-success': lock.LockOpen, 'btn btn-primary': !lock.LockOpen}">
+              ng-class="{'btn btn-success': lock.LockOpen, 'btn btn-primary': !lock.LockOpen, 'no-click': lock.LockOpen || !lock.isLoaded}">
         <span translate>OPEN</span> <b>{{ lock.LockID }}</b>
         <div class="loader" ng-class="{'hidden': lock.isLoaded}"><span></span></div>
       </button>

@@ -29,6 +29,10 @@
     top: 3px;
     left: 8px;
 }
+
+.no-click {
+    pointer-events: none;
+}
 @-webkit-keyframes loader-1 {
     0%   { -webkit-transform: rotate(0deg); }
     100% { -webkit-transform: rotate(360deg); }
