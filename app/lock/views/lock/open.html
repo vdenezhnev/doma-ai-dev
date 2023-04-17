@@ -12,54 +12,12 @@
          ng-repeat="lock in locks">
       <button
               style="width: 60%;"
-              ​
               ng-click="onOpenLock(lock.LockID)"
               ng-disabled="!isAvailable(lock)"
-              ng-class="{'btn btn-success': lock.LockOpen, 'btn btn-primary': !lock.LockOpen}">
+              ng-class="{'btn btn-success': lock.LockOpen, 'btn btn-primary': !lock.LockOpen, 'no-click': lock.LockOpen || !lock.isLoaded}">
         <span translate>OPEN</span> <b>{{ lock.LockID }}</b>
+        <div class="loader" ng-class="{'hidden': lock.isLoaded}"><span></span></div>
       </button>
-      <div class="lock-icons ng-scope">
-        <div class="lock-icon" ng-style="{color: isAvailable(lock) ? isConnected(lock) ? '#62c751' : '#f5353d' : '#292d32'}">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g>
-              <path d="M8.00065 14.6667C11.6825 14.6667 14.6673 11.6819 14.6673 8.00004C14.6673 4.31814 11.6825 1.33337 8.00065 1.33337C4.31875 1.33337 1.33398 4.31814 1.33398 8.00004C1.33398 11.6819 4.31875 14.6667 8.00065 14.6667Z"
-                    stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M5.33372 2H6.00039C4.70039 5.89333 4.70039 10.1067 6.00039 14H5.33372"
-                    stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M10 2C11.3 5.89333 11.3 10.1067 10 14"
-                    stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M2 10.6667V10C5.89333 11.3 10.1067 11.3 14 10V10.6667"
-                    stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M2 6.00002C5.89333 4.70002 10.1067 4.70002 14 6.00002"
-                    stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"/>
-            </g>
-          </svg>
-        </div>
-        <div class="lock-icon" ng-style="{color: isAvailable(lock) ? isOpen(lock) ? '#62c751' : '#f5353d' : '#292d32'}">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g>
-              <path d="M4 6.66671V5.33337C4 3.12671 4.66667 1.33337 8 1.33337C11.3333 1.33337 12 3.12671 12 5.33337V6.66671"
-                    stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" />
-              <path d="M8.00065 12.3333C8.92113 12.3333 9.66732 11.5871 9.66732 10.6667C9.66732 9.74619 8.92113 9 8.00065 9C7.08018 9 6.33398 9.74619 6.33398 10.6667C6.33398 11.5871 7.08018 12.3333 8.00065 12.3333Z"
-                    stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M11.334 14.6666H4.66732C2.00065 14.6666 1.33398 14 1.33398 11.3333V9.99996C1.33398 7.33329 2.00065 6.66663 4.66732 6.66663H11.334C14.0007 6.66663 14.6673 7.33329 14.6673 9.99996V11.3333C14.6673 14 14.0007 14.6666 11.334 14.6666Z"
-                    stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"/>
-            </g>
-          </svg>
-        </div>
-        <div class="lock-icon" ng-style="{color: isAvailable(lock) ? isDoorOpen(lock) ? '#62c751' : '#f5353d' : '#292d32'}">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g>
-              <path d="M5.93359 5.04003C6.14026 2.64003 7.37359 1.66003 10.0736 1.66003H10.1603C13.1403 1.66003 14.3336 2.85337 14.3336 5.83337V10.18C14.3336 13.16 13.1403 14.3534 10.1603 14.3534H10.0736C7.39359 14.3534 6.16026 13.3867 5.94026 11.0267"
-                    stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M1.33398 8H9.92065"
-                    stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M8.43359 5.76672L10.6669 8.00006L8.43359 10.2334"
-                    stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"/>
-            </g>
-          </svg>
-        </div>
-      </div>
     </div>
   </div>
 </div>
