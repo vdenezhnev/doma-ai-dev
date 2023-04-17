@@ -76,7 +76,7 @@ app.controller('CompanyDetailCtrl', ['$scope', '$http', '$state', '$stateParams'
         if (!$stateParams.company) {
             $state.go('admin.company.list');
         }
-        $scope.localServers = []
+        $scope.localServers = [];
         $scope.company = $stateParams.company;
         $scope.isCreate = false;
         $scope.data = {
