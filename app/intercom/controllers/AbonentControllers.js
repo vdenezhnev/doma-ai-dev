@@ -52,7 +52,7 @@ app.controller('AbonentListCtrl', ['$scope', 'Abonent', 'gettextCatalog',
 
 app.controller('AbonentCreateCtrl', ['$scope', '$state', 'Abonent', 'Device',
     function($scope, $state, Abonent, Device) {
-        $scope.showRfid = true;
+        $scope.showRfid = false;
         $scope.abonent = new Abonent({
             cars: [],
             perimeters: [],
