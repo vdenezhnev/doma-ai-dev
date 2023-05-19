@@ -174,7 +174,7 @@ app.controller('PerimeterGenerateQRModalCtrl', ['$scope', 'settings', 'notify', 
             }, $scope.qrConfig))
                 .$promise
                 .then((pdf) => {
-                    const blob = new Blob([pdf.data], {type : 'application/pdf'});
+                    const blob = new Blob([pdf.data], { type: 'text/html'});
                     var anchor = document.createElement('a');
                     anchor.href = URL.createObjectURL(blob);
                     anchor.download = 'qr';
