@@ -1,4 +1,3 @@
-
 app.controller('AccessCtrl', ['$scope', 'AccessObject', 'AccessPoint',
     function($scope, AccessObject, AccessPoint) {
         $scope.accessPoints = AccessPoint.grouped();
