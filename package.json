@@ -37,7 +37,8 @@
     "gulp-useref": "^4.0.1",
     "http-proxy-middleware": "^1.0.5",
     "run-sequence": "^2.2.1",
-    "wiredep": "^4.0.0"
+    "wiredep": "^4.0.0",
+    "angular-qr": "^0.2.0"
   },
   "author": "",
   "license": "ISC"

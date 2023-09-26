@@ -11,7 +11,8 @@ var app = angular.module('app', [
     'angular-loading-bar',
     'angularModalService',
     'angularMoment',
-    'ui.bootstrap.datetimepicker'
+    'ui.bootstrap.datetimepicker',
+    'ja.qr',
 ]);
 
 app.config(['$httpProvider', '$locationProvider', '$stateProvider',

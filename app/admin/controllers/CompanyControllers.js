@@ -1,5 +1,14 @@
 'use strict';
 
+app.controller('TokenQrCodeCtrl', ['$scope', 'close', 'token', '$element', function($scope, close, token, $element) {
+    $scope.qrstring = token;
+
+    $scope.closeModal = function() {
+        $element.modal('hide');
+        close(null, 500);
+    };
+}]);
+
 app.controller('CompanyListCtrl', ['$scope', 'Api', 'settings',
     function($scope, Api, settings) {
         $scope.objects = [];
@@ -228,6 +237,16 @@ app.controller('CompanyDetailCtrl', ['$scope', '$http', '$state', '$stateParams'
                 });
             }
         };
+
+        $scope.getQRCode = function (token) {
+            ModalService.showModal({
+                templateUrl: settings.TEMPLATE_DIR + 'company/qr_modal.html',
+                controller: "TokenQrCodeCtrl",
+                inputs: { token }
+            }).then(function(modal) {
+                modal.element.modal();
+            });
+        }
 
         $scope.getApiImg = function (id) {
             return settings.API_GET_IMAGE_URL + id;
