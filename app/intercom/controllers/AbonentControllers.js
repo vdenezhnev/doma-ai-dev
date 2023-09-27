@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('AbonentListCtrl', ['$scope', 'Abonent', 'gettextCatalog',
-    function($scope, Abonent, gettextCatalog) {
+app.controller('AbonentListCtrl', ['$scope', '$http', '$httpParamSerializer', 'settings', 'Abonent', 'gettextCatalog',
+    function($scope, $http, $httpParamSerializer, settings, Abonent, gettextCatalog) {
         $scope.filter = {};
         $scope.take = 20;
         $scope.objects = [];
@@ -44,7 +44,34 @@ app.controller('AbonentListCtrl', ['$scope', 'Abonent', 'gettextCatalog',
 
         $scope.loadObjects();
 
-        $scope.downloadTemplate = () => window.open(`assets/abonent-import-template_${$scope.language.active}.xlsx`, '_blank');
+        $scope.downloadTemplate = function() {
+            var getParams = angular.extend({action: 'DownloadImportAbonentsTemplate'});
+            $http.get(settings.API_URL + '?' + $httpParamSerializer(getParams), {
+                responseType: 'arraybuffer'
+            }).success(function(data, status, headers) {
+                headers = headers();
+
+                var filename = 'abonent-import-template.xlsx';
+                var contentType = headers.contentType;
+
+                var linkElement = document.createElement('a');
+                try {
+                    var blob = new Blob([data], { type: contentType });
+                    var url = window.URL.createObjectURL(blob);
+
+                    linkElement.setAttribute('href', url);
+                    linkElement.setAttribute("download", filename);
+
+                    var clickEvent = new MouseEvent("click", {
+                        "view": window,
+                        "bubbles": true,
+                        "cancelable": false
+                    });
+                    linkElement.dispatchEvent(clickEvent);
+                } catch (ex) {
+                }
+            });
+        };
 
         $scope.user.updateKeyCountInfo();
     }
@@ -82,7 +109,7 @@ app.controller('AbonentDetailCtrl', ['$scope', '$controller', '$state', '$stateP
         }
 
         $scope.abonent = new Abonent(angular.copy($stateParams.abonent));
-        
+
         $scope.save = function() {
             $scope.abonent.$save(function(response) {
                 notify(gettextCatalog.getString('abonents.abonent_updated'));
