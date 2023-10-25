@@ -275,7 +275,7 @@ app.controller('EditAccessPointCtrl', ['$scope', '$state', 'AccessPoint', 'Posta
                         'accessPointId': $scope.point.id,
                         'defaultKeySettings': $scope.deviceSettings
                     }, function (response) {
-                        notify(gettextCatalog.getString('devices.device_updated'));
+                        /*notify(gettextCatalog.getString('devices.device_updated'));*/
                     });
 
                     new AccessPoint.update({
@@ -285,7 +285,7 @@ app.controller('EditAccessPointCtrl', ['$scope', '$state', 'AccessPoint', 'Posta
                             'restrictions': $scope.deviceKeyUsage
                         }
                     }, function (response) {
-                        notify(gettextCatalog.getString('devices.device_updated'));
+                        /*notify(gettextCatalog.getString('devices.device_updated'));*/
                     });
 
                     $scope.point.isOpeningByInternet = vm.isOpeningByInternet;
