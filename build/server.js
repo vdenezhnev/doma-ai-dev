@@ -18,13 +18,13 @@ function browserSyncInit(baseDir, startPath) {
       directory: true,
       middleware: [
         proxyMiddleware('/api', {
-            target: 'https://apidev.smartairkey.com',
+            target: 'http://localhost:5000',
           changeOrigin: true,
           secure: true,
           logLevel: 'debug'
         }),
         proxyMiddleware('/api/file', {
-            target: 'https://apidev.smartairkey.com',
+            target: 'http://localhost:5000',
           changeOrigin: true,
           secure: true,
           logLevel: 'debug'

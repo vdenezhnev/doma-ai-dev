@@ -48,7 +48,7 @@
         <input class="form-control" name="lockPhoneNumber" ng-model="point.lockPhoneNumber" disabled >
     </div>
 
-    <div class="form-group" ng-if="!point.isPostamatAccessPoint">
+    <div class="form-group" ng-show="point.lockPhoneNumber !== undefined" ng-if="!point.isPostamatAccessPoint">
         <label translate>html.access.point.form.simCardPaymentTo</label>
         <input class="form-control"
                name="paymentDate"
