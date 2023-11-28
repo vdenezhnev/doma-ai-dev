@@ -15,7 +15,7 @@ pipeline {
         booleanParam(name: 'DEPLOY', defaultValue: false, description: 'Deploy')
     }
     environment {
-        SERVER='devacms.smartairkey.com'
+        SERVER='37.18.27.32'
         WORK_DIR='/opt/acms'
         API_HOST='https://devapi.smartairkey.com/'
         APP_INTERCOM_TITLE='SmartAirkey'
@@ -54,9 +54,9 @@ pipeline {
             }
             steps {
                 sshagent(credentials : ['infra-key']) {
-                    sh 'ssh -o StrictHostKeyChecking=no infrastructure@${SERVER} sudo docker-compose -f ${WORK_DIR}/docker-compose-dev-rf.yml stop acms'
-                    sh 'ssh -o StrictHostKeyChecking=no infrastructure@${SERVER} sudo docker-compose -f ${WORK_DIR}/docker-compose-dev-rf.yml rm -f acms'
-                    sh 'ssh -o StrictHostKeyChecking=no infrastructure@${SERVER} sudo docker-compose -f ${WORK_DIR}/docker-compose-dev-rf.yml up -d --force-recreate acms'
+                    sh 'ssh -o StrictHostKeyChecking=no infrastructure@${SERVER} sudo docker compose -f ${WORK_DIR}/docker-compose-dev-rf.yml stop acms'
+                    sh 'ssh -o StrictHostKeyChecking=no infrastructure@${SERVER} sudo docker compose -f ${WORK_DIR}/docker-compose-dev-rf.yml rm -f acms'
+                    sh 'ssh -o StrictHostKeyChecking=no infrastructure@${SERVER} sudo docker compose -f ${WORK_DIR}/docker-compose-dev-rf.yml up -d --force-recreate acms'
                     sh 'ssh -o StrictHostKeyChecking=no infrastructure@${SERVER} sudo docker system prune -a -f'
                 }
                 NotifySlack("Deploy complete")
