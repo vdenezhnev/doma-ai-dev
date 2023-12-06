@@ -6,8 +6,6 @@ exports.default = gulp.series(
         .pipe(gulp.dest(`./dist/${process.env.FEATURE_NAME}-${process.env.LANGUAGE_CODE}/img/`)),
     () => gulp.src('./icon.png')
         .pipe(gulp.dest(`./dist/${process.env.FEATURE_NAME}-${process.env.LANGUAGE_CODE}/`)),
-    () => gulp.src('./openy-icon.png')
-      .pipe(gulp.dest(`./dist/${process.env.FEATURE_NAME}-${process.env.LANGUAGE_CODE}/`)),
 );
 
 exports.build = gulp.series(
