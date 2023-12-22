@@ -108,6 +108,51 @@ app.controller('AbonentDetailCtrl', ['$scope', '$controller', '$state', '$stateP
             return;
         }
 
+        $scope.endDateBeforeRender = endDateBeforeRender
+        $scope.endDateOnSetTime = endDateOnSetTime
+        $scope.startDateBeforeRender = startDateBeforeRender
+        $scope.startDateOnSetTime = startDateOnSetTime
+
+        function startDateOnSetTime () {
+            $scope.$broadcast('start-date-changed');
+        }
+
+        function endDateOnSetTime () {
+            $scope.$broadcast('end-date-changed');
+        }
+
+        function startDateBeforeRender ($view, $dates, $leftDate, $upDate, $rightDate, endDate) {
+            if (endDate) {
+                var activeDate = moment(new Date(endDate)).subtract(1, $view).add(1, 'minute');
+            }
+            var now = moment(new Date()).subtract(1, $view).add(1, 'minute');
+
+            $dates.filter(function (date) {
+                if (activeDate) {
+                    return date.localDateValue() <= now.valueOf() || date.localDateValue() >= activeDate.valueOf();
+                }
+                return date.localDateValue() <= now.valueOf();
+            }).forEach(function (date) {
+                date.selectable = false;
+            })
+        }
+
+        function endDateBeforeRender ($view, $dates, $leftDate, $upDate, $rightDate, startDate, endDate) {
+                if (startDate) {
+                    var activeDate = moment(new Date(startDate)).subtract(1, $view).add(1, 'minute');
+                }
+                var now = moment(new Date()).subtract(1, $view).add(1, 'minute');
+
+                $dates.filter(function (date) {
+                    if (activeDate) {
+                        return date.localDateValue() <= now.valueOf() || date.localDateValue() <= activeDate.valueOf();
+                    }
+                    return date.localDateValue() <= now.valueOf();
+                }).forEach(function (date) {
+                    date.selectable = false;
+                })
+        }
+
         $scope.abonent = new Abonent(angular.copy($stateParams.abonent));
 
         $scope.save = function() {

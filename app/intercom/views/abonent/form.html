@@ -270,13 +270,15 @@
 
                             <ul class="dropdown-menu" role="menu">
                                 <datetimepicker data-ng-model="perimeter.startPeriod"
-                                            data-datetimepicker-config="{dropdownSelector: '#from-date-' + $index, startView:'day', minView:'minute' }"/>
+                                                data-datetimepicker-config="{dropdownSelector: '#from-date-' + $index, startView:'day', minView:'minute', renderOn: 'end-date-changed' }"
+                                                data-on-set-time="startDateOnSetTime()"
+                                                data-before-render="startDateBeforeRender($view, $dates, $leftDate, $upDate, $rightDate, perimeter.endPeriod)"/>
                             </ul>
                         </span>
                     </td>
                     <td>
                         <span class="dropdown">
-                            <a  class="dropdown-toggle" id="to-date-{{ $index }}" role="button" data-toggle="dropdown" data-target="#" href="#">
+                            <a class="dropdown-toggle" id="to-date-{{ $index }}" role="button" data-toggle="dropdown" data-target="#" href="#">
                                 <input class="form-control input-small text-center" readonly
                                        placeholder="{{ 'html.journal.date_to_display' | translate }}"
                                        name="abonentTemporaryAccessPerimeters_endPeriod{{ $index }}"
@@ -285,7 +287,9 @@
 
                             <ul class="dropdown-menu" role="menu">
                                 <datetimepicker data-ng-model="perimeter.endPeriod"
-                                            data-datetimepicker-config="{dropdownSelector: '#to-date-' + $index, startView:'day', minView:'minute' }"/>
+                                                data-datetimepicker-config="{dropdownSelector: '#to-date-' + $index, startView:'day', minView:'minute', renderOn: 'start-date-changed' }"
+                                                data-on-set-time="endDateOnSetTime()"
+                                                data-before-render="endDateBeforeRender($view, $dates, $leftDate, $upDate, $rightDate, perimeter.startPeriod)" />
                             </ul>
                         </span>
                     </td>
