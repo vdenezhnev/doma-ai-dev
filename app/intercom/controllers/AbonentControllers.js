@@ -124,14 +124,23 @@ app.controller('AbonentDetailCtrl', ['$scope', '$controller', '$state', '$stateP
         function startDateBeforeRender ($view, $dates, $leftDate, $upDate, $rightDate, endDate) {
             if (endDate) {
                 var activeDate = moment(new Date(endDate)).subtract(1, $view).add(1, 'minute');
+                var weekBeforeEnd = moment(new Date(endDate)).subtract(7, 'day').subtract(1, $view).add(1, 'minute');
             }
             var now = moment(new Date()).subtract(1, $view).add(1, 'minute');
-
+            var weekFromNow;
+            if ($view === 'day') {
+                weekFromNow = moment(new Date()).add(8, 'day').subtract(1, $view).add(1, 'minute');
+            } else {
+                weekFromNow = moment(new Date()).add(7, 'day').subtract(1, $view).add(1, 'minute');
+            }
             $dates.filter(function (date) {
                 if (activeDate) {
-                    return date.localDateValue() <= now.valueOf() || date.localDateValue() >= activeDate.valueOf();
+                    return date.localDateValue() <= now.valueOf()
+                      || date.localDateValue() >= activeDate.valueOf()
+                      || date.localDateValue() <= weekBeforeEnd.valueOf()
+                      || date.localDateValue() >= weekFromNow.valueOf();
                 }
-                return date.localDateValue() <= now.valueOf();
+                return date.localDateValue() <= now.valueOf() || date.localDateValue() >= weekFromNow.valueOf();
             }).forEach(function (date) {
                 date.selectable = false;
             })
@@ -142,12 +151,19 @@ app.controller('AbonentDetailCtrl', ['$scope', '$controller', '$state', '$stateP
                     var activeDate = moment(new Date(startDate)).subtract(1, $view).add(1, 'minute');
                 }
                 var now = moment(new Date()).subtract(1, $view).add(1, 'minute');
-
+                var weekFromNow;
+                if ($view === 'day') {
+                    weekFromNow = moment(new Date()).add(8, 'day').subtract(1, $view).add(1, 'minute');
+                } else {
+                    weekFromNow = moment(new Date()).add(7, 'day').subtract(1, $view).add(1, 'minute');
+                }
                 $dates.filter(function (date) {
                     if (activeDate) {
-                        return date.localDateValue() <= now.valueOf() || date.localDateValue() <= activeDate.valueOf();
+                        return date.localDateValue() <= now.valueOf()
+                          || date.localDateValue() <= activeDate.valueOf()
+                          || date.localDateValue() >= weekFromNow.valueOf();
                     }
-                    return date.localDateValue() <= now.valueOf();
+                    return date.localDateValue() <= now.valueOf() || date.localDateValue() >= weekFromNow.valueOf();
                 }).forEach(function (date) {
                     date.selectable = false;
                 })
