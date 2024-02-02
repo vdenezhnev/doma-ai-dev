@@ -30,7 +30,7 @@
 
         <div class="form-group">
             <label translate>html.abonent.lowerfloor_display</label>
-            <input class="form-control" type="text" name="lowerFloor" ng-model="abonent.lowerFloor">
+            <input class="form-control" ng-change="lowerFloorValidation()" type="text" name="lowerFloor" ng-model="abonent.lowerFloor">
         </div>
 
         <div class="form-group">
@@ -141,6 +141,7 @@
             <a ng-click="clickPerimeter(object)" class="jstree-anchor" ng-if="object.parentId != '0'">
                 <i class="jstree-icon jstree-themeicon jstree-themeicon-custom fa fa-folder icon-state-warning"></i>
                 {{ object.displayName }}
+                <i class="icon-pointer" ng-if="!!pointsParents.includes(object.id)"></i>
             </a>
 
             <ul class="jstree-children">

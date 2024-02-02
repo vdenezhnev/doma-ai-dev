@@ -178,6 +178,9 @@ app.directive('accessObjects', ['DataService', function(DataService) {
         link: function (scope, elem, attrs) {
             scope.objects = DataService.objects.GetTree();
             scope.navigate = {};
+            scope.pointsParents = Object.keys(DataService.accessPoints).map(function (pointId) {
+                return DataService.accessPoints[pointId].perimeterId
+            });
 
             scope.clickPerimeter = function (perimeter) {
                 scope.perimeterModel = perimeter.id;

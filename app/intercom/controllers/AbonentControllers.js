@@ -100,9 +100,8 @@ app.controller('AbonentCreateCtrl', ['$scope', '$state', 'Abonent', 'Device',
     }
 ]);
 
-app.controller('AbonentDetailCtrl', ['$scope', '$controller', '$state', '$stateParams', 'Abonent', 'notify', 'gettextCatalog', 'User',
-    function($scope, $controller, $state, $stateParams, Abonent, notify, gettextCatalog, User) {
-
+app.controller('AbonentDetailCtrl', ['$rootScope', '$scope', '$controller', '$state', '$stateParams', 'Abonent', 'notify', 'gettextCatalog', 'User',
+    function($rootScope, $scope, $controller, $state, $stateParams, Abonent, notify, gettextCatalog, User) {
         if (!$stateParams.abonent) {
             $state.go('admin.abonent.list');
             return;
@@ -170,6 +169,26 @@ app.controller('AbonentDetailCtrl', ['$scope', '$controller', '$state', '$stateP
         }
 
         $scope.abonent = new Abonent(angular.copy($stateParams.abonent));
+
+        $scope.lowerFloorValidation = function() {
+            var val = $scope.abonent.lowerFloor;
+            if (val === '0') return;
+            if (val === '-') return;
+            if (val.length === 2) {
+                if (val[0] === "0") {
+                    $scope.abonent.lowerFloor = '0';
+                    return;
+                }
+                if (Number(val) >= -5 && Number(val) <= 0) return;
+                $scope.abonent.lowerFloor = '-';
+                return;
+            }
+            if (val.length > 2) {
+                $scope.abonent.lowerFloor = val.slice(0,2);
+                return;
+            }
+            $scope.abonent.lowerFloor = '';
+        };
 
         $scope.save = function() {
             $scope.abonent.$save(function(response) {
