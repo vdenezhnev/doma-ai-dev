@@ -871,7 +871,7 @@ msgstr "Opening time"
 
 #: app/intercom/views/device/list.html:13
 msgid "html.device.lockId"
-msgstr "Lock ID"
+msgstr "Secure ID"
 
 #: app/intercom/views/device/list.html:15
 msgid "html.device.lockPhoneNumber"
@@ -1442,7 +1442,7 @@ msgstr "Access control zones"
 #~ msgstr "Building"
 
 #~ msgid "html.device.lock_id_display"
-#~ msgstr "Lock ID"
+#~ msgstr "Secure ID"
 
 #~ msgid "html.device.name_display"
 #~ msgstr "Name"

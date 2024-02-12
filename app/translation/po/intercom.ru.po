@@ -403,11 +403,11 @@ msgstr "Номер телефона контроллера"
 
 #: app/intercom/views/access/point/form.html:4
 msgid "html.access.point.form.lock_id"
-msgstr "Lock ID"
+msgstr "Secure ID"
 
 #: app/intercom/views/access/point/edit.html:26
 msgid "html.access.point.form.new_lock_id_display"
-msgstr "Новый Lock ID"
+msgstr "Новый Secure ID"
 
 #: app/intercom/views/access/point/edit.html:19
 msgid "html.access.point.form.replace_title"
@@ -427,7 +427,7 @@ msgstr "Тип"
 
 #: app/intercom/views/access/point/change_lock_id_form.html:13
 msgid "html.access.point.new_lock_id_display"
-msgstr "Новый Lock ID"
+msgstr "Новый Secure ID"
 
 #: app/intercom/views/access/point/form.html:21
 msgid "html.access.point.type_default"
@@ -1417,7 +1417,7 @@ msgstr "Зоны и точки доступа"
 #~ msgstr "Бесплатный"
 
 #~ msgid "html.device.lock_id_display"
-#~ msgstr "Lock ID"
+#~ msgstr "Secure ID"
 
 #~ msgid "html.device.name_display"
 #~ msgstr "Название"
