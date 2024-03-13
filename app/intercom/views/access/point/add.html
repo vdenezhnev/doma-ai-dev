@@ -1,11 +1,23 @@
 
 <div class="portlet without-title light bordered">
 
-    <div class="portlet-title justify-flex">
+    <div class="portlet-title" style="display: flex; gap: 8px; align-items: center">
         <div class="block-caption">
             <i class="fa fa-cogs"></i>
             <span translate>html.access.point.add_title</span>
         </div>
+        <span class="labelinfo_icon">
+            <div class="labelinfo_i">i</div>
+            <div class="labelinfo_text" translate>
+                Раздел «Добавить точку доступа» позволяет создать точку доступа внутри выбранного периметра<br/><br/>
+                Тип<br/>
+                По умолчанию – один контроллер, отвечает за вход и выход/въезд и выезд<br/>
+                Въезд – контроллер отвечает исключительно за вход/въезд<br/>
+                Выезд – контроллер отвечает исключительно за выход/выезд<br/>
+                Въезд и выезд работают в паре, первый устанавливается на шлагбаум въезда/дверь входа, второй на шлагбаум выезда/дверь выхода<br/>
+                Лифт – если в ЖК используется умный лифт, создайте точки доступа для каждого из них, поставьте галочку и укажите для каждого абонента его этаж проживания, и нижний этаж
+            </div>
+        </span>
     </div>
 
     <div class="portlet-body form">

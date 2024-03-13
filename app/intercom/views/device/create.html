@@ -1,5 +1,13 @@
-
-<h1 class="page-title" translate>html.device.new_title</h1>
+<div style="display: flex; gap: 8px; align-items: center">
+    <h1 class="page-title" translate>html.device.new_title</h1>
+    <span class="labelinfo_icon">
+        <div class="labelinfo_i">i</div>
+        <div class="labelinfo_text" translate>
+            Новый объект позволяет добавить контроллер<br/>
+            Secure ID – это ID контроллера, который указан на его обороте
+        </div>
+    </span>
+</div>
 
 <div class="row">
     <div class="col-md-6">
@@ -10,7 +18,9 @@
                     <ng-include src="'app/intercom/views/device/form.html'"></ng-include>
 
                     <div class="form-actions">
-                        <button type="submit" class="btn blue" validation-submit="DeviceForm" ng-click="save()" translate>html.defaults.add_title</button>
+                        <button type="submit" class="btn blue" validation-submit="DeviceForm" ng-click="save()"
+                                translate>html.defaults.add_title
+                        </button>
                     </div>
                 </div>
             </div>

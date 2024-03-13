@@ -4,7 +4,7 @@
 
         <div class="form-group">
             <label translate>html.abonent.name_display</label>
-            <input class="form-control" type="text" name="displayName" ng-model="abonent.displayName" validator="required">
+            <input class="form-control" type="text" name="displayName" ng-model="abonent.displayName" maxlength="50" validator="required">
         </div>
 
         <div class="form-group">
@@ -25,7 +25,7 @@
 
         <div class="form-group">
             <label translate>html.abonent.floor_display</label>
-            <input class="form-control" type="text" name="floor" ng-model="abonent.floor">
+            <input class="form-control" ng-change="onlyNumbersFloor()" type="text" name="floor" ng-model="abonent.floor" maxlength="3">
         </div>
 
         <div class="form-group">
@@ -35,12 +35,12 @@
 
         <div class="form-group">
             <label translate>html.abonent.room_display</label>
-            <input class="form-control" type="text" name="room" ng-model="abonent.room">
+            <input class="form-control" type="text" maxlength="50" name="room" ng-model="abonent.room">
         </div>
 
         <div class="form-group">
             <label translate>html.abonent.external_id_display</label>
-            <input class="form-control" type="text" name="externalId" ng-model="abonent.externalId">
+            <input class="form-control" ng-change="onlyNumbersExternalId()" maxlength="10" type="text" name="externalId" ng-model="abonent.externalId">
         </div>
 
         <div class="form-group" ng-if="showRfid">
@@ -61,17 +61,27 @@
         </div>
 
         <hr>
-
-        <h4 translate>html.abonent.workking_time_display</h4>
+        <div style="display: flex; gap: 8px; align-items: center">
+            <h4 translate>html.abonent.workking_time_display</h4>
+            <span class="labelinfo_icon">
+        <div class="labelinfo_i">i</div>
+        <div class="labelinfo_text" translate>
+            Временной интервал доступа<br/>
+            Поле «Временный интервал доступа» отвечает за промежуток времени, между которым пользователь имеет доступ к замкам. Поле необязательно для заполнения, для неограниченного доступа оставьте поле пустым.<br/><br/>
+            Флаг «Открыть по звонку»<br/>
+            Отвечает за возможность открывать замок по звонку
+        </div>
+    </span>
+        </div>
 
         <div class="form-group">
             <label translate>html.abonent.workking_time_start_display</label>
-            <input class="form-control" type="text" name="WorkingTimeStart" ng-model="abonent.workingTime.start" placeholder="HH:mm">
+            <input class="form-control" ng-change="workingTimeStart()" maxlength="5" type="text" name="WorkingTimeStart" ng-model="abonent.workingTime.start" placeholder="HH:mm">
         </div>
 
         <div class="form-group">
             <label translate>html.abonent.workking_time_end_display</label>
-            <input class="form-control" type="text" name="WorkingTimeEnd" ng-model="abonent.workingTime.end" placeholder="HH:mm">
+            <input class="form-control" ng-change="workingTimeEnd()" maxlength="5" type="text" name="WorkingTimeEnd" ng-model="abonent.workingTime.end" placeholder="HH:mm">
         </div>
 
         <div class="form-group">

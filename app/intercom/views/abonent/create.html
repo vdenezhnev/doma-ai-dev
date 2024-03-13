@@ -1,5 +1,24 @@
+<div style="display: flex; gap: 8px; align-items: center">
+    <h1 class="page-title" translate>html.abonent.new_title</h1>
+    <span class="labelinfo_icon">
+        <div class="labelinfo_i">i</div>
+        <div class="labelinfo_text" translate>
+            Этаж<br/>
+            Поле «Этаж» заполняется для получения доступа к функции умный лифт. <br/>
+            Данное поле отвечает за отправку пользователя с первого этажа или парковки, на указанный этаж.<br/><br/>
+            Нижний этаж<br/>
+            Поле «Нижний этаж» так же заполняется для получения доступа к функции умный лифт.<br/>
+            Данное поле отвечает за возможность пользователя спускаться со своего этажа на диапазон выбранных этажей (от 0 (первый этаж) до -5 (-1/-2/-3/-4/-5))<br/><br/>
+            Помещение<br/>
+            Поле «Помещение» является номером квартиры пользователя<br/><br/>
+            ID выданной карты или метки<br/>
+            Поле «ID выданной карты или метки» отвечает за дополнительный доступ к замкам с помощью карты или метки, а также передает ID по интерфейсу Wiegand<br/><br/>
+            Администратор<br/>
+            Флаг «Администратор» - отвечает за доступ к конфигурации контроллера
+        </div>
+    </span>
+</div>
 
-<h1 class="page-title" translate>html.abonent.new_title</h1>
 
 <div class="row">
     <form name="AbonentForm">
@@ -10,7 +29,9 @@
                     <ng-include src="'app/intercom/views/abonent/form.html'"></ng-include>
 
                     <div class="form-actions">
-                        <button type="submit" class="btn blue" validation-submit="AbonentForm" ng-click="save()" translate>html.defaults.add_title</button>
+                        <button type="submit" class="btn blue" validation-submit="AbonentForm" ng-click="save()"
+                                translate>html.defaults.add_title
+                        </button>
                     </div>
                 </div>
             </div>

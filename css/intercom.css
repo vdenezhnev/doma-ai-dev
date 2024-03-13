@@ -262,3 +262,36 @@ table.rtl-text tr th {
 .page-header.navbar .top-menu .navbar-nav > li.dropdown .dropdown-menu.dropdown-rtl:after {
     right: 170px;
 }
+
+.labelinfo_icon {
+    position: relative;
+    min-width: 20px;
+    height: 20px;
+}
+
+.labelinfo_text {
+    display: none;
+}
+
+.labelinfo_icon:hover .labelinfo_text {
+    display: block;
+    position: absolute;
+    top: calc(100% + 8px);
+    width: 30vw;
+    z-index: 99;
+    left: 0;
+    padding: 8px 12px;
+    background: #f0edd9;
+    border-radius: 8px !important;
+}
+
+.labelinfo_i {
+    width: 20px;
+    height: 20px;
+    background: #364150;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50% !important;
+}

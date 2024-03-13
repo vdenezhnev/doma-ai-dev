@@ -96,6 +96,54 @@ app.controller('AbonentCreateCtrl', ['$scope', '$state', 'Abonent', 'Device',
             });
         };
 
+        $scope.lowerFloorValidation = function() {
+            var val = $scope.abonent.lowerFloor;
+            if (val === '0') return;
+            if (val === '-') return;
+            if (val.length === 2) {
+                if (val[0] === "0") {
+                    $scope.abonent.lowerFloor = '0';
+                    return;
+                }
+                if (Number(val) >= -5 && Number(val) <= 0) return;
+                $scope.abonent.lowerFloor = '-';
+                return;
+            }
+            if (val.length > 2) {
+                $scope.abonent.lowerFloor = val.slice(0,2);
+                return;
+            }
+            $scope.abonent.lowerFloor = '';
+        };
+
+        $scope.workingTimeStart = function () {
+            var val = $scope.abonent.workingTime.start.replace(/[^0-9]/g, '');
+            if (val.length === 2) {
+                $scope.abonent.workingTime.start = val + ":";
+                return;
+            }
+        }
+
+        $scope.workingTimeEnd = function () {
+            var val = $scope.abonent.workingTime.end.replace(/[^0-9]/g, '');
+            if (val.length === 2) {
+                $scope.abonent.workingTime.end = val + ":";
+                return;
+            }
+        }
+
+        $scope.onlyNumbersExternalId = function () {
+            var val = $scope.abonent.externalId;
+            $scope.abonent.externalId = val.replace(/[^0-9]/g, '');
+        }
+
+        $scope.onlyNumbersFloor = function () {
+            var val = $scope.abonent.floor;
+            $scope.abonent.floor = val.replace(/[^0-9]/g, '');
+
+            if (val > 200) $scope.abonent.floor = 200;
+        }
+
         $scope.devices = Device.query();
     }
 ]);
@@ -189,6 +237,34 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$scope', '$controller', '$st
             }
             $scope.abonent.lowerFloor = '';
         };
+
+        $scope.workingTimeStart = function () {
+            var val = $scope.abonent.workingTime.start.replace(/[^0-9]/g, '');
+            if (val.length === 2) {
+                $scope.abonent.workingTime.start = val + ":";
+                return;
+            }
+        }
+
+        $scope.workingTimeEnd = function () {
+            var val = $scope.abonent.workingTime.end.replace(/[^0-9]/g, '');
+            if (val.length === 2) {
+                $scope.abonent.workingTime.end = val + ":";
+                return;
+            }
+        }
+
+        $scope.onlyNumbersExternalId = function () {
+            var val = $scope.abonent.externalId;
+            $scope.abonent.externalId = val.replace(/[^0-9]/g, '');
+        }
+
+        $scope.onlyNumbersFloor = function () {
+            var val = $scope.abonent.floor;
+            $scope.abonent.floor = val.replace(/[^0-9]/g, '');
+
+            if (val > 200) $scope.abonent.floor = 200;
+        }
 
         $scope.save = function() {
             $scope.abonent.$save(function(response) {
