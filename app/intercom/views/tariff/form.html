@@ -7,7 +7,16 @@
 
     <div class="form-group">
         <label translate>html.tariff.keys_display</label>
-        <input class="form-control" name="includedKeys" maxlength="1" type="number" ng-model="tariff.tariffPacket.includedKeys" validator="required">
+        <input class="form-control"
+               name="includedKeys"
+               maxlength="1"
+               oninput="javascript:
+                       if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);
+                       if (!!this.value && this.value < 1) this.value = 1;
+                       if (!!this.value && this.value > 5) this.value = 5;"
+               type="number"
+               ng-model="tariff.tariffPacket.includedKeys"
+               validator="required">
     </div>
 
     <div class="form-group">
@@ -56,6 +65,9 @@
                 <input class="form-control" name="tariffPeriodPriceValue_{{ $index }}"
                        message-id="tariffPeriodPriceValue_{{ $index }}" type="number"
                        maxlength="6"
+                       oninput="javascript:
+                       if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);
+                       if (this.value < 0) this.value = 0;"
                        ng-model="tariff_period.price.value" validator="nil_and_more">
                 <span class="input-group-addon">{{ currency }}</span>
             </div>
@@ -68,6 +80,9 @@
                 <input class="form-control" name="tariffPeriodAdditionalPriceValue_{{ $index }}"
                        message-id="tariffPeriodAdditionalPriceValue_{{ $index }}" type="number"
                        maxlength="6"
+                       oninput="javascript:
+                       if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);
+                       if (this.value < 0) this.value = 0;"
                        ng-model="tariff_period.additionalKeyPrice.value" validator="nil_and_more">
                 <span class="input-group-addon">{{ currency }}</span>
             </div>

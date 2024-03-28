@@ -295,3 +295,10 @@ table.rtl-text tr th {
     align-items: center;
     border-radius: 50% !important;
 }
+
+.lock-icons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
