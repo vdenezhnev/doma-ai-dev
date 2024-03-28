@@ -98,20 +98,20 @@ app.controller('ResetPasswordCtrl', ['$scope', 'UserClient', 'Api', 'settings', 
     };
 }]);
 
-app.controller('ConfirmEmailCtrl', ['$scope', 'Api', 'settings', function($scope, Api, settings) {
-    var uri = new URI(window.location);
-    var code = uri.search(true)['code'];
-    if (code) {
-        $scope.loader = Api.post(settings.API_URL, {
-            Action: 'ConfirmEmail',
-            ConfirmationCode: uri.search(true)['code']
-        }).then(function successCallback(response) {
-            $scope.email_confirmed = true;
-        }, function errorCallback(response) {
-            $scope.email_error = response.data.error;
-        });
-    }
-    else {
-        window.location = '/';
-    }
-}]);
+//app.controller('ConfirmEmailCtrl', ['$scope', 'Api', 'settings', function ($scope, Api, settings) {
+//    var uri = new URI(window.location);
+//    var code = uri.search(true)['code'];
+//    if (code) {
+//        $scope.loader = Api.post(settings.API_HOST + 'api/web', {
+//            Action: 'ConfirmEmail',
+//            ConfirmationCode: code
+//        }).then(function successCallback(response) {
+//            $scope.email_confirmed = true;
+//        }, function errorCallback(response) {
+//            $scope.email_error = response.data.error;
+//        });
+//    }
+//    else {
+//        window.location = '/';
+//    }
+//}]);
