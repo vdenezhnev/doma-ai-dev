@@ -1,9 +1,19 @@
-def NotifySlack(STATUS) {
+def Notify(STATUS) {
+    withCredentials([string(credentialsId: 'botToken', variable: 'TOKEN'), string(credentialsId: 'chatID', variable: 'CHAT_ID')]) {
     sh """
-    curl -X POST -H 'Content-type: application/json' \
-    --data '{"text":"APP: ${env.APP}\nBRANCH: ${env.BRANCH_NAME}\nCOMMIT: ${env.GIT_COMMIT}\nSTATUS: ${STATUS}"}'\
-    ${SLACK_HOOK}
+    curl --request POST \
+    --url 'https://api.telegram.org/bot${TOKEN}/sendMessage' \
+    --header 'Content-Type: application/json' \
+    --data '
+    {
+        "chat_id": ${CHAT_ID}, 
+        "parse_mode": "Markdown", 
+        "reply_to_message_id": 6, 
+        "text": "${STATUS}"
+    }
+    '
     """
+    }
 }
 
 pipeline {
@@ -29,7 +39,7 @@ pipeline {
                 expression { env.BRANCH_NAME == 'dev_Net6_RF' }
             }
             steps {
-                NotifySlack("Start deploy")
+                Notify("""🔔 DEPLOY STARTED 🔔\nAPP: ${env.APP}\nBRANCH: ${env.GIT_BRANCH}\nCOMMIT: ${env.GIT_COMMIT}""".replaceAll('\\_','\\\\-'))
                 sshagent(credentials : ['infra-key']) {
                     sh 'ssh -o StrictHostKeyChecking=no infrastructure@${SERVER} sudo mkdir -p ${WORK_DIR}'
                     sh 'ssh -o StrictHostKeyChecking=no infrastructure@${SERVER} sudo chown infrastructure.infrastructure ${WORK_DIR}'
@@ -59,13 +69,16 @@ pipeline {
                     sh 'ssh -o StrictHostKeyChecking=no infrastructure@${SERVER} sudo docker compose -f ${WORK_DIR}/docker-compose-dev-rf.yml up -d --force-recreate'
                     sh 'ssh -o StrictHostKeyChecking=no infrastructure@${SERVER} sudo docker system prune -a -f'
                 }
-                NotifySlack("Deploy complete")
+                Notify("""✅ DEPLOY SUCESSFULL ✅\nAPP: ${env.APP}\nBRANCH: ${env.GIT_BRANCH}\nCOMMIT: ${env.GIT_COMMIT}""".replaceAll('\\_','\\\\-'))
             }
         }
     }
     post {
-        failure { 
-            NotifySlack("Deploy error")
+        failure {
+            Notify("""❌ DEPLOY FAILED ❌\nAPP: ${env.APP}\nBRANCH: ${env.GIT_BRANCH}\nCOMMIT: ${env.GIT_COMMIT}""".replaceAll('\\_','\\\\-'))
+        }
+        aborted {
+            Notify("""🚫 DEPLOY CANCELED 🚫\nAPP: ${env.APP}\nBRANCH: ${env.GIT_BRANCH}\nCOMMIT: ${env.GIT_COMMIT}""".replaceAll('\\_','\\\\-'))
         }
         cleanup {
             deleteDir()
