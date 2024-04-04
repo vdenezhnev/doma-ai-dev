@@ -140,8 +140,12 @@ app.controller('AbonentCreateCtrl', ['$scope', '$state', 'Abonent', 'Device',
         $scope.onlyNumbersFloor = function () {
             var val = $scope.abonent.floor;
             $scope.abonent.floor = val.replace(/[^0-9]/g, '');
+            if (val === "123456") {
+                $scope.abonent.floor = 123456;
+                return;
+            }
 
-            if (val > 200) $scope.abonent.floor = 200;
+            if (val > 200 && val !== 123456) $scope.abonent.floor = 200;
         }
 
         $scope.devices = Device.query();
@@ -262,8 +266,12 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$scope', '$controller', '$st
         $scope.onlyNumbersFloor = function () {
             var val = $scope.abonent.floor;
             $scope.abonent.floor = val.replace(/[^0-9]/g, '');
+            if (val === "123456") {
+                $scope.abonent.floor = 123456;
+                return;
+            }
 
-            if (val > 200) $scope.abonent.floor = 200;
+            if (val > 200 && val !== 123456) $scope.abonent.floor = 200;
         }
 
         $scope.save = function() {
