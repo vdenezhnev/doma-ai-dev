@@ -302,3 +302,17 @@ table.rtl-text tr th {
     align-items: center;
     gap: 5px;
 }
+
+.whaselect {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #0c0c0c;
+}
+
+.whaselect:hover {
+    background: #f0edd9;
+}
+
+.whaselect.whaselected {
+    background: #f0edd9;
+}

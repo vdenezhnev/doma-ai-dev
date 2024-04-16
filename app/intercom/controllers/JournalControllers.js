@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('JournalListCtrl', ['$scope', 'notify', 'Api', 'Journal', 'gettextCatalog', '$httpParamSerializer', '$http', 'settings', 'gettextCatalog',
-    function($scope, notify, Api, Journal, gettextCatalog, $httpParamSerializer, $http, settings, gettextCatalog) {
+app.controller('JournalListCtrl', ['$scope', 'notify', 'Api', 'Journal', 'Abonent', 'gettextCatalog', '$httpParamSerializer', '$http', 'settings', 'gettextCatalog',
+    function($scope, notify, Api, Journal, Abonent, gettextCatalog, $httpParamSerializer, $http, settings) {
         const emptyWTFilter = {
             period: {
                 from: null,
@@ -9,6 +9,7 @@ app.controller('JournalListCtrl', ['$scope', 'notify', 'Api', 'Journal', 'gettex
             },
             perimeterId: null,
             user: null,
+            abonentIds: [],
             sumByDays: false,
             isEventPass: false
         };
@@ -99,6 +100,7 @@ app.controller('JournalListCtrl', ['$scope', 'notify', 'Api', 'Journal', 'gettex
                 Till: $scope.workingTimeFilter.period.to,
                 PerimeterId: $scope.workingTimeFilter.perimeterId,
                 IsEventPass: $scope.workingTimeFilter.isEventPass,
+                AbonentsIds: $scope.workingTimeFilter.abonentIds,
                 TimeOffset: moment().utcOffset()
             };
 
@@ -124,6 +126,40 @@ app.controller('JournalListCtrl', ['$scope', 'notify', 'Api', 'Journal', 'gettex
         $scope.resetWTFilterDates = function () {
             $scope.workingTimeFilter.period.from = null;
             $scope.workingTimeFilter.period.to = null;
+        }
+
+        $scope.abonents = [];
+        $scope.abonentsFilter = {};
+        $scope.abonentsSkip = 0;
+
+        $scope.loadAbonents = function(reset) {
+            Abonent.query(angular.extend({skip: $scope.skip, take: $scope.take}, $scope.abonentsFilter)).$promise.then(function(response) {
+                $scope.abonentsSkip += response.items.length;
+                $scope.$emit('updateAddresses');
+
+                if (reset) {
+                    $scope.abonents = response.items;
+                }
+                else {
+                    $scope.abonents.push.apply($scope.abonents, response.items);
+                }
+
+                $scope.isLoadedAll = response.items.length < $scope.take;
+            });
+        };
+
+        $scope.$watchCollection('abonentsFilter', function(newVal, oldVal) {
+            if (newVal !== oldVal) {
+                $scope.abonentsSkip = 0;
+                $scope.loadAbonents(true);
+            }
+        });
+
+        $scope.loadAbonents();
+
+        $scope.setAbonentIds = function (abonent) {
+            $scope.workingTimeFilter.abonentIds = [abonent.id];
+            $scope.abonentsFilter.DisplayName = [abonent.displayName];
         }
 
         $scope.downloadCSV = function () {
@@ -188,7 +224,5 @@ app.controller('JournalListCtrl', ['$scope', 'notify', 'Api', 'Journal', 'gettex
 
             return result;
         }
-
-
     }
 ]);

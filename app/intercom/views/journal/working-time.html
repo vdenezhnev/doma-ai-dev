@@ -113,7 +113,13 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <label style="margin-top: 15px;" translate>html.journal.user_display</label>
-                                <input class="form-control" type="text" name="displayName" ng-model="workingTimeFilter.user">
+                                <input class="form-control" ng-model="abonentsFilter.DisplayName" type="text"
+                                       ng-model-options="{debounce: 500}">
+                                <div class="portlet without-title light bordered" style="padding: 0; margin-top: 24px; height: 200px; overflow-y: scroll">
+                                    <div class="" ng-repeat="abonent in abonents | orderBy:'-modified'">
+                                        <button class="whaselect" ng-class="{whaselected: workingTimeFilter.abonentIds.includes(abonent.id)}" style="width: 100%;" ng-click="setAbonentIds(abonent)">{{ abonent.displayName }}</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
