@@ -171,6 +171,7 @@ app.controller('JournalListCtrl', ['$scope', 'notify', 'Api', 'Journal', 'Abonen
                 From: $scope.workingTimeFilter.period.from,
                 Till: $scope.workingTimeFilter.period.to,
                 PerimeterId: $scope.workingTimeFilter.perimeterId,
+                AbonentsIds: $scope.workingTimeFilter.abonentIds,
                 TimeOffset: moment().utcOffset()
             };
             $http.get(settings.API_URL + '?' + $httpParamSerializer(getParams), {
