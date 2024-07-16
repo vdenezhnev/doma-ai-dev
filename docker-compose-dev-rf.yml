@@ -1,13 +1,47 @@
 version: "3.9"
 
 services:
-
+  traefik:
+    container_name: traefik
+    image: traefik:v2.5.3
+    ports:
+      - 80:80/tcp
+      - 443:443/tcp
+    command:
+      - --api.insecure=true
+      - --providers.docker=true
+      - --providers.docker.exposedbydefault=false
+      - --entryPoints.http.address=:80
+      - --entryPoints.https.address=:443
+      - --entrypoints.http.http.redirections.entryPoint.to=https
+      - --entrypoints.http.http.redirections.entryPoint.scheme=https
+      - --entrypoints.http.http.redirections.entrypoint.permanent=true
+      - --certificatesresolvers.le.acme.email=admin@smartairkey.com
+      - --certificatesresolvers.le.acme.storage=/letsencrypt/acme.json
+      - --certificatesResolvers.le.acme.httpChallenge.entryPoint=http
+    labels:
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /opt/traefik/letsencrypt:/letsencrypt
+      - /opt/traefik_tls.yml:/configs/traefik_tls.yml
+    restart: unless-stopped
+    networks:
+      - keyserver
+  
   acms:
     container_name: acms-dev
     image: smartairkey/acms-dev:late
     restart: always
-    ports:
-      - 8082:80
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.keyserver.entrypoints=https
+      - traefik.http.routers.keyserver.rule=Host(`devacms.smartairkey.com`)
+      - traefik.http.routers.keyserver.service=origin
+      - traefik.http.services.origin.loadbalancer.server.port=80
+      - traefik.http.routers.keyserver.tls=true
+      - traefik.http.routers.keyserver.tls.certresolver=le
+      - traefik.http.routers.keyserverws.rule=Host(`devacms.smartairkey.com`)
     logging:
       driver: "elastic/elastic-logging-plugin:7.10.2"
       options:
