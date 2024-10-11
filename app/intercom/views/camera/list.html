@@ -1,0 +1,29 @@
+<h1 class="page-title uppercase" translate>html.menu.cameras</h1>
+
+<div class="row">
+  <div class="col-md-12">
+
+    <a ui-sref="admin.camera.create" class="btn default uppercase" translate>html.camera.add_title</a>
+
+    <div class="table-scrollable" ng-show="objects.length > 0">
+      <table class="table table-hover table-tr-hover">
+        <thead>
+        <tr>
+          <th translate>html.camera.form.name</th>
+          <th translate>html.camera.status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="camera in objects track by $index" ui-sref="admin.camera.detail({camera: {CameraIp: camera.link, CameraId: camera.id, Name: camera.name, Login: camera.login}})">
+          <td>{{ camera.name }}</td>
+          <td>{{ camera.online ? "Онлайн" : "Оффлайн" }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="text-center">
+      <a ng-click="loadCameras(false)" class="btn default uppercase" ng-hide="isLoadedAll" translate>html.defaults.load_more</a>
+    </div>
+  </div>
+</div>

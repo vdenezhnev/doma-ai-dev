@@ -137,6 +137,16 @@ app.config(['$stateProvider', 'settings', function($stateProvider, settings) {
             }
         })
 
+      .state('admin.cameras', {
+          abstract: true,
+          templateUrl: settings.TEMPLATE_DIR + 'cameras/base.html'
+      })
+      .state('admin.cameras.list', {
+          url: "cameras",
+          controller: 'CamerasListCtrl',
+          templateUrl: settings.TEMPLATE_DIR + 'cameras/list.html'
+      })
+
         .state('login', {
             url: "/login",
             controller: 'LoginCtrl',

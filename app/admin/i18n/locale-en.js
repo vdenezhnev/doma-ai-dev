@@ -197,6 +197,12 @@ app.constant('LOCALE_EN', {
     POSTAMAT_FORM_CAMERA_ADDRESS: 'Remote camera address (RTSP)',
     POSTAMAT_FORM_CELLS_DETAIL: 'Cells details',
 
+    "CAMERAS_TITLE": "Cameras",
+    "NAVBAR_CAMERAS": "Cameras",
+    "CAMERAS_LIST": "Cameras List",
+    "TABLE_CELL_CAMERA_NAME": "Camera Name",
+    "TABLE_CELL_CAMERA_IP": "Link",
+
     LOCAL_KEYS_TITLE: 'Local server keys',
     LOCAL_KEYS_LIST: 'Local server keys list',
     LOCAL_KEYS_SEARCH_PLACEHOLDER: 'Search',
@@ -238,7 +244,7 @@ app.constant('LOCALE_EN', {
 
     NOTIFY_LOCALSERVER_DELETED: 'Local server deleted',
     NOTIFY_LOCALSERVERS_UPDATED: 'Local servers updated',
-    
+
 
     KEY_STATUS_none: 'None',
     KEY_STATUS_sent: 'Sent',

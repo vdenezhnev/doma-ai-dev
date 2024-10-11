@@ -1,14 +1,14 @@
 'use strict';
 
-app.controller('AbonentListCtrl', ['$scope', '$http', '$httpParamSerializer', 'settings', 'Abonent', 'gettextCatalog',
-    function($scope, $http, $httpParamSerializer, settings, Abonent, gettextCatalog) {
+app.controller('AbonentListCtrl', ['$scope', '$http', '$httpParamSerializer', 'settings', 'Abonent', 'gettextCatalog', 'Camera',
+    function($scope, $http, $httpParamSerializer, settings, Abonent, gettextCatalog, Camera) {
         $scope.filter = {};
         $scope.take = 20;
         $scope.objects = [];
         $scope.skip = 0;
         $scope.isLoadedAll = false;
         $scope.importedFile = null;
-        $scope.importInfoTitle = gettextCatalog.getString('importInfoTitle')
+        $scope.importInfoTitle = gettextCatalog.getString('importInfoTitle');
 
         $scope.loadObjects = function(reset) {
             Abonent.query(angular.extend({skip: $scope.skip, take: $scope.take}, $scope.filter)).$promise.then(function(response) {
@@ -152,8 +152,8 @@ app.controller('AbonentCreateCtrl', ['$scope', '$state', 'Abonent', 'Device',
     }
 ]);
 
-app.controller('AbonentDetailCtrl', ['$rootScope', '$scope', '$controller', '$state', '$stateParams', 'Abonent', 'notify', 'gettextCatalog', 'User',
-    function($rootScope, $scope, $controller, $state, $stateParams, Abonent, notify, gettextCatalog, User) {
+app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerializer', '$scope', '$controller', '$state', '$stateParams', 'Abonent', 'notify', 'gettextCatalog', 'User', 'Camera', 'settings',
+    function($rootScope, $http, $httpParamSerializer, $scope, $controller, $state, $stateParams, Abonent, notify, gettextCatalog, User, Camera, settings) {
         if (!$stateParams.abonent) {
             $state.go('admin.abonent.list');
             return;
@@ -302,6 +302,58 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$scope', '$controller', '$st
             var index = $scope.abonent.temporaryAccessPerimeters.indexOf(object);
             $scope.abonent.temporaryAccessPerimeters.splice(index, 1);
         };
+
+        $scope.cameras = [];
+        $scope.abonentCameras = [];
+        $scope.selectedCamera = {};
+
+        $scope.loadCameras = function(reset) {
+            Camera.query(angular.extend({skip: 0, take: 99999})).$promise.then(function(response) {
+                $scope.cameras = response;
+            });
+        };
+        $scope.loadAbonentCameras = function() {
+            var params = {
+                AbonentId: $scope.abonent.id,
+                Action: 'GetAbonentCameras',
+            };
+
+            $http.get(settings.API_URL + '?' + $httpParamSerializer(params)).then(function(response) {
+                $scope.abonentCameras = response.data;
+                $scope.cameras = $scope.cameras.filter(c => !$scope.abonentCameras.find(ac => ac.id === c.id));
+            });
+        };
+
+        $scope.loadCameras();
+        $scope.loadAbonentCameras();
+
+        $scope.addCamera = function() {
+            console.log($scope.selectedCamera)
+            if (!$scope.selectedCamera.id) return;
+            if ($scope.abonentCameras.find(c => c.id === $scope.selectedCamera.id)) return;
+
+            var request = {
+                AbonentId: $scope.abonent.id,
+                CameraId: $scope.selectedCamera.id,
+                Action: 'AddCameraAccessPoint',
+            };
+
+            $http.post(settings.API_URL, request).then(function(response) {
+                $scope.loadAbonentCameras();
+            });
+        }
+
+        $scope.deleteCamera = function(id) {
+
+            var request = {
+                Id: id,
+                Action: 'DeleteCameraAccessPoint',
+            };
+
+            $http.post(settings.API_URL, request).then(function(response) {
+                $scope.loadAbonentCameras();
+            });
+        }
 
         $controller('ObjectWatchChangesCtrl', {
             $scope: $scope,

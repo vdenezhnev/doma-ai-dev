@@ -197,6 +197,12 @@ app.constant('LOCALE_RU', {
     POSTAMAT_FORM_CAMERA_ADDRESS: 'Адрес камеры наблюдения (в формате RTSP)',
     POSTAMAT_FORM_CELLS_DETAIL: 'Ячейки',
 
+    "CAMERAS_TITLE": "Камеры",
+    "NAVBAR_CAMERAS": "Камеры",
+    "CAMERAS_LIST": "Список камер",
+    "TABLE_CELL_CAMERA_NAME": "Название",
+    "TABLE_CELL_CAMERA_IP": "Ссылка",
+
     LOCAL_KEYS_TITLE: 'Цифровые ключи локальных серверов',
     LOCAL_KEYS_LIST: 'Список цифровых ключей',
     LOCAL_KEYS_SEARCH_PLACEHOLDER: 'Поиск',
@@ -238,7 +244,7 @@ app.constant('LOCALE_RU', {
 
     NOTIFY_LOCALSERVER_DELETED: 'Локальный сервер удален',
     NOTIFY_LOCALSERVERS_UPDATED: 'Локальные сервера обновлены',
-    
+
 
     KEY_STATUS_none: 'Не определён',
     KEY_STATUS_sent: 'Отправлен',
