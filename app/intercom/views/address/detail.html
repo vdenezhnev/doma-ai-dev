@@ -1,20 +1,26 @@
-
 <h3 class="page-title uppercase">{{ title }}</h3>
 
 <div class="row">
-    <div class="col-md-6">
-        <form name="AddressForm">
-            <div class="portlet without-title light bordered">
+  <div class="col-md-6">
+    <form name="AddressForm">
+      <div ng-show="showApplyMessage" class="note note-info">
+        <h4 class="block" translate>html.tariff.tariff_apply_message</h4>
+        <!--<p class="mb-10"><label><input type="checkbox" ng-model="notifyAbonents"> <span translate>html.tariff.tariff_notified_abonents</span></label></p>-->
+        <a ng-click="save(); showApplyMessage=false;" class="btn default uppercase" translate>html.tariff.tariff_apply_button</a>
+      </div>
+      <div class="portlet without-title light bordered">
 
-                <div class="portlet-body form">
+        <div class="portlet-body form">
 
-                    <ng-include src="'app/intercom/views/address/form.html'"></ng-include>
+          <ng-include src="'app/intercom/views/address/form.html'"></ng-include>
 
-                    <div class="form-actions">
-                        <button type="submit" class="btn blue" validation-submit="AddressForm" ng-click="save()" translate>html.defaults.save_title</button>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
+          <div class="form-actions">
+            <button type="submit" class="btn blue" validation-submit="AddressForm" ng-click="showApplyMessageCall()" translate>
+              html.defaults.save_title
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>

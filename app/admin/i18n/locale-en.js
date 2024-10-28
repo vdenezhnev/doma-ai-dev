@@ -18,6 +18,7 @@ app.constant('LOCALE_EN', {
     NAVBAR_LOGOUT: 'Logout',
     NAVBAR_LOCAL_KEYS: 'Local keys',
     NAVBAR_POSTAMATES: 'Postamates',
+    NAVBAR_PAYMENTS: 'Payments',
 
     BUTTON_LOAD_MORE: 'Load more',
     BUTTON_ADD_LOCK: 'Add lock',
@@ -141,6 +142,17 @@ app.constant('LOCALE_EN', {
     PAYMENTS_CHANGE_DATE_TITLE: 'Set the paid period to',
     PAYMENTS_LIST: 'SIM-cards list',
     PAYMENTS_SEARCH_PLACEHOLDER: 'Search',
+
+    OPENY_PAYMENTS_LIST_TITLE: 'Payments',
+    OPENY_PAYMENTS_ABONENTS: "Abonents",
+    OPENY_PAYMENTS_PHONE_DISPLAY: "Phone",
+    OPENY_PAYMENTS_PERIMETER_NAME: "Perimeter name",
+    OPENY_PAYMENTS_PAYMENT_DATE: "Payment date",
+    OPENY_PAYMENTS_KEY_PERIOD_TILL: "Period till",
+    OPENY_PAYMENTS_AMOUNT: "Amount",
+    OPENY_PAYMENTS_PAYMENT_TYPE: "Payment type",
+    OPENY_PAYMENTS_DESCRIPTION: "Description",
+    OPENY_PAYMENTS_ACCOUNT_NUMBER: "Account number",
 
     ACCESS_POINTS_LIST_TITLE: 'Access points',
     ACCESS_POINTS_SEARCH_PLACEHOLDER: 'Search',

@@ -39,6 +39,11 @@ app.controller('DeviceDetailCtrl', ['$scope', '$controller', '$http', '$state', 
 
     $scope.device = new Device($stateParams.device);
 
+    $scope.showApplyMessageCall = function() {
+      $scope.showApplyMessage = true;
+      window.scrollTo(0,0);
+    };
+
     $scope.save = function () {
       $scope.device.$save().then(function (response) {
         notify(gettextCatalog.getString('devices.device_updated'));

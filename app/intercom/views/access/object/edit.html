@@ -1,24 +1,31 @@
-
 <form name="AccessObjectForm">
-    <div class="portlet light bordered">
-        <div class="portlet-title justify-flex">
-            <div class="block-caption">
-                <i class="fa fa-cogs"></i> {{ title }}
-            </div>
-            <div class="actions">
-                <a ui-sref="admin.access.add_perimeter({accessObject: accessObject})" class="btn btn-sm default" translate>
-                    html.access.object.button_add_perimeter_title</a>
-            </div>
-        </div>
-
-        <div class="portlet-body form">
-
-            <ng-include src="'app/intercom/views/access/object/form.html'"></ng-include>
-
-            <div class="form-actions">
-                <button type="submit" class="btn blue" validation-submit="AccessObjectForm" ng-click="submit()" translate>html.defaults.save_title</button>
-                <button class="btn default" ui-sref="admin.access" translate>html.defaults.cancel_title</button>
-            </div>
-        </div>
+  <div class="portlet light bordered">
+    <div class="portlet-title justify-flex">
+      <div class="block-caption">
+        <i class="fa fa-cogs"></i> {{ title }}
+      </div>
+      <div class="actions">
+        <a ui-sref="admin.access.add_perimeter({accessObject: accessObject})" class="btn btn-sm default" translate>
+          html.access.object.button_add_perimeter_title</a>
+      </div>
     </div>
+
+    <div ng-show="showApplyMessage" class="note note-info">
+      <h4 class="block" translate>html.tariff.tariff_apply_message</h4>
+      <!--<p class="mb-10"><label><input type="checkbox" ng-model="notifyAbonents"> <span translate>html.tariff.tariff_notified_abonents</span></label></p>-->
+      <a ng-click="submit(); showApplyMessage=false;" class="btn default uppercase" translate>html.tariff.tariff_apply_button</a>
+    </div>
+
+    <div class="portlet-body form">
+
+      <ng-include src="'app/intercom/views/access/object/form.html'"></ng-include>
+
+      <div class="form-actions">
+        <button type="submit" class="btn blue" validation-submit="AccessObjectForm" ng-click="showApplyMessageCall()" translate>
+          html.defaults.save_title
+        </button>
+        <button class="btn default" ui-sref="admin.access" translate>html.defaults.cancel_title</button>
+      </div>
+    </div>
+  </div>
 </form>

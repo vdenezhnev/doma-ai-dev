@@ -18,6 +18,7 @@ app.constant('LOCALE_RU', {
     NAVBAR_LOGOUT: 'Выход',
     NAVBAR_LOCAL_KEYS: 'Локальные ключи',
     NAVBAR_POSTAMATES: 'Постаматы',
+    NAVBAR_PAYMENTS: 'Платежи',
 
     BUTTON_LOAD_MORE: 'Загрузить еще',
     BUTTON_ADD_LOCK: 'Добавить замок',
@@ -141,6 +142,17 @@ app.constant('LOCALE_RU', {
     PAYMENTS_CHANGE_DATE_TITLE: 'Установить оплаченный период до',
     PAYMENTS_LIST: 'Список SIM-карт',
     PAYMENTS_SEARCH_PLACEHOLDER: 'Поиск',
+
+    OPENY_PAYMENTS_LIST_TITLE: 'Платежи',
+    OPENY_PAYMENTS_ABONENTS: "Абоненты",
+    OPENY_PAYMENTS_PHONE_DISPLAY: "Телефон",
+    OPENY_PAYMENTS_PERIMETER_NAME: "Название периметра",
+    OPENY_PAYMENTS_PAYMENT_DATE: "Дата платежа",
+    OPENY_PAYMENTS_KEY_PERIOD_TILL: "Период до",
+    OPENY_PAYMENTS_AMOUNT: "Сумма",
+    OPENY_PAYMENTS_PAYMENT_TYPE: "Тип платежа",
+    OPENY_PAYMENTS_DESCRIPTION: "Описание",
+    OPENY_PAYMENTS_ACCOUNT_NUMBER: "Номер счета",
 
     ACCESS_POINTS_LIST_TITLE: 'Точки доступа',
     ACCESS_POINTS_SEARCH_PLACEHOLDER: 'Поиск',

@@ -20,7 +20,7 @@ app.controller('AccessCtrl', ['$scope', 'AccessObject', 'AccessPoint',
 app.controller('AddAccessObjectCtrl', ['$scope', '$http', '$state', 'AccessObject', 'notify', 'gettextCatalog', 'Upload',
     function($scope, $http, $state, AccessObject, notify, gettextCatalog, Upload) {
         $scope.accessObject = new AccessObject();
-        
+
         $scope.submit = function () {
             $scope.accessObject.$save(function () {
                 $scope.$emit('updateObject');
@@ -42,19 +42,25 @@ app.controller('EditAccessObjectCtrl', ['$scope', '$controller', '$rootScope', '
         $rootScope.selectedId = $stateParams.object.id;
         $scope.accessObject = new AccessObject($stateParams.object);
         $scope.title = $scope.accessObject.displayName;
-            
+
         $scope.submit = function () {
             $scope.accessObject.$save(function () {
                 $scope.$emit('updateObject');
+                $state.current.showConfirmation = false;
                 $state.go('admin.access');
                 notify(gettextCatalog.getString('devices.device_updated'));
             });
         };
 
+        $scope.showApplyMessageCall = function() {
+            $scope.showApplyMessage = true;
+            window.scrollTo(0,0);
+        };
+
         $scope.upload = function (file) {
             Upload.base64DataUrl(file).then(function(urls){
                 ImageUpload.upload({
-                    content: urls.split(',')[1], 
+                    content: urls.split(',')[1],
                     fileName: file.name
                 }, function (response) {
                     $scope.accessObject.pictureId = response.id;
@@ -114,7 +120,7 @@ app.controller('EditAccessPerimeterCtrl', ['$scope', '$state', '$stateParams', '
         }
 
         $scope.isRootPerimeter = $stateParams.object.parentId === '00000000-0000-0000-0000-000000000000';
-        
+
         $scope.accessObject = $stateParams.accessObject;
         $scope.perimeter = new AccessPerimeter($stateParams.object);
         $scope.title = $scope.perimeter.displayName;

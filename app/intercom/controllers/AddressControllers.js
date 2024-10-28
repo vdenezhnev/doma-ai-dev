@@ -31,6 +31,11 @@ app.controller('AddressDetailCtrl', ['$scope', '$controller', '$state', '$stateP
         $scope.address = new Address($stateParams.address);
         $scope.title = $scope.address.value;
 
+        $scope.showApplyMessageCall = function() {
+            $scope.showApplyMessage = true;
+            window.scrollTo(0,0);
+        };
+
         $scope.save = function() {
             $scope.address.$save(function(){
                 notify(gettextCatalog.getString('notify.addresses.updated'));
