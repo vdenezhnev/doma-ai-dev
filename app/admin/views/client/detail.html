@@ -1,143 +1,178 @@
-
 <div class="row" ng-if="client">
 
-    <div class="col-lg-12">
-        <h1 class="page-header">{{ client.displayName }}</h1>
-    </div>
+  <div class="col-lg-12">
+    <h1 class="page-header">{{ client.displayName }}</h1>
+  </div>
 
-    <div class="col-lg-12 mb15">
-        <a class="btn btn-default btn-danger" ng-click="delete()"><i class="fa fa-trash"></i> {{ 'BUTTON_USER_DELETE' | translate }}</a>
-    </div>
+  <div class="col-lg-12 mb15">
+    <a class="btn btn-default btn-danger" ng-click="delete()"><i class="fa fa-trash"></i> {{ 'BUTTON_USER_DELETE' |
+      translate }}</a>
+  </div>
 
-    <div class="col-lg-6 col-md-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <i class="fa fa-edit"></i> {{ 'USERS_EDIT' | translate }}
-            </div>
+  <div class="col-lg-6 col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <i class="fa fa-edit"></i> {{ 'USERS_EDIT' | translate }}
+      </div>
 
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <form class="form" ng-submit="save()">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-lg-12">
+            <form class="form" ng-submit="save()">
 
-                            <div class="form-group">
-                                <label translate>FORM_FIELD_ID</label>
-                                <input class="form-control" ng-value="client.id" disabled>
-                            </div>
+              <div class="form-group">
+                <label translate>FORM_FIELD_ID</label>
+                <input class="form-control" ng-value="client.id" disabled>
+              </div>
 
-                            <div class="form-group">
-                                <label translate>USERS_FORM_NAME</label>
-                                <input class="form-control" ng-model="client.displayName">
-                            </div>
+              <div class="form-group">
+                <label translate>USERS_FORM_NAME</label>
+                <input class="form-control" ng-model="client.displayName">
+              </div>
 
-                            <div class="form-group ">
-                                <label translate>USERS_FORM_EMAIL</label>
-                                <input class="form-control" ng-model="client.email">
-                                <p class="help-block">
+              <div class="form-group ">
+                <label translate>USERS_FORM_EMAIL</label>
+                <input class="form-control" ng-model="client.email">
+                <p class="help-block">
                                     <span class="text-success" ng-if="client.emailConfirmed">
                                         <i class="glyphicon glyphicon-ok-circle"></i> {{ 'USERS_EMAIL_CONFIRMED' | translate }}
                                     </span>
-                                    <span class="text-danger" ng-if="!client.emailConfirmed">
+                  <span class="text-danger" ng-if="!client.emailConfirmed">
                                         <i class="glyphicon glyphicon-ban-circle"></i> {{ 'USERS_EMAIL_NOT_CONFIRMED' | translate }}
                                     </span>
-                                </p>
-                            </div>
+                </p>
+              </div>
 
-                            <div class="form-group">
-                                <label translate>USERS_FORM_PHONE_NUMBER</label>
-                                <input class="form-control" ng-model="client.phoneNumber">
-                            </div>
+              <div class="form-group">
+                <label translate>USERS_FORM_PHONE_NUMBER</label>
+                <input class="form-control" ng-model="client.phoneNumber">
+              </div>
 
-                            <button type="submit" class="btn btn-primary" translate>BUTTON_SAVE</button>
+              <button type="submit" class="btn btn-primary" translate>BUTTON_SAVE</button>
 
-                        </form>
-                    </div>
-                    <!-- /.col-lg-8 (nested) -->
-                </div>
-                <!-- /.row -->
-            </div>
-            <!-- /.panel-body -->
-
+            </form>
+          </div>
+          <!-- /.col-lg-8 (nested) -->
         </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.panel-body -->
+
     </div>
+  </div>
 
-    <div class="col-lg-6 col-md-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <i class="fa fa-edit"></i> {{ 'USERS_CHANGE_PASSWORD' | translate }}
-            </div>
+  <div class="col-lg-6 col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <i class="fa fa-edit"></i> {{ 'USERS_CHANGE_PASSWORD' | translate }}
+      </div>
 
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <form class="form" ng-submit="changePassword()">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-lg-12">
+            <form class="form" ng-submit="changePassword()">
 
-                            <div class="form-group">
-                                <label translate>USERS_FORM_NEW_PASSWORD</label>
-                                <input class="form-control" ng-model="password.value">
-                            </div>
+              <div class="form-group">
+                <label translate>USERS_FORM_NEW_PASSWORD</label>
+                <input class="form-control" ng-model="password.value">
+              </div>
 
-                            <button type="submit" class="btn btn-primary" translate>BUTTON_CHANGE_PASSWORD</button>
+              <button type="submit" class="btn btn-primary" translate>BUTTON_CHANGE_PASSWORD</button>
 
-                        </form>
-                    </div>
-                    <!-- /.col-lg-8 (nested) -->
-                </div>
-                <!-- /.row -->
-            </div>
-            <!-- /.panel-body -->
-
+            </form>
+          </div>
+          <!-- /.col-lg-8 (nested) -->
         </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.panel-body -->
+
     </div>
+  </div>
 
-    <div class="col-lg-12 col-md-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <i class="fa fa-key"></i> {{ 'USERS_KEYS' | translate }}
-            </div>
-            <div class="panel-body">
+  <div class="col-lg-12 col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <i class="fa fa-key"></i> {{ 'USERS_KEYS' | translate }}
+      </div>
+      <div class="panel-body">
 
-                <div ng-if="client.keys.length || client.duplicateOrders.length">
-                    <!--<div class="mb15">
-                        <span class="btn-group">
-                            <a class="btn btn-default" ng-click="blockKeys()" translate>BUTTON_KEYS_BLOCK</a>
-                            <a class="btn btn-default" ng-click="unblockKeys()" translate>BUTTON_KEYS_UNBLOCK</a>
-                        </span>
-                    </div>-->
+        <div ng-if="client.keys.length || client.duplicateOrders.length">
+          <!--<div class="mb15">
+              <span class="btn-group">
+                  <a class="btn btn-default" ng-click="blockKeys()" translate>BUTTON_KEYS_BLOCK</a>
+                  <a class="btn btn-default" ng-click="unblockKeys()" translate>BUTTON_KEYS_UNBLOCK</a>
+              </span>
+          </div>-->
 
-                    <table class="table table-bordered table-hover table-striped">
-                        <thead>
-                            <tr>
-                                <th style="width: 1%" translate>USERS_KEYS_FORM_NAME</th>
-                                <th translate>USERS_KEYS_FORM_CREATED</th>
-                                <th translate>USERS_KEYS_FORM_CHANGED</th>
-                                <th style="width: 1%"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="key in client.keys">
-                                <td nowrap>{{ key.title }}</td>
-                                <td>{{ key.created | date:'dd.MM.yyyy'}}</td>
-                                <td>{{ key.modified | date:'dd.MM.yyyy'}}</td>
-                                <td><button ng-click="deleteKey(key)" class="btn btn-default btn-sm"><i class="fa fa-trash"></i></button></td>
-                            </tr>
-                            <tr ng-if="client.duplicateOrders.length">
-                                <th colspan="4" translate>USERS_KEYS_FORM_DUPLICATES</th>
-                            </tr>
-                            <tr ng-repeat="key in client.duplicateOrders">
-                                <td nowrap>{{ key.title }}</td>
-                                <td>{{ key.created | date:'dd.MM.yyyy'}}</td>
-                                <td>{{ key.modified | date:'dd.MM.yyyy'}}</td>
-                                <td><button ng-click="deleteKey(key)" class="btn btn-default btn-sm"><i class="fa fa-trash"></i></button></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div ng-if="!client.keys.length && !client.duplicateOrders.length">
-                    <p translate>USERS_KEYS_MESSAGE_NO_KEYS</p>
-                </div>
-            </div>
+          <table class="table table-bordered table-hover table-striped">
+            <thead>
+            <tr>
+              <th style="width: 1%" translate>USERS_KEYS_FORM_NAME</th>
+              <th translate>USERS_KEYS_FORM_CREATED</th>
+              <th translate>USERS_KEYS_FORM_CHANGED</th>
+              <th style="width: 1%"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="key in client.keys">
+              <td nowrap>{{ key.title }}</td>
+              <td>{{ key.created | date:'dd.MM.yyyy'}}</td>
+              <td>{{ key.modified | date:'dd.MM.yyyy'}}</td>
+              <td>
+                <button ng-click="deleteKey(key)" class="btn btn-default btn-sm"><i class="fa fa-trash"></i></button>
+              </td>
+            </tr>
+            <tr ng-if="client.duplicateOrders.length">
+              <th colspan="4" translate>USERS_KEYS_FORM_DUPLICATES</th>
+            </tr>
+            <tr ng-repeat="key in client.duplicateOrders">
+              <td nowrap>{{ key.title }}</td>
+              <td>{{ key.created | date:'dd.MM.yyyy'}}</td>
+              <td>{{ key.modified | date:'dd.MM.yyyy'}}</td>
+              <td>
+                <button ng-click="deleteKey(key)" class="btn btn-default btn-sm"><i class="fa fa-trash"></i></button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
         </div>
+
+        <div ng-if="!client.keys.length && !client.duplicateOrders.length">
+          <p translate>USERS_KEYS_MESSAGE_NO_KEYS</p>
+        </div>
+      </div>
     </div>
+  </div>
+  <div class="col-lg-12 col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <i class="fa fa-camera"></i> {{ 'CAMERAS_TITLE' | translate }}
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-lg-12">
+            <div>
+              <table class="table table-bordered table-hover table-striped">
+                <thead>
+                <tr>
+                  <th style="vertical-align: top;" translate>TABLE_CELL_CAMERA_NAME</th>
+                  <th style="vertical-align: top;" translate>TABLE_CELL_CAMERA_IP</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="camera in cameras">
+                  <td>{{ camera.name }}</td>
+                  <td>{{ camera.link }}</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
+

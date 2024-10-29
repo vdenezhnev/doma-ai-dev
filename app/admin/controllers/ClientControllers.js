@@ -94,6 +94,24 @@ app.controller('ClientDetailCtrl', ['$scope', '$timeout', '$state', '$stateParam
             });
         };
 
+        $scope.cameras = [];
+
+        $scope.loadCameras = function(reset) {
+            var request = {
+                'Action': "GetCameras",
+                'Skip': 0,
+                'Take': 200,
+                'UserId': $stateParams.id
+            };
+
+            Api.get(settings.API_URL, request, function(response) {
+                $scope.cameras = response.data;
+            });
+
+        };
+
+        $scope.loadCameras();
+
         $scope.deleteKey = function(key) {
             if (window.confirm($filter('translate')('NOTIFY_MESSAGE_KEY_DELETE_CONFIRM'))) {
                 Api.post(settings.API_URL, {
