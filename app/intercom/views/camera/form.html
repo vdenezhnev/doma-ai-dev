@@ -1,5 +1,7 @@
 <div class="form-body">
-
+  <div class="form-group">
+    <span translate>html.camera.status</span>: {{ camera.online ? "Онлайн" : "Оффлайн" }}
+  </div>
   <div class="form-group">
     <label translate>html.camera.form.ip</label>
     <input class="form-control" type="text" name="CameraIp" ng-model="camera.CameraIp" validator="required">
@@ -7,12 +9,12 @@
 
   <div class="form-group">
     <label translate>html.camera.form.login</label>
-    <input class="form-control" type="text" name="CameraLogin" autocomplete="new-password" ng-model="camera.Login" validator="required">
+    <input class="form-control" type="text" name="CameraLogin" autocomplete="new-password" ng-model="camera.Login">
   </div>
 
   <div class="form-group">
     <label translate>html.camera.form.password</label>
-    <input class="form-control" type="text" autocomplete="new-password" name="Password" ng-model="camera.Password" validator="required">
+    <input class="form-control" type="text" autocomplete="new-password" name="Password" ng-model="camera.Password">
   </div>
 
   <div class="form-group">

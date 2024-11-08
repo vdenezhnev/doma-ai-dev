@@ -111,6 +111,7 @@
               <th style="width: 1%" translate>USERS_KEYS_FORM_NAME</th>
               <th translate>USERS_KEYS_FORM_CREATED</th>
               <th translate>USERS_KEYS_FORM_CHANGED</th>
+              <th translate>USERS_KEYS_COMPANY_NAME</th>
               <th style="width: 1%"></th>
             </tr>
             </thead>
@@ -119,6 +120,7 @@
               <td nowrap>{{ key.title }}</td>
               <td>{{ key.created | date:'dd.MM.yyyy'}}</td>
               <td>{{ key.modified | date:'dd.MM.yyyy'}}</td>
+              <td>{{ key.companyName }}</td>
               <td>
                 <button ng-click="deleteKey(key)" class="btn btn-default btn-sm"><i class="fa fa-trash"></i></button>
               </td>
@@ -156,14 +158,20 @@
               <table class="table table-bordered table-hover table-striped">
                 <thead>
                 <tr>
+                  <th style="vertical-align: top;" translate>TABLE_CELL_UUID</th>
                   <th style="vertical-align: top;" translate>TABLE_CELL_CAMERA_NAME</th>
+                  <th style="vertical-align: top;" translate>TABLE_CELL_CAMERA_COMPANY_NAME</th>
                   <th style="vertical-align: top;" translate>TABLE_CELL_CAMERA_IP</th>
+                  <th style="vertical-align: top;" translate>TABLE_CELL_CAMERA_STATUS</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr ng-repeat="camera in cameras">
+                  <td>{{ camera.id }}</td>
                   <td>{{ camera.name }}</td>
+                  <td>{{ camera.serviceCompanyName }}</td>
                   <td>{{ camera.link }}</td>
+                  <td translate>{{ camera.online ? "Online"  : "Offline"}}</td>
                 </tr>
                 </tbody>
               </table>

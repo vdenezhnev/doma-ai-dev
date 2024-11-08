@@ -345,7 +345,10 @@
       </thead>
       <tbody>
       <tr ng-repeat="abonentCamera in abonentCameras">
-        <td>{{ abonentCamera.name }}</td>
+        <td>{{ abonentCamera.name }}</td><td>
+        <a ng-click="deleteCamera(abonentCamera.id)" class="btn default btn-sm"><i
+            class="fa fa-trash"></i></a>
+      </td>
       </tr>
 
       </tbody>

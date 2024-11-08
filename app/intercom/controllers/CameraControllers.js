@@ -11,7 +11,6 @@ app.controller('CameraListCtrl', ['$scope', '$http', '$httpParamSerializer', 'se
       Camera.query(angular.extend({skip: $scope.skip, take: $scope.take})).$promise.then(function(response) {
         $scope.skip += response.length;
         $scope.objects = $scope.objects.concat(response);
-        console.log(response.length, $scope.take, response.length < $scope.take)
         $scope.isLoadedAll = response.length < $scope.take;
       });
     };
@@ -20,14 +19,15 @@ app.controller('CameraListCtrl', ['$scope', '$http', '$httpParamSerializer', 'se
   }
 ]);
 
-app.controller('CameraCreateCtrl', ['$scope', '$http', '$state', 'Camera',
-  function ($scope, $http, $state, Camera) {
+app.controller('CameraCreateCtrl', ['$scope', '$http', '$state', 'Camera', 'gettextCatalog', 'notify',
+  function ($scope, $http, $state, Camera, gettextCatalog, notify) {
     $scope.camera = new Camera({
       isNew: true,
     });
 
     $scope.save = function () {
       $scope.camera.$save().then(function (response) {
+        notify(gettextCatalog.getString('camera.camera_created'));
         $state.go('admin.camera.list');
       });
     };
@@ -44,14 +44,21 @@ app.controller('CameraDetailCtrl', ['$scope', '$controller', '$http', '$state', 
 
     $scope.save = function () {
       $scope.camera.$save().then(function (response) {
+        $state.current.showConfirmation = false;
         notify(gettextCatalog.getString('camera.camera_updated'));
         $state.go('admin.camera.list');
       });
     };
 
+    $scope.showApplyMessageCall = function() {
+      $scope.showApplyMessage = true;
+      window.scrollTo(0,0);
+    };
+
     $scope.delete = function () {
       if (window.confirm(gettextCatalog.getString('cameras.camera_delete_confirm'))) {
         $scope.camera.$delete(function (response) {
+          $state.current.showConfirmation = false;
           notify(gettextCatalog.getString('camera.camera_deleted'));
           $state.go('admin.camera.list');
         });

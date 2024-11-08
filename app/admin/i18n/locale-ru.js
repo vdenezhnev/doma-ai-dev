@@ -101,6 +101,7 @@ app.constant('LOCALE_RU', {
     USERS_KEYS_FORM_CHANGED: 'Изменен',
     USERS_KEYS_FORM_DUPLICATES: 'Дубликаты',
     USERS_KEYS_MESSAGE_NO_KEYS: 'Ключей не обнаружено.',
+    USERS_KEYS_COMPANY_NAME: "Название компании",
 
     LOCKS_TITLE: 'Замки',
     LOCKS_LIST: 'Список замков',
@@ -214,6 +215,10 @@ app.constant('LOCALE_RU', {
     "CAMERAS_LIST": "Список камер",
     "TABLE_CELL_CAMERA_NAME": "Название",
     "TABLE_CELL_CAMERA_IP": "Ссылка",
+    "TABLE_CELL_CAMERA_COMPANY_NAME": "Сервисная компания",
+    "TABLE_CELL_CAMERA_STATUS": "Статус",
+    "TABLE_CELL_CAMERA_ONLINE": "Онлайн",
+    "TABLE_CELL_CAMERA_OFFLINE": "Оффлайн",
 
     LOCAL_KEYS_TITLE: 'Цифровые ключи локальных серверов',
     LOCAL_KEYS_LIST: 'Список цифровых ключей',

@@ -6,6 +6,11 @@
   <div class="row">
     <div class="col-md-6">
       <form name="CameraForm">
+        <div ng-show="showApplyMessage" class="note note-info">
+          <h4 class="block" translate>html.tariff.tariff_apply_message</h4>
+          <!--<p class="mb-10"><label><input type="checkbox" ng-model="notifyAbonents"> <span translate>html.tariff.tariff_notified_abonents</span></label></p>-->
+          <a ng-click="save(); showApplyMessage=false;" class="btn default uppercase" translate>html.tariff.tariff_apply_button</a>
+        </div>
         <div class="portlet without-title light bordered">
           <div class="portlet-body form">
 
@@ -13,7 +18,7 @@
 
             <div class="form-actions">
               <button type="submit" class="btn blue" validation-submit="CameraForm"
-                      ng-click="save()" translate>html.defaults.update_title</button>
+                      ng-click="showApplyMessageCall()" translate>html.defaults.update_title</button>
             </div>
           </div>
         </div>

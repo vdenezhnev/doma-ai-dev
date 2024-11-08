@@ -12,14 +12,20 @@
           <table class="table table-bordered table-hover table-striped">
             <thead>
             <tr>
+              <th style="vertical-align: top;" translate>TABLE_CELL_UUID</th>
               <th style="vertical-align: top;" translate>TABLE_CELL_CAMERA_NAME</th>
+              <th style="vertical-align: top;" translate>TABLE_CELL_CAMERA_COMPANY_NAME</th>
               <th style="vertical-align: top;" translate>TABLE_CELL_CAMERA_IP</th>
+              <th style="vertical-align: top;" translate>TABLE_CELL_CAMERA_STATUS</th>
             </tr>
             </thead>
             <tbody>
             <tr ng-repeat="camera in cameras">
+              <td>{{ camera.id }}</td>
               <td>{{ camera.name }}</td>
+              <td>{{ camera.serviceCompanyName }}</td>
               <td>{{ camera.link }}</td>
+              <td translate>{{ camera.online ? "Online"  : "Offline"}}</td>
             </tr>
             </tbody>
           </table>

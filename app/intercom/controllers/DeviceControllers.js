@@ -46,6 +46,7 @@ app.controller('DeviceDetailCtrl', ['$scope', '$controller', '$http', '$state', 
 
     $scope.save = function () {
       $scope.device.$save().then(function (response) {
+        $state.current.showConfirmation = false;
         notify(gettextCatalog.getString('devices.device_updated'));
         $state.go('admin.device.list');
       });

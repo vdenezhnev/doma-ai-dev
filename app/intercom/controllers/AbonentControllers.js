@@ -328,7 +328,6 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
         $scope.loadAbonentCameras();
 
         $scope.addCamera = function() {
-            console.log($scope.selectedCamera)
             if (!$scope.selectedCamera.id) return;
             if ($scope.abonentCameras.find(c => c.id === $scope.selectedCamera.id)) return;
 
@@ -339,6 +338,7 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
             };
 
             $http.post(settings.API_URL, request).then(function(response) {
+                notify(gettextCatalog.getString('camera.camera_created'));
                 $scope.loadAbonentCameras();
             });
         }
@@ -351,6 +351,7 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
             };
 
             $http.post(settings.API_URL, request).then(function(response) {
+                notify(gettextCatalog.getString('camera.camera_deleted'));
                 $scope.loadAbonentCameras();
             });
         }

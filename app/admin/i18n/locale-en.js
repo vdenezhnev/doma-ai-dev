@@ -101,6 +101,7 @@ app.constant('LOCALE_EN', {
     USERS_KEYS_FORM_CHANGED: 'Changed',
     USERS_KEYS_FORM_DUPLICATES: 'Duplicates',
     USERS_KEYS_MESSAGE_NO_KEYS: 'Keys not found.',
+    USERS_KEYS_COMPANY_NAME: "Company name",
 
     LOCKS_TITLE: 'Locks',
     LOCKS_LIST: 'Lock list',
@@ -214,6 +215,10 @@ app.constant('LOCALE_EN', {
     "CAMERAS_LIST": "Cameras List",
     "TABLE_CELL_CAMERA_NAME": "Camera Name",
     "TABLE_CELL_CAMERA_IP": "Link",
+    "TABLE_CELL_CAMERA_COMPANY_NAME": "Service company",
+    "TABLE_CELL_CAMERA_STATUS": "Status",
+    "TABLE_CELL_CAMERA_ONLINE": "Online",
+    "TABLE_CELL_CAMERA_OFFLINE": "Offline",
 
     LOCAL_KEYS_TITLE: 'Local server keys',
     LOCAL_KEYS_LIST: 'Local server keys list',
