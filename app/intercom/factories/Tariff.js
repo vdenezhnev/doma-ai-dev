@@ -70,7 +70,7 @@ app.factory('Tariff', ['$resource', 'appCache', 'settings', function($resource, 
     };
 
     Tariff.prototype.getTrialPeriodTypes = function() {
-        return ['disabled', 'tillTheEndOfNextMonth'];
+        return ['disabled', 'tillTheEndOfNextMonth', 'first2Sec'];
     };
 
     Object.defineProperty(Tariff.prototype, 'monthlyTariff', {

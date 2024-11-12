@@ -39,6 +39,22 @@ app.controller('TariffCreateCtrl', ['$rootScope', '$scope', '$http', '$state', '
                 $state.go('admin.tariff.list');
             });
         };
+
+        $scope.validateMinValue = function(input) {
+            if ($scope.tariff.tariffPacket.trialType === 'first2Sec') {
+                if (input.value < 0.01) {
+                    input.value = 0.01;
+                }
+            } else {
+                if (input.value < 0) {
+                    input.value = 0;
+                }
+            }
+
+            if (input.value.length > input.maxLength) {
+                input.value = input.value.slice(0, input.maxLength);
+            }
+        };
     }
 ]);
 
