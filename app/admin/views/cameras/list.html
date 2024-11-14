@@ -26,6 +26,9 @@
               <td>{{ camera.serviceCompanyName }}</td>
               <td>{{ camera.link }}</td>
               <td translate>{{ camera.online ? "Online"  : "Offline"}}</td>
+              <td>
+                <button ng-click="deleteCamera(camera)" class="btn btn-default btn-sm"><i class="fa fa-trash"></i></button>
+              </td>
             </tr>
             </tbody>
           </table>

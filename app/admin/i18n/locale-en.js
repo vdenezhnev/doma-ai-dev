@@ -244,6 +244,7 @@ app.constant('LOCALE_EN', {
     NOTIFY_SETTINGS_UPDATED: 'Settings updated',
     NOTIFY_LOCK_UPDATED: 'Lock updated',
     NOTIFY_LOCK_DELETED: 'Lock deleted',
+    NOTIFY_CAMERA_DELETED: 'Camera deleted',
     NOTIFY_LOCK_ADDED: 'Lock added',
     NOTIFY_ENTRIES_UPDATED: 'Entries updated',
     NOTIFY_POSTAMAT_ADDED: 'Postamat added',
@@ -253,6 +254,7 @@ app.constant('LOCALE_EN', {
 
     NOTIFY_MESSAGE_USER_DELETE_CONFIRM: 'Are you sure, you want to delete this user?',
     NOTIFY_MESSAGE_LOCK_DELETE_CONFIRM: 'Are you sure, you want to delete this lock?',
+    NOTIFY_MESSAGE_CAMERA_DELETE_CONFIRM: 'Are you sure, you want to delete this camera?',
     NOTIFY_MESSAGE_KEY_DELETE_CONFIRM: 'Are you sure, you want to delete this key?',
     NOTIFY_MESSAGE_POSTAMAT_DELETE_CONFIRM: 'Are you sure, you want to delete this postamat?',
     NOTIFY_MESSAGE_POSTAMAT_CELL_RELEASE_CONFIRM: 'Are you sure, you want to release this cell?',

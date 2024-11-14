@@ -1,11 +1,12 @@
-app.controller('CamerasListCtrl', ['$scope', 'Api', 'settings',
-    function($scope, Api, settings) {
+app.controller('CamerasListCtrl', ['$scope', 'Api', 'settings', '$filter', 'notify',
+    function($scope, Api, settings, $filter, notify) {
         $scope.cameras = [];
         $scope.skip = 0;
         $scope.take = 20;
         $scope.loadedAllCameras = false;
 
         $scope.loadCameras = function(reset) {
+            if (reset) $scope.skip = 0;
             var request = {
                 'Action': "GetCameras",
                 'Skip': $scope.skip,
@@ -28,5 +29,17 @@ app.controller('CamerasListCtrl', ['$scope', 'Api', 'settings',
         };
 
         $scope.loadCameras();
+
+        $scope.deleteCamera = function(camera) {
+            if (window.confirm($filter('translate')('NOTIFY_MESSAGE_CAMERA_DELETE_CONFIRM'))) {
+                Api.post(settings.API_URL, {
+                    'Action': 'DeleteCamera',
+                    'CameraId': camera.id
+                }, function () {
+                    notify($filter('translate')('NOTIFY_CAMERA_DELETED'));
+                    $scope.loadCameras(true);
+                });
+            }
+        };
     }
 ]);

@@ -244,6 +244,7 @@ app.constant('LOCALE_RU', {
     NOTIFY_SETTINGS_UPDATED: 'Настройки обновлены',
     NOTIFY_LOCK_UPDATED: 'Замок обновлен',
     NOTIFY_LOCK_DELETED: 'Замок удален',
+    NOTIFY_CAMERA_DELETED: 'Камера удалена',
     NOTIFY_LOCK_ADDED: 'Замок добавлен',
     NOTIFY_ENTRIES_UPDATED: 'Записи обновлены',
     NOTIFY_POSTAMAT_ADDED: 'Постамат добавлен',
@@ -253,6 +254,7 @@ app.constant('LOCALE_RU', {
 
     NOTIFY_MESSAGE_USER_DELETE_CONFIRM: 'Вы действительно хотите удалить данного пользователя?',
     NOTIFY_MESSAGE_LOCK_DELETE_CONFIRM: 'Вы действительно хотите удалить данный замок?',
+    NOTIFY_MESSAGE_CAMERA_DELETE_CONFIRM: 'Вы действительно хотите удалить данную камеру?',
     NOTIFY_MESSAGE_KEY_DELETE_CONFIRM: 'Вы действительно хотите удалить данный ключ?',
     NOTIFY_MESSAGE_POSTAMAT_DELETE_CONFIRM: 'Вы действительно хотите удалить данный постамат?',
     NOTIFY_MESSAGE_POSTAMAT_CELL_RELEASE_CONFIRM: 'Вы действительно хотите освободить эту ячейку?',
