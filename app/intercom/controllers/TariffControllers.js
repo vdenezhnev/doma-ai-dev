@@ -46,7 +46,15 @@ app.controller('TariffCreateCtrl', ['$rootScope', '$scope', '$http', '$state', '
           if (s.price.value < 1) s.price.value = 1;
         });
       }
-    })
+    });
+    $scope.$watch("tariff.tariffPacket.type", () => {
+      if ($scope.tariff.tariffPacket.type === "serviceCompany") {
+        $scope.tariff.tariffPacket.subscriptions.map((s) => {
+          if (s.additionalKeyPrice.value < 1) s.additionalKeyPrice.value = 1;
+          if (s.price.value < 1) s.price.value = 1;
+        });
+      }
+    });
   }
 ]);
 
@@ -85,5 +93,22 @@ app.controller('TariffDetailCtrl', ['$scope', '$controller', '$http', '$state', 
         $state.go('admin.tariff.detail', { id: $scope.tariff.id, revision: $scope.tariff.appliedRevision });
       });
     };
+
+    $scope.$watch("tariff.tariffPacket.trialType", () => {
+      if ($scope.tariff.tariffPacket.trialType === "first2Sec") {
+        $scope.tariff.tariffPacket.subscriptions.map((s) => {
+          if (s.additionalKeyPrice.value < 1) s.additionalKeyPrice.value = 1;
+          if (s.price.value < 1) s.price.value = 1;
+        });
+      }
+    });
+    $scope.$watch("tariff.tariffPacket.type", () => {
+      if ($scope.tariff.tariffPacket.type === "serviceCompany") {
+        $scope.tariff.tariffPacket.subscriptions.map((s) => {
+          if (s.additionalKeyPrice.value < 1) s.additionalKeyPrice.value = 1;
+          if (s.price.value < 1) s.price.value = 1;
+        });
+      }
+    });
   }
 ]);

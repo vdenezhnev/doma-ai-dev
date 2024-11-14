@@ -70,7 +70,8 @@
                oninput="javascript:
        if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);
        if (this.value < 0) this.value = 0;
-       if (angular.element(document.querySelector('select[name=\'trialType\']')).scope().tariff.tariffPacket.trialType === 'first2Sec' && this.value < 1) this.value = 1;"
+       if (angular.element(document.querySelector('select[name=\'trialType\']')).scope().tariff.tariffPacket.trialType === 'first2Sec' && this.value < 1) this.value = 1;
+       if (angular.element(document.querySelector('select[name=\'type\']')).scope().tariff.tariffPacket.type === 'serviceCompany' && this.value < 1) this.value = 1;"
                ng-model="tariff_period.price.value">
         <span class="input-group-addon">{{ currency }}</span>
       </div>
@@ -86,7 +87,8 @@
                oninput="javascript:
        if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);
        if (this.value < 0) this.value = 0;
-       if (angular.element(document.querySelector('select[name=\'trialType\']')).scope().tariff.tariffPacket.trialType === 'first2Sec' && this.value < 0.01) this.value = 0.01;"
+       if (angular.element(document.querySelector('select[name=\'trialType\']')).scope().tariff.tariffPacket.trialType === 'first2Sec' && this.value < 1) this.value = 1;
+       if (angular.element(document.querySelector('select[name=\'type\']')).scope().tariff.tariffPacket.type === 'serviceCompany' && this.value < 1) this.value = 1;"
                ng-model="tariff_period.additionalKeyPrice.value">
         <span class="input-group-addon">{{ currency }}</span>
       </div>
