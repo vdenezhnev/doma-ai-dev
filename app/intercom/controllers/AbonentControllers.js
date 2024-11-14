@@ -346,7 +346,7 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
         $scope.deleteCamera = function(id) {
 
             var request = {
-                Id: id,
+                CameraAccessPointId: id,
                 Action: 'DeleteCameraAccessPoint',
             };
 
