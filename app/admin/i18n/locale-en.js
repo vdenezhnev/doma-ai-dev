@@ -278,4 +278,16 @@ app.constant('LOCALE_EN', {
 
     POSTAMAT_STATUS_filled: 'Filled',
     POSTAMAT_STATUS_empty: 'Empty',
+
+    BANS_IP_SEARCH_PLACEHOLDER: "Search by IP address or ban reason",
+    BANS_ID: "ID",
+    BANS_IP: "IP Address",
+    BANS_WHEN: "Date and Time",
+    BANS_DESCRIPTION: "Reason for Ban",
+    BANS_UNBAN_BUTTON: "Unban selected users",
+    BANS_TITLE: "Bans Management",
+    BANS_LIST: "List of Banned Users",
+    NOTIFY_MESSAGE_UNBAN_CONFIRM: "Are you sure you want to unban these users?",
+    NOTIFY_UNBANNED: "The users has been unbanned successfully.",
+    BANS_BACK_TO_USERS: "Back to Users",
 });
