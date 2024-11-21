@@ -277,5 +277,17 @@ app.constant('LOCALE_RU', {
     KEY_STATUS_expired: 'Истёкший',
 
     POSTAMAT_STATUS_filled: 'Заполнена',
-    POSTAMAT_STATUS_empty: 'Пустая'
+    POSTAMAT_STATUS_empty: 'Пустая',
+
+    BANS_IP_SEARCH_PLACEHOLDER: "Поиск по IP-адресу или по причине блокировки",
+    BANS_UUID: "ID",
+    BANS_IP: "IP-адрес",
+    BANS_WHEN: "Дата и время",
+    BANS_DESCRIPTION: "Причина блокировки",
+    BANS_UNBAN_BUTTON: "Разблокировать выделенных пользователей",
+    BANS_TITLE: "Управление блокировками",
+    BANS_LIST: "Список заблокированных пользователей",
+    NOTIFY_MESSAGE_UNBAN_CONFIRM: "Вы уверены, что хотите разблокировать этих пользователей?",
+    NOTIFY_UNBANNED: "Пользователи успешно разблокированы.",
+    BANS_BACK_TO_USERS: "Вернуться ко всем пользователям",
 });

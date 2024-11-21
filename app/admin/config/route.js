@@ -146,6 +146,16 @@ app.config(['$stateProvider', 'settings', function ($stateProvider, settings) {
       templateUrl: settings.TEMPLATE_DIR + 'cameras/list.html'
     })
 
+    .state('admin.bans', {
+      abstract: true,
+      templateUrl: settings.TEMPLATE_DIR + 'cameras/base.html'
+    })
+    .state('admin.bans.list', {
+      url: "bans",
+      controller: 'BannedListCtrl',
+      templateUrl: settings.TEMPLATE_DIR + 'bans/list.html'
+    })
+
     .state('admin.openy_payments', {
       abstract: true,
       templateUrl: settings.TEMPLATE_DIR + 'openy_payments/base.html'

@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header" translate>BANS_TITLE</h1>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <i class="fa fa-bar-chart-o fa-fw"></i> {{'BANS_LIST' | translate }}
+
+    <a style="float: right" ui-sref="admin.client.list"><i class="fa fa-reply fa-fw"></i> {{'BANS_BACK_TO_USERS' | translate}}</a>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-lg-12">
+        <div>
+          <table class="table table-bordered table-hover table-striped">
+            <button ng-click="unban()" style="margin-bottom: 16px" class="btn btn-default btn-sm" ng-disabled="selectedEntries.length === 0" translate>BANS_UNBAN_BUTTON</button>
+            <form>
+              <div class="form-group">
+                <div class="input-group">
+                  <div class="input-group-addon"><i class="fa fa-search"></i></div>
+
+                  <input type="text" class="form-control" placeholder="{{'BANS_IP_SEARCH_PLACEHOLDER' | translate }}"
+                         ng-model="q" ng-model-options="{debounce: 1000}">
+
+                </div>
+              </div>
+            </form>
+            <thead>
+            <tr>
+              <th>
+                <input type="checkbox"
+                       ng-model="selectAll"
+                       ng-change="toggleAllEntries(selectAll)">
+              </th>
+              <th style="vertical-align: top;" translate>BANS_UUID</th>
+              <th style="vertical-align: top;" translate>BANS_IP</th>
+              <th style="vertical-align: top;" translate>BANS_WHEN</th>
+              <th style="vertical-align: top;" translate>BANS_DESCRIPTION</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="entry in entries">
+              <td>
+                <input type="checkbox"
+                       style="cursor: pointer"
+                       ng-checked="isSelected(entry)"
+                       ng-click="toggleSelection(entry)">
+              </td>
+              <td>{{ entry.id }}</td>
+              <td>{{ entry.ipAddress }}</td>
+              <td>{{ entry.when }}</td>
+              <td>{{ entry.description }}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <button ng-click="loadEntries(false)" ng-hide="loadedAllEntries" class="btn btn-default" translate>
+          BUTTON_LOAD_MORE
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
