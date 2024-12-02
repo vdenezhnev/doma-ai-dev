@@ -119,7 +119,6 @@ app.controller('ConfirmPasswordResetCtrl', ['$scope', '$stateParams', '$state', 
         if (!$stateParams.code) {
             $state.go('auth.restore_password');
         }
-
         $scope.submit = function() {
             $http.post(settings.API_URL, {
                 Action: 'ConfirmPasswordReset',
@@ -157,6 +156,7 @@ app.controller('MobilePasswordResetWebCtrl', ['$scope', '$stateParams', '$http',
     function($scope, $stateParams, $http, settings, notify, gettextCatalog) {
         $scope.code = $stateParams.code;
         $scope.passwordChanged = false;
+        $scope.passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d!"#$%&'()*+,\-./:;<=>?@\[\]^_`{|}~]{8,}$/;
 
         if ($scope.code) {
             $scope.submit = function () {
