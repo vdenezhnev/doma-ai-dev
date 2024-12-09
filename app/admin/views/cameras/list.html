@@ -10,8 +10,14 @@
       <div class="col-lg-12">
         <div>
           <table class="table table-bordered table-hover table-striped">
+            <button ng-click="checkStatus()" style="margin-bottom: 16px" class="btn btn-default btn-sm" ng-disabled="selectedCameras.length === 0" translate>CAMERAS_CHECK_STATUS</button>
             <thead>
             <tr>
+              <th>
+                <input type="checkbox"
+                       ng-model="selectAll"
+                       ng-change="toggleAllCameras(selectAll)">
+              </th>
               <th style="vertical-align: top;" translate>TABLE_CELL_UUID</th>
               <th style="vertical-align: top;" translate>TABLE_CELL_CAMERA_NAME</th>
               <th style="vertical-align: top;" translate>TABLE_CELL_CAMERA_COMPANY_NAME</th>
@@ -21,6 +27,12 @@
             </thead>
             <tbody>
             <tr ng-repeat="camera in cameras">
+              <td>
+                <input type="checkbox"
+                       style="cursor: pointer"
+                       ng-checked="isSelected(camera)"
+                       ng-click="toggleSelection(camera)">
+              </td>
               <td>{{ camera.id }}</td>
               <td>{{ camera.name }}</td>
               <td>{{ camera.serviceCompanyName }}</td>

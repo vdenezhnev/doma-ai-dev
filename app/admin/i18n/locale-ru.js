@@ -219,6 +219,7 @@ app.constant('LOCALE_RU', {
     "TABLE_CELL_CAMERA_STATUS": "Статус",
     "TABLE_CELL_CAMERA_ONLINE": "Онлайн",
     "TABLE_CELL_CAMERA_OFFLINE": "Оффлайн",
+    CAMERAS_CHECK_STATUS: "Проверить статус",
 
     LOCAL_KEYS_TITLE: 'Цифровые ключи локальных серверов',
     LOCAL_KEYS_LIST: 'Список цифровых ключей',
@@ -264,6 +265,7 @@ app.constant('LOCALE_RU', {
     NOTIFY_LOCALSERVER_DELETED: 'Локальный сервер удален',
     NOTIFY_LOCALSERVERS_UPDATED: 'Локальные сервера обновлены',
 
+    NOTIFY_CAMERA_STATUS_UPDATED: "Статус обновлен",
 
     KEY_STATUS_none: 'Не определён',
     KEY_STATUS_sent: 'Отправлен',
