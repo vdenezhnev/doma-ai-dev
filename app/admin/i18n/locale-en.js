@@ -219,6 +219,7 @@ app.constant('LOCALE_EN', {
     "TABLE_CELL_CAMERA_STATUS": "Status",
     "TABLE_CELL_CAMERA_ONLINE": "Online",
     "TABLE_CELL_CAMERA_OFFLINE": "Offline",
+    CAMERAS_CHECK_STATUS: "Check status",
 
     LOCAL_KEYS_TITLE: 'Local server keys',
     LOCAL_KEYS_LIST: 'Local server keys list',
@@ -264,6 +265,7 @@ app.constant('LOCALE_EN', {
     NOTIFY_LOCALSERVER_DELETED: 'Local server deleted',
     NOTIFY_LOCALSERVERS_UPDATED: 'Local servers updated',
 
+    NOTIFY_CAMERA_STATUS_UPDATED: "Status updated",
 
     KEY_STATUS_none: 'None',
     KEY_STATUS_sent: 'Sent',
