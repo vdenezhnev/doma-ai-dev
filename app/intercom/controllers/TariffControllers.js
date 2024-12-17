@@ -1,11 +1,12 @@
+
 app.controller('TariffListCtrl', ['$scope', '$http', 'Tariff',
-  function ($scope, $http, Tariff) {
-    $scope.tariffs = Tariff.query({ Skip: 0, Take: 100 });
+  function($scope, $http, Tariff) {
+    $scope.tariffs = Tariff.query({Skip: 0, Take: 100});
   }
 ]);
 
 app.controller('TariffCreateCtrl', ['$rootScope', '$scope', '$http', '$state', 'Tariff',
-  function ($rootScope, $scope, $http, $state, Tariff) {
+  function($rootScope, $scope, $http, $state, Tariff) {
     $scope.tariff = new Tariff({
       tariffPacket: {
         subscriptions: [{
@@ -32,57 +33,61 @@ app.controller('TariffCreateCtrl', ['$rootScope', '$scope', '$http', '$state', '
 
     $scope.tariffTypes = ['access', 'serviceCompany'];
 
-    $scope.save = function () {
-      $scope.tariff.$save().then(function (response) {
+    $scope.save = function() {
+      $scope.tariff.$save().then(function(response) {
         $scope.$emit('updateTariffs');
         $state.go('admin.tariff.list');
       });
     };
 
-    $scope.$watch("tariff.tariffPacket.trialType", () => {
-      if ($scope.tariff.tariffPacket.trialType === "first2Sec") {
-        $scope.tariff.tariffPacket.subscriptions.map((s) => {
-          if (s.additionalKeyPrice.value < 1) s.additionalKeyPrice.value = 1;
-          if (s.price.value < 1) s.price.value = 1;
-        });
+    $scope.validateMinValue = function(input) {
+      if ($scope.tariff.tariffPacket.trialType === 'first2Sec') {
+        if (input.value < 0.01) {
+          input.value = 0.01;
+        }
+      } else {
+        if (input.value < 0) {
+          input.value = 0;
+        }
       }
-    })
+
+      if (input.value.length > input.maxLength) {
+        input.value = input.value.slice(0, input.maxLength);
+      }
+    };
   }
 ]);
 
 app.controller('TariffDetailCtrl', ['$scope', '$controller', '$http', '$state', 'notify', 'Tariff', 'gettextCatalog', 'tariff',
-  function ($scope, $controller, $http, $state, notify, Tariff, gettextCatalog, tariff) {
+  function($scope, $controller, $http, $state, notify, Tariff, gettextCatalog, tariff) {
     $scope.tariff = tariff;
 
-    $scope.save = function () {
-      $scope.tariff.$save(function (response) {
+    $scope.save = function() {
+      $scope.tariff.$save(function(response){
         notify(gettextCatalog.getString('tariffs.tariff_updated'));
         $scope.$emit('updateTariffs');
-        $state.go('admin.tariff.detail', { id: $scope.tariff.id, revision: $scope.tariff.appliedRevision });
+        $state.go('admin.tariff.detail', {id: $scope.tariff.id, revision: $scope.tariff.appliedRevision});
       });
     };
 
-    $scope.apply = function (notify) {
+    $scope.apply = function(notify) {
       Tariff.apply({
         id: $scope.tariff.id,
         notifyAbonents: notify == true
-      }).$promise.then(function (result) {
+      }).$promise.then(function(result) {
         notify(gettextCatalog.getString('tariffs.tariff_applied'));
       });
     };
 
-    $scope.showApplyMessageCall = function () {
+    $scope.showApplyMessageCall = function() {
       $scope.showApplyMessage = true;
-      window.scrollTo(0, 0);
+      window.scrollTo(0,0);
     };
 
-    $scope.rollback = function () {
-      Tariff.rollback({
-        id: $scope.tariff.id,
-        revision: $scope.tariff.appliedRevision
-      }).$promise.then(function (result) {
+    $scope.rollback = function() {
+      Tariff.rollback({id: $scope.tariff.id, revision: $scope.tariff.appliedRevision}).$promise.then(function(result) {
         notify(gettextCatalog.getString('tariffs.tariff_rollbacked'));
-        $state.go('admin.tariff.detail', { id: $scope.tariff.id, revision: $scope.tariff.appliedRevision });
+        $state.go('admin.tariff.detail', {id: $scope.tariff.id, revision: $scope.tariff.appliedRevision});
       });
     };
   }
