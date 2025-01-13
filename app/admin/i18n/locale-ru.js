@@ -66,6 +66,7 @@ app.constant('LOCALE_RU', {
     TABLE_CELL_COMMENT: 'Комментарий',
     TABLE_CELL_COMPANY_NAME: 'Название',
     TABLE_CELL_COMPANY_ADDRESS: 'Адрес',
+    TABLE_CELL_COMPANY_INN: 'ИНН',
     TABLE_CELL_COMPANY_PHONES: 'Телефоны',
     TABLE_CELL_KEYS_AVAILABLE: 'Доступно',
     TABLE_CELL_KEYS_USED: 'Использовано',
@@ -160,7 +161,7 @@ app.constant('LOCALE_RU', {
 
     COMPANIES_LIST_TITLE: 'Компании',
     COMPANIES_LIST: 'Список компаний',
-    COMPANIES_LIST_SEARCH_PLACEHOLDER: 'Поиск',
+    COMPANIES_LIST_SEARCH_PLACEHOLDER: 'Поиск по ИНН',
     COMPANIES_METHOD_SETTINGS_TITLE: 'Настройки метода',
     COMPANIES_METHOD_SETTINGS_LOGIN: 'Логин',
     COMPANIES_METHOD_SETTINGS_PASSWORD: 'Пароль',
