@@ -1,7 +1,10 @@
 angular.module('gettext').run(['gettextCatalog', function (gettextCatalog) {
   /* jshint -W100 */
   gettextCatalog.setStrings('ru', {
+    "html.camera.delete_selected": "Удалить",
+    "camera.confirm_delete_selected": "Вы уверены, что хотите удалить эти камеры?",
     "camera.camera_deleted": "Камера успешно удалена",
+    "camera.cameras_deleted": "Камеры успешно удалены",
     "camera.camera_created": "Камера успешно добавлена",
     "camera.camera_updated": "Камера успешно обновлена",
     "camera.status_updated": "Статус обновлен",
@@ -180,6 +183,9 @@ angular.module('gettext').run(['gettextCatalog', function (gettextCatalog) {
     "html.auth.search_company_placeholder": "Введите название, адрес, телефон или email УК",
     "html.auth.select_company": "Выберите управляющую компанию",
     "html.auth.wrong_url": "Неверный адрес",
+    "html.auth.delete_success": "Удаление прошло успешно.",
+    "html.auth.delete_data_confirm_message": "Вы уверены, что хотите удалить данные?",
+    "html.auth.yes": "Да",
     "html.control_panel_user.form.access_point_ids": "Точки доступа",
     "html.control_panel_user.form.display_name": "Название",
     "html.control_panel_user.form.password": "Пароль",
@@ -247,6 +253,7 @@ angular.module('gettext').run(['gettextCatalog', function (gettextCatalog) {
     "html.journal.reports": "Отчеты",
     "html.journal.list_title": "Журналы доступа",
     "html.journal.phone_number_display": "Телефон",
+    "html.journal.cars_display": "Автомобили",
     "html.journal.user_display": "Пользователь",
     "html.journal.null_value": "Неизвестно",
     "html.menu.abonents": "Абоненты",
@@ -336,7 +343,10 @@ angular.module('gettext').run(['gettextCatalog', function (gettextCatalog) {
     "journals.no_records": "Отчёты не найдены"
   });
   gettextCatalog.setStrings('en', {
+    "html.camera.delete_selected": "Delete",
+    "camera.confirm_delete_selected": "Are you sure you want to delete these cameras?",
     "camera.camera_deleted": "Camera successfully deleted",
+    "camera.cameras_deleted": "Cameras successfully deleted",
     "camera.camera_created": "Camera successfully added",
     "camera.camera_updated": "Camera successfully updated",
     "camera.status_updated": "Status updated",
@@ -516,6 +526,9 @@ angular.module('gettext').run(['gettextCatalog', function (gettextCatalog) {
     "html.auth.search_company_placeholder": "Search for name, address, phone number or email",
     "html.auth.select_company": "Select company",
     "html.auth.wrong_url": "Wrong url",
+    "html.auth.delete_success": "Deletion was successful.",
+    "html.auth.delete_data_confirm_message": "Are you sure you want to delete the data?",
+    "html.auth.yes": "Yes",
     "html.control_panel_user.form.access_point_ids": "Access points",
     "html.control_panel_user.form.display_name": "Name",
     "html.control_panel_user.form.password": "Password",
@@ -583,6 +596,7 @@ angular.module('gettext').run(['gettextCatalog', function (gettextCatalog) {
     "html.journal.reports": "Reports",
     "html.journal.list_title": "Access logs",
     "html.journal.phone_number_display": "Phone number",
+    "html.journal.cars_display": "Cars",
     "html.journal.user_display": "User",
     "html.journal.null_value": "Unknown",
     "html.menu.abonents": "Users",

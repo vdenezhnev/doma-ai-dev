@@ -5,6 +5,7 @@
 
     <a ui-sref="admin.camera.create" class="btn default uppercase" translate>html.camera.add_title</a>
     <button ng-click="checkStatus()" ng-disabled="selectedCameras.length === 0" class="btn default uppercase" translate>html.camera.check_status</button>
+    <button ng-click="deleteSelected()" ng-disabled="selectedCameras.length === 0" class="btn default uppercase" translate>html.camera.delete_selected</button>
 
     <div class="table-scrollable" ng-show="cameras.length > 0">
       <table class="table table-hover table-tr-hover">

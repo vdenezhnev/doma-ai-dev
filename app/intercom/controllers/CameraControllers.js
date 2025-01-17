@@ -11,7 +11,14 @@ app.controller('CameraListCtrl', ['$scope', '$http', '$httpParamSerializer', 'se
     $scope.loadCameras = function (reset) {
       Camera.query(angular.extend({ skip: $scope.skip, take: $scope.take })).$promise.then(function (response) {
         $scope.skip += response.length;
-        $scope.cameras = $scope.cameras.concat(response);
+
+        if (reset) {
+          $scope.cameras = response;
+          $scope.skip = 0;
+        } else {
+          $scope.cameras = $scope.cameras.concat(response);
+        }
+
         $scope.isLoadedAll = response.length < $scope.take;
       });
     };
@@ -37,6 +44,24 @@ app.controller('CameraListCtrl', ['$scope', '$http', '$httpParamSerializer', 'se
       Promise.all(statusPromises).then(results => {
         notify(gettextCatalog.getString('camera.status_updated'));
       });
+    };
+
+
+    $scope.deleteSelected = function () {
+      if (window.confirm(gettextCatalog.getString('camera.confirm_delete_selected'))) {
+        const deletePromises = $scope.selectedCameras.map(camera =>
+          Api.post(settings.API_URL, {
+            'Action': 'DeleteCamera',
+            'CameraId': camera.id
+          })
+        );
+
+        Promise.all(deletePromises).then(results => {
+          $scope.loadCameras(true);
+          notify(gettextCatalog.getString('camera.cameras_deleted'));
+          $scope.selectedCameras = [];
+        });
+      }
     };
 
     $scope.isAllSelected = function () {
