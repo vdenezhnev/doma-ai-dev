@@ -7,7 +7,7 @@ app.controller('DeleteGoogleDataCtrl', ['$scope', '$http', '$httpParamSerializer
     $scope.deleted = false;
 
     $scope.submit = function() {
-        $http.post("/api/web", {
+        $http.post(settings.API_URL.replace('/intercoms', ""), {
             Action: 'Login',
             Login: $scope.login,
             Password: Base64.encode($scope.password)
@@ -17,7 +17,7 @@ app.controller('DeleteGoogleDataCtrl', ['$scope', '$http', '$httpParamSerializer
     };
 
     $scope.deleteData = function() {
-        $http.post("/api/web", {
+        $http.post(settings.API_URL.replace('/intercoms', ""), {
             Action: 'DeleteUserProfile',
         }, {
             headers: {
