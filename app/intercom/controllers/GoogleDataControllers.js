@@ -21,7 +21,8 @@ app.controller('DeleteGoogleDataCtrl', ['$scope', '$http', '$httpParamSerializer
             Action: 'DeleteUserProfile',
         }, {
             headers: {
-                Authorization: $scope.token
+                Authorization: $scope.token,
+                Timestamp: new Date().toISOString()
             }
         }).then(function successCallback(response) {
             $scope.deleted = true;
