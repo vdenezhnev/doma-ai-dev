@@ -103,6 +103,7 @@ app.constant('LOCALE_RU', {
     USERS_KEYS_FORM_DUPLICATES: 'Дубликаты',
     USERS_KEYS_MESSAGE_NO_KEYS: 'Ключей не обнаружено.',
     USERS_KEYS_COMPANY_NAME: "Название компании",
+    USERS_KEYS_TYPE: "Тип ключа",
 
     LOCKS_TITLE: 'Замки',
     LOCKS_LIST: 'Список замков',

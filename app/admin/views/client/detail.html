@@ -111,6 +111,7 @@
               <th style="width: 1%" translate>USERS_KEYS_FORM_NAME</th>
               <th translate>USERS_KEYS_FORM_CREATED</th>
               <th translate>USERS_KEYS_FORM_CHANGED</th>
+              <th translate>USERS_KEYS_TYPE</th>
               <th translate>USERS_KEYS_COMPANY_NAME</th>
               <th style="width: 1%"></th>
             </tr>
@@ -120,6 +121,7 @@
               <td nowrap>{{ key.title }}</td>
               <td>{{ key.created | date:'dd.MM.yyyy'}}</td>
               <td>{{ key.modified | date:'dd.MM.yyyy'}}</td>
+              <td>{{ key.type }}</td>
               <td>{{ key.companyName }}</td>
               <td>
                 <button ng-click="deleteKey(key)" class="btn btn-default btn-sm"><i class="fa fa-trash"></i></button>

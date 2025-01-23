@@ -103,6 +103,7 @@ app.constant('LOCALE_EN', {
     USERS_KEYS_FORM_DUPLICATES: 'Duplicates',
     USERS_KEYS_MESSAGE_NO_KEYS: 'Keys not found.',
     USERS_KEYS_COMPANY_NAME: "Company name",
+    USERS_KEYS_TYPE: "Type",
 
     LOCKS_TITLE: 'Locks',
     LOCKS_LIST: 'Lock list',
