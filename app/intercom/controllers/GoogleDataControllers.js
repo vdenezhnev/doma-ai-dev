@@ -5,6 +5,7 @@ app.controller('DeleteGoogleDataCtrl', ['$scope', '$http', '$httpParamSerializer
     $scope.password = '';
     $scope.token = '';
     $scope.deleted = false;
+    $scope.profile = null;
 
     $scope.submit = function() {
         $http.post(settings.API_URL.replace('/intercoms', ""), {
@@ -12,7 +13,8 @@ app.controller('DeleteGoogleDataCtrl', ['$scope', '$http', '$httpParamSerializer
             Login: $scope.login,
             Password: Base64.encode($scope.password)
         }).then(function successCallback(response) {
-            $scope.token = `SAS-TOKEN ${response.data.credentials.apiKeyId}:${response.data.credentials.token}`
+            $scope.token = `SAS-TOKEN ${response.data.credentials.apiKeyId}:${response.data.credentials.token}`;
+            $scope.profile = response.data.profile;
         });
     };
 
