@@ -17,6 +17,7 @@ app.constant('LOCALE_EN', {
     NAVBAR_PAYMENS: 'SIM-cards payments',
     NAVBAR_LOGOUT: 'Logout',
     NAVBAR_LOCAL_KEYS: 'Local keys',
+    NAVBAR_REG_KEYS: 'Keys',
     NAVBAR_POSTAMATES: 'Postamates',
     NAVBAR_PAYMENTS: 'Payments',
 
@@ -58,6 +59,8 @@ app.constant('LOCALE_EN', {
     TABLE_CELL_DEVICE_SSID: 'SSID',
     TABLE_CELL_DEVICE_VERSION: 'Version',
     TABLE_CELL_DEVICE_STATUS: 'Status',
+    TABLE_CELL_PERIOD: 'Period',
+    TABLE_CELL_KEY_TYPE: 'Key type',
     TABLE_CELL_COMPANY: 'Company',
     TABLE_CELL_INSTALLATION_SITE: 'Installation site',
     TABLE_CELL_PAID_UP_TO: 'Paid up to',
@@ -222,6 +225,8 @@ app.constant('LOCALE_EN', {
     "TABLE_CELL_CAMERA_ONLINE": "Online",
     "TABLE_CELL_CAMERA_OFFLINE": "Offline",
     CAMERAS_CHECK_STATUS: "Check status",
+
+    REGISTERED_KEYS_TITLE: 'Keys',
 
     LOCAL_KEYS_TITLE: 'Local server keys',
     LOCAL_KEYS_LIST: 'Local server keys list',
