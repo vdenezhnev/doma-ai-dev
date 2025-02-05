@@ -12,7 +12,20 @@
 
   <div class="form-group">
     <label translate>html.camera.form.password</label>
-    <input class="form-control" type="text" autocomplete="new-password" name="Password" ng-model="camera.Password">
+    <div class="input-group">
+      <input
+          class="form-control"
+          ng-attr-type="{{ passwordVisible ? 'text':'password'}}"
+          autocomplete="off"
+          ng-model="camera.Password"
+          required
+      />
+      <span class="input-group-addon" style="background: #d8d8d8;border: 1px solid #ccc;padding: 0;">
+            <button type="button" ng-click="passwordVisible = !passwordVisible" style="background: none; border: 0;padding: 6px 10px;">
+              <i class="fa" style="font-size: 16px;margin-top: 1px;color: #6b6b6b;" ng-class="passwordVisible ? 'fa-eye-slash' : 'fa-eye'"></i>
+            </button>
+          </span>
+    </div>
   </div>
 
   <div class="form-group">

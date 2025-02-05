@@ -21,7 +21,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="camera in cameras track by $index" ui-sref="admin.camera.detail({camera: {CameraIp: camera.link, CameraId: camera.id, Name: camera.name, Login: camera.login}})">
+        <tr ng-repeat="camera in cameras track by $index" ui-sref="admin.camera.detail({camera: {CameraIp: camera.link, CameraId: camera.id, Name: camera.name, Login: camera.login, Password: camera.password}})">
           <td ng-click="$event.stopPropagation(); toggleSelection(camera)">
             <input type="checkbox"
                    style="cursor: pointer"
