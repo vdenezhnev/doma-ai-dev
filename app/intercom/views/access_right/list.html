@@ -14,6 +14,7 @@
                         <th width="200px" translate>html.access_right.perimeterPath</th>
                         <th width="200px" translate>html.access_right.owner</th>
                         <th width="200px" translate>html.access_right.address</th>
+                        <th width="200px" translate>html.access_right.status</th>
                         <th width="200px" translate>html.access_right.from</th>
                         <th width="200px" translate>html.access_right.till</th>
                         <th translate>html.access_right.carModel</th>
@@ -28,6 +29,7 @@
                         <th><input ng-model="filter.Address" class="form-control" ng-model-options="{debounce: 1000}"></th>
                         <th></th>
                         <th></th>
+                        <th></th>
                         <th><input ng-model="filter.CarModel" class="form-control" ng-model-options="{debounce: 1000}"></th>
                         <th><input ng-model="filter.CarNumber" class="form-control" ng-model-options="{debounce: 1000}"></th>
                     </tr>
@@ -40,6 +42,7 @@
                         <td>{{ object.perimeterPath }}</td>
                         <td>{{ object.owner }}</td>
                         <td>{{ object.address }}</td>
+                        <td>{{ object.status }}</td>
                         <td>{{ object.period.from | amUtc | amLocal | amDateFormat:'DD.MM.YYYY HH:mm' }}</td>
                         <td>{{ object.period.till | amUtc | amLocal | amDateFormat:'DD.MM.YYYY HH:mm' }}</td>
                         <td>
