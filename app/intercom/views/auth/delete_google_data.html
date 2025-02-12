@@ -1,0 +1,40 @@
+
+<form ng-show="!token" name="LoginGoogleForm">
+  <h3 class="form-title font-green" translate>html.auth.login_title</h3>
+
+  <div class="form-group">
+    <input class="form-control form-control-solid placeholder-no-fix" type="text" placeholder="{{ 'html.auth.login_display'|translate }}" name="login"
+           validator="required" ng-model="login" />
+  </div>
+
+  <div class="form-group">
+    <input class="form-control form-control-solid placeholder-no-fix" type="password" placeholder="{{ 'html.auth.password_display'|translate }}" name="password"
+           validator="required" ng-model="password" />
+  </div>
+
+  <div class="form-actions justify-flex">
+    <button type="submit" validation-submit="LoginGoogleForm" ng-click="submit()" class="btn green uppercase" translate>html.auth.login_action</button>
+  </div>
+
+</form>
+
+<div ng-show="token && !deleted">
+  <p translate>html.auth.delete_data_confirm_message</p>
+  <div class="form-group">
+    <label translate>html.auth.delete_phone_display</label>
+    <input ng-disabled="true" class="form-control" ng-value="profile.phoneNumber">
+  </div>
+  <div class="form-group">
+    <label translate>html.auth.delete_email_display</label>
+    <input ng-disabled="true" class="form-control" ng-value="profile.email">
+  </div>
+  <div class="form-group">
+    <label translate>html.auth.delete_keys_count</label>
+    <input ng-disabled="true" class="form-control" ng-value="profile.keys.length || 0" >
+  </div>
+  <button type="button" ng-click="deleteData()" class="btn green uppercase" translate>html.auth.yes</button>
+</div>
+
+<div ng-show="deleted">
+  <p translate>html.auth.delete_success</p>
+</div>

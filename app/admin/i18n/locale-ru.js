@@ -17,6 +17,7 @@ app.constant('LOCALE_RU', {
     NAVBAR_PAYMENS: 'Оплаты Sim-карт',
     NAVBAR_LOGOUT: 'Выход',
     NAVBAR_LOCAL_KEYS: 'Локальные ключи',
+    NAVBAR_REG_KEYS: 'Ключи',
     NAVBAR_POSTAMATES: 'Постаматы',
     NAVBAR_PAYMENTS: 'Платежи',
 
@@ -58,6 +59,8 @@ app.constant('LOCALE_RU', {
     TABLE_CELL_DEVICE_SSID: 'SSID',
     TABLE_CELL_DEVICE_VERSION: 'Версия',
     TABLE_CELL_DEVICE_STATUS: 'Статус',
+    TABLE_CELL_PERIOD: 'Период',
+    TABLE_CELL_KEY_TYPE: 'Тип ключа',
     TABLE_CELL_COMPANY: 'Компания',
     TABLE_CELL_INSTALLATION_SITE: 'Место установки',
     TABLE_CELL_PAID_UP_TO: 'Оплачено до',
@@ -66,6 +69,7 @@ app.constant('LOCALE_RU', {
     TABLE_CELL_COMMENT: 'Комментарий',
     TABLE_CELL_COMPANY_NAME: 'Название',
     TABLE_CELL_COMPANY_ADDRESS: 'Адрес',
+    TABLE_CELL_COMPANY_INN: 'ИНН',
     TABLE_CELL_COMPANY_PHONES: 'Телефоны',
     TABLE_CELL_KEYS_AVAILABLE: 'Доступно',
     TABLE_CELL_KEYS_USED: 'Использовано',
@@ -102,6 +106,7 @@ app.constant('LOCALE_RU', {
     USERS_KEYS_FORM_DUPLICATES: 'Дубликаты',
     USERS_KEYS_MESSAGE_NO_KEYS: 'Ключей не обнаружено.',
     USERS_KEYS_COMPANY_NAME: "Название компании",
+    USERS_KEYS_TYPE: "Тип ключа",
 
     LOCKS_TITLE: 'Замки',
     LOCKS_LIST: 'Список замков',
@@ -160,7 +165,7 @@ app.constant('LOCALE_RU', {
 
     COMPANIES_LIST_TITLE: 'Компании',
     COMPANIES_LIST: 'Список компаний',
-    COMPANIES_LIST_SEARCH_PLACEHOLDER: 'Поиск',
+    COMPANIES_LIST_SEARCH_PLACEHOLDER: 'Поиск по ИНН',
     COMPANIES_METHOD_SETTINGS_TITLE: 'Настройки метода',
     COMPANIES_METHOD_SETTINGS_LOGIN: 'Логин',
     COMPANIES_METHOD_SETTINGS_PASSWORD: 'Пароль',
@@ -219,6 +224,9 @@ app.constant('LOCALE_RU', {
     "TABLE_CELL_CAMERA_STATUS": "Статус",
     "TABLE_CELL_CAMERA_ONLINE": "Онлайн",
     "TABLE_CELL_CAMERA_OFFLINE": "Оффлайн",
+    CAMERAS_CHECK_STATUS: "Проверить статус",
+
+    REGISTERED_KEYS_TITLE: 'Ключи',
 
     LOCAL_KEYS_TITLE: 'Цифровые ключи локальных серверов',
     LOCAL_KEYS_LIST: 'Список цифровых ключей',
@@ -264,6 +272,7 @@ app.constant('LOCALE_RU', {
     NOTIFY_LOCALSERVER_DELETED: 'Локальный сервер удален',
     NOTIFY_LOCALSERVERS_UPDATED: 'Локальные сервера обновлены',
 
+    NOTIFY_CAMERA_STATUS_UPDATED: "Статус обновлен",
 
     KEY_STATUS_none: 'Не определён',
     KEY_STATUS_sent: 'Отправлен',

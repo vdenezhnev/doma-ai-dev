@@ -17,6 +17,7 @@ app.constant('LOCALE_EN', {
     NAVBAR_PAYMENS: 'SIM-cards payments',
     NAVBAR_LOGOUT: 'Logout',
     NAVBAR_LOCAL_KEYS: 'Local keys',
+    NAVBAR_REG_KEYS: 'Keys',
     NAVBAR_POSTAMATES: 'Postamates',
     NAVBAR_PAYMENTS: 'Payments',
 
@@ -58,6 +59,8 @@ app.constant('LOCALE_EN', {
     TABLE_CELL_DEVICE_SSID: 'SSID',
     TABLE_CELL_DEVICE_VERSION: 'Version',
     TABLE_CELL_DEVICE_STATUS: 'Status',
+    TABLE_CELL_PERIOD: 'Period',
+    TABLE_CELL_KEY_TYPE: 'Key type',
     TABLE_CELL_COMPANY: 'Company',
     TABLE_CELL_INSTALLATION_SITE: 'Installation site',
     TABLE_CELL_PAID_UP_TO: 'Paid up to',
@@ -66,6 +69,7 @@ app.constant('LOCALE_EN', {
     TABLE_CELL_COMMENT: 'Comment',
     TABLE_CELL_COMPANY_NAME: 'Name',
     TABLE_CELL_COMPANY_ADDRESS: 'Address',
+    TABLE_CELL_COMPANY_INN: 'INN',
     TABLE_CELL_COMPANY_PHONES: 'Phone numbers',
     TABLE_CELL_KEYS_AVAILABLE: 'Available',
     TABLE_CELL_KEYS_USED: 'Used',
@@ -102,6 +106,7 @@ app.constant('LOCALE_EN', {
     USERS_KEYS_FORM_DUPLICATES: 'Duplicates',
     USERS_KEYS_MESSAGE_NO_KEYS: 'Keys not found.',
     USERS_KEYS_COMPANY_NAME: "Company name",
+    USERS_KEYS_TYPE: "Type",
 
     LOCKS_TITLE: 'Locks',
     LOCKS_LIST: 'Lock list',
@@ -160,7 +165,7 @@ app.constant('LOCALE_EN', {
 
     COMPANIES_LIST_TITLE: 'Companies',
     COMPANIES_LIST: 'Company list',
-    COMPANIES_LIST_SEARCH_PLACEHOLDER: 'Search',
+    COMPANIES_LIST_SEARCH_PLACEHOLDER: 'Search by INN',
     COMPANIES_METHOD_SETTINGS_TITLE: 'Method settings',
     COMPANIES_METHOD_SETTINGS_LOGIN: 'Login',
     COMPANIES_METHOD_SETTINGS_PASSWORD: 'Password',
@@ -219,6 +224,9 @@ app.constant('LOCALE_EN', {
     "TABLE_CELL_CAMERA_STATUS": "Status",
     "TABLE_CELL_CAMERA_ONLINE": "Online",
     "TABLE_CELL_CAMERA_OFFLINE": "Offline",
+    CAMERAS_CHECK_STATUS: "Check status",
+
+    REGISTERED_KEYS_TITLE: 'Keys',
 
     LOCAL_KEYS_TITLE: 'Local server keys',
     LOCAL_KEYS_LIST: 'Local server keys list',
@@ -264,6 +272,7 @@ app.constant('LOCALE_EN', {
     NOTIFY_LOCALSERVER_DELETED: 'Local server deleted',
     NOTIFY_LOCALSERVERS_UPDATED: 'Local servers updated',
 
+    NOTIFY_CAMERA_STATUS_UPDATED: "Status updated",
 
     KEY_STATUS_none: 'None',
     KEY_STATUS_sent: 'Sent',

@@ -13,7 +13,10 @@
         </div>
         <div class="portlet without-title light bordered">
           <div class="portlet-body form">
-
+            <button ng-click="checkStatus()" ng-disabled="selectedCameras.length === 0" class="btn default uppercase" translate>html.camera.check_status</button>
+            <div class="form-group">
+              <span translate>html.camera.status</span>: {{ camera.online ? "Онлайн" : "Оффлайн" }}
+            </div>
             <ng-include src="'app/intercom/views/camera/form.html'"></ng-include>
 
             <div class="form-actions">

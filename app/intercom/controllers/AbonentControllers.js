@@ -159,6 +159,8 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
             return;
         }
 
+        $scope.isOld = true;
+
         $scope.endDateBeforeRender = endDateBeforeRender
         $scope.endDateOnSetTime = endDateOnSetTime
         $scope.startDateBeforeRender = startDateBeforeRender

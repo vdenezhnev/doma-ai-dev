@@ -112,6 +112,15 @@ app.config(['$stateProvider', 'settings', function ($stateProvider, settings) {
       controller: 'LocalKeysListCtrl',
       templateUrl: settings.TEMPLATE_DIR + 'local_keys/list.html'
     })
+    .state('admin.regKeys', {
+      abstract: true,
+      templateUrl: settings.TEMPLATE_DIR + 'local_keys/base.html'
+    })
+    .state('admin.regKeys.list', {
+      url: "reg-keys",
+      controller: 'RegKeysListCtrl',
+      templateUrl: settings.TEMPLATE_DIR + 'keys/list.html'
+    })
 
     .state('admin.postamates', {
       abstract: true,

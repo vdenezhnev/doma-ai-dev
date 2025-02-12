@@ -36,6 +36,7 @@
                             <tr>
                                 <th style="width: 1%" translate>TABLE_CELL_COMPANY_NAME</th>
                                 <th translate>TABLE_CELL_COMPANY_ADDRESS</th>
+                                <th translate>TABLE_CELL_COMPANY_INN</th>
                                 <th>
                                     <div style="text-align: center;" translate>TABLE_CELL_KEYS_AVAILABLE</div>
                                     <div style="display: flex;">
@@ -95,6 +96,7 @@
                             <tr ng-repeat="company in objects">
                                 <td nowrap><a ui-sref="admin.company.detail({id: company.id, company: company})">{{ company.companyName }}</a></td>
                                 <td>{{ company.address.streetAddress }}</td>
+                                <td>{{ company.inn }}</td>
                                 <td>{{ company.keyCount.available }}</td>
                                 <td>{{ company.keyCount.used }}</td>
                                 <td>{{ company.keyCount.remain }}</td>

@@ -26,7 +26,7 @@ app.controller('DeviceCreateCtrl', ['$scope', '$http', '$state', 'Device',
     $scope.save = function () {
       $scope.device.$save().then(function (response) {
         $state.go('admin.device.list');
-      });
+      }).catch(e => $scope.device.isNew = true);
     };
   }
 ]);

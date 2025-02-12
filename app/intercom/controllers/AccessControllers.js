@@ -243,6 +243,7 @@ app.controller('EditAccessPointCtrl', ['$scope', '$state', 'AccessPoint', 'Posta
 
         vm.isEditPoint = true;
 
+        $scope.isEditPoint = true;
         $scope.point = point;
         $scope.point.isPostamatAccessPoint = !!point.postamatId;
         $scope.title = $scope.point.displayName;
@@ -276,23 +277,23 @@ app.controller('EditAccessPointCtrl', ['$scope', '$state', 'AccessPoint', 'Posta
 
             $scope.updateSettings = function() {
                 if (window.confirm(gettextCatalog.getString('devices.device_update_settings'))) {
-                    new AccessPoint.update({
-                        'action': 'UpdateAccessPointDefaultKeySettings',
-                        'accessPointId': $scope.point.id,
-                        'defaultKeySettings': $scope.deviceSettings
-                    }, function (response) {
-                        /*notify(gettextCatalog.getString('devices.device_updated'));*/
-                    });
-
-                    new AccessPoint.update({
-                        'action': 'UpdateAccessPointKeyUsage',
-                        'accessPointId': $scope.point.id,
-                        'keyUsage': {
-                            'restrictions': $scope.deviceKeyUsage
-                        }
-                    }, function (response) {
-                        /*notify(gettextCatalog.getString('devices.device_updated'));*/
-                    });
+                    // new AccessPoint.update({
+                    //     'action': 'UpdateAccessPointDefaultKeySettings',
+                    //     'accessPointId': $scope.point.id,
+                    //     'defaultKeySettings': $scope.deviceSettings
+                    // }, function (response) {
+                    //     /*notify(gettextCatalog.getString('devices.device_updated'));*/
+                    // });
+                    //
+                    // new AccessPoint.update({
+                    //     'action': 'UpdateAccessPointKeyUsage',
+                    //     'accessPointId': $scope.point.id,
+                    //     'keyUsage': {
+                    //         'restrictions': $scope.deviceKeyUsage
+                    //     }
+                    // }, function (response) {
+                    //     /*notify(gettextCatalog.getString('devices.device_updated'));*/
+                    // });
 
                     $scope.point.isOpeningByInternet = vm.isOpeningByInternet;
                     $scope.point.isOpeningByPhone = vm.isOpeningByPhone;

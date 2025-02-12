@@ -10,7 +10,7 @@
 
     <div class="form-group">
       <label translate>html.abonent.phone_display</label>
-      <input class="form-control" type="text" ng-model="abonent.phoneNumber" name="phoneNumber"
+      <input ng-disabled="isOld" class="form-control" type="text" ng-model="abonent.phoneNumber" name="phoneNumber"
              validator="phone,required" mask="{'mask': '+99999999999[9999]'}">
     </div>
 

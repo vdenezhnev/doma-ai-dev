@@ -23,6 +23,11 @@ app.config(['$stateProvider', 'settings', function ($stateProvider, settings) {
       controller: 'RestorePasswordCtrl',
       templateUrl: settings.TEMPLATE_DIR + 'auth/restore_password.html'
     })
+    .state('auth.delete_google_data', {
+      url: "/auth/delete_google_data",
+      controller: 'DeleteGoogleDataCtrl',
+      templateUrl: settings.TEMPLATE_DIR + 'auth/delete_google_data.html'
+    })
     .state('auth.confirm_password_reset', {
       url: settings.AUTH_PASSWORD_CHANGE_URL,
       controller: 'ConfirmPasswordResetCtrl',

@@ -285,6 +285,11 @@ table.rtl-text tr th {
     border-radius: 8px !important;
 }
 
+.labelinfo_icon:hover .labelinfo_text.labelinfo_text_right {
+    left: auto;
+    right: 0;
+}
+
 .labelinfo_i {
     width: 20px;
     height: 20px;
