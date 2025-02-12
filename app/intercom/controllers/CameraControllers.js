@@ -97,6 +97,39 @@ app.controller('CameraCreateCtrl', ['$scope', '$http', '$state', 'Camera', 'gett
       isNew: true,
     });
 
+    var updatingFromUrl = false;
+    var updatingFromFields = false;
+    var loginRegex = /^(rtsp:\/\/)([^:@\/]+):([^@\/]+)@(.+)$/;
+
+    $scope.$watch('camera.CameraIp', function (newVal, oldVal) {
+      if (updatingFromFields || !newVal) return;
+
+      var match = newVal.match(loginRegex);
+      if (match) {
+        updatingFromUrl = true;
+        $scope.camera.Login = match[2];
+        $scope.camera.Password = match[3];
+        updatingFromUrl = false;
+      }
+    });
+
+    $scope.$watchGroup(['camera.Login', 'camera.Password'], function (newValues, oldValues) {
+      if (updatingFromUrl) return;
+
+      var url = $scope.camera.CameraIp;
+      if (!url) return; // nothing to update
+
+      var match = url.match(loginRegex);
+      if (match) {
+        var newLogin = newValues[0] || '';
+        var newPassword = newValues[1] || '';
+        var newUrl = match[1] + newLogin + ':' + newPassword + '@' + match[4];
+        updatingFromFields = true;
+        $scope.camera.CameraIp = newUrl;
+        updatingFromFields = false;
+      }
+    });
+
     $scope.save = function () {
       $scope.camera.$save().then(function (response) {
         notify(gettextCatalog.getString('camera.camera_created'));
@@ -113,6 +146,40 @@ app.controller('CameraDetailCtrl', ['$scope', '$controller', '$http', '$state', 
     }
 
     $scope.camera = new Camera($stateParams.camera);
+
+    var updatingFromUrl = false;
+    var updatingFromFields = false;
+
+    var loginRegex = /^(rtsp:\/\/)([^:@\/]+):([^@\/]+)@(.+)$/;
+
+    $scope.$watch('camera.CameraIp', function (newVal) {
+      if (updatingFromFields || !newVal) return;
+
+      var match = newVal.match(loginRegex);
+      if (match) {
+        updatingFromUrl = true;
+        $scope.camera.Login = match[2];
+        $scope.camera.Password = match[3];
+        updatingFromUrl = false;
+      }
+    });
+
+    $scope.$watchGroup(['camera.Login', 'camera.Password'], function (newValues) {
+      if (updatingFromUrl) return;
+
+      var url = $scope.camera.CameraIp;
+      if (!url) return;
+
+      var match = url.match(loginRegex);
+      if (match) {
+        var newLogin = newValues[0] || '';
+        var newPassword = newValues[1] || '';
+        var newUrl = match[1] + newLogin + ':' + newPassword + '@' + match[4];
+        updatingFromFields = true;
+        $scope.camera.CameraIp = newUrl;
+        updatingFromFields = false;
+      }
+    });
 
     $scope.save = function () {
       $scope.camera.$save().then(function (response) {
@@ -156,3 +223,4 @@ app.controller('CameraDetailCtrl', ['$scope', '$controller', '$http', '$state', 
     });
   }
 ]);
+
