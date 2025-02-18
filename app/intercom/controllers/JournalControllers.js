@@ -57,7 +57,10 @@ app.controller('JournalListCtrl', ['$scope', 'notify', 'Api', 'Journal', 'Abonen
                 filter = modify_filter(filter);
 
                 Journal.query(filter, function (response) {
-                    $scope.journals = $scope.journals.concat(response.records);
+                    $scope.journals = $scope.journals.concat(response.records.filter((i) =>
+                      !(i.sourceType.toLowerCase() === "mobile" &&
+                        (i.lockAccessType.toLowerCase() === 'connected' || i.lockAccessType.toLowerCase() === 'closed'))
+                    ));
                     $scope.canLoadMode = $scope.journals.length < $scope.total;
                 });
             }
@@ -70,7 +73,10 @@ app.controller('JournalListCtrl', ['$scope', 'notify', 'Api', 'Journal', 'Abonen
             filter = modify_filter(filter);
 
             Journal.query(filter, function (response) {
-                $scope.journals = response.records;
+                $scope.journals = response.records.filter((i) =>
+                  !(i.sourceType.toLowerCase() === "mobile" &&
+                    (i.lockAccessType.toLowerCase() === 'connected' || i.lockAccessType.toLowerCase() === 'closed'))
+                );;
                 $scope.total = response.total;
                 $scope.canLoadMode = $scope.journals.length < $scope.total;
             });
@@ -107,7 +113,10 @@ app.controller('JournalListCtrl', ['$scope', 'notify', 'Api', 'Journal', 'Abonen
             Api.get(settings.API_URL, request, function(response) {
                 const responseData = response.data;
                 if (responseData && responseData.records && responseData.records.length) {
-                    $scope.workingTimeList = getFilteredRecords(responseData.records, $scope.workingTimeFilter.sumByDays);
+                    $scope.workingTimeList = getFilteredRecords(responseData.records.filter((i) =>
+                      !(i.sourceType.toLowerCase() === "mobile" &&
+                        (i.lockAccessType.toLowerCase() === 'connected' || i.lockAccessType.toLowerCase() === 'closed'))
+                    ), $scope.workingTimeFilter.sumByDays);
                 } else {
                     notify({
                         message: gettextCatalog.getString('journals.no_records'),
