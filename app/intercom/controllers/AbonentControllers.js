@@ -309,8 +309,8 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
 
         $scope.deleteTemporaryPerimeterKey = function (object) {
             if (window.confirm(gettextCatalog.getString('abonents.key_delete_confirm'))) {
-                var index = $scope.abonent.perimeters.indexOf(object);
-                $scope.abonent.perimeters.splice(index, 1);
+                var index = $scope.abonent.temporaryAccessPerimeters.indexOf(object);
+                $scope.abonent.temporaryAccessPerimeters.splice(index, 1);
                 $scope.abonent.$save(function (response) {
                     notify(gettextCatalog.getString('abonents.key_deleted'));
                     $state.current.showConfirmation = false;
