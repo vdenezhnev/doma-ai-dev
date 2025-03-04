@@ -105,6 +105,14 @@
       </div>
     </div>
 
+    <!-- QR -->
+    <div class="panel panel-default" ng-if="transport.type == 'QRCode'">
+      <div class="panel-heading">
+        <h3 style="margin: 0;"><input type="checkbox" ng-model="transport.isActivated"/>
+          {{ 'LOCKS_TRANSPORT_QR_CODE' | translate }}</h3>
+      </div>
+    </div>
+
     <!-- GSM -->
     <div class="panel panel-default" ng-if="transport.type == 'gsm'">
       <div class="panel-heading">
