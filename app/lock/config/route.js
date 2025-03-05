@@ -21,6 +21,12 @@ $stateProvider
     templateUrl: settings.TEMPLATE_DIR + 'lock/open.html'
   })
 
+  .state('lock.openQr', {
+    url: "openQr?qrcode",
+    controller: 'LockQrCtrl',
+    templateUrl: settings.TEMPLATE_DIR + 'lock/openQr.html'
+  })
+
   .state('lock.404', {
     url: "*path",
     templateUrl: settings.TEMPLATE_DIR + '404.html'

@@ -101,3 +101,21 @@ app.controller('LockCtrl', ['$scope', '$stateParams', '$state', '$http', '$filte
     }
   }
 ]);
+
+app.controller('LockQrCtrl', ['$scope', '$stateParams', '$state', '$http', '$filter', 'settings', 'notify', 'ModalService',
+  function ($scope, $stateParams, $state, $http, $filter, settings, notify, ModalService) {
+    if (!$stateParams.qrcode) {
+      $state.go('lock.404');
+    }
+    var canvas = document.getElementById('aztec-canvas');
+    try {
+      bwipjs.toCanvas(canvas, {
+        bcid: 'azteccode',  // Use 'azteccodecompact' if you need the compact version and your library supports it
+        text: $stateParams.qrcode,  // Data to encode
+        includetext: false  // Set to true if you want the text displayed below the barcode
+      });
+    } catch (e) {
+      console.error('Error generating Aztec code:', e);
+    }
+  }
+]);
