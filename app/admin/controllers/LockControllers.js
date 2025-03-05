@@ -53,7 +53,7 @@ app.controller('LockListCtrl', ['$scope', 'Api', 'settings',
 app.controller('LockDetailCtrl', ['$scope', '$state', '$stateParams', 'notify', 'Api', 'settings', '$filter',
   function ($scope, $state, $stateParams, notify, Api, settings, $filter) {
     $scope.typesList = ['Rosetta', 'BOX', 'B2C'];
-    const TRANSPORT_TYPES = ['blueToothLe', 'nfc', 'gsm', 'internet', 'wiFiDirect', 'blueTooth', 'QRCode'];
+    const TRANSPORT_TYPES = ['blueToothLe', 'nfc', 'gsm', 'internet', 'wiFiDirect', 'blueTooth', 'qrCode'];
     let tempTransports = [];
     Api.get(settings.API_URL, { 'Action': 'GetLockById', 'LockId': $stateParams.id }, function (response) {
       $scope.lock = response.data;
@@ -148,7 +148,7 @@ app.controller('LockCreateCtrl', ['$scope', '$state', 'notify', 'Api', 'settings
         transports: [
           { type: 'blueToothLe', isActivated: false },
           { type: 'nfc', isActivated: false },
-          { type: 'QRCode', isActivated: false },
+          { type: 'qrCode', isActivated: false },
           { type: 'gsm', isActivated: false },
           { type: 'internet', isActivated: false, radius: 0, coordinate: { x: 0, y: 0 } },
           { type: 'wiFiDirect', isActivated: false },
