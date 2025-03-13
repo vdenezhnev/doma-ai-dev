@@ -7,6 +7,13 @@
   </div>
 
   <div style="display: flex; justify-content: center; flex-direction: row; flex-wrap: wrap;">
+    <div ng-show="hasQr" style=" width: 300px; display: flex; justify-content: center; flex-direction: row; flex-wrap: wrap;">
+      <div class="lock-state"
+           style=" width: 100%; max-width: 500px; border: 1px solid #ddd; border-radius: 8px; margin: 10px; padding: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; flex-direction: column; align-items: center; justify-content: space-between;">
+        <canvas style="width: 100%" id="aztec-canvas"></canvas>
+        <span translate style="margin-top: 8px; font-size: 14px; font-weight: 500">QR</span>
+      </div>
+    </div>
     <div class="lock-state" ng-repeat="lock in locks"
          style=" width: 300px; border: 1px solid #ddd; border-radius: 8px; margin: 10px; padding: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; flex-direction: column; align-items: center; justify-content: space-between;">
 
@@ -88,7 +95,9 @@
         <span translate>OPEN</span> <b>{{ lock.LockID }}</b>
         <div class="loader" ng-class="{'hidden': lock.isLoaded}"><span></span></div>
       </button>
+
     </div>
+
   </div>
 
 </div>
