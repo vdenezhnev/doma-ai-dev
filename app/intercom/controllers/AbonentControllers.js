@@ -174,6 +174,8 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
             $scope.$broadcast('end-date-changed');
         }
 
+
+
         function startDateBeforeRender ($view, $dates, $leftDate, $upDate, $rightDate, endDate) {
             if (endDate) {
                 var activeDate = moment(new Date(endDate)).subtract(1, $view).add(1, 'minute');
@@ -223,6 +225,19 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
         }
 
         $scope.abonent = new Abonent(angular.copy($stateParams.abonent));
+
+        $scope.model = {
+            allowedFloors: [123, 123, 321].join(",")
+        };
+        $scope.$watch('model.allowedFloors', function(newVal) {
+            if (newVal) {
+                $scope.abonent.floors = newVal.split(',')
+                  .map(function(item) { return parseInt(item.trim(), 10); })
+                  .filter(function(num) { return !isNaN(num); });
+            } else {
+                $scope.abonent.floors = [];
+            }
+        });
 
         $scope.lowerFloorValidation = function() {
             var val = $scope.abonent.lowerFloor;
