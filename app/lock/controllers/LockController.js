@@ -104,12 +104,20 @@ app.controller('LockCtrl', ['$scope', '$stateParams', '$state', '$http', '$filte
       var canvas = document.getElementById('aztec-canvas');
       try {
         bwipjs.toCanvas(canvas, {
-          bcid: 'azteccodecompact',  // Use 'azteccodecompact' if you need the compact version and your library supports it
-          text: $stateParams.qrcode,  // Data to encode
-          includetext: false  // Set to true if you want the text displayed below the barcode
+          bcid: 'azteccodecompact',
+          text: $stateParams.qrcode,
+          includetext: false
         });
       } catch (e) {
-        console.error('Error generating Aztec code:', e);
+        try {
+          bwipjs.toCanvas(canvas, {
+            bcid: 'azteccode',
+            text: $stateParams.qrcode,
+            includetext: false
+          });
+        } catch (e2) {
+          //
+        }
       }
     }
   }
