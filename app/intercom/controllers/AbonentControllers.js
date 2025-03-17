@@ -227,7 +227,7 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
         $scope.abonent = new Abonent(angular.copy($stateParams.abonent));
 
         $scope.model = {
-            allowedFloors: [123, 123, 321].join(",")
+            allowedFloors: $scope.abonent.floors.join(",")
         };
         $scope.$watch('model.allowedFloors', function(newVal) {
             if (newVal) {
