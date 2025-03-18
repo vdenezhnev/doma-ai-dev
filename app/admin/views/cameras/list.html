@@ -24,6 +24,21 @@
               <th style="vertical-align: top;" translate>TABLE_CELL_CAMERA_IP</th>
               <th style="vertical-align: top;" translate>TABLE_CELL_CAMERA_STATUS</th>
             </tr>
+            <tr class="active">
+              <th></th>
+              <th></th>
+              <th>
+                <input ng-model="filter.name"
+                       ng-model-options="{debounce: 500}" class="form-control">
+              </th>
+              <th>
+                <input ng-model="filter.serviceCompanyName" type="text"
+                       ng-model-options="{debounce: 500}" class="form-control">
+              </th>
+              <th class="filter-date form-inline nowrap"></th>
+              <th></th>
+              <th></th>
+            </tr>
             </thead>
             <tbody>
             <tr ng-repeat="camera in cameras">
@@ -46,7 +61,7 @@
           </table>
         </div>
 
-        <button ng-click="loadCameras(20, false, listFilter)" ng-hide="loadedAllCameras" class="btn btn-default" translate>
+        <button ng-click="loadCameras(false)" ng-hide="loadedAllCameras" class="btn btn-default" translate>
           BUTTON_LOAD_MORE
         </button>
       </div>

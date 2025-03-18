@@ -5,6 +5,7 @@ app.controller('CamerasListCtrl', ['$scope', 'Api', 'settings', '$filter', 'noti
     $scope.take = 20;
     $scope.loadedAllCameras = false;
     $scope.selectedCameras = [];
+    $scope.filter = {}
 
     $scope.loadCameras = function (reset) {
       if (reset) $scope.skip = 0;
@@ -13,6 +14,9 @@ app.controller('CamerasListCtrl', ['$scope', 'Api', 'settings', '$filter', 'noti
         'Skip': $scope.skip,
         'Take': $scope.take,
       };
+
+      if ($scope.filter.name) request.name = $scope.filter.name;
+      if ($scope.filter.serviceCompanyName) request.serviceCompanyName = $scope.filter.serviceCompanyName;
 
       Api.get(settings.API_URL, request, function (response) {
         $scope.skip += response.data.length;
@@ -82,6 +86,13 @@ app.controller('CamerasListCtrl', ['$scope', 'Api', 'settings', '$filter', 'noti
         $scope.selectedCameras.push(entry);
       }
     };
+
+    $scope.$watch('filter', function (newVal, oldVal) {
+      if (!angular.equals(newVal, oldVal)) {
+        $scope.skip = 0;
+        $scope.loadCameras(true);
+      }
+    }, true);
 
     $scope.isSelected = function (entry) {
       return $scope.selectedCameras.some(e => e.id === entry.id);

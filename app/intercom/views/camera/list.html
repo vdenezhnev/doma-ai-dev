@@ -19,6 +19,14 @@
           <th translate>html.camera.form.name</th>
           <th translate>html.camera.status</th>
         </tr>
+        <tr class="active">
+          <th></th>
+          <th>
+            <input ng-model="filter.name"
+                   ng-model-options="{debounce: 500}" class="form-control">
+          </th>
+          <th></th>
+        </tr>
         </thead>
         <tbody>
         <tr ng-repeat="camera in cameras track by $index" ui-sref="admin.camera.detail({camera: {CameraIp: camera.link, CameraId: camera.id, Name: camera.name, Login: camera.login, Password: camera.password}})">

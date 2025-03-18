@@ -7,9 +7,16 @@ app.controller('CameraListCtrl', ['$scope', '$http', '$httpParamSerializer', 'se
     $scope.skip = 0;
     $scope.isLoadedAll = false;
     $scope.selectedCameras = [];
+    $scope.filter = {}
 
     $scope.loadCameras = function (reset) {
-      Camera.query(angular.extend({ skip: $scope.skip, take: $scope.take })).$promise.then(function (response) {
+      const params = {
+        skip: $scope.skip,
+        take: $scope.take
+      }
+      if ($scope.filter.name) params.name = $scope.filter.name;
+
+      Camera.query(angular.extend(params)).$promise.then(function (response) {
         $scope.skip += response.length;
 
         if (reset) {
@@ -24,7 +31,6 @@ app.controller('CameraListCtrl', ['$scope', '$http', '$httpParamSerializer', 'se
     };
 
     $scope.loadCameras();
-
 
     $scope.checkStatus = function () {
       const statusPromises = $scope.selectedCameras.map(camera =>
@@ -64,6 +70,13 @@ app.controller('CameraListCtrl', ['$scope', '$http', '$httpParamSerializer', 'se
       }
     };
 
+    $scope.$watch('filter', function (newVal, oldVal) {
+      if (!angular.equals(newVal, oldVal)) {
+        $scope.skip = 0;
+        $scope.loadCameras(true);
+      }
+    }, true);
+
     $scope.isAllSelected = function () {
       return $scope.cameras.length > 0 && $scope.selectedCameras.length === $scope.cameras.length;
     };
@@ -97,38 +110,54 @@ app.controller('CameraCreateCtrl', ['$scope', '$http', '$state', 'Camera', 'gett
       isNew: true,
     });
 
+    var loginRegex = /^(rtsp:\/\/)(?:([^:@]+)(?::([^:@]+))?@)?(.*)$/;
+
     var updatingFromUrl = false;
     var updatingFromFields = false;
-    var loginRegex = /^(rtsp:\/\/)([^:@\/]+):([^@\/]+)@(.+)$/;
 
-    $scope.$watch('camera.CameraIp', function (newVal, oldVal) {
+    $scope.$watch('camera.CameraIp', function (newVal) {
       if (updatingFromFields || !newVal) return;
 
       var match = newVal.match(loginRegex);
       if (match) {
         updatingFromUrl = true;
-        $scope.camera.Login = match[2];
-        $scope.camera.Password = match[3];
+        $scope.camera.Login = match[2] || '';
+        $scope.camera.Password = match[3] || '';
         updatingFromUrl = false;
       }
     });
 
-    $scope.$watchGroup(['camera.Login', 'camera.Password'], function (newValues, oldValues) {
+    $scope.$watchGroup(['camera.Login', 'camera.Password'], function (newValues) {
       if (updatingFromUrl) return;
 
-      var url = $scope.camera.CameraIp;
-      if (!url) return; // nothing to update
+      var currentUrl = $scope.camera.CameraIp;
+      if (!currentUrl) return; // Nothing to update
 
-      var match = url.match(loginRegex);
+      var match = currentUrl.match(loginRegex);
       if (match) {
-        var newLogin = newValues[0] || '';
-        var newPassword = newValues[1] || '';
-        var newUrl = match[1] + newLogin + ':' + newPassword + '@' + match[4];
+        var protocol = match[1];
+        var host = match[4] || '';
+        var loginField = newValues[0] || '';
+        var passwordField = newValues[1] || '';
+
+        var credentials = '';
+        if (loginField !== '') {
+          if (passwordField !== '') {
+            credentials = loginField + ':' + passwordField + '@';
+          } else {
+            credentials = loginField + '@';
+          }
+        }
+
+        var newUrl = protocol + credentials + host;
+        if (newUrl === currentUrl) return;
+
         updatingFromFields = true;
         $scope.camera.CameraIp = newUrl;
         updatingFromFields = false;
       }
     });
+
 
     $scope.save = function () {
       $scope.camera.$save().then(function (response) {
@@ -147,10 +176,10 @@ app.controller('CameraDetailCtrl', ['$scope', '$controller', '$http', '$state', 
 
     $scope.camera = new Camera($stateParams.camera);
 
+    var loginRegex = /^(rtsp:\/\/)(?:([^:@]+)(?::([^:@]+))?@)?(.*)$/;
+
     var updatingFromUrl = false;
     var updatingFromFields = false;
-
-    var loginRegex = /^(rtsp:\/\/)([^:@\/]+):([^@\/]+)@(.+)$/;
 
     $scope.$watch('camera.CameraIp', function (newVal) {
       if (updatingFromFields || !newVal) return;
@@ -158,8 +187,8 @@ app.controller('CameraDetailCtrl', ['$scope', '$controller', '$http', '$state', 
       var match = newVal.match(loginRegex);
       if (match) {
         updatingFromUrl = true;
-        $scope.camera.Login = match[2];
-        $scope.camera.Password = match[3];
+        $scope.camera.Login = match[2] || '';
+        $scope.camera.Password = match[3] || '';
         updatingFromUrl = false;
       }
     });
@@ -167,14 +196,28 @@ app.controller('CameraDetailCtrl', ['$scope', '$controller', '$http', '$state', 
     $scope.$watchGroup(['camera.Login', 'camera.Password'], function (newValues) {
       if (updatingFromUrl) return;
 
-      var url = $scope.camera.CameraIp;
-      if (!url) return;
+      var currentUrl = $scope.camera.CameraIp;
+      if (!currentUrl) return; // Nothing to update
 
-      var match = url.match(loginRegex);
+      var match = currentUrl.match(loginRegex);
       if (match) {
-        var newLogin = newValues[0] || '';
-        var newPassword = newValues[1] || '';
-        var newUrl = match[1] + newLogin + ':' + newPassword + '@' + match[4];
+        var protocol = match[1];
+        var host = match[4] || '';
+        var loginField = newValues[0] || '';
+        var passwordField = newValues[1] || '';
+
+        var credentials = '';
+        if (loginField !== '') {
+          if (passwordField !== '') {
+            credentials = loginField + ':' + passwordField + '@';
+          } else {
+            credentials = loginField + '@';
+          }
+        }
+
+        var newUrl = protocol + credentials + host;
+        if (newUrl === currentUrl) return;
+
         updatingFromFields = true;
         $scope.camera.CameraIp = newUrl;
         updatingFromFields = false;
