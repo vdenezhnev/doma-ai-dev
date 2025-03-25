@@ -227,7 +227,8 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
         $scope.abonent = new Abonent(angular.copy($stateParams.abonent));
 
         $scope.model = {
-            allowedFloors: $scope.abonent.floors.join(",")
+            allowedFloors: $scope.abonent.floors.join(","),
+            allowedFloorsError: false,
         };
         $scope.$watch('model.allowedFloors', function(newVal) {
             if (newVal) {
@@ -238,6 +239,29 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
                 $scope.abonent.floors = [];
             }
         });
+        $scope.checkAllowedFloors = function(value) {
+            // Regex allows negative numbers and numbers separated by commas
+            const regex = /^-?\d+(,-?\d+)*$/;
+
+            // Allow empty input (if that's acceptable, remove this check if input is required)
+            if (!value) {
+                $scope.model.allowedFloorsError = false;
+                return;
+            }
+
+            // Check if the value matches the regex pattern
+            if (!regex.test(value)) {
+                $scope.model.allowedFloorsError = true;
+                return;
+            }
+
+            // Split the string into an array of trimmed numbers
+            const numbers = value.split(",").map(item => item.trim());
+
+            // Check for duplicates by comparing array length to the size of a Set (which holds only unique values)
+            const uniqueNumbers = new Set(numbers);
+            $scope.model.allowedFloorsError = uniqueNumbers.size !== numbers.length;
+        };
 
         $scope.lowerFloorValidation = function() {
             var val = $scope.abonent.lowerFloor;

@@ -36,14 +36,17 @@
              ng-model="abonent.lowerFloor">
     </div>
 
-    <div class="form-group">
+    <div class="form-group" ng-init="allowedFloorsError=false">
       <label translate>html.abonent.allowed_floors</label>
       <input class="form-control"
              type="text"
              name="allowedFloors"
              ng-model="model.allowedFloors"
-             ng-change="model.allowedFloors = model.allowedFloors"
-             placeholder="{{ 'html.abonent.allowed_floors_placeholder' | translate }}">
+             placeholder="{{ 'html.abonent.allowed_floors_placeholder' | translate }}"
+             ng-change="checkAllowedFloors(model.allowedFloors)">
+      <span style="font-size: 12px; color: red" ng-show="model.allowedFloorsError" translate>
+        html.abonent.allowed_floor_error
+      </span>
     </div>
 
     <div class="form-group">
