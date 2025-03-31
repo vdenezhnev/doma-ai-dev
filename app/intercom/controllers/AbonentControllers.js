@@ -134,7 +134,8 @@ app.controller('AbonentCreateCtrl', ['$scope', '$state', 'Abonent', 'Device',
 
         $scope.onlyNumbersExternalId = function () {
             var val = $scope.abonent.externalId;
-            $scope.abonent.externalId = val.replace(/[^0-9]/g, '');
+            console.log(parseInt(val.replace(/[^0-9]/g, '')))
+            $scope.abonent.externalId = parseInt(val.replace(/[^0-9]/g, '')) < 16777215  ? val.replace(/[^0-9]/g, '') : 16777215
         }
 
         $scope.onlyNumbersFloor = function () {
@@ -409,6 +410,69 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
                 notify(gettextCatalog.getString('camera.camera_deleted'));
                 $scope.loadAbonentCameras();
             });
+        }
+
+        $scope.pacsCodes = [];
+
+        $scope.loadPacsCodes = function() {
+            var params = {
+                AbonentId: $scope.abonent.id,
+                Action: 'GetAbonentPACSCodes',
+            };
+
+            $http.get(settings.API_URL + '?' + $httpParamSerializer(params)).then(function(response) {
+                $scope.pacsCodes = response.data.pacsCodes || [];
+            });
+        };
+
+        $scope.loadPacsCodes();
+
+        $scope.addPacsCode = function() {
+            $scope.pacsCodes.push({
+                value: 0,
+                pacsInterfaceType: "wiegand26",
+                isMain: false,
+                description: "",
+            });
+        };
+
+        $scope.deletePacsCode = function(index) {
+            $scope.pacsCodes = $scope.pacsCodes.filter((_, i) => i !== index)
+        };
+
+        $scope.savePacsCodes = function() {
+            var data = {
+                AbonentId: $scope.abonent.id,
+                Action: 'UpdateAbonentPACSCodes',
+                PacsCodes: $scope.pacsCodes,
+            };
+
+            $http.post(settings.API_URL, data).then(function(response) {
+                notify(gettextCatalog.getString('abonents.pacsCodes_updated'));
+            });
+        };
+
+        $scope.setMainPacsCode = function(selectedIndex) {
+            if ($scope.pacsCodes[selectedIndex].isMain) {
+                angular.forEach($scope.pacsCodes, function(pacsCode, index) {
+                    if (index !== selectedIndex) {
+                        pacsCode.isMain = false;
+                    }
+                });
+            }
+        };
+
+        $scope.limitValue = function(pacsCode) {
+            if (pacsCode.value && pacsCode.value > 100) {
+                pacsCode.value = 100;
+            }
+        };
+
+        $scope.pacsValidation = function (value) {
+            var val = value;
+            var res = val.replace(/[^0-9]/g, '');
+            res = res < 16777215  ? res : 16777215;
+            return res;
         }
 
         $controller('ObjectWatchChangesCtrl', {
