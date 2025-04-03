@@ -471,9 +471,14 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
         $scope.pacsValidation = function (value) {
             var val = value;
             var res = val.replace(/[^0-9]/g, '');
-            res = res < 16777215  ? res : 16777215;
             return res;
         }
+
+        $scope.hasPacsError = function() {
+            return $scope.pacsCodes.some(function(field) {
+                return field.value > 16777215;
+            });
+        };
 
         $controller('ObjectWatchChangesCtrl', {
             $scope: $scope,

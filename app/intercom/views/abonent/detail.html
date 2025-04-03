@@ -13,7 +13,7 @@
                     <ng-include src="'app/intercom/views/abonent/form.html'"></ng-include>
 
                     <div class="form-actions">
-                        <button ng-disabled="model.allowedFloorsError" type="submit" class="btn blue" validation-submit="AbonentForm" ng-click="save()" translate>html.defaults.update_title</button>
+                        <button ng-disabled="model.allowedFloorsError || abonent.externalId > 16777215" type="submit" class="btn blue" validation-submit="AbonentForm" ng-click="save()" translate>html.defaults.update_title</button>
                     </div>
                 </div>
             </div>

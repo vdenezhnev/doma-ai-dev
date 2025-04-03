@@ -36,12 +36,20 @@
                        ng-model-options="{debounce: 500}" class="form-control">
               </th>
               <th class="filter-date form-inline nowrap"></th>
-              <th></th>
-              <th></th>
+              <th>
+                <select ng-model="statusFilter" ng-change="updateStatus()">
+                  <option value="">------</option>
+                  <option value="online">Online</option>
+                  <option value="offline">Offline</option>
+                </select>
+              </th>
+              <th>
+
+              </th>
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="camera in cameras">
+            <tr ng-repeat="camera in cameras | filter:filterByOnline">
               <td>
                 <input type="checkbox"
                        style="cursor: pointer"

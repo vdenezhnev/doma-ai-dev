@@ -6,6 +6,7 @@ app.controller('CamerasListCtrl', ['$scope', 'Api', 'settings', '$filter', 'noti
     $scope.loadedAllCameras = false;
     $scope.selectedCameras = [];
     $scope.filter = {}
+    $scope.updatedAllStatuses = false;
 
     $scope.loadCameras = function (reset) {
       if (reset) $scope.skip = 0;
@@ -28,6 +29,7 @@ app.controller('CamerasListCtrl', ['$scope', 'Api', 'settings', '$filter', 'noti
         }
 
         $scope.loadedAllCameras = response.data.length < $scope.take;
+        $scope.updatedAllStatuses = false;
       });
     };
 
@@ -84,6 +86,46 @@ app.controller('CamerasListCtrl', ['$scope', 'Api', 'settings', '$filter', 'noti
         $scope.selectedCameras.splice(index, 1);
       } else {
         $scope.selectedCameras.push(entry);
+      }
+    };
+
+    $scope.filterByOnline = function(camera) {
+      if (!$scope.statusFilter) {
+        return true;
+      }
+
+      if ($scope.statusFilter === 'online') {
+        return camera.online === true;
+      }
+
+      if ($scope.statusFilter === 'offline') {
+        return camera.online === false;
+      }
+
+      return true;
+    };
+
+
+    $scope.updateStatus = function() {
+      if (!$scope.updatedAllStatuses) {
+        const statusPromises = $scope.cameras.map(camera =>
+          Api.get(settings.API_URL, {
+            'Action': 'CheckCameraStatus',
+            'CameraId': camera.id
+          }).then(response => {
+            const updatedCamera = $scope.cameras.find(c => c.id === camera.id);
+            if (updatedCamera) {
+              updatedCamera.online = response.data.online;
+            }
+          }).catch(error => {
+            console.error(`Failed to fetch status for Camera ID ${camera.id}:`, error);
+          })
+        );
+
+        Promise.all(statusPromises).then(results => {
+          notify($filter('translate')('NOTIFY_CAMERA_STATUS_UPDATED'));
+        });
+        $scope.updatedAllStatuses = true;
       }
     };
 
