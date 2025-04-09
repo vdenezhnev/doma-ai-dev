@@ -149,6 +149,18 @@ app.controller('AbonentCreateCtrl', ['$scope', '$state', 'Abonent', 'Device',
             if (val > 200 && val !== 123456) $scope.abonent.floor = 200;
         }
 
+        $scope.pacsValidation = function (value) {
+            var val = value;
+            var res = val.replace(/[^0-9]/g, '');
+            return res;
+        }
+
+        $scope.hasPacsError = function() {
+            return $scope.pacsCodes.some(function(field) {
+                return field.value > 16777215;
+            });
+        };
+
         $scope.devices = Device.query();
     }
 ]);
@@ -479,6 +491,56 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
                 return field.value > 16777215;
             });
         };
+
+        $scope.convertTo6DigitHex =  function (num) {
+            const hexDigits = "0123456789ABCDEF";
+            let hex = "";
+            if (num === 0) {
+                hex = "0";
+            } else {
+                while (num > 0) {
+                    const remainder = num % 16;
+                    // Prepend the corresponding hex digit.
+                    hex = hexDigits[remainder] + hex;
+                    num = Math.floor(num / 16);
+                }
+            }
+
+            while (hex.length < 6) {
+                hex = "0" + hex;
+            }
+            return hex;
+        }
+
+        $scope.getWiegandString = function (fullCode) {
+
+
+            function hexDigitToDec(char) {
+                const hexDigits = "0123456789ABCDEF";
+                // Assume input char is uppercase and valid.
+                return hexDigits.indexOf(char);
+            }
+
+            function hexToDec(hexStr) {
+                let dec = 0;
+                for (let i = 0; i < hexStr.length; i++) {
+                    dec = dec * 16 + hexDigitToDec(hexStr[i]);
+                }
+                return dec;
+            }
+
+            const hexString = $scope.convertTo6DigitHex(fullCode);
+
+            const facilityHexRaw = hexString.substring(0, 2);
+            const cardHex = hexString.substring(2);
+
+            let facilityRaw = hexToDec(facilityHexRaw);
+            const card = hexToDec(cardHex);
+
+            const facility = (facilityRaw > 0x7F) ? facilityRaw / 2 : facilityRaw;
+
+            return Math.floor(facility).toString() + ", " + card;
+        }
 
         $controller('ObjectWatchChangesCtrl', {
             $scope: $scope,

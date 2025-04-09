@@ -392,6 +392,8 @@
       <tr>
         <th translate>html.abonent.pacsCodes.isMain</th>
         <th translate>html.abonent.pacsCodes.id</th>
+        <th>HEX</th>
+        <th>PROX</th>
         <th translate>html.abonent.pacsCodes.comment</th>
         <th style="width: 1px"></th>
       </tr>
@@ -401,6 +403,7 @@
         <td>
           <input type="checkbox" ng-model="pacsCode.isMain" ng-change="setMainPacsCode($index)">
         </td>
+
         <td>
           <input
               class="form-control"
@@ -408,10 +411,13 @@
               ng-model="pacsCode.value"
               ng-change="pacsCode.value = pacsValidation(pacsCode.value)"
           >
+
           <span class="text-danger" ng-if="pacsCode.value > 16777215" translate>
             html.abonent.pacsCodes.error
           </span>
         </td>
+        <td>{{ convertTo6DigitHex(pacsCode.value) }}</td>
+        <td>{{ getWiegandString(pacsCode.value) }}</td>
         <td><input class="form-control" type="text" ng-model="pacsCode.description"></td>
         <td>
           <a ng-click="deletePacsCode($index)" class="btn default btn-sm"><i
@@ -422,7 +428,7 @@
       </tbody>
       <tfoot>
       <tr>
-        <td colspan="3">
+        <td colspan="5">
           <button ng-disabled="hasPacsError()" type="button" class="btn btn-sm blue" ng-click="savePacsCodes()" translate>html.defaults.save_title
           </button>
           <a ng-click="addPacsCode()" class="btn btn-sm default"><i class="fa fa-plus"></i>

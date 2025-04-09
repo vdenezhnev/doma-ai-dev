@@ -49,7 +49,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="camera in cameras | filter:filterByOnline">
+            <tr ng-repeat="camera in cameras | filter:filterByOnline | orderBy:'-online'">
               <td>
                 <input type="checkbox"
                        style="cursor: pointer"
