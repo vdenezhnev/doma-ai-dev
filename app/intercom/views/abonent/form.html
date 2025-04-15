@@ -56,12 +56,18 @@
 
     <div class="form-group">
       <label translate>html.abonent.external_id_display</label>
-      <input class="form-control" ng-change="abonent.externalId = pacsValidation(abonent.externalId)"
-             type="text" name="externalId"
-             ng-model="abonent.externalId">
+      <input class="form-control"
+             type="text"
+             name="externalId"
+             ng-model="abonent.externalId"
+             ng-change="abonent.externalId = pacsValidation(abonent.externalId)">
+
       <span class="text-danger" ng-if="abonent.externalId > 16777215" translate>
-            html.abonent.pacsCodes.error
-          </span>
+          html.abonent.pacsCodes.error
+      </span>
+      <span class="text-danger" ng-if="duplicateValues.indexOf(+abonent.externalId) !== -1" translate>
+          html.abonent.pacsCodes.errorDuplicate
+      </span>
     </div>
 
     <div class="form-group" ng-if="showRfid">
@@ -411,11 +417,17 @@
           <span class="text-danger" ng-if="pacsCode.value > 16777215" translate>
             html.abonent.pacsCodes.error
           </span>
+          <span class="text-danger" ng-if="duplicateValues.indexOf(pacsCode.value) !== -1" translate>
+            html.abonent.pacsCodes.errorDuplicate
+          </span>
         </td>
-        <td><input class="form-control" type="text" ng-model="pacsCode.description"></td>
         <td>
-          <a ng-click="deletePacsCode($index)" class="btn default btn-sm"><i
-              class="fa fa-trash"></i></a>
+          <input class="form-control" type="text" ng-model="pacsCode.description">
+        </td>
+        <td>
+          <a ng-click="deletePacsCode($index)" class="btn default btn-sm">
+            <i class="fa fa-trash"></i>
+          </a>
         </td>
       </tr>
 
@@ -423,7 +435,8 @@
       <tfoot>
       <tr>
         <td colspan="5">
-          <button ng-disabled="hasPacsError()" type="button" class="btn btn-sm blue" ng-click="savePacsCodes()" translate>html.defaults.save_title
+          <button ng-disabled="hasPacsError() || hasDuplicates()" type="button" class="btn btn-sm blue" ng-click="savePacsCodes()"
+                  translate>html.defaults.save_title
           </button>
           <a ng-click="addPacsCode()" class="btn btn-sm default"><i class="fa fa-plus"></i>
             <span translate>html.defaults.add_title</span></a>

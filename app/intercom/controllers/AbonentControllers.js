@@ -134,7 +134,6 @@ app.controller('AbonentCreateCtrl', ['$scope', '$state', 'Abonent', 'Device',
 
         $scope.onlyNumbersExternalId = function () {
             var val = $scope.abonent.externalId;
-            console.log(parseInt(val.replace(/[^0-9]/g, '')))
             $scope.abonent.externalId = parseInt(val.replace(/[^0-9]/g, '')) < 16777215  ? val.replace(/[^0-9]/g, '') : 16777215
         }
 
@@ -428,9 +427,7 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
         $scope.pacsCodeMode = {
             state: "" + localStorage.getItem("pacsCodeMode") || "DEC"
         };
-        $scope.$watch("pacsCodeMode", function(newVal, oldVal) {
-            console.log("pacsCodeMode changed from", oldVal, "to", newVal);
-        });
+
         $scope.updateMode = function() {
             localStorage.setItem("pacsCodeMode", $scope.pacsCodeMode.state);
             angular.forEach($scope.pacsCodes, function(pacsCode) {
@@ -586,6 +583,42 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
         //
         //     return Math.floor(facility).toString() + ", " + card;
         // }
+
+        $scope.checkDuplicates = function() {
+            var allValues = [];
+            if ($scope.abonent.externalId) {
+                allValues.push(Number($scope.abonent.externalId));
+            }
+            angular.forEach($scope.pacsCodes, function(item) {
+                if (item.value || item.value === 0) { // allow zero
+                    allValues.push(Number(item.value));
+                }
+            });
+
+            var counts = {};
+            angular.forEach(allValues, function(val) {
+                counts[val] = (counts[val] || 0) + 1;
+            });
+
+            $scope.duplicateValues = [];
+            angular.forEach(counts, function(count, val) {
+                if (count > 1) {
+                    $scope.duplicateValues.push(Number(val));
+                }
+            });
+        };
+
+        $scope.$watch('abonent.externalId', function(newValues, oldValues) {
+            $scope.checkDuplicates();
+        });
+
+        $scope.$watch('pacsCodes', function(newVal, oldVal) {
+            $scope.checkDuplicates();
+        }, true);
+
+        $scope.hasDuplicates = function() {
+            return $scope.duplicateValues && $scope.duplicateValues.length > 0;
+        };
 
         $controller('ObjectWatchChangesCtrl', {
             $scope: $scope,
