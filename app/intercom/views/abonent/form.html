@@ -390,10 +390,11 @@
     <table ng-show="abonent.id" class="table table-bordered table-hover" ng-class="{'rtl-text': isRTL}">
       <thead>
       <tr>
-        <th translate>html.abonent.pacsCodes.isMain</th>
-        <th translate>html.abonent.pacsCodes.id</th>
-        <th>HEX</th>
-        <th>PROX</th>
+        <th>
+          <select ng-model="pacsCodeMode.state" ng-change="updateMode()"
+                  ng-options="mode for mode in modes">
+          </select>
+        </th>
         <th translate>html.abonent.pacsCodes.comment</th>
         <th style="width: 1px"></th>
       </tr>
@@ -401,23 +402,16 @@
       <tbody>
       <tr ng-repeat="pacsCode in pacsCodes">
         <td>
-          <input type="checkbox" ng-model="pacsCode.isMain" ng-change="setMainPacsCode($index)">
-        </td>
-
-        <td>
-          <input
-              class="form-control"
-              type="text"
-              ng-model="pacsCode.value"
-              ng-change="pacsCode.value = pacsValidation(pacsCode.value)"
-          >
+          <input class="form-control"
+                 type="text"
+                 ng-model="pacsCode.displayValue"
+                 ng-change="pacsCode.value = parsePacs(pacsCode.displayValue, pacsCodeMode.state)"
+                 ng-blur="pacsCode.displayValue = formatPacs(pacsCode.value, pacsCodeMode.state)" />
 
           <span class="text-danger" ng-if="pacsCode.value > 16777215" translate>
             html.abonent.pacsCodes.error
           </span>
         </td>
-        <td>{{ convertTo6DigitHex(pacsCode.value) }}</td>
-        <td>{{ getWiegandString(pacsCode.value) }}</td>
         <td><input class="form-control" type="text" ng-model="pacsCode.description"></td>
         <td>
           <a ng-click="deletePacsCode($index)" class="btn default btn-sm"><i

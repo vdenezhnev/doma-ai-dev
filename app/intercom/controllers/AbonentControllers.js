@@ -187,8 +187,6 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
             $scope.$broadcast('end-date-changed');
         }
 
-
-
         function startDateBeforeRender ($view, $dates, $leftDate, $upDate, $rightDate, endDate) {
             if (endDate) {
                 var activeDate = moment(new Date(endDate)).subtract(1, $view).add(1, 'minute');
@@ -425,6 +423,50 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
         }
 
         $scope.pacsCodes = [];
+        $scope.modes = ["DEC", "HEX", "PROX"];
+
+        $scope.pacsCodeMode = {
+            state: "" + localStorage.getItem("pacsCodeMode") || "DEC"
+        };
+        $scope.$watch("pacsCodeMode", function(newVal, oldVal) {
+            console.log("pacsCodeMode changed from", oldVal, "to", newVal);
+        });
+        $scope.updateMode = function() {
+            localStorage.setItem("pacsCodeMode", $scope.pacsCodeMode.state);
+            angular.forEach($scope.pacsCodes, function(pacsCode) {
+                pacsCode.displayValue = $scope.formatPacs(pacsCode.value, $scope.pacsCodeMode.state);
+            });
+        };
+
+        // Conversion functions.
+        $scope.formatPacs = function(value, mode) {
+            if (value == null || value === "") return "";
+            if (mode === "HEX") {
+                return Number(value).toString(16).toUpperCase();
+            } else if (mode === "PROX") {
+                // Example: facility = floor(value / 65536); card = value % 65536.
+                const facility = Math.floor(Number(value) / 65536);
+
+                const card = Number(value) % 65536;
+                return ((facility > 0x7F) ? facility / 2 : facility) + "," + card;
+            }
+            // DEC mode
+            return value.toString();
+        };
+
+        $scope.parsePacs = function(display, mode) {
+            if (!display) return 0;
+            if (mode === "HEX") {
+                return parseInt(display, 16) || 0;
+            } else if (mode === "PROX") {
+                var parts = display.split(",");
+                if (parts.length === 2) {
+                    return (parseInt(parts[0], 10) || 0) * 65536 + (parseInt(parts[1], 10) || 0);
+                }
+                return 0;
+            }
+            return parseInt(display, 10) || 0;
+        };
 
         $scope.loadPacsCodes = function() {
             var params = {
@@ -434,6 +476,9 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
 
             $http.get(settings.API_URL + '?' + $httpParamSerializer(params)).then(function(response) {
                 $scope.pacsCodes = response.data.pacsCodes || [];
+                angular.forEach($scope.pacsCodes, function(pacsCode) {
+                    pacsCode.displayValue = $scope.formatPacs(pacsCode.value, $scope.pacsCodeMode.state);
+                });
             });
         };
 
@@ -492,55 +537,55 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
             });
         };
 
-        $scope.convertTo6DigitHex =  function (num) {
-            const hexDigits = "0123456789ABCDEF";
-            let hex = "";
-            if (num === 0) {
-                hex = "0";
-            } else {
-                while (num > 0) {
-                    const remainder = num % 16;
-                    // Prepend the corresponding hex digit.
-                    hex = hexDigits[remainder] + hex;
-                    num = Math.floor(num / 16);
-                }
-            }
-
-            while (hex.length < 6) {
-                hex = "0" + hex;
-            }
-            return hex;
-        }
-
-        $scope.getWiegandString = function (fullCode) {
-
-
-            function hexDigitToDec(char) {
-                const hexDigits = "0123456789ABCDEF";
-                // Assume input char is uppercase and valid.
-                return hexDigits.indexOf(char);
-            }
-
-            function hexToDec(hexStr) {
-                let dec = 0;
-                for (let i = 0; i < hexStr.length; i++) {
-                    dec = dec * 16 + hexDigitToDec(hexStr[i]);
-                }
-                return dec;
-            }
-
-            const hexString = $scope.convertTo6DigitHex(fullCode);
-
-            const facilityHexRaw = hexString.substring(0, 2);
-            const cardHex = hexString.substring(2);
-
-            let facilityRaw = hexToDec(facilityHexRaw);
-            const card = hexToDec(cardHex);
-
-            const facility = (facilityRaw > 0x7F) ? facilityRaw / 2 : facilityRaw;
-
-            return Math.floor(facility).toString() + ", " + card;
-        }
+        // $scope.convertTo6DigitHex =  function (num) {
+        //     const hexDigits = "0123456789ABCDEF";
+        //     let hex = "";
+        //     if (num === 0) {
+        //         hex = "0";
+        //     } else {
+        //         while (num > 0) {
+        //             const remainder = num % 16;
+        //             // Prepend the corresponding hex digit.
+        //             hex = hexDigits[remainder] + hex;
+        //             num = Math.floor(num / 16);
+        //         }
+        //     }
+        //
+        //     while (hex.length < 6) {
+        //         hex = "0" + hex;
+        //     }
+        //     return hex;
+        // }
+        //
+        // $scope.getWiegandString = function (fullCode) {
+        //
+        //
+        //     function hexDigitToDec(char) {
+        //         const hexDigits = "0123456789ABCDEF";
+        //         // Assume input char is uppercase and valid.
+        //         return hexDigits.indexOf(char);
+        //     }
+        //
+        //     function hexToDec(hexStr) {
+        //         let dec = 0;
+        //         for (let i = 0; i < hexStr.length; i++) {
+        //             dec = dec * 16 + hexDigitToDec(hexStr[i]);
+        //         }
+        //         return dec;
+        //     }
+        //
+        //     const hexString = $scope.convertTo6DigitHex(fullCode);
+        //
+        //     const facilityHexRaw = hexString.substring(0, 2);
+        //     const cardHex = hexString.substring(2);
+        //
+        //     let facilityRaw = hexToDec(facilityHexRaw);
+        //     const card = hexToDec(cardHex);
+        //
+        //     const facility = (facilityRaw > 0x7F) ? facilityRaw / 2 : facilityRaw;
+        //
+        //     return Math.floor(facility).toString() + ", " + card;
+        // }
 
         $controller('ObjectWatchChangesCtrl', {
             $scope: $scope,
