@@ -445,7 +445,7 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
                 const facility = Math.floor(Number(value) / 65536);
 
                 const card = Number(value) % 65536;
-                return ((facility > 0x7F) ? facility / 2 : facility) + "," + card;
+                return ((facility > 0x7F) ? Math.floor(facility / 2) : facility) + "," + card;
             }
             // DEC mode
             return value.toString();
