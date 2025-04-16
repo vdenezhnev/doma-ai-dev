@@ -175,6 +175,16 @@ app.config(['$stateProvider', 'settings', function ($stateProvider, settings) {
       templateUrl: settings.TEMPLATE_DIR + 'openy_payments/list.html'
     })
 
+    .state('admin.sipServers', {
+      abstract: true,
+      templateUrl: settings.TEMPLATE_DIR + 'sipServers/base.html'
+    })
+    .state('admin.sipServers.list', {
+      url: "sip_servers",
+      controller: 'SipServersListCtrl',
+      templateUrl: settings.TEMPLATE_DIR + 'sipServers/list.html'
+    })
+
 
     .state('login', {
       url: "/login",

@@ -20,6 +20,7 @@ app.constant('LOCALE_RU', {
     NAVBAR_REG_KEYS: 'Ключи',
     NAVBAR_POSTAMATES: 'Постаматы',
     NAVBAR_PAYMENTS: 'Платежи',
+    NAVBAR_SIP_SERVERS: 'SIP серверы',
 
     BUTTON_LOAD_MORE: 'Загрузить еще',
     BUTTON_ADD_LOCK: 'Добавить замок',
@@ -82,6 +83,12 @@ app.constant('LOCALE_RU', {
     TABLE_CELL_USER: 'Пользователь',
     TABLE_CELL_POSTAMAT_CELL_NUMBER: 'Номер',
     TABLE_CELL_LOCAL_SERVER: 'Локальный сервер',
+    TABLE_CELL_SIP_ID: "ID",
+    TABLE_CELL_SIP_NAME: "Название",
+    TABLE_CELL_SIP_COMPANY_ID: "ID компании",
+    TABLE_CELL_SIP_COMPANY_NAME: "Название компании",
+    TABLE_CELL_SIP_REGISTERED: "Зарегистрирован",
+    TABLE_CELL_SIP_MODIFIED: "Изменён",
 
     COMPONENT_DATETIME_FROM: 'от',
     COMPONENT_DATETIME_TO: 'до',
@@ -226,6 +233,8 @@ app.constant('LOCALE_RU', {
     "TABLE_CELL_CAMERA_ONLINE": "Онлайн",
     "TABLE_CELL_CAMERA_OFFLINE": "Оффлайн",
     CAMERAS_CHECK_STATUS: "Проверить статус",
+
+    SIP_SERVERS_TITLE: "SIP серверы",
 
     REGISTERED_KEYS_TITLE: 'Ключи',
 

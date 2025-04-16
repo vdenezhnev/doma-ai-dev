@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header" ng-class="{'navbar-right': isRTL}">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu-navbar-collapse"
@@ -52,6 +52,10 @@
 
         <li>
           <a ui-sref="admin.openy_payments.list" ui-sref-active="active"><i class="fa fa-credit-card fa-fw"></i> {{'NAVBAR_PAYMENTS' | translate}}</a>
+        </li>
+
+        <li>
+          <a ui-sref="admin.sipServers.list" ui-sref-active="active"><i class="fa fa-archive fa-fw"></i> {{'NAVBAR_SIP_SERVERS' | translate}}</a>
         </li>
       </ul>
 

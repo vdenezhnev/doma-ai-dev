@@ -20,6 +20,7 @@ app.constant('LOCALE_EN', {
     NAVBAR_REG_KEYS: 'Keys',
     NAVBAR_POSTAMATES: 'Postamates',
     NAVBAR_PAYMENTS: 'Payments',
+    NAVBAR_SIP_SERVERS: 'SIP servers',
 
     BUTTON_LOAD_MORE: 'Load more',
     BUTTON_ADD_LOCK: 'Add lock',
@@ -82,6 +83,12 @@ app.constant('LOCALE_EN', {
     TABLE_CELL_USER: 'User',
     TABLE_CELL_POSTAMAT_CELL_NUMBER: 'Cell number',
     TABLE_CELL_LOCAL_SERVER: 'Local server',
+    TABLE_CELL_SIP_ID: "ID",
+    TABLE_CELL_SIP_NAME: "Name",
+    TABLE_CELL_SIP_COMPANY_ID: "Company ID",
+    TABLE_CELL_SIP_COMPANY_NAME: "Company name",
+    TABLE_CELL_SIP_REGISTERED: "Registered",
+    TABLE_CELL_SIP_MODIFIED: "Modified",
 
     COMPONENT_DATETIME_FROM: 'from',
     COMPONENT_DATETIME_TO: 'to',
@@ -226,6 +233,8 @@ app.constant('LOCALE_EN', {
     "TABLE_CELL_CAMERA_ONLINE": "Online",
     "TABLE_CELL_CAMERA_OFFLINE": "Offline",
     CAMERAS_CHECK_STATUS: "Check status",
+
+    SIP_SERVERS_TITLE: "SIP Servers",
 
     REGISTERED_KEYS_TITLE: 'Keys',
 
