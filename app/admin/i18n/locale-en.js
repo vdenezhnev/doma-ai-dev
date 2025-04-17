@@ -21,6 +21,7 @@ app.constant('LOCALE_EN', {
     NAVBAR_POSTAMATES: 'Postamates',
     NAVBAR_PAYMENTS: 'Payments',
     NAVBAR_SIP_SERVERS: 'SIP servers',
+    NAVBAR_DOOR_INTERCOMS: "Door intercoms",
 
     BUTTON_LOAD_MORE: 'Load more',
     BUTTON_ADD_LOCK: 'Add lock',
@@ -309,4 +310,13 @@ app.constant('LOCALE_EN', {
     NOTIFY_MESSAGE_UNBAN_CONFIRM: "Are you sure you want to unban these users?",
     NOTIFY_UNBANNED: "The users has been unbanned successfully.",
     BANS_BACK_TO_USERS: "Back to Users",
+
+    DOOR_INTERCOMS_TITLE: "Door intercoms",
+    TABLE_CELL_DOOR_INTERCOM_ID: "Intercom ID",
+    TABLE_CELL_DOOR_INTERCOM_COMPANY_ID: "Company ID",
+    TABLE_CELL_DOOR_INTERCOM_COMPANY_NAME: "Company name",
+    TABLE_CELL_DOOR_INTERCOM_ABONENT_COUNT: "Abonent count",
+    TABLE_CELL_DOOR_INTERCOM_NAME: "Name",
+    TABLE_CELL_DOOR_INTERCOM_DESCRIPTION: "Description",
+    TABLE_CELL_DOOR_INTERCOM_ADDED: "Added"
 });

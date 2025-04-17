@@ -21,6 +21,7 @@ app.constant('LOCALE_RU', {
     NAVBAR_POSTAMATES: 'Постаматы',
     NAVBAR_PAYMENTS: 'Платежи',
     NAVBAR_SIP_SERVERS: 'SIP серверы',
+    NAVBAR_DOOR_INTERCOMS: "Домофоны",
 
     BUTTON_LOAD_MORE: 'Загрузить еще',
     BUTTON_ADD_LOCK: 'Добавить замок',
@@ -309,4 +310,13 @@ app.constant('LOCALE_RU', {
     NOTIFY_MESSAGE_UNBAN_CONFIRM: "Вы уверены, что хотите разблокировать этих пользователей?",
     NOTIFY_UNBANNED: "Пользователи успешно разблокированы.",
     BANS_BACK_TO_USERS: "Вернуться ко всем пользователям",
+
+    DOOR_INTERCOMS_TITLE: "Домофоны",
+    TABLE_CELL_DOOR_INTERCOM_ID: "ID домофона",
+    TABLE_CELL_DOOR_INTERCOM_COMPANY_ID: "ID компании",
+    TABLE_CELL_DOOR_INTERCOM_COMPANY_NAME: "Название компании",
+    TABLE_CELL_DOOR_INTERCOM_ABONENT_COUNT: "Количество абонентов",
+    TABLE_CELL_DOOR_INTERCOM_NAME: "Название",
+    TABLE_CELL_DOOR_INTERCOM_DESCRIPTION: "Описание",
+    TABLE_CELL_DOOR_INTERCOM_ADDED: "Добавлен"
 });

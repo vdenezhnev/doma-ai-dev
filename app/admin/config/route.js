@@ -185,6 +185,16 @@ app.config(['$stateProvider', 'settings', function ($stateProvider, settings) {
       templateUrl: settings.TEMPLATE_DIR + 'sipServers/list.html'
     })
 
+    .state('admin.doorIntercoms', {
+      abstract: true,
+      templateUrl: settings.TEMPLATE_DIR + 'door_intercoms/base.html'
+    })
+    .state('admin.doorIntercoms.list', {
+      url: "door_intercoms",
+      controller: 'DoorIntercomsListCtrl',
+      templateUrl: settings.TEMPLATE_DIR + 'door_intercoms/list.html'
+    })
+
 
     .state('login', {
       url: "/login",
