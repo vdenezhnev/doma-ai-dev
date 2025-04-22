@@ -1,305 +1,386 @@
 <div class="col-lg-6">
 
-    <div class="form-group">
-        <label translate>COMPANIES_FORM_NAME</label>
-        <input class="form-control" ng-model="company.companyName">
-    </div>
+  <div class="form-group">
+    <label translate>COMPANIES_FORM_NAME</label>
+    <input class="form-control" ng-model="company.companyName">
+  </div>
 
-    <div class="form-group">
-        <label translate>COMPANIES_FORM_INN</label>
-        <input class="form-control" ng-model="company.inn">
-    </div>
+  <div class="form-group">
+    <label translate>COMPANIES_FORM_INN</label>
+    <input class="form-control" ng-model="company.inn">
+  </div>
 
-    <div class="form-group">
-        <label translate>COMPANIES_FORM_ADDRESS</label>
-        <input class="form-control" ng-model="company.address.streetAddress">
-    </div>
+  <div class="form-group">
+    <label translate>COMPANIES_FORM_ADDRESS</label>
+    <input class="form-control" ng-model="company.address.streetAddress">
+  </div>
 
-    <div class="form-group">
-        <label translate>COMPANIES_FORM_LANGUAGE</label>
-        <select class="form-control"
-                ng-model="company.region">
-            <option ng-repeat="region in ['ru', 'en', 'ar', 'tr']" value="{{ region }}">{{ region }}</option>
-        </select>
-    </div>
+  <div class="form-group">
+    <label translate>COMPANIES_FORM_LANGUAGE</label>
+    <select class="form-control"
+            ng-model="company.region">
+      <option ng-repeat="region in ['ru', 'en', 'ar', 'tr']" value="{{ region }}">{{ region }}</option>
+    </select>
+  </div>
 
-    <div class="form-group">
-        <label translate>COMPANIES_FORM_BRAND</label>
-        <select class="form-control"
-                ng-model="company.brand">
-            <option ng-repeat="brand in brandsList" value="{{ brand }}">{{ brand }}</option>
-        </select>
-    </div>
+  <div class="form-group">
+    <label translate>COMPANIES_FORM_BRAND</label>
+    <select class="form-control"
+            ng-model="company.brand">
+      <option ng-repeat="brand in brandsList" value="{{ brand }}">{{ brand }}</option>
+    </select>
+  </div>
 
-    <div class="form-group">
-        <label translate>COMPANIES_FORM_API_TOKEN</label>
-        <input class="form-control" ng-model="company.serviceCompanyApiKey.token" >
-    </div>
+  <div class="form-group">
+    <label translate>COMPANIES_FORM_API_TOKEN</label>
+    <input class="form-control" ng-model="company.serviceCompanyApiKey.token">
+  </div>
 
-    <h3 translate>COMPANIES_FORM_PHONES_TITLE</h3>
+  <h3 translate>COMPANIES_FORM_PHONES_TITLE</h3>
 
-    <div class="row"></div>
-    <div class="form-group" ng-repeat="phone in company.phoneNumbers track by $index">
-        <div class="input-group">
-            <input type="text" class="form-control" ng-model="company.phoneNumbers[$index]">
-            <span class="input-group-btn">
-                <button class="btn btn-default" ng-disabled="$first" ng-click="company.phoneNumbers.splice($index, 1)"><i class="fa fa-trash"></i></button>
+  <div class="row"></div>
+  <div class="form-group" ng-repeat="phone in company.phoneNumbers track by $index">
+    <div class="input-group">
+      <input type="text" class="form-control" ng-model="company.phoneNumbers[$index]">
+      <span class="input-group-btn">
+                <button class="btn btn-default" ng-disabled="$first"
+                        ng-click="company.phoneNumbers.splice($index, 1)"><i class="fa fa-trash"></i></button>
             </span>
-        </div>
     </div>
+  </div>
 
-    <a class="btn btn-xs btn-default" ng-click="company.phoneNumbers.push('')"><i class="fa fa-plus"></i> {{ 'BUTTON_ADD_PHONE_NUMBER' | translate }}</a>
+  <a class="btn btn-xs btn-default" ng-click="company.phoneNumbers.push('')"><i class="fa fa-plus"></i>
+    {{ 'BUTTON_ADD_PHONE_NUMBER' | translate }}</a>
 
-    <h3 translate>COMPANIES_FORM_SUPPORT_TITLE</h3>
+  <h3 translate>COMPANIES_FORM_SUPPORT_TITLE</h3>
 
-    <div class="row">
-        <div class="col-md-12">
-            <div class="form-group">
-                <label translate>COMPANIES_FORM_SUPPORT_NAME</label>
-                <input class="form-control" type="text" ng-model="company.support.displayName">
-            </div>
-        </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label translate>COMPANIES_FORM_SUPPORT_NAME</label>
+        <input class="form-control" type="text" ng-model="company.support.displayName">
+      </div>
     </div>
+  </div>
 
-    <div class="row">
-        <div class="col-md-6">
-            <div class="form-group">
-                <label translate>COMPANIES_FORM_SUPPORT_PHONE</label>
-                <input class="form-control" type="text" ng-model="company.support.phoneNumber">
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="form-group">
-                <label translate>COMPANIES_FORM_SUPPORT_EMAIL</label>
-                <input class="form-control" type="text" ng-model="company.support.email">
-            </div>
-        </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label translate>COMPANIES_FORM_SUPPORT_PHONE</label>
+        <input class="form-control" type="text" ng-model="company.support.phoneNumber">
+      </div>
     </div>
-
-    <h3 translate>COMPANIES_FORM_USERS_TITLE</h3>
-
-    <div class="row">
-        <div class="col-md-6">
-            <div class="form-group">
-                <label translate>COMPANIES_FORM_CREATE_USER_WHEN_REGISTERING_ABONENT</label>
-                <input type="checkbox" ng-model="company.createAbonentUser" />
-            </div>
-        </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label translate>COMPANIES_FORM_SUPPORT_EMAIL</label>
+        <input class="form-control" type="text" ng-model="company.support.email">
+      </div>
     </div>
+  </div>
 
-        <h3 translate>COMPANIES_FORM_KEYS_TITLE</h3>
+  <h3 translate>COMPANIES_FORM_USERS_TITLE</h3>
 
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label translate>COMPANIES_FORM_CREATE_USER_WHEN_REGISTERING_ABONENT</label>
+        <input type="checkbox" ng-model="company.createAbonentUser"/>
+      </div>
+    </div>
+  </div>
+
+  <h3 translate>COMPANIES_FORM_KEYS_TITLE</h3>
+
+  <div class="form-group">
+    <div class="input-group col-md-6" style="margin-bottom: 15px;">
+      <span class="input-group-addon" style="width: 120px;" translate>COMPANIES_FORM_KEYS_AVAILABLE</span>
+      <input type="number" class="form-control" ng-model="company.keyCount.available">
+    </div>
+    <div class="input-group col-md-6" style="margin-bottom: 15px;" ng-if="!isCreate">
+      <span class="input-group-addon" style="width: 120px;" translate>COMPANIES_FORM_KEYS_USED</span>
+      <input type="text" class="form-control" ng-disabled="true" ng-model="company.keyCount.used">
+    </div>
+    <div class="input-group col-md-6" style="margin-bottom: 15px;" ng-if="!isCreate">
+      <span class="input-group-addon" style="width: 120px;" translate>COMPANIES_FORM_KEYS_REMAINING</span>
+      <input type="text" class="form-control" ng-disabled="true" ng-model="company.keyCount.remain">
+    </div>
+  </div>
+
+</div>
+
+<div class="col-lg-6">
+
+  <h3 translate>COMPANIES_FORM_ADMIN_TITLE</h3>
+
+  <div ng-repeat="contact in company.admins track by $index">
+    <div class="row" ng-if="isCreate">
+      <div class="col-md-12">
         <div class="form-group">
-            <div class="input-group col-md-6" style="margin-bottom: 15px;">
-                <span class="input-group-addon" style="width: 120px;" translate>COMPANIES_FORM_KEYS_AVAILABLE</span>
-                <input type="number" class="form-control" ng-model="company.keyCount.available">
-            </div>
-            <div class="input-group col-md-6" style="margin-bottom: 15px;" ng-if="!isCreate">
-                <span class="input-group-addon" style="width: 120px;" translate>COMPANIES_FORM_KEYS_USED</span>
-                <input type="text" class="form-control" ng-disabled="true" ng-model="company.keyCount.used">
-            </div>
-            <div class="input-group col-md-6" style="margin-bottom: 15px;" ng-if="!isCreate">
-                <span class="input-group-addon" style="width: 120px;" translate>COMPANIES_FORM_KEYS_REMAINING</span>
-                <input type="text" class="form-control" ng-disabled="true" ng-model="company.keyCount.remain">
-            </div>
+          <label translate>COMPANIES_FORM_ADMIN_NAME</label>
+          <input class="form-control" type="text" ng-model="contact.displayName">
         </div>
-
+      </div>
+    </div>
+    <div class="row" ng-if="!isCreate">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label translate>COMPANIES_FORM_ADMIN_NAME</label>
+          <input class="form-control" type="text" ng-model="contact.displayName">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label translate>COMPANIES_FORM_ADMIN_ROLE</label>
+          <select class="form-control"
+                  ng-model="contact.roleId">
+            <option ng-repeat="role in rolesList" value="{{ role.id }}">{{ role.name }}</option>
+          </select>
+        </div>
+      </div>
     </div>
 
-    <div class="col-lg-6">
-
-        <h3 translate>COMPANIES_FORM_ADMIN_TITLE</h3>
-
-        <div ng-repeat="contact in company.admins track by $index">
-            <div class="row" ng-if="isCreate">
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label translate>COMPANIES_FORM_ADMIN_NAME</label>
-                        <input class="form-control" type="text" ng-model="contact.displayName">
-                    </div>
-                </div>
-            </div>
-            <div class="row" ng-if="!isCreate">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label translate>COMPANIES_FORM_ADMIN_NAME</label>
-                        <input class="form-control" type="text" ng-model="contact.displayName">
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label translate>COMPANIES_FORM_ADMIN_ROLE</label>
-                        <select class="form-control"
-                                ng-model="contact.roleId">
-                            <option ng-repeat="role in rolesList" value="{{ role.id }}">{{ role.name }}</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label translate>COMPANIES_FORM_ADMIN_PHONE</label>
-                        <input class="form-control" type="text" ng-model="contact.phoneNumber">
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label translate>COMPANIES_FORM_ADMIN_EMAIL</label>
-                        <input class="form-control" type="text" ng-model="contact.email">
-                    </div>
-                </div>
-            </div>
-            <a class="btn btn-xs btn-default" ng-click="removeAdmin($index)"><i class="fa fa-trash"></i> {{ 'BUTTON_DELETE' | translate }}</a>
-            <hr>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label translate>COMPANIES_FORM_ADMIN_PHONE</label>
+          <input class="form-control" type="text" ng-model="contact.phoneNumber">
         </div>
-
-        <a class="btn btn-primary" ng-click="updateAdmins()" translate>BUTTON_UPDATE_ADMIN_INFO</a>
-
-        <a class="btn btn-default" ng-click="company.admins.push({})"><i class="fa fa-plus"></i> {{ 'BUTTON_ADD_ADMIN' | translate }}</a>
-
-    <div ng-show="isLocalServersData">
-        <h3 translate>COMPANIES_FORM_LOCALSERVERS_TITLE</h3>
-
-        <div ng-repeat="localServer in localServers track by $index" ng-if="!isCreate">
-
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label translate>COMPANIES_FORM_LOCALSERVER_NAME</label>
-                        <input class="form-control" type="text" ng-model="localServer.name">
-                    </div>
-
-                    <div class="form-group">
-                        <label translate>COMPANIES_FORM_KEYS_TITLE</label>
-
-                        <div class="input-group col-md-6" style="margin-bottom: 15px;">
-                            <span class="input-group-addon" style="min-width: 100px;" translate>COMPANIES_FORM_KEYS_AVAILABLE</span>
-                            <input type="number" class="form-control" style="min-width: 100px;" ng-model="localServer.keyCount.available">
-                        </div>
-                        <div class="input-group col-md-6" style="margin-bottom: 15px;">
-                            <span class="input-group-addon" style="min-width: 100px;" translate>COMPANIES_FORM_KEYS_USED</span>
-                            <input type="text" class="form-control" style="min-width: 100px;" ng-disabled="true" ng-model="localServer.keyCount.used">
-                        </div>
-                        <div class="input-group col-md-6" style="margin-bottom: 15px;">
-                            <span class="input-group-addon" style="min-width: 100px;" translate>COMPANIES_FORM_KEYS_REMAINING</span>
-                            <input type="text" class="form-control" style="min-width: 100px;" ng-disabled="true" ng-model="localServer.keyCount.remain">
-                        </div>
-                    </div>
-
-
-                    <div class="form-group">
-                        <label translate>COMPANIES_FORM_IS_PARKING</label>
-                        <input type="checkbox" ng-model="localServer.isParking" />
-                    </div>
-
-                    <div ng-if="localServer.isParking">
-
-                        <div class="form-group">
-
-                            <label translate>COMPANIES_FORM_PARKING_PLACES</label>
-                            <div class="input-group col-md-6" style="margin-bottom: 15px;">
-                                <span class="input-group-addon" style="min-width: 100px;" translate>COMPANIES_FORM_KEYS_AVAILABLE</span>
-                                <input type="number" class="form-control" style="min-width: 100px;" ng-disabled="true" ng-model="localServer.parkingSpace.allPlacesCount">
-                            </div>
-
-                            <div class="input-group col-md-6" style="margin-bottom: 15px;">
-                                <span class="input-group-addon" style="min-width: 100px;" translate>COMPANIES_FORM_KEYS_REMAINING</span>
-                                <input type="text" class="form-control" style="min-width: 100px;" ng-disabled="true" ng-model="localServer.parkingSpace.vacantPlacesCount">
-                            </div>
-                        </div>
-
-                        <div class="form-group" >
-                            <label translate>COMPANIES_FORM_PICTURES</label>
-                            <div class="input-group col-md-12" style="margin-bottom: 15px;" ng-repeat="i in [0]">
-                                <div class="col-md-12" style="margin-bottom: 10px;" ng-if="!!localServer.parkingSpace.pictures[i]" ng-init="imgSrc = getApiImg(localServer.parkingSpace.pictures[i])">
-                                    <img style="max-width: 200px; max-height: 150px; object-fit: cover;" ng-src="{{imgSrc}}" />
-                                </div>
-                                <input type="file" class="form-control" accept="image/png, image/jpeg" ng-model="files" select-ng-files ng-change="uploadLocalServerImage(files, localServer.id, i)" />
-                            </div>
-                        </div>
-
-                        <div class="form-group" >
-                            <label translate>COMPANIES_FORM_ADDRESS</label>
-                            <textarea name="text" class="form-control" rows="1" ng-model="localServer.parkingSpace.address">></textarea>
-                        </div>
-                        <div class="form-group" >
-                            <label translate>COMPANIES_FORM_PARKING_INFO</label>
-                            <textarea name="text" class="form-control" rows="1" ng-model="localServer.parkingSpace.info">></textarea>
-                        </div>
-                        <div class="form-group" >
-                            <label translate>COMPANIES_FORM_PARKING_POLYGON</label>
-                            <textarea name="text" class="form-control" rows="1" ng-model="localServer.parkingSpace.polygon">></textarea>
-                        </div>
-
-                        <div class="form-group">
-
-                            <div class="input-group col-md-6" style="margin-bottom: 15px;">
-                                <span class="input-group-addon" style="min-width: 100px;" translate>CenterLat</span>
-                                <input type="number" class="form-control" style="min-width: 100px;"  ng-model="localServer.parkingSpace.centerLat">
-                            </div>
-
-                            <div class="input-group col-md-6" style="margin-bottom: 15px;">
-                                <span class="input-group-addon" style="min-width: 100px;" translate>CenterLon</span>
-                                <input type="number" class="form-control" style="min-width: 100px;"  ng-model="localServer.parkingSpace.centerLon">
-                            </div>
-
-                            <div class="input-group col-md-6" style="margin-bottom: 15px;">
-                                <span class="input-group-addon" style="min-width: 100px;" translate>Tariff</span>
-                                <input type="number" class="form-control" style="min-width: 100px;"  ng-model="localServer.parkingSpace.currentTariff">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label translate>COMPANIES_FORM_LOCALSERVER_TOKEN</label>
-                            <textarea name="text" class="form-control" rows="5" style="resize: none;" readonly>SAS-TOKEN {{localServer.localServerApiKey.apiKeyId}}:{{localServer.localServerApiKey.token}}</textarea>
-                        </div>
-                        <div class="form-group">
-                            <a class="btn btn-primary" ng-click="updateLocalServerToken(localServer.id)" translate>BUTTON_UPDATE_TOKEN</a>
-                            <a class="btn btn-primary" ng-click="getQRCode(localServer.localServerApiKey.apiKeyId)" translate>QR</a>
-                        </div>
-                        <div class="form-group">
-                            <label translate>COMPANIES_FORM_LOCALSERVER_CONNECTION_STATUS</label>
-                            <textarea name="text" class="form-control" rows="1" style="resize: none;" readonly>{{localServer.isConnected ? 'COMPANIES_FORM_LOCALSERVER_CONNECTION_STATUS_CONNECTED': 'COMPANIES_FORM_LOCALSERVER_CONNECTION_STATUS_DISCONNECTED' | translate }}</textarea>
-                        </div>
-                    </div>
-                </div>
-
-            <a class="btn btn-xs btn-default" ng-click="removeLocalServer($index)"><i class="fa fa-trash"></i> {{ 'BUTTON_DELETE' | translate }}</a>
-            <hr>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label translate>COMPANIES_FORM_ADMIN_EMAIL</label>
+          <input class="form-control" type="text" ng-model="contact.email">
         </div>
-
-        <a class="btn btn-primary" ng-click="createOrUpdateLocalServers()" ng-if="!isCreate" translate>BUTTON_UPDATE_LOCALSERVERS_INFO</a>
-
-        <a class="btn btn-default" ng-click="localServers.push({})" ng-if="!isCreate"><i class="fa fa-plus"></i> {{ 'BUTTON_ADD_LOCALSERVER' | translate }}</a>
+      </div>
     </div>
+    <a class="btn btn-xs btn-default" ng-click="removeAdmin($index)"><i class="fa fa-trash"></i>
+      {{ 'BUTTON_DELETE' | translate }}</a>
     <hr>
-    <div ng-show="data.acquiringTypes.length > 0">
-        <h3 translate>COMPANIES_FORM_PAYMENT_TITLE</h3>
-        <div class="row">
-            <div class="col-md-8">
-                <select class="form-control" ng-model="data.acquiringType">
-                    <option ng-repeat="obj in data.acquiringTypes" value="{{ obj.code }}">{{ obj.value }}</option>
-                </select>
+  </div>
+
+  <a class="btn btn-primary" ng-click="updateAdmins()" translate>BUTTON_UPDATE_ADMIN_INFO</a>
+
+  <a class="btn btn-default" ng-click="company.admins.push({})"><i class="fa fa-plus"></i>
+    {{ 'BUTTON_ADD_ADMIN' | translate }}</a>
+
+  <div ng-show="isLocalServersData">
+    <h3 translate>COMPANIES_FORM_LOCALSERVERS_TITLE</h3>
+
+    <div ng-repeat="localServer in localServers track by $index" ng-if="!isCreate">
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label translate>COMPANIES_FORM_LOCALSERVER_NAME</label>
+            <input class="form-control" type="text" ng-model="localServer.name">
+          </div>
+
+          <div class="form-group">
+            <label translate>COMPANIES_FORM_KEYS_TITLE</label>
+
+            <div class="input-group col-md-6" style="margin-bottom: 15px;">
+              <span class="input-group-addon" style="min-width: 100px;" translate>COMPANIES_FORM_KEYS_AVAILABLE</span>
+              <input type="number" class="form-control" style="min-width: 100px;"
+                     ng-model="localServer.keyCount.available">
             </div>
-            <div class="col-md-4">
-                <span class="btn btn-default btn-block" ng-click="createMerchantSetting(data.acquiringType)" translate>BUTTON_ADD</span>
+            <div class="input-group col-md-6" style="margin-bottom: 15px;">
+              <span class="input-group-addon" style="min-width: 100px;" translate>COMPANIES_FORM_KEYS_USED</span>
+              <input type="text" class="form-control" style="min-width: 100px;" ng-disabled="true"
+                     ng-model="localServer.keyCount.used">
             </div>
+            <div class="input-group col-md-6" style="margin-bottom: 15px;">
+              <span class="input-group-addon" style="min-width: 100px;" translate>COMPANIES_FORM_KEYS_REMAINING</span>
+              <input type="text" class="form-control" style="min-width: 100px;" ng-disabled="true"
+                     ng-model="localServer.keyCount.remain">
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label translate>COMPANIES_FORM_IS_PARKING</label>
+            <input type="checkbox" ng-model="localServer.isParking"/>
+          </div>
+
+          <div ng-if="localServer.isParking">
+
+            <div class="form-group">
+
+              <label translate>COMPANIES_FORM_PARKING_PLACES</label>
+              <div class="input-group col-md-6" style="margin-bottom: 15px;">
+                <span class="input-group-addon" style="min-width: 100px;" translate>COMPANIES_FORM_KEYS_AVAILABLE</span>
+                <input type="number" class="form-control" style="min-width: 100px;" ng-disabled="true"
+                       ng-model="localServer.parkingSpace.allPlacesCount">
+              </div>
+
+              <div class="input-group col-md-6" style="margin-bottom: 15px;">
+                <span class="input-group-addon" style="min-width: 100px;" translate>COMPANIES_FORM_KEYS_REMAINING</span>
+                <input type="text" class="form-control" style="min-width: 100px;" ng-disabled="true"
+                       ng-model="localServer.parkingSpace.vacantPlacesCount">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label translate>COMPANIES_FORM_PICTURES</label>
+              <div class="input-group col-md-12" style="margin-bottom: 15px;" ng-repeat="i in [0]">
+                <div class="col-md-12" style="margin-bottom: 10px;" ng-if="!!localServer.parkingSpace.pictures[i]"
+                     ng-init="imgSrc = getApiImg(localServer.parkingSpace.pictures[i])">
+                  <img style="max-width: 200px; max-height: 150px; object-fit: cover;" ng-src="{{imgSrc}}"/>
+                </div>
+                <input type="file" class="form-control" accept="image/png, image/jpeg" ng-model="files" select-ng-files
+                       ng-change="uploadLocalServerImage(files, localServer.id, i)"/>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label translate>COMPANIES_FORM_ADDRESS</label>
+              <textarea name="text" class="form-control" rows="1"
+                        ng-model="localServer.parkingSpace.address">></textarea>
+            </div>
+            <div class="form-group">
+              <label translate>COMPANIES_FORM_PARKING_INFO</label>
+              <textarea name="text" class="form-control" rows="1" ng-model="localServer.parkingSpace.info">></textarea>
+            </div>
+            <div class="form-group">
+              <label translate>COMPANIES_FORM_PARKING_POLYGON</label>
+              <textarea name="text" class="form-control" rows="1"
+                        ng-model="localServer.parkingSpace.polygon">></textarea>
+            </div>
+
+            <div class="form-group">
+
+              <div class="input-group col-md-6" style="margin-bottom: 15px;">
+                <span class="input-group-addon" style="min-width: 100px;" translate>CenterLat</span>
+                <input type="number" class="form-control" style="min-width: 100px;"
+                       ng-model="localServer.parkingSpace.centerLat">
+              </div>
+
+              <div class="input-group col-md-6" style="margin-bottom: 15px;">
+                <span class="input-group-addon" style="min-width: 100px;" translate>CenterLon</span>
+                <input type="number" class="form-control" style="min-width: 100px;"
+                       ng-model="localServer.parkingSpace.centerLon">
+              </div>
+
+              <div class="input-group col-md-6" style="margin-bottom: 15px;">
+                <span class="input-group-addon" style="min-width: 100px;" translate>Tariff</span>
+                <input type="number" class="form-control" style="min-width: 100px;"
+                       ng-model="localServer.parkingSpace.currentTariff">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label translate>COMPANIES_FORM_LOCALSERVER_TOKEN</label>
+            <textarea name="text" class="form-control" rows="5" style="resize: none;" readonly>SAS-TOKEN {{localServer.localServerApiKey.apiKeyId}}:{{localServer.localServerApiKey.token}}</textarea>
+          </div>
+          <div class="form-group">
+            <a class="btn btn-primary" ng-click="updateLocalServerToken(localServer.id)"
+               translate>BUTTON_UPDATE_TOKEN</a>
+            <a class="btn btn-primary" ng-click="getQRCode(localServer.localServerApiKey.apiKeyId)" translate>QR</a>
+          </div>
+          <div class="form-group">
+            <label translate>COMPANIES_FORM_LOCALSERVER_CONNECTION_STATUS</label>
+            <textarea name="text" class="form-control" rows="1" style="resize: none;" readonly>{{localServer.isConnected ? 'COMPANIES_FORM_LOCALSERVER_CONNECTION_STATUS_CONNECTED': 'COMPANIES_FORM_LOCALSERVER_CONNECTION_STATUS_DISCONNECTED' | translate }}</textarea>
+          </div>
+        </div>
+      </div>
+
+      <a class="btn btn-xs btn-default" ng-click="removeLocalServer($index)"><i class="fa fa-trash"></i>
+        {{ 'BUTTON_DELETE' | translate }}</a>
+      <hr>
+    </div>
+
+    <a class="btn btn-primary" ng-click="createOrUpdateLocalServers()" ng-if="!isCreate" translate>BUTTON_UPDATE_LOCALSERVERS_INFO</a>
+
+    <a class="btn btn-default" ng-click="localServers.push({})" ng-if="!isCreate"><i class="fa fa-plus"></i>
+      {{ 'BUTTON_ADD_LOCALSERVER' | translate }}</a>
+  </div>
+  <hr>
+  <div ng-show="isSipServersData">
+    <h3 translate>COMPANIES_FORM_SIPSERVERS_TITLE</h3>
+
+    <div ng-repeat="sip in sipServers track by $index" ng-if="!isCreate">
+
+      <div class="row">
+        <!-- Left column -->
+        <div class="col-md-6">
+          <div class="form-group">
+            <label translate>COMPANIES_FORM_SIPSERVER_NAME</label>
+            <input class="form-control" ng-model="sip.sipServerName">
+          </div>
+
+          <div class="form-group">
+            <label translate>COMPANIES_FORM_SIPSERVER_HOST</label>
+            <input class="form-control" ng-model="sip.host">
+          </div>
+
+          <div class="form-group">
+            <label translate>COMPANIES_FORM_SIPSERVER_DESCRIPTION</label>
+            <textarea class="form-control"
+                      rows="2"
+                      ng-model="sip.description"></textarea>
+          </div>
         </div>
 
-        <div class="row" style="margin-top: 20px" ng-repeat="obj in data.merchantSettings track by $index">
-            <div class="col-md-6">
-                {{ obj.acquiringType }}
-                {{ obj.userName }}
-            </div>
-            <div class="col-md-6 text-right">
-                <span class="btn btn-default" ng-click="editMerchantSettings(obj)" translate>BUTTON_SETUP</span>
-                <span class="btn btn-default" ng-click="deleteMerchantSetting(obj, $index)" translate>BUTTON_DELETE</span>
-            </div>
-            <hr>
+        <!-- Right column -->
+        <div class="col-md-6">
+          <div class="form-group">
+            <label translate>COMPANIES_FORM_SIPSERVER_TOKEN</label>
+            <textarea class="form-control" rows="5" readonly>
+SAS-TOKEN {{sip.sipServerId}}:{{sip.authToken}}</textarea>
+          </div>
+
+          <div class="form-group">
+            <a class="btn btn-primary"
+               ng-click="updateSipServerToken(sip.id)"
+               translate>BUTTON_UPDATE_TOKEN</a>
+          </div>
         </div>
+      </div>
+
+      <a class="btn btn-xs btn-default"
+         ng-click="removeSipServer($index)">
+        <i class="fa fa-trash"></i> {{ 'BUTTON_DELETE' | translate }}
+      </a>
+      <hr>
     </div>
+
+    <a class="btn btn-primary"
+       ng-click="createOrUpdateSipServers()"
+       ng-if="!isCreate"
+       translate>BUTTON_UPDATE_SIPSERVERS_INFO</a>
+
+    <a class="btn btn-default"
+       ng-click="sipServers.push({})"
+       ng-if="!isCreate">
+      <i class="fa fa-plus"></i> {{ 'BUTTON_ADD_SIPSERVER' | translate }}
+    </a>
+  </div>
+  <hr>
+
+  <div ng-show="data.acquiringTypes.length > 0">
+    <h3 translate>COMPANIES_FORM_PAYMENT_TITLE</h3>
+    <div class="row">
+      <div class="col-md-8">
+        <select class="form-control" ng-model="data.acquiringType">
+          <option ng-repeat="obj in data.acquiringTypes" value="{{ obj.code }}">{{ obj.value }}</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <span class="btn btn-default btn-block" ng-click="createMerchantSetting(data.acquiringType)" translate>BUTTON_ADD</span>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top: 20px" ng-repeat="obj in data.merchantSettings track by $index">
+      <div class="col-md-6">
+        {{ obj.acquiringType }}
+        {{ obj.userName }}
+      </div>
+      <div class="col-md-6 text-right">
+        <span class="btn btn-default" ng-click="editMerchantSettings(obj)" translate>BUTTON_SETUP</span>
+        <span class="btn btn-default" ng-click="deleteMerchantSetting(obj, $index)" translate>BUTTON_DELETE</span>
+      </div>
+      <hr>
+    </div>
+  </div>
 </div>
