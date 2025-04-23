@@ -274,9 +274,9 @@ app.controller('CompanyDetailCtrl', ['$scope', '$http', '$state', '$stateParams'
       existing.forEach(sip => {
         calls.push(
           Api.post(settings.API_URL, {
-            Action: 'UpdateSipServer',
+            Action: 'EditSipServer',
             ServiceCompanyId: $scope.company.id,
-            Name: sip.name,
+            Name: sip.sipServerName,
             Host: sip.host,
             Description: sip.description,
             SipServerId: sip.sipServerId

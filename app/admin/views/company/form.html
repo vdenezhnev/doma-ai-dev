@@ -233,16 +233,16 @@
 
             <div class="form-group">
               <label translate>COMPANIES_FORM_ADDRESS</label>
-              <textarea name="text" class="form-control" rows="1"
+              <textarea style="resize: none" name="text" class="form-control" rows="1"
                         ng-model="localServer.parkingSpace.address">></textarea>
             </div>
             <div class="form-group">
               <label translate>COMPANIES_FORM_PARKING_INFO</label>
-              <textarea name="text" class="form-control" rows="1" ng-model="localServer.parkingSpace.info">></textarea>
+              <textarea style="resize: none"  name="text" class="form-control" rows="1" ng-model="localServer.parkingSpace.info">></textarea>
             </div>
             <div class="form-group">
               <label translate>COMPANIES_FORM_PARKING_POLYGON</label>
-              <textarea name="text" class="form-control" rows="1"
+              <textarea  style="resize: none" name="text" class="form-control" rows="1"
                         ng-model="localServer.parkingSpace.polygon">></textarea>
             </div>
 
@@ -317,6 +317,7 @@
           <div class="form-group">
             <label translate>COMPANIES_FORM_SIPSERVER_DESCRIPTION</label>
             <textarea class="form-control"
+                      style="resize: none"
                       rows="2"
                       ng-model="sip.description"></textarea>
           </div>
@@ -326,7 +327,7 @@
         <div class="col-md-6">
           <div class="form-group">
             <label translate>COMPANIES_FORM_SIPSERVER_TOKEN</label>
-            <textarea class="form-control" rows="5" readonly>
+            <textarea style="resize: none" class="form-control" rows="5" readonly>
 SAS-TOKEN {{sip.sipServerId}}:{{sip.authToken}}</textarea>
           </div>
 
