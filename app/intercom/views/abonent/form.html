@@ -412,7 +412,7 @@
                  type="text"
                  ng-model="pacsCode.displayValue"
                  ng-change="pacsCode.value = parsePacs(pacsCode.displayValue, pacsCodeMode.state)"
-                 ng-blur="pacsCode.displayValue = formatPacs(pacsCode.value, pacsCodeMode.state)" />
+                 ng-blur="pacsCode.displayValue = formatPacs(pacsCode.value, pacsCodeMode.state)"/>
 
           <span class="text-danger" ng-if="pacsCode.value > 16777215" translate>
             html.abonent.pacsCodes.error
@@ -435,11 +435,71 @@
       <tfoot>
       <tr>
         <td colspan="5">
-          <button ng-disabled="hasPacsError() || hasDuplicates()" type="button" class="btn btn-sm blue" ng-click="savePacsCodes()"
+          <button ng-disabled="hasPacsError() || hasDuplicates()" type="button" class="btn btn-sm blue"
+                  ng-click="savePacsCodes()"
                   translate>html.defaults.save_title
           </button>
           <a ng-click="addPacsCode()" class="btn btn-sm default"><i class="fa fa-plus"></i>
             <span translate>html.defaults.add_title</span></a>
+        </td>
+      </tr>
+      </tfoot>
+    </table>
+
+    <h4 translate>html.menu.sipdevices</h4>
+
+    <table class="table table-bordered table-hover" ng-class="{'rtl-text': isRTL}">
+      <thead>
+      <tr>
+        <th translate>html.sipdevice.form.name</th>
+        <th translate>html.sipdevice.form.roomId</th>
+        <th style="width:1px"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="abonentSip in abonentSipDevices">
+        <td>{{ abonentSip.sipDeviceName }}</td>
+        <td>{{ abonentSip.sipDeviceRoomId }}</td>
+        <td>
+          <a ng-click="deleteSipDevice(abonentSip.sipDeviceToAbonentId)"
+             class="btn default btn-sm">
+            <i class="fa fa-trash"></i>
+          </a>
+        </td>
+      </tr>
+      </tbody>
+      <tfoot>
+      <tr>
+        <td>
+          <select
+              class="form-control"
+              ng-model="selectedSipDevice.id"
+              ng-options="d.sipDeviceId as d.sipDeviceName for d in availableSipDevices track by d.sipDeviceId">
+          </select>
+        </td>
+
+        <td>
+          <input
+              type="number"
+              class="form-control"
+              ng-model="selectedSipDevice.roomId"
+              placeholder="{{ 'html.sipdevice.form.roomId' | translate }}"
+          />
+          <div
+              class="text-danger"
+              ng-show="selectedSipDevice.roomId && !isRoomIdUnique()">
+            {{ 'html.sipdevice.form.roomid_unique_error' | translate }}
+          </div>
+        </td>
+
+        <td>
+          <a
+              ng-click="addSipDevice()"
+              class="btn btn-sm default"
+              ng-class="{ 'disabled': !selectedSipDevice.id || !selectedSipDevice.roomId || !isRoomIdUnique() }">
+            <i class="fa fa-plus"></i>
+            <span translate>html.defaults.add_title</span>
+          </a>
         </td>
       </tr>
       </tfoot>

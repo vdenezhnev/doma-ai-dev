@@ -380,7 +380,12 @@ angular.module('gettext').run(['gettextCatalog', function (gettextCatalog) {
     "sipdevice.created": "Домофон создан.",
     "sipdevice.updated": "Домофон обновлен",
     "sipdevice.confirm_delete": "Вы уверены, что хотите удалить этот домофон?",
-    "sipdevice.deleted": "Домофон удален"
+    "sipdevice.deleted": "Домофон удален",
+    "html.sipdevice.form.name": "Название домофона",
+    "html.sipdevice.form.roomId": "Квартира",
+    "html.sipdevice.form.roomid_unique_error": "Номер квартиры должен быть уникальным",
+    "sipdevice.added_success": "Домофон успешно добавлен",
+    "sipdevice.deleted_success": "Домофон успешно удалён"
   });
   gettextCatalog.setStrings('en', {
     "html.camera.delete_selected": "Delete",
@@ -763,7 +768,12 @@ angular.module('gettext').run(['gettextCatalog', function (gettextCatalog) {
     "sipdevice.created": "Intercom created",
     "sipdevice.updated": "Intercom updated",
     "sipdevice.confirm_delete": "Are you sure you want to delete this intercom?",
-    "sipdevice.deleted": "Intercom deleted"
+    "sipdevice.deleted": "Intercom deleted",
+    "html.sipdevice.form.name": "Intercom name",
+    "html.sipdevice.form.roomId": "Apartment",
+    "html.sipdevice.form.roomid_unique_error": "Apartment number must be unique",
+    "sipdevice.added_success": "Intercom added successfully",
+    "sipdevice.deleted_success": "Intercom removed successfully"
   });
   gettextCatalog.setStrings('ar', {
     "html.auth.email_confirmed": "تم تأكيد بريدك الإلكتروني",
