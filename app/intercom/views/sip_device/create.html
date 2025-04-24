@@ -1,0 +1,27 @@
+<div style="display: flex; gap: 8px; align-items: center">
+  <h1 class="page-title" translate>html.sipdevice.new_title</h1>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <form name="SipDeviceForm">
+      <div class="portlet without-title light bordered">
+        <div class="portlet-body form">
+
+          <ng-include src="'app/intercom/views/sip_device/form.html'"></ng-include>
+
+          <div class="form-actions">
+            <button
+                type="submit"
+                class="btn blue"
+                validation-submit="SipDeviceForm"
+                ng-click="save()"
+                translate>html.defaults.add_title
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

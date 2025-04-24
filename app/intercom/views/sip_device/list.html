@@ -1,0 +1,72 @@
+<h1 class="page-title uppercase" translate>html.menu.sipdevices</h1>
+
+<div class="row">
+  <div class="col-md-12">
+
+    <a ui-sref="admin.sip_device.create"
+       class="btn default uppercase"
+       translate>html.sipdevice.add_title</a>
+    <button ng-click="deleteSelected()"
+            ng-disabled="selectedDevices.length === 0"
+            class="btn default uppercase"
+            translate>html.sipdevice.delete_selected</button>
+
+    <div class="table-scrollable" ng-show="sipDevices.length > 0">
+      <table class="table table-hover table-tr-hover">
+        <thead>
+        <tr>
+          <th>
+            <input type="checkbox"
+                   ng-model="selectAll"
+                   ng-change="toggleAll(selectAll)">
+          </th>
+          <th translate>html.sipdevice.form.deviceName</th>
+          <th translate>html.sipdevice.form.address</th>
+          <th translate>html.sipdevice.form.registered</th>
+          <th translate>html.sipdevice.form.server</th>
+        </tr>
+<!--        <tr class="active">-->
+<!--          <th></th>-->
+<!--          <th>-->
+<!--            <input ng-model="filter.sipDeviceName"-->
+<!--                   ng-model-options="{ debounce: 500 }"-->
+<!--                   class="form-control">-->
+<!--          </th>-->
+<!--          <th></th>-->
+<!--        </tr>-->
+        </thead>
+        <tbody>
+        <tr ng-repeat="dev in sipDevices track by $index"
+            ui-sref="admin.sip_device.detail({
+                sipDevice: {
+                  SipDeviceId: dev.sipDeviceId,
+                  Name: dev.sipDeviceName,
+                  SipServerId: dev.sipServerId,
+                  AddressId: dev.addressId,
+                  Description: dev.description,
+                  Configuration: dev.sipDeviceConfiguration
+                }
+              })">
+          <td ng-click="$event.stopPropagation(); toggleSelection(dev)">
+            <input type="checkbox"
+                   style="cursor: pointer"
+                   ng-checked="isSelected(dev)">
+          </td>
+          <td>{{ dev.sipDeviceName }}</td>
+          <td>{{ dev.addressName }}</td>
+          <td>{{ dev.registered  | date:'dd-MM-yyyy HH:mm' }}</td>
+          <td>{{ dev.sipServerName }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="text-center">
+      <a ng-click="loadSipDevices(false)"
+         class="btn default uppercase"
+         ng-disabled="isLoadedAll"
+         translate>html.defaults.load_more</a>
+    </div>
+
+  </div>
+</div>

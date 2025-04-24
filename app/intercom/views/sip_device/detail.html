@@ -1,0 +1,36 @@
+<div ng-if="sipDevice">
+  <div style="display: flex; gap: 8px; align-items: center">
+    <h1 class="page-title" translate>html.sipdevice.edit_title</h1>
+  </div>
+  <div class="mb-15">
+    <a ng-click="delete()" class="btn default uppercase" translate>html.defaults.remove_title</a>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <form name="SipDeviceForm">
+        <div ng-show="showApplyMessage" class="note note-info">
+          <h4 class="block" translate>html.sipdevice.apply_message</h4>
+          <button ng-click="onApply()"
+             class="btn default uppercase"
+             translate>html.sipdevice.apply_button</button>
+        </div>
+
+        <div class="portlet without-title light bordered">
+          <div class="portlet-body form">
+
+            <ng-include src="'app/intercom/views/sip_device/form.html'"></ng-include>
+
+            <div class="form-actions">
+              <button type="submit"
+                      class="btn blue"
+                      validation-submit="SipDeviceForm"
+                      ng-click="showApplyMessageCall()"
+                      translate>html.defaults.update_title</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

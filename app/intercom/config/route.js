@@ -342,7 +342,7 @@ app.config(['$stateProvider', 'settings', function ($stateProvider, settings) {
     .state('admin.camera', {
       url: 'camera/',
       abstract: true,
-      templateUrl: settings.TEMPLATE_DIR + 'device/base.html'
+      templateUrl: settings.TEMPLATE_DIR + 'camera/base.html'
     })
     .state('admin.camera.list', {
       url: 'list',
@@ -360,6 +360,30 @@ app.config(['$stateProvider', 'settings', function ($stateProvider, settings) {
       templateUrl: settings.TEMPLATE_DIR + 'camera/detail.html',
       params: {
         camera: null
+      }
+    })
+
+    .state('admin.sip_device', {
+      url: 'sip_device/',
+      abstract: true,
+      templateUrl: settings.TEMPLATE_DIR + 'sip_device/base.html'
+    })
+    .state('admin.sip_device.list', {
+      url: 'list',
+      controller: 'SipDeviceListCtrl',
+      templateUrl: settings.TEMPLATE_DIR + 'sip_device/list.html'
+    })
+    .state('admin.sip_device.create', {
+      url: 'create',
+      controller: 'SipDeviceCreateCtrl',
+      templateUrl: settings.TEMPLATE_DIR + 'sip_device/create.html'
+    })
+    .state('admin.sip_device.detail', {
+      url: 'detail/',
+      controller: 'SipDeviceDetailCtrl',
+      templateUrl: settings.TEMPLATE_DIR + 'sip_device/detail.html',
+      params: {
+        sipDevice: null
       }
     })
 
