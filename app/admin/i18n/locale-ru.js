@@ -329,5 +329,12 @@ app.constant('LOCALE_RU', {
     TABLE_CELL_DOOR_INTERCOM_ABONENT_COUNT: "Количество абонентов",
     TABLE_CELL_DOOR_INTERCOM_NAME: "Название",
     TABLE_CELL_DOOR_INTERCOM_DESCRIPTION: "Описание",
-    TABLE_CELL_DOOR_INTERCOM_ADDED: "Добавлен"
+    TABLE_CELL_DOOR_INTERCOM_ADDED: "Добавлен",
+
+    SIP_SERVER_VALIDATION_NAME_REQUIRED: "Название обязательно",
+    SIP_SERVER_VALIDATION_NAME_MAX_LENGTH: "Не более 50 символов",
+    SIP_SERVER_VALIDATION_NAME_UNIQUE: "SIP server с таким названием уже используется",
+    SIP_SERVER_VALIDATION_HOST_REQUIRED: "Хост обязателен",
+    SIP_SERVER_VALIDATION_HOST_UNIQUE: "SIP server host с таким IP/Domain уже используется",
+    SIP_SERVER_VALIDATION_DESCRIPTION_MAX_LENGTH: "Не более 200 символов"
 });

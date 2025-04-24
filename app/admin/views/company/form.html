@@ -300,56 +300,61 @@
     <h3 translate>COMPANIES_FORM_SIPSERVERS_TITLE</h3>
 
     <div ng-repeat="sip in sipServers track by $index" ng-if="!isCreate">
-
       <div class="row">
-        <!-- Left column -->
         <div class="col-md-6">
           <div class="form-group">
             <label translate>COMPANIES_FORM_SIPSERVER_NAME</label>
-            <input class="form-control" ng-model="sip.sipServerName">
+            <input
+                class="form-control"
+                ng-model="sip.sipServerName"
+                placeholder="{{ 'COMPANIES_FORM_SIPSERVER_NAME' | translate }}"
+            >
+            <div class="text-danger" ng-show="!sip.sipServerName" translate>SIP_SERVER_VALIDATION_NAME_REQUIRED</div>
+            <div class="text-danger" ng-show="sip.sipServerName.length > 50" translate>SIP_SERVER_VALIDATION_NAME_MAX_LENGTH</div>
+            <div class="text-danger" ng-show="sip.sipServerName && !isNameUnique(sip)" translate>SIP_SERVER_VALIDATION_NAME_UNIQUE</div>
           </div>
 
           <div class="form-group">
             <label translate>COMPANIES_FORM_SIPSERVER_HOST</label>
             <input class="form-control" ng-model="sip.host">
+            <div class="text-danger" ng-show="!sip.host" translate>SIP_SERVER_VALIDATION_HOST_REQUIRED</div>
+            <div class="text-danger" ng-show="sip.host && !isHostUnique(sip)" translate>SIP_SERVER_VALIDATION_HOST_UNIQUE</div>
           </div>
 
           <div class="form-group">
             <label translate>COMPANIES_FORM_SIPSERVER_DESCRIPTION</label>
             <textarea class="form-control"
-                      style="resize: none"
-                      rows="2"
-                      ng-model="sip.description"></textarea>
+                ng-model="sip.description"
+                rows="2"
+                placeholder="{{ 'COMPANIES_FORM_SIPSERVER_DESCRIPTION' | translate }}"
+            ></textarea>
+            <div class="text-danger" ng-show="sip.description && sip.description.length > 200" translate>SIP_SERVER_VALIDATION_DESCRIPTION_MAX_LENGTH</div>
           </div>
         </div>
 
-        <!-- Right column -->
         <div class="col-md-6">
           <div class="form-group">
             <label translate>COMPANIES_FORM_SIPSERVER_TOKEN</label>
-            <textarea style="resize: none" class="form-control" rows="5" readonly>
-SAS-TOKEN {{sip.sipServerId}}:{{sip.authToken}}</textarea>
+            <textarea class="form-control" rows="5" readonly style="resize: none">SAS-TOKEN {{ sip.sipServerId }}:{{ sip.authToken }}</textarea>
           </div>
-
           <div class="form-group">
             <a class="btn btn-primary"
-               ng-click="updateSipServerToken(sip.id)"
-               translate>BUTTON_UPDATE_TOKEN</a>
+                ng-click="updateSipServerToken(sip.sipServerId)"
+                translate>BUTTON_UPDATE_TOKEN</a>
           </div>
         </div>
       </div>
 
-      <a class="btn btn-xs btn-default"
-         ng-click="removeSipServer($index)">
+      <a class="btn btn-xs btn-default" ng-click="removeSipServer($index)">
         <i class="fa fa-trash"></i> {{ 'BUTTON_DELETE' | translate }}
       </a>
       <hr>
     </div>
 
     <a class="btn btn-primary"
-       ng-click="createOrUpdateSipServers()"
-       ng-if="!isCreate"
-       translate>BUTTON_UPDATE_SIPSERVERS_INFO</a>
+        ng-click="createOrUpdateSipServers()"
+        ng-disabled="!isSipServersValid()"
+        translate>BUTTON_UPDATE_SIPSERVERS_INFO</a>
 
     <a class="btn btn-default"
        ng-click="sipServers.push({})"
@@ -357,6 +362,7 @@ SAS-TOKEN {{sip.sipServerId}}:{{sip.authToken}}</textarea>
       <i class="fa fa-plus"></i> {{ 'BUTTON_ADD_SIPSERVER' | translate }}
     </a>
   </div>
+
   <hr>
 
   <div ng-show="data.acquiringTypes.length > 0">

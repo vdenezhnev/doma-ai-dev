@@ -329,5 +329,12 @@ app.constant('LOCALE_EN', {
     TABLE_CELL_DOOR_INTERCOM_ABONENT_COUNT: "Abonent count",
     TABLE_CELL_DOOR_INTERCOM_NAME: "Name",
     TABLE_CELL_DOOR_INTERCOM_DESCRIPTION: "Description",
-    TABLE_CELL_DOOR_INTERCOM_ADDED: "Added"
+    TABLE_CELL_DOOR_INTERCOM_ADDED: "Added",
+
+    SIP_SERVER_VALIDATION_NAME_REQUIRED: "Name is required",
+    SIP_SERVER_VALIDATION_NAME_MAX_LENGTH: "Max 50 characters",
+    SIP_SERVER_VALIDATION_NAME_UNIQUE: "A SIP server with this name is already in use",
+    SIP_SERVER_VALIDATION_HOST_REQUIRED: "Host is required",
+    SIP_SERVER_VALIDATION_HOST_UNIQUE: "A SIP server host with this IP/Domain is already in use",
+    SIP_SERVER_VALIDATION_DESCRIPTION_MAX_LENGTH: "Max 200 characters"
 });

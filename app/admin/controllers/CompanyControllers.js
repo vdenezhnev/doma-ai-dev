@@ -177,20 +177,6 @@ app.controller('CompanyDetailCtrl', ['$scope', '$http', '$state', '$stateParams'
       }
     };
 
-    $scope.getSipServers = function () {
-
-      $scope.isLocalServersData = false;
-      Api.post(settings.API_URL, {
-        Action: 'GetLocalServers',
-        ServiceCompanyId: $scope.company.id
-      }).then(function successCallback(response) {
-        if (response.data != 'null') {
-          $scope.localServers = response.data;
-          $scope.isLocalServersData = true;
-        }
-      });
-    };
-
     $scope.getLocalServers = function () {
 
       $scope.isLocalServersData = false;
@@ -204,10 +190,6 @@ app.controller('CompanyDetailCtrl', ['$scope', '$http', '$state', '$stateParams'
         }
       });
     };
-
-    if ($scope.company.id) {
-      $scope.getLocalServers();
-    }
 
     $scope.removeLocalServer = function ($index) {
 
@@ -247,8 +229,12 @@ app.controller('CompanyDetailCtrl', ['$scope', '$http', '$state', '$stateParams'
       }
     };
 
+    if ($scope.company.id) {
+      $scope.getLocalServers();
+    }
+
     $scope.createOrUpdateSipServers = function () {
-      if (!Array.isArray($scope.sipServers) || !$scope.sipServers.length) {
+      if (!$scope.isSipServersValid()) {
         return;
       }
 
@@ -336,6 +322,40 @@ app.controller('CompanyDetailCtrl', ['$scope', '$http', '$state', '$stateParams'
         });
       }
     };
+
+    $scope.isNameUnique = function(current) {
+      var matches = $scope.sipServers.filter(function(s) {
+        return s.sipServerName === current.sipServerName;
+      });
+      return matches.length <= 1;
+    };
+
+    $scope.isHostUnique = function(current) {
+      var matches = $scope.sipServers.filter(function(s) {
+        return s.host === current.host;
+      });
+      return matches.length <= 1;
+    };
+
+    $scope.isDescriptionValid = function(current) {
+      return !current.description || current.description.length <= 200;
+    };
+
+    $scope.isServerValid = function(current) {
+      return current.sipServerName &&
+        current.sipServerName.length <= 50 &&
+        $scope.isNameUnique(current) &&
+        current.host &&
+        $scope.isHostUnique(current) &&
+        $scope.isDescriptionValid(current);
+    };
+
+    $scope.isSipServersValid = function() {
+      return Array.isArray($scope.sipServers) &&
+        $scope.sipServers.length > 0 &&
+        $scope.sipServers.every($scope.isServerValid);
+    };
+
 
     if ($scope.company.id) {
       $scope.getSipServers();
