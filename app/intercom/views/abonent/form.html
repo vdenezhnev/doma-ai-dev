@@ -391,7 +391,17 @@
       </tfoot>
     </table>
 
-    <h4 translate>html.abonent.pacsCodes.title</h4>
+    <div style="display: flex; gap: 8px; align-items: center">
+      <h4 translate>html.abonent.pacsCodes.title</h4>
+      <span class="labelinfo_icon">
+        <div class="labelinfo_i">i</div>
+        <div class="labelinfo_text" translate>
+            ID карт доступа и BLE-меток используются для предоставления возможности добавление нескольких PACS-кодов, чтобы члены семьи без криптоключей могли пользоваться доступом через карточки.<br/><br/>
+
+            “DEC - десятичный”, “HEX - шестнадцатеричный”, “PROX - facility,card”
+        </div>
+    </span>
+    </div>
 
     <table ng-show="abonent.id" class="table table-bordered table-hover" ng-class="{'rtl-text': isRTL}">
       <thead>
