@@ -36,7 +36,7 @@ app.controller('SipDeviceListCtrl', ['$scope', 'settings', 'SipDevice', 'gettext
 
       const delPromises = $scope.selectedDevices.map(dev =>
         Api.post(settings.API_URL, {
-          Action:     'DeleteSipDevice',
+          Action: 'UnregisterSipDevice',
           SipDeviceId: dev.sipDeviceId
         })
       );
@@ -87,6 +87,12 @@ app.controller('SipDeviceCreateCtrl', ['$scope', 'settings', '$state', 'SipDevic
     };
     $scope.loadSipServers();
 
+    $scope.isValid = function () {
+      const nameValid = !!$scope.sipDevice.Name && $scope.sipDevice.Name.length <= 50;
+      const descValid = $scope.sipDevice.Description ? $scope.sipDevice.Description.length <= 200 : true;
+
+      return nameValid && descValid && !!$scope.sipDevice.SipServerId && !!$scope.sipDevice.AddressId;
+    }
 
     $scope.sipDevice = new SipDevice({
       isNew: true,
@@ -139,6 +145,13 @@ app.controller('SipDeviceDetailCtrl', [
         $state.go('admin.sip_device.list');
       });
     };
+
+    $scope.isValid = function () {
+      const nameValid = !!$scope.sipDevice.Name && $scope.sipDevice.Name.length <= 50;
+      const descValid = $scope.sipDevice.Description ? $scope.sipDevice.Description.length <= 200 : true;
+
+      return nameValid && descValid && !!$scope.sipDevice.SipServerId && !!$scope.sipDevice.AddressId;
+    }
 
     $scope.onApply = function () {
       $scope.showApplyMessage = false;

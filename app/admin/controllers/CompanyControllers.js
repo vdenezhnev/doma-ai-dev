@@ -86,6 +86,7 @@ app.controller('CompanyDetailCtrl', ['$scope', '$http', '$state', '$stateParams'
     }
     $scope.localServers = [];
     $scope.sipServers = [];
+    $scope.originalSipServers = [];
     $scope.company = $stateParams.company;
     $scope.isCreate = false;
     $scope.data = {
@@ -234,12 +235,22 @@ app.controller('CompanyDetailCtrl', ['$scope', '$http', '$state', '$stateParams'
     }
 
     $scope.createOrUpdateSipServers = function () {
-      if (!$scope.isSipServersValid()) {
+      if (!$scope.isSipServersValid() || !$scope.doSipServersHasChanges()) {
         return;
       }
 
       const newServers = $scope.sipServers.filter(s => !s.sipServerId);
       const existing = $scope.sipServers.filter(s => !!s.sipServerId);
+      const changedServers = existing.filter(sip => {
+        const orig = $scope.originalSipServers
+          .find(o => o.sipServerId === sip.sipServerId);
+        return orig && (
+          orig.sipServerName !== sip.sipServerName ||
+          orig.host !== sip.host ||
+          orig.description !== sip.description
+        );
+      });
+
 
       const calls = [];
 
@@ -250,24 +261,29 @@ app.controller('CompanyDetailCtrl', ['$scope', '$http', '$state', '$stateParams'
             ServiceCompanyId: $scope.company.id,
             Name: sip.sipServerName,
             Host: sip.host,
-            Description: sip.description,
+            Description: sip.description
           }).then(resp => {
             angular.extend(sip, resp.data);
+            $scope.originalSipServers.push(angular.copy(sip));
           })
         );
       });
 
-      existing.forEach(sip => {
+      changedServers.forEach(sip => {
         calls.push(
           Api.post(settings.API_URL, {
             Action: 'EditSipServer',
             ServiceCompanyId: $scope.company.id,
+            SipServerId: sip.sipServerId,
             Name: sip.sipServerName,
             Host: sip.host,
-            Description: sip.description,
-            SipServerId: sip.sipServerId
+            Description: sip.description
           }).then(resp => {
             angular.extend(sip, resp.data);
+            const idx = $scope.originalSipServers.findIndex(o => o.sipServerId === sip.sipServerId);
+            if (idx > -1) {
+              $scope.originalSipServers[idx] = angular.copy(sip);
+            }
           })
         );
       });
@@ -277,15 +293,16 @@ app.controller('CompanyDetailCtrl', ['$scope', '$http', '$state', '$stateParams'
       });
     };
 
-    $scope.getSipServers = function () {
+    $scope.getSipServers = function() {
       $scope.isSipServersData = false;
       Api.get(settings.API_URL, {
         Action: 'GetRegisteredSipServers',
-        ServiceCompanyId: $scope.company.id      // back‑end can ignore if unused
-      }).then(function (resp) {
+        ServiceCompanyId: $scope.company.id
+      }).then(function(resp) {
         if (resp.data !== 'null') {
-          $scope.sipServers = resp.data;
-          $scope.isSipServersData = true;
+          $scope.sipServers         = resp.data;
+          $scope.originalSipServers = angular.copy(resp.data);
+          $scope.isSipServersData   = true;
         }
       });
     };
@@ -356,6 +373,21 @@ app.controller('CompanyDetailCtrl', ['$scope', '$http', '$state', '$stateParams'
         $scope.sipServers.every($scope.isServerValid);
     };
 
+    $scope.doSipServersHasChanges = function() {
+      const newCount = $scope.sipServers.filter(s => !s.sipServerId).length;
+      if (newCount > 0) return true;
+
+      const changedCount = $scope.sipServers.filter(sip => {
+        if (!sip.sipServerId) return false;
+        const orig = $scope.originalSipServers
+          .find(o => o.sipServerId === sip.sipServerId);
+        return orig &&
+          (orig.sipServerName !== sip.sipServerName ||
+            orig.host !== sip.host ||
+            orig.description !== sip.description);
+      }).length;
+      return changedCount > 0;
+    };
 
     if ($scope.company.id) {
       $scope.getSipServers();

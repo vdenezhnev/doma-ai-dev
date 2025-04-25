@@ -384,6 +384,8 @@ angular.module('gettext').run(['gettextCatalog', function (gettextCatalog) {
     "html.sipdevice.form.name": "Название домофона",
     "html.sipdevice.form.roomId": "Квартира",
     "html.sipdevice.form.roomid_unique_error": "Номер квартиры должен быть уникальным",
+    "html.sipdevice.form.name_lenght_error": "Не более 50 символов",
+    "html.sipdevice.form.desc_lenght_error": "Не более 200 символов",
     "sipdevice.added_success": "Домофон успешно добавлен",
     "sipdevice.deleted_success": "Домофон успешно удалён"
   });
@@ -772,6 +774,8 @@ angular.module('gettext').run(['gettextCatalog', function (gettextCatalog) {
     "html.sipdevice.form.name": "Intercom name",
     "html.sipdevice.form.roomId": "Apartment",
     "html.sipdevice.form.roomid_unique_error": "Apartment number must be unique",
+    "html.sipdevice.form.name_lenght_error": "Max 50 characters",
+    "html.sipdevice.form.desc_lenght_error": "Max 200 characters",
     "sipdevice.added_success": "Intercom added successfully",
     "sipdevice.deleted_success": "Intercom removed successfully"
   });

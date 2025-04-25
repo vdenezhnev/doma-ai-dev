@@ -7,6 +7,7 @@
            name="SipDeviceName"
            ng-model="sipDevice.Name"
            validator="required">
+    <div class="text-danger" ng-show="sipDevice.Name.length > 50" translate>html.sipdevice.form.name_lenght_error</div>
   </div>
 
   <div class="form-group">
@@ -15,6 +16,7 @@
             name="SipServerId"
             ng-model="sipDevice.SipServerId"
             ng-options="srv.sipServerId as srv.sipServerName for srv in sipServers"
+            ng-disabled="!sipDevice.isNew"
             validator="required">
     </select>
   </div>
@@ -30,6 +32,7 @@
               name="Description"
               ng-model="sipDevice.Description"
               rows="3"></textarea>
+    <div class="text-danger" ng-show="sipDevice.Description.length > 200" translate>html.sipdevice.form.desc_lenght_error</div>
   </div>
 
   <div class="form-group">

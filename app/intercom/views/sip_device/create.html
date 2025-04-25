@@ -15,6 +15,7 @@
                 type="submit"
                 class="btn blue"
                 validation-submit="SipDeviceForm"
+                ng-disabled="!isValid()"
                 ng-click="save()"
                 translate>html.defaults.add_title
             </button>
