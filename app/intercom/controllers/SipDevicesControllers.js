@@ -31,20 +31,32 @@ app.controller('SipDeviceListCtrl', ['$scope', 'settings', 'SipDevice', 'gettext
 
     $scope.loadSipDevices();
 
-    $scope.deleteSelected = function () {
-      if (!window.confirm(gettextCatalog.getString('sipdevice.confirm_delete_selected'))) return;
+    $scope.deleteSelected = function() {
+      if (!confirm(gettextCatalog.getString('sipdevice.confirm_delete_selected'))) return;
 
-      const delPromises = $scope.selectedDevices.map(dev =>
-        Api.post(settings.API_URL, {
-          Action: 'UnregisterSipDevice',
-          SipDeviceId: dev.sipDeviceId
-        })
-      );
+      const toDelete = $scope.selectedDevices.slice();
 
-      Promise.all(delPromises).then(() => {
+      Promise.allSettled(
+        toDelete.map(dev =>
+          Api.post(settings.API_URL, {
+            Action: 'UnregisterSipDevice',
+            SipDeviceId: dev.sipDeviceId
+          })
+            .then(() => dev)
+        )
+      ).then(results => {
+        const succeeded = results
+          .filter(r => r.status === 'fulfilled')
+          .map(r => r.value);
+
+        if (!succeeded.length) return;
+
+        const ids = succeeded.map(dev => dev.sipDeviceId);
+
+        $scope.sipDevices = $scope.sipDevices.filter(d => !ids.includes(d.sipDeviceId));
+        $scope.selectedDevices = $scope.selectedDevices.filter(d => !ids.includes(d.sipDeviceId));
+
         notify(gettextCatalog.getString('sipdevice.devices_deleted'));
-        $scope.selectedDevices = [];
-        $scope.loadSipDevices(true);
       });
     };
 
