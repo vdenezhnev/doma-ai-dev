@@ -89,6 +89,11 @@ app.controller('SipDeviceListCtrl', ['$scope', 'settings', 'SipDevice', 'gettext
 
 app.controller('SipDeviceCreateCtrl', ['$scope', 'settings', '$state', 'SipDevice', 'gettextCatalog', 'notify', 'Api',
   function ($scope, settings, $state, SipDevice, gettextCatalog, notify,  Api) {
+    $scope.openMethods = [
+      { value: 'api', name: 'api' },
+      { value: 'dtmf', name: 'dtmf' },
+    ];
+
     $scope.sipServers = [];
     $scope.loadSipServers = function () {
       Api.get(settings.API_URL, {
@@ -101,14 +106,35 @@ app.controller('SipDeviceCreateCtrl', ['$scope', 'settings', '$state', 'SipDevic
 
     $scope.isValid = function () {
       const nameValid = !!$scope.sipDevice.Name && $scope.sipDevice.Name.length <= 50;
-      const descValid = $scope.sipDevice.Description ? $scope.sipDevice.Description.length <= 200 : true;
+      const descValid = !$scope.sipDevice.Description || $scope.sipDevice.Description.length <= 200;
 
-      return nameValid && descValid && !!$scope.sipDevice.SipServerId && !!$scope.sipDevice.AddressId;
-    }
+      const openMethodValid = !!$scope.sipDevice.OpenMethod && $scope.sipDevice.OpenMethod !=="unknown";
+      const dtmf = $scope.sipDevice.DtmfOpenCommand || "";
+      const dtmfCommandValid = $scope.sipDevice.OpenMethod === 'dtmf'
+        ? /^[0-9+*#]{1,10}$/.test(dtmf)
+        : true;
+      const serverValid  = !!$scope.sipDevice.SipServerId;
+      const addressValid = !!$scope.sipDevice.AddressId;
+
+      return nameValid
+        && descValid
+        && dtmfCommandValid
+        && openMethodValid
+        && serverValid
+        && addressValid;
+    };
+
 
     $scope.sipDevice = new SipDevice({
+      OpenMethod: $scope.openMethods[0].value,
       isNew: true,
     });
+
+    $scope.$watch('sipDevice.OpenMethod', function(newVal, oldVal){
+      if (newVal !== "dtmf") {
+        $scope.sipDevice.DtmfOpenCommand = ""
+      }
+    })
 
     $scope.save = function () {
       $scope.sipDevice.$save().then(function () {
@@ -125,6 +151,11 @@ app.controller('SipDeviceDetailCtrl', [
     if (!$stateParams.sipDevice) {
       return $state.go('admin.sip_device.list');
     }
+
+    $scope.openMethods = [
+      { value: 'api', name: 'api' },
+      { value: 'dtmf', name: 'dtmf' },
+    ];
 
     $scope.sipServers = [];
     $scope.loadSipServers = function () {
@@ -160,10 +191,24 @@ app.controller('SipDeviceDetailCtrl', [
 
     $scope.isValid = function () {
       const nameValid = !!$scope.sipDevice.Name && $scope.sipDevice.Name.length <= 50;
-      const descValid = $scope.sipDevice.Description ? $scope.sipDevice.Description.length <= 200 : true;
+      const descValid = !$scope.sipDevice.Description || $scope.sipDevice.Description.length <= 200;
 
-      return nameValid && descValid && !!$scope.sipDevice.SipServerId && !!$scope.sipDevice.AddressId;
-    }
+      const openMethodValid = !!$scope.sipDevice.OpenMethod && $scope.sipDevice.OpenMethod !=="unknown";
+      const dtmf = $scope.sipDevice.DtmfOpenCommand || "";
+      const dtmfCommandValid = $scope.sipDevice.OpenMethod === 'dtmf'
+        ? /^[0-9+*#]{1,10}$/.test(dtmf)
+        : true;
+      const serverValid  = !!$scope.sipDevice.SipServerId;
+      const addressValid = !!$scope.sipDevice.AddressId;
+
+      return nameValid
+        && descValid
+        && dtmfCommandValid
+        && openMethodValid
+        && serverValid
+        && addressValid;
+    };
+
 
     $scope.onApply = function () {
       $scope.showApplyMessage = false;

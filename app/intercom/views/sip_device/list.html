@@ -44,7 +44,9 @@
                   SipServerId: dev.sipServerId,
                   AddressId: dev.addressId,
                   Description: dev.description,
-                  Configuration: dev.sipDeviceConfiguration
+                  Configuration: dev.sipDeviceConfiguration,
+                  OpenMethod: dev.openMethod,
+                  DtmfOpenCommand: dev.dtmfOpenCommand
                 }
               })">
           <td ng-click="$event.stopPropagation(); toggleSelection(dev)">

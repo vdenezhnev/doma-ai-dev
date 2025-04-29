@@ -27,6 +27,28 @@
   </div>
 
   <div class="form-group">
+    <label translate>html.sipdevice.form.OpenMethod</label>
+    <select class="form-control"
+            name="SipServerId"
+            ng-model="sipDevice.OpenMethod"
+            ng-options="method.value as method.name for method in openMethods"
+            validator="required">
+    </select>
+  </div>
+
+  <div ng-if="sipDevice.OpenMethod === 'dtmf'" class="form-group">
+    <label translate>html.sipdevice.form.DtmfOpenCommand</label>
+    <input class="form-control"
+           type="text"
+           name="SipDeviceDtmfOpenCommand"
+           ng-model="sipDevice.DtmfOpenCommand"
+           ng-pattern="/^[0-9+*#]+$/"
+    >
+    <div class="text-danger" ng-show="sipDevice.DtmfOpenCommand.length > 10" translate>html.sipdevice.form.dtmf_lenght_error</div>
+    <div class="text-danger" ng-show="SipDeviceForm.SipDeviceDtmfOpenCommand.$error.pattern" translate>html.sipdevice.form.dtmf_invalid_chars</div>
+  </div>
+
+  <div class="form-group">
     <label translate>html.sipdevice.form.description</label>
     <textarea class="form-control"
               name="Description"

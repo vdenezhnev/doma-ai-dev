@@ -387,7 +387,11 @@ angular.module('gettext').run(['gettextCatalog', function (gettextCatalog) {
     "html.sipdevice.form.name_lenght_error": "Не более 50 символов",
     "html.sipdevice.form.desc_lenght_error": "Не более 200 символов",
     "sipdevice.added_success": "Домофон успешно добавлен",
-    "sipdevice.deleted_success": "Домофон успешно удалён"
+    "sipdevice.deleted_success": "Домофон успешно удалён",
+    "html.sipdevice.form.OpenMethod": "Способ открытия",
+    "html.sipdevice.form.DtmfOpenCommand": "DTMF-команда",
+    "html.sipdevice.form.dtmf_lenght_error": "Не более 10 символов",
+    "html.sipdevice.form.dtmf_invalid_chars": "Допускаются только цифры и символы + * #"
   });
   gettextCatalog.setStrings('en', {
     "html.camera.delete_selected": "Delete",
@@ -777,7 +781,11 @@ angular.module('gettext').run(['gettextCatalog', function (gettextCatalog) {
     "html.sipdevice.form.name_lenght_error": "Max 50 characters",
     "html.sipdevice.form.desc_lenght_error": "Max 200 characters",
     "sipdevice.added_success": "Intercom added successfully",
-    "sipdevice.deleted_success": "Intercom removed successfully"
+    "sipdevice.deleted_success": "Intercom removed successfully",
+    "html.sipdevice.form.OpenMethod": "Open method",
+    "html.sipdevice.form.DtmfOpenCommand": "DTMF command",
+    "html.sipdevice.form.dtmf_lenght_error": "Max 10 characters",
+    "html.sipdevice.form.dtmf_invalid_chars": "Only digits and + * # are allowed"
   });
   gettextCatalog.setStrings('ar', {
     "html.auth.email_confirmed": "تم تأكيد بريدك الإلكتروني",
