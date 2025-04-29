@@ -185,14 +185,14 @@ app.config(['$stateProvider', 'settings', function ($stateProvider, settings) {
       templateUrl: settings.TEMPLATE_DIR + 'sipServers/list.html'
     })
 
-    .state('admin.doorIntercoms', {
+    .state('admin.sipDevices', {
       abstract: true,
-      templateUrl: settings.TEMPLATE_DIR + 'door_intercoms/base.html'
+      templateUrl: settings.TEMPLATE_DIR + 'sip_devices/base.html'
     })
-    .state('admin.doorIntercoms.list', {
-      url: "door_intercoms",
-      controller: 'DoorIntercomsListCtrl',
-      templateUrl: settings.TEMPLATE_DIR + 'door_intercoms/list.html'
+    .state('admin.sipDevices.list', {
+      url: "sip_devices",
+      controller: 'SipDevicesListCtrl',
+      templateUrl: settings.TEMPLATE_DIR + 'sip_devices/list.html'
     })
 
 

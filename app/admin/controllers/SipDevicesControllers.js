@@ -1,4 +1,4 @@
-app.controller('DoorIntercomsListCtrl', [
+app.controller('SipDevicesListCtrl', [
   '$scope', 'Api', 'settings', '$filter', 'notify',
   function ($scope, Api, settings, $filter, notify) {
 
@@ -12,7 +12,7 @@ app.controller('DoorIntercomsListCtrl', [
       if (reset) $scope.skip = 0;
 
       var request = {
-        Action: "GetIntercoms",
+        Action: "GetSipDevices",
         Skip: $scope.skip,
         Take: $scope.take
       };
