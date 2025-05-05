@@ -15,7 +15,7 @@ app.controller('SipDeviceListCtrl', ['$scope', 'settings', 'SipDevice', 'gettext
         take: $scope.take
       };
       if ($scope.filter.sipDeviceName) {
-        params.sipDeviceName = $scope.filter.sipDeviceName;
+        params.SearchPhrase = $scope.filter.sipDeviceName;
       }
       SipDevice.query(params).$promise.then(function (response) {
         if (reset) {

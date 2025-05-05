@@ -490,7 +490,7 @@
 
         <td>
           <input
-              type="number"
+              type="text" inputmode="numeric"
               class="form-control"
               ng-model="selectedSipDevice.roomId"
               placeholder="{{ 'html.sipdevice.form.roomId' | translate }}"
@@ -500,13 +500,19 @@
               ng-show="selectedSipDevice.roomId && !isRoomIdUnique()">
             {{ 'html.sipdevice.form.roomid_unique_error' | translate }}
           </div>
+          <div
+              class="text-danger"
+              ng-show="selectedSipDevice.roomId && !isRoomIdValid()">
+            {{ 'html.sipdevice.form.roomid_range_error' | translate }}
+          </div>
+
         </td>
 
         <td>
           <a
               ng-click="addSipDevice()"
               class="btn btn-sm default"
-              ng-class="{ 'disabled': !selectedSipDevice.id || !selectedSipDevice.roomId || !isRoomIdUnique() }">
+              ng-class="{ 'disabled': !selectedSipDevice.id || !selectedSipDevice.roomId || !isRoomIdUnique() || !isRoomIdValid() }">
             <i class="fa fa-plus"></i>
             <span translate>html.defaults.add_title</span>
           </a>

@@ -25,15 +25,17 @@
           <th translate>html.sipdevice.form.registered</th>
           <th translate>html.sipdevice.form.server</th>
         </tr>
-<!--        <tr class="active">-->
-<!--          <th></th>-->
-<!--          <th>-->
-<!--            <input ng-model="filter.sipDeviceName"-->
-<!--                   ng-model-options="{ debounce: 500 }"-->
-<!--                   class="form-control">-->
-<!--          </th>-->
-<!--          <th></th>-->
-<!--        </tr>-->
+        <tr class="active">
+          <th></th>
+          <th>
+            <input ng-model="filter.sipDeviceName"
+                   ng-model-options="{ debounce: 500 }"
+                   class="form-control">
+          </th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
         </thead>
         <tbody>
         <tr ng-repeat="dev in sipDevices track by $index"

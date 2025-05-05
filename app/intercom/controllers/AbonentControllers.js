@@ -740,6 +740,24 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
       });
     };
 
+    $scope.isRoomIdValid = function () {
+      const raw = String($scope.selectedSipDevice.roomId || "").trim();
+
+      if (!/^\d+$/.test(raw)) {
+        return false;
+      }
+
+      const id = parseInt(raw, 10);
+
+      if (raw !== id.toString()) {
+        return false;
+      }
+
+      return !(id < 1 || id > 9999);
+
+
+    };
+
     $scope.isRoomIdUnique = function () {
       return !$scope.abonentSipDevices.some(ad =>
         ad.sipDeviceRoomId === $scope.selectedSipDevice.roomId
