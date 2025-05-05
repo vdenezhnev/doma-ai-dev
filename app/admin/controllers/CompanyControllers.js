@@ -288,7 +288,7 @@ app.controller('CompanyDetailCtrl', ['$scope', '$http', '$state', '$stateParams'
         );
       });
 
-      $q.all(calls).then(() => {
+      Promise.all(calls).then(() => {
         notify($filter('translate')('NOTIFY_SIPSERVERS_UPDATED'));
       });
     };
