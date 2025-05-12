@@ -156,6 +156,7 @@ app.controller('SipDeviceDetailCtrl', [
       { value: 'api', name: 'api' },
       { value: 'dtmf', name: 'dtmf' },
     ];
+    $scope.configDisabled = true;
 
     $scope.sipServers = [];
     $scope.loadSipServers = function () {
@@ -212,7 +213,14 @@ app.controller('SipDeviceDetailCtrl', [
 
     $scope.onApply = function () {
       $scope.showApplyMessage = false;
+      $scope.configDisabled = true;
       $scope.save();
+    };
+
+
+    $scope.editConfig = function () {
+      if (!window.confirm(gettextCatalog.getString('sipdevice.confirm_config_edit'))) return;
+      $scope.configDisabled = false;
     };
   }
 ]);

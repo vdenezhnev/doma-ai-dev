@@ -392,7 +392,9 @@ angular.module('gettext').run(['gettextCatalog', function (gettextCatalog) {
     "html.sipdevice.form.OpenMethod": "Способ открытия",
     "html.sipdevice.form.DtmfOpenCommand": "DTMF-команда",
     "html.sipdevice.form.dtmf_lenght_error": "Не более 10 символов",
-    "html.sipdevice.form.dtmf_invalid_chars": "Допускаются только цифры и символы + * #"
+    "html.sipdevice.form.dtmf_invalid_chars": "Допускаются только цифры и символы + * #",
+    "sipdevice.confirm_config_edit": "Вы уверены, что хотите измененить конфигурацию домофона?",
+    "html.sipdevice.form.edit_config": "Редактировать конфигурацию"
   });
   gettextCatalog.setStrings('en', {
     "html.camera.delete_selected": "Delete",
@@ -787,7 +789,9 @@ angular.module('gettext').run(['gettextCatalog', function (gettextCatalog) {
     "html.sipdevice.form.OpenMethod": "Open method",
     "html.sipdevice.form.DtmfOpenCommand": "DTMF command",
     "html.sipdevice.form.dtmf_lenght_error": "Max 10 characters",
-    "html.sipdevice.form.dtmf_invalid_chars": "Only digits and + * # are allowed"
+    "html.sipdevice.form.dtmf_invalid_chars": "Only digits and + * # are allowed",
+    "sipdevice.confirm_config_edit": "Are you sure you want to edit SIP device configuration?",
+    "html.sipdevice.form.edit_config": "Edit configuration"
   });
   gettextCatalog.setStrings('ar', {
     "html.auth.email_confirmed": "تم تأكيد بريدك الإلكتروني",

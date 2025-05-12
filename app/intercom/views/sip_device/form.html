@@ -62,6 +62,15 @@
     <textarea class="form-control"
               name="SipDeviceConfiguration"
               ng-model="sipDevice.Configuration"
+              ng-disabled="configDisabled"
               rows="5"></textarea>
+    <button
+        type="button"
+        class="btn blue"
+        style="margin-top: 8px"
+        ng-show="configDisabled"
+        ng-click="editConfig()"
+        translate>html.sipdevice.form.edit_config
+    </button>
   </div>
 </div>
