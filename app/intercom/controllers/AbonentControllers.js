@@ -677,21 +677,13 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
 
     $scope.sipDevices = [];
     $scope.abonentSipDevices = [];
-    $scope.availableSipDevices = [];
     $scope.selectedSipDevice = {};
-
-    function updateAvailable() {
-      $scope.availableSipDevices = $scope.sipDevices.filter(d =>
-        !$scope.abonentSipDevices.some(ad => ad.sipDeviceId === d.sipDeviceId)
-      );
-    }
 
     $scope.loadSipDevices = function () {
       return $http.get(settings.API_URL + '?' + $httpParamSerializer({
         Action: 'GetSipDevices'
       })).then(resp => {
         $scope.sipDevices = resp.data;
-        updateAvailable();
         return resp;
       });
     };
@@ -704,7 +696,6 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
         }))
         .then(resp => {
           $scope.abonentSipDevices = resp.data;
-          updateAvailable();
           return resp;
         });
     };
