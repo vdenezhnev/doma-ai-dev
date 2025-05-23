@@ -21,6 +21,7 @@
                    ng-change="toggleAll(selectAll)">
           </th>
           <th translate>html.sipdevice.form.deviceName</th>
+          <th translate>html.sipdevice.form.description</th>
           <th translate>html.sipdevice.form.address</th>
           <th translate>html.sipdevice.form.registered</th>
           <th translate>html.sipdevice.form.server</th>
@@ -32,6 +33,7 @@
                    ng-model-options="{ debounce: 500 }"
                    class="form-control">
           </th>
+          <th></th>
           <th></th>
           <th></th>
           <th></th>
@@ -58,6 +60,7 @@
           </td>
           <td>{{ dev.sipDeviceName }}</td>
           <td>{{ dev.addressName }}</td>
+          <td>{{ dev.description }}</td>
           <td>{{ dev.registered  | date:'dd-MM-yyyy HH:mm' }}</td>
           <td>{{ dev.sipServerName }}</td>
         </tr>
