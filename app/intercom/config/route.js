@@ -44,15 +44,6 @@ app.config(['$stateProvider', 'settings', function ($stateProvider, settings) {
         code: null
       }
     })
-
-    .state('auth.email_confirm', {
-      url: '/email_confirm?code',
-      controller: 'ConfirmEmailCtrl',
-      templateUrl: settings.TEMPLATE_DIR + 'auth/email_confirmation.html',
-      params: {
-        code: null
-      }
-    })
     .state('auth.mobile_password_reset', {
       url: '/reset_password?code',
       controller: 'MobilePasswordResetWebCtrl',
@@ -65,6 +56,19 @@ app.config(['$stateProvider', 'settings', function ($stateProvider, settings) {
       url: settings.AUTH_ACTIVATION_ACCOUNT_URL,
       controller: 'ActivateAccountCtrl',
       templateUrl: settings.TEMPLATE_DIR + 'auth/activate_account.html',
+      params: {
+        code: null
+      }
+    })
+    .state('common', {
+      abstract: true,
+      templateUrl: settings.TEMPLATE_DIR + 'auth/base.html',
+    })
+
+    .state('common.email_confirm', {
+      url: '/email_confirm?code',
+      controller: 'ConfirmEmailCtrl',
+      templateUrl: settings.TEMPLATE_DIR + 'auth/email_confirmation.html',
       params: {
         code: null
       }
