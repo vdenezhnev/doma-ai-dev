@@ -4,8 +4,8 @@ app.controller('TariffListCtrl', ['$scope', '$http', 'Tariff',
   }
 ]);
 
-app.controller('TariffCreateCtrl', ['$rootScope', '$scope', '$http', '$state', 'Tariff',
-  function ($rootScope, $scope, $http, $state, Tariff) {
+app.controller('TariffCreateCtrl', ['$rootScope', '$scope', '$http', '$state', 'Tariff', 'VatRate',
+  function ($rootScope, $scope, $http, $state, Tariff, VatRate) {
     $scope.tariff = new Tariff({
       tariffPacket: {
         subscriptions: [{
@@ -31,6 +31,13 @@ app.controller('TariffCreateCtrl', ['$rootScope', '$scope', '$http', '$state', '
     });
 
     $scope.tariffTypes = ['access', 'serviceCompany'];
+
+    $scope.vatRates = VatRate.query(function(list) {
+      if (!$scope.tariff.tariffPacket.vatRateCodeId) {
+        var def = list.find(function(x){ return x.isDefault; });
+        if (def) $scope.tariff.tariffPacket.vatRateId = def.id;
+      }
+    });
 
     $scope.save = function () {
       $scope.tariff.$save().then(function (response) {
@@ -58,9 +65,19 @@ app.controller('TariffCreateCtrl', ['$rootScope', '$scope', '$http', '$state', '
   }
 ]);
 
-app.controller('TariffDetailCtrl', ['$scope', '$controller', '$http', '$state', 'notify', 'Tariff', 'gettextCatalog', 'tariff',
-  function ($scope, $controller, $http, $state, notify, Tariff, gettextCatalog, tariff) {
+app.controller('TariffDetailCtrl', ['$scope', '$controller', '$http', '$state', 'notify', 'Tariff', 'gettextCatalog', 'tariff', 'VatRate',
+  function ($scope, $controller, $http, $state, notify, Tariff, gettextCatalog, tariff, VatRate) {
     $scope.tariff = tariff;
+
+    $scope.vatRates = VatRate.query(function(list) {
+      if (!$scope.tariff.tariffPacket.vatRateCodeId && list && list.length) {
+        var def = null;
+        for (var i = 0; i < list.length; i++) {
+          if (list[i].isDefault) { def = list[i]; break; }
+        }
+        $scope.tariff.tariffPacket.vatRateCodeId = (def ? def.id : list[0].id);
+      }
+    });
 
     $scope.save = function () {
       $scope.tariff.$save(function (response) {

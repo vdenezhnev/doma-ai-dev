@@ -1133,6 +1133,9 @@ msgstr "Number of included keys"
 msgid "html.tariff.keys_type"
 msgstr "Key type"
 
+msgid "html.tariff.vatrates"
+msgstr "VAT rate"
+
 #: app/intercom/views/tariff/list.html:2
 msgid "html.tariff.list_title"
 msgstr "Pricing Plans"

@@ -1119,6 +1119,9 @@ msgstr "عدد المفاتيح المضمنة"
 msgid "html.tariff.keys_type"
 msgstr "نوع المفتاح"
 
+msgid "html.tariff.vatrates"
+msgstr "معدل ضريبة القيمة المضافة"
+
 #: app/intercom/views/tariff/list.html:2
 msgid "html.tariff.list_title"
 msgstr "سعر الخطة"

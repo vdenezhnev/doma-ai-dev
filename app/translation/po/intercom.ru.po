@@ -1135,6 +1135,9 @@ msgstr "Число ключей в пакете"
 msgid "html.tariff.keys_type"
 msgstr "Тип тарифа"
 
+msgid "html.tariff.vatrates"
+msgstr "Ставка НДС"
+
 #: app/intercom/views/tariff/list.html:2
 msgid "html.tariff.list_title"
 msgstr "Тарифы"
