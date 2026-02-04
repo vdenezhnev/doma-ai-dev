@@ -1204,7 +1204,7 @@ msgstr "Срок триального периода"
 
 #: app/intercom/views/_messages.html:7
 msgid "html.tariff.trial_type_disabled"
-msgstr "Отключен"
+msgstr "До конца текущего месяца"
 
 #: app/intercom/views/_messages.html:8
 msgid "html.tariff.trial_type_tillTheEndOfNextMonth"
@@ -1386,6 +1386,108 @@ msgstr "Пользователи"
 #: app/intercom/controllers/RolesControllers.js:52
 msgid "html.roles.zones_title"
 msgstr "Зоны и точки доступа"
+
+msgid "html.abonent.lowerfloor_display"
+msgstr "Нижний этаж"
+
+msgid "html.abonent.allowed_floors"
+msgstr "Разрешенные этажи"
+
+msgid "html.abonent.pacsCodes.title"
+msgstr "ID карт доступа и BLE-меток"
+
+msgid "html.abonent.pacsCodes.comment"
+msgstr "Комментарий"
+
+msgid "html.menu.cameras"
+msgstr "Камеры"
+
+msgid "html.menu.sipdevices"
+msgstr "Домофоны"
+
+msgid "html.camera.add_title"
+msgstr "Добавить камеру"
+
+msgid "html.camera.delete_selected"
+msgstr "Удалить выбранные"
+
+msgid "html.camera.status"
+msgstr "Статус"
+
+msgid "html.camera.new_title"
+msgstr "Новая камера"
+
+msgid "html.camera.form.name"
+msgstr "Название"
+
+msgid "html.camera.form.ip"
+msgstr "IP адрес"
+
+msgid "html.camera.form.login"
+msgstr "Логин"
+
+msgid "html.camera.form.password"
+msgstr "Пароль"
+
+msgid "html.camera.check_status"
+msgstr "Проверить статус"
+
+msgid "html.camera.status:"
+msgstr "Статус:"
+
+msgid "html.sipdevice.add_title"
+msgstr "Добавить домофон"
+
+msgid "html.sipdevice.delete_selected"
+msgstr "Удалить выбранные"
+
+msgid "html.sipdevice.new_title"
+msgstr "Новый домофон"
+
+msgid "html.sipdevice.edit_title"
+msgstr "Редактирование домофона"
+
+msgid "html.sipdevice.form.name"
+msgstr "Название домофона"
+
+msgid "html.sipdevice.form.deviceName"
+msgstr "Имя устройства"
+
+msgid "html.sipdevice.form.server"
+msgstr "Сервер"
+
+msgid "html.sipdevice.form.description"
+msgstr "Описание"
+
+msgid "html.sipdevice.form.address"
+msgstr "Адрес"
+
+msgid "html.sipdevice.address_display"
+msgstr "Адрес"
+
+msgid "html.sipdevice.form.roomId"
+msgstr "Квартира"
+
+msgid "html.sipdevice.form.registered"
+msgstr "Зарегистрировано"
+
+msgid "html.sipdevice.form.OpenMethod"
+msgstr "Способ открытия"
+
+msgid "html.sipdevice.form.configuration"
+msgstr "Конфигурация"
+
+msgid "html.sipdevice.form.edit_config"
+msgstr "Редактировать конфигурацию"
+
+msgid "html.tariff.trial_type_first2Sec"
+msgstr "Отключен"
+
+msgid "html.journal.cars_display"
+msgstr "Автомобили"
+
+msgid "html.access_right.status"
+msgstr "Статус"
 
 #~ msgid "html.tariff.tariff_apply"
 #~ msgstr "Применить тариф"

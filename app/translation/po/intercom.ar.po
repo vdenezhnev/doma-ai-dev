@@ -1188,7 +1188,7 @@ msgstr "تجريبي"
 
 #: app/intercom/views/_messages.html:7
 msgid "html.tariff.trial_type_disabled"
-msgstr "تعطيل"
+msgstr "بحلول نهاية الشهر الحالي"
 
 #: app/intercom/views/_messages.html:8
 msgid "html.tariff.trial_type_tillTheEndOfNextMonth"
@@ -1369,6 +1369,108 @@ msgstr "المستخدمون"
 #: app/intercom/controllers/RolesControllers.js:52
 msgid "html.roles.zones_title"
 msgstr "مناطق التحكم في الوصول"
+
+msgid "html.abonent.lowerfloor_display"
+msgstr "الطابق السفلي"
+
+msgid "html.abonent.allowed_floors"
+msgstr "الطوابق المسموح بها"
+
+msgid "html.abonent.pacsCodes.title"
+msgstr "معرّفات بطاقات الدخول ومعرّفات علامات BLE"
+
+msgid "html.abonent.pacsCodes.comment"
+msgstr "تعليق"
+
+msgid "html.menu.cameras"
+msgstr "الكاميرات"
+
+msgid "html.menu.sipdevices"
+msgstr "الإنتركم"
+
+msgid "html.camera.add_title"
+msgstr "إضافة كاميرا"
+
+msgid "html.camera.delete_selected"
+msgstr "حذف المحدد"
+
+msgid "html.camera.status"
+msgstr "الحالة"
+
+msgid "html.camera.new_title"
+msgstr "كاميرا جديدة"
+
+msgid "html.camera.form.name"
+msgstr "الاسم"
+
+msgid "html.camera.form.ip"
+msgstr "عنوان IP"
+
+msgid "html.camera.form.login"
+msgstr "تسجيل الدخول"
+
+msgid "html.camera.form.password"
+msgstr "كلمة المرور"
+
+msgid "html.camera.check_status"
+msgstr "التحقق من الحالة"
+
+msgid "html.camera.status:"
+msgstr "الحالة:"
+
+msgid "html.sipdevice.add_title"
+msgstr "إضافة إنتركم"
+
+msgid "html.sipdevice.delete_selected"
+msgstr "حذف المحدد"
+
+msgid "html.sipdevice.new_title"
+msgstr "إنتركم جديد"
+
+msgid "html.sipdevice.edit_title"
+msgstr "تعديل الإنتركم"
+
+msgid "html.sipdevice.form.name"
+msgstr "اسم الإنتركم"
+
+msgid "html.sipdevice.form.deviceName"
+msgstr "اسم الجهاز"
+
+msgid "html.sipdevice.form.server"
+msgstr "الخادم"
+
+msgid "html.sipdevice.form.description"
+msgstr "الوصف"
+
+msgid "html.sipdevice.form.address"
+msgstr "العنوان"
+
+msgid "html.sipdevice.address_display"
+msgstr "العنوان"
+
+msgid "html.sipdevice.form.roomId"
+msgstr "الشقة"
+
+msgid "html.sipdevice.form.registered"
+msgstr "مسجل"
+
+msgid "html.sipdevice.form.OpenMethod"
+msgstr "طريقة الفتح"
+
+msgid "html.sipdevice.form.configuration"
+msgstr "الإعدادات"
+
+msgid "html.sipdevice.form.edit_config"
+msgstr "تعديل الإعدادات"
+
+msgid "html.tariff.trial_type_first2Seс"
+msgstr "معطّل"
+
+msgid "html.journal.cars_display"
+msgstr "السيارات"
+
+msgid "html.access_right.status"
+msgstr "الحالة"
 
 #~ msgid "html.tariff.tariff_apply"
 #~ msgstr "Apply pricing plan"

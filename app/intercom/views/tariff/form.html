@@ -42,17 +42,17 @@
            disabled="disabled">
   </div>
 
-  <div class="form-group">
+  <div class="form-group" ng-if="vatRates && vatRates.length">
     <label translate>html.tariff.vatrates</label>
     <select class="form-control"
-          name="vatRate"
-          ng-model="tariff.tariffPacket.vatRateId"
-          ng-options="r.id as r.name for r in vatRates"
-          validator="required">
-          <option value="">—</option>
+            name="vatRate"
+            ng-model="tariff.tariffPacket.vatRateId"
+            ng-options="r.id as r.name for r in vatRates"
+            validator="required">
+      <option value="">—</option>
     </select>
-
   </div>
+
 
 
   <hr>
