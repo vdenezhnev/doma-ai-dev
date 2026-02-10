@@ -79,8 +79,10 @@ app.controller('AbonentListCtrl', ['$scope', '$http', '$httpParamSerializer', 's
   }
 ]);
 
-app.controller('AbonentCreateCtrl', ['$scope', '$state', 'Abonent', 'Device',
-  function ($scope, $state, Abonent, Device) {
+app.controller('AbonentCreateCtrl',
+  ['$scope', '$state', '$http', '$httpParamSerializer', 'settings', 'Abonent', 'Device',
+  function ($scope, $state, $http, $httpParamSerializer, settings, Abonent, Device) {
+
     $scope.showRfid = false;
     $scope.abonent = new Abonent({
       cars: [],
@@ -212,6 +214,35 @@ app.controller('AbonentCreateCtrl', ['$scope', '$state', 'Abonent', 'Device',
     };
 
     $scope.devices = Device.query();
+
+    $scope.isGeneratingExternalId = false;
+
+    $scope.generateExternalId = function () {
+      if ($scope.isGeneratingExternalId) return;
+      $scope.isGeneratingExternalId = true;
+
+      var url = settings.API_URL + '?' + $httpParamSerializer({
+        Action: 'GetUniqueAbonentExternalId'
+      });
+
+      $http.get(url)
+      .then(function (resp) {
+        var data = resp.data || {};
+
+        var id = (data.externalId != null) ? data.externalId
+              : (data.ExternalId != null) ? data.ExternalId
+              : null;
+
+        if (id != null) {
+          $scope.abonent.externalId = String(id);
+          if ($scope.checkDuplicates) $scope.checkDuplicates();
+        }
+      })
+      .finally(function () {
+        $scope.isGeneratingExternalId = false;
+      });
+    };
+
   }
 ]);
 
@@ -763,5 +794,33 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
       $state: $state,
       object: $scope.abonent
     });
+
+    $scope.isGeneratingExternalId = false;
+
+    $scope.generateExternalId = function () {
+      if ($scope.isGeneratingExternalId) return;
+      $scope.isGeneratingExternalId = true;
+
+      var url = settings.API_URL + '?' + $httpParamSerializer({
+        Action: 'GetUniqueAbonentExternalId'
+      });
+
+      $http.get(url)
+      .then(function (resp) {
+        var data = resp.data || {};
+
+        var id = (data.externalId != null) ? data.externalId
+              : (data.ExternalId != null) ? data.ExternalId
+              : null;
+
+        if (id != null) {
+          $scope.abonent.externalId = String(id);
+          if ($scope.checkDuplicates) $scope.checkDuplicates();
+        }
+      })
+      .finally(function () {
+        $scope.isGeneratingExternalId = false;
+      });
+    };
   }
 ]);
