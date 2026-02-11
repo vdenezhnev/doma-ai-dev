@@ -1486,6 +1486,15 @@ msgstr "Cars"
 msgid "html.access_right.status"
 msgstr "Status"
 
+#: app/intercom/views/abonent/form.html:45
+msgid "html.abonent.allowed_floors_placeholder"
+msgstr "Enter floors separated by commas"
+
+#: app/intercom/views/abonent/form.html:427
+#: app/intercom/views/abonent/form.html:65
+msgid "html.abonent.pacsCodes.error"
+msgstr "The value cannot be greater than 3 bytes (16777215)"
+
 #~ msgid "html.tariff.tariff_apply"
 #~ msgstr "Apply pricing plan"
 

@@ -224,7 +224,7 @@ msgstr "Окончание"
 
 #: app/intercom/views/abonent/form.html:33
 msgid "html.abonent.external_id_display"
-msgstr "ID выданной карты или метки"
+msgstr "ID цифрового ключа"
 
 #: app/intercom/views/abonent/list.html:16
 msgid "html.abonent.flat_display"
@@ -1488,6 +1488,15 @@ msgstr "Автомобили"
 
 msgid "html.access_right.status"
 msgstr "Статус"
+
+#: app/intercom/views/abonent/form.html:45
+msgid "html.abonent.allowed_floors_placeholder"
+msgstr "Введите этажи, разделенные запятыми"
+
+#: app/intercom/views/abonent/form.html:427
+#: app/intercom/views/abonent/form.html:65
+msgid "html.abonent.pacsCodes.error"
+msgstr "Значение не может быть больше 3 байт (16777215)"
 
 #~ msgid "html.tariff.tariff_apply"
 #~ msgstr "Применить тариф"

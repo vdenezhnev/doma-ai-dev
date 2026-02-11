@@ -1472,6 +1472,15 @@ msgstr "السيارات"
 msgid "html.access_right.status"
 msgstr "الحالة"
 
+#: app/intercom/views/abonent/form.html:45
+msgid "html.abonent.allowed_floors_placeholder"
+msgstr "ادخل الطوابق مفصولة بفواصل"
+
+#: app/intercom/views/abonent/form.html:427
+#: app/intercom/views/abonent/form.html:65
+msgid "html.abonent.pacsCodes.error"
+msgstr "لا يمكن أن تكون القيمة أكبر من 3 بايت (16777215)"
+
 #~ msgid "html.tariff.tariff_apply"
 #~ msgstr "Apply pricing plan"
 
