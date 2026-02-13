@@ -98,8 +98,15 @@ app.controller('AbonentCreateCtrl',
     });
 
     $scope.save = function () {
-      $scope.abonent.$save().then(function (response) {
-        $state.go('admin.abonent.list');
+      $scope.checkExternalIdUnique().then(function (isUnique) {
+        if (!isUnique) {
+          notify(gettextCatalog.getString('abonents.external_id_unique_error'));
+          return;
+        }
+
+        $scope.abonent.$save().then(function (response) {
+          $state.go('admin.abonent.list');
+        });
       });
     };
 
@@ -215,6 +222,39 @@ app.controller('AbonentCreateCtrl',
 
     $scope.devices = Device.query();
 
+    $scope.externalIdNotUnique = false;
+
+    $scope.checkExternalIdUnique = function () {
+      if (!$scope.abonent.externalId) {
+        $scope.externalIdNotUnique = false;
+        return Promise.resolve(true);
+      }
+
+      var request = {
+        Action: 'CheckUniqueAbonentExternalId',
+        ExternalId: String($scope.abonent.externalId)
+      };
+
+      return $http.post(settings.API_URL, request).then(function (resp) {
+        var data = resp.data || {};
+
+        var isUnique = (data.isUnique != null) ? data.isUnique
+                    : (data.IsUnique != null) ? data.IsUnique
+                    : false;
+
+        $scope.externalIdNotUnique = !isUnique;
+        return !!isUnique;
+      }, function () {
+        // если проверка упала — запретить сохранение
+        $scope.externalIdNotUnique = false;
+        return false;
+      });
+    };
+
+    $scope.$watch('abonent.externalId', function () {
+      $scope.externalIdNotUnique = false;
+    });
+
     $scope.isGeneratingExternalId = false;
 
     $scope.generateExternalId = function () {
@@ -240,6 +280,7 @@ app.controller('AbonentCreateCtrl',
       })
       .finally(function () {
         $scope.isGeneratingExternalId = false;
+        $scope.externalIdNotUnique = false;
       });
     };
 
@@ -412,13 +453,19 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
     }
 
     $scope.save = function () {
-      $scope.abonent.$save(function (response) {
-        notify(gettextCatalog.getString('abonents.abonent_updated'));
-        $state.current.showConfirmation = false;
-        User.updateKeyCountInfo();
-        $state.go('admin.abonent.list');
+      $scope.checkExternalIdUnique().then(function (isUnique) {
+        if (!isUnique) {
+          notify(gettextCatalog.getString('abonents.external_id_unique_error'));
+          return;
+        }
+        $scope.abonent.$save(function (response) {
+          notify(gettextCatalog.getString('abonents.abonent_updated'));
+          $state.current.showConfirmation = false;
+          User.updateKeyCountInfo();
+          $state.go('admin.abonent.list');
+        });
       });
-    };
+    }
 
     $scope.delete = function () {
       if (window.confirm(gettextCatalog.getString('abonents.abonent_delete_confirm'))) {
@@ -795,6 +842,40 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
       object: $scope.abonent
     });
 
+
+    $scope.externalIdNotUnique = false;
+
+    $scope.checkExternalIdUnique = function () {
+      if (!$scope.abonent.externalId) {
+        $scope.externalIdNotUnique = false;
+        return Promise.resolve(true);
+      }
+
+      var request = {
+        Action: 'CheckUniqueAbonentExternalId',
+        ExternalId: String($scope.abonent.externalId)
+      };
+
+      return $http.post(settings.API_URL, request).then(function (resp) {
+        var data = resp.data || {};
+
+        var isUnique = (data.isUnique != null) ? data.isUnique
+                    : (data.IsUnique != null) ? data.IsUnique
+                    : false;
+
+        $scope.externalIdNotUnique = !isUnique;
+        return !!isUnique;
+      }, function () {
+        // если проверка упала — запретить сохранение
+        $scope.externalIdNotUnique = false;
+        return false;
+      });
+    };
+
+    $scope.$watch('abonent.externalId', function () {
+      $scope.externalIdNotUnique = false;
+    });
+
     $scope.isGeneratingExternalId = false;
 
     $scope.generateExternalId = function () {
@@ -820,6 +901,7 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
       })
       .finally(function () {
         $scope.isGeneratingExternalId = false;
+        $scope.externalIdNotUnique = false;
       });
     };
   }

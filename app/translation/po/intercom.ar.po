@@ -1481,6 +1481,9 @@ msgstr "ادخل الطوابق مفصولة بفواصل"
 msgid "html.abonent.pacsCodes.error"
 msgstr "لا يمكن أن تكون القيمة أكبر من 3 بايت (16777215)"
 
+msgid "abonents.external_id_unique_error"
+msgstr "هذا المعرف الرقمي للمفتاح قيد الاستخدام بالفعل."
+
 #~ msgid "html.tariff.tariff_apply"
 #~ msgstr "Apply pricing plan"
 

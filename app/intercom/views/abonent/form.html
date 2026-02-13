@@ -73,6 +73,9 @@
             <span ng-if="isGeneratingExternalId">...</span>
           </button>
         </span>
+        <span class="text-danger" ng-if="externalIdNotUnique" translate>
+          abonents.external_id_unique_error
+        </span>
       </div>
 
       <span class="text-danger" ng-if="abonent.externalId > 16777215" translate>

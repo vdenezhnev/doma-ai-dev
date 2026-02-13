@@ -226,6 +226,9 @@ msgstr "Окончание"
 msgid "html.abonent.external_id_display"
 msgstr "ID цифрового ключа"
 
+msgid "abonents.external_id_unique_error"
+msgstr "Данный ID цифрового ключа уже используется"
+
 #: app/intercom/views/abonent/list.html:16
 msgid "html.abonent.flat_display"
 msgstr "Помещение"
