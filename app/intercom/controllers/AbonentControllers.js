@@ -359,6 +359,10 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
 
     $scope.abonent = new Abonent(angular.copy($stateParams.abonent));
 
+    $scope.originalExternalId = $scope.abonent && $scope.abonent.externalId
+      ? String($scope.abonent.externalId)
+      : '';
+
     $scope.model = {
       allowedFloors: $scope.abonent.floors.join(","),
       allowedFloorsError: false,
@@ -464,6 +468,9 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
           User.updateKeyCountInfo();
           $state.go('admin.abonent.list');
         });
+        $scope.originalExternalId = $scope.abonent && $scope.abonent.externalId
+        ? String($scope.abonent.externalId)
+        : '';
       });
     }
 
@@ -842,23 +849,34 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
       object: $scope.abonent
     });
 
-
     $scope.externalIdNotUnique = false;
 
     $scope.checkExternalIdUnique = function () {
-      if (!$scope.abonent.externalId) {
+      var current = $scope.abonent && $scope.abonent.externalId
+        ? String($scope.abonent.externalId).trim()
+        : '';
+
+      var original = $scope.originalExternalId
+        ? String($scope.originalExternalId).trim()
+        : '';
+
+      if (!current) {
+        $scope.externalIdNotUnique = false;
+        return Promise.resolve(true);
+      }
+
+      if (current === original) {
         $scope.externalIdNotUnique = false;
         return Promise.resolve(true);
       }
 
       var request = {
         Action: 'CheckUniqueAbonentExternalId',
-        ExternalId: String($scope.abonent.externalId)
+        ExternalId: current
       };
 
       return $http.post(settings.API_URL, request).then(function (resp) {
         var data = resp.data || {};
-
         var isUnique = (data.isUnique != null) ? data.isUnique
                     : (data.IsUnique != null) ? data.IsUnique
                     : false;
@@ -866,7 +884,6 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
         $scope.externalIdNotUnique = !isUnique;
         return !!isUnique;
       }, function () {
-        // если проверка упала — запретить сохранение
         $scope.externalIdNotUnique = false;
         return false;
       });
