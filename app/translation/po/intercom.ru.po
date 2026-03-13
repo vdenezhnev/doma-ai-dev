@@ -218,6 +218,9 @@ msgstr "Абонент"
 msgid "html.abonent.floor_display"
 msgstr "Этаж"
 
+msgid "html.abonent.elevator_priority"
+msgstr "Приоритет вызова лифта"
+
 #: app/intercom/views/abonent/form.html:219
 msgid "html.abonent.end_period"
 msgstr "Окончание"

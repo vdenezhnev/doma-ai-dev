@@ -1498,6 +1498,9 @@ msgstr "The value cannot be greater than 3 bytes (16777215)"
 msgid "abonents.external_id_unique_error"
 msgstr "This digital key ID is already in use"
 
+msgid "html.abonent.elevator_priority"
+msgstr "Elevator call priority"
+
 #~ msgid "html.tariff.tariff_apply"
 #~ msgstr "Apply pricing plan"
 

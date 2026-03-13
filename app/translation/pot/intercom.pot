@@ -13,7 +13,7 @@ msgstr ""
 msgid "Api-token"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:415
+#: app/intercom/views/abonent/form.html:422
 msgid ""
 "ID карт доступа и BLE-меток используются для предоставления возможности добавление нескольких PACS-кодов, чтобы члены семьи без криптоключей могли пользоваться доступом через карточки.<br><br>\r\n"
 "\r\n"
@@ -32,35 +32,35 @@ msgstr ""
 msgid "LockMaintenancePeriod"
 msgstr ""
 
-#: app/intercom/controllers/AbonentControllers.js:470
+#: app/intercom/controllers/AbonentControllers.js:478
 msgid "abonents.abonent_delete_confirm"
 msgstr ""
 
-#: app/intercom/controllers/AbonentControllers.js:472
+#: app/intercom/controllers/AbonentControllers.js:480
 msgid "abonents.abonent_deleted"
 msgstr ""
 
-#: app/intercom/controllers/AbonentControllers.js:461
+#: app/intercom/controllers/AbonentControllers.js:466
 msgid "abonents.abonent_updated"
 msgstr ""
 
 #: app/intercom/controllers/AbonentControllers.js:103
-#: app/intercom/controllers/AbonentControllers.js:457
+#: app/intercom/controllers/AbonentControllers.js:462
 #: app/intercom/views/abonent/form.html:76
 msgid "abonents.external_id_unique_error"
 msgstr ""
 
-#: app/intercom/controllers/AbonentControllers.js:480
-#: app/intercom/controllers/AbonentControllers.js:492
+#: app/intercom/controllers/AbonentControllers.js:488
+#: app/intercom/controllers/AbonentControllers.js:500
 msgid "abonents.key_delete_confirm"
 msgstr ""
 
-#: app/intercom/controllers/AbonentControllers.js:484
-#: app/intercom/controllers/AbonentControllers.js:496
+#: app/intercom/controllers/AbonentControllers.js:492
+#: app/intercom/controllers/AbonentControllers.js:504
 msgid "abonents.key_deleted"
 msgstr ""
 
-#: app/intercom/controllers/AbonentControllers.js:637
+#: app/intercom/controllers/AbonentControllers.js:645
 msgid "abonents.pacsCodes_updated"
 msgstr ""
 
@@ -87,12 +87,12 @@ msgstr ""
 msgid "auth.password_changed"
 msgstr ""
 
-#: app/intercom/controllers/AbonentControllers.js:538
+#: app/intercom/controllers/AbonentControllers.js:546
 #: app/intercom/controllers/CameraControllers.js:164
 msgid "camera.camera_created"
 msgstr ""
 
-#: app/intercom/controllers/AbonentControllers.js:551
+#: app/intercom/controllers/AbonentControllers.js:559
 #: app/intercom/controllers/CameraControllers.js:256
 msgid "camera.camera_deleted"
 msgstr ""
@@ -176,15 +176,15 @@ msgstr ""
 msgid "html.abonent.building_display"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:148
+#: app/intercom/views/abonent/form.html:155
 msgid "html.abonent.car_model_display"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:147
+#: app/intercom/views/abonent/form.html:154
 msgid "html.abonent.car_number_display"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:142
+#: app/intercom/views/abonent/form.html:149
 msgid "html.abonent.cars_display"
 msgstr ""
 
@@ -201,7 +201,11 @@ msgstr ""
 msgid "html.abonent.download_template_title"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:299
+#: app/intercom/views/abonent/form.html:110
+msgid "html.abonent.elevator_priority"
+msgstr ""
+
+#: app/intercom/views/abonent/form.html:306
 msgid "html.abonent.end_period"
 msgstr ""
 
@@ -221,7 +225,7 @@ msgstr ""
 msgid "html.abonent.import_title"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:136
+#: app/intercom/views/abonent/form.html:143
 msgid "html.abonent.isGsmOpenAllowed"
 msgstr ""
 
@@ -243,34 +247,34 @@ msgstr ""
 msgid "html.abonent.new_title"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:431
+#: app/intercom/views/abonent/form.html:438
 msgid "html.abonent.pacsCodes.comment"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:444
+#: app/intercom/views/abonent/form.html:451
 #: app/intercom/views/abonent/form.html:81
 msgid "html.abonent.pacsCodes.error"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:447
+#: app/intercom/views/abonent/form.html:454
 #: app/intercom/views/abonent/form.html:84
 msgid "html.abonent.pacsCodes.errorDuplicate"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:412
+#: app/intercom/views/abonent/form.html:419
 msgid "html.abonent.pacsCodes.title"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:238
-#: app/intercom/views/abonent/form.html:297
+#: app/intercom/views/abonent/form.html:245
+#: app/intercom/views/abonent/form.html:304
 msgid "html.abonent.perimeter"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:239
+#: app/intercom/views/abonent/form.html:246
 msgid "html.abonent.perimeter_tariff"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:185
+#: app/intercom/views/abonent/form.html:192
 msgid "html.abonent.perimeters_title"
 msgstr ""
 
@@ -284,7 +288,7 @@ msgstr ""
 msgid "html.abonent.room_display"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:298
+#: app/intercom/views/abonent/form.html:305
 msgid "html.abonent.start_period"
 msgstr ""
 
@@ -292,19 +296,19 @@ msgstr ""
 msgid "html.abonent.tag_id_display"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:292
+#: app/intercom/views/abonent/form.html:299
 msgid "html.abonent.temporary_access_perimeters"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:109
+#: app/intercom/views/abonent/form.html:116
 msgid "html.abonent.workking_time_display"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:128
+#: app/intercom/views/abonent/form.html:135
 msgid "html.abonent.workking_time_end_display"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:122
+#: app/intercom/views/abonent/form.html:129
 msgid "html.abonent.workking_time_start_display"
 msgstr ""
 
@@ -803,7 +807,7 @@ msgstr ""
 msgid "html.camera.form.login"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:382
+#: app/intercom/views/abonent/form.html:389
 #: app/intercom/views/camera/form.html:31
 #: app/intercom/views/camera/list.html:19
 msgid "html.camera.form.name"
@@ -855,12 +859,12 @@ msgid "html.control_panel_user.new_title"
 msgstr ""
 
 #: app/intercom/views/abonent/create.html:39
-#: app/intercom/views/abonent/form.html:176
-#: app/intercom/views/abonent/form.html:286
-#: app/intercom/views/abonent/form.html:371
-#: app/intercom/views/abonent/form.html:405
-#: app/intercom/views/abonent/form.html:470
-#: app/intercom/views/abonent/form.html:534
+#: app/intercom/views/abonent/form.html:183
+#: app/intercom/views/abonent/form.html:293
+#: app/intercom/views/abonent/form.html:378
+#: app/intercom/views/abonent/form.html:412
+#: app/intercom/views/abonent/form.html:477
+#: app/intercom/views/abonent/form.html:541
 #: app/intercom/views/access/object/add.html:15
 #: app/intercom/views/access/object/form.html:52
 #: app/intercom/views/access/perimeter/add.html:23
@@ -890,8 +894,8 @@ msgstr ""
 msgid "html.defaults.cancel_title"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:271
-#: app/intercom/views/abonent/form.html:321
+#: app/intercom/views/abonent/form.html:278
+#: app/intercom/views/abonent/form.html:328
 #: app/intercom/views/journal/working-time.html:105
 msgid "html.defaults.change_title"
 msgstr ""
@@ -940,7 +944,7 @@ msgstr ""
 msgid "html.defaults.reset_title"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:465
+#: app/intercom/views/abonent/form.html:472
 #: app/intercom/views/access/object/edit.html:24
 #: app/intercom/views/access/perimeter/edit.html:22
 #: app/intercom/views/access/point/change_lock_id_form.html:19
@@ -1101,14 +1105,14 @@ msgstr ""
 msgid "html.journal.date_and_time_display"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:329
+#: app/intercom/views/abonent/form.html:336
 #: app/intercom/views/journal/access.html:20
 #: app/intercom/views/journal/working-time.html:19
 #: app/intercom/views/payment/list.html:18
 msgid "html.journal.date_from_display"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:347
+#: app/intercom/views/abonent/form.html:354
 #: app/intercom/views/journal/access.html:36
 #: app/intercom/views/journal/working-time.html:36
 #: app/intercom/views/payment/list.html:35
@@ -1190,7 +1194,7 @@ msgstr ""
 msgid "html.menu.addresses"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:377
+#: app/intercom/views/abonent/form.html:384
 #: app/intercom/views/camera/list.html:1
 #: app/intercom/views/inc/sidebar.html:76
 msgid "html.menu.cameras"
@@ -1210,7 +1214,7 @@ msgstr ""
 msgid "html.menu.payments"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:476
+#: app/intercom/views/abonent/form.html:483
 #: app/intercom/views/inc/sidebar.html:82
 #: app/intercom/views/sip_device/list.html:1
 msgid "html.menu.sipdevices"
@@ -1444,7 +1448,7 @@ msgstr ""
 msgid "html.sipdevice.form.edit_config"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:481
+#: app/intercom/views/abonent/form.html:488
 msgid "html.sipdevice.form.name"
 msgstr ""
 
@@ -1456,16 +1460,16 @@ msgstr ""
 msgid "html.sipdevice.form.registered"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:482
-#: app/intercom/views/abonent/form.html:513
+#: app/intercom/views/abonent/form.html:489
+#: app/intercom/views/abonent/form.html:520
 msgid "html.sipdevice.form.roomId"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:523
+#: app/intercom/views/abonent/form.html:530
 msgid "html.sipdevice.form.roomid_range_error"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:518
+#: app/intercom/views/abonent/form.html:525
 msgid "html.sipdevice.form.roomid_unique_error"
 msgstr ""
 
@@ -1669,7 +1673,7 @@ msgstr ""
 msgid "notify.defaults.updated"
 msgstr ""
 
-#: app/intercom/controllers/AbonentControllers.js:793
+#: app/intercom/controllers/AbonentControllers.js:801
 msgid "sipdevice.added_success"
 msgstr ""
 
@@ -1693,7 +1697,7 @@ msgstr ""
 msgid "sipdevice.deleted"
 msgstr ""
 
-#: app/intercom/controllers/AbonentControllers.js:805
+#: app/intercom/controllers/AbonentControllers.js:813
 msgid "sipdevice.deleted_success"
 msgstr ""
 
@@ -1730,7 +1734,7 @@ msgstr ""
 msgid "{{ 'html.tariff.period_' + tariff_period.type | translate }}"
 msgstr ""
 
-#: app/intercom/views/abonent/form.html:112
+#: app/intercom/views/abonent/form.html:119
 msgid ""
 "Временной интервал доступа<br>\r\n"
 "            Поле «Временный интервал доступа» отвечает за промежуток времени, между которым пользователь имеет доступ к замкам. Поле необязательно для заполнения, для неограниченного доступа оставьте поле пустым.<br><br>\r\n"

@@ -1484,6 +1484,9 @@ msgstr "لا يمكن أن تكون القيمة أكبر من 3 بايت (16777
 msgid "abonents.external_id_unique_error"
 msgstr "هذا المعرف الرقمي للمفتاح قيد الاستخدام بالفعل."
 
+msgid "html.abonent.elevator_priority"
+msgstr "أولوية مكالمة المصعد"
+
 #~ msgid "html.tariff.tariff_apply"
 #~ msgstr "Apply pricing plan"
 
