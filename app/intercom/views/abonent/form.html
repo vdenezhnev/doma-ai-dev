@@ -62,7 +62,8 @@
               type="text"
               name="externalId"
               ng-model="abonent.externalId"
-              ng-change="abonent.externalId = pacsValidation(abonent.externalId)">
+              ng-change="abonent.externalId = pacsValidation(abonent.externalId)"
+              readonly>
 
         <span class="input-group-btn">
           <button type="button"
@@ -108,6 +109,13 @@
       <label>
         <input type="checkbox" name="ElevatorPriority" ng-model="abonent.elevatorPriority">
         <span translate>html.abonent.elevator_priority</span>
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label>
+        <input type="checkbox" name="UserIdAsPacsPrefix" ng-model="abonent.userIdAsPacsPrefix">
+        <span translate>html.abonent.userIdAsPacsPrefix</span>
       </label>
     </div>
 
