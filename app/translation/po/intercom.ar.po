@@ -571,6 +571,9 @@ msgstr "الهاتف"
 msgid "html.account.phones_display"
 msgstr "الهاتف"
 
+msgid "html.account.userIdAsPacsPrefix"
+msgstr "استخدم نسخة 7 بايت من معرّف المفتاح الرقمي"
+
 #: app/intercom/views/account/form.html:24
 msgid "html.account.region_display"
 msgstr "منطقة"

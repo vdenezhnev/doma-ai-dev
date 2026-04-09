@@ -577,6 +577,9 @@ msgstr "Телефон"
 msgid "html.account.phones_display"
 msgstr "Телефоны"
 
+msgid "html.account.userIdAsPacsPrefix"
+msgstr "Использовать 7-байтовую версию ID цифрового ключа"
+
 #: app/intercom/views/account/form.html:24
 msgid "html.account.region_display"
 msgstr "Регион"

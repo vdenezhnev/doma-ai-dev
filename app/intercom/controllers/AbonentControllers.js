@@ -80,8 +80,138 @@ app.controller('AbonentListCtrl', ['$scope', '$http', '$httpParamSerializer', 's
 ]);
 
 app.controller('AbonentCreateCtrl',
-  ['$scope', '$state', '$http', '$httpParamSerializer', 'settings', 'Abonent', 'Device',
-  function ($scope, $state, $http, $httpParamSerializer, settings, Abonent, Device) {
+  ['$scope', '$state', '$http', '$httpParamSerializer', 'settings', 'Abonent', 'Device', 'User',
+  function ($scope, $state, $http, $httpParamSerializer, settings, Abonent, Device, User) {
+
+    $scope.userIdAsPacsPrefix = !!(User.data && User.data.UserIdAsPacsPrefix);
+
+    $scope.externalIdViewModes = ['DEC', 'HEX'];
+
+    $scope.externalIdViewMode = {
+      state: localStorage.getItem('externalIdViewMode') || 'DEC'
+    };
+
+    $scope.onExternalIdViewModeChange = function () {
+      localStorage.setItem('externalIdViewMode', $scope.externalIdViewMode.state);
+    };
+
+    function toPaddedHexFromParts(userIdUint32, pacsCode) {
+      var userHex = (userIdUint32 >>> 0).toString(16).toUpperCase();
+      var pacsHex = (parseInt(pacsCode, 10) || 0).toString(16).toUpperCase();
+
+      while (userHex.length < 8) {
+        userHex = '0' + userHex;
+      }
+
+      while (pacsHex.length < 6) {
+        pacsHex = '0' + pacsHex;
+      }
+
+      return userHex + pacsHex;
+    }
+
+    function guidToCSharpInt(guid) {
+      if (!guid || typeof guid !== 'string') {
+        return 0;
+      }
+
+      var hex = guid.replace(/-/g, "");
+      if (hex.length !== 32) {
+        return 0;
+      }
+
+      var bytes = [
+        parseInt(hex.slice(6, 8), 16),
+        parseInt(hex.slice(4, 6), 16),
+        parseInt(hex.slice(2, 4), 16),
+        parseInt(hex.slice(0, 2), 16)
+      ];
+
+      return (
+        bytes[0] |
+        (bytes[1] << 8) |
+        (bytes[2] << 16) |
+        (bytes[3] << 24)
+      ) >> 0;
+    }
+
+    function combineUint32And24ToDecimalString(userIdUint32, pacsCode) {
+      var base = 16777216; // 2^24
+      var result = String(userIdUint32 >>> 0);
+
+      pacsCode = parseInt(pacsCode, 10) || 0;
+
+      function multiplyDecimalStringByInt(str, multiplier) {
+        var carry = 0;
+        var out = '';
+
+        for (var i = str.length - 1; i >= 0; i--) {
+          var prod = parseInt(str.charAt(i), 10) * multiplier + carry;
+          out = (prod % 10) + out;
+          carry = Math.floor(prod / 10);
+        }
+
+        while (carry > 0) {
+          out = (carry % 10) + out;
+          carry = Math.floor(carry / 10);
+        }
+
+        return out.replace(/^0+/, '') || '0';
+      }
+
+      function addIntToDecimalString(str, num) {
+        var carry = num;
+        var out = '';
+        var i;
+
+        for (i = str.length - 1; i >= 0; i--) {
+          var sum = parseInt(str.charAt(i), 10) + (carry % 10);
+          carry = Math.floor(carry / 10);
+
+          if (sum >= 10) {
+            sum -= 10;
+            carry += 1;
+          }
+
+          out = sum + out;
+        }
+
+        while (carry > 0) {
+          out = (carry % 10) + out;
+          carry = Math.floor(carry / 10);
+        }
+
+        return out.replace(/^0+/, '') || '0';
+      }
+
+      return addIntToDecimalString(
+        multiplyDecimalStringByInt(result, base),
+        pacsCode
+      );
+    }
+
+    $scope.getVisualExternalId = function () {
+      var pacsCodeStr = $scope.abonent && $scope.abonent.externalId != null
+        ? String($scope.abonent.externalId).trim()
+        : '';
+
+      if (!pacsCodeStr) {
+        return '';
+      }
+
+      if (!$scope.userIdAsPacsPrefix) {
+        return pacsCodeStr;
+      }
+
+      var signedUserId = guidToCSharpInt($scope.abonent && $scope.abonent.userId);
+      var userIdUint32 = signedUserId >>> 0;
+
+      if ($scope.externalIdViewMode.state === 'HEX') {
+        return toPaddedHexFromParts(userIdUint32, pacsCodeStr);
+      }
+
+      return combineUint32And24ToDecimalString(userIdUint32, pacsCodeStr);
+    };
 
     $scope.showRfid = false;
     $scope.abonent = new Abonent({
@@ -300,6 +430,136 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
     $scope.endDateOnSetTime = endDateOnSetTime
     $scope.startDateBeforeRender = startDateBeforeRender
     $scope.startDateOnSetTime = startDateOnSetTime
+
+    $scope.userIdAsPacsPrefix = !!(User.data && User.data.userIdAsPacsPrefix);
+
+    $scope.externalIdViewModes = ['DEC', 'HEX'];
+
+    $scope.externalIdViewMode = {
+      state: localStorage.getItem('externalIdViewMode') || 'DEC'
+    };
+
+    $scope.onExternalIdViewModeChange = function () {
+      localStorage.setItem('externalIdViewMode', $scope.externalIdViewMode.state);
+    };
+
+    function toPaddedHexFromParts(userIdUint32, pacsCode) {
+      var userHex = (userIdUint32 >>> 0).toString(16).toUpperCase();
+      var pacsHex = (parseInt(pacsCode, 10) || 0).toString(16).toUpperCase();
+
+      while (userHex.length < 8) {
+        userHex = '0' + userHex;
+      }
+
+      while (pacsHex.length < 6) {
+        pacsHex = '0' + pacsHex;
+      }
+
+      return userHex + pacsHex;
+    }
+
+    function guidToCSharpInt(guid) {
+      if (!guid || typeof guid !== 'string') {
+        return 0;
+      }
+
+      var hex = guid.replace(/-/g, "");
+      if (hex.length !== 32) {
+        return 0;
+      }
+
+      var bytes = [
+        parseInt(hex.slice(6, 8), 16),
+        parseInt(hex.slice(4, 6), 16),
+        parseInt(hex.slice(2, 4), 16),
+        parseInt(hex.slice(0, 2), 16)
+      ];
+
+      return (
+        bytes[0] |
+        (bytes[1] << 8) |
+        (bytes[2] << 16) |
+        (bytes[3] << 24)
+      ) >> 0;
+    }
+
+    function combineUint32And24ToDecimalString(userIdUint32, pacsCode) {
+      var base = 16777216; // 2^24
+      var result = String(userIdUint32 >>> 0);
+
+      pacsCode = parseInt(pacsCode, 10) || 0;
+
+      function multiplyDecimalStringByInt(str, multiplier) {
+        var carry = 0;
+        var out = '';
+
+        for (var i = str.length - 1; i >= 0; i--) {
+          var prod = parseInt(str.charAt(i), 10) * multiplier + carry;
+          out = (prod % 10) + out;
+          carry = Math.floor(prod / 10);
+        }
+
+        while (carry > 0) {
+          out = (carry % 10) + out;
+          carry = Math.floor(carry / 10);
+        }
+
+        return out.replace(/^0+/, '') || '0';
+      }
+
+      function addIntToDecimalString(str, num) {
+        var carry = num;
+        var out = '';
+        var i;
+
+        for (i = str.length - 1; i >= 0; i--) {
+          var sum = parseInt(str.charAt(i), 10) + (carry % 10);
+          carry = Math.floor(carry / 10);
+
+          if (sum >= 10) {
+            sum -= 10;
+            carry += 1;
+          }
+
+          out = sum + out;
+        }
+
+        while (carry > 0) {
+          out = (carry % 10) + out;
+          carry = Math.floor(carry / 10);
+        }
+
+        return out.replace(/^0+/, '') || '0';
+      }
+
+      return addIntToDecimalString(
+        multiplyDecimalStringByInt(result, base),
+        pacsCode
+      );
+    }
+
+    $scope.getVisualExternalId = function () {
+      var pacsCodeStr = $scope.abonent && $scope.abonent.externalId != null
+        ? String($scope.abonent.externalId).trim()
+        : '';
+
+      if (!pacsCodeStr) {
+        return '';
+      }
+
+      if (!$scope.userIdAsPacsPrefix) {
+        return pacsCodeStr;
+      }
+
+      var signedUserId = guidToCSharpInt($scope.abonent && $scope.abonent.userId);
+      var userIdUint32 = signedUserId >>> 0;
+
+      if ($scope.externalIdViewMode.state === 'HEX') {
+        return toPaddedHexFromParts(userIdUint32, pacsCodeStr);
+      }
+
+      return combineUint32And24ToDecimalString(userIdUint32, pacsCodeStr);
+    };
 
     function startDateOnSetTime() {
       $scope.$broadcast('start-date-changed');

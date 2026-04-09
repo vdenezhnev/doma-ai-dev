@@ -58,22 +58,49 @@
       <label translate>html.abonent.external_id_display</label>
 
       <div class="input-group">
-        <input class="form-control"
-              type="text"
-              name="externalId"
-              ng-model="abonent.externalId"
-              ng-change="abonent.externalId = pacsValidation(abonent.externalId)"
-              readonly>
+        <div class="input-group" ng-if="userIdAsPacsPrefix">
+          <input class="form-control"
+                type="text"
+                name="externalIdReadonly"
+                ng-value="getVisualExternalId()"
+                readonly>
 
-        <span class="input-group-btn">
-          <button type="button"
-                  class="btn btn-default"
-                  ng-click="generateExternalId()"
-                  ng-disabled="isGeneratingExternalId">
-            <span ng-if="!isGeneratingExternalId">Сгенерировать</span>
-            <span ng-if="isGeneratingExternalId">...</span>
-          </button>
-        </span>
+          <span class="input-group-btn" style="width: 90px;">
+            <select class="form-control"
+                    ng-model="externalIdViewMode.state"
+                    ng-options="mode for mode in externalIdViewModes"
+                    ng-change="onExternalIdViewModeChange()">
+            </select>
+          </span>
+
+          <span class="input-group-btn">
+            <button type="button"
+                    class="btn btn-default"
+                    ng-click="generateExternalId()"
+                    ng-disabled="isGeneratingExternalId">
+              <span ng-if="!isGeneratingExternalId">Сгенерировать</span>
+              <span ng-if="isGeneratingExternalId">...</span>
+            </button>
+          </span>
+        </div>
+
+        <div class="input-group" ng-if="!userIdAsPacsPrefix">
+          <input class="form-control"
+                type="text"
+                name="externalId"
+                ng-model="abonent.externalId"
+                ng-change="abonent.externalId = pacsValidation(abonent.externalId)">
+
+          <span class="input-group-btn">
+            <button type="button"
+                    class="btn btn-default"
+                    ng-click="generateExternalId()"
+                    ng-disabled="isGeneratingExternalId">
+              <span ng-if="!isGeneratingExternalId">Сгенерировать</span>
+              <span ng-if="isGeneratingExternalId">...</span>
+            </button>
+          </span>
+        </div>
         <span class="text-danger" ng-if="externalIdNotUnique" translate>
           abonents.external_id_unique_error
         </span>

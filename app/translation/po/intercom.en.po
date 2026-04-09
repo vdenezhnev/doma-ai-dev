@@ -571,6 +571,9 @@ msgstr "Phone"
 msgid "html.account.phones_display"
 msgstr "Phones"
 
+msgid "html.account.userIdAsPacsPrefix"
+msgstr "Use the 7-byte version of the digital key ID"
+
 #: app/intercom/views/account/form.html:24
 msgid "html.account.region_display"
 msgstr "Region"
