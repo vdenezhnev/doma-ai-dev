@@ -11,7 +11,7 @@ def Notify(STATUS) {
         "reply_to_message_id": 6, 
         "text": "${STATUS}"
     }
-    '
+    ' || true
     """
     }
 }
