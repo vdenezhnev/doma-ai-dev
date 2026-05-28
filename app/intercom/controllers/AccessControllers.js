@@ -1,9 +1,233 @@
-app.controller('AccessCtrl', ['$scope', 'AccessObject', 'AccessPoint',
-    function($scope, AccessObject, AccessPoint) {
+app.controller('AccessCtrl', ['$scope', 'AccessObject', 'AccessPoint', 'User', 'settings',
+    function($scope, AccessObject, AccessPoint, User, settings) {
         $scope.accessPoints = AccessPoint.grouped();
         $scope.accessObjects = AccessObject.query();
         $scope.navigate = {};
         $scope.selectedId = null;
+        $scope.lockStates = {};
+
+        var lockStateAbortController = null;
+        var lockStateStreamStarted = false;
+
+        function getSmartAirKeyAuthorization() {
+            var inn = User.data && User.data.inn;
+            var token = User.data
+                && User.data.serviceCompanyApiKey
+                && User.data.serviceCompanyApiKey.token;
+
+            if (!inn || !token) {
+                return null;
+            }
+
+            return btoa(inn + ':' + token);
+        }
+
+        function getAccessPointLockIds() {
+            var result = {};
+            var lockIds = [];
+
+            angular.forEach($scope.accessPoints, function(points) {
+                if (!angular.isArray(points)) {
+                    return;
+                }
+
+                angular.forEach(points, function(point) {
+                    if (point && point.lockId) {
+                        result[point.lockId] = true;
+                    }
+                });
+            });
+
+            angular.forEach(result, function(value, lockId) {
+                lockIds.push(lockId);
+            });
+
+            return lockIds;
+        }
+
+        function stopLockStateStream() {
+            if (lockStateAbortController) {
+                lockStateAbortController.abort();
+                lockStateAbortController = null;
+            }
+
+            lockStateStreamStarted = false;
+        }
+
+        function parseLockStateEvent(eventText) {
+            var jsonText = eventText
+                .split(/\r?\n/)
+                .filter(function(line) {
+                    return line.indexOf('data:') === 0;
+                })
+                .map(function(line) {
+                    return line.replace(/^data:\s?/, '');
+                })
+                .join('\n')
+                .trim();
+
+            if (!jsonText) {
+                return null;
+            }
+
+            return JSON.parse(jsonText);
+        }
+
+        function applyLockState(state) {
+            if (!state || !state.LockID || state.LockID === '(null)') {
+                return;
+            }
+
+            $scope.lockStates[state.LockID] = angular.extend(
+                $scope.lockStates[state.LockID] || {},
+                state
+            );
+        }
+
+        function startLockStateStream() {
+            var authorization = getSmartAirKeyAuthorization();
+
+            if (!authorization) {
+                return;
+            }
+
+            if (!window.fetch || !window.TextDecoder || !window.AbortController) {
+                return;
+            }
+
+            var lockIds = getAccessPointLockIds();
+
+            if (!lockIds.length) {
+                return;
+            }
+
+            stopLockStateStream();
+
+            lockStateStreamStarted = true;
+            lockStateAbortController = new AbortController();
+
+            fetch(settings.ONLINE_API_URL + '/lockstate?locks=' + encodeURIComponent(lockIds.join(',')), {
+                method: 'GET',
+                headers: {
+                    Accept: 'text/event-stream',
+                    Authorization: 'Basic ' + authorization
+                },
+                signal: lockStateAbortController.signal
+            }).then(function(response) {
+                if (!response.ok || !response.body) {
+                    lockStateStreamStarted = false;
+                    return;
+                }
+
+                var reader = response.body.getReader();
+                var decoder = new TextDecoder('utf-8');
+                var buffer = '';
+
+                function readStream() {
+                    reader.read().then(function(result) {
+                        if (result.done) {
+                            lockStateStreamStarted = false;
+                            return;
+                        }
+
+                        buffer += decoder.decode(result.value, { stream: true });
+
+                        var events = buffer.split(/\r?\n\r?\n/);
+                        buffer = events.pop();
+
+                        angular.forEach(events, function(eventText) {
+                            try {
+                                var state = parseLockStateEvent(eventText);
+
+                                if (state) {
+                                    $scope.$applyAsync(function() {
+                                        applyLockState(state);
+                                    });
+                                }
+                            } catch (e) {
+                                console.warn('Lock state parse error', e, eventText);
+                            }
+                        });
+
+                        readStream();
+                    }).catch(function(error) {
+                        if (error && error.name === 'AbortError') {
+                            return;
+                        }
+
+                        lockStateStreamStarted = false;
+                        console.warn('Lock state stream read error', error);
+                    });
+                }
+
+                readStream();
+            }).catch(function(error) {
+                if (error && error.name === 'AbortError') {
+                    return;
+                }
+
+                lockStateStreamStarted = false;
+                console.warn('Lock state stream error', error);
+            });
+        }
+
+        function restartLockStateStreamAfterAccessPointsLoaded() {
+            if ($scope.accessPoints && $scope.accessPoints.$promise) {
+                $scope.accessPoints.$promise.then(function() {
+                    startLockStateStream();
+                });
+
+                return;
+            }
+
+            startLockStateStream();
+        }
+
+        $scope.getLockStatusClass = function(accessPoint) {
+            var lockId = accessPoint && accessPoint.lockId;
+            var state = lockId && $scope.lockStates[lockId];
+
+            if (!state || state.Connected === false || state.Status !== 'Online') {
+                return 'lock-status-unavailable';
+            }
+
+            if (state.LockOpen === true) {
+                return 'lock-status-open';
+            }
+
+            if (state.LockOpen === false) {
+                return 'lock-status-closed';
+            }
+
+            return 'lock-status-unavailable';
+        };
+
+        $scope.getLockStatusTitle = function(accessPoint) {
+            var lockId = accessPoint && accessPoint.lockId;
+            var state = lockId && $scope.lockStates[lockId];
+
+            if (!lockId) {
+                return 'Lock ID не задан';
+            }
+
+            if (!state) {
+                return 'Статус замка ещё не получен';
+            }
+
+            if (state.Connected === false || state.Status !== 'Online') {
+                return 'Замок недоступен';
+            }
+
+            if (state.LockOpen === true) {
+                return 'Замок открыт';
+            }
+
+            if (state.LockOpen === false) {
+                return 'Замок закрыт';
+            }
+
+            return 'Статус замка неизвестен';
+        };
 
         $scope.$on('updateObject', function (event, data) {
             $scope.accessObjects = AccessObject.query();
@@ -13,7 +237,14 @@ app.controller('AccessCtrl', ['$scope', 'AccessObject', 'AccessPoint',
         $scope.$on('updatePoint', function (event, data) {
             $scope.accessPoints = AccessPoint.grouped();
             $scope.$emit('updateObjects');
+            restartLockStateStreamAfterAccessPointsLoaded();
         });
+
+        $scope.$on('$destroy', function() {
+            stopLockStateStream();
+        });
+
+        restartLockStateStreamAfterAccessPointsLoaded();
     }
 ]);
 
@@ -112,8 +343,33 @@ app.controller('AddAccessPerimeterCtrl', ['$scope', '$state', '$stateParams', 'A
     }
 ]);
 
-app.controller('EditAccessPerimeterCtrl', ['$scope', '$state', '$stateParams', 'AccessPerimeter', 'notify', 'gettextCatalog', 'ModalService', 'settings',
-    function($scope, $state, $stateParams, AccessPerimeter, notify, gettextCatalog, ModalService, settings) {
+app.controller('EditAccessPerimeterCtrl', [
+    '$scope',
+    '$state',
+    '$stateParams',
+    '$http',
+    '$q',
+    'User',
+    'AccessPoint',
+    'AccessPerimeter',
+    'notify',
+    'gettextCatalog',
+    'ModalService',
+    'settings',
+    function(
+        $scope,
+        $state,
+        $stateParams,
+        $http,
+        $q,
+        User,
+        AccessPoint,
+        AccessPerimeter,
+        notify,
+        gettextCatalog,
+        ModalService,
+        settings
+    ) {
         if (!$stateParams.object) {
             $state.go('admin.access');
             return;
@@ -124,6 +380,234 @@ app.controller('EditAccessPerimeterCtrl', ['$scope', '$state', '$stateParams', '
         $scope.accessObject = $stateParams.accessObject;
         $scope.perimeter = new AccessPerimeter($stateParams.object);
         $scope.title = $scope.perimeter.displayName;
+
+        $scope.perimeterControl = {
+            seconds: 3,
+            inProgress: false,
+            loading: false,
+            points: [],
+            selected: {}
+        };
+
+        function getSmartAirKeyAuthorization() {
+            var inn = User.data && User.data.inn;
+            var token = User.data
+                && User.data.serviceCompanyApiKey
+                && User.data.serviceCompanyApiKey.token;
+
+            if (!inn || !token) {
+                return null;
+            }
+
+            return 'Basic ' + btoa(inn + ':' + token);
+        }
+
+        function collectPerimeterIds(perimeter, result) {
+            result = result || {};
+
+            if (!perimeter || !perimeter.id) {
+                return result;
+            }
+
+            result[perimeter.id] = true;
+
+            angular.forEach(perimeter.child || [], function(childPerimeter) {
+                collectPerimeterIds(childPerimeter, result);
+            });
+
+            return result;
+        }
+
+        function collectPerimeterNames(perimeter, result) {
+            result = result || {};
+
+            if (!perimeter || !perimeter.id) {
+                return result;
+            }
+
+            result[perimeter.id] = perimeter.displayName;
+
+            angular.forEach(perimeter.child || [], function(childPerimeter) {
+                collectPerimeterNames(childPerimeter, result);
+            });
+
+            return result;
+        }
+
+        function buildPerimeterControlPoints(accessPointsByPerimeter) {
+            var perimeterIds = collectPerimeterIds($scope.perimeter);
+            var perimeterNames = collectPerimeterNames($scope.perimeter);
+            var addedLockIds = {};
+            var points = [];
+
+            angular.forEach(perimeterIds, function(value, perimeterId) {
+                angular.forEach(accessPointsByPerimeter[perimeterId] || [], function(point) {
+                    if (!point || !point.lockId || addedLockIds[point.lockId]) {
+                        return;
+                    }
+
+                    addedLockIds[point.lockId] = true;
+
+                    points.push({
+                        id: point.id,
+                        displayName: point.displayName,
+                        lockId: point.lockId,
+                        perimeterId: point.perimeterId,
+                        perimeterDisplayName: perimeterNames[point.perimeterId]
+                    });
+
+                    if ($scope.perimeterControl.selected[point.lockId] === undefined) {
+                        $scope.perimeterControl.selected[point.lockId] = true;
+                    }
+                });
+            });
+
+            return points;
+        }
+
+        $scope.loadPerimeterControlPoints = function() {
+            $scope.perimeterControl.loading = true;
+
+            var accessPointsByPerimeter = AccessPoint.grouped();
+
+            return accessPointsByPerimeter.$promise.then(function() {
+                $scope.perimeterControl.points = buildPerimeterControlPoints(accessPointsByPerimeter);
+            }, function() {
+                notify({
+                    message: 'Не удалось получить список контроллеров зоны доступа',
+                    classes: 'alert-danger'
+                });
+            }).finally(function() {
+                $scope.perimeterControl.loading = false;
+            });
+        };
+
+        $scope.selectAllPerimeterControllers = function() {
+            angular.forEach($scope.perimeterControl.points, function(point) {
+                $scope.perimeterControl.selected[point.lockId] = true;
+            });
+        };
+
+        $scope.deselectAllPerimeterControllers = function() {
+            angular.forEach($scope.perimeterControl.points, function(point) {
+                $scope.perimeterControl.selected[point.lockId] = false;
+            });
+        };
+
+        $scope.getSelectedPerimeterControllersCount = function() {
+            var count = 0;
+
+            angular.forEach($scope.perimeterControl.points, function(point) {
+                if ($scope.perimeterControl.selected[point.lockId]) {
+                    count++;
+                }
+            });
+
+            return count;
+        };
+
+        function getSelectedLockIds() {
+            var lockIds = [];
+
+            angular.forEach($scope.perimeterControl.points, function(point) {
+                if (point.lockId && $scope.perimeterControl.selected[point.lockId]) {
+                    lockIds.push(point.lockId);
+                }
+            });
+
+            return lockIds;
+        }
+
+        function openLock(lockId, ms, authorization) {
+            return $http.get(settings.ONLINE_API_URL + '/open', {
+                params: {
+                    lock: lockId,
+                    ms: ms
+                },
+                headers: {
+                    Authorization: authorization
+                }
+            }).then(function() {
+                return {
+                    success: true,
+                    lockId: lockId
+                };
+            }, function(error) {
+                return {
+                    success: false,
+                    lockId: lockId,
+                    error: error
+                };
+            });
+        }
+
+        $scope.unlockSelectedPerimeterControllers = function() {
+            var authorization = getSmartAirKeyAuthorization();
+            var seconds = Number($scope.perimeterControl && $scope.perimeterControl.seconds);
+
+            if (!authorization) {
+                notify({
+                    message: 'Не заполнены ИНН или API-token',
+                    classes: 'alert-danger'
+                });
+                return;
+            }
+
+            if (!seconds || seconds <= 0) {
+                notify({
+                    message: 'Время открытия должно быть больше 0 секунд',
+                    classes: 'alert-danger'
+                });
+                return;
+            }
+
+            var loadPromise = $scope.perimeterControl.points.length
+                ? $q.when()
+                : $scope.loadPerimeterControlPoints();
+
+            $scope.perimeterControl.inProgress = true;
+
+            loadPromise.then(function() {
+                var lockIds = getSelectedLockIds();
+                var ms = seconds * 1000;
+
+                if (!lockIds.length) {
+                    notify({
+                        message: 'Выберите хотя бы один контроллер',
+                        classes: 'alert-warning'
+                    });
+                    return;
+                }
+
+                var requests = lockIds.map(function(lockId) {
+                    return openLock(lockId, ms, authorization);
+                });
+
+                return $q.all(requests).then(function(results) {
+                    var successCount = 0;
+                    var errorCount = 0;
+
+                    angular.forEach(results, function(result) {
+                        if (result.success) {
+                            successCount++;
+                        } else {
+                            errorCount++;
+                        }
+                    });
+
+                    if (errorCount > 0) {
+                        notify({
+                            message: 'Открыто контроллеров: ' + successCount + '. Ошибок: ' + errorCount,
+                            classes: 'alert-warning'
+                        });
+                    } else {
+                        notify('Открыто контроллеров: ' + successCount);
+                    }
+                });
+            }).finally(function() {
+                $scope.perimeterControl.inProgress = false;
+            });
+        };
 
         $scope.submit = function () {
             $scope.perimeter.$save(function () {
@@ -154,6 +638,8 @@ app.controller('EditAccessPerimeterCtrl', ['$scope', '$state', '$stateParams', '
                 modal.element.modal();
             });
         };
+
+        $scope.loadPerimeterControlPoints();
     }
 ]);
 
@@ -237,14 +723,72 @@ app.controller('AddAccessPointCtrl', ['$scope', '$state', '$stateParams', 'Acces
     }
 ]);
 
-app.controller('EditAccessPointCtrl', ['$scope', '$state', 'AccessPoint', 'PostamatAccessPoint', 'notify', 'gettextCatalog', 'point',
-    function($scope, $state, AccessPoint, PostamatAccessPoint, notify, gettextCatalog, point) {
+app.controller('EditAccessPointCtrl', ['$scope', '$state', '$http', 'User', 'AccessPoint', 'PostamatAccessPoint', 'notify', 'gettextCatalog', 'settings', 'point',
+    function($scope, $state, $http, User, AccessPoint, PostamatAccessPoint, notify, gettextCatalog, settings, point) {
         var vm = this;
 
         vm.isEditPoint = true;
 
         $scope.isEditPoint = true;
         $scope.point = point;
+
+        $scope.unlock = {
+            seconds: 3
+        };
+
+        $scope.unlockController = function () {
+            var inn = User.data && User.data.inn;
+            var apiToken = User.data
+                && User.data.serviceCompanyApiKey
+                && User.data.serviceCompanyApiKey.token;
+
+            var lockId = $scope.point && $scope.point.lockId;
+            var seconds = Number($scope.unlock && $scope.unlock.seconds);
+
+            if (!inn || !apiToken) {
+                notify({
+                    message: 'Не заполнены ИНН или API-token',
+                    classes: 'alert-danger'
+                });
+                return;
+            }
+
+            if (!lockId) {
+                notify({
+                    message: 'Не заполнен Lock ID контроллера',
+                    classes: 'alert-danger'
+                });
+                return;
+            }
+
+            if (!seconds || seconds <= 0) {
+                notify({
+                    message: 'Время разблокировки должно быть больше 0 секунд',
+                    classes: 'alert-danger'
+                });
+                return;
+            }
+
+            $http.get(settings.ONLINE_API_URL + '/open', {
+                params: {
+                    lock: lockId,
+                    ms: seconds * 1000
+                },
+                headers: {
+                    Authorization: 'Basic ' + btoa(inn + ':' + apiToken)
+                }
+            }).then(function () {
+                notify('Контроллер разблокирован');
+            }, function (error) {
+                notify({
+                    message: error && error.data && error.data.error
+                        ? error.data.error
+                        : 'Ошибка разблокировки контроллера',
+                    classes: 'alert-danger'
+                });
+            });
+        };
+
         $scope.point.isPostamatAccessPoint = !!point.postamatId;
         $scope.title = $scope.point.displayName;
 

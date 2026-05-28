@@ -41,6 +41,10 @@
          class="btn default"
          ng-show="!point.isPostamatAccessPoint"
          translate>html.access.point.form.replace_title</a>
+      <a ng-click="showForm='control'"
+         ng-class="{'active': showForm == 'control'}"
+         class="btn default"
+         ng-show="!point.isPostamatAccessPoint && isEditPoint">Управление</a>
     </div>
 
     <form name="DeviceReplaceForm" ng-show="showForm == 'replace'">
@@ -55,6 +59,29 @@
         <button type="submit" class="btn blue" validation-submit="DeviceReplaceForm" ng-click="replace(newLockId)"
                 translate>html.defaults.save_title
         </button>
+      </div>
+    </form>
+
+    <form name="AccessPointControlForm" ng-show="showForm == 'control'" style="margin-top: 20px;">
+      <div class="form-body">
+        <div class="portlet light bordered" ng-if="!point.isPostamatAccessPoint && isEditPoint">
+          <div class="form-group">
+            <label>Время открытия, сек.</label>
+            <input class="form-control"
+                  type="number"
+                  min="1"
+                  name="unlockSeconds"
+                  ng-model="unlock.seconds">
+          </div>
+
+          <div class="form-group">
+            <button type="button"
+                    class="btn btn-primary"
+                    ng-click="unlockController()">
+              Открыть контроллер
+            </button>
+          </div>
+        </div>
       </div>
     </form>
 

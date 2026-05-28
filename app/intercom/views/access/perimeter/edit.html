@@ -1,27 +1,159 @@
-
-<form name="AccessPerimeterForm">
-    <div class="portlet light bordered">
-        <div class="portlet-title justify-flex">
-            <div class="block-caption">
-                <i class="fa fa-cogs"></i> {{ title }}
-            </div>
-            <div class="actions util-btn-margin-bottom-5">
-                <a ui-sref="admin.access.add_perimeter({parentPerimeter: perimeter, accessObject: accessObject})" class="btn btn-sm default" translate>
-                    html.access.perimeter.button_add_child_perimeter</a>
-                <a ui-sref="admin.access.add_point({parentPerimeter: perimeter})" class="btn btn-sm default" translate>
-                    html.access.perimeter.button_add_access_point</a>
-                <a ng-click="delete()" class="btn btn-sm red" translate>html.defaults.remove_title</a>
-            </div>
+<div class="portlet light bordered">
+    <div class="portlet-title justify-flex">
+        <div class="block-caption">
+            <i class="fa fa-cogs"></i> {{ title }}
         </div>
 
-        <div class="portlet-body form">
+        <div class="actions util-btn-margin-bottom-5">
+            <a ui-sref="admin.access.add_perimeter({parentPerimeter: perimeter, accessObject: accessObject})"
+               class="btn btn-sm default"
+               translate>
+                html.access.perimeter.button_add_child_perimeter
+            </a>
+
+            <a ui-sref="admin.access.add_point({parentPerimeter: perimeter})"
+               class="btn btn-sm default"
+               translate>
+                html.access.perimeter.button_add_access_point
+            </a>
+
+            <a ng-click="delete()" class="btn btn-sm red" translate>
+                html.defaults.remove_title
+            </a>
+        </div>
+    </div>
+
+    <div class="portlet-body form">
+
+        <div ng-init="showForm='base'">
+            <a ng-click="showForm='base'"
+               ng-class="{'active': showForm == 'base'}"
+               class="btn default">
+                Зона доступа
+            </a>
+
+            <a ng-click="showForm='control'; loadPerimeterControlPoints()"
+               ng-class="{'active': showForm == 'control'}"
+               class="btn default">
+                Управление
+            </a>
+        </div>
+
+        <form name="AccessPerimeterForm"
+              ng-show="showForm == 'base'"
+              style="margin-top: 20px;">
 
             <ng-include src="'app/intercom/views/access/perimeter/form.html'"></ng-include>
 
             <div class="form-actions">
-                <button type="submit" class="btn blue" validation-submit="AccessPerimeterForm" ng-click="submit()" translate>html.defaults.save_title</button>
-                <button class="btn default" ui-sref="admin.access" translate>html.defaults.cancel_title</button>
+                <button type="submit"
+                        class="btn blue"
+                        validation-submit="AccessPerimeterForm"
+                        ng-click="submit()"
+                        translate>
+                    html.defaults.save_title
+                </button>
+
+                <button class="btn default"
+                        ui-sref="admin.access"
+                        translate>
+                    html.defaults.cancel_title
+                </button>
             </div>
-        </div>
+        </form>
+
+        <form name="AccessPerimeterControlForm"
+              ng-show="showForm == 'control'"
+              style="margin-top: 20px;">
+
+            <div class="form-body">
+
+                <div class="form-group">
+                    <label>Время открытия, сек.</label>
+                    <input class="form-control"
+                           type="number"
+                           min="1"
+                           name="perimeterUnlockSeconds"
+                           ng-model="perimeterControl.seconds">
+                </div>
+
+                <div class="form-group">
+                    <button type="button"
+                            class="btn default btn-sm"
+                            ng-click="loadPerimeterControlPoints()"
+                            ng-disabled="perimeterControl.loading || perimeterControl.inProgress">
+                        Обновить список контроллеров
+                    </button>
+
+                    <button type="button"
+                            class="btn default btn-sm"
+                            ng-click="selectAllPerimeterControllers()"
+                            ng-disabled="perimeterControl.loading || perimeterControl.inProgress || !perimeterControl.points.length">
+                        Выбрать все
+                    </button>
+
+                    <button type="button"
+                            class="btn default btn-sm"
+                            ng-click="deselectAllPerimeterControllers()"
+                            ng-disabled="perimeterControl.loading || perimeterControl.inProgress || !perimeterControl.points.length">
+                        Снять все
+                    </button>
+                </div>
+
+                <div class="alert alert-info" ng-if="perimeterControl.loading">
+                    Загружается список контроллеров...
+                </div>
+
+                <div class="portlet light bordered" ng-if="!perimeterControl.loading && perimeterControl.points.length">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            Контроллеры зоны доступа
+                        </div>
+                    </div>
+
+                    <div class="portlet-body">
+                        <div class="form-group"
+                             ng-repeat="point in perimeterControl.points | orderBy:'displayName'">
+                            <label>
+                                <input type="checkbox"
+                                       ng-model="perimeterControl.selected[point.lockId]"
+                                       ng-disabled="perimeterControl.inProgress">
+
+                                {{ point.displayName }}
+
+                                <span class="text-muted" ng-if="point.perimeterDisplayName">
+                                    — {{ point.perimeterDisplayName }}
+                                </span>
+
+                                <span class="text-muted">
+                                    ({{ point.lockId }})
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="alert alert-info"
+                     ng-if="!perimeterControl.loading && !perimeterControl.points.length">
+                    В этой зоне доступа нет контроллеров.
+                </div>
+
+                <div class="form-actions">
+                    <button type="button"
+                            class="btn btn-primary"
+                            ng-click="unlockSelectedPerimeterControllers()"
+                            ng-disabled="perimeterControl.inProgress || !getSelectedPerimeterControllersCount()">
+                        Открыть выбранные контроллеры
+                    </button>
+
+                    <span style="margin-left: 10px;"
+                          ng-if="perimeterControl.points.length">
+                        Выбрано: {{ getSelectedPerimeterControllersCount() }} из {{ perimeterControl.points.length }}
+                    </span>
+                </div>
+
+            </div>
+        </form>
+
     </div>
-</form>
+</div>

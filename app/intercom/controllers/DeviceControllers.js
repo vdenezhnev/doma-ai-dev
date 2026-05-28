@@ -70,9 +70,7 @@ app.controller('DeviceDetailCtrl', ['$scope', '$controller', '$http', '$state', 
 
     $scope.uuid = "11111111-2222-3333-0000-000000000000";
 
-    $scope.online_server = "online.smartairkey.com:6443";
-
-    fetch(`https://${$scope.online_server}/lockauth?lock=LZMC2XI53IARBYY&uuid=11111111-2222-3333-0000-000000000000`)
+    fetch(`${settings.ONLINE_API_URL}/lockauth?lock=LZMC2XI53IARBYY&uuid=11111111-2222-3333-0000-000000000000`)
       .then(function (data) {
         return data.json();
       })
@@ -100,7 +98,7 @@ app.controller('DeviceDetailCtrl', ['$scope', '$controller', '$http', '$state', 
     }
 
     function getStatus(token) {
-      var eventSource = new EventSource(`https://${$scope.online_server}/lockstate?lock=${$scope.lock.LockID}&uuid=${$scope.uuid}&token=${token}`);
+      var eventSource = new EventSource(`${settings.ONLINE_API_URL}/lockstate?lock=${$scope.lock.LockID}&uuid=${$scope.uuid}&token=${token}`);
 
       eventSource.onopen = function () {
         $scope.lock.isLoaded = true;

@@ -2,7 +2,7 @@
 
 app.controller('LockCtrl', ['$scope', '$stateParams', '$state', '$http', '$filter', 'settings', 'notify', 'ModalService',
   function ($scope, $stateParams, $state, $http, $filter, settings, notify, ModalService) {
-    if ($stateParams.locks && $stateParams.uuid && $stateParams.online_server) {
+    if ($stateParams.locks && $stateParams.uuid) {
       $scope.locks = $stateParams.locks.split(',').map(function (l) {
         return {
           LockID: l,
@@ -14,13 +14,14 @@ app.controller('LockCtrl', ['$scope', '$stateParams', '$state', '$http', '$filte
 
       $scope.uuid = $stateParams.uuid;
 
-      $scope.online_server = $stateParams.online_server;
+      var onlineApiUrl = getOnlineApiUrl();
+      $scope.online_server = onlineApiUrl;
 
       var prelocks = $stateParams.locks.split(',');
 
       for (var i = 0; i < prelocks.length; i++) {
         let lock = prelocks[i]
-        fetch(`https://${$stateParams.online_server}/lockauth?lock=${lock}&uuid=${$stateParams.uuid}`)
+        fetch(`${onlineApiUrl}/lockauth?lock=${lock}&uuid=${$stateParams.uuid}`)
           .then(function (data) {
             return data.json();
           })
@@ -33,7 +34,7 @@ app.controller('LockCtrl', ['$scope', '$stateParams', '$state', '$http', '$filte
       }
 
       $scope.onOpenLock = function (lockId) {
-        $http.get(`https://${$stateParams.online_server}/open?lock=${lockId}&uuid=${$stateParams.uuid}`)
+        $http.get(`${onlineApiUrl}/open?lock=${lockId}&uuid=${$stateParams.uuid}`)
           .catch(function () {
             notify('Не удалось открыть замок');
           });
@@ -56,7 +57,7 @@ app.controller('LockCtrl', ['$scope', '$stateParams', '$state', '$http', '$filte
       }
 
       function getStatus(lock, token) {
-        var eventSource = new EventSource(`https://${$stateParams.online_server}/lockstate?lock=${lock}&uuid=${$stateParams.uuid}&token=${token}`);
+        var eventSource = new EventSource(`${onlineApiUrl}/lockstate?lock=${lock}&uuid=${$stateParams.uuid}&token=${token}`);
 
         eventSource.onopen = function () {
           var eventLock = $scope.locks.find(function (e) {
@@ -96,6 +97,15 @@ app.controller('LockCtrl', ['$scope', '$stateParams', '$state', '$http', '$filte
           $scope.$apply();
         };
       }
+    }
+
+    function getOnlineApiUrl() {
+      var server = $stateParams.online_server;
+      var url = server
+        ? (/^https?:\/\//.test(server) ? server : 'https://' + server)
+        : settings.API_URL;
+
+      return url.replace(/\/$/, '');
     }
 
     $scope.hasQr = !!$stateParams.qrcode;

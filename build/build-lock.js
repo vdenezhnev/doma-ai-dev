@@ -24,6 +24,7 @@ const setLockEnv = async () => env({
     vars: {
         API_HOST: process.env.API_HOST || '/',
         API_URL_LOCK: process.env.API_URL_LOCK || 'api/lock',
+        ONLINE_API_URL: process.env.ONLINE_API_URL || 'https://online.smartairkey.com:4445',
     }
 });
 const buildLock = gulp.series(

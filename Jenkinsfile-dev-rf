@@ -27,6 +27,7 @@ pipeline {
         SERVER='37.18.27.32'
         WORK_DIR='/opt/acms'
         API_HOST='https://devapi.smartairkey.com/'
+        ONLINE_API_URL='https://online.smartairkey.com:6443'
         APP_INTERCOM_TITLE='SmartAirkey'
         APP_BRAND_ID='smartairkey'
         APP='acms-dev-rf'
@@ -54,7 +55,7 @@ pipeline {
             }
             steps {
                 sshagent(credentials : ['infra-key']) {
-                    sh 'ssh -o StrictHostKeyChecking=no infrastructure@${SERVER} sudo docker build --no-cache -t smartairkey/acms-dev:late --build-arg API_HOST="${API_HOST}" --build-arg APP_INTERCOM_TITLE="${APP_INTERCOM_TITLE}" --build-arg APP_BRAND_ID="${APP_BRAND_ID}" ${WORK_DIR}'
+                    sh 'ssh -o StrictHostKeyChecking=no infrastructure@${SERVER} sudo docker build --no-cache -t smartairkey/acms-dev:late --build-arg API_HOST="${API_HOST}" --build-arg ONLINE_API_URL="${ONLINE_API_URL}" --build-arg APP_INTERCOM_TITLE="${APP_INTERCOM_TITLE}" --build-arg APP_BRAND_ID="${APP_BRAND_ID}" ${WORK_DIR}'
                 }
             }
         }

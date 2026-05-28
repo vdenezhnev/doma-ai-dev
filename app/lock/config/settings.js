@@ -2,6 +2,6 @@
 
 app.constant('settings', {
     API_HOST: window.__api_host,
-    API_URL: 'https://online.smartairkey.com:6443',
+    API_URL: window.__online_api_url,
     TEMPLATE_DIR: document.baseURI + 'app/lock/views/'
 });

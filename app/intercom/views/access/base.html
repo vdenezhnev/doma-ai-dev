@@ -1,3 +1,26 @@
+<style>
+    .lock-status-marker {
+        display: inline-block !important;
+        width: 10px !important;
+        height: 10px !important;
+        margin: 0 7px 0 4px !important;
+        border-radius: 50%;
+        background: #aaa;
+        vertical-align: middle;
+    }
+
+    .lock-status-marker.lock-status-open {
+        background: #36c66a;
+    }
+
+    .lock-status-marker.lock-status-closed {
+        background: #e74c3c;
+    }
+
+    .lock-status-marker.lock-status-unavailable {
+        background: #aaa;
+    }
+</style>
 
 <script type="text/ng-template" id="accessTreeTemplate">
 
@@ -17,7 +40,10 @@
             }">
             <i class="jstree-icon jstree-ocl"></i>
             <a class="jstree-anchor" ui-sref="admin.access.edit_point({id: accessPoint.id, accessPoint: accessPoint})">
-                <i class="jstree-icon jstree-themeicon fa fa-file icon-state-info jstree-themeicon-custom"></i>
+                <span class="jstree-icon jstree-themeicon lock-status-marker"
+                      ng-class="getLockStatusClass(accessPoint)"
+                      title="{{ getLockStatusTitle(accessPoint) }}">
+                </span>
                 {{ accessPoint.displayName }}
             </a>
         </li>
