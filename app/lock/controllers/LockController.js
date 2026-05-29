@@ -11,6 +11,7 @@ app.controller('LockCtrl', ['$scope', '$stateParams', '$state', '$http', '$filte
           isLoaded: false
         }
       }) || [];
+      $scope.hasLocks = $scope.locks.length > 0;
 
       $scope.uuid = $stateParams.uuid;
 
@@ -98,6 +99,9 @@ app.controller('LockCtrl', ['$scope', '$stateParams', '$state', '$http', '$filte
         };
       }
     }
+    if ($scope.hasLocks === undefined) {
+      $scope.hasLocks = false;
+    }
 
     function getOnlineApiUrl() {
       var server = $stateParams.online_server;
@@ -109,6 +113,20 @@ app.controller('LockCtrl', ['$scope', '$stateParams', '$state', '$http', '$filte
     }
 
     $scope.hasQr = !!$stateParams.qrcode;
+    $scope.hasPinCode = false;
+
+    if ($stateParams.pincode) {
+      try {
+        var pinPayload = decodePinContainer($stateParams.pincode);
+        var pinString = String(pinPayload.pinCode).padStart(8, '0');
+
+        $scope.pinCode = pinString.slice(0, 4) + ' ' + pinString.slice(4);
+        $scope.intercomPinCode = pinString.slice(0, 6);
+        $scope.hasPinCode = true;
+      } catch (e) {
+        $scope.hasPinCode = false;
+      }
+    }
 
     if ($stateParams.qrcode) {
       var canvas = document.getElementById('aztec-canvas');
@@ -129,6 +147,116 @@ app.controller('LockCtrl', ['$scope', '$stateParams', '$state', '$http', '$filte
           //
         }
       }
+    }
+
+    function decodePinContainer(raw) {
+      var bytes = base64ToBytes(raw);
+      var offset = 0;
+
+      while (offset < bytes.length) {
+        var containerField = readVarint(bytes, offset);
+        offset = containerField.offset;
+
+        var fieldNumber = containerField.value >>> 3;
+        var wireType = containerField.value & 7;
+
+        if (fieldNumber === 1 && wireType === 2) {
+          var payloadLength = readVarint(bytes, offset);
+          offset = payloadLength.offset;
+          return decodePinPayload(bytes, offset, offset + payloadLength.value);
+        }
+
+        offset = skipField(bytes, offset, wireType);
+      }
+
+      throw new Error('Pin payload not found');
+    }
+
+    function decodePinPayload(bytes, offset, endOffset) {
+      var payload = {};
+
+      while (offset < endOffset) {
+        var payloadField = readVarint(bytes, offset);
+        offset = payloadField.offset;
+
+        var fieldNumber = payloadField.value >>> 3;
+        var wireType = payloadField.value & 7;
+
+        if (wireType === 0) {
+          var fieldValue = readVarint(bytes, offset);
+          offset = fieldValue.offset;
+
+          if (fieldNumber === 1) {
+            payload.pinCode = fieldValue.value;
+          } else if (fieldNumber === 2) {
+            payload.validFrom = fieldValue.value;
+          } else if (fieldNumber === 3) {
+            payload.validTill = fieldValue.value;
+          }
+        } else {
+          offset = skipField(bytes, offset, wireType);
+        }
+      }
+
+      if (payload.pinCode === undefined) {
+        throw new Error('PIN code not found');
+      }
+
+      return payload;
+    }
+
+    function base64ToBytes(raw) {
+      var base64 = String(raw).replace(/ /g, '+');
+      var binary = atob(base64);
+      var bytes = new Uint8Array(binary.length);
+
+      for (var i = 0; i < binary.length; i++) {
+        bytes[i] = binary.charCodeAt(i);
+      }
+
+      return bytes;
+    }
+
+    function readVarint(bytes, offset) {
+      var result = 0;
+      var shift = 0;
+
+      while (offset < bytes.length) {
+        var byte = bytes[offset++];
+        result += (byte & 0x7f) * Math.pow(2, shift);
+
+        if ((byte & 0x80) === 0) {
+          return {
+            value: result,
+            offset: offset
+          };
+        }
+
+        shift += 7;
+      }
+
+      throw new Error('Invalid varint');
+    }
+
+    function skipField(bytes, offset, wireType) {
+      if (wireType === 0) {
+        return readVarint(bytes, offset).offset;
+      }
+
+      if (wireType === 2) {
+        var length = readVarint(bytes, offset);
+        return length.offset + length.value;
+      }
+
+      if (wireType === 5) {
+        return offset + 4;
+      }
+
+      if (wireType === 1) {
+        return offset + 8;
+      }
+
+      throw new Error('Unsupported wire type');
     }
   }
 ]);

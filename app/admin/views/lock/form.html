@@ -113,6 +113,14 @@
       </div>
     </div>
 
+    <!-- PIN Code -->
+    <div class="panel panel-default" ng-if="transport.type == 'pinCode'">
+      <div class="panel-heading">
+        <h3 style="margin: 0;"><input type="checkbox" ng-model="transport.isActivated"/>
+          {{ 'LOCKS_TRANSPORT_PIN_CODE' | translate }}</h3>
+      </div>
+    </div>
+
     <!-- GSM -->
     <div class="panel panel-default" ng-if="transport.type == 'gsm'">
       <div class="panel-heading">

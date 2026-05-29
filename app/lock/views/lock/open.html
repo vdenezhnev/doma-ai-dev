@@ -14,7 +14,15 @@
         <span translate style="margin-top: 8px; font-size: 14px; font-weight: 500">QR</span>
       </div>
     </div>
-    <div class="lock-state"
+    <div ng-show="hasPinCode" class="pin-code-block">
+      <p class="pin-code-label" translate>PIN_CODE_LABEL</p>
+      <div class="pin-code-value">{{ pinCode }}</div>
+    </div>
+    <div ng-show="hasPinCode" class="pin-code-block">
+      <p class="pin-code-label" translate>INTERCOM_PIN_CODE_LABEL</p>
+      <div class="pin-code-value">{{ intercomPinCode }}</div>
+    </div>
+    <div ng-show="hasLocks" class="lock-state"
          style=" width: 300px; border: 1px solid #ddd; border-radius: 8px; margin: 10px; padding: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); gap: 8px; display: flex; flex-direction: column; align-items: center; justify-content: space-between;">
 
       <svg xmlns="http://www.w3.org/2000/svg"
