@@ -265,6 +265,14 @@ msgstr "Perimeters"
 msgid "html.abonent.phone_display"
 msgstr "Phone"
 
+#: app/intercom/views/abonent/list.html:31
+msgid "html.abonent.card_number_display"
+msgstr "Card number"
+
+#: app/intercom/views/abonent/list.html:40
+msgid "html.abonent.card_number_placeholder"
+msgstr "DEC / HEX / facility,card"
+
 #: app/intercom/views/abonent/form.html:28
 msgid "html.abonent.room_display"
 msgstr "Room"

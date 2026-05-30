@@ -10,18 +10,76 @@ app.controller('AbonentListCtrl', ['$scope', '$http', '$httpParamSerializer', 's
     $scope.importedFile = null;
     $scope.importInfoTitle = gettextCatalog.getString('importInfoTitle');
 
-    $scope.loadObjects = function (reset) {
-      Abonent.query(angular.extend({
+    $scope.getAbonentCards = function (abonent) {
+      if (!abonent) {
+        return [];
+      }
+
+      var seen = {};
+      var cards = [];
+
+      function pushCard(value) {
+        if (value == null || value === '') {
+          return;
+        }
+
+        var key = String(value).trim();
+        if (!key || seen[key]) {
+          return;
+        }
+
+        seen[key] = true;
+        cards.push(key);
+      }
+
+      if (abonent.pacsCodes && abonent.pacsCodes.length) {
+        angular.forEach(abonent.pacsCodes, function (code) {
+          pushCard(code.value);
+        });
+      }
+
+      pushCard(abonent.pacsCode);
+      pushCard(abonent.externalId);
+      pushCard(abonent.tagId);
+
+      return cards;
+    };
+
+    $scope.buildSearchParams = function () {
+      var params = angular.extend({
         skip: $scope.skip,
         take: $scope.take
-      }, $scope.filter)).$promise.then(function (response) {
+      }, $scope.filter);
+
+      var cardNumber = params.cardNumber;
+      delete params.cardNumber;
+
+      if (cardNumber) {
+        var normalized = String(cardNumber).trim().replace(/[\s-]/g, '');
+        if (normalized && /^[0-9a-fA-F]+$/.test(normalized)) {
+          params.PacsCode = /[a-fA-F]/.test(normalized) ? normalized.toUpperCase() : normalized;
+        }
+      }
+
+      return params;
+    };
+
+    $scope.enrichAbonentCards = function (abonent) {
+      abonent.cardList = $scope.getAbonentCards(abonent);
+      return abonent;
+    };
+
+    $scope.loadObjects = function (reset) {
+      Abonent.query($scope.buildSearchParams()).$promise.then(function (response) {
         $scope.skip += response.items.length;
         $scope.$emit('updateAddresses');
 
+        var items = (response.items || []).map($scope.enrichAbonentCards);
+
         if (reset) {
-          $scope.objects = response.items;
+          $scope.objects = items;
         } else {
-          $scope.objects.push.apply($scope.objects, response.items);
+          $scope.objects.push.apply($scope.objects, items);
         }
 
         $scope.isLoadedAll = response.items.length < $scope.take;

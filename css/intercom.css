@@ -321,3 +321,68 @@ table.rtl-text tr th {
 .whaselect.whaselected {
     background: #f0edd9;
 }
+
+.abonent-cards-td {
+    cursor: default;
+    max-width: 220px;
+}
+
+.abonent-cards-cell {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+}
+
+.abonent-cards-preview {
+    display: inline-block;
+    max-width: 160px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+.abonent-cards-count {
+    display: inline-block;
+    margin-left: 4px;
+    padding: 0 6px;
+    font-size: 11px;
+    line-height: 18px;
+    color: #666;
+    background: #eef1f5;
+    border-radius: 10px;
+    vertical-align: middle;
+}
+
+.abonent-cards-popup {
+    display: none;
+    position: relative;
+    left: 0;
+    top: 100%;
+    z-index: 1050;
+    min-width: 136px;
+    max-width: 136px;
+    margin-top: 4px;
+    padding: 6px 0;
+    background: #fff;
+    border: 1px solid #e7ecf1;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.abonent-cards-cell:hover .abonent-cards-popup {
+    display: block;
+}
+
+.abonent-cards-popup-item {
+    padding: 4px 12px;
+    font-size: 12px;
+    line-height: 18px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.abonent-cards-popup-item:hover {
+    background: #f5f8fa;
+}
