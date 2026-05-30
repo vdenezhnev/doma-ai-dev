@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('AbonentListCtrl', ['$scope', '$http', '$httpParamSerializer', 'settings', 'Abonent', 'gettextCatalog', 'Camera',
-  function ($scope, $http, $httpParamSerializer, settings, Abonent, gettextCatalog, Camera) {
+app.controller('AbonentListCtrl', ['$scope', '$http', '$httpParamSerializer', 'settings', 'Abonent', 'gettextCatalog', 'Camera', 'notify',
+  function ($scope, $http, $httpParamSerializer, settings, Abonent, gettextCatalog, Camera, notify) {
     $scope.filter = {};
     $scope.take = 20;
     $scope.objects = [];
@@ -93,12 +93,25 @@ app.controller('AbonentListCtrl', ['$scope', '$http', '$httpParamSerializer', 's
       }
     });
     $scope.$watchCollection('importedFile', function (newVal, oldVal) {
-      if (newVal !== oldVal) {
+      if (newVal !== oldVal && newVal) {
         const fd = new FormData();
         fd.append('file', newVal);
         $scope.skip = 0;
         Abonent.import(fd).$promise
-          .then(() => $scope.loadObjects(true));
+          .then(function (response) {
+            var errors = (response && (response.errors || response.Errors)) || [];
+            if (errors.length) {
+              notify(errors.join('\n'));
+            } else {
+              notify(gettextCatalog.getString('abonents.import_completed'));
+            }
+            $scope.importedFile = null;
+            $scope.loadObjects(true);
+          })
+          .catch(function () {
+            notify(gettextCatalog.getString('abonents.import_failed'));
+            $scope.importedFile = null;
+          });
       }
     });
 

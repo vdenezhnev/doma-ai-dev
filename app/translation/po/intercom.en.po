@@ -94,7 +94,7 @@ msgstr "Import subscribers"
 
 #: app/intercom/controllers/AbonentControllers.js:11
 msgid "importInfoTitle"
-msgstr "To successfully upload Subscribers, download the proposed template and fill in all the fields. Save the file and load it by clicking on the "Import subscribers" button. If you already have a file with a list of subscribers, copy the information from it into the proposed template to avoid errors during import."
+msgstr "To import subscribers, download the template and fill in the required fields. XLSX and CSV files are supported. Put the main card in the \"PACS code\" column and additional cards in the \"Access cards\" column separated by semicolons (for example: 7609741;806998823B5204). Save the file and upload it using the \"Import subscribers\" button."
 
 #: app/intercom/views/payments/list.html:45
 #: app/intercom/views/payments/list.html:60
@@ -120,6 +120,14 @@ msgstr "Are you sure?"
 #: app/intercom/controllers/AbonentControllers.js:91
 msgid "abonents.abonent_deleted"
 msgstr "User has been removed"
+
+#: app/intercom/controllers/AbonentControllers.js:100
+msgid "abonents.import_completed"
+msgstr "Import completed"
+
+#: app/intercom/controllers/AbonentControllers.js:105
+msgid "abonents.import_failed"
+msgstr "Import failed"
 
 #: app/intercom/controllers/AbonentControllers.js:67
 msgid "abonents.abonent_updated"

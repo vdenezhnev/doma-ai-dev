@@ -91,7 +91,7 @@ msgstr "Импорт абонентов"
 
 #: app/intercom/controllers/AbonentControllers.js:11
 msgid "importInfoTitle"
-msgstr "Для успешной загрузки Абонентов скачайте предложенный шаблон и заполните все поля. Сохраните файл и загрузите, нажав на кнопку "Импорт абонентов". Если у вас уже есть файл со списком абонентов, скопируйте информацию из него в предложенный шаблон для избежания ошибок при импорте."
+msgstr "Для успешной загрузки абонентов скачайте шаблон и заполните обязательные поля. Поддерживаются файлы XLSX и CSV. Основная карта указывается в колонке «Код пользователя в СКУД», дополнительные карты — в колонке «Карты доступа» через точку с запятой (например: 7609741;806998823B5204). Сохраните файл и загрузите его кнопкой «Импорт абонентов»."
 
 
 #: app/intercom/views/payments/list.html:45
@@ -118,6 +118,14 @@ msgstr "Вы уверены, что хотите удалить абонента
 #: app/intercom/controllers/AbonentControllers.js:91
 msgid "abonents.abonent_deleted"
 msgstr "Абонент удален"
+
+#: app/intercom/controllers/AbonentControllers.js:100
+msgid "abonents.import_completed"
+msgstr "Импорт абонентов завершен"
+
+#: app/intercom/controllers/AbonentControllers.js:105
+msgid "abonents.import_failed"
+msgstr "Ошибка импорта абонентов"
 
 #: app/intercom/controllers/AbonentControllers.js:67
 msgid "abonents.abonent_updated"
