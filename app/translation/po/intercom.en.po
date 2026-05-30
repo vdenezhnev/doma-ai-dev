@@ -1514,6 +1514,9 @@ msgstr "Enter floors separated by commas"
 msgid "html.abonent.pacsCodes.error"
 msgstr "The value cannot be greater than 3 bytes (16777215)"
 
+msgid "html.abonent.pacsCodes.error7byte"
+msgstr "The value cannot be greater than 7 bytes"
+
 msgid "abonents.external_id_unique_error"
 msgstr "This digital key ID is already in use"
 

@@ -1523,6 +1523,9 @@ msgstr "Введите этажи, разделенные запятыми"
 msgid "html.abonent.pacsCodes.error"
 msgstr "Значение не может быть больше 3 байт (16777215)"
 
+msgid "html.abonent.pacsCodes.error7byte"
+msgstr "Значение не может быть больше 7 байт"
+
 #~ msgid "html.tariff.tariff_apply"
 #~ msgstr "Применить тариф"
 
