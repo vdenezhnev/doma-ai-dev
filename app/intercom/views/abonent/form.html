@@ -106,10 +106,10 @@
         </span>
       </div>
 
-      <span class="text-danger" ng-if="abonent.externalId > 16777215" translate>
+      <span class="text-danger" ng-if="!userIdAsPacsPrefix && abonent.externalId > 16777215" translate>
           html.abonent.pacsCodes.error
       </span>
-      <span class="text-danger" ng-if="duplicateValues.indexOf(+abonent.externalId) !== -1" translate>
+      <span class="text-danger" ng-if="isDuplicateExternalId()" translate>
           html.abonent.pacsCodes.errorDuplicate
       </span>
     </div>
@@ -473,13 +473,16 @@
           <input class="form-control"
                  type="text"
                  ng-model="pacsCode.displayValue"
-                 ng-change="pacsCode.value = parsePacs(pacsCode.displayValue, pacsCodeMode.state)"
+                 ng-change="onPacsCodeDisplayChange(pacsCode)"
                  ng-blur="pacsCode.displayValue = formatPacs(pacsCode.value, pacsCodeMode.state)"/>
 
-          <span class="text-danger" ng-if="pacsCode.value > 16777215" translate>
+          <span class="text-danger" ng-if="isPacsCodeOverLimit(pacsCode) && !userIdAsPacsPrefix" translate>
             html.abonent.pacsCodes.error
           </span>
-          <span class="text-danger" ng-if="duplicateValues.indexOf(pacsCode.value) !== -1" translate>
+          <span class="text-danger" ng-if="isPacsCodeOverLimit(pacsCode) && userIdAsPacsPrefix" translate>
+            html.abonent.pacsCodes.error7byte
+          </span>
+          <span class="text-danger" ng-if="isDuplicatePacsCode(pacsCode)" translate>
             html.abonent.pacsCodes.errorDuplicate
           </span>
         </td>

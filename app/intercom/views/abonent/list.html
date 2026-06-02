@@ -11,7 +11,7 @@
         </button>
         <button class="btn default uppercase import-btn-wrapper">
           <span translate>html.abonent.import_title</span>
-          <input type="file" class="import-btn-input" file="importedFile">
+          <input type="file" class="import-btn-input" file="importedFile" accept=".xlsx,.csv,.xls">
         </button>
         <span class="labelinfo_icon">
           <div class="labelinfo_i">i</div>
@@ -28,6 +28,7 @@
         <tr>
           <th translate>html.abonent.name_display</th>
           <th width="200px" translate>html.abonent.phone_display</th>
+          <th width="220px" translate>html.abonent.card_number_display</th>
           <th width="300px" translate>html.abonent.building_display</th>
           <th width="50px" translate>html.abonent.flat_display</th>
         </tr>
@@ -35,6 +36,8 @@
           <th><input ng-model="filter.DisplayName" type="text"
                      ng-model-options="{debounce: 500}" class="form-control"></th>
           <th><input ng-model="filter.phoneNumber" type="text"
+                     ng-model-options="{debounce: 500}" class="form-control"></th>
+          <th><input ng-model="filter.cardNumber" type="text"
                      ng-model-options="{debounce: 500}" class="form-control"></th>
           <th>
             <select-address ng-select-model="filter.AddressId"></select-address>
@@ -48,6 +51,17 @@
             ui-sref="admin.abonent.detail({id: abonent.id, abonent: abonent})">
           <td>{{ abonent.displayName }}</td>
           <td>{{ abonent.phoneNumber }}</td>
+          <td class="abonent-cards-td" ng-click="$event.stopPropagation()">
+            <span class="abonent-cards-cell" ng-if="abonent.cardList.length">
+              <span class="abonent-cards-preview">{{ abonent.cardList[0] }}</span>
+              <span class="abonent-cards-count"
+                    ng-if="abonent.cardList.length > 1">+{{ abonent.cardList.length - 1 }}</span>
+              <div class="abonent-cards-popup" ng-if="abonent.cardList.length > 1">
+                <div class="abonent-cards-popup-item"
+                     ng-repeat="card in abonent.cardList track by $index">{{ card }}</div>
+              </div>
+            </span>
+          </td>
           <td>{{ dataService.addresses[abonent.addressId].value }}</td>
           <td>{{ abonent.room }}</td>
         </tr>

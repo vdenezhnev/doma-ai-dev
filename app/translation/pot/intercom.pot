@@ -284,6 +284,14 @@ msgstr ""
 msgid "html.abonent.phone_display"
 msgstr ""
 
+#: app/intercom/views/abonent/list.html:31
+msgid "html.abonent.card_number_display"
+msgstr ""
+
+#: app/intercom/views/abonent/list.html:40
+msgid "html.abonent.card_number_placeholder"
+msgstr ""
+
 #: app/intercom/views/abonent/form.html:53
 msgid "html.abonent.room_display"
 msgstr ""

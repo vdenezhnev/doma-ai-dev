@@ -1,7 +1,71 @@
 'use strict';
 
-app.controller('AbonentListCtrl', ['$scope', '$http', '$httpParamSerializer', 'settings', 'Abonent', 'gettextCatalog', 'Camera',
-  function ($scope, $http, $httpParamSerializer, settings, Abonent, gettextCatalog, Camera) {
+var PACS_MAX_WIEGAND26 = 16777215;
+var PACS_MAX_WIEGAND58_BYTES = 7;
+var PACS_MAX_WIEGAND58_DECIMAL = '72057594037927935';
+
+function normalizePacsHexString(hex) {
+  return String(hex || '').replace(/[\s-]/g, '').toUpperCase();
+}
+
+function getPacsHexByteLength(hex) {
+  var normalized = normalizePacsHexString(hex);
+  if (!normalized) {
+    return 0;
+  }
+
+  if (normalized.length % 2 !== 0) {
+    normalized = '0' + normalized;
+  }
+
+  return normalized.length / 2;
+}
+
+function compareUnsignedDecimalStrings(a, b) {
+  a = String(a || '').replace(/\D/g, '').replace(/^0+/, '') || '0';
+  b = String(b || '').replace(/\D/g, '').replace(/^0+/, '') || '0';
+
+  if (a.length !== b.length) {
+    return a.length > b.length ? 1 : -1;
+  }
+
+  if (a === b) {
+    return 0;
+  }
+
+  return a > b ? 1 : -1;
+}
+
+function isPacsValueOverWiegand26Limit(value) {
+  var numericValue = Number(value);
+  return !isNaN(numericValue) && numericValue > PACS_MAX_WIEGAND26;
+}
+
+function isPacsValueOverWiegand58Limit(value, mode) {
+  var display = String(value || '').trim();
+  if (!display) {
+    return false;
+  }
+
+  if (mode === 'HEX') {
+    return getPacsHexByteLength(display) > PACS_MAX_WIEGAND58_BYTES;
+  }
+
+  if (mode === 'PROX') {
+    var parts = display.split(',');
+    if (parts.length === 2) {
+      var proxValue = (parseInt(parts[0], 10) || 0) * 65536 + (parseInt(parts[1], 10) || 0);
+      return compareUnsignedDecimalStrings(String(proxValue), PACS_MAX_WIEGAND58_DECIMAL) > 0;
+    }
+
+    return false;
+  }
+
+  return compareUnsignedDecimalStrings(display, PACS_MAX_WIEGAND58_DECIMAL) > 0;
+}
+
+app.controller('AbonentListCtrl', ['$scope', '$http', '$httpParamSerializer', 'settings', 'Abonent', 'gettextCatalog', 'Camera', 'notify',
+  function ($scope, $http, $httpParamSerializer, settings, Abonent, gettextCatalog, Camera, notify) {
     $scope.filter = {};
     $scope.take = 20;
     $scope.objects = [];
@@ -10,18 +74,76 @@ app.controller('AbonentListCtrl', ['$scope', '$http', '$httpParamSerializer', 's
     $scope.importedFile = null;
     $scope.importInfoTitle = gettextCatalog.getString('importInfoTitle');
 
-    $scope.loadObjects = function (reset) {
-      Abonent.query(angular.extend({
+    $scope.getAbonentCards = function (abonent) {
+      if (!abonent) {
+        return [];
+      }
+
+      var seen = {};
+      var cards = [];
+
+      function pushCard(value) {
+        if (value == null || value === '') {
+          return;
+        }
+
+        var key = String(value).trim();
+        if (!key || seen[key]) {
+          return;
+        }
+
+        seen[key] = true;
+        cards.push(key);
+      }
+
+      if (abonent.pacsCodes && abonent.pacsCodes.length) {
+        angular.forEach(abonent.pacsCodes, function (code) {
+          pushCard(code.value);
+        });
+      }
+
+      pushCard(abonent.pacsCode);
+      pushCard(abonent.externalId);
+      pushCard(abonent.tagId);
+
+      return cards;
+    };
+
+    $scope.buildSearchParams = function () {
+      var params = angular.extend({
         skip: $scope.skip,
         take: $scope.take
-      }, $scope.filter)).$promise.then(function (response) {
+      }, $scope.filter);
+
+      var cardNumber = params.cardNumber;
+      delete params.cardNumber;
+
+      if (cardNumber) {
+        var normalized = String(cardNumber).trim().replace(/[\s-]/g, '');
+        if (normalized && /^[0-9a-fA-F]+$/.test(normalized)) {
+          params.PacsCode = /[a-fA-F]/.test(normalized) ? normalized.toUpperCase() : normalized;
+        }
+      }
+
+      return params;
+    };
+
+    $scope.enrichAbonentCards = function (abonent) {
+      abonent.cardList = $scope.getAbonentCards(abonent);
+      return abonent;
+    };
+
+    $scope.loadObjects = function (reset) {
+      Abonent.query($scope.buildSearchParams()).$promise.then(function (response) {
         $scope.skip += response.items.length;
         $scope.$emit('updateAddresses');
 
+        var items = (response.items || []).map($scope.enrichAbonentCards);
+
         if (reset) {
-          $scope.objects = response.items;
+          $scope.objects = items;
         } else {
-          $scope.objects.push.apply($scope.objects, response.items);
+          $scope.objects.push.apply($scope.objects, items);
         }
 
         $scope.isLoadedAll = response.items.length < $scope.take;
@@ -35,12 +157,25 @@ app.controller('AbonentListCtrl', ['$scope', '$http', '$httpParamSerializer', 's
       }
     });
     $scope.$watchCollection('importedFile', function (newVal, oldVal) {
-      if (newVal !== oldVal) {
+      if (newVal !== oldVal && newVal) {
         const fd = new FormData();
         fd.append('file', newVal);
         $scope.skip = 0;
         Abonent.import(fd).$promise
-          .then(() => $scope.loadObjects(true));
+          .then(function (response) {
+            var errors = (response && (response.errors || response.Errors)) || [];
+            if (errors.length) {
+              notify(errors.join('\n'));
+            } else {
+              notify(gettextCatalog.getString('abonents.import_completed'));
+            }
+            $scope.importedFile = null;
+            $scope.loadObjects(true);
+          })
+          .catch(function () {
+            notify(gettextCatalog.getString('abonents.import_failed'));
+            $scope.importedFile = null;
+          });
       }
     });
 
@@ -832,13 +967,27 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
       localStorage.setItem("pacsCodeMode", $scope.pacsCodeMode.state);
       angular.forEach($scope.pacsCodes, function (pacsCode) {
         pacsCode.displayValue = $scope.formatPacs(pacsCode.value, $scope.pacsCodeMode.state);
+        pacsCode.value = $scope.parsePacs(pacsCode.displayValue, $scope.pacsCodeMode.state);
+        if ($scope.userIdAsPacsPrefix) {
+          pacsCode.pacsInterfaceType = 'wiegand58';
+        }
       });
+      $scope.checkDuplicates();
     };
 
     // Conversion functions.
     $scope.formatPacs = function (value, mode) {
       if (value == null || value === "") return "";
       if (mode === "HEX") {
+        var hexCandidate = String(value).replace(/[\s-]/g, '');
+        if (/^[0-9a-fA-F]+$/.test(hexCandidate) && (hexCandidate.length > 8 || /[a-fA-F]/i.test(hexCandidate))) {
+          return normalizePacsHexString(hexCandidate);
+        }
+
+        if ($scope.userIdAsPacsPrefix) {
+          return normalizePacsHexString(hexCandidate);
+        }
+
         return Number(value).toString(16).toUpperCase();
       } else if (mode === "PROX") {
         // Example: facility = floor(value / 65536); card = value % 65536.
@@ -852,8 +1001,15 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
     };
 
     $scope.parsePacs = function (display, mode) {
-      if (!display) return 0;
+      if (!display) {
+        return $scope.userIdAsPacsPrefix ? '' : 0;
+      }
+
       if (mode === "HEX") {
+        if ($scope.userIdAsPacsPrefix) {
+          return normalizePacsHexString(display);
+        }
+
         return parseInt(display, 16) || 0;
       } else if (mode === "PROX") {
         var parts = display.split(",");
@@ -874,6 +1030,12 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
       $http.get(settings.API_URL + '?' + $httpParamSerializer(params)).then(function (response) {
         $scope.pacsCodes = response.data.pacsCodes || [];
         angular.forEach($scope.pacsCodes, function (pacsCode) {
+          if ($scope.userIdAsPacsPrefix) {
+            pacsCode.pacsInterfaceType = 'wiegand58';
+          } else if (!pacsCode.pacsInterfaceType) {
+            pacsCode.pacsInterfaceType = 'wiegand26';
+          }
+
           pacsCode.displayValue = $scope.formatPacs(pacsCode.value, $scope.pacsCodeMode.state);
         });
       });
@@ -883,10 +1045,11 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
 
     $scope.addPacsCode = function () {
       $scope.pacsCodes.push({
-        value: 0,
-        pacsInterfaceType: "wiegand26",
+        value: $scope.userIdAsPacsPrefix ? '' : 0,
+        pacsInterfaceType: $scope.userIdAsPacsPrefix ? 'wiegand58' : 'wiegand26',
         isMain: false,
         description: "",
+        displayValue: '',
       });
     };
 
@@ -895,14 +1058,24 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
     };
 
     $scope.savePacsCodes = function () {
+      var pacsCodes = $scope.pacsCodes.map(function (pacsCode) {
+        return {
+          value: $scope.getPacsCodeApiValue(pacsCode),
+          pacsInterfaceType: $scope.userIdAsPacsPrefix ? 'wiegand58' : (pacsCode.pacsInterfaceType || 'wiegand26'),
+          isMain: !!pacsCode.isMain,
+          description: pacsCode.description || '',
+        };
+      });
+
       var data = {
         AbonentId: $scope.abonent.id,
         Action: 'UpdateAbonentPACSCodes',
-        PacsCodes: $scope.pacsCodes,
+        PacsCodes: pacsCodes,
       };
 
       $http.post(settings.API_URL, data).then(function (response) {
         notify(gettextCatalog.getString('abonents.pacsCodes_updated'));
+        $scope.loadPacsCodes();
       });
     };
 
@@ -928,10 +1101,50 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
       return res;
     }
 
+    $scope.isPacsCodeOverLimit = function (pacsCode) {
+      if (!pacsCode) {
+        return false;
+      }
+
+      var displayValue = pacsCode.displayValue != null
+        ? pacsCode.displayValue
+        : pacsCode.value;
+
+      if ($scope.userIdAsPacsPrefix) {
+        return isPacsValueOverWiegand58Limit(displayValue, $scope.pacsCodeMode.state);
+      }
+
+      return isPacsValueOverWiegand26Limit(pacsCode.value);
+    };
+
     $scope.hasPacsError = function () {
-      return $scope.pacsCodes.some(function (field) {
-        return field.value > 16777215;
-      });
+      return $scope.pacsCodes.some($scope.isPacsCodeOverLimit);
+    };
+
+    $scope.onPacsCodeDisplayChange = function (pacsCode) {
+      pacsCode.value = $scope.parsePacs(pacsCode.displayValue, $scope.pacsCodeMode.state);
+      if ($scope.userIdAsPacsPrefix) {
+        pacsCode.pacsInterfaceType = 'wiegand58';
+      }
+    };
+
+    $scope.getPacsCodeApiValue = function (pacsCode) {
+      var mode = $scope.pacsCodeMode.state;
+      var display = String(pacsCode.displayValue || '').trim();
+
+      if (mode === 'HEX') {
+        return normalizePacsHexString(display || pacsCode.value);
+      }
+
+      if (mode === 'PROX') {
+        return String($scope.parsePacs(display, mode));
+      }
+
+      if ($scope.userIdAsPacsPrefix) {
+        return String(pacsCode.value != null ? pacsCode.value : $scope.parsePacs(display, mode));
+      }
+
+      return String($scope.parsePacs(display, mode));
     };
 
     // $scope.convertTo6DigitHex =  function (num) {
@@ -984,14 +1197,32 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
     //     return Math.floor(facility).toString() + ", " + card;
     // }
 
+    $scope.normalizeDuplicateValue = function (value) {
+      if (value == null || value === '') {
+        return null;
+      }
+
+      if ($scope.userIdAsPacsPrefix && $scope.pacsCodeMode.state === 'HEX') {
+        return normalizePacsHexString(value);
+      }
+
+      return String(Number(value));
+    };
+
     $scope.checkDuplicates = function () {
       var allValues = [];
-      if ($scope.abonent.externalId) {
-        allValues.push(Number($scope.abonent.externalId));
+      var normalizedExternalId = $scope.normalizeDuplicateValue($scope.abonent.externalId);
+
+      if (normalizedExternalId != null) {
+        allValues.push(normalizedExternalId);
       }
+
       angular.forEach($scope.pacsCodes, function (item) {
-        if (item.value || item.value === 0) { // allow zero
-          allValues.push(Number(item.value));
+        var apiValue = $scope.getPacsCodeApiValue(item);
+        var normalizedValue = $scope.normalizeDuplicateValue(apiValue);
+
+        if (normalizedValue != null) {
+          allValues.push(normalizedValue);
         }
       });
 
@@ -1003,7 +1234,7 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
       $scope.duplicateValues = [];
       angular.forEach(counts, function (count, val) {
         if (count > 1) {
-          $scope.duplicateValues.push(Number(val));
+          $scope.duplicateValues.push(val);
         }
       });
     };
@@ -1018,6 +1249,24 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
 
     $scope.hasDuplicates = function () {
       return $scope.duplicateValues && $scope.duplicateValues.length > 0;
+    };
+
+    $scope.isDuplicatePacsCode = function (pacsCode) {
+      if (!$scope.duplicateValues || !$scope.duplicateValues.length) {
+        return false;
+      }
+
+      var normalizedValue = $scope.normalizeDuplicateValue($scope.getPacsCodeApiValue(pacsCode));
+      return normalizedValue != null && $scope.duplicateValues.indexOf(normalizedValue) !== -1;
+    };
+
+    $scope.isDuplicateExternalId = function () {
+      if (!$scope.duplicateValues || !$scope.duplicateValues.length) {
+        return false;
+      }
+
+      var normalizedValue = $scope.normalizeDuplicateValue($scope.abonent.externalId);
+      return normalizedValue != null && $scope.duplicateValues.indexOf(normalizedValue) !== -1;
     };
 
     $scope.sipDevices = [];
