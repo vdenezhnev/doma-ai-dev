@@ -386,3 +386,77 @@ table.rtl-text tr th {
 .abonent-cards-popup-item:hover {
     background: #f5f8fa;
 }
+
+.lock-schedules {
+    margin-top: 20px;
+}
+
+.lock-schedules-table td {
+    vertical-align: middle !important;
+}
+
+.lock-schedule-name {
+    font-weight: 600;
+}
+
+.lock-schedule-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0;
+}
+
+.lock-schedule-entry + .lock-schedule-entry {
+    margin-top: 6px;
+}
+
+.lock-schedule-entry span {
+    margin-left: 8px;
+    color: #666;
+}
+
+.lock-schedule-actions .btn {
+    margin-left: 4px;
+}
+
+.lock-schedule-form {
+    border-top: 1px solid #eee;
+    margin-top: 20px;
+    padding-top: 20px;
+}
+
+.lock-schedule-form-entry {
+    border: 1px solid #e7ecf1;
+    margin-bottom: 15px;
+    padding: 15px;
+}
+
+.lock-schedule-entry-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.lock-schedule-days {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.lock-schedule-days label {
+    margin: 0;
+    white-space: nowrap;
+}
+
+.lock-schedule-controller-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 220px;
+    overflow: auto;
+}
+
+.lock-schedule-controller-list label {
+    margin: 0;
+}

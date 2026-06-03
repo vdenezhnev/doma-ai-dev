@@ -731,6 +731,11 @@ app.controller('EditAccessPointCtrl', ['$scope', '$state', '$http', 'User', 'Acc
 
         $scope.isEditPoint = true;
         $scope.point = point;
+        $scope.lockSchedulePoints = [{
+            id: point.id,
+            displayName: point.displayName,
+            lockId: point.lockId
+        }];
 
         $scope.unlock = {
             seconds: 3

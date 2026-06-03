@@ -45,6 +45,10 @@
          ng-class="{'active': showForm == 'control'}"
          class="btn default"
          ng-show="!point.isPostamatAccessPoint && isEditPoint">Управление</a>
+      <a ng-click="showForm='schedule'"
+         ng-class="{'active': showForm == 'schedule'}"
+         class="btn default"
+         ng-show="!point.isPostamatAccessPoint && isEditPoint">Расписание</a>
     </div>
 
     <form name="DeviceReplaceForm" ng-show="showForm == 'replace'">
@@ -95,6 +99,12 @@
         <button class="btn default" ui-sref="admin.access" translate>html.defaults.cancel_title</button>
       </div>
     </form>
+
+    <div ng-show="showForm == 'schedule'" style="margin-top: 20px;">
+      <lock-schedules points="lockSchedulePoints"
+                      mode="controller"
+                      title="Расписание контроллера"></lock-schedules>
+    </div>
 
     <form name="DeviceDefaultKeySettings" ng-show="showForm == 'settings'" style="margin-top: 20px;">
       <div class="portlet-body form">

@@ -37,6 +37,11 @@
                class="btn default">
                 Управление
             </a>
+            <a ng-click="showForm='schedule'; loadPerimeterControlPoints()"
+               ng-class="{'active': showForm == 'schedule'}"
+               class="btn default">
+                Расписание
+            </a>
         </div>
 
         <form name="AccessPerimeterForm"
@@ -154,6 +159,13 @@
 
             </div>
         </form>
+
+        <div ng-show="showForm == 'schedule'"
+             style="margin-top: 20px;">
+            <lock-schedules points="perimeterControl.points"
+                            mode="perimeter"
+                            title="Расписание зоны доступа"></lock-schedules>
+        </div>
 
     </div>
 </div>
