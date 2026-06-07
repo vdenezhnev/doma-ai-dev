@@ -8,6 +8,9 @@ app.factory('Abonent', ['$resource', 'Address', 'settings', function($resource, 
                 data['Action'] = data.id ? 'UpdateAbonent' : 'RegisterAbonent';
                 if (data.id) {
                     data['abonentId'] = data.id;
+                    if (data.persistedPhoneNumber != null && data.persistedPhoneNumber !== '') {
+                        data.phoneNumber = data.persistedPhoneNumber;
+                    }
                 }
                 return angular.toJson(data);
             }

@@ -133,6 +133,14 @@ msgstr "Import failed"
 msgid "abonents.abonent_updated"
 msgstr "User has been updated"
 
+#: app/intercom/controllers/AbonentControllers.js:782
+msgid "abonents.phone_number_updated"
+msgstr "Phone number updated"
+
+#: app/intercom/controllers/AbonentControllers.js:784
+msgid "abonents.phone_number_update_failed"
+msgstr "Unable to change phone number"
+
 #: app/intercom/controllers/AccountControllers.js:77
 msgid "account.password_changed"
 msgstr "You password has been changed"
@@ -272,6 +280,12 @@ msgstr "Perimeters"
 #: app/intercom/views/abonent/list.html:14
 msgid "html.abonent.phone_display"
 msgstr "Phone"
+
+msgid "html.abonent.change_phone_title"
+msgstr "Change"
+
+msgid "html.abonent.change_phone_hint"
+msgstr "Save the phone number separately before updating other abonent data"
 
 #: app/intercom/views/abonent/list.html:31
 msgid "html.abonent.card_number_display"

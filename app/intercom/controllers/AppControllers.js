@@ -7,7 +7,13 @@ app.controller('ObjectWatchChangesCtrl', ['$scope', '$state', 'object', function
     $scope.object = object;
     var originalObject = angular.copy($scope.object);
     $state.current.showConfirmation = false;
-    $scope.$watch('object | json', function (newVal, oldVal) {
+
+    $scope.resetObjectWatch = function () {
+        originalObject = angular.copy($scope.object);
+        $state.current.showConfirmation = false;
+    };
+
+    $scope.$watch('object | json', function (newVal) {
         var diff = hasDiff(newVal, originalObject);
         if (Object.keys(diff).length > 0) {
             $state.current.showConfirmation = true;
