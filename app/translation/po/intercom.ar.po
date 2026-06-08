@@ -497,6 +497,10 @@ msgstr "المستخدم"
 msgid "html.access_right.userPhoneNumber"
 msgstr "الهاتف"
 
+#: app/intercom/views/access_right/list.html:13
+msgid "html.access_right.card_number_display"
+msgstr "رقم البطاقة"
+
 #: app/intercom/views/_messages.html:2
 msgid "html.account.account_type_administrator"
 msgstr "Administrator"
