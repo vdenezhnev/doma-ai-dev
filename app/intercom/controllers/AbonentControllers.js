@@ -64,6 +64,13 @@ function isPacsValueOverWiegand58Limit(value, mode) {
   return compareUnsignedDecimalStrings(display, PACS_MAX_WIEGAND58_DECIMAL) > 0;
 }
 
+var PHONE_VALIDATION_PATTERN = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\.\/0-9]*$/;
+
+function isValidPhoneNumber(phone) {
+  var value = String(phone || '').trim();
+  return value.length > 0 && PHONE_VALIDATION_PATTERN.test(value);
+}
+
 app.controller('AbonentListCtrl', ['$scope', '$http', '$httpParamSerializer', 'settings', 'Abonent', 'gettextCatalog', 'Camera', 'notify',
   function ($scope, $http, $httpParamSerializer, settings, Abonent, gettextCatalog, Camera, notify) {
     $scope.filter = {};
@@ -560,6 +567,7 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
     }
 
     $scope.isOld = true;
+    $scope.isSavingPhoneNumber = false;
 
     $scope.endDateBeforeRender = endDateBeforeRender
     $scope.endDateOnSetTime = endDateOnSetTime
@@ -753,6 +761,47 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
     }
 
     $scope.abonent = new Abonent(angular.copy($stateParams.abonent));
+    $scope.abonent.persistedPhoneNumber = $scope.abonent.phoneNumber;
+    $scope.originalPhoneNumber = $scope.abonent.phoneNumber;
+
+    $scope.isPhoneNumberChanged = function () {
+      return String($scope.abonent.phoneNumber || '') !== String($scope.originalPhoneNumber || '');
+    };
+
+    $scope.isPhoneNumberValid = function () {
+      return isValidPhoneNumber($scope.abonent.phoneNumber);
+    };
+
+    $scope.savePhoneNumber = function () {
+      if (!$scope.isPhoneNumberChanged() || !$scope.isPhoneNumberValid() || $scope.isSavingPhoneNumber) {
+        return;
+      }
+
+      $scope.isSavingPhoneNumber = true;
+
+      $http.post(settings.API_URL, {
+        Action: 'ChangeAbonentPhoneNumber',
+        AbonentId: $scope.abonent.id,
+        PhoneNumber: $scope.abonent.phoneNumber
+      }).then(function (response) {
+        var updatedAbonent = response.data || {};
+        if (updatedAbonent.phoneNumber) {
+          $scope.abonent.phoneNumber = updatedAbonent.phoneNumber;
+        }
+        $scope.abonent.persistedPhoneNumber = $scope.abonent.phoneNumber;
+        $scope.originalPhoneNumber = $scope.abonent.phoneNumber;
+        if ($scope.resetObjectWatch) {
+          $scope.resetObjectWatch();
+        }
+        notify(gettextCatalog.getString('abonents.phone_number_updated'));
+      }).catch(function (error) {
+        if (!(error && error.data && error.data.error)) {
+          notify(gettextCatalog.getString('abonents.phone_number_update_failed'));
+        }
+      }).finally(function () {
+        $scope.isSavingPhoneNumber = false;
+      });
+    };
 
     $scope.originalExternalId = $scope.abonent && $scope.abonent.externalId
       ? String($scope.abonent.externalId)
@@ -852,6 +901,11 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
     }
 
     $scope.save = function () {
+      if ($scope.isPhoneNumberChanged()) {
+        notify(gettextCatalog.getString('html.abonent.change_phone_hint'));
+        return;
+      }
+
       $scope.checkExternalIdUnique().then(function (isUnique) {
         if (!isUnique) {
           notify(gettextCatalog.getString('abonents.external_id_unique_error'));

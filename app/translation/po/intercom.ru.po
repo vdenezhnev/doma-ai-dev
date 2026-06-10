@@ -131,6 +131,14 @@ msgstr "Ошибка импорта абонентов"
 msgid "abonents.abonent_updated"
 msgstr "Абонент обновлен"
 
+#: app/intercom/controllers/AbonentControllers.js:782
+msgid "abonents.phone_number_updated"
+msgstr "Номер телефона обновлен"
+
+#: app/intercom/controllers/AbonentControllers.js:784
+msgid "abonents.phone_number_update_failed"
+msgstr "Не удалось изменить номер телефона"
+
 #: app/intercom/controllers/AccountControllers.js:77
 msgid "account.password_changed"
 msgstr "Пароль изменен"
@@ -278,6 +286,12 @@ msgstr "Постоянные ключи"
 #: app/intercom/views/abonent/list.html:14
 msgid "html.abonent.phone_display"
 msgstr "Номер телефона"
+
+msgid "html.abonent.change_phone_title"
+msgstr "Изменить"
+
+msgid "html.abonent.change_phone_hint"
+msgstr "Сохраните номер телефона отдельно, прежде чем обновлять остальные данные абонента"
 
 #: app/intercom/views/abonent/list.html:31
 msgid "html.abonent.card_number_display"

@@ -10,8 +10,19 @@
 
     <div class="form-group">
       <label translate>html.abonent.phone_display</label>
-      <input ng-disabled="isOld" class="form-control" type="text" ng-model="abonent.phoneNumber" name="phoneNumber"
-             validator="phone,required" mask="{'mask': '+99999999999[9999]'}">
+      <div class="input-group">
+        <input class="form-control" type="text" ng-model="abonent.phoneNumber" name="phoneNumber"
+               validator="required" mask="{'mask': '+99999999999[9999]'}">
+        <span class="input-group-btn" ng-if="isOld">
+          <button type="button"
+                  class="btn blue"
+                  ng-disabled="!isPhoneNumberChanged() || !isPhoneNumberValid() || isSavingPhoneNumber"
+                  ng-click="savePhoneNumber()">
+            <span ng-if="!isSavingPhoneNumber" translate>html.abonent.change_phone_title</span>
+            <span ng-if="isSavingPhoneNumber">...</span>
+          </button>
+        </span>
+      </div>
     </div>
 
     <div class="form-group" ng-show="createAbonentUser" ng-if="createAbonentUser">
