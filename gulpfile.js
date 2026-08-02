@@ -33,6 +33,12 @@ exports.serveLock = () => {
 
     serve(buildLockDev, serveLock);
 };
+exports.serveScreen = () => {
+    const buildScreenDev = require('./build/build-screen').buildScreenDev;
+    const serveScreen = () => require('./build/server').serveDist('screen');
+
+    serve(buildScreenDev, serveScreen);
+};
 exports.serveIntercomRu = () => {
     const buildIntercomDev = require('./build/build').buildIntercomDev('ru');
     const serveIntercom = () => require('./build/server').serveDist('intercom', 'ru');

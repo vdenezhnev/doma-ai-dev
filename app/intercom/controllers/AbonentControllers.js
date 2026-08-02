@@ -559,8 +559,8 @@ app.controller('AbonentCreateCtrl',
   }
 ]);
 
-app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerializer', '$scope', '$controller', '$state', '$stateParams', 'Abonent', 'notify', 'gettextCatalog', 'User', 'Camera', 'ModalService', 'settings',
-  function ($rootScope, $http, $httpParamSerializer, $scope, $controller, $state, $stateParams, Abonent, notify, gettextCatalog, User, Camera, ModalService, settings) {
+app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerializer', '$scope', '$controller', '$state', '$stateParams', 'Abonent', 'notify', 'gettextCatalog', 'User', 'Camera', 'settings',
+  function ($rootScope, $http, $httpParamSerializer, $scope, $controller, $state, $stateParams, Abonent, notify, gettextCatalog, User, Camera, settings) {
     if (!$stateParams.abonent) {
       $state.go('admin.abonent.list');
       return;
@@ -1406,56 +1406,6 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
     $scope.loadSipDevices();
     $scope.loadAbonentSipDevices();
 
-    $scope.accessGroupKeys = [];
-
-    $scope.loadAccessGroupKeys = function () {
-      return $http.get(settings.API_URL + '?' + $httpParamSerializer({
-        Action: 'SearchAccessGroupKeys',
-        PhoneNumber: $scope.abonent.phoneNumber
-      })).then(function (response) {
-        $scope.accessGroupKeys = (response.data && response.data.items) || [];
-      });
-    };
-
-    $scope.getAccessGroupKeyAccessPointNames = function (key) {
-      return (key.accessPointIds || []).map(function (id) {
-        var point = $scope.dataService.accessPoints[id];
-        return point ? point.displayName : id;
-      }).join(', ');
-    };
-
-    $scope.loadAccessGroupKeys();
-
-    $scope.openAccessGroupKeyModal = function (key) {
-      ModalService.showModal({
-        templateUrl: settings.TEMPLATE_DIR + 'abonent/access-group-key-form.html',
-        controller: 'AccessGroupKeyModalCtrl',
-        inputs: {
-          abonent: $scope.abonent,
-          accessGroupKey: key || null
-        }
-      }).then(function (modal) {
-        modal.element.modal();
-        modal.close.then(function (result) {
-          if (result) {
-            $scope.loadAccessGroupKeys();
-          }
-        });
-      });
-    };
-
-    $scope.deleteAccessGroupKey = function (key) {
-      if (window.confirm(gettextCatalog.getString('abonents.access_group_key_delete_confirm'))) {
-        $http.post(settings.API_URL, {
-          Action: 'DeleteAccessGroupKey',
-          KeyId: key.id
-        }).then(function () {
-          notify(gettextCatalog.getString('abonents.access_group_key_deleted'));
-          $scope.loadAccessGroupKeys();
-        });
-      }
-    };
-
     $controller('ObjectWatchChangesCtrl', {
       $scope: $scope,
       $state: $state,
@@ -1532,110 +1482,6 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
       .finally(function () {
         $scope.isGeneratingExternalId = false;
         $scope.externalIdNotUnique = false;
-      });
-    };
-  }
-]);
-
-app.controller('AccessGroupKeyModalCtrl', ['$scope', '$http', '$httpParamSerializer', 'settings', 'notify', 'gettextCatalog', 'close', '$element', 'AccessPoint', 'abonent', 'accessGroupKey',
-  function ($scope, $http, $httpParamSerializer, settings, notify, gettextCatalog, close, $element, AccessPoint, abonent, accessGroupKey) {
-    $scope.isEdit = !!(accessGroupKey && accessGroupKey.id);
-    $scope.submitted = false;
-
-    $scope.model = {
-      title: accessGroupKey ? accessGroupKey.title : '',
-      accessPointIds: accessGroupKey ? angular.copy(accessGroupKey.accessPointIds || []) : [],
-      tagIds: accessGroupKey ? (accessGroupKey.tagIds || []).map(function (id) { return { value: id }; }) : [],
-      topFloor: accessGroupKey ? accessGroupKey.topFloor : null,
-      lowerFloor: accessGroupKey ? accessGroupKey.lowerFloor : null,
-      validFrom: accessGroupKey && accessGroupKey.validFrom ? new Date(accessGroupKey.validFrom) : null,
-      validTill: accessGroupKey && accessGroupKey.validTill ? new Date(accessGroupKey.validTill) : null,
-      tariffPolicyId: accessGroupKey ? accessGroupKey.tariffPolicyId : null,
-      restrictPassPermanentKeys: accessGroupKey ? !!accessGroupKey.restrictPassPermanentKeys : false,
-      restrictPassTemporaryKeys: accessGroupKey ? !!accessGroupKey.restrictPassTemporaryKeys : false
-    };
-
-    $scope.accessPoints = AccessPoint.query();
-
-    $scope.tariffs = [];
-    $http.get(settings.API_URL + '?' + $httpParamSerializer({
-      Action: 'GetTariffPolicies',
-      Skip: 0,
-      Take: 200
-    })).then(function (response) {
-      $scope.tariffs = response.data || [];
-    });
-
-    $scope.hasLiftSelected = function () {
-      if (!$scope.accessPoints.$resolved) return false;
-      return $scope.accessPoints.items.some(function (point) {
-        return point.isLift && $scope.model.accessPointIds.indexOf(point.id) !== -1;
-      });
-    };
-
-    $scope.addTag = function () {
-      $scope.model.tagIds.push({ value: '' });
-    };
-
-    $scope.removeTag = function (index) {
-      $scope.model.tagIds.splice(index, 1);
-    };
-
-    $scope.hasEmptyTag = function () {
-      return $scope.model.tagIds.some(function (tag) {
-        return !tag.value || !tag.value.trim();
-      });
-    };
-
-    $scope.isDateRangeValid = function () {
-      return new Date($scope.model.validFrom) < new Date($scope.model.validTill);
-    };
-
-    $scope.isValid = function () {
-      if (!$scope.model.accessPointIds.length) return false;
-      if (!$scope.model.validFrom || !$scope.model.validTill) return false;
-      if (!$scope.isDateRangeValid()) return false;
-      if ($scope.hasEmptyTag()) return false;
-      return true;
-    };
-
-    function toNullableNumber(value) {
-      return (value === undefined || value === null || value === '') ? null : Number(value);
-    }
-
-    $scope.closeModal = function (result) {
-      $element.modal('hide');
-      close(result || null, 500);
-    };
-
-    $scope.save = function () {
-      $scope.submitted = true;
-      if (!$scope.isValid()) return;
-
-      var request = {
-        AccessPointIds: $scope.model.accessPointIds,
-        TagIds: $scope.model.tagIds.map(function (tag) { return tag.value.trim(); }),
-        TopFloor: toNullableNumber($scope.model.topFloor),
-        LowerFloor: toNullableNumber($scope.model.lowerFloor),
-        ValidFrom: new Date($scope.model.validFrom).toISOString(),
-        ValidTill: new Date($scope.model.validTill).toISOString(),
-        TariffPolicyId: $scope.model.tariffPolicyId || null,
-        RestrictPassPermanentKeys: !!$scope.model.restrictPassPermanentKeys,
-        RestrictPassTemporaryKeys: !!$scope.model.restrictPassTemporaryKeys,
-        Title: $scope.model.title || ''
-      };
-
-      if ($scope.isEdit) {
-        request.Action = 'UpdateAccessGroupKey';
-        request.KeyId = accessGroupKey.id;
-      } else {
-        request.Action = 'CreateAccessGroupKey';
-        request.PhoneNumber = abonent.phoneNumber;
-      }
-
-      $http.post(settings.API_URL, request).then(function () {
-        notify(gettextCatalog.getString($scope.isEdit ? 'abonents.access_group_key_updated' : 'abonents.access_group_key_created'));
-        $scope.closeModal(true);
       });
     };
   }

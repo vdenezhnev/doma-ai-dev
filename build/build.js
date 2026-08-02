@@ -3,6 +3,7 @@ var env = require('gulp-env');
 var buildCourier = require('./build-courier').default;
 var buildLock = require('./build-lock').default;
 var buildLaskomexIntercom = require('./build-laskomex-intercom').default;
+var buildScreen = require('./build-screen').default;
 
 gulp.task('clean', require('./clean').default),
 gulp.task('html', require('./html').default),
@@ -94,5 +95,6 @@ exports.default = gulp.series(
     buildLaskomexIntercom,
     buildAdmin,
     buildCourier,
-    buildLock
+    buildLock,
+    buildScreen
 );

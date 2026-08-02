@@ -13,6 +13,7 @@
     "serve:admin": "gulp serveAdmin",
     "serve:courier": "gulp serveCourier",
     "serve:lock": "gulp serveLock",
+    "serve:screen": "gulp serveScreen",
     "extract-i18n": "grunt nggettext_extract",
     "compile-i18n": "grunt nggettext_compile"
   },

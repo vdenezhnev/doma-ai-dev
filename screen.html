@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>Сервисный доступ</title>
+
+    <link rel="shortcut icon" href="icon.png">
+
+    <script>
+        window.__api_host = '<ENV::API_HOST>';
+        window.__screen_api_url = '<ENV::SCREEN_API_URL>';
+    </script>
+
+    <style>
+        * { box-sizing: border-box; }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            background: #101418;
+            color: #f2f5f7;
+            font-family: "Open Sans", "PT Sans", Arial, sans-serif;
+            overflow: hidden;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        .screen {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4vmin;
+        }
+
+        .hidden { display: none !important; }
+
+        /* Заставка */
+        .idle {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3vmin;
+        }
+
+        .idle__logo {
+            width: 22vmin;
+            max-width: 160px;
+            opacity: 0.85;
+        }
+
+        .idle__hint {
+            font-size: 2.4vmin;
+            color: #7d8794;
+            text-align: center;
+            max-width: 60vmin;
+            line-height: 1.4;
+        }
+
+        /* Коды */
+        .codes {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6vmin;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .card {
+            background: #fff;
+            color: #101418;
+            border-radius: 2vmin;
+            padding: 3vmin;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5vmin;
+        }
+
+        .card__label {
+            font-size: 2.2vmin;
+            color: #5c6670;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        #aztec-canvas {
+            width: 42vmin;
+            height: 42vmin;
+            image-rendering: pixelated;
+        }
+
+        .card__value {
+            font-size: 9vmin;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap;
+        }
+
+        .room {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1vmin;
+        }
+
+        .room__label {
+            font-size: 2.2vmin;
+            color: #7d8794;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .room__value {
+            font-size: 12vmin;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        /* Обратный отсчёт */
+        .countdown {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            height: 0.8vmin;
+            background: #41a9df;
+            width: 100%;
+            transition: width 1s linear;
+        }
+
+        /* Индикатор связи */
+        .link {
+            position: fixed;
+            top: 2vmin;
+            right: 2vmin;
+            width: 1.6vmin;
+            height: 1.6vmin;
+            min-width: 8px;
+            min-height: 8px;
+            border-radius: 50%;
+            background: #43b581;
+            transition: background 0.3s;
+        }
+
+        .link--offline { background: #4a525c; }
+
+        .error {
+            font-size: 2.6vmin;
+            color: #e06c6c;
+            text-align: center;
+            max-width: 70vmin;
+            line-height: 1.5;
+        }
+
+        /* На узких вертикальных экранах коды идут в столбик */
+        @media (max-aspect-ratio: 3/4) {
+            .codes { flex-direction: column; gap: 4vmin; }
+            #aztec-canvas { width: 60vmin; height: 60vmin; }
+            .card__value { font-size: 11vmin; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="link link--offline" id="link"></div>
+
+<div class="screen">
+    <div class="idle" id="idle">
+        <img class="idle__logo" src="icon.png" alt="">
+        <div class="idle__hint" id="idle-hint">Запросите сервисный доступ в приложении</div>
+    </div>
+
+    <div class="codes hidden" id="codes">
+        <div class="room hidden" id="room">
+            <div class="room__label">Квартира</div>
+            <div class="room__value" id="room-value"></div>
+        </div>
+
+        <div class="card hidden" id="qr">
+            <canvas id="aztec-canvas"></canvas>
+            <div class="card__label">Поднесите к считывателю</div>
+        </div>
+
+        <div class="card hidden" id="pin">
+            <div class="card__label">Код на клавиатуре</div>
+            <div class="card__value" id="pin-value"></div>
+        </div>
+    </div>
+</div>
+
+<div class="countdown hidden" id="countdown"></div>
+
+<script src="js/bwip-js-min.js"></script>
+<script>
+(function () {
+    'use strict';
+
+    var el = {
+        link: document.getElementById('link'),
+        idle: document.getElementById('idle'),
+        idleHint: document.getElementById('idle-hint'),
+        codes: document.getElementById('codes'),
+        room: document.getElementById('room'),
+        roomValue: document.getElementById('room-value'),
+        qr: document.getElementById('qr'),
+        canvas: document.getElementById('aztec-canvas'),
+        pin: document.getElementById('pin'),
+        pinValue: document.getElementById('pin-value'),
+        countdown: document.getElementById('countdown')
+    };
+
+    var serviceAccessId = getQueryParam('serviceAccessId');
+
+    if (!serviceAccessId) {
+        el.idleHint.className = 'error';
+        el.idleHint.textContent = 'Экран не настроен: в адресе страницы нет параметра serviceAccessId. ' +
+            'Проверьте ссылку, прошитую при установке.';
+        return;
+    }
+
+    var RECONNECT_DELAY = 10000;
+
+    var hideTimer = null;
+    var tickTimer = null;
+
+    connect();
+
+    function connect() {
+        var source = new EventSource(buildEventsUrl(serviceAccessId));
+
+        source.onopen = function () {
+            setLinkState(true);
+        };
+
+        source.onerror = function () {
+            setLinkState(false);
+
+            // На обрыве соединения EventSource переподключается сам. А вот на ответе не-200
+            // (например 404, пока сервисный доступ ещё не создан) он закрывается насмерть —
+            // экран висит прошитый заранее и обязан ожить сам, без перезагрузки страницы.
+            if (source.readyState === EventSource.CLOSED) {
+                source.close();
+                setTimeout(connect, RECONNECT_DELAY);
+            }
+        };
+
+        source.onmessage = function (message) {
+            setLinkState(true);
+
+            var payload;
+            try {
+                payload = JSON.parse(message.data);
+            } catch (e) {
+                return;
+            }
+
+            show(payload);
+        };
+    }
+
+    function buildEventsUrl(id) {
+        var host = (window.__api_host || '/').replace(/\/$/, '');
+        var path = (window.__screen_api_url || 'api/screen').replace(/^\//, '').replace(/\/$/, '');
+
+        return host + '/' + path + '/' + encodeURIComponent(id) + '/events';
+    }
+
+    function setLinkState(online) {
+        el.link.className = online ? 'link' : 'link link--offline';
+    }
+
+    function show(payload) {
+        var hasQr = renderQr(payload.qrCode);
+        var hasPin = renderPin(payload.pinCode);
+
+        if (!hasQr && !hasPin) {
+            return;
+        }
+
+        renderRoom(payload.room);
+
+        el.idle.classList.add('hidden');
+        el.codes.classList.remove('hidden');
+
+        startCountdown(payload.displaySeconds > 0 ? payload.displaySeconds : 60);
+    }
+
+    function renderRoom(room) {
+        if (room) {
+            el.roomValue.textContent = room;
+            el.room.classList.remove('hidden');
+        } else {
+            el.room.classList.add('hidden');
+        }
+    }
+
+    function renderQr(code) {
+        if (!code) {
+            el.qr.classList.add('hidden');
+            return false;
+        }
+
+        // Тот же формат, что на странице /lock/open: сначала компактный Aztec,
+        // при неудаче — обычный.
+        try {
+            bwipjs.toCanvas(el.canvas, { bcid: 'azteccodecompact', text: code, includetext: false });
+        } catch (e) {
+            try {
+                bwipjs.toCanvas(el.canvas, { bcid: 'azteccode', text: code, includetext: false });
+            } catch (e2) {
+                el.qr.classList.add('hidden');
+                return false;
+            }
+        }
+
+        el.qr.classList.remove('hidden');
+        return true;
+    }
+
+    function renderPin(code) {
+        if (!code) {
+            el.pin.classList.add('hidden');
+            return false;
+        }
+
+        var pin;
+        try {
+            pin = String(decodePinContainer(code).pinCode);
+        } catch (e) {
+            el.pin.classList.add('hidden');
+            return false;
+        }
+
+        while (pin.length < 8) {
+            pin = '0' + pin;
+        }
+
+        el.pinValue.textContent = pin.slice(0, 4) + ' ' + pin.slice(4);
+        el.pin.classList.remove('hidden');
+        return true;
+    }
+
+    function startCountdown(seconds) {
+        clearTimeout(hideTimer);
+        clearInterval(tickTimer);
+
+        var total = seconds;
+        var left = seconds;
+
+        el.countdown.classList.remove('hidden');
+        el.countdown.style.transition = 'none';
+        el.countdown.style.width = '100%';
+
+        // Форсируем перерисовку, иначе первый шаг анимации проглатывается.
+        void el.countdown.offsetWidth;
+        el.countdown.style.transition = 'width 1s linear';
+
+        tickTimer = setInterval(function () {
+            left--;
+            el.countdown.style.width = Math.max(0, (left / total) * 100) + '%';
+        }, 1000);
+
+        hideTimer = setTimeout(hide, seconds * 1000);
+    }
+
+    function hide() {
+        clearInterval(tickTimer);
+
+        el.codes.classList.add('hidden');
+        el.countdown.classList.add('hidden');
+        el.idle.classList.remove('hidden');
+    }
+
+    function getQueryParam(name) {
+        var match = new RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+        return match ? decodeURIComponent(match[1].replace(/\+/g, ' ')) : null;
+    }
+
+    /*
+     * PIN приезжает как base64 от protobuf-контейнера PinContainer{ PinPayload payload = 1 },
+     * где PinPayload{ uint32 pin_code = 1 }. Ради одного числа тянуть protobuf-библиотеку
+     * незачем — разбираем те же два поля вручную, как это делает страница /lock/open.
+     */
+    function decodePinContainer(raw) {
+        var bytes = base64ToBytes(raw);
+        var offset = 0;
+
+        while (offset < bytes.length) {
+            var field = readVarint(bytes, offset);
+            offset = field.offset;
+
+            var fieldNumber = field.value >>> 3;
+            var wireType = field.value & 7;
+
+            if (fieldNumber === 1 && wireType === 2) {
+                var length = readVarint(bytes, offset);
+                offset = length.offset;
+                return decodePinPayload(bytes, offset, offset + length.value);
+            }
+
+            offset = skipField(bytes, offset, wireType);
+        }
+
+        throw new Error('Pin payload not found');
+    }
+
+    function decodePinPayload(bytes, offset, endOffset) {
+        var payload = {};
+
+        while (offset < endOffset) {
+            var field = readVarint(bytes, offset);
+            offset = field.offset;
+
+            var fieldNumber = field.value >>> 3;
+            var wireType = field.value & 7;
+
+            if (wireType === 0) {
+                var value = readVarint(bytes, offset);
+                offset = value.offset;
+
+                if (fieldNumber === 1) {
+                    payload.pinCode = value.value;
+                }
+            } else {
+                offset = skipField(bytes, offset, wireType);
+            }
+        }
+
+        if (payload.pinCode === undefined) {
+            throw new Error('PIN code not found');
+        }
+
+        return payload;
+    }
+
+    function base64ToBytes(raw) {
+        var binary = atob(String(raw).replace(/ /g, '+'));
+        var bytes = new Uint8Array(binary.length);
+
+        for (var i = 0; i < binary.length; i++) {
+            bytes[i] = binary.charCodeAt(i);
+        }
+
+        return bytes;
+    }
+
+    function readVarint(bytes, offset) {
+        var result = 0;
+        var shift = 0;
+
+        while (offset < bytes.length) {
+            var byte = bytes[offset++];
+            result += (byte & 0x7f) * Math.pow(2, shift);
+
+            if ((byte & 0x80) === 0) {
+                return { value: result, offset: offset };
+            }
+
+            shift += 7;
+        }
+
+        throw new Error('Invalid varint');
+    }
+
+    function skipField(bytes, offset, wireType) {
+        if (wireType === 0) {
+            return readVarint(bytes, offset).offset;
+        }
+
+        if (wireType === 2) {
+            var length = readVarint(bytes, offset);
+            return length.offset + length.value;
+        }
+
+        if (wireType === 5) {
+            return offset + 4;
+        }
+
+        if (wireType === 1) {
+            return offset + 8;
+        }
+
+        throw new Error('Unsupported wire type');
+    }
+})();
+</script>
+
+</body>
+</html>

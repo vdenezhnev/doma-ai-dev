@@ -420,50 +420,6 @@
       </tfoot>
     </table>
 
-    <h4 translate>html.abonent.access_groups.title</h4>
-
-    <div ng-if="!accessGroupKeys.length" class="form-group">
-      <p translate>html.abonent.access_groups.empty</p>
-      <a ng-click="openAccessGroupKeyModal()" class="btn btn-sm default">
-        <i class="fa fa-plus"></i>
-        <span translate>html.abonent.access_groups.add_title</span>
-      </a>
-    </div>
-
-    <table ng-if="accessGroupKeys.length" class="table table-bordered table-hover" ng-class="{'rtl-text': isRTL}">
-      <thead>
-      <tr>
-        <th translate>html.abonent.access_groups.form.title</th>
-        <th translate>html.abonent.access_groups.pacs_code</th>
-        <th translate>html.control_panel_user.form.access_point_ids</th>
-        <th translate>html.abonent.start_period</th>
-        <th translate>html.abonent.end_period</th>
-        <th style="width: 1px"></th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr ng-repeat="key in accessGroupKeys">
-        <td>{{ key.title }}</td>
-        <td><strong style="font-size: 16px">{{ key.pacsCode }}</strong></td>
-        <td>{{ getAccessGroupKeyAccessPointNames(key) }}</td>
-        <td>{{ key.validFrom | date:'dd-MM-yyyy HH:mm' }}</td>
-        <td>{{ key.validTill | date:'dd-MM-yyyy HH:mm' }}</td>
-        <td style="white-space: nowrap">
-          <a ng-click="openAccessGroupKeyModal(key)" class="btn default btn-sm"><i class="fa fa-pencil"></i></a>
-          <a ng-click="deleteAccessGroupKey(key)" class="btn default btn-sm"><i class="fa fa-trash"></i></a>
-        </td>
-      </tr>
-      </tbody>
-      <tfoot>
-      <tr>
-        <td colspan="6">
-          <a ng-click="openAccessGroupKeyModal()" class="btn btn-sm default"><i class="fa fa-plus"></i>
-            <span translate>html.defaults.add_title</span></a>
-        </td>
-      </tr>
-      </tfoot>
-    </table>
-
     <h4 translate>html.menu.cameras</h4>
 
     <table class="table table-bordered table-hover" ng-class="{'rtl-text': isRTL}">
