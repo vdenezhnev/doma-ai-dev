@@ -389,19 +389,6 @@ app.controller('EditAccessPerimeterCtrl', [
             selected: {}
         };
 
-        function getSmartAirKeyAuthorization() {
-            var inn = User.data && User.data.inn;
-            var token = User.data
-                && User.data.serviceCompanyApiKey
-                && User.data.serviceCompanyApiKey.token;
-
-            if (!inn || !token) {
-                return null;
-            }
-
-            return 'Basic ' + btoa(inn + ':' + token);
-        }
-
         function collectPerimeterIds(perimeter, result) {
             result = result || {};
 
@@ -506,52 +493,39 @@ app.controller('EditAccessPerimeterCtrl', [
             return count;
         };
 
-        function getSelectedLockIds() {
-            var lockIds = [];
+        function getSelectedPoints() {
+            var selectedPoints = [];
 
             angular.forEach($scope.perimeterControl.points, function(point) {
                 if (point.lockId && $scope.perimeterControl.selected[point.lockId]) {
-                    lockIds.push(point.lockId);
+                    selectedPoints.push(point);
                 }
             });
 
-            return lockIds;
+            return selectedPoints;
         }
 
-        function openLock(lockId, ms, authorization) {
-            return $http.get(settings.ONLINE_API_URL + '/open', {
-                params: {
-                    lock: lockId,
-                    ms: ms
-                },
-                headers: {
-                    Authorization: authorization
-                }
+        function openLock(point, seconds) {
+            return $http.post(settings.API_URL, {
+                Action: 'OpenAccessPointLock',
+                AccessPointId: point.id,
+                Seconds: seconds
             }).then(function() {
                 return {
                     success: true,
-                    lockId: lockId
+                    lockId: point.lockId
                 };
             }, function(error) {
                 return {
                     success: false,
-                    lockId: lockId,
+                    lockId: point.lockId,
                     error: error
                 };
             });
         }
 
         $scope.unlockSelectedPerimeterControllers = function() {
-            var authorization = getSmartAirKeyAuthorization();
             var seconds = Number($scope.perimeterControl && $scope.perimeterControl.seconds);
-
-            if (!authorization) {
-                notify({
-                    message: 'Не заполнены ИНН или API-token',
-                    classes: 'alert-danger'
-                });
-                return;
-            }
 
             if (!seconds || seconds <= 0) {
                 notify({
@@ -568,10 +542,9 @@ app.controller('EditAccessPerimeterCtrl', [
             $scope.perimeterControl.inProgress = true;
 
             loadPromise.then(function() {
-                var lockIds = getSelectedLockIds();
-                var ms = seconds * 1000;
+                var selectedPoints = getSelectedPoints();
 
-                if (!lockIds.length) {
+                if (!selectedPoints.length) {
                     notify({
                         message: 'Выберите хотя бы один контроллер',
                         classes: 'alert-warning'
@@ -579,8 +552,8 @@ app.controller('EditAccessPerimeterCtrl', [
                     return;
                 }
 
-                var requests = lockIds.map(function(lockId) {
-                    return openLock(lockId, ms, authorization);
+                var requests = selectedPoints.map(function(point) {
+                    return openLock(point, seconds);
                 });
 
                 return $q.all(requests).then(function(results) {
@@ -742,21 +715,9 @@ app.controller('EditAccessPointCtrl', ['$scope', '$state', '$http', 'User', 'Acc
         };
 
         $scope.unlockController = function () {
-            var inn = User.data && User.data.inn;
-            var apiToken = User.data
-                && User.data.serviceCompanyApiKey
-                && User.data.serviceCompanyApiKey.token;
-
+            var accessPointId = $scope.point && $scope.point.id;
             var lockId = $scope.point && $scope.point.lockId;
             var seconds = Number($scope.unlock && $scope.unlock.seconds);
-
-            if (!inn || !apiToken) {
-                notify({
-                    message: 'Не заполнены ИНН или API-token',
-                    classes: 'alert-danger'
-                });
-                return;
-            }
 
             if (!lockId) {
                 notify({
@@ -774,14 +735,10 @@ app.controller('EditAccessPointCtrl', ['$scope', '$state', '$http', 'User', 'Acc
                 return;
             }
 
-            $http.get(settings.ONLINE_API_URL + '/open', {
-                params: {
-                    lock: lockId,
-                    ms: seconds * 1000
-                },
-                headers: {
-                    Authorization: 'Basic ' + btoa(inn + ':' + apiToken)
-                }
+            $http.post(settings.API_URL, {
+                Action: 'OpenAccessPointLock',
+                AccessPointId: accessPointId,
+                Seconds: seconds
             }).then(function () {
                 notify('Контроллер разблокирован');
             }, function (error) {
