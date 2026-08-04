@@ -28,7 +28,12 @@ const vendor = () => gulp.src('./js/bwip-js-min.js')
 const icon = () => gulp.src('./icon.png')
     .pipe(gulp.dest('./dist/screen/'));
 
-const buildScreen = gulp.series(setScreenEnv, page, vendor, icon);
+// allowEmpty — чтобы сборка не падала, пока фраза не записана: без файла экран
+// просто молчит, картинка работает как обычно.
+const voice = () => gulp.src('./screen-voice.mp3', { allowEmpty: true })
+    .pipe(gulp.dest('./dist/screen/'));
+
+const buildScreen = gulp.series(setScreenEnv, page, vendor, icon, voice);
 
 exports.buildScreenDev = gulp.series(
     async () => env.set({ DEVMODE: true }),
