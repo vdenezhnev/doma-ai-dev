@@ -44,12 +44,19 @@
 </head>
 <body>
   <h1>authenticatedUser</h1>
+  <p>
+    Запрос с GitHub Pages идёт через CORS-прокси, потому что
+    <code>condo.d.doma.ai</code> не отдаёт
+    <code>Access-Control-Allow-Origin</code> для этого сайта.
+    Cookie сессии API при этом не передаются.
+  </p>
   <button id="fetchBtn" type="button">Запросить</button>
   <div id="status">Нажмите кнопку, чтобы отправить POST-запрос.</div>
   <pre id="output"></pre>
 
   <script>
     const API_URL = "https://condo.d.doma.ai/admin/api";
+    const PROXY_URL = "https://corsproxy.io/?url=" + encodeURIComponent(API_URL);
     const BODY = {
       operationName: "authenticatedUser",
       variables: {},
@@ -92,13 +99,12 @@
       fetchBtn.disabled = true;
 
       try {
-        const response = await fetch(API_URL, {
+        const response = await fetch(PROXY_URL, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
             Accept: "application/json",
           },
-          credentials: "include",
           body: JSON.stringify(BODY),
         });
 
