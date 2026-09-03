@@ -367,6 +367,22 @@ app.config(['$stateProvider', 'settings', function ($stateProvider, settings) {
       }
     })
 
+    .state('admin.parking', {
+      url: 'parking/',
+      abstract: true,
+      templateUrl: settings.TEMPLATE_DIR + 'parking/base.html'
+    })
+    .state('admin.parking.list', {
+      url: 'list',
+      controller: 'ParkingListCtrl',
+      templateUrl: settings.TEMPLATE_DIR + 'parking/list.html'
+    })
+    .state('admin.parking.detail', {
+      url: 'detail/:id',
+      controller: 'ParkingDetailCtrl',
+      templateUrl: settings.TEMPLATE_DIR + 'parking/detail.html'
+    })
+
     .state('admin.sip_device', {
       url: 'sip_device/',
       abstract: true,

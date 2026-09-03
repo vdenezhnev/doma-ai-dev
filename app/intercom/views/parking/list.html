@@ -1,0 +1,56 @@
+<h1 class="page-title uppercase" translate>html.menu.parkings</h1>
+
+<div class="row">
+  <div class="col-md-8">
+
+    <div class="note note-info" ng-show="isLoaded && parkings.length === 0">
+      <p translate>html.parking.no_parkings</p>
+    </div>
+
+    <div class="table-scrollable" ng-show="parkings.length > 0">
+      <table class="table table-hover table-tr-hover">
+        <thead>
+        <tr>
+          <th translate>html.parking.name</th>
+          <th translate>html.parking.address</th>
+          <th translate>html.parking.pool_count</th>
+          <th translate>html.parking.space_count</th>
+          <th translate>html.parking.last_sync</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="parking in parkings track by parking.id"
+            ui-sref="admin.parking.detail({id: parking.id})">
+          <td>{{ parking.name }}</td>
+          <td>{{ parking.address }}</td>
+          <td>{{ parking.poolCount }}</td>
+          <td>{{ parking.spaceCount }}</td>
+          <td ng-class="{'font-red': isSyncStale(parking)}">
+            <span ng-if="parking.lastSyncAt">{{ parking.lastSyncAt | date:'dd.MM.yyyy HH:mm' }}</span>
+            <span ng-if="!parking.lastSyncAt" translate>html.parking.never_synced</span>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <h4 translate>html.parking.add_title</h4>
+
+    <div class="form-group">
+      <label translate>html.parking.name</label>
+      <input class="form-control" type="text" ng-model="newParking.name">
+    </div>
+
+    <div class="form-group">
+      <label translate>html.parking.address</label>
+      <select-address ng-select-model="newParking.addressId" name="parkingAddressId"></select-address>
+      <span class="help-block" translate>html.parking.address_hint</span>
+    </div>
+
+    <button ng-click="create()" ng-disabled="!newParking.name || !newParking.addressId"
+            class="btn default uppercase" translate>html.defaults.add_title
+    </button>
+  </div>
+</div>

@@ -1660,3 +1660,240 @@ msgstr "Значение не может быть больше 7 байт"
 #: app/intercom/controllers/JournalControllers.js:111
 msgid "journals.no_records"
 msgstr "Отчёты не найдены"
+
+msgid "html.menu.parkings"
+msgstr "Парковки"
+
+msgid "html.parking.no_parkings"
+msgstr "Парковочных серверов пока нет."
+
+msgid "html.parking.name"
+msgstr "Название"
+
+msgid "html.parking.address"
+msgstr "Адрес"
+
+msgid "html.parking.pool_count"
+msgstr "Пулов"
+
+msgid "html.parking.space_count"
+msgstr "Мест"
+
+msgid "html.parking.last_sync"
+msgstr "Последняя синхронизация"
+
+msgid "html.parking.never_synced"
+msgstr "Ни разу"
+
+msgid "html.parking.settings_title"
+msgstr "Параметры"
+
+msgid "html.parking.identifier"
+msgstr "Идентификатор"
+
+msgid "html.parking.copy"
+msgstr "Копировать"
+
+msgid "html.parking.identifier_hint"
+msgstr "Идентификатор и токен вносятся в настройки сервера парковки при пусконаладке. Токен выдаётся в администраторской панели SmartAirKey."
+
+msgid "html.parking.access"
+msgstr "Доступ"
+
+msgid "html.parking.access_revoked"
+msgstr "Отозван: конфигурация серверу не отдаётся"
+
+msgid "html.parking.simple_parking_title"
+msgstr "Простой паркинг"
+
+msgid "html.parking.simple_parking_hint"
+msgstr "Создаёт по одному пулу на каждое место. Подходит парковке, где у каждого жильца своё закреплённое место и общих квот нет."
+
+msgid "html.parking.simple_count"
+msgstr "Количество мест"
+
+msgid "html.parking.simple_start_number"
+msgstr "Номер первого места"
+
+msgid "html.parking.simple_preview"
+msgstr "Будет создано пулов:"
+
+msgid "html.parking.simple_appends"
+msgstr "На парковке уже есть пулы — новые добавятся к ним."
+
+msgid "html.parking.simple_create"
+msgstr "Создать"
+
+msgid "html.parking.pools_title"
+msgstr "Пулы мест"
+
+msgid "html.parking.pool_name"
+msgstr "Название пула"
+
+msgid "html.parking.pool_max_spaces"
+msgstr "Мест"
+
+msgid "html.parking.pool_bound"
+msgstr "Привязано"
+
+msgid "html.parking.pool_oversubscribed"
+msgstr "Привязано больше, чем мест: они делят место по очереди и одновременно внутри быть не могут"
+
+msgid "html.parking.pool_zero_hint"
+msgstr "Ноль мест допустим и означает, что въезд по пулу временно закрыт."
+
+msgid "html.parking.car_place"
+msgstr "Парковочное место"
+
+msgid "html.parking.choose_place"
+msgstr "Выберите место"
+
+msgid "html.parking.bind"
+msgstr "Привязать"
+
+msgid "html.parking.save_car_first"
+msgstr "Сохраните абонента, чтобы привязать место"
+
+msgid "parking.pool_created"
+msgstr "Пул создан"
+
+msgid "parking.pool_updated"
+msgstr "Пул изменён"
+
+msgid "parking.pool_deleted"
+msgstr "Пул удалён"
+
+msgid "parking.pool_has_bindings"
+msgstr "К пулу привязаны автомобили. Сначала отвяжите или перенесите их."
+
+msgid "parking.confirm_delete_pool"
+msgstr "Удалить пул?"
+
+msgid "parking.confirm_reduce_spaces"
+msgstr "Мест станет меньше. Находящиеся внутри автомобили не выгоняются, но новые въезды по этому пулу будут блокироваться, пока занятость не опустится ниже нового лимита. Продолжить?"
+
+msgid "parking.simple_parking_created"
+msgstr "Пулы созданы"
+
+msgid "parking.confirm_simple_parking"
+msgstr "Будет создано пулов:"
+
+msgid "parking.simple_count_too_big"
+msgstr "За один раз можно создать не больше 1000 пулов"
+
+msgid "parking.place_name"
+msgstr "Место"
+
+msgid "parking.identifier_copied"
+msgstr "Идентификатор скопирован"
+
+msgid "parking.car_bound"
+msgstr "Автомобиль привязан к месту"
+
+msgid "parking.car_unbound"
+msgstr "Автомобиль отвязан"
+
+msgid "parking.confirm_unbind"
+msgstr "Отвязать автомобиль от места? Находящийся на парковке автомобиль выедет, но следующий въезд будет запрещён."
+
+msgid "html.parking.add_title"
+msgstr "Новая парковка"
+
+msgid "html.parking.address_hint"
+msgstr "Выбирается из справочника адресов. Новый адрес заводится во вкладке «Адреса»."
+
+msgid "html.parking.token"
+msgstr "Токен"
+
+msgid "html.parking.refresh_token"
+msgstr "Перевыпустить"
+
+msgid "html.parking.delete_parking"
+msgstr "Удалить парковку"
+
+msgid "html.parking.access_allowed"
+msgstr "Разрешён"
+
+msgid "html.parking.access_revoked_state"
+msgstr "Отозван: конфигурация не отдаётся"
+
+msgid "html.parking.revoke"
+msgstr "Отозвать"
+
+msgid "html.parking.restore"
+msgstr "Вернуть"
+
+msgid "parking.parking_created"
+msgstr "Парковка создана"
+
+msgid "parking.parking_updated"
+msgstr "Парковка изменена"
+
+msgid "parking.parking_deleted"
+msgstr "Парковка удалена"
+
+msgid "parking.token_refreshed"
+msgstr "Токен перевыпущен. Внесите новое значение в настройки сервера на объекте"
+
+msgid "parking.token_copied"
+msgstr "Токен скопирован"
+
+msgid "parking.access_revoked"
+msgstr "Доступ отозван"
+
+msgid "parking.access_restored"
+msgstr "Доступ возвращён"
+
+msgid "parking.confirm_refresh_token"
+msgstr "Перевыпустить токен? До внесения нового значения в настройки сервера синхронизация на объекте прекратится. Парковка продолжит работать по последней полученной конфигурации."
+
+msgid "parking.confirm_revoke"
+msgstr "Отозвать доступ? Сервер перестанет получать конфигурацию, но продолжит работать по последней полученной."
+
+msgid "parking.confirm_delete_parking"
+msgstr "Вместе с парковкой удалятся все её пулы и привязки. Для подтверждения введите название парковки:"
+
+msgid "parking.delete_name_mismatch"
+msgstr "Название не совпадает, удаление отменено"
+
+msgid "html.parking.passes_title"
+msgstr "Пропуска на парковку"
+
+msgid "html.parking.pass_type"
+msgstr "Тип"
+
+msgid "html.parking.pass_value"
+msgstr "Значение"
+
+msgid "html.parking.pass_qr_case_hint"
+msgstr "Регистр важен только для QR-кода: он передаётся как есть. Остальные типы приводятся к верхнему регистру."
+
+msgid "parking.type_qr"
+msgstr "QR-код"
+
+msgid "parking.type_card"
+msgstr "Карта"
+
+msgid "parking.type_pin"
+msgstr "PIN"
+
+msgid "parking.type_ble"
+msgstr "BLE-ключ"
+
+msgid "parking.pass_bound"
+msgstr "Пропуск привязан к месту"
+
+msgid "html.parking.pools_summary_hint"
+msgstr "— пул задаёт квоту, поэтому мест может быть и больше, и меньше числа пулов."
+
+msgid "html.parking.pool_search"
+msgstr "Поиск пула по названию"
+
+msgid "html.parking.pools_shown"
+msgstr "Показано"
+
+msgid "html.parking.of"
+msgstr "из"
+
+msgid "html.parking.pools_not_found"
+msgstr "Пулы с таким названием не найдены."

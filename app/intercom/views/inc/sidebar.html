@@ -77,6 +77,12 @@
             </a>
           </li>
           <li class="nav-item start" ui-sref-active="active-light" ng-if="hasAccess('accessRight')">
+            <a ui-sref="admin.parking.list" class="nav-link">
+              <i class="fa fa-car"></i>
+              <span class="title" translate>html.menu.parkings</span>
+            </a>
+          </li>
+          <li class="nav-item start" ui-sref-active="active-light" ng-if="hasAccess('accessRight')">
             <a ui-sref="admin.sip_device.list" class="nav-link">
               <i class="icon-bell"></i>
               <span class="title" translate>html.menu.sipdevices</span>

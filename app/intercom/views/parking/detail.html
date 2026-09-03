@@ -1,0 +1,192 @@
+<h1 class="page-title uppercase">{{ parking.name }}</h1>
+
+<div class="row">
+  <div class="col-md-12">
+    <a ui-sref="admin.parking.list" class="btn default uppercase" translate>html.defaults.back_title</a>
+    <button ng-click="deleteParking()" class="btn default uppercase" translate>html.parking.delete_parking</button>
+  </div>
+</div>
+
+<div class="row" style="margin-top: 15px" ng-if="parking">
+  <div class="col-md-6">
+    <h4 translate>html.parking.settings_title</h4>
+
+    <div class="form-group">
+      <label translate>html.parking.name</label>
+      <input class="form-control" type="text" ng-model="draft.name">
+    </div>
+
+    <div class="form-group">
+      <label translate>html.parking.address</label>
+      <select-address ng-select-model="draft.addressId" name="parkingAddressId"></select-address>
+      <span class="help-block" translate>html.parking.address_hint</span>
+    </div>
+
+    <button ng-click="saveParking()" ng-disabled="!draft.name || !draft.addressId"
+            class="btn default uppercase" translate>html.defaults.save_title</button>
+
+    <table class="table table-bordered" style="margin-top: 15px">
+      <tbody>
+      <tr>
+        <td style="width: 40%" translate>html.parking.identifier</td>
+        <td>
+          <code>{{ parking.apiKeyId }}</code>
+          <a ng-click="copy(parking.apiKeyId, 'parking.identifier_copied')" class="btn default btn-xs">
+            <i class="fa fa-copy"></i>
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td translate>html.parking.token</td>
+        <td>
+          <code>{{ parking.token }}</code>
+          <a ng-click="copy(parking.token, 'parking.token_copied')" class="btn default btn-xs">
+            <i class="fa fa-copy"></i>
+          </a>
+          <a ng-click="refreshToken()" class="btn default btn-xs" translate>html.parking.refresh_token</a>
+        </td>
+      </tr>
+      <tr>
+        <td translate>html.parking.last_sync</td>
+        <td>
+          <span ng-if="parking.lastSyncAt">{{ parking.lastSyncAt | date:'dd.MM.yyyy HH:mm' }}</span>
+          <span ng-if="!parking.lastSyncAt" translate>html.parking.never_synced</span>
+        </td>
+      </tr>
+      <tr>
+        <td translate>html.parking.access</td>
+        <td>
+          <span ng-if="!parking.accessRevoked" translate>html.parking.access_allowed</span>
+          <span ng-if="parking.accessRevoked" class="font-red" translate>html.parking.access_revoked_state</span>
+          <a ng-click="toggleAccess()" class="btn default btn-xs">
+            <span ng-if="!parking.accessRevoked" translate>html.parking.revoke</span>
+            <span ng-if="parking.accessRevoked" translate>html.parking.restore</span>
+          </a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+    <p class="muted" translate>html.parking.identifier_hint</p>
+  </div>
+
+  <div class="col-md-6">
+    <h4 translate>html.parking.simple_parking_title</h4>
+
+    <p class="muted" translate>html.parking.simple_parking_hint</p>
+
+    <div class="form-group">
+      <label translate>html.parking.simple_count</label>
+      <input class="form-control" type="number" min="1" ng-model="simple.count">
+    </div>
+
+    <div class="form-group">
+      <label translate>html.parking.simple_start_number</label>
+      <input class="form-control" type="number" min="1" ng-model="simple.startNumber">
+    </div>
+
+    <div class="note note-info" ng-show="simplePreview()">
+      <p>
+        <span translate>html.parking.simple_preview</span>
+        {{ simplePreview().count }}
+        &mdash;
+        {{ simplePreview().first }} … {{ simplePreview().last }}
+      </p>
+      <p ng-show="pools.length > 0" translate>html.parking.simple_appends</p>
+    </div>
+
+    <button ng-click="createSimpleParking()" ng-disabled="!simplePreview()"
+            class="btn default uppercase" translate>html.parking.simple_create
+    </button>
+  </div>
+</div>
+
+<div class="row" style="margin-top: 25px">
+  <div class="col-md-12">
+    <h4 translate>html.parking.pools_title</h4>
+
+    <p class="muted">
+      <span translate>html.parking.pool_count</span>: <b>{{ pools.length }}</b> &middot;
+      <span translate>html.parking.space_count</span>: <b>{{ totalSpaces() }}</b>
+      <span translate>html.parking.pools_summary_hint</span>
+    </p>
+
+    <!-- На простом паркинге пулов столько же, сколько мест: две сотни строк
+         глазами не просматривают. Поиск появляется, когда список перестаёт
+         помещаться на экран. -->
+    <div class="form-group" ng-if="pools.length > manyPoolsThreshold">
+      <input class="form-control" type="text" ng-model="poolQuery"
+             ng-model-options="{debounce: 200}"
+             placeholder="{{ 'html.parking.pool_search' | translate }}">
+      <span class="help-block" ng-show="poolQuery">
+        <span translate>html.parking.pools_shown</span>:
+        <b>{{ visiblePools().length }}</b> <span translate>html.parking.of</span> {{ pools.length }}
+      </span>
+    </div>
+
+    <table class="table table-bordered table-hover">
+      <thead>
+      <tr>
+        <th translate>html.parking.pool_name</th>
+        <th style="width: 120px" translate>html.parking.pool_max_spaces</th>
+        <th style="width: 160px" translate>html.parking.pool_bound</th>
+        <th style="width: 160px"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="pool in visiblePools() track by pool.id">
+        <td>
+          <span ng-hide="pool.editing">{{ pool.name }}</span>
+          <input ng-show="pool.editing" class="form-control" type="text" ng-model="pool.draftName">
+        </td>
+        <td>
+          <span ng-hide="pool.editing">{{ pool.maxSpaces }}</span>
+          <input ng-show="pool.editing" class="form-control" type="number" min="0" ng-model="pool.draftMaxSpaces">
+        </td>
+        <td>
+          {{ pool.boundIdentifierCount }}
+          <span class="muted" ng-if="pool.boundIdentifierCount > pool.maxSpaces"
+                title="{{ 'html.parking.pool_oversubscribed' | translate }}">
+            <i class="fa fa-info-circle"></i>
+          </span>
+        </td>
+        <td>
+          <a ng-hide="pool.editing" ng-click="editPool(pool)" class="btn default btn-sm">
+            <i class="fa fa-pencil"></i>
+          </a>
+          <a ng-hide="pool.editing" ng-click="deletePool(pool)" class="btn default btn-sm">
+            <i class="fa fa-trash"></i>
+          </a>
+          <a ng-show="pool.editing" ng-click="savePool(pool)" class="btn default btn-sm">
+            <i class="fa fa-check"></i>
+          </a>
+          <a ng-show="pool.editing" ng-click="cancelEdit(pool)" class="btn default btn-sm">
+            <i class="fa fa-times"></i>
+          </a>
+        </td>
+      </tr>
+      <tr ng-if="poolQuery && !visiblePools().length">
+        <td colspan="4" class="muted" translate>html.parking.pools_not_found</td>
+      </tr>
+      <tr>
+        <td>
+          <input class="form-control" type="text" ng-model="newPool.name"
+                 placeholder="{{ 'html.parking.pool_name' | translate }}">
+        </td>
+        <td>
+          <input class="form-control" type="number" min="0" ng-model="newPool.maxSpaces">
+        </td>
+        <td></td>
+        <td>
+          <a ng-click="createPool()" class="btn btn-sm default">
+            <i class="fa fa-plus"></i>
+            <span translate>html.defaults.add_title</span>
+          </a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+    <p class="muted" translate>html.parking.pool_zero_hint</p>
+  </div>
+</div>
