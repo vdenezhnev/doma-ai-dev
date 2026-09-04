@@ -1,0 +1,42 @@
+<div style="position: fixed; width: 100%; top: 100px; z-index: 11000;">
+    <form class="panel panel-default" style="width: 600px; margin: 0 auto">
+        <div class="panel-heading" translate>
+            html.abonent.master_key.title
+        </div>
+
+        <div class="panel-body">
+            <div class="form-group">
+                <label translate>html.abonent.master_key.object</label>
+                <input class="form-control" type="text" ng-model="masterKeyData.objectName" readonly>
+            </div>
+
+            <div class="form-group">
+                <label translate>html.abonent.master_key.pid</label>
+                <input class="form-control" type="text" ng-model="masterKeyData.pid" readonly>
+            </div>
+
+            <div class="form-group">
+                <label translate>html.abonent.master_key.token</label>
+                <input class="form-control" type="text" ng-model="masterKeyData.masterKeyToken" readonly>
+            </div>
+
+            <p class="help-block" translate>html.abonent.master_key.hint</p>
+        </div>
+
+        <div class="panel-footer">
+            <button class="btn btn-default btn-primary" type="button" ng-click="copyMasterKey()" translate>
+                html.abonent.master_key.copy
+            </button>
+            <button class="btn blue"
+                    type="button"
+                    ng-click="regenerateMasterKey()"
+                    ng-disabled="regenerateInProgress"
+                    translate>
+                html.account.object_key.regenerate
+            </button>
+            <button class="btn btn-default btn-default" type="button" ng-click="closeModal()" translate>
+                html.defaults.cancel_title
+            </button>
+        </div>
+    </form>
+</div>
