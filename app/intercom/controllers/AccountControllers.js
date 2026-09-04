@@ -1,17 +1,65 @@
-
-app.controller('AccountProfileCtrl', ['$scope', '$controller', '$state', '$http', 'User', 'settings', 'notify', 'gettextCatalog',
-    function($scope, $controller, $state, $http, User, settings, notify, gettextCatalog) {
+app.controller('AccountProfileCtrl', ['$scope', '$controller', '$state', '$http', 'User', 'settings', 'notify', 'gettextCatalog', 'ModalService',
+    function($scope, $controller, $state, $http, User, settings, notify, gettextCatalog, ModalService) {
         $scope.rolesList = [];
+        $scope.objectKey = {};
+
+        function applyObjectKeyData(data) {
+            $scope.objectKey = {
+                objectName: data.objectName,
+                pid: data.pid,
+                masterKeyToken: data.masterKeyToken
+            };
+            return $scope.objectKey;
+        }
+
+        function showObjectKeyModal(data) {
+            ModalService.showModal({
+                templateUrl: settings.TEMPLATE_DIR + 'modals/access-object-master-key.html?v=3',
+                controller: 'AccessObjectMasterKeyModalCtrl',
+                inputs: {
+                    masterKeyData: {
+                        objectName: data.objectName || gettextCatalog.getString('html.account.object_key.title'),
+                        pid: data.pid,
+                        masterKeyToken: data.masterKeyToken
+                    }
+                }
+            }).then(function (modal) {
+                modal.element.modal();
+            });
+        }
+
+        function loadObjectKey() {
+            return $http.get(settings.API_URL + '?action=GetObjectKey')
+                .then(function (response) {
+                    return applyObjectKeyData(response.data);
+                }, function (response) {
+                    var message = gettextCatalog.getString('html.account.object_key.load_error');
+                    if (response.data && response.data.error) {
+                        message = response.data.error;
+                    }
+                    notify({
+                        message: message,
+                        classes: 'alert-danger'
+                    });
+                    return null;
+                });
+        }
 
         User.updateKeyCountInfo()
             .then(function() {
                 $scope.userData = angular.copy(User.data);
-
                 return $http.get(settings.API_URL + '?action=GetNameRoles');
             })
             .then(function(response) {
                 $scope.rolesList = response.data;
+                return loadObjectKey();
             });
+
+        $scope.$on('accountObjectKeyUpdated', function (event, data) {
+            if (data) {
+                applyObjectKeyData(data);
+            }
+        });
 
         $scope.save = function() {
             $http.post(settings.API_URL, angular.extend({Action: 'UpdateServiceCompany'}, $scope.userData))
@@ -21,7 +69,16 @@ app.controller('AccountProfileCtrl', ['$scope', '$controller', '$state', '$http'
                     $scope.userData = angular.copy(User.data);
                 });
         };
-        
+
+        // backward compatibility for cached/old form.html with generateObjectKey button
+        $scope.generateObjectKey = function () {
+            loadObjectKey().then(function (data) {
+                if (data) {
+                    showObjectKeyModal(data);
+                }
+            });
+        };
+
         $scope.removeAdmin = function($index) {
             var admin = $scope.userData.admins[$index];
             if (admin.id) {
@@ -41,7 +98,7 @@ app.controller('AccountProfileCtrl', ['$scope', '$controller', '$state', '$http'
             var updateAdmins = [];
             var addAdmins = [];
 
-            angular.forEach($scope.userData.admins, function (admin, i) {
+            angular.forEach($scope.userData.admins, function (admin) {
                 if (admin.id) {
                     updateAdmins.push(admin);
                 }
