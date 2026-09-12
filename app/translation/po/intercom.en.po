@@ -276,6 +276,48 @@ msgstr "Tariff"
 msgid "html.abonent.perimeters_title"
 msgstr "Perimeters"
 
+msgid "html.abonent.master_key.button"
+msgstr "Master key"
+
+msgid "html.abonent.master_key.actions"
+msgstr "Actions"
+
+msgid "html.abonent.master_key.title"
+msgstr "Access object master key"
+
+msgid "html.abonent.master_key.object"
+msgstr "Access object"
+
+msgid "html.abonent.master_key.pid"
+msgstr "PID"
+
+msgid "html.abonent.master_key.token"
+msgstr "Master key"
+
+msgid "html.abonent.master_key.hint"
+msgstr "Store the master key in a secure place. It is not shown in object lists."
+
+msgid "html.abonent.master_key.copy"
+msgstr "Copy"
+
+msgid "html.abonent.master_key.copied"
+msgstr "Master key copied to clipboard"
+
+msgid "html.abonent.master_key.not_found"
+msgstr "Could not determine the access object for the selected key"
+
+msgid "html.abonent.master_key.error"
+msgstr "Failed to retrieve the access object master key"
+
+msgid "html.abonent.object_key.export"
+msgstr "Download key (.key)"
+
+msgid "html.abonent.object_key.error"
+msgstr "Failed to generate key file"
+
+msgid "html.abonent.object_key.no_user"
+msgstr "Abonent must have a user account (UserId) to export a key"
+
 #: app/intercom/views/abonent/form.html:12
 #: app/intercom/views/abonent/list.html:14
 msgid "html.abonent.phone_display"
@@ -578,6 +620,36 @@ msgstr "Remaining"
 #: app/intercom/views/account/form.html:79
 msgid "html.account.keys.used"
 msgstr "Used"
+
+msgid "html.account.object_key.generate"
+msgstr "Object key (PID + MK)"
+
+msgid "html.account.object_key.title"
+msgstr "Access object key"
+
+msgid "html.account.object_key.object_name"
+msgstr "Object"
+
+msgid "html.account.object_key.show"
+msgstr "Show key"
+
+msgid "html.account.object_key.regenerate"
+msgstr "Regenerate"
+
+msgid "html.account.object_key.regenerate_confirm"
+msgstr "Regenerate the object master key? Abonent keys and controller settings will need to be updated."
+
+msgid "html.account.object_key.regenerated"
+msgstr "Object master key regenerated"
+
+msgid "html.account.object_key.load_error"
+msgstr "Failed to load object key"
+
+msgid "html.account.object_key.regenerate_error"
+msgstr "Failed to regenerate object key"
+
+msgid "html.account.object_key.error"
+msgstr "Failed to generate object key"
 
 #: app/intercom/views/account/form.html:6
 msgid "html.account.name_display"
@@ -1652,240 +1724,3 @@ msgstr "Elevator call priority"
 #: app/intercom/controllers/JournalControllers.js:111
 msgid "journals.no_records"
 msgstr "No records found"
-
-msgid "html.menu.parkings"
-msgstr "Parkings"
-
-msgid "html.parking.no_parkings"
-msgstr "No parking servers yet."
-
-msgid "html.parking.name"
-msgstr "Name"
-
-msgid "html.parking.address"
-msgstr "Address"
-
-msgid "html.parking.pool_count"
-msgstr "Pools"
-
-msgid "html.parking.space_count"
-msgstr "Spaces"
-
-msgid "html.parking.last_sync"
-msgstr "Last sync"
-
-msgid "html.parking.never_synced"
-msgstr "Never"
-
-msgid "html.parking.settings_title"
-msgstr "Settings"
-
-msgid "html.parking.identifier"
-msgstr "Identifier"
-
-msgid "html.parking.copy"
-msgstr "Copy"
-
-msgid "html.parking.identifier_hint"
-msgstr "The identifier and the token are entered into the parking server settings during commissioning. The token is issued in the SmartAirKey admin panel."
-
-msgid "html.parking.access"
-msgstr "Access"
-
-msgid "html.parking.access_revoked"
-msgstr "Revoked: configuration is not served"
-
-msgid "html.parking.simple_parking_title"
-msgstr "Simple parking"
-
-msgid "html.parking.simple_parking_hint"
-msgstr "Creates one pool per space. Suits a parking where every resident has an assigned space and there are no shared quotas."
-
-msgid "html.parking.simple_count"
-msgstr "Number of spaces"
-
-msgid "html.parking.simple_start_number"
-msgstr "First space number"
-
-msgid "html.parking.simple_preview"
-msgstr "Pools to be created:"
-
-msgid "html.parking.simple_appends"
-msgstr "The parking already has pools, the new ones will be added to them."
-
-msgid "html.parking.simple_create"
-msgstr "Create"
-
-msgid "html.parking.pools_title"
-msgstr "Space pools"
-
-msgid "html.parking.pool_name"
-msgstr "Pool name"
-
-msgid "html.parking.pool_max_spaces"
-msgstr "Spaces"
-
-msgid "html.parking.pool_bound"
-msgstr "Bound"
-
-msgid "html.parking.pool_oversubscribed"
-msgstr "More identifiers than spaces: they share the space in turn and cannot be inside at the same time"
-
-msgid "html.parking.pool_zero_hint"
-msgstr "Zero spaces is allowed and means entry by this pool is temporarily closed."
-
-msgid "html.parking.car_place"
-msgstr "Parking space"
-
-msgid "html.parking.choose_place"
-msgstr "Choose a space"
-
-msgid "html.parking.bind"
-msgstr "Bind"
-
-msgid "html.parking.save_car_first"
-msgstr "Save the abonent to bind a space"
-
-msgid "parking.pool_created"
-msgstr "Pool created"
-
-msgid "parking.pool_updated"
-msgstr "Pool updated"
-
-msgid "parking.pool_deleted"
-msgstr "Pool deleted"
-
-msgid "parking.pool_has_bindings"
-msgstr "Cars are bound to this pool. Unbind or move them first."
-
-msgid "parking.confirm_delete_pool"
-msgstr "Delete the pool?"
-
-msgid "parking.confirm_reduce_spaces"
-msgstr "There will be fewer spaces. Cars already inside are not evicted, but new entries by this pool will be blocked until occupancy drops below the new limit. Continue?"
-
-msgid "parking.simple_parking_created"
-msgstr "Pools created"
-
-msgid "parking.confirm_simple_parking"
-msgstr "Pools to be created:"
-
-msgid "parking.simple_count_too_big"
-msgstr "No more than 1000 pools can be created at once"
-
-msgid "parking.place_name"
-msgstr "Space"
-
-msgid "parking.identifier_copied"
-msgstr "Identifier copied"
-
-msgid "parking.car_bound"
-msgstr "Car bound to the space"
-
-msgid "parking.car_unbound"
-msgstr "Car unbound"
-
-msgid "parking.confirm_unbind"
-msgstr "Unbind the car from its space? A car currently inside will be able to leave, but the next entry will be denied."
-
-msgid "html.parking.add_title"
-msgstr "New parking"
-
-msgid "html.parking.address_hint"
-msgstr "Chosen from the address book. A new address is added on the Addresses tab."
-
-msgid "html.parking.token"
-msgstr "Token"
-
-msgid "html.parking.refresh_token"
-msgstr "Reissue"
-
-msgid "html.parking.delete_parking"
-msgstr "Delete parking"
-
-msgid "html.parking.access_allowed"
-msgstr "Allowed"
-
-msgid "html.parking.access_revoked_state"
-msgstr "Revoked: configuration is not served"
-
-msgid "html.parking.revoke"
-msgstr "Revoke"
-
-msgid "html.parking.restore"
-msgstr "Restore"
-
-msgid "parking.parking_created"
-msgstr "Parking created"
-
-msgid "parking.parking_updated"
-msgstr "Parking updated"
-
-msgid "parking.parking_deleted"
-msgstr "Parking deleted"
-
-msgid "parking.token_refreshed"
-msgstr "Token reissued. Enter the new value into the server settings on site"
-
-msgid "parking.token_copied"
-msgstr "Token copied"
-
-msgid "parking.access_revoked"
-msgstr "Access revoked"
-
-msgid "parking.access_restored"
-msgstr "Access restored"
-
-msgid "parking.confirm_refresh_token"
-msgstr "Reissue the token? Until the new value is entered into the server settings, synchronisation on site will stop. The parking will keep working on the last configuration it received."
-
-msgid "parking.confirm_revoke"
-msgstr "Revoke access? The server will stop receiving configuration but will keep working on the last one it received."
-
-msgid "parking.confirm_delete_parking"
-msgstr "All pools and bindings will be deleted along with the parking. Type the parking name to confirm:"
-
-msgid "parking.delete_name_mismatch"
-msgstr "The name does not match, deletion cancelled"
-
-msgid "html.parking.passes_title"
-msgstr "Parking passes"
-
-msgid "html.parking.pass_type"
-msgstr "Type"
-
-msgid "html.parking.pass_value"
-msgstr "Value"
-
-msgid "html.parking.pass_qr_case_hint"
-msgstr "Case matters for the QR code only: it is passed as is. Other types are uppercased."
-
-msgid "parking.type_qr"
-msgstr "QR code"
-
-msgid "parking.type_card"
-msgstr "Card"
-
-msgid "parking.type_pin"
-msgstr "PIN"
-
-msgid "parking.type_ble"
-msgstr "BLE key"
-
-msgid "parking.pass_bound"
-msgstr "Pass bound to the space"
-
-msgid "html.parking.pools_summary_hint"
-msgstr "— a pool sets a quota, so the number of spaces may be larger or smaller than the number of pools."
-
-msgid "html.parking.pool_search"
-msgstr "Search pools by name"
-
-msgid "html.parking.pools_shown"
-msgstr "Shown"
-
-msgid "html.parking.of"
-msgstr "of"
-
-msgid "html.parking.pools_not_found"
-msgstr "No pools with such a name."

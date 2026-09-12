@@ -43,10 +43,9 @@ app.factory('BrandIdInterceptor', ['$q', '$injector', 'settings', function($q, $
 app.factory('NotificationInterceptor', ['$q', '$injector', function($q, $injector) {
     return {
         responseError: function(response) {
-            var notify = $injector.get('notify');
-            if (response.data.error || response.data.developerDetails) {
+            if (response && response.data && (response.data.error || response.data.developerDetails)) {
                 notify({
-                    message: [response.data.error, response.data.developerDetails].join(' - '),
+                    message: [response.data.error, response.data.developerDetails].filter(Boolean).join(' - '),
                     classes: 'alert-danger'
                 });
             }

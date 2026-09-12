@@ -460,3 +460,9 @@ table.rtl-text tr th {
 .lock-schedule-controller-list label {
     margin: 0;
 }
+
+.account-object-key-footer {
+    margin: 10px 0 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e7ecf1;
+}

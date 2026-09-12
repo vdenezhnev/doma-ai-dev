@@ -22,6 +22,11 @@ app.factory('AccessObject', ['$resource', 'settings', 'AccessPerimeter', 'Access
                     });
                     return wrapped;
                 }
+            },
+            getMasterKey: {
+                method: 'GET',
+                url: settings.API_URL,
+                params: { action: 'GetAccessObjectMasterKey' }
             }
         });
 

@@ -559,8 +559,8 @@ app.controller('AbonentCreateCtrl',
   }
 ]);
 
-app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerializer', '$scope', '$controller', '$state', '$stateParams', 'Abonent', 'notify', 'gettextCatalog', 'User', 'Camera', 'settings', 'Parking',
-  function ($rootScope, $http, $httpParamSerializer, $scope, $controller, $state, $stateParams, Abonent, notify, gettextCatalog, User, Camera, settings, Parking) {
+app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerializer', '$scope', '$controller', '$state', '$stateParams', 'Abonent', 'notify', 'gettextCatalog', 'User', 'Camera', 'settings', 'ModalService', 'AccessObject', 'DataService',
+  function ($rootScope, $http, $httpParamSerializer, $scope, $controller, $state, $stateParams, Abonent, notify, gettextCatalog, User, Camera, settings, ModalService, AccessObject, DataService) {
     if (!$stateParams.abonent) {
       $state.go('admin.abonent.list');
       return;
@@ -761,134 +761,11 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
     }
 
     $scope.abonent = new Abonent(angular.copy($stateParams.abonent));
+    angular.forEach($scope.abonent.perimeters, function (perimeter) {
+      perimeter.isPersisted = !!(perimeter.accessPerimeterId && perimeter.tariffPolicyId);
+    });
     $scope.abonent.persistedPhoneNumber = $scope.abonent.phoneNumber;
     $scope.originalPhoneNumber = $scope.abonent.phoneNumber;
-
-    // ------------------------------------------------ парковочные места
-
-    $scope.parkings = [];
-    $scope.parkingPools = [];
-    $scope.parkingBindings = [];
-    $scope.parkingLoaded = false;
-
-    // Привязать можно только сохранённый автомобиль: сервер проверяет, что такой
-    // номер заведён у абонента. Номера, добавленные в таблицу и ещё не сохранённые,
-    // он не найдёт.
-    $scope.persistedCarNumbers = ($scope.abonent.cars || []).map(function (car) {
-      return Parking.normalize(car.number);
-    });
-
-    function loadParkingBindings() {
-      if (!$scope.abonent.id) {
-        return;
-      }
-
-      Parking.getAbonentBindings($scope.abonent.id).then(function (bindings) {
-        $scope.parkingBindings = bindings || [];
-      });
-    }
-
-    function loadParkings() {
-      Parking.getParkings().then(function (parkings) {
-        $scope.parkings = parkings || [];
-        $scope.parkingLoaded = true;
-
-        $scope.parkings.forEach(function (parking) {
-          Parking.getPools(parking.id).then(function (pools) {
-            (pools || []).forEach(function (pool) {
-              $scope.parkingPools.push({
-                parkingId: parking.id,
-                parkingName: parking.name,
-                poolId: pool.id,
-                poolName: pool.name,
-                title: parking.name + ' — ' + pool.name
-              });
-            });
-          });
-        });
-      });
-
-      loadParkingBindings();
-    }
-
-    $scope.isCarPersisted = function (car) {
-      return $scope.persistedCarNumbers.indexOf(Parking.normalize(car && car.number)) > -1;
-    };
-
-    /**
-     * Привязки автомобиля по всем парковкам. На разных объектах у одной машины
-     * могут быть разные места, и это не конфликт.
-     */
-    $scope.carBindings = function (car) {
-      var normalized = Parking.normalize(car && car.number);
-      if (!normalized) {
-        return [];
-      }
-
-      return $scope.parkingBindings.filter(function (binding) {
-        return binding.identifierType === 'PLATE' && binding.identifierValue === normalized;
-      });
-    };
-
-    $scope.passTypes = [
-      {value: 'QR', title: gettextCatalog.getString('parking.type_qr')},
-      {value: 'CARD', title: gettextCatalog.getString('parking.type_card')},
-      {value: 'PIN', title: gettextCatalog.getString('parking.type_pin')},
-      {value: 'BLE', title: gettextCatalog.getString('parking.type_ble')}
-    ];
-
-    $scope.newPass = {type: 'QR'};
-
-    $scope.passTypeTitle = function (type) {
-      var found = $scope.passTypes.filter(function (option) { return option.value === type; })[0];
-      return found ? found.title : type;
-    };
-
-    /** Привязки всех типов, кроме номеров: те показаны в таблице автомобилей. */
-    $scope.passBindings = function () {
-      return $scope.parkingBindings.filter(function (binding) {
-        return binding.identifierType !== 'PLATE';
-      });
-    };
-
-    $scope.bindPass = function () {
-      if (!$scope.newPass.value || !$scope.newPass.pool) {
-        return;
-      }
-
-      Parking.bind($scope.newPass.pool.poolId, $scope.abonent.id, $scope.newPass.type, $scope.newPass.value)
-        .then(function () {
-          notify(gettextCatalog.getString('parking.pass_bound'));
-          $scope.newPass = {type: $scope.newPass.type};
-          loadParkingBindings();
-        });
-    };
-
-    $scope.bindCar = function (car) {
-      var option = car.selectedPool;
-      if (!option) {
-        return;
-      }
-
-      Parking.bind(option.poolId, $scope.abonent.id, 'PLATE', car.number).then(function () {
-        notify(gettextCatalog.getString('parking.car_bound'));
-        car.selectedPool = null;
-        loadParkingBindings();
-      });
-    };
-
-    $scope.unbindCar = function (binding) {
-      if (!window.confirm(gettextCatalog.getString('parking.confirm_unbind'))) {
-        return;
-      }
-
-      Parking.unbind(binding.id).then(function () {
-        notify(gettextCatalog.getString('parking.car_unbound'));
-        loadParkingBindings();
-      });
-    };
-
-    loadParkings();
 
     $scope.isPhoneNumberChanged = function () {
       return String($scope.abonent.phoneNumber || '') !== String($scope.originalPhoneNumber || '');
@@ -1069,6 +946,72 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
           User.updateKeyCountInfo();
         });
       }
+    };
+
+    var objectKeyExportInProgress = false;
+
+    $scope.exportAbonentObjectKey = function () {
+      if (!$scope.abonent.id || objectKeyExportInProgress) {
+        return;
+      }
+
+      if (!$scope.abonent.userId) {
+        notify({
+          message: gettextCatalog.getString('html.abonent.object_key.no_user'),
+          classes: 'alert-warning'
+        });
+        return;
+      }
+
+      objectKeyExportInProgress = true;
+
+      var getParams = {
+        action: 'ExportAbonentObjectKeyFile',
+        AbonentId: $scope.abonent.id
+      };
+
+      $http.get(settings.API_URL + '?' + $httpParamSerializer(getParams), {
+        responseType: 'arraybuffer'
+      }).then(function (response) {
+        var headers = response.headers();
+        var contentDisposition = headers['content-disposition'] || headers['Content-Disposition'] || '';
+        var filenameMatch = /filename=([^;]+)/i.exec(contentDisposition);
+        var filename = filenameMatch ? filenameMatch[1].trim().replace(/"/g, '') : 'object-key.key';
+        var contentType = headers['content-type'] || 'application/octet-stream';
+
+        var blob = new Blob([response.data], { type: contentType });
+        var url = window.URL.createObjectURL(blob);
+        var linkElement = document.createElement('a');
+
+        linkElement.href = url;
+        linkElement.download = filename;
+        linkElement.style.display = 'none';
+        document.body.appendChild(linkElement);
+        linkElement.click();
+        document.body.removeChild(linkElement);
+        window.setTimeout(function () {
+          window.URL.revokeObjectURL(url);
+        }, 100);
+      }, function (response) {
+        var message = gettextCatalog.getString('html.abonent.object_key.error');
+        if (response.data) {
+          try {
+            var decoded = new TextDecoder('utf-8').decode(new Uint8Array(response.data));
+            var details = JSON.parse(decoded);
+            if (details.error) {
+              message = details.error;
+            }
+          } catch (e) {
+            // keep default message
+          }
+        }
+        notify({
+          message: message,
+          classes: 'alert-danger'
+        });
+      }).finally(function () {
+        objectKeyExportInProgress = false;
+      });
     };
 
     $scope.deleteTemporaryPerimeterKey = function (object) {
@@ -1609,6 +1552,67 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
         $scope.isGeneratingExternalId = false;
         $scope.externalIdNotUnique = false;
       });
+    };
+  }
+]);
+
+app.controller('AccessObjectMasterKeyModalCtrl', ['$scope', '$element', '$rootScope', 'close', 'masterKeyData', '$http', 'settings', 'notify', 'gettextCatalog',
+  function ($scope, $element, $rootScope, close, masterKeyData, $http, settings, notify, gettextCatalog) {
+    $scope.masterKeyData = masterKeyData;
+    $scope.regenerateInProgress = false;
+
+    $scope.closeModal = function () {
+      $element.modal('hide');
+      close(null, 500);
+    };
+
+    $scope.copyMasterKey = function () {
+      var text = 'PID: ' + $scope.masterKeyData.pid + '\nMaster key: ' + $scope.masterKeyData.masterKeyToken;
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () {
+          notify(gettextCatalog.getString('html.abonent.master_key.copied'));
+        });
+        return;
+      }
+
+      notify(text);
+    };
+
+    $scope.regenerateMasterKey = function () {
+      if ($scope.regenerateInProgress) {
+        return;
+      }
+
+      if (!window.confirm(gettextCatalog.getString('html.account.object_key.regenerate_confirm'))) {
+        return;
+      }
+
+      $scope.regenerateInProgress = true;
+
+      $http.post(settings.API_URL, { Action: 'RegenerateObjectKey' })
+        .then(function (response) {
+          $scope.masterKeyData = {
+            objectName: response.data.objectName || $scope.masterKeyData.objectName,
+            pid: response.data.pid,
+            masterKeyToken: response.data.masterKeyToken
+          };
+
+          $rootScope.$broadcast('accountObjectKeyUpdated', response.data);
+          notify(gettextCatalog.getString('html.account.object_key.regenerated'));
+        }, function (response) {
+          var message = gettextCatalog.getString('html.account.object_key.regenerate_error');
+          if (response.data && response.data.error) {
+            message = response.data.error;
+          }
+          notify({
+            message: message,
+            classes: 'alert-danger'
+          });
+        })
+        .finally(function () {
+          $scope.regenerateInProgress = false;
+        });
     };
   }
 ]);
