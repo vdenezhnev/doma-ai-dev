@@ -194,6 +194,7 @@
       <tr>
         <th translate>html.abonent.car_number_display</th>
         <th translate>html.abonent.car_model_display</th>
+        <th ng-if="parkingLoaded && parkings.length" translate>html.parking.car_place</th>
         <th style="width: 1px"></th>
       </tr>
       </thead>
@@ -213,12 +214,33 @@
                  ng-model="car.model"
                  validator="required">
         </td>
+        <td ng-if="parkingLoaded && parkings.length">
+          <div ng-repeat="binding in carBindings(car)">
+            <span>{{ binding.parkingName }} &mdash; {{ binding.poolName }}</span>
+            <a ng-click="unbindCar(binding)" class="btn default btn-xs">
+              <i class="fa fa-times"></i>
+            </a>
+          </div>
+
+          <div ng-show="isCarPersisted(car)">
+            <select class="form-control input-sm"
+                    ng-model="car.selectedPool"
+                    ng-options="option.title for option in parkingPools track by option.poolId">
+              <option value="" translate>html.parking.choose_place</option>
+            </select>
+            <a ng-click="bindCar(car)" ng-disabled="!car.selectedPool" class="btn default btn-xs">
+              <span translate>html.parking.bind</span>
+            </a>
+          </div>
+
+          <span class="muted" ng-hide="isCarPersisted(car)" translate>html.parking.save_car_first</span>
+        </td>
         <td>
           <a ng-click="abonent.cars.splice($index, 1)" class="btn default btn-sm"><i class="fa fa-trash"></i></a>
         </td>
       </tr>
       <tr>
-        <td colspan="3">
+        <td colspan="{{ parkingLoaded && parkings.length ? 4 : 3 }}">
           <a ng-click="abonent.cars.push({})" class="btn btn-sm default">
             <i class="fa fa-plus"></i>
             <span translate>html.defaults.add_title</span>
@@ -227,6 +249,60 @@
       </tr>
       </tbody>
     </table>
+
+    <!-- Пропуска, которые не заводятся в карточке абонента отдельно: QR, карта,
+         PIN и BLE-ключ. Значение вводится вручную — в облаке их реестра нет,
+         привязка к месту и есть их учёт. -->
+    <div ng-if="abonent.id && parkingLoaded && parkings.length">
+      <h4 translate>html.parking.passes_title</h4>
+
+      <table class="table table-bordered table-hover">
+        <thead ng-show="passBindings().length">
+        <tr>
+          <th translate>html.parking.pass_type</th>
+          <th translate>html.parking.pass_value</th>
+          <th translate>html.parking.car_place</th>
+          <th style="width: 1px"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="binding in passBindings()">
+          <td>{{ passTypeTitle(binding.identifierType) }}</td>
+          <td>{{ binding.identifierValue }}</td>
+          <td>{{ binding.parkingName }} &mdash; {{ binding.poolName }}</td>
+          <td>
+            <a ng-click="unbindCar(binding)" class="btn default btn-sm"><i class="fa fa-times"></i></a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <select class="form-control input-sm" ng-model="newPass.type"
+                    ng-options="option.value as option.title for option in passTypes">
+            </select>
+          </td>
+          <td>
+            <input class="form-control input-sm" type="text" ng-model="newPass.value"
+                   placeholder="{{ 'html.parking.pass_value' | translate }}">
+          </td>
+          <td>
+            <select class="form-control input-sm"
+                    ng-model="newPass.pool"
+                    ng-options="option.title for option in parkingPools track by option.poolId">
+              <option value="" translate>html.parking.choose_place</option>
+            </select>
+          </td>
+          <td>
+            <a ng-click="bindPass()" ng-disabled="!newPass.value || !newPass.pool"
+               class="btn btn-sm default">
+              <span translate>html.parking.bind</span>
+            </a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+      <p class="muted" translate>html.parking.pass_qr_case_hint</p>
+    </div>
   </div>
 
   <div class="col-md-8" ng-if="abonent.id">

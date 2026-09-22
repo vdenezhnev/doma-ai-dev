@@ -559,8 +559,8 @@ app.controller('AbonentCreateCtrl',
   }
 ]);
 
-app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerializer', '$scope', '$controller', '$state', '$stateParams', 'Abonent', 'notify', 'gettextCatalog', 'User', 'Camera', 'settings', 'ModalService', 'AccessObject', 'DataService',
-  function ($rootScope, $http, $httpParamSerializer, $scope, $controller, $state, $stateParams, Abonent, notify, gettextCatalog, User, Camera, settings, ModalService, AccessObject, DataService) {
+app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerializer', '$scope', '$controller', '$state', '$stateParams', 'Abonent', 'notify', 'gettextCatalog', 'User', 'Camera', 'settings', 'ModalService', 'AccessObject', 'DataService', 'Parking',
+  function ($rootScope, $http, $httpParamSerializer, $scope, $controller, $state, $stateParams, Abonent, notify, gettextCatalog, User, Camera, settings, ModalService, AccessObject, DataService, Parking) {
     if (!$stateParams.abonent) {
       $state.go('admin.abonent.list');
       return;
@@ -766,6 +766,132 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
     });
     $scope.abonent.persistedPhoneNumber = $scope.abonent.phoneNumber;
     $scope.originalPhoneNumber = $scope.abonent.phoneNumber;
+
+    // ------------------------------------------------ парковочные места
+
+    $scope.parkings = [];
+    $scope.parkingPools = [];
+    $scope.parkingBindings = [];
+    $scope.parkingLoaded = false;
+
+    // Привязать можно только сохранённый автомобиль: сервер проверяет, что такой
+    // номер заведён у абонента. Номера, добавленные в таблицу и ещё не сохранённые,
+    // он не найдёт.
+    $scope.persistedCarNumbers = ($scope.abonent.cars || []).map(function (car) {
+      return Parking.normalize(car.number);
+    });
+
+    function loadParkingBindings() {
+      if (!$scope.abonent.id) {
+        return;
+      }
+
+      Parking.getAbonentBindings($scope.abonent.id).then(function (bindings) {
+        $scope.parkingBindings = bindings || [];
+      });
+    }
+
+    function loadParkings() {
+      Parking.getParkings().then(function (parkings) {
+        $scope.parkings = parkings || [];
+        $scope.parkingLoaded = true;
+
+        $scope.parkings.forEach(function (parking) {
+          Parking.getPools(parking.id).then(function (pools) {
+            (pools || []).forEach(function (pool) {
+              $scope.parkingPools.push({
+                parkingId: parking.id,
+                parkingName: parking.name,
+                poolId: pool.id,
+                poolName: pool.name,
+                title: parking.name + ' — ' + pool.name
+              });
+            });
+          });
+        });
+      });
+
+      loadParkingBindings();
+    }
+
+    $scope.isCarPersisted = function (car) {
+      return $scope.persistedCarNumbers.indexOf(Parking.normalize(car && car.number)) > -1;
+    };
+
+    /**
+     * Привязки автомобиля по всем парковкам. На разных объектах у одной машины
+     * могут быть разные места, и это не конфликт.
+     */
+    $scope.carBindings = function (car) {
+      var normalized = Parking.normalize(car && car.number);
+      if (!normalized) {
+        return [];
+      }
+
+      return $scope.parkingBindings.filter(function (binding) {
+        return binding.identifierType === 'PLATE' && binding.identifierValue === normalized;
+      });
+    };
+
+    $scope.passTypes = [
+      {value: 'QR', title: gettextCatalog.getString('parking.type_qr')},
+      {value: 'CARD', title: gettextCatalog.getString('parking.type_card')},
+      {value: 'PIN', title: gettextCatalog.getString('parking.type_pin')},
+      {value: 'BLE', title: gettextCatalog.getString('parking.type_ble')}
+    ];
+
+    $scope.newPass = {type: 'QR'};
+
+    $scope.passTypeTitle = function (type) {
+      var found = $scope.passTypes.filter(function (option) { return option.value === type; })[0];
+      return found ? found.title : type;
+    };
+
+    /** Привязки всех типов, кроме номеров: те показаны в таблице автомобилей. */
+    $scope.passBindings = function () {
+      return $scope.parkingBindings.filter(function (binding) {
+        return binding.identifierType !== 'PLATE';
+      });
+    };
+
+    $scope.bindPass = function () {
+      if (!$scope.newPass.value || !$scope.newPass.pool) {
+        return;
+      }
+
+      Parking.bind($scope.newPass.pool.poolId, $scope.abonent.id, $scope.newPass.type, $scope.newPass.value)
+        .then(function () {
+          notify(gettextCatalog.getString('parking.pass_bound'));
+          $scope.newPass = {type: $scope.newPass.type};
+          loadParkingBindings();
+        });
+    };
+
+    $scope.bindCar = function (car) {
+      var option = car.selectedPool;
+      if (!option) {
+        return;
+      }
+
+      Parking.bind(option.poolId, $scope.abonent.id, 'PLATE', car.number).then(function () {
+        notify(gettextCatalog.getString('parking.car_bound'));
+        car.selectedPool = null;
+        loadParkingBindings();
+      });
+    };
+
+    $scope.unbindCar = function (binding) {
+      if (!window.confirm(gettextCatalog.getString('parking.confirm_unbind'))) {
+        return;
+      }
+
+      Parking.unbind(binding.id).then(function () {
+        notify(gettextCatalog.getString('parking.car_unbound'));
+        loadParkingBindings();
+      });
+    };
+
+    loadParkings();
 
     $scope.isPhoneNumberChanged = function () {
       return String($scope.abonent.phoneNumber || '') !== String($scope.originalPhoneNumber || '');
