@@ -20,6 +20,9 @@
 
       <ng-include src="'app/intercom/views/access/object/form.html'"></ng-include>
 
+      <div ng-if="acmsLocalMode && accessObject.id"
+        ng-include="'app/intercom/views/access/object/object-key-section.html'"></div>
+
       <div class="form-actions">
         <button type="submit" class="btn blue" validation-submit="AccessObjectForm" ng-click="showApplyMessageCall()" translate>
           html.defaults.save_title
