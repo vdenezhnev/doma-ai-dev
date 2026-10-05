@@ -308,8 +308,15 @@
   <div class="col-md-8" ng-if="abonent.id">
     <div class="clearfix" style="margin-bottom: 10px;">
       <h4 translate style="display: inline-block; margin: 0 10px 0 0; vertical-align: middle;">html.abonent.perimeters_title</h4>
+      <select ng-show="acmsLocalMode && exportAccessObjectSelectReady"
+              id="abonentObjectKeyExportSelect"
+              class="form-control input-sm"
+              style="display: inline-block; width: auto; vertical-align: middle; margin-right: 8px; min-width: 220px;"
+              ng-model="objectKeyExport.accessObjectId"
+              ng-options="item.id as item.displayName for item in accessObjectsForKeyExport">
+      </select>
       <button type="button"
-              ng-if="abonent.userId"
+              ng-if="acmsLocalMode && abonent.userId"
               ng-click="exportAbonentObjectKey()"
               class="btn green btn-sm"
               style="vertical-align: middle;">

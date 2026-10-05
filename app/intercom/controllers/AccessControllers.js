@@ -262,8 +262,8 @@ app.controller('AddAccessObjectCtrl', ['$scope', '$http', '$state', 'AccessObjec
     }
 ]);
 
-app.controller('EditAccessObjectCtrl', ['$scope', '$controller', '$rootScope', '$http', '$state', '$stateParams', 'AccessObject', 'notify', 'gettextCatalog', 'ImageUpload', 'Upload',
-    function($scope, $controller, $rootScope, $http, $state, $stateParams, AccessObject, notify, gettextCatalog, ImageUpload, Upload) {
+app.controller('EditAccessObjectCtrl', ['$scope', '$controller', '$rootScope', '$http', '$state', '$stateParams', 'AccessObject', 'notify', 'gettextCatalog', 'ImageUpload', 'Upload', 'settings', 'ModalService',
+    function($scope, $controller, $rootScope, $http, $state, $stateParams, AccessObject, notify, gettextCatalog, ImageUpload, Upload, settings, ModalService) {
 
         if (!$stateParams.object) {
             $state.go('admin.access');
@@ -273,6 +273,73 @@ app.controller('EditAccessObjectCtrl', ['$scope', '$controller', '$rootScope', '
         $rootScope.selectedId = $stateParams.object.id;
         $scope.accessObject = new AccessObject($stateParams.object);
         $scope.title = $scope.accessObject.displayName;
+        $scope.objectKey = {};
+        $scope.objectKeyLoadInProgress = false;
+        var isLocalMode = settings.ACMS_MODE === 'local';
+
+        function applyObjectKeyData(data) {
+            $scope.objectKey = {
+                accessObjectId: $scope.accessObject.id,
+                objectName: $scope.accessObject.displayName,
+                pid: data.pid || data.PID,
+                masterKeyToken: data.masterKeyToken || data.MasterKeyToken
+            };
+            return $scope.objectKey;
+        }
+
+        function loadAccessObjectMasterKey() {
+            if (!isLocalMode || !$scope.accessObject.id) {
+                return null;
+            }
+
+            $scope.objectKeyLoadInProgress = true;
+            return AccessObject.getMasterKey({ AccessObjectId: $scope.accessObject.id }).$promise
+                .then(function (response) {
+                    return applyObjectKeyData(response);
+                }, function (response) {
+                    var message = gettextCatalog.getString('html.account.object_key.load_error');
+                    if (response.data && response.data.error) {
+                        message = response.data.error;
+                    }
+                    notify({
+                        message: message,
+                        classes: 'alert-danger'
+                    });
+                    return null;
+                })
+                .finally(function () {
+                    $scope.objectKeyLoadInProgress = false;
+                });
+        }
+
+        $scope.showAccessObjectMasterKeyModal = function () {
+            loadAccessObjectMasterKey().then(function (data) {
+                if (!data) {
+                    return;
+                }
+
+                ModalService.showModal({
+                    templateUrl: settings.TEMPLATE_DIR + 'modals/access-object-master-key.html?v=4',
+                    controller: 'AccessObjectMasterKeyModalCtrl',
+                    inputs: {
+                        masterKeyData: angular.copy(data)
+                    }
+                }).then(function (modal) {
+                    modal.element.modal();
+                });
+            });
+        };
+
+        if (isLocalMode && $scope.accessObject.id) {
+            loadAccessObjectMasterKey();
+        }
+
+        $scope.$on('accessObjectKeyUpdated', function (event, payload) {
+            if (!payload || payload.accessObjectId !== $scope.accessObject.id) {
+                return;
+            }
+            applyObjectKeyData(payload.data || payload);
+        });
 
         $scope.submit = function () {
             $scope.accessObject.$save(function () {

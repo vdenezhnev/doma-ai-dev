@@ -568,6 +568,151 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
 
     $scope.isOld = true;
     $scope.isSavingPhoneNumber = false;
+    // Plain object on parent scope so ng-include child scope can bind nested fields (dot rule).
+    $scope.objectKeyExport = {
+      accessObjectId: null
+    };
+    $scope.accessObjectsForKeyExport = [];
+    $scope.exportAccessObjectSelectReady = false;
+
+    function normalizeAccessObjectId(value) {
+      if (!value) {
+        return null;
+      }
+      if (angular.isObject(value)) {
+        return value.id || value.Id || null;
+      }
+      return value;
+    }
+
+    function accessObjectIdFromDto(dto) {
+      if (!dto) {
+        return null;
+      }
+      var plain = angular.isObject(dto) ? angular.extend({}, dto) : dto;
+      var id = plain.id || plain.Id;
+      return id ? String(id) : null;
+    }
+
+    function isValidExportAccessObjectId(value) {
+      if (!value || value === '?') {
+        return false;
+      }
+      var normalized = String(normalizeAccessObjectId(value) || '').toLowerCase();
+      return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.test(normalized);
+    }
+
+    function resolveExportAccessObjectId() {
+      var fromScope = normalizeAccessObjectId($scope.objectKeyExport.accessObjectId);
+      if (isValidExportAccessObjectId(fromScope)) {
+        return String(fromScope).toLowerCase();
+      }
+
+      var selectEl = document.getElementById('abonentObjectKeyExportSelect');
+      if (selectEl && selectEl.selectedIndex >= 0 && selectEl.options.length) {
+        var optionValue = selectEl.options[selectEl.selectedIndex].value;
+        if (isValidExportAccessObjectId(optionValue)) {
+          return String(normalizeAccessObjectId(optionValue)).toLowerCase();
+        }
+      }
+
+      return null;
+    }
+
+    function resolveSelectedAccessObjectForExport(accessObjectId) {
+      var selected = findAccessObjectForExport(accessObjectId);
+      if (selected) {
+        return selected;
+      }
+
+      var selectEl = document.getElementById('abonentObjectKeyExportSelect');
+      if (selectEl && selectEl.selectedIndex >= 0 && selectEl.options.length) {
+        return {
+          id: accessObjectId,
+          displayName: selectEl.options[selectEl.selectedIndex].text || 'object'
+        };
+      }
+
+      return {
+        id: accessObjectId,
+        displayName: 'object'
+      };
+    }
+
+    function syncExportAccessObjectSelect() {
+      var items = $scope.accessObjectsForKeyExport;
+      if (!items || !items.length) {
+        $scope.exportAccessObjectSelectReady = false;
+        return;
+      }
+
+      angular.forEach(items, function (item) {
+        item.id = String(item.id).toLowerCase();
+      });
+
+      $scope.objectKeyExport.accessObjectId = items[0].id;
+      $scope.exportAccessObjectSelectReady = true;
+    }
+
+    if (settings.ACMS_MODE === 'local') {
+      AccessObject.query(function (response) {
+        var seen = {};
+
+        $scope.exportAccessObjectSelectReady = false;
+        $scope.accessObjectsForKeyExport = (response.items || []).map(function (item) {
+          return {
+            id: accessObjectIdFromDto(item),
+            displayName: item.displayName || item.DisplayName
+          };
+        }).filter(function (item) {
+          if (!item.id) {
+            return false;
+          }
+          var key = String(item.id).toLowerCase();
+          if (seen[key]) {
+            return false;
+          }
+          seen[key] = true;
+          return true;
+        });
+
+        if ($scope.accessObjectsForKeyExport.length) {
+          syncExportAccessObjectSelect();
+        }
+      });
+    }
+
+    function findAccessObjectForExport(accessObjectId) {
+      var normalizedId = String(normalizeAccessObjectId(accessObjectId) || '').toLowerCase();
+      if (!normalizedId) {
+        return null;
+      }
+
+      for (var i = 0; i < $scope.accessObjectsForKeyExport.length; i++) {
+        var item = $scope.accessObjectsForKeyExport[i];
+        if (String(item.id || '').toLowerCase() === normalizedId) {
+          return item;
+        }
+      }
+
+      return null;
+    }
+
+    function buildClientExportFileName(accessObject) {
+      var abonentName = ($scope.abonent && ($scope.abonent.displayName || $scope.abonent.name)) || 'abonent';
+      var objectName = (accessObject && accessObject.displayName) || 'object';
+      var objectId = accessObject && accessObject.id ? String(accessObject.id).replace(/-/g, '').substring(0, 8) : 'object';
+
+      function slug(text, fallback) {
+        var token = String(text || '')
+          .replace(/[^\w\-]+/g, '_')
+          .replace(/_+/g, '_')
+          .replace(/^_|_$/g, '');
+        return token || fallback;
+      }
+
+      return slug(abonentName, 'abonent') + '_' + slug(objectName, 'object') + '_' + objectId + '.key';
+    }
 
     $scope.endDateBeforeRender = endDateBeforeRender
     $scope.endDateOnSetTime = endDateOnSetTime
@@ -1077,6 +1222,9 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
     var objectKeyExportInProgress = false;
 
     $scope.exportAbonentObjectKey = function () {
+      if (settings.ACMS_MODE !== 'local') {
+        return;
+      }
       if (!$scope.abonent.id || objectKeyExportInProgress) {
         return;
       }
@@ -1089,20 +1237,38 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
         return;
       }
 
+      var accessObjectId = resolveExportAccessObjectId();
+      if (!accessObjectId) {
+        notify({
+          message: gettextCatalog.getString('html.abonent.object_key.error'),
+          classes: 'alert-warning'
+        });
+        return;
+      }
+
+      var selectedAccessObject = resolveSelectedAccessObjectForExport(accessObjectId);
+      $scope.objectKeyExport.accessObjectId = accessObjectId;
+
       objectKeyExportInProgress = true;
 
-      var getParams = {
+      var exportParams = {
         action: 'ExportAbonentObjectKeyFile',
-        AbonentId: $scope.abonent.id
+        abonentId: normalizeAccessObjectId($scope.abonent.id) || $scope.abonent.id,
+        accessObjectId: accessObjectId,
+        _: Date.now()
       };
 
-      $http.get(settings.API_URL + '?' + $httpParamSerializer(getParams), {
-        responseType: 'arraybuffer'
+      $http.get(settings.API_URL + '?' + $httpParamSerializer(exportParams), {
+        responseType: 'arraybuffer',
+        headers: { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' }
       }).then(function (response) {
         var headers = response.headers();
         var contentDisposition = headers['content-disposition'] || headers['Content-Disposition'] || '';
         var filenameMatch = /filename=([^;]+)/i.exec(contentDisposition);
-        var filename = filenameMatch ? filenameMatch[1].trim().replace(/"/g, '') : 'object-key.key';
+        var filename = filenameMatch ? filenameMatch[1].trim().replace(/"/g, '') : buildClientExportFileName(selectedAccessObject);
+        if (!filename || filename.indexOf('object-key') === 0 || filename.indexOf('___') === 0) {
+          filename = buildClientExportFileName(selectedAccessObject);
+        }
         var contentType = headers['content-type'] || 'application/octet-stream';
 
         var blob = new Blob([response.data], { type: contentType });
@@ -1126,6 +1292,8 @@ app.controller('AbonentDetailCtrl', ['$rootScope', '$http', '$httpParamSerialize
             var details = JSON.parse(decoded);
             if (details.error) {
               message = details.error;
+            } else if (details.Error) {
+              message = details.Error;
             }
           } catch (e) {
             // keep default message
@@ -1714,17 +1882,32 @@ app.controller('AccessObjectMasterKeyModalCtrl', ['$scope', '$element', '$rootSc
         return;
       }
 
+      if (!$scope.masterKeyData.accessObjectId) {
+        notify({
+          message: gettextCatalog.getString('html.account.object_key.error'),
+          classes: 'alert-danger'
+        });
+        return;
+      }
+
       $scope.regenerateInProgress = true;
 
-      $http.post(settings.API_URL, { Action: 'RegenerateObjectKey' })
+      $http.post(settings.API_URL, {
+        Action: 'RegenerateAccessObjectKey',
+        AccessObjectId: $scope.masterKeyData.accessObjectId
+      })
         .then(function (response) {
           $scope.masterKeyData = {
-            objectName: response.data.objectName || $scope.masterKeyData.objectName,
-            pid: response.data.pid,
-            masterKeyToken: response.data.masterKeyToken
+            accessObjectId: $scope.masterKeyData.accessObjectId,
+            objectName: $scope.masterKeyData.objectName,
+            pid: response.data.pid || response.data.PID,
+            masterKeyToken: response.data.masterKeyToken || response.data.MasterKeyToken
           };
 
-          $rootScope.$broadcast('accountObjectKeyUpdated', response.data);
+          $rootScope.$broadcast('accessObjectKeyUpdated', {
+            accessObjectId: $scope.masterKeyData.accessObjectId,
+            data: $scope.masterKeyData
+          });
           notify(gettextCatalog.getString('html.account.object_key.regenerated'));
         }, function (response) {
           var message = gettextCatalog.getString('html.account.object_key.regenerate_error');
