@@ -747,6 +747,10 @@ msgstr "Account"
 msgid "html.auth.login_title"
 msgstr "Sign in"
 
+#: app/intercom/views/auth/login.html:1
+msgid "html.auth.condo_bootstrap_loading"
+msgstr "Signing in…"
+
 #: app/intercom/views/_messages.html:18
 msgid "html.auth.new_password_title"
 msgstr "Change your password"

@@ -1,53 +1,38 @@
 'use strict';
 
-app.controller('LoginCtrl', ['$scope', '$http', '$httpParamSerializer', 'Api', 'settings', 'User', 'ModalService', '$timeout', function($scope, $http, $httpParamSerializer, Api, settings, User, ModalService, $timeout) {
+app.controller('LoginCtrl', ['$scope', '$http', '$httpParamSerializer', '$location', 'Api', 'settings', 'User', 'ModalService', '$timeout', 'CondoAuth', 'CondoMiniapp',
+    function($scope, $http, $httpParamSerializer, $location, Api, settings, User, ModalService, $timeout, CondoAuth, CondoMiniapp) {
     $scope.login = '';
     $scope.password = '';
     $scope.defaultCompanyProfiles = [];
     $scope.companyProfiles = undefined;
     $scope.hasMoreProfiles = false;
     $scope.q = '';
+    $scope.domaSeamlessUserId = null;
+    $scope.condoBootstrapInProgress = CondoMiniapp.isEmbedded() && !User.isAuthenticated();
 
-    $scope.submit = function() {
-        $http.post(settings.API_URL, {
-            Action: 'LoginV2',
-            Login: $scope.login,
-            Password: Base64.encode($scope.password)
-        }).then(function successCallback(response) {
-            // Store intercoms token to request a list of companies
-            User.load(null, response.data.credentials, null);
-            $scope.hasMoreProfiles = response.data.hasMoreProfiles;
-            if ($scope.hasMoreProfiles) {
-                $scope.defaultCompanyProfiles = [];
-                $scope.companyProfiles = [];
-            }
-            else {
-                if (response.data.profiles.length === 1) {
-                    $scope.selectProfileAndRole(response.data.profiles[0], response.data.role);
-                }
-                else {
-                    $scope.defaultCompanyProfiles = response.data.profiles;
-                    $scope.companyProfiles = response.data.profiles;
-                }
-            }
-        });
-    };
+    function applyLoginPayload(data) {
+        var result = CondoAuth.applyLoginResponse(data);
+        $scope.hasMoreProfiles = result.hasMoreProfiles;
 
-    $scope.selectProfile = function (id) {
-        $http.post(settings.API_URL, {
-            Action: 'LoginV2',
-            Login: $scope.login,
-            Password: Base64.encode($scope.password),
-            ServiceCompanyId: id
-        }).then(function successCallback(response) {
-            User.load(null, response.data.credentials, null);
-            $scope.selectProfileAndRole(response.data.profiles[0], response.data.role);
-        });
-    };
+        if (result.status === 'complete') {
+            $scope.completeLogin(result.profiles[0], result.role);
+            return;
+        }
 
-    $scope.selectProfileAndRole = function (profile, role) {
+        if (result.hasMoreProfiles) {
+            $scope.defaultCompanyProfiles = [];
+            $scope.companyProfiles = [];
+        } else {
+            $scope.defaultCompanyProfiles = result.profiles;
+            $scope.companyProfiles = result.profiles;
+        }
+    }
+
+    $scope.completeLogin = function (profile, role, linkCondoAccount) {
         User.load(profile, null, role);
-        if (profile && profile.keyCount.remain < 10) {
+
+        if (profile && profile.keyCount && profile.keyCount.remain < 10) {
             $timeout(function () {
                 ModalService.showModal({
                     templateUrl: `${settings.TEMPLATE_DIR}modals/keys.html`,
@@ -59,7 +44,78 @@ app.controller('LoginCtrl', ['$scope', '$http', '$httpParamSerializer', 'Api', '
                     modal.element.modal();
                 });
             }, 1000, false);
-       }
+        }
+
+        if (linkCondoAccount !== false && CondoAuth.shouldLinkAfterPasswordLogin()) {
+            CondoAuth.redirectToCondoAuthorize().catch(function () {
+                // User stays in ACMS; linking can be retried on next login
+            });
+        }
+    };
+
+    if ($scope.condoBootstrapInProgress) {
+        CondoAuth.trySeamlessLogin().then(function (result) {
+            if (result.status === 'complete') {
+                $scope.completeLogin(result.profiles[0], result.role, false);
+            } else if (result.status === 'selectProfile') {
+                $scope.hasMoreProfiles = result.hasMoreProfiles;
+                if (result.hasMoreProfiles) {
+                    $scope.defaultCompanyProfiles = [];
+                    $scope.companyProfiles = [];
+                } else {
+                    $scope.defaultCompanyProfiles = result.profiles;
+                    $scope.companyProfiles = result.profiles;
+                }
+
+                CondoMiniapp.getStaffCondoUserId().then(function (domaUserId) {
+                    $scope.domaSeamlessUserId = domaUserId;
+                });
+            }
+        }).finally(function () {
+            $scope.condoBootstrapInProgress = false;
+        });
+    }
+
+    var search = $location.search();
+    if (search.confirm_phone_action_token && SessionHasCredentials()) {
+        CondoAuth.redirectToCondoAuthorize(search.confirm_phone_action_token).catch(function () {});
+    }
+
+    function SessionHasCredentials() {
+        return !!(User.token && String(User.token).indexOf(':') > 0);
+    }
+
+    $scope.submit = function() {
+        $http.post(settings.API_URL, {
+            Action: 'LoginV2',
+            Login: $scope.login,
+            Password: Base64.encode($scope.password)
+        }).then(function successCallback(response) {
+            applyLoginPayload(response.data);
+        });
+    };
+
+    $scope.selectProfile = function (id) {
+        if ($scope.domaSeamlessUserId) {
+            CondoAuth.loginByDomaUserId($scope.domaSeamlessUserId, id).then(function (data) {
+                $scope.completeLogin(data.profiles[0], data.role, false);
+            });
+            return;
+        }
+
+        $http.post(settings.API_URL, {
+            Action: 'LoginV2',
+            Login: $scope.login,
+            Password: Base64.encode($scope.password),
+            ServiceCompanyId: id
+        }).then(function successCallback(response) {
+            User.load(null, response.data.credentials, null);
+            $scope.completeLogin(response.data.profiles[0], response.data.role);
+        });
+    };
+
+    $scope.selectProfileAndRole = function (profile, role) {
+        $scope.completeLogin(profile, role);
     };
 
     $scope.$watch('q', function (newVal, oldVal) {

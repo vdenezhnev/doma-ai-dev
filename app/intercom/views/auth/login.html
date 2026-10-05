@@ -1,5 +1,6 @@
+<p class="text-center" ng-show="condoBootstrapInProgress" translate>html.auth.condo_bootstrap_loading</p>
 
-<form name="LoginForm" ng-show="companyProfiles.length === undefined">
+<form name="LoginForm" ng-show="companyProfiles.length === undefined && !condoBootstrapInProgress">
     <h3 class="form-title font-green" translate>html.auth.login_title</h3>
 
     <div class="form-group">
@@ -18,7 +19,7 @@
     </div>
 </form>
 
-<form ng-show="companyProfiles !== undefined">
+<form ng-show="companyProfiles !== undefined && !condoBootstrapInProgress">
     <h4 class="form-title font-green" translate>html.auth.select_company</h4>
 
     <div class="form-group" ng-show="hasMoreProfiles">

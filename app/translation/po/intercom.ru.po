@@ -753,6 +753,10 @@ msgstr "Логин"
 msgid "html.auth.login_title"
 msgstr "Авторизация"
 
+#: app/intercom/views/auth/login.html:1
+msgid "html.auth.condo_bootstrap_loading"
+msgstr "Вход в панель…"
+
 #: app/intercom/views/_messages.html:18
 msgid "html.auth.new_password_title"
 msgstr "Смена пароля"
