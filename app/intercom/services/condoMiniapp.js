@@ -9,6 +9,10 @@ app.service('CondoMiniapp', ['$q', '$location', 'CondoBridge', function ($q, $lo
             return true;
         }
 
+        if (search.condoUserId || search.domaUserId) {
+            return true;
+        }
+
         try {
             return window.self !== window.top;
         } catch (e) {
